@@ -1,5 +1,5 @@
 {
-  "name": "palette-mobile",
+  "name": "@artsy/palette-mobile",
   "version": "0.2.0",
   "scripts": {
     "install:all": "yarn install && yarn bundle-install && yarn pod-install",
