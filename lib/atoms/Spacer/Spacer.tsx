@@ -1,5 +1,5 @@
 import { HeightProps, SpaceProps, WidthProps } from "styled-system"
-import { Box } from "../../elements/Box"
+import { Box } from "../Box"
 
 export interface SpacerProps extends SpaceProps, WidthProps, HeightProps {
   x?: SpaceProps["ml"]
