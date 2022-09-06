@@ -8,6 +8,7 @@ jobs:
   build:
     executor: node/default
     steps:
+      - checkout
       - run: yarn build-lib:clean
 
   publish:
@@ -33,7 +34,10 @@ workflows:
 
   publish-canary:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: main
       - publish-canary:
           filters:
             branches:
