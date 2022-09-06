@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   auto: artsy/auto@2.1.0
 
-
 jobs:
   build:
     steps:
@@ -17,12 +16,11 @@ jobs:
     steps:
       - run: yarn release:canary
 
-
 workflows:
   publish:
     jobs:
       - build
-      - publish
+      - publish:
           filters:
             branches:
               only: main
@@ -32,7 +30,7 @@ workflows:
   publish-canary:
     jobs:
       - build
-      - publish-canary
+      - publish-canary:
           filters:
             branches:
               ignore: main
