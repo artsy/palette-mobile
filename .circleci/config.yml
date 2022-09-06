@@ -3,19 +3,22 @@ version: 2.1
 orbs:
   auto: artsy/auto@2.1.0
 
-executor:
-  name: node/default
-
 jobs:
   build:
+    executor:
+      name: node/default
     steps:
       - run: yarn build-lib:clean
 
   publish:
+    executor:
+      name: node/default
     steps:
       - run: yarn release
 
   publish-canary:
+    executor:
+      name: node/default
     steps:
       - run: yarn release:canary
 
