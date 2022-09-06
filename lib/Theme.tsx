@@ -160,7 +160,7 @@ const fixTextTreatments = (
     })
     return newTreatment
   })
-  return textTreatments
+  return textTreatments as any // TODO: fix this type
 }
 
 const colors = eigenUsefulTHEME_V3.colors
@@ -287,10 +287,10 @@ const figureOutTheme = (theme: keyof typeof THEMES | ThemeType): ThemeType => {
   // TODO-PALETTE-V3 remove the mapping as the last TODO-PALETTE-V3 to be done for space
 
   if (theme === "v5") {
-    return THEMES.v5
+    return THEMES.v5 as any // TODO: fix this type
   }
   if (theme === "v5dark") {
-    return THEMES.v5dark
+    return THEMES.v5dark as any // TODO: fix this type
   }
 
   return { ...THEMES.v3, space: mergedSpacesV2WithV3OnTop }
@@ -307,7 +307,7 @@ export const Theme = ({
   return <ThemeProvider theme={actualTheme}>{children}</ThemeProvider>
 }
 
-interface ColorFuncOverload {
+export interface ColorFuncOverload {
   (colorNumber: undefined): undefined
   (colorNumber: Color): string
   (colorNumber: Color | undefined): string | undefined
