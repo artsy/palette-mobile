@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  auto: artsy/auto@2.1.0
+
+workflows:
+  build_and_verify:
+    jobs:
+      - build:
+          script: yarn build-lib:clean
+
+      - publish:
+          script: yarn release
+          filters:
+            branches:
+              only: main
+          requires:
+            - build
+
+      - publish-canary:
+          script: yarn release:canary
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - build
