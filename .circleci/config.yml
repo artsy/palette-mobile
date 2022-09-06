@@ -1,24 +1,22 @@
 version: 2.1
 
 orbs:
+  node: circleci/node@5.0.2
   auto: artsy/auto@2.1.0
 
 jobs:
   build:
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - run: yarn build-lib:clean
 
   publish:
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - run: yarn release
 
   publish-canary:
-    executor:
-      name: node/default
+    executor: node/default
     steps:
       - run: yarn release:canary
 
