@@ -3,6 +3,9 @@ version: 2.1
 orbs:
   auto: artsy/auto@2.1.0
 
+executor:
+  name: node/default
+
 jobs:
   build:
     steps:
