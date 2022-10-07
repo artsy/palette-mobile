@@ -27,7 +27,7 @@ const getPercentByEntity = (maxValue: number, entityCount: number) => {
   return (100 / maxValue) * entityCount
 }
 
-export const Histogram: React.FC<HistogramProps> = ({ bars, selectedRange }) => {
+export const Histogram = ({ bars, selectedRange }: HistogramProps) => {
   const maxValue = Math.max(...bars.map((bar) => bar.count))
   const [min, max] = selectedRange
 

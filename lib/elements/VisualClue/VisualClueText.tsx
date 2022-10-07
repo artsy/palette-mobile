@@ -7,7 +7,7 @@ import { Text } from "../Text"
 const WRAPPER_WIDTH = 56
 const WRAPPER_HEIGHT = 52
 
-export const VisualClueText: React.FC<{ style?: StyleProp<ViewStyle> }> = ({ style = {} }) => {
+export const VisualClueText = ({ style }: { style?: StyleProp<ViewStyle> }) => {
   const colors = useColor()
 
   return (
@@ -22,12 +22,14 @@ export const VisualClueText: React.FC<{ style?: StyleProp<ViewStyle> }> = ({ sty
     >
       <Flex style={{ width: WRAPPER_WIDTH, height: WRAPPER_HEIGHT }}>
         <Flex
-          style={{
-            position: "absolute",
-            top: 14,
-            right: -48,
-            ...(style as object),
-          }}
+          style={[
+            {
+              position: "absolute",
+              top: 14,
+              right: -48,
+            },
+            style,
+          ]}
         >
           <PopIn>
             <Text

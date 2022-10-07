@@ -18,7 +18,7 @@ interface Props {
 /**
  * A view that renders off-screen, measures the width and height of the view, and reports it back.
  */
-export const MeasuredView: React.FC<Props> = ({ children, setMeasuredState, show }) => {
+export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
   const offscreenStyle = useOffscreenStyle(show)
   const onLayout = useCallback((event: LayoutChangeEvent) => {
     setMeasuredState(event.nativeEvent.layout)

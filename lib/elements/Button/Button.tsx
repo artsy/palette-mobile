@@ -62,7 +62,7 @@ enum DisplayState {
   Pressed = "pressed",
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   disabled,
   haptic,
@@ -76,8 +76,8 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "fillDark",
   testOnly_state,
   testID,
-  ...rest
-}) => {
+  ...restProps
+}: ButtonProps) => {
   const textStyle = useTextStyleForPalette(size === "small" ? "xs" : "sm")
 
   const [innerDisplayState, setInnerDisplayState] = useState(DisplayState.Enabled)
@@ -159,7 +159,7 @@ export const Button: React.FC<ButtonProps> = ({
         >
           <Flex flexDirection="row">
             <AnimatedContainer
-              {...rest}
+              {...restProps}
               style={{
                 backgroundColor: springProps.backgroundColor,
                 borderColor: springProps.borderColor,

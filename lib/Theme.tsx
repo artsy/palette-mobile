@@ -1,5 +1,6 @@
 import { THEME_V2, THEME_V3 } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitV2 } from "@artsy/palette-tokens/dist/themes/v2"
+import { isString, mapKeys, mapValues, spl } from "remeda"
 import {
   Color as ColorV3BeforeDevPurple,
   SpacingUnit as SpacingUnitV3Numbers,
@@ -8,7 +9,6 @@ import {
   TextTreatment as TextTreatmentWithUnits,
   TextVariant as TextVariantV3,
 } from "@artsy/palette-tokens/dist/typography/v3"
-import { mapValues, mapKeys, isString, split } from "lodash"
 import { useContext } from "react"
 import { ThemeContext, ThemeProvider } from "styled-components/native"
 /**
@@ -80,7 +80,7 @@ const fixSpaceUnitsV2 = (
   let fixed = units
 
   fixed = mapValues(fixed, (stringValueWithPx) => {
-    const justStringValue = split(stringValueWithPx, "px")[0]
+    const justStringValue = stringValueWithPx.split("px")[0]
     const numberValue = parseInt(justStringValue, 10)
     return numberValue
   }) as any
@@ -106,7 +106,7 @@ const fixSpaceUnitsV3 = (
   fixed = mapKeys(fixed, (_value, numberKey) => `${numberKey}`) as any
 
   fixed = mapValues(fixed, (stringValueWithPx) => {
-    const justStringValue = split(stringValueWithPx, "px")[0]
+    const justStringValue = stringValueWithPx.split("px")[0]
     const numberValue = parseInt(justStringValue, 10)
     return numberValue
   }) as any
@@ -155,7 +155,7 @@ const fixTextTreatments = (
       if (originalValue === undefined) {
         return undefined
       }
-      const justStringValue = split(originalValue, unit)[0]
+      const justStringValue = originalValue.split(unit)[0]
       const numberValue = parseInt(justStringValue, 10)
       newTreatment[property] = numberValue
     })

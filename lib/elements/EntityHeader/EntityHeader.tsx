@@ -14,7 +14,7 @@ interface EntityHeaderProps extends SpacerProps {
   FollowButton?: JSX.Element
 }
 
-export const EntityHeader: React.FC<EntityHeaderProps> = ({
+export const EntityHeader = ({
   smallVariant,
   href,
   imageUrl,
@@ -22,8 +22,8 @@ export const EntityHeader: React.FC<EntityHeaderProps> = ({
   name,
   meta,
   FollowButton,
-  ...remainderProps
-}) => {
+  ...restProps
+}: EntityHeaderProps) => {
   const followButton = FollowButton && (
     <Flex
       ml={smallVariant ? 0.3 : 1}
@@ -48,7 +48,7 @@ export const EntityHeader: React.FC<EntityHeaderProps> = ({
   )
 
   return (
-    <Flex flexDirection="row" flexWrap="nowrap" {...remainderProps}>
+    <Flex flexDirection="row" flexWrap="nowrap" {...restProps}>
       {!!(imageUrl || initials) && (
         <Flex mr={1} justifyContent="center">
           <Avatar size="xs" src={imageUrl} initials={initials} />

@@ -5,15 +5,15 @@ import { ArtsyLogoIcon } from "../../svgs"
 interface Props {
   shadow?: boolean
 }
-export const ArtsyLogoHeader: React.FC<Props> = ({ shadow = false }) => (
+export const ArtsyLogoHeader = ({ shadow = false }: Props) => (
   <>
     <Box mt={2} mb={1} style={shadow ? styles.boxShadowStyle : {}}>
       <Flex alignItems="center">
         <ArtsyLogoIcon scale={0.75} />
       </Flex>
-      <Spacer mb="1" />
+      <Spacer x="1" />
     </Box>
-    <Spacer mb="2" />
+    <Spacer x="2" />
   </>
 )
 

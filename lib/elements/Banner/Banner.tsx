@@ -15,7 +15,7 @@ export interface BannerProps {
   bodyTextStyle?: TextProps
 }
 
-export const Banner: React.FC<BannerProps> = ({
+export const Banner = ({
   title,
   text,
   onClose,
@@ -23,7 +23,7 @@ export const Banner: React.FC<BannerProps> = ({
   containerStyle,
   titleStyle,
   bodyTextStyle,
-}) => {
+}: BannerProps) => {
   const color = useColor()
 
   const [tempHeight, setTempHeight] = useState<number | undefined>(undefined)

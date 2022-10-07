@@ -24,7 +24,7 @@ export interface CheckboxProps extends TouchableWithoutFeedbackProps, FlexProps 
   children?: React.ReactElement | string
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox = ({
   checked: checkedProp,
   disabled,
   error,
@@ -34,7 +34,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   subtitle,
   children,
   ...restProps
-}) => {
+}: CheckboxProps) => {
   const { color, space } = useTheme()
 
   const fontScale = PixelRatio.getFontScale()

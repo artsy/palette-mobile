@@ -23,14 +23,14 @@ export type TouchableProps = TouchableHighlightProps & ExtraTouchableProps
  * or
  * <Touchable haptic="impactHeavy" />
  */
-export const Touchable: React.FC<TouchableProps> = ({
+export const Touchable = ({
   children,
   flex,
   haptic,
   noFeedback,
   onPress,
-  ...props
-}) => {
+  ...restProps
+}: TouchableProps) => {
   const color = useColor()
   const inner = Children.count(children) === 1 ? children : <Flex flex={flex}>{children}</Flex>
 
@@ -47,14 +47,14 @@ export const Touchable: React.FC<TouchableProps> = ({
   }
 
   return noFeedback ? (
-    <TouchableWithoutFeedback {...props} onPress={onPressWrapped}>
+    <TouchableWithoutFeedback {...restProps} onPress={onPressWrapped}>
       {inner}
     </TouchableWithoutFeedback>
   ) : (
     <TouchableHighlight
       underlayColor={color("secondary")}
       activeOpacity={0.8}
-      {...props}
+      {...restProps}
       onPress={onPressWrapped}
     >
       {inner}

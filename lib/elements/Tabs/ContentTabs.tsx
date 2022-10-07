@@ -6,7 +6,7 @@ import { TabBarContainer } from "./TabBarContainer"
 /**
  * Renders a  scrollable list of tabs. Tabs are not evenly spaced across screen
  */
-export const ContentTabs: React.FC<TabsProps> = ({ onTabPress, activeTab, tabs }) => {
+export const ContentTabs = ({ onTabPress, activeTab, tabs }: TabsProps) => {
   const [tabLayouts, setTabLayouts] = useState<Array<LayoutRectangle | null>>(tabs.map(() => null))
 
   return (
