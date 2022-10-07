@@ -3,7 +3,7 @@ import { Sans, Touchable } from "../elements"
 import { useColor } from "../hooks"
 import { ChevronIcon } from "../svgs"
 
-interface MenuItemProps {
+export interface MenuItemProps {
   disabled?: boolean
   title: React.ReactNode
   value?: React.ReactNode
