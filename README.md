@@ -70,6 +70,3 @@ our [job postings][footer_jobs]!
 - canaries
 - betas
 
-
-
-some breaking change

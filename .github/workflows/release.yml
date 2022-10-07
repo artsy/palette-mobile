@@ -1,12 +1,13 @@
-name: Publish canary
+name: Release
 
 on:
-  pull_request:
-    branches: ["main"]
+  push:
+    branches:
+      - main
 
 jobs:
-  publish-canary:
-    name: Publish canary
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,8 +21,8 @@ jobs:
         run: yarn install
       - name: Build palette-mobile
         run: yarn build-lib:clean
-      - name: Publish canary
+      - name: Release new version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn release:canary
+        run: yarn release
