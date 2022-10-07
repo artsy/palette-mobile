@@ -66,3 +66,10 @@ our [job postings][footer_jobs]!
 [footer_api]: https://developers.artsy.net/
 [footer_jobs]: https://www.artsy.net/jobs
 
+- npm release from ci
+- canaries
+- betas
+
+
+
+some breaking change
