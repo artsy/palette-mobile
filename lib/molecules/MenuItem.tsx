@@ -1,27 +1,26 @@
-import { StyleProp, ViewStyle } from "react-native"
 import { Flex } from "../atoms"
 import { Sans, Touchable } from "../elements"
 import { useColor } from "../hooks"
 import { ChevronIcon } from "../svgs"
 
-export const MenuItem: React.FC<{
+interface MenuItemProps {
   disabled?: boolean
   title: React.ReactNode
   value?: React.ReactNode
   text?: string
   onPress?: () => void
   chevron?: React.ReactNode
-  style?: StyleProp<ViewStyle>
   rightView?: React.ReactNode
-}> = ({
+}
+
+export const MenuItem = ({
   title,
   text,
   value,
   onPress,
   disabled = false,
   chevron = <ChevronIcon direction="right" fill="black60" />,
-  style,
-}) => {
+}: MenuItemProps) => {
   const color = useColor()
   return (
     <Touchable onPress={onPress} underlayColor={color("black5")} disabled={disabled}>

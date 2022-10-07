@@ -18,7 +18,10 @@ if (parameters) {
 }
 
 const getStories = () => {
-  return [require("../lib/atoms/Spacer/Spacer.stories.tsx")];
+  return [
+    require("../lib/atoms/Spacer/Spacer.stories.tsx"),
+    require("../lib/molecules/MenuItem.stories.tsx"),
+  ];
 };
 
 configure(getStories, module, false);

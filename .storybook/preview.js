@@ -1,2 +1,4 @@
-export const decorators = []
+import { withTheme } from "./decorators"
+
+export const decorators = [withTheme]
 export const parameters = {}
