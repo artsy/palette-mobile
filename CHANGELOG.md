@@ -1,3 +1,15 @@
+# v1.4.1 (Fri Oct 07 2022)
+
+#### 🐛 Bug Fix
+
+- feat: export icon stuff [#16](https://github.com/artsy/palette-mobile/pull/16) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v1.4.0 (Fri Oct 07 2022)
 
 #### 🚀 Enhancement
