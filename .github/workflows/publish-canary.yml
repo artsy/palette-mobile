@@ -12,7 +12,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: "yarn"
       - name: Install deps
         run: yarn install
       - name: Build palette-mobile
         run: yarn build-lib:clean
+      - name: Publish canary
+        run: yarn release:canary
