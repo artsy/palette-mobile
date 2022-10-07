@@ -39,6 +39,3 @@ export const Spacer = ({ x, y, ...props }: SpacerProps) => (
   <Box ml={x ?? props.ml} mt={y ?? props.mt} {...props} />
 )
 Spacer.displayName = "Spacer"
-
-const a = () => <Spacer x={0} ml={0} />
-const b = () => <Spacer x="2" ml={0} />
