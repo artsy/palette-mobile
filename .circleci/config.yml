@@ -4,6 +4,16 @@ orbs:
   node: circleci/node@5.0.2
 
 commands:
+  await-previous-builds:
+    parameters:
+      branch:
+        description: The branch to wait on
+        type: string
+    steps:
+      - queue/until_front_of_line:
+          time: "30" # how long a queue will wait until the job exits
+          only-on-branch: <<parameters.branch>> # restrict queueing to a specific branch (default *)
+
   install-node:
     steps:
       - run:
