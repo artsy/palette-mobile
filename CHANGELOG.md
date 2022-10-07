@@ -1,3 +1,20 @@
+# v1.4.0 (Fri Oct 07 2022)
+
+#### 🚀 Enhancement
+
+- fix: native deps as peerDeps [#15](https://github.com/artsy/palette-mobile/pull/15) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of github.com:artsy/palette-mobile ([@pvinis](https://github.com/pvinis))
+- ok ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v1.3.0 (Fri Oct 07 2022)
 
 #### 🚀 Enhancement
