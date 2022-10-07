@@ -1,3 +1,23 @@
+# v1.3.0 (Fri Oct 07 2022)
+
+#### 🚀 Enhancement
+
+- Update MenuItem.tsx [#13](https://github.com/artsy/palette-mobile/pull/13) ([@pvinis](https://github.com/pvinis))
+
+#### 🐛 Bug Fix
+
+- Update MenuIcon.tsx [#14](https://github.com/artsy/palette-mobile/pull/14) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- Update release.yml ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v1.2.0 (Fri Oct 07 2022)
 
 #### 🚀 Enhancement
