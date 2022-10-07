@@ -1,5 +1,4 @@
-import { Defs, Path, RadialGradient, Stop } from "react-native-svg"
-import { Icon, IconProps } from "./Icon"
+import { Defs, Icon, IconProps, Path, RadialGradient, Stop } from "./Icon"
 
 export const InstagramAppIcon = ({ fill, ...restProps }: IconProps) => (
   <Icon {...restProps} viewBox="0 0 23 23">

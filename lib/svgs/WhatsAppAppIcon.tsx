@@ -1,4 +1,4 @@
-import { Flex } from "../atoms/Flex"
+import { Flex } from "../atoms"
 import { Icon, IconProps, Path, Rect } from "./Icon"
 
 export const WhatsAppAppIcon = ({ fill, ...restProps }: IconProps) => (

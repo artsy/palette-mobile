@@ -21,6 +21,7 @@ const getStories = () => {
   return [
     require("../lib/atoms/Spacer/Spacer.stories.tsx"),
     require("../lib/molecules/MenuItem.stories.tsx"),
+    require("../lib/svgs/icons.stories.tsx"),
   ];
 };
 
