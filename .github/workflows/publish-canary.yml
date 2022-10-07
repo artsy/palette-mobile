@@ -1,18 +1,18 @@
-name: publish canary
+name: Publish canary
 
 on:
   pull_request:
     branches: ["main"]
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: install Deps
+      - name: Install deps
         run: yarn install
-      - name: build palette-mobile
+      - name: Build palette-mobile
         run: yarn build-lib:clean
