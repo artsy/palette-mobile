@@ -16,10 +16,10 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Push a new beta build to TestFlight"
+
   lane :beta do
     increment_build_number(xcodeproj: "ios/PaletteMobile.xcodeproj")
-    build_app(workspace: "ios/PaletteMobile.xcworkspace", scheme: "PaletteMobile")
-    upload_to_testflight
+    build_app(workspace: "ios/PaletteMobile.xcworkspace", scheme: "PaletteMobile", xcargs: "-allowProvisioningUpdates")
+    upload_to_testflight # you need `FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD` in the env with an app-specific password
   end
 end
