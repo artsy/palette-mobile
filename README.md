@@ -41,6 +41,8 @@ And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yar
 - [Eigen](https://github.com/artsy/eigen)
 - [Energy](https://github.com/artsy/energy)
 
+You can add this library using `yarn add @artsy/palette-mobile`. *Don't forget to also add all the `peerDependencies` to your project.*
+
 ## About Artsy
 
 <a href="https://www.artsy.net/">
