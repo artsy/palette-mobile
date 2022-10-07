@@ -1,5 +1,5 @@
 # Palette Mobile
-# @artsy/palette-mobile [![npm version](https://badge.fury.io/js/%40artsy%2Fpalette-mobile.svg)](https://www.npmjs.com/package/@artsy/palette-mobile)
+# @artsy/palette-mobile [![npm version](https://badge.fury.io/js/%40artsy%2Fpalette-mobile.svg)](https://www.npmjs.com/package/@artsy/palette-mobile) [![Release](https://github.com/artsy/palette-mobile/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/artsy/palette-mobile/actions/workflows/release.yml)
 
 Artsy's Design System on Mobile
 
