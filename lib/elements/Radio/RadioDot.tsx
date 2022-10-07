@@ -66,13 +66,11 @@ interface RadioDotProps {
   selected?: boolean
 }
 
-export const RadioDot: React.FC<RadioDotProps> = (props) => {
-  return (
-    <Container {...props}>
-      <Dot {...props} />
-    </Container>
-  )
-}
+export const RadioDot = (props: RadioDotProps) => (
+  <Container {...props}>
+    <Dot {...props} />
+  </Container>
+)
 
 const Container = styled(Box)<RadioDotProps>`
   width: 20px;

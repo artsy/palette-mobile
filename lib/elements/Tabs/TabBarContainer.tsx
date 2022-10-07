@@ -1,6 +1,6 @@
-import { compact } from "lodash"
 import { useEffect, useRef } from "react"
 import { Animated, LayoutRectangle, ScrollView, View } from "react-native"
+import { compact } from "remeda"
 import { Box } from "../../atoms"
 import { useColor } from "../../hooks"
 import { useScreenDimensions } from "../../utils/useScreenDimensions"
@@ -90,10 +90,13 @@ export function spring(node: Animated.Value, toValue: number) {
 /**
  * Underlines the Active Tab. Same implementation in StickyTabPageTabBar
  */
-export const ActiveTabBorder: React.FC<{
+export const ActiveTabBorder = ({
+  tabLayouts,
+  activeTabIndex,
+}: {
   tabLayouts: LayoutRectangle[]
   activeTabIndex: number
-}> = ({ tabLayouts, activeTabIndex }) => {
+}) => {
   const color = useColor()
   // We resize this border using the `scaleX` transform property rather than the `width` property, to avoid running
   // animations on the JS thread, so we need to set an initial, pre-transform span for the border.

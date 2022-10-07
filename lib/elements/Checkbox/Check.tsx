@@ -45,14 +45,11 @@ export interface CheckProps {
   selected?: boolean
 }
 
-/** Toggeable check mark */
-export const Check: React.FC<CheckProps> = ({ disabled, selected, ...rest }) => {
-  return (
-    <Container disabled={disabled} selected={selected} {...rest}>
-      {!!selected && <CheckIcon fill="white100" />}
-    </Container>
-  )
-}
+export const Check = ({ disabled, selected, ...restProps }: CheckProps) => (
+  <Container disabled={disabled} selected={selected} {...restProps}>
+    {!!selected && <CheckIcon fill="white100" />}
+  </Container>
+)
 
 const Container = styled(Box)<CheckProps>`
   width: ${CHECK_SIZE}px;

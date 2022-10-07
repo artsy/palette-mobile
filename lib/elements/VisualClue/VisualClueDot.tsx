@@ -6,7 +6,7 @@ import { useColor } from "../../hooks"
 const DOT_DIAMETER = 6
 const ANIMATION_DURATION = 1600
 
-export const VisualClueDot: React.FC = () => {
+export const VisualClueDot = () => {
   const scaleAnimation = useRef(new Animated.Value(1))
   const opacityAnimation = useRef(new Animated.Value(1))
 

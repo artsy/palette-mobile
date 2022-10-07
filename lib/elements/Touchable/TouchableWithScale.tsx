@@ -19,15 +19,15 @@ export interface TouchableWithScaleProps extends TouchableWithoutFeedbackProps {
   activeScale?: number
 }
 
-export const TouchableWithScale: React.FC<TouchableWithScaleProps> = ({
+export const TouchableWithScale = ({
   defaultScale = 1,
   activeScale = 0.95,
   onPressIn = NOOP,
   onPressOut = NOOP,
   style,
   children,
-  ...rest
-}) => {
+  ...restProps
+}: TouchableWithScaleProps) => {
   const scaleAnimation = new Animated.Value(defaultScale)
 
   const handlePressIn = (event: GestureResponderEvent) => {
@@ -41,7 +41,7 @@ export const TouchableWithScale: React.FC<TouchableWithScaleProps> = ({
   }
 
   return (
-    <TouchableWithoutFeedback onPressIn={handlePressIn} onPressOut={handlePressOut} {...rest}>
+    <TouchableWithoutFeedback onPressIn={handlePressIn} onPressOut={handlePressOut} {...restProps}>
       <Animated.View style={[style, { transform: [{ scale: scaleAnimation }] }]}>
         {children}
       </Animated.View>

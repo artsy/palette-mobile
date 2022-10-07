@@ -11,14 +11,7 @@ export interface TabV3Props {
   onLayout: ViewProps["onLayout"]
 }
 
-export const TabV3: React.FC<TabV3Props> = ({
-  label,
-  superscript,
-  active,
-  onLayout,
-  onPress,
-  style,
-}) => {
+export const TabV3 = ({ label, superscript, active, onLayout, onPress, style }: TabV3Props) => {
   const color = useColor()
   return (
     <Pressable onPress={onPress}>

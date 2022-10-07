@@ -1,4 +1,4 @@
-import { Icon, IconProps, Path, Stop, LinearGradient, Defs } from "./Icon"
+import { Defs, Icon, IconProps, LinearGradient, Path, Stop } from "./Icon"
 
 export const MessagesAppIcon = ({ fill, ...restProps }: IconProps) => {
   return (

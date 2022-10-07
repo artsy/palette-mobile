@@ -1,6 +1,5 @@
 import { EventEmitter } from "events"
 import { themeGet } from "@styled-system/theme-get"
-import _ from "lodash"
 import { useEffect, useImperativeHandle, useRef, useState, forwardRef } from "react"
 import {
   LayoutAnimation,
@@ -21,6 +20,7 @@ import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Spinner } from "../Spinner"
 import { MeasuredView } from "../../utils/MeasuredView"
+import { isArray, isString } from "remeda"
 
 const DEFAULT_FONT_SIZE = 16
 export const INPUT_HEIGHT = 50
@@ -173,7 +173,7 @@ export const Input = forwardRef<TextInput, InputProps>(
     const [placeholderWidths, setPlaceholderWidths] = useState<number[]>([])
     const [inputWidth, setInputWidth] = useState(0)
     const placeholderMeasuringHack =
-      Platform.OS === "android" && _.isArray(placeholder) ? (
+      Platform.OS === "android" && isArray(placeholder) ? (
         <>
           {placeholder.map((placeholderString, index) => (
             <MeasuredView
@@ -211,11 +211,11 @@ export const Input = forwardRef<TextInput, InputProps>(
 
       // ios works well. just return the longest placeholder
       if (Platform.OS === "ios") {
-        return _.isArray(placeholder) ? placeholder[0] : placeholder
+        return isArray(placeholder) ? placeholder[0] : placeholder
       }
 
       // if it's android and we only have one string, return that string
-      if (_.isString(placeholder)) {
+      if (isString(placeholder)) {
         return placeholder
       }
 

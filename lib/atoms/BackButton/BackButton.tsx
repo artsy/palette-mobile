@@ -7,7 +7,7 @@ interface BackButtonProps {
   showX?: boolean
 }
 
-export const BackButton: React.FC<BackButtonProps> = ({ onPress, showX = false }) => (
+export const BackButton = ({ onPress, showX = false }: BackButtonProps) => (
   <TouchableOpacity onPress={onPress}>
     {showX ? (
       <CloseIcon fill="black100" width={26} height={26} />
@@ -17,7 +17,7 @@ export const BackButton: React.FC<BackButtonProps> = ({ onPress, showX = false }
   </TouchableOpacity>
 )
 
-export const BackButtonWithBackground: React.FC<BackButtonProps> = ({ onPress, showX = false }) => (
+export const BackButtonWithBackground = ({ onPress, showX = false }: BackButtonProps) => (
   <TouchableOpacity onPress={onPress}>
     <Flex
       backgroundColor="white100"

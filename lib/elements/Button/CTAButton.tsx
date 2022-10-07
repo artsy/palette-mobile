@@ -1,3 +1,3 @@
 import { Button, ButtonProps } from "./Button"
 
-export const CTAButton: React.FC<ButtonProps> = (props) => <Button block haptic {...props} />
+export const CTAButton = (props: ButtonProps) => <Button block haptic {...props} />

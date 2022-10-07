@@ -7,13 +7,13 @@ export interface SearchInputProps extends InputProps {
   onCancelPress?: () => void
 }
 
-export const SearchInput: React.FC<SearchInputProps> = ({
+export const SearchInput = ({
   enableCancelButton,
   onChangeText,
   onClear,
   onCancelPress,
   ...props
-}) => {
+}: SearchInputProps) => {
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Input

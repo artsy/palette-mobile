@@ -13,7 +13,7 @@ interface TouchableHighlightColorProps extends TouchableProps {
   render: (state: TouchableHighlightState) => React.ReactNode
 }
 
-export const TouchableHighlightColor: React.FC<TouchableHighlightColorProps> = (props) => {
+export const TouchableHighlightColor = (props: TouchableHighlightColorProps) => {
   const {
     activeOpacity = 1,
     activeColor = "blue100",
@@ -21,7 +21,7 @@ export const TouchableHighlightColor: React.FC<TouchableHighlightColorProps> = (
     onPressIn,
     onPressOut,
     render,
-    ...other
+    ...restProps
   } = props
   const [highlighted, setHighlighted] = useState(false)
   const color = highlighted ? activeColor : normalColor
@@ -38,7 +38,7 @@ export const TouchableHighlightColor: React.FC<TouchableHighlightColorProps> = (
         setHighlighted(false)
         onPressOut?.(event)
       }}
-      {...other}
+      {...restProps}
     >
       {render({ color, highlighted })}
     </Touchable>
