@@ -12,6 +12,11 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run: yarn build-lib:clean
+    post-steps:
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
 
   publish:
     executor: node/default
