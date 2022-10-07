@@ -17,6 +17,7 @@
     "build-lib:clean": "rimraf dist && yarn build-lib",
     "release": "auto shipit",
     "release:canary": "auto canary",
+    "beta:ios": "bundle e fastlane ios beta",
     "setup:artsy": "./scripts/download-fonts"
   },
   "dependencies": {

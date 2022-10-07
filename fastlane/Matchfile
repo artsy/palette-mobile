@@ -1,0 +1,4 @@
+storage_mode("git")
+git_url("git@github.com:artsy/mobile_fastlane_match.git")
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
