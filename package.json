@@ -16,10 +16,11 @@
     "build-lib": "tsc -p tsconfig.lib.json",
     "build-lib:clean": "rimraf dist && yarn build-lib",
     "release": "auto shipit",
-    "release:canary": "auto canary"
+    "release:canary": "auto canary",
+    "setup:artsy": "./scripts/download-fonts"
   },
   "dependencies": {
-    "@artsy/palette-tokens": "^3.0.1",
+    "@artsy/palette-tokens": "^4.0.0",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
     "lodash": "^4.17.21",
@@ -30,7 +31,7 @@
     "react-native-linear-gradient": "^2.6.2",
     "react-native-svg": "^13.1.0",
     "react-spring": "^8.0.22",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.6",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {

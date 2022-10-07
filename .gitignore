@@ -61,5 +61,17 @@ buck-out/
 # Ruby / CocoaPods
 /ios/Pods/
 /vendor/bundle/
+
 dist
 .env
+
+# Fonts
+android/app/src/main/assets/fonts/*
+ios/PaletteMobile/fonts/*
+
+
+#########################################################
+# Keep this rule last.
+# Keep these, so we can keep the folders these appear in.
+!.gitkeep
+#########################################################
