@@ -20,6 +20,10 @@
     "beta:ios": "bundle e fastlane ios beta",
     "setup:artsy": "./scripts/download-fonts"
   },
+  "dependenciesComments": [
+    "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
+    "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
+  ],
   "dependencies": {
     "@artsy/palette-tokens": "^4.0.0",
     "@styled-system/theme-get": "^5.1.2",
@@ -31,6 +35,9 @@
     "styled-components": "^5.3.6",
     "styled-system": "^5.1.5"
   },
+  "peerDependenciesComments": [
+    "ADD ANY DEPS THAT ARE NEEDED FOR PALETTE AND HAVE NATIVE CODE."
+  ],
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
