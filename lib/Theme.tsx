@@ -1,6 +1,6 @@
 import { THEME_V2, THEME_V3 } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitV2 } from "@artsy/palette-tokens/dist/themes/v2"
-import { isString, mapKeys, mapValues, spl } from "remeda"
+import { isString, mapKeys, mapValues } from "remeda"
 import {
   Color as ColorV3BeforeDevPurple,
   SpacingUnit as SpacingUnitV3Numbers,
