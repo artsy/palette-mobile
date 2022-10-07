@@ -14,8 +14,6 @@ jobs:
       - run: yarn build-lib:clean
       - persist_to_workspace:
           root: .
-          paths:
-            - dist
 
   publish:
     executor: node/default
@@ -25,6 +23,8 @@ jobs:
   publish-canary:
     executor: node/default
     steps:
+      - attach_workspace:
+          at: .
       - run: yarn release:canary
 
 workflows:
