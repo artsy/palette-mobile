@@ -1,4 +1,4 @@
-name: Publish canary
+name: publish canary
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install Deps
+      - name: install Deps
         run: yarn install
-      - name: Build palette-mobile
+      - name: build palette-mobile
         run: yarn build-lib:clean
