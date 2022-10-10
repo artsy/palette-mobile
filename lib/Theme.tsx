@@ -11,11 +11,6 @@ import {
 } from "@artsy/palette-tokens/dist/typography/v3"
 import { useContext } from "react"
 import { ThemeContext, ThemeProvider } from "styled-components/native"
-/**
- * All of the config for the Artsy theming system, based on the
- * design system from our design team:
- * https://www.notion.so/artsy/Master-Library-810612339f474d0997fe359af4285c56
- */
 
 type SpacingUnitV3 = `${SpacingUnitV3Numbers}`
 export type SpacingUnit = SpacingUnitV2 | SpacingUnitV3
