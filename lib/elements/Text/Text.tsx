@@ -12,7 +12,8 @@ import {
   typography,
   TypographyProps,
 } from "styled-system"
-import { TextVariantV3, useTheme, isThemeV3 } from "../../Theme"
+import { useTheme, isThemeV3 } from "../../Theme"
+import { TextVariantV3 } from "../../tokens"
 import { useFontFamilyFor } from "./helpers"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {

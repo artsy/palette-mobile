@@ -1,4 +1,4 @@
-import { withTheme } from "./decorators"
+import { withDarkModeSwitcher } from "./decorators"
 
-export const decorators = [withTheme]
+export const decorators = [withDarkModeSwitcher]
 export const parameters = {}

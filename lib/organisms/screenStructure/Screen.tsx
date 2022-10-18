@@ -9,7 +9,7 @@ import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { BackButton, BackButtonWithBackground, Flex, FlexProps, Spacer } from "../../atoms"
-import { SpacingUnit } from "../../Theme"
+import { SpacingUnit } from "../../tokens"
 import { ArtsyKeyboardAvoidingView } from "../../utils/ArtsyKeyboardAvoidingView"
 import { Wrap } from "../../utils/Wrap"
 

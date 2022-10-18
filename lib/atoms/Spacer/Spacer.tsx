@@ -1,9 +1,10 @@
 import { HeightProps, SpaceProps, WidthProps } from "styled-system"
-import { SpacingUnitV3 } from "../../Theme"
+import { SpacingUnitV3 } from "../../tokens"
 import { Box } from "../Box"
 
 /**
  * @deprecated
+ * TODO: remove every other prop besides x and y
  */
 export interface OldSpacerProps extends SpaceProps, WidthProps, HeightProps {
   x?: SpaceProps["ml"]

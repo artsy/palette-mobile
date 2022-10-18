@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react"
 import { Animated, Easing, ViewProps } from "react-native"
 import styled from "styled-components/native"
 import { useColor } from "../../hooks"
-import { Color } from "../../Theme"
+import { Color } from "../../tokens"
 
 export interface SpinnerProps extends ViewProps {
   /** Delay before spinner appears */
