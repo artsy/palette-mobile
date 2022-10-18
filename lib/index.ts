@@ -5,6 +5,7 @@ export * from "./animation"
 export * from "./svgs"
 export * from "./svgs/Icon"
 
+export * from "./tokens"
 export * from "./Theme"
 export * from "./ClassTheme"
 export * from "./hooks"
