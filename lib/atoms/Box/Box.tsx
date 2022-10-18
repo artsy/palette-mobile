@@ -11,7 +11,7 @@ import {
   LayoutProps,
   position,
   PositionProps,
-  space,
+  space, ///custom
   SpaceProps,
   textAlign,
   TextAlignProps,

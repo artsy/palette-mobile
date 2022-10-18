@@ -286,3 +286,9 @@ export type AllThemesType = Theme2Type & Theme3Type & Theme5LightType & Theme5Da
 export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
 // tslint:disable-next-line:interface-over-type-literal
 export type ColorsTheme = { colors: Record<Color, any> }
+
+/**
+ * Only use this if it's are absolutely neccessary, and only in tests.
+ */
+export const _test_spacingUnits2 = fixSpaceUnitsV2(THEME_V2.space)
+export const _test_spacingUnits3 = fixSpaceUnitsV3(spaceNumbers)
