@@ -1,3 +1,15 @@
+# v2.0.0 (Tue Oct 18 2022)
+
+#### 💥 Breaking Change
+
+- tokens and types [#18](https://github.com/artsy/palette-mobile/pull/18) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v1.4.1 (Fri Oct 07 2022)
 
 #### 🐛 Bug Fix
