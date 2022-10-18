@@ -33,7 +33,7 @@ const figureOutTheme = (
 
 export const Theme = ({
   children,
-  theme = "v3",
+  theme = "v5",
 }: {
   children?: React.ReactNode
   theme?: keyof typeof THEMES | AllThemesType
