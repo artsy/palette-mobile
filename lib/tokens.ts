@@ -86,7 +86,7 @@ const fixSpaceUnitsV3 = (
 } => {
   let fixed = units
 
-  fixed = mapKeys(fixed, (_value, numberKey) => `${numberKey}`) as any
+  fixed = mapKeys(fixed, (numberKey) => `${numberKey}`) as any
 
   fixed = mapValues(fixed, (stringValueWithPx) => {
     const justStringValue = stringValueWithPx.split("px")[0]
