@@ -4,6 +4,7 @@ import { Box } from "../Box"
 
 /**
  * @deprecated
+ * TODO: remove every other prop besides x and y
  */
 export interface OldSpacerProps extends SpaceProps, WidthProps, HeightProps {
   x?: SpaceProps["ml"]

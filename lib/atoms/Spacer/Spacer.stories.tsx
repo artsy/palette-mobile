@@ -1,4 +1,3 @@
-import { TextInput, View } from "react-native"
 import { Text } from "../../elements"
 import { bullet } from "../../helpers/text"
 import { useSpace } from "../../hooks"
@@ -18,11 +17,11 @@ const SpacerRow = (props: { x: SpacerProps["x"] }) => {
   return (
     <Box>
       <Box flexDirection="row">
-        <Box width={20} height={20} backgroundColor="black" />
+        <Box width={20} height={20} backgroundColor="onBackground" />
         <Spacer {...props} />
-        <Box width={20} height={20} backgroundColor="black" />
+        <Box width={20} height={20} backgroundColor="onBackground" />
       </Box>
-      <Text color="black">
+      <Text color="onBackground">
         {typeof size === "string"
           ? `"${size}" ${bullet} ${space(size as any)}px`
           : `${size as any}px`}
