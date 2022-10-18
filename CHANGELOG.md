@@ -1,3 +1,15 @@
+# v2.1.1 (Tue Oct 18 2022)
+
+#### 🐛 Bug Fix
+
+- tiny [#21](https://github.com/artsy/palette-mobile/pull/21) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v2.1.0 (Tue Oct 18 2022)
 
 #### 🚀 Enhancement
