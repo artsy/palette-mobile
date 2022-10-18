@@ -1,5 +1,5 @@
 import { HeightProps, SpaceProps, WidthProps } from "styled-system"
-import { SpacingUnitV3 } from "../../Theme"
+import { SpacingUnitV3 } from "../../tokens"
 import { Box } from "../Box"
 
 /**

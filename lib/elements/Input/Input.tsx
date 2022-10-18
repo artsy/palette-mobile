@@ -15,12 +15,13 @@ import styled from "styled-components/native"
 import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { InputTitle } from "./InputTitle"
 import { Flex } from "../../atoms"
-import { Color, useTheme } from "../../Theme"
+import { useTheme } from "../../Theme"
 import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Spinner } from "../Spinner"
 import { MeasuredView } from "../../utils/MeasuredView"
 import { isArray, isString } from "remeda"
+import { Color } from "../../tokens"
 
 const DEFAULT_FONT_SIZE = 16
 export const INPUT_HEIGHT = 50
@@ -329,7 +330,7 @@ export const Input = forwardRef<TextInput, InputProps>(
             )}
             {renderShowPasswordIcon()}
             {loading ? (
-              <Flex pr="3" justifyContent="center" flexGrow={0}>
+              <Flex pr="2" justifyContent="center" flexGrow={0}>
                 <Spinner
                   size="medium"
                   style={{ marginLeft: 3, width: 15, height: 4, backgroundColor: color("black60") }}

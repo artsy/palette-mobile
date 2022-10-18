@@ -16,12 +16,12 @@ import {
   textAlign,
   TextAlignProps,
 } from "styled-system"
-import { AllThemesType } from "../../tokens"
+import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
 
 export interface BoxProps
   extends ViewProps,
-    SpaceProps<AllThemesType>,
-    Omit<ColorProps<AllThemesType>, "color">,
+    SpaceProps<SpacingUnitsTheme>,
+    Omit<ColorProps<ColorsTheme>, "color">,
     FlexboxProps,
     LayoutProps,
     PositionProps,
@@ -40,7 +40,4 @@ export const Box = styled(View)<BoxProps>`
   ${border}
   ${textAlign}
 `
-// export const Box = styled(View)<BoxProps>`
-//   ${boxMixin}
-// `
 Box.displayName = "Box"

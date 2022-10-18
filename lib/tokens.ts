@@ -34,8 +34,13 @@ export type {
   SpacingUnitV2,
   SpacingUnitV3,
 }
-type SpacingUnitPixels = number & {}
-export type SpacingUnit = SpacingUnitV2 | SpacingUnitV3 | SpacingUnitPixels
+type SpacingUnitPixels = number & {} // for things like `12` (which RN interprets as number of pixels)
+type SpacingUnitStringPixels = `${number}px` & {} // for things like `12px`
+export type SpacingUnit =
+  | SpacingUnitV2
+  | SpacingUnitV3
+  | SpacingUnitPixels
+  | SpacingUnitStringPixels
 
 // this function is converting the space values that come from palette-tokens
 // from a string `"120px"` to a number `120`.
@@ -92,6 +97,7 @@ const fixSpaceUnitsV3 = (
   return fixed as any
 }
 
+type ColorAnyString = string & {} // just an open rule here to allow for css names and other things for now
 /**
  * @deprecated
  * These colors should go.
@@ -122,6 +128,7 @@ type ColorExtraLayer =
   | "onBrand"
 
 type ColorWithoutExtraLayer =
+  | ColorAnyString
   | ColorV3WithoutDevPurple
   /** @deprecated Adding this here for dev usage, but try to avoid using it for actual components. */
   | ColorDevPurple
@@ -273,3 +280,9 @@ export type Theme3Type = typeof THEMES.v3
 export type Theme5LightType = typeof THEMES.v5light
 export type Theme5DarkType = typeof THEMES.v5dark
 export type AllThemesType = Theme2Type & Theme3Type & Theme5LightType & Theme5DarkType
+
+// These are for styled-system:
+// tslint:disable-next-line:interface-over-type-literal
+export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
+// tslint:disable-next-line:interface-over-type-literal
+export type ColorsTheme = { colors: Record<Color, any> }

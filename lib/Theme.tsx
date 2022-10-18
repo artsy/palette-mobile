@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import { isString } from "remeda"
-import { ThemeProvider } from "styled-components/native"
-import { AllThemesType, Theme3Type, THEMES } from "./tokens"
+import { ThemeContext, ThemeProvider } from "styled-components/native"
+import { AllThemesType, Color, SpacingUnit, Theme3Type, Theme5LightType, THEMES } from "./tokens"
 
-const figureOutTheme = (theme: keyof typeof THEMES | AllThemesType): AllThemesType => {
+const figureOutTheme = (
+  theme: keyof typeof THEMES | AllThemesType
+): Theme3Type | Theme5LightType => {
   if (!isString(theme)) {
     return theme
   }
@@ -21,12 +24,9 @@ const figureOutTheme = (theme: keyof typeof THEMES | AllThemesType): AllThemesTy
   }
   // TODO-PALETTE-V3 remove the mapping as the last TODO-PALETTE-V3 to be done for space
 
-  if (theme === "v5") {
-    return THEMES.v5 as any // TODO: fix this type
-  }
-  if (theme === "v5dark") {
-    return THEMES.v5dark as any // TODO: fix this type
-  }
+  if (theme === "v5" || theme === "v5light") return THEMES.v5light
+
+  if (theme === "v5dark") return THEMES.v5dark
 
   return { ...THEMES.v3, space: mergedSpacesV2WithV3OnTop }
 }
@@ -48,7 +48,7 @@ export interface ColorFuncOverload {
   (colorNumber: Color | undefined): string | undefined
 }
 const color =
-  (theme: ThemeType): ColorFuncOverload =>
+  (theme: AllThemesType): ColorFuncOverload =>
   (colorName: any): any => {
     if (colorName === undefined) {
       return undefined
@@ -57,12 +57,12 @@ const color =
   }
 
 const space =
-  (theme: ThemeType) =>
-  (spaceName: SpacingUnitV2 | SpacingUnitV3): number =>
-    theme.space[spaceName as SpacingUnitV3]
+  (theme: AllThemesType) =>
+  (spaceName: SpacingUnit): number =>
+    theme.space[spaceName as keyof AllThemesType["space"]]
 
 export const useTheme = () => {
-  const theme: ThemeType = useContext(ThemeContext)
+  const theme: AllThemesType = useContext(ThemeContext)
 
   // if we are not wrapped in `<Theme>`, if we dev, throw error.
   // if we are in prod, we will default to v2 to avoid a crash.
@@ -84,7 +84,7 @@ export const useTheme = () => {
   }
 }
 
-export const isThemeV3 = (theme: ThemeType): theme is ThemeV3Type => theme.id === "v3"
+export const isThemeV3 = (theme: AllThemesType) => theme.id === "v3"
 
 /**
  * Only use this if it's are absolutely neccessary, and only in tests.

@@ -25,7 +25,7 @@ export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
   }, [])
 
   return (
-    <Box {...offscreenStyle} backgroundColor="pink" onLayout={onLayout}>
+    <Box style={offscreenStyle} backgroundColor="pink" onLayout={onLayout}>
       {children}
     </Box>
   )
