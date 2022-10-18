@@ -1,3 +1,19 @@
+# v2.1.0 (Tue Oct 18 2022)
+
+#### 🚀 Enhancement
+
+- Update README.md [#20](https://github.com/artsy/palette-mobile/pull/20) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- aha ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v2.0.0 (Tue Oct 18 2022)
 
 #### 💥 Breaking Change
