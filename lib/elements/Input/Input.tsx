@@ -104,23 +104,30 @@ export const Input = forwardRef<TextInput, InputProps>(
       placeholder,
       multiline,
       maxLength,
+      onFocus,
+      onBlur,
+      onClear,
+      onChangeText,
+      defaultValue,
+      value: propValue,
       showLimit,
       addClearListener = false,
       fontSize = DEFAULT_FONT_SIZE,
-      ...rest
+      style,
+      ...restProps
     },
     ref
   ) => {
     const { color, theme } = useTheme()
     const [focused, setFocused] = useState(false)
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
-    const [value, setValue] = useState(rest.value ?? rest.defaultValue ?? "")
+    const [value, setValue] = useState(propValue ?? defaultValue ?? "")
     const input = useRef<TextInput>()
 
     const localClear = () => {
       input.current?.clear()
       localOnChangeText("")
-      rest.onClear?.()
+      onClear?.()
     }
 
     useImperativeHandle(ref, () => input.current!)
@@ -168,7 +175,7 @@ export const Input = forwardRef<TextInput, InputProps>(
 
     const localOnChangeText = (text: string) => {
       setValue(text)
-      rest.onChangeText?.(text)
+      onChangeText?.(text)
     }
 
     const [placeholderWidths, setPlaceholderWidths] = useState<number[]>([])
@@ -253,7 +260,6 @@ export const Input = forwardRef<TextInput, InputProps>(
         <TouchableWithoutFeedback onPressIn={() => input.current?.focus()}>
           <View
             style={[
-              rest.style,
               {
                 flexDirection: "row",
                 borderWidth: 1,
@@ -261,6 +267,7 @@ export const Input = forwardRef<TextInput, InputProps>(
                 minHeight: multiline ? INPUT_HEIGHT_MULTILINE : INPUT_HEIGHT,
                 backgroundColor: disabled ? color("black5") : color("white100"),
               },
+              style,
             ]}
           >
             {renderLeftHandSection?.()}
@@ -287,19 +294,21 @@ export const Input = forwardRef<TextInput, InputProps>(
                 }}
                 ref={input}
                 placeholderTextColor={color("black60")}
-                style={{
-                  flex: 1,
-                  fontSize,
-                  ...inputTextStyle,
-                  color: color("onBackgroundHigh"),
-                  backgroundColor: color("background"),
-                }}
+                style={[
+                  {
+                    flex: 1,
+                    fontSize,
+                    color: color("onBackgroundHigh"),
+                    backgroundColor: color("background"),
+                  },
+                  inputTextStyle,
+                ]}
                 numberOfLines={multiline ? undefined : 1}
                 secureTextEntry={!showPassword}
                 textAlignVertical={multiline ? "top" : "center"}
                 placeholder={actualPlaceholder()}
                 value={value}
-                {...(rest as any)}
+                {...(restProps as any)}
                 onChangeText={localOnChangeText}
                 onFocus={(e) => {
                   if (Platform.OS === "android") {
@@ -308,7 +317,7 @@ export const Input = forwardRef<TextInput, InputProps>(
                     )
                   }
                   setFocused(true)
-                  rest.onFocus?.(e)
+                  onFocus?.(e)
                 }}
                 onBlur={(e) => {
                   if (Platform.OS === "android") {
@@ -317,7 +326,7 @@ export const Input = forwardRef<TextInput, InputProps>(
                     )
                   }
                   setFocused(false)
-                  rest.onBlur?.(e)
+                  onBlur?.(e)
                 }}
               />
             </Flex>
