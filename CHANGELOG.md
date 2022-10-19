@@ -1,3 +1,15 @@
+# v2.1.3 (Wed Oct 19 2022)
+
+#### 🐛 Bug Fix
+
+- fix: input styling [#23](https://github.com/artsy/palette-mobile/pull/23) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v2.1.2 (Wed Oct 19 2022)
 
 #### 🐛 Bug Fix
