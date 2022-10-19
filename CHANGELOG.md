@@ -1,3 +1,15 @@
+# v2.1.2 (Wed Oct 19 2022)
+
+#### 🐛 Bug Fix
+
+- fix: back button colors [#22](https://github.com/artsy/palette-mobile/pull/22) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v2.1.1 (Tue Oct 18 2022)
 
 #### 🐛 Bug Fix
