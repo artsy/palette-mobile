@@ -4,8 +4,7 @@
  * https://www.notion.so/artsy/Master-Library-810612339f474d0997fe359af4285c56
  */
 
-import { THEME_V2, THEME_V3 } from "@artsy/palette-tokens"
-import { SpacingUnit as SpacingUnitV2 } from "@artsy/palette-tokens/dist/themes/v2"
+import { THEME_V3 } from "@artsy/palette-tokens"
 import { mapKeys, mapValues } from "remeda"
 import {
   Color as ColorV3WithoutDevPurple,
@@ -26,50 +25,10 @@ const {
 } = THEME_V3
 
 type SpacingUnitV3 = `${SpacingUnitV3Numbers}`
-export type {
-  /**
-   * @deprecated
-   * Start using `SpacingUnitV3`, using strings instead of numbers.
-   */
-  SpacingUnitV2,
-  SpacingUnitV3,
-}
+export type { SpacingUnitV3 }
 type SpacingUnitPixels = number & {} // for things like `12` (which RN interprets as number of pixels)
 type SpacingUnitStringPixels = `${number}px` & {} // for things like `12px`
-export type SpacingUnit =
-  | SpacingUnitV2
-  | SpacingUnitV3
-  | SpacingUnitPixels
-  | SpacingUnitStringPixels
-
-// this function is converting the space values that come from palette-tokens
-// from a string `"120px"` to a number `120`.
-const fixSpaceUnitsV2 = (
-  units: typeof THEME_V2.space
-): {
-  0.3: number
-  0.5: number
-  1: number
-  1.5: number
-  2: number
-  3: number
-  4: number
-  5: number
-  6: number
-  9: number
-  12: number
-  18: number
-} => {
-  let fixed = units
-
-  fixed = mapValues(fixed, (stringValueWithPx) => {
-    const justStringValue = stringValueWithPx.split("px")[0]
-    const numberValue = parseInt(justStringValue, 10)
-    return numberValue
-  }) as any
-
-  return fixed as any
-}
+export type SpacingUnit = SpacingUnitV3 | SpacingUnitPixels | SpacingUnitStringPixels
 
 // this function is converting the space values that come from palette-tokens
 // from a string `"120px"` to a number `120`, and the key values
@@ -188,27 +147,6 @@ export interface TextTreatment {
 
 // TODO: maybe add types here to make sure each theme is using the right types from above?
 export const THEMES = {
-  /** @deprecated Please move to v3 as soon as possible. */
-  v2: {
-    ...THEME_V2,
-    space: fixSpaceUnitsV2(THEME_V2.space),
-    fontFamily: {
-      sans: {
-        regular: { normal: "Unica77LL-Regular", italic: "Unica77LL-Italic" },
-        medium: { normal: "Unica77LL-Medium", italic: "Unica77LL-MediumItalic" },
-        semibold: { normal: null, italic: null },
-      },
-      serif: {
-        regular: {
-          normal: "ReactNativeAGaramondPro-Regular",
-          italic: "ReactNativeAGaramondPro-Italic",
-        },
-        medium: { normal: null, italic: null },
-        semibold: { normal: "ReactNativeAGaramondPro-Semibold", italic: null },
-      },
-    },
-    fonts: { sans: "Unica77LL-Regular", serif: "ReactNativeAGaramondPro-Regular" },
-  },
   v3: {
     ...mobileUsefulTHEME_V3,
     space: fixSpaceUnitsV3(spaceNumbers),
@@ -275,11 +213,10 @@ export const THEMES = {
   },
 }
 
-export type Theme2Type = typeof THEMES.v2
 export type Theme3Type = typeof THEMES.v3
 export type Theme5LightType = typeof THEMES.v5light
 export type Theme5DarkType = typeof THEMES.v5dark
-export type AllThemesType = Theme2Type & Theme3Type & Theme5LightType & Theme5DarkType
+export type AllThemesType = Theme3Type & Theme5LightType & Theme5DarkType
 
 // These are for styled-system:
 // tslint:disable-next-line:interface-over-type-literal

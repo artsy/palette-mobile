@@ -10,25 +10,11 @@ const figureOutTheme = (
     return theme
   }
 
-  // forcing v3 spaces, unless specifically requiring v2, in which case we use `spaceV2`
-  const mergedSpacesV2WithV3OnTop = {
-    ...THEMES.v2.space, // get the base v2
-    ...THEMES.v3.space, // get the base v3 on top of that
-    // now add the rest of the mappings
-    "0.3": THEMES.v3.space["0.5"], // TODO-PALETTE-V3 replace all {0.3} and "0.3" with "0.5"
-    "1.5": THEMES.v3.space["2"], // TODO-PALETTE-V3 replace all {1.5} and "1.5" with "2"
-    "3": THEMES.v3.space["4"], // TODO-PALETTE-V3 replace all {3} and "3" with "4"
-    "5": THEMES.v3.space["6"], // TODO-PALETTE-V3 replace all {5} and "5" with "6"
-    "9": THEMES.v3.space["6"], // TODO-PALETTE-V3 replace all {9} and "9" with "6"
-    "18": THEMES.v3.space["12"], // TODO-PALETTE-V3 replace all {18} and "18" with "12"
-  }
-  // TODO-PALETTE-V3 remove the mapping as the last TODO-PALETTE-V3 to be done for space
-
   if (theme === "v5" || theme === "v5light") return THEMES.v5light
 
   if (theme === "v5dark") return THEMES.v5dark
 
-  return { ...THEMES.v3, space: mergedSpacesV2WithV3OnTop }
+  return THEMES.v3
 }
 
 export const Theme = ({
