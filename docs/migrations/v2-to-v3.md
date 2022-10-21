@@ -5,8 +5,11 @@
 - All `Sans` and `Serif` are removed. See below for how to replace these.
 - `Garamond` font is removed. `Unica` is the only font on v3.
 - Spacing Units `0.3`, `1.5`, `3`, `5`, `9`, `18` are removed. See below for how to replace these.
+- Color `yellow30` is removed.
 
 ## Migrating
+
+To quickly find places you would need to do replacements, find the types `SpacingUnitsTheme` and `ColorsTheme` in `node_modules`, and **temporarily** change the first type on these (`SpacingUnit` and `Color` respectively) with `SpacingUnitStrict` and `ColorStrict`. This will cause typescript and your editor to show all the places values that don't exist anymore appear.
 
 ### Replace `Sans` and `Serif` with `Text`
 

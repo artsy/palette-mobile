@@ -2,7 +2,7 @@ import { Flex } from "../../atoms"
 import { SpacerProps } from "../../atoms/Spacer"
 import { bullet } from "../../helpers/text"
 import { Avatar } from "../Avatar"
-import { Sans } from "../Text"
+import { Text } from "../Text"
 
 interface EntityHeaderProps extends SpacerProps {
   smallVariant?: boolean
@@ -26,7 +26,7 @@ export const EntityHeader = ({
 }: EntityHeaderProps) => {
   const followButton = FollowButton && (
     <Flex
-      ml={smallVariant ? 0.3 : 1}
+      ml={smallVariant ? "0.5" : "1"}
       flexDirection="row"
       alignItems="center"
       justifyContent="flex-end"
@@ -36,15 +36,21 @@ export const EntityHeader = ({
   )
 
   const headerName = (
-    <Sans ellipsizeMode="tail" numberOfLines={1} size="3" style={{ flexShrink: 1 }}>
+    <Text ellipsizeMode="tail" numberOfLines={1} variant="sm" style={{ flexShrink: 1 }}>
       {name}
-    </Sans>
+    </Text>
   )
 
   const headerMeta = !!meta && (
-    <Sans ellipsizeMode="tail" numberOfLines={1} size="2" color="black60" style={{ flexShrink: 1 }}>
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={1}
+      variant="xs"
+      color="black60"
+      style={{ flexShrink: 1 }}
+    >
       {meta}
-    </Sans>
+    </Text>
   )
 
   return (
@@ -59,9 +65,9 @@ export const EntityHeader = ({
         <Flex flexDirection="row" justifyContent="flex-start" flexGrow={1} alignItems="center">
           {headerName}
 
-          <Sans size="3" ml={0.3}>
+          <Text variant="sm" ml="0.5">
             {bullet}
-          </Sans>
+          </Text>
 
           {followButton}
         </Flex>

@@ -28,7 +28,8 @@ type SpacingUnitV3 = `${SpacingUnitV3Numbers}`
 export type { SpacingUnitV3 }
 type SpacingUnitPixels = number & {} // for things like `12` (which RN interprets as number of pixels)
 type SpacingUnitStringPixels = `${number}px` & {} // for things like `12px`
-export type SpacingUnit = SpacingUnitV3 | SpacingUnitPixels | SpacingUnitStringPixels
+export type SpacingUnitStrict = SpacingUnitV3
+export type SpacingUnit = SpacingUnitStrict | SpacingUnitPixels | SpacingUnitStringPixels
 
 // this function is converting the space values that come from palette-tokens
 // from a string `"120px"` to a number `120`, and the key values
@@ -57,11 +58,6 @@ const fixSpaceUnitsV3 = (
 }
 
 type ColorAnyString = string & {} // just an open rule here to allow for css names and other things for now
-/**
- * @deprecated
- * These colors should go.
- */
-type ColorOldColorsWeNeedToRemove = "yellow30"
 
 // we love our old purple, great color for our dev stuff nowadays!
 type ColorDevPurple = "devpurple"
@@ -86,13 +82,14 @@ type ColorExtraLayer =
   | "onSecondaryLow"
   | "onBrand"
 
-type ColorWithoutExtraLayer =
-  | ColorAnyString
+type ColorWithoutExtraLayerStrict =
   | ColorV3WithoutDevPurple
   /** @deprecated Adding this here for dev usage, but try to avoid using it for actual components. */
   | ColorDevPurple
-  | ColorOldColorsWeNeedToRemove
 
+type ColorWithoutExtraLayer = ColorWithoutExtraLayerStrict | ColorAnyString
+
+export type ColorStrict = ColorWithoutExtraLayerStrict | ColorExtraLayer
 export type Color = ColorWithoutExtraLayer | ColorExtraLayer
 
 const fixColorV3 = (
@@ -101,7 +98,6 @@ const fixColorV3 = (
   const ourColors = {
     ...colors,
     devpurple: "#6E1EFF",
-    yellow30: "#FAE7BA",
   }
   return ourColors
 }
