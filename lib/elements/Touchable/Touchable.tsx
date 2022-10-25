@@ -11,23 +11,23 @@ import { useColor } from "../../hooks"
 
 interface ExtraTouchableProps {
   flex?: number
+  /**
+   * `haptic` can be used like:
+   * <Touchable haptic />
+   * or
+   * <Touchable haptic="impactHeavy" />
+   */
   haptic?: HapticFeedbackTypes | true
   noFeedback?: boolean
 }
 
 export type TouchableProps = TouchableHighlightProps & ExtraTouchableProps
 
-/**
- * `haptic` can be used like:
- * <Touchable haptic />
- * or
- * <Touchable haptic="impactHeavy" />
- */
 export const Touchable = ({
   children,
   flex,
   haptic,
-  noFeedback,
+  noFeedback = false,
   onPress,
   ...restProps
 }: TouchableProps) => {
@@ -35,9 +35,7 @@ export const Touchable = ({
   const inner = Children.count(children) === 1 ? children : <Flex flex={flex}>{children}</Flex>
 
   const onPressWrapped = (evt: GestureResponderEvent) => {
-    if (onPress === undefined) {
-      return
-    }
+    if (onPress === undefined) return
 
     if (haptic !== undefined) {
       Haptic.trigger(haptic === true ? "impactLight" : haptic)
@@ -52,9 +50,9 @@ export const Touchable = ({
     </TouchableWithoutFeedback>
   ) : (
     <TouchableHighlight
-      underlayColor={color("secondary")}
       activeOpacity={0.8}
       {...restProps}
+      underlayColor={color("background")}
       onPress={onPressWrapped}
     >
       {inner}
