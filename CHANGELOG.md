@@ -1,3 +1,15 @@
+# v3.0.0 (Tue Oct 25 2022)
+
+#### 💥 Breaking Change
+
+- feat: v2 removed [#24](https://github.com/artsy/palette-mobile/pull/24) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v2.1.3 (Wed Oct 19 2022)
 
 #### 🐛 Bug Fix
