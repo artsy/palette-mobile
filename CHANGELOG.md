@@ -1,3 +1,15 @@
+# v3.1.0 (Wed Oct 26 2022)
+
+#### 🚀 Enhancement
+
+- fix: touchable underlay color [#25](https://github.com/artsy/palette-mobile/pull/25) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.0.0 (Tue Oct 25 2022)
 
 #### 💥 Breaking Change
