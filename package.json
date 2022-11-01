@@ -13,7 +13,7 @@
     "bundle-install": "bundle install",
     "pod-install": "cd ios && bundle exec pod install && cd ..",
     "test": "jest",
-    "build-lib": "tsc -p tsconfig.lib.json",
+    "build-lib": "tsc",
     "build-lib:clean": "rimraf dist && yarn build-lib",
     "release": "auto shipit",
     "release:canary": "auto canary",

@@ -1,8 +1,14 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "lib",
+    "rootDir": "lib",
+    "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
     "jsx": "react-jsx", // This is for vscode not to suggest importing React, after react17.
     "skipLibCheck": true,
     "types": ["styled-components-react-native"]
-  }
+  },
+  "include": ["lib/**/*"]
 }

@@ -33,7 +33,9 @@ export const MenuItem = ({
         pr="15px"
       >
         <Flex flexDirection="row" mr="2">
-          <Text variant="md">{title}</Text>
+          <Text variant="md" color="onBackgroundHigh">
+            {title}
+          </Text>
         </Flex>
         {!!value && (
           <Flex flex={1}>

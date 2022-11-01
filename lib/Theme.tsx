@@ -61,7 +61,7 @@ export const useTheme = () => {
       "ThemeContext is not defined. Wrap your component with `<Theme>` and try again."
     )
   }
-  const themeIfUnwrapped = THEMES.v3
+  const themeIfUnwrapped = THEMES.v5light
 
   return {
     theme: theme ?? themeIfUnwrapped,
