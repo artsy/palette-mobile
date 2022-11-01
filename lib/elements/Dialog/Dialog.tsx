@@ -20,6 +20,7 @@ export interface DialogProps {
   onBackgroundPress?: () => void
 }
 
+/** @deprecated Not in Design System anymore. */
 export const Dialog = (props: DialogProps) => {
   const { isVisible, title, detail, primaryCta, secondaryCta, onBackgroundPress, ...other } = props
   const [visible, setVisible] = useState(isVisible)

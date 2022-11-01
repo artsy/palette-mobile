@@ -1,46 +1,45 @@
-import { themeGet } from "@styled-system/theme-get"
 import { ImgHTMLAttributes } from "react"
 import { Image } from "react-native"
-import styled from "styled-components/native"
-import { borderRadius } from "styled-system"
 import { Flex } from "../../atoms"
 import { useColor } from "../../hooks"
-import { Text } from "../Text"
+import { Text, TextProps } from "../Text"
 
-const DEFAULT_SIZE = "md"
-
-const SIZES = {
-  xxs: {
-    diameter: 30,
-    typeSize: "13",
-  },
-  xs: {
-    diameter: 45,
-    typeSize: "13",
-  },
-
-  sm: {
-    diameter: 70,
-    typeSize: "16",
-  },
-  md: {
-    diameter: 100,
-    typeSize: "24",
-  },
-}
+type AvatarSize = "xxs" | "xs" | "sm" | "md"
 
 export interface AvatarProps extends ImgHTMLAttributes<any> {
   src?: string
   /** If an image is missing, show initials instead */
   initials?: string
   /** The size of the Avatar */
-  size?: "xxs" | "xs" | "sm" | "md"
+  size?: AvatarSize
+}
+
+const DEFAULT_SIZE: AvatarSize = "md"
+
+const VARIANTS: Record<AvatarSize, { diameter: number; textSize: TextProps["variant"] }> = {
+  xxs: {
+    diameter: 30,
+    textSize: "xs",
+  },
+  xs: {
+    diameter: 45,
+    textSize: "sm-display",
+  },
+
+  sm: {
+    diameter: 70,
+    textSize: "md",
+  },
+  md: {
+    diameter: 100,
+    textSize: "lg-display",
+  },
 }
 
 /** A circular Avatar component containing an image or initials */
 export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
   const color = useColor()
-  const { diameter, typeSize } = SIZES[size]
+  const { diameter, textSize } = VARIANTS[size]
 
   if (src) {
     return (
@@ -53,31 +52,23 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
           borderColor: color("white100"),
           borderWidth: 1,
         }}
-        source={{
-          uri: src,
-        }}
+        source={{ uri: src }}
       />
     )
   }
 
   return (
-    <InitialsHolder
+    <Flex
       width={diameter}
       height={diameter}
-      justifyContent="center"
-      alignItems="center"
+      borderColor="black10"
+      borderWidth={1}
       borderRadius={diameter}
+      overflow="hidden"
+      alignItems="center"
+      justifyContent="center"
     >
-      <Text fontSize={typeSize} lineHeight={diameter}>
-        {initials}
-      </Text>
-    </InitialsHolder>
+      <Text variant={textSize}>{initials}</Text>
+    </Flex>
   )
 }
-
-export const InitialsHolder = styled(Flex)`
-  border: ${themeGet("colors.black10")};
-  text-align: center;
-  overflow: hidden;
-  ${borderRadius}
-`
