@@ -1,3 +1,15 @@
+# v3.2.0 (Wed Nov 02 2022)
+
+#### 🚀 Enhancement
+
+- rework some stuff [#26](https://github.com/artsy/palette-mobile/pull/26) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.1.0 (Wed Oct 26 2022)
 
 #### 🚀 Enhancement
