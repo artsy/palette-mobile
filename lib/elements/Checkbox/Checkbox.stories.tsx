@@ -1,6 +1,4 @@
-import { LinkText, Text } from "../../elements"
 import { List, Row } from "../../storybookHelpers"
-import { Check } from "./Check"
 import { Checkbox } from "./Checkbox"
 
 export default {
