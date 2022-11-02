@@ -7,6 +7,6 @@ const presets = [
   ["@babel/preset-react", { runtime: "automatic" }], // this is so `import React from "react"` is not needed.
 ]
 
-const plugins = []
+const plugins = ["react-native-reanimated/plugin"]
 
 module.exports = { presets, plugins }

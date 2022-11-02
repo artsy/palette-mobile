@@ -1,171 +1,182 @@
-import { themeGet } from "@styled-system/theme-get"
+import { Touchable, TouchableProps } from "../../elements"
 import { useState } from "react"
-import {
-  PixelRatio,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps,
-} from "react-native"
-import styled from "styled-components/native"
-import { CssTransition } from "../../animation"
-import { Flex, FlexProps } from "../../atoms"
+import { PixelRatio, View } from "react-native"
+import { Flex } from "../../atoms"
+import Animated, {
+  useDerivedValue,
+  useAnimatedStyle,
+  withTiming,
+  interpolateColor,
+} from "react-native-reanimated"
 import { useTheme } from "../../Theme"
 import { Text } from "../Text"
+import { Color } from "../../tokens"
+import { useColor } from "../../hooks"
 
-const CHECKBOX_SIZE = 20
-const DURATION = 250
+type DisplayState = "unpressed" | "pressed"
 
-export interface CheckboxProps extends TouchableWithoutFeedbackProps, FlexProps {
+export interface CheckboxProps {
   checked?: boolean
   disabled?: boolean
   error?: boolean
   text?: React.ReactElement | string
   subtitle?: React.ReactElement | string
-  children?: React.ReactElement | string
+
+  onPress?: TouchableProps["onPress"]
+
+  /** Used only for tests and stories */
+  testOnly_state?: DisplayState
 }
+
+const CHECKBOX_SIZEx1 = 20
+const ANIMATION_DURATION = 250
 
 export const Checkbox = ({
   checked: checkedProp,
   disabled,
   error,
   onPress,
-  style,
   text,
   subtitle,
-  children,
-  ...restProps
+  testOnly_state,
 }: CheckboxProps) => {
   const { color, space } = useTheme()
 
   const fontScale = PixelRatio.getFontScale()
-  const checkboxSize = CHECKBOX_SIZE * fontScale
+  const checkboxSize = CHECKBOX_SIZEx1 * fontScale
 
-  const [checked, setChecked] = useState(checkedProp)
-  const isChecked = checkedProp ?? checked
+  const [checked, setChecked] = useState(checkedProp ?? false)
+  const [displayState, setDisplayState] = useState<DisplayState>(testOnly_state ?? "unpressed")
 
-  const defaultCheckboxStyle = {
-    backgroundColor: color("white100"),
-    borderColor: color("black60"),
+  const containerColor: { [key: string]: { border: Color; background: Color } } = {
+    unchecked: { border: color("black100"), background: color("white100") },
+    error: { border: color("red100"), background: color("white100") },
+    checked: { border: color("black100"), background: color("black100") },
+    disabled: { border: color("black30"), background: color("black30") },
   }
 
-  const checkedCheckboxStyle = {
-    backgroundColor: color("black100"),
-    borderColor: color("black100"),
-  }
+  const toggleProgress = useDerivedValue(() =>
+    withTiming(checked ? 1 : 0, { duration: ANIMATION_DURATION })
+  )
+  const toggleAnim = useAnimatedStyle(
+    () => ({
+      backgroundColor: interpolateColor(
+        toggleProgress.value,
+        [0, 1],
+        [
+          containerColor.unchecked.background,
+          disabled ? containerColor.disabled.background : containerColor.checked.background,
+        ]
+      ),
+      borderColor: interpolateColor(
+        toggleProgress.value,
+        [0, 1],
+        [
+          error
+            ? containerColor.error.border
+            : disabled
+            ? containerColor.disabled.border
+            : containerColor.unchecked.border,
+          disabled ? containerColor.disabled.border : containerColor.checked.border,
+        ]
+      ),
+    }),
+    [toggleProgress]
+  )
 
-  const disabledCheckboxStyle = {
-    backgroundColor: color("black5"),
-    borderColor: color("black10"),
-  }
+  const pressedStateProgress = useDerivedValue(() =>
+    withTiming(displayState === "pressed" ? 1 : 0, { duration: ANIMATION_DURATION })
+  )
 
-  const checkboxStyles = {
-    default: {
-      unchecked: defaultCheckboxStyle,
-      checked: checkedCheckboxStyle,
-    },
-    error: {
-      unchecked: { backgroundColor: color("white100"), borderColor: color("red100") },
-      checked: checkedCheckboxStyle,
-    },
-  }
+  const textColor: Color = color(
+    error ? "red100" : disabled ? "onBackgroundLow" : "onBackgroundHigh"
+  )
+  const pressedTextColor = color("brand")
+  const pressAnim = useAnimatedStyle(
+    () => ({
+      color: interpolateColor(pressedStateProgress.value, [0, 1], [textColor, pressedTextColor]),
+    }),
+    [pressedStateProgress]
+  )
 
-  const checkboxStyle = disabled
-    ? disabledCheckboxStyle
-    : checkboxStyles[error ? "error" : "default"][isChecked ? "checked" : "unchecked"]
-
-  const textColor = error ? color("red100") : disabled ? color("black30") : color("black100")
-  const subtitleColor = error ? color("red100") : color("black30")
+  const subtitleColor: Color = error
+    ? "red100"
+    : disabled
+    ? "onBackgroundLow"
+    : "onBackgroundMedium"
 
   return (
-    <TouchableWithoutFeedback
+    <Touchable
+      noFeedback
+      disabled={disabled}
+      onPressIn={() => setDisplayState("pressed")}
+      onPressOut={() => setDisplayState("unpressed")}
       onPress={(event) => {
-        if (disabled) {
-          return
-        }
+        if (disabled) return
 
         setChecked(!checked)
         onPress?.(event)
       }}
     >
-      <Flex flex={1} {...restProps}>
+      <Flex flex={1}>
         <Flex flexDirection="row">
-          <Flex mt="2px">
-            <CssTransition
-              style={[
-                styles(fontScale).container,
-                text || subtitle || children ? { marginRight: space("1") * fontScale } : {},
-                checkboxStyle,
-              ]}
-              animate={["backgroundColor", "borderColor"]}
-              duration={DURATION}
-            >
-              {!!isChecked &&
-                (!!disabled ? (
-                  <DisabledMark size={checkboxSize} />
-                ) : (
-                  <CheckMark size={checkboxSize} />
-                ))}
-            </CssTransition>
-          </Flex>
+          <Animated.View
+            style={[
+              {
+                width: checkboxSize,
+                height: checkboxSize,
+                alignItems: "center",
+                justifyContent: "center",
+                borderWidth: 1,
+              },
+              toggleAnim,
+            ]}
+          >
+            {checked && <Checkmark size={checkboxSize} />}
+          </Animated.View>
 
-          <Flex justifyContent="center" flex={1}>
+          <Flex ml="1" flex={1}>
             {!!text && (
-              <Text variant="md" color={textColor}>
-                {text}
-              </Text>
+              <AText
+                variant="sm-display"
+                color={textColor}
+                numberOfLines={2}
+                underline={displayState === "pressed"}
+                style={pressAnim}
+              >
+                {text} {displayState}
+              </AText>
             )}
-            {children}
           </Flex>
         </Flex>
 
         {!!subtitle && (
-          <Flex ml={(CHECKBOX_SIZE + space("1")) * fontScale} mt="6px">
+          <Flex ml={(checkboxSize + space("1")) * fontScale} mt="0.5">
             <Text variant="xs" color={subtitleColor}>
               {subtitle}
             </Text>
           </Flex>
         )}
       </Flex>
-    </TouchableWithoutFeedback>
+    </Touchable>
   )
 }
 
-// styled-component does not have support for Animated.View
-const styles = (fontScale: number) =>
-  StyleSheet.create({
-    container: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      borderWidth: 1,
-      borderStyle: "solid",
-      width: CHECKBOX_SIZE * fontScale,
-      height: CHECKBOX_SIZE * fontScale,
-    },
-  })
+const AText = Animated.createAnimatedComponent(Text)
 
-interface CheckMarkProps {
-  size: number
+function Checkmark({ size }: { size: number }) {
+  const color = useColor()
+  return (
+    <View
+      style={{
+        width: size * 0.625,
+        height: size * 0.3125,
+        borderColor: color("white100"),
+        borderBottomWidth: 2,
+        borderLeftWidth: 2,
+        transform: [{ rotate: "-45deg" }],
+        top: -2,
+      }}
+    />
+  )
 }
-
-// This component represents the √ mark in CSS. We are not using styled-system since it's easier to specify raw CSS
-// properties with styled-component.
-export const CheckMark = styled.View.attrs<CheckMarkProps>({})`
-  transform: rotate(-45deg);
-  top: -12%;
-  width: ${(props) =>
-    // @ts-expect-error
-    props.size * 0.625};
-  height: ${(props) =>
-    // @ts-expect-error
-    props.size * 0.3125};
-  border-bottom-color: white;
-  border-bottom-width: 2px;
-  border-left-color: white;
-  border-left-width: 2px;
-`
-
-export const DisabledMark = styled(CheckMark)`
-  border-bottom-color: ${themeGet("colors.black30")};
-  border-left-color: ${themeGet("colors.black30")};
-`

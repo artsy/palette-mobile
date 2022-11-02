@@ -1,6 +1,6 @@
 import { TextStyle } from "react-native"
 import { TextProps } from "."
-import { useTheme, isThemeV3 } from "../../Theme"
+import { useTheme } from "../../Theme"
 import { NoUndefined } from "../../utils/types"
 
 export const useFontFamilyFor = ({
@@ -11,9 +11,6 @@ export const useFontFamilyFor = ({
   weight: TextProps["weight"]
 }) => {
   const { theme } = useTheme()
-  if (!isThemeV3(theme)) {
-    return "no-font"
-  }
   const { fonts } = theme
 
   if (italic && weight === "medium") {

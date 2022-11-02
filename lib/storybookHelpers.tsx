@@ -60,7 +60,7 @@ export const List = ({
 )
 
 export const Row = ({ children }: { children: React.ReactNode }) => (
-  <Flex width="100%" flexDirection="row" justifyContent="space-evenly">
+  <Flex width="100%" flexDirection="row" justifyContent="space-evenly" alignItems="center">
     {children}
   </Flex>
 )
