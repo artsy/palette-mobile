@@ -12,7 +12,7 @@ import {
   typography,
   TypographyProps,
 } from "styled-system"
-import { useTheme, isThemeV3 } from "../../Theme"
+import { useTheme } from "../../Theme"
 import { TextVariantV3 } from "../../tokens"
 import { useFontFamilyFor } from "./helpers"
 
@@ -37,16 +37,12 @@ export const Text = forwardRef(
       underline = false,
       style,
       children,
-      ...rest
+      ...restProps
     }: TextProps,
     ref: Ref<RNText>
   ) => {
     const { theme } = useTheme()
     const fontFamily = useFontFamilyFor({ italic, weight })
-    if (!isThemeV3(theme)) {
-      console.warn("Text is missing because null is returned. Wrap your Text with ThemeV3.")
-      return null
-    }
 
     const nativeTextStyle: StyleProp<TextStyle> = [caps ? { textTransform: "uppercase" } : {}]
 
@@ -63,7 +59,7 @@ export const Text = forwardRef(
         {...theme.textTreatments[variant]}
         children={children}
         color={color}
-        {...rest}
+        {...restProps}
       />
     )
   }

@@ -70,8 +70,6 @@ export const useTheme = () => {
   }
 }
 
-export const isThemeV3 = (theme: AllThemesType) => theme.id === "v3"
-
 /**
  * Only use this if it's are absolutely neccessary, and only in tests.
  */
