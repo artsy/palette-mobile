@@ -1,10 +1,11 @@
 import { Touchable, TouchableProps } from "../../elements"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PixelRatio, View } from "react-native"
 import { Flex } from "../../atoms"
 import Animated, {
   useDerivedValue,
   useAnimatedStyle,
+  useSharedValue,
   withTiming,
   interpolateColor,
 } from "react-native-reanimated"
@@ -84,20 +85,22 @@ export const Checkbox = ({
     [toggleProgress]
   )
 
-  const pressedStateProgress = useDerivedValue(() =>
-    withTiming(displayState === "pressed" ? 1 : 0, { duration: ANIMATION_DURATION })
-  )
+  const textColor = useSharedValue(color("black100"))
+  const textAnim = useAnimatedStyle(() => ({
+    color: withTiming(textColor.value, { duration: ANIMATION_DURATION }),
+  }))
 
-  const textColor: Color = color(
-    error ? "red100" : disabled ? "onBackgroundLow" : "onBackgroundHigh"
-  )
-  const pressedTextColor = color("brand")
-  const pressAnim = useAnimatedStyle(
-    () => ({
-      color: interpolateColor(pressedStateProgress.value, [0, 1], [textColor, pressedTextColor]),
-    }),
-    [pressedStateProgress]
-  )
+  useEffect(() => {
+    textColor.value = color(
+      displayState === "pressed"
+        ? "brand"
+        : error
+        ? "red100"
+        : disabled
+        ? "onBackgroundLow"
+        : "onBackgroundHigh"
+    )
+  }, [error, disabled, displayState])
 
   const subtitleColor: Color = error
     ? "red100"
@@ -139,12 +142,11 @@ export const Checkbox = ({
             {!!text && (
               <AText
                 variant="sm-display"
-                color={textColor}
                 numberOfLines={2}
                 underline={displayState === "pressed"}
-                style={pressAnim}
+                style={textAnim}
               >
-                {text} {displayState}
+                {text}
               </AText>
             )}
           </Flex>
