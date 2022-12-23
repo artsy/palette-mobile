@@ -1,4 +1,5 @@
 import { PixelRatio } from "react-native"
+///remove file
 import Svg, { SvgProps } from "react-native-svg"
 import styled from "styled-components"
 import {

@@ -76,6 +76,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^29.2.1",
+    "metro-config": "^0.73.3",
     "metro-react-native-babel-preset": "^0.72.1",
     "react": "18.2.0",
     "react-native": "0.69.5",
@@ -83,7 +84,8 @@
     "react-native-linear-gradient": "^2.6.2",
     "react-native-reanimated": "^2.12.0",
     "react-native-safe-area-context": "^4.4.1",
-    "react-native-svg": "^13.4.0",
+    "react-native-svg": "^13.5.0",
+    "react-native-svg-transformer": "^1.0.0",
     "react-test-renderer": "^18.2.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.8.4"

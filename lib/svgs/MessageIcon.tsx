@@ -1,5 +1,4 @@
-import { Path } from "react-native-svg"
-import { Icon, IconProps } from "./Icon"
+import { Icon, Path, IconProps } from "./Icon"
 import { useColor } from "../hooks"
 
 export const MessageIcon = ({ fill, ...restProps }: IconProps) => {
