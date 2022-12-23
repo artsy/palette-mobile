@@ -5,7 +5,9 @@ import { Flex, LinkText, Text, Theme } from "../lib"
 
 export const withDarkModeSwitcher: DecoratorFunction<React.ReactNode> = (story) => {
   const [mode, setMode] = useState<"light" | "dark" | "system">("system")
-  const [systemMode, setSystemMode] = useState<"light" | "dark">("light")
+  const [systemMode, setSystemMode] = useState<"light" | "dark">(
+    Appearance.getColorScheme() ?? "light"
+  )
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(
@@ -19,9 +21,11 @@ export const withDarkModeSwitcher: DecoratorFunction<React.ReactNode> = (story) 
 
   return (
     <Theme theme={theme}>
-      <Flex flex={1}>
+      <Flex flex={1} backgroundColor="background">
         <Flex flexDirection="row" justifyContent="space-around">
-          <Text color="orange">Dark mode: {mode}</Text>
+          <Text color="orange">
+            Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
+          </Text>
           <LinkText color="orange" onPress={() => setMode("light")}>
             light
           </LinkText>

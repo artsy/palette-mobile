@@ -19,6 +19,7 @@ if (parameters) {
 
 const getStories = () => {
   return [
+    require("../lib/atoms/BackButton/BackButton.stories.tsx"),
     require("../lib/atoms/Box/Box.stories.tsx"),
     require("../lib/atoms/Spacer/Spacer.stories.tsx"),
     require("../lib/elements/Avatar/Avatar.stories.tsx"),
