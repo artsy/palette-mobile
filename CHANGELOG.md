@@ -1,3 +1,15 @@
+# v3.4.0 (Fri Dec 23 2022)
+
+#### 🚀 Enhancement
+
+- fix: dark mode colors [#31](https://github.com/artsy/palette-mobile/pull/31) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.3.0 (Fri Dec 23 2022)
 
 #### 🚀 Enhancement
