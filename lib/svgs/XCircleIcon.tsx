@@ -5,7 +5,7 @@ export const XCircleIcon = ({ fill, ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 18 18">
-      <Circle cx={9} cy={9} r={9} fill="white" />
+      <Circle cx={9} cy={9} r={9} fill={color("background")} />
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

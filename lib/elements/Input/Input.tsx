@@ -265,7 +265,7 @@ export const Input = forwardRef<TextInput, InputProps>(
                 borderWidth: 1,
                 borderColor: color(computeBorderColor({ disabled, error: !!error, focused })),
                 minHeight: multiline ? INPUT_HEIGHT_MULTILINE : INPUT_HEIGHT,
-                backgroundColor: disabled ? color("black5") : color("white100"),
+                backgroundColor: disabled ? color("black5") : color("background"),
               },
               style,
             ]}
