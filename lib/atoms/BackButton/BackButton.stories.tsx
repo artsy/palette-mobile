@@ -1,3 +1,4 @@
+import { Flex } from "../../atoms/Flex"
 import { Text } from "../../elements/Text"
 import { List } from "../../storybookHelpers"
 import { BackButton, BackButtonWithBackground } from "./BackButton"
@@ -12,6 +13,9 @@ export const Styled = () => (
     <Text>Back button</Text>
     <BackButton />
     <Text>Back button with background</Text>
-    <BackButtonWithBackground />
+    <Flex>
+      <Flex backgroundColor="red" width={50} height={50} position="absolute" />
+      <BackButtonWithBackground />
+    </Flex>
   </List>
 )

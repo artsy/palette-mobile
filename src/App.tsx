@@ -1,2 +1,12 @@
+import React from "react"
 import { StorybookUIRoot } from "../.storybook/Storybook"
-export { StorybookUIRoot as App }
+import FlipperAsyncStorage from "rn-flipper-async-storage-advanced"
+
+export const App = () => {
+  return (
+    <>
+      <FlipperAsyncStorage />
+      <StorybookUIRoot />
+    </>
+  )
+}

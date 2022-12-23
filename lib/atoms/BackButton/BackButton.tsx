@@ -20,7 +20,7 @@ export const BackButton = ({ onPress, showX = false }: BackButtonProps) => (
 export const BackButtonWithBackground = ({ onPress, showX = false }: BackButtonProps) => (
   <TouchableOpacity onPress={onPress}>
     <Flex
-      backgroundColor="onBackgroundHigh"
+      backgroundColor="background"
       width={40}
       height={40}
       borderRadius={20}
@@ -28,9 +28,9 @@ export const BackButtonWithBackground = ({ onPress, showX = false }: BackButtonP
       justifyContent="center"
     >
       {showX ? (
-        <CloseIcon fill="background" width={26} height={26} />
+        <CloseIcon fill="onBackgroundHigh" width={26} height={26} />
       ) : (
-        <ChevronIcon fill="background" direction="left" />
+        <ChevronIcon fill="onBackgroundHigh" direction="left" />
       )}
     </Flex>
   </TouchableOpacity>
