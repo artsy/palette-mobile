@@ -1,11 +1,25 @@
 import { DecoratorFunction } from "@storybook/addons"
 import { useEffect, useState } from "react"
+import { atomWithStorage, createJSONStorage } from "jotai/utils"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { useAtom } from "jotai"
 import { Appearance } from "react-native"
 import { Flex, LinkText, Text, Theme } from "../lib"
 
+const atomStorage = createJSONStorage<any>(() => AsyncStorage)
+const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
+  atomWithStorage<T>(key, initialValue, {
+    ...atomStorage,
+    delayInit: true,
+  })
+
+const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
+
 export const withDarkModeSwitcher: DecoratorFunction<React.ReactNode> = (story) => {
-  const [mode, setMode] = useState<"light" | "dark" | "system">("system")
-  const [systemMode, setSystemMode] = useState<"light" | "dark">("light")
+  const [mode, setMode] = useAtom(modeAtom)
+  const [systemMode, setSystemMode] = useState<"light" | "dark">(
+    Appearance.getColorScheme() ?? "light"
+  )
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(
@@ -19,9 +33,11 @@ export const withDarkModeSwitcher: DecoratorFunction<React.ReactNode> = (story) 
 
   return (
     <Theme theme={theme}>
-      <Flex flex={1}>
+      <Flex flex={1} backgroundColor="background">
         <Flex flexDirection="row" justifyContent="space-around">
-          <Text color="orange">Dark mode: {mode}</Text>
+          <Text color="orange">
+            Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
+          </Text>
           <LinkText color="orange" onPress={() => setMode("light")}>
             light
           </LinkText>

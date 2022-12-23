@@ -2,7 +2,7 @@ import { TouchableOpacity } from "react-native"
 import { ChevronIcon, CloseIcon } from "../../svgs"
 import { Flex } from "../Flex"
 
-interface BackButtonProps {
+export interface BackButtonProps {
   onPress?: () => void
   showX?: boolean
 }
@@ -20,7 +20,7 @@ export const BackButton = ({ onPress, showX = false }: BackButtonProps) => (
 export const BackButtonWithBackground = ({ onPress, showX = false }: BackButtonProps) => (
   <TouchableOpacity onPress={onPress}>
     <Flex
-      backgroundColor="white100"
+      backgroundColor="background"
       width={40}
       height={40}
       borderRadius={20}
