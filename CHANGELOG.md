@@ -1,3 +1,15 @@
+# v3.3.0 (Fri Dec 23 2022)
+
+#### 🚀 Enhancement
+
+- fix: back button bg color [#30](https://github.com/artsy/palette-mobile/pull/30) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.2.0 (Wed Nov 02 2022)
 
 #### 🚀 Enhancement
