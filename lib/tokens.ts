@@ -193,7 +193,7 @@ export const THEMES = {
         onBackground: this.v3.colors.white100,
         onBackgroundHigh: this.v3.colors.white100,
         onBackgroundMedium: this.v3.colors.black30,
-        onBackgroundLow: this.v3.colors.black30,
+        onBackgroundLow: this.v3.colors.black60,
         primary: this.v3.colors.white100,
         onPrimaryHigh: this.v3.colors.black100,
         onPrimaryMedium: this.v3.colors.black60,
