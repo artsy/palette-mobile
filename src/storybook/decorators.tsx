@@ -5,12 +5,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useAtom } from "jotai"
 import { Appearance } from "react-native"
 import { Flex, Theme, Text, LinkText } from "../../lib"
-//// make it just lib, not ../../lib
 
-export const withTheme: DecoratorFunction<ReactNode> = (story) => (
+export const withTheme = (Story) => (
   <Theme theme="v5light">
-    <Text color="red">aaaaww</Text>
-    {story()}
+    <Text color="red">aaww</Text>
+    <Story />
   </Theme>
 )
 

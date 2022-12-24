@@ -27,8 +27,8 @@ const ColorSquare = ({ color: theColor, bright }: { color: Color; bright?: boole
           },
         ]}
       />
-      <Text color="black">{theColor}</Text>
-      <Text color="lightgrey">{color(theColor)}</Text>
+      <Text>{theColor}</Text>
+      <Text color="onBackgroundLow">{color(theColor)}</Text>
     </Flex>
   )
 }
