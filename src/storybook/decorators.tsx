@@ -1,10 +1,18 @@
 import { DecoratorFunction } from "@storybook/addons"
-import { useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from "react"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useAtom } from "jotai"
 import { Appearance } from "react-native"
-import { Flex, LinkText, Text, Theme } from "../lib"
+import { Flex, Theme, Text, LinkText } from "../../lib"
+//// make it just lib, not ../../lib
+
+export const withTheme: DecoratorFunction<ReactNode> = (story) => (
+  <Theme theme="v5light">
+    <Text color="red">aaaaww</Text>
+    {story()}
+  </Theme>
+)
 
 const atomStorage = createJSONStorage<any>(() => AsyncStorage)
 const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>

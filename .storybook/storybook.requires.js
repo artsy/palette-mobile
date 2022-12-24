@@ -22,6 +22,7 @@ const getStories = () => {
     require("../lib/atoms/BackButton/BackButton.stories.tsx"),
     require("../lib/atoms/Box/Box.stories.tsx"),
     require("../lib/atoms/Spacer/Spacer.stories.tsx"),
+    require("../lib/colors.stories.tsx"),
     require("../lib/elements/Avatar/Avatar.stories.tsx"),
     require("../lib/elements/Checkbox/Checkbox.stories.tsx"),
     require("../lib/elements/Input/Input.stories.tsx"),
