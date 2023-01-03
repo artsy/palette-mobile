@@ -1,14 +1,20 @@
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity, ViewProps } from "react-native"
+import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ChevronIcon, CloseIcon } from "../../svgs"
 import { Flex } from "../Flex"
 
 export interface BackButtonProps {
+  hitSlop?: ViewProps["hitSlop"]
   onPress?: () => void
   showX?: boolean
 }
 
-export const BackButton = ({ onPress, showX = false }: BackButtonProps) => (
-  <TouchableOpacity onPress={onPress}>
+export const BackButton = ({
+  hitSlop = DEFAULT_HIT_SLOP,
+  onPress,
+  showX = false,
+}: BackButtonProps) => (
+  <TouchableOpacity onPress={onPress} hitSlop={hitSlop}>
     {showX ? (
       <CloseIcon fill="onBackgroundHigh" width={26} height={26} />
     ) : (
@@ -17,8 +23,12 @@ export const BackButton = ({ onPress, showX = false }: BackButtonProps) => (
   </TouchableOpacity>
 )
 
-export const BackButtonWithBackground = ({ onPress, showX = false }: BackButtonProps) => (
-  <TouchableOpacity onPress={onPress}>
+export const BackButtonWithBackground = ({
+  hitSlop = DEFAULT_HIT_SLOP,
+  onPress,
+  showX = false,
+}: BackButtonProps) => (
+  <TouchableOpacity onPress={onPress} hitSlop={hitSlop}>
     <Flex
       backgroundColor="background"
       width={40}
