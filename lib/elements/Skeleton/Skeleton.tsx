@@ -23,9 +23,9 @@ import Animated, {
 export const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
   opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
-  const style = useAnimatedStyle(() => ({ opacity: opacity.value }), [])
+  const fadeLoopAnim = useAnimatedStyle(() => ({ opacity: opacity.value }), [])
 
-  return <Animated.View style={style}>{children}</Animated.View>
+  return <Animated.View style={fadeLoopAnim}>{children}</Animated.View>
 }
 
 export const SkeletonText: React.FC<TextProps> = ({ children, ...rest }) => {
