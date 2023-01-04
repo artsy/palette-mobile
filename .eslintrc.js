@@ -13,7 +13,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/jsx-runtime",
-    "prettier", // "prettier" needs to be last!
+    "plugin:storybook/recommended",
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: { project: "./tsconfig.json" },

@@ -372,28 +372,28 @@ export const Input = forwardRef<TextInput, InputProps>(
   }
 )
 
-export interface InputStatus {
+export const computeBorderColor = ({
+  disabled,
+  error,
+  focused,
+}: {
   disabled?: boolean
   error?: boolean
   focused?: boolean
-}
+}): Color => {
+  switch (true) {
+    case error:
+      return "red100"
 
-/**
- * func to compute border color
- */
-export const computeBorderColor = (inputStatus: InputStatus): Color => {
-  const { disabled, error, focused } = inputStatus
+    case disabled:
+      return "onBackgroundLow"
 
-  if (disabled) {
-    return "black30"
+    case focused:
+      return "onBackgroundMedium"
+
+    default:
+      return "onBackgroundLow"
   }
-  if (error) {
-    return "red100"
-  }
-  if (focused) {
-    return "black60"
-  }
-  return "black30"
 }
 
 const StyledInput = styled(TextInput)`
