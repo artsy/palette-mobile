@@ -1,0 +1,10 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  // TODO: Update babel plugin to support absolute paths, and set this to
+  // `non-relative`.
+  "typescript.preferences.importModuleSpecifier": "relative"
+}
