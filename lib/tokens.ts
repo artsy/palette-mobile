@@ -57,44 +57,81 @@ const fixSpaceUnitsV3 = (
   return fixed as any
 }
 
-type ColorAnyString = string & {} // just an open rule here to allow for css names and other things for now
+export type ColorCssString = string & {} // just an open rule here to allow for css names and other things for now
 
 // we love our old purple, great color for our dev stuff nowadays!
 type ColorDevPurple = "devpurple"
 
-type ColorExtraLayer =
-  // named "v5" for now.
+export const NAMED_LAYER_NAMES = [
+  "black100",
+  "black60",
+  "black30",
+  "black15",
+  "black10",
+  "black5",
+  "white100",
+  "blue150",
+  "blue100",
+  "brand",
+  "blue10",
+  "green150",
+  "green100",
+  "green10",
+  "yellow150",
+  "yellow100",
+  "yellow10",
+  "orange150",
+  "orange100",
+  "orange10",
+  "red150",
+  "red100",
+  "red10",
+
+  /** Adding this here for dev usage. Avoid using it for actual components. */
+  "devpurple",
+] as const
+export type ColorNamedLayer = typeof NAMED_LAYER_NAMES[number]
+
+export const USAGE_LAYER_NAMES = [
   // Anything big/surface: background, cards, button fills, etc.
-  | "background"
-  | "primary"
-  | "secondary"
-  | "brand"
+  "background",
+  "surface",
+  "primary",
+  "secondary",
+  "brand",
   // Anything small, texts, icons, etc.
-  | "onBackground" // same as onBackgroundHigh
-  | "onBackgroundHigh"
-  | "onBackgroundMedium"
-  | "onBackgroundLow"
-  | "onPrimaryHigh"
-  | "onPrimaryMedium"
-  | "onPrimaryLow"
-  | "onSecondaryHigh"
-  | "onSecondaryMedium"
-  | "onSecondaryLow"
-  | "onBrand"
+  "onBackground", // same as onBackgroundHigh
+  "onBackgroundHigh",
+  "onBackgroundMedium",
+  "onBackgroundLow",
+  "onSurface", // same as onSurfaceHigh
+  "onSurfaceHigh",
+  "onSurfaceMedium",
+  "onSurfaceLow",
+  "onPrimaryHigh",
+  "onPrimaryMedium",
+  "onPrimaryLow",
+  "onSecondaryHigh",
+  "onSecondaryMedium",
+  "onSecondaryLow",
+  "onBrand",
+] as const
+export type ColorUsageLayer = typeof USAGE_LAYER_NAMES[number]
 
-type ColorWithoutExtraLayerStrict =
-  | ColorV3WithoutDevPurple
-  /** @deprecated Adding this here for dev usage, but try to avoid using it for actual components. */
-  | ColorDevPurple
+export type ColorStrict = ColorNamedLayer | ColorUsageLayer
+export type Color = ColorNamedLayer | ColorUsageLayer | ColorCssString
 
-type ColorWithoutExtraLayer = ColorWithoutExtraLayerStrict | ColorAnyString
+export const isUsageLayerName = (name: Color): name is ColorUsageLayer => {
+  return USAGE_LAYER_NAMES.includes(name as any)
+}
 
-export type ColorStrict = ColorWithoutExtraLayerStrict | ColorExtraLayer
-export type Color = ColorWithoutExtraLayer | ColorExtraLayer
+export const isNamedLayerName = (name: Color): name is ColorNamedLayer => {
+  return NAMED_LAYER_NAMES.includes(name as any)
+}
 
 const fixColorV3 = (
   colors: typeof mobileUsefulTHEME_V3.colors
-): Record<ColorWithoutExtraLayer, string> => {
+): Record<ColorNamedLayer, string> => {
   const ourColors = {
     ...colors,
     devpurple: "#6E1EFF",
@@ -167,6 +204,11 @@ export const THEMES = {
         onBackgroundHigh: this.v3.colors.black100,
         onBackgroundMedium: this.v3.colors.black60,
         onBackgroundLow: this.v3.colors.black30,
+        surface: this.v3.colors.white100,
+        onSurface: this.v3.colors.black100,
+        onSurfaceHigh: this.v3.colors.black100,
+        onSurfaceMedium: this.v3.colors.black60,
+        onSurfaceLow: this.v3.colors.black10,
         primary: this.v3.colors.black100,
         onPrimaryHigh: this.v3.colors.white100,
         onPrimaryMedium: this.v3.colors.black10,
@@ -193,7 +235,12 @@ export const THEMES = {
         onBackground: this.v3.colors.white100,
         onBackgroundHigh: this.v3.colors.white100,
         onBackgroundMedium: this.v3.colors.black30,
-        onBackgroundLow: this.v3.colors.black30,
+        onBackgroundLow: this.v3.colors.black60,
+        surface: "#333",
+        onSurface: this.v3.colors.white100,
+        onSurfaceHigh: this.v3.colors.white100,
+        onSurfaceMedium: this.v3.colors.black60,
+        onSurfaceLow: "#555",
         primary: this.v3.colors.white100,
         onPrimaryHigh: this.v3.colors.black100,
         onPrimaryMedium: this.v3.colors.black60,

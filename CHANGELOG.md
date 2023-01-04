@@ -1,3 +1,21 @@
+# v3.5.0 (Wed Jan 04 2023)
+
+#### 🚀 Enhancement
+
+- feat: add surface colors [#34](https://github.com/artsy/palette-mobile/pull/34) ([@pvinis](https://github.com/pvinis))
+
+#### 🐛 Bug Fix
+
+- Bump deep-object-diff from 1.1.7 to 1.1.9 [#28](https://github.com/artsy/palette-mobile/pull/28) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump decode-uri-component from 0.2.0 to 0.2.2 [#29](https://github.com/artsy/palette-mobile/pull/29) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.4.0 (Fri Dec 23 2022)
 
 #### 🚀 Enhancement

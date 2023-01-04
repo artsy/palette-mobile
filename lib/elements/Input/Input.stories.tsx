@@ -12,6 +12,7 @@ export const Styled = () => (
   <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
     <Flex width={300} height={120}>
       <Input />
+      <Input placeholder="wow" />
       <Input
         style={{ borderWidth: 0 }}
         icon={<MagnifyingGlassIcon />}
