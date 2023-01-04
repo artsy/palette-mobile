@@ -129,7 +129,9 @@ export const isNamedLayerName = (name: Color): name is ColorNamedLayer => {
   return NAMED_LAYER_NAMES.includes(name as any)
 }
 
-const fixColorV3 = (colors: typeof mobileUsefulTHEME_V3.colors): Record<ColorStrict, string> => {
+const fixColorV3 = (
+  colors: typeof mobileUsefulTHEME_V3.colors
+): Record<ColorNamedLayer, string> => {
   const ourColors = {
     ...colors,
     devpurple: "#6E1EFF",

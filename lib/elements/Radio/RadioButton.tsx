@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   TouchableWithoutFeedbackProps,
+  View,
 } from "react-native"
 import styled from "styled-components/native"
 import { CssTransition } from "../../animation"
@@ -149,21 +150,18 @@ interface RadioDotProps {
 // This component represents the white ● mark in CSS. We are not using styled-system since it's easier to specify raw CSS
 // properties with styled-component.
 // Height, Width, and Border Radius calculations are used to maintain the size of the white dot when scaling
-export const RadioDot = styled.View.attrs<RadioDotProps>({})`
-  height: ${({
-    // @ts-expect-error
-    size,
-  }) => size * 0.625};
-  width: ${({
-    // @ts-expect-error
-    size,
-  }) => size * 0.625};
-  border-radius: ${({
-    // @ts-expect-error
-    size,
-  }) => `${size * 0.3125}px`};
-  background-color: white;
-`
+export const RadioDot = ({ size }: RadioDotProps) => {
+  return (
+    <View
+      style={{
+        height: size * 0.625,
+        width: size * 0.625,
+        borderRadius: size * 0.3125,
+        backgroundColor: "white",
+      }}
+    />
+  )
+}
 
 export const DisabledDot = styled(RadioDot)`
   border-bottom-color: ${themeGet("colors.black30")};
