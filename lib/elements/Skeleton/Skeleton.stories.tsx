@@ -2,7 +2,7 @@ import { Flex, Spacer } from "../../atoms"
 import { List } from "../../storybookHelpers"
 import { Skeleton, SkeletonBox, SkeletonText } from "./Skeleton"
 import { Join } from "../Join"
-import { range } from "remeda"
+import { range } from "lodash"
 
 export default {
   title: "Skeleton",
@@ -22,7 +22,7 @@ export const SkeletonLoaders = () => (
       <Spacer y={2} />
 
       <Flex flexDirection="row" flexWrap="wrap">
-        {range(100)(1).map((index) => (
+        {range(1, 100).map((index) => (
           <SkeletonBox key={index} mr={1} mb={1} width={20} height={20} />
         ))}
       </Flex>
