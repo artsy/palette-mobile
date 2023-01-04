@@ -5,7 +5,7 @@
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
-import { mapKeys, mapValues } from "remeda"
+import { mapKeys, mapValues } from "lodash"
 import {
   Color as ColorV3WithoutDevPurple,
   SpacingUnit as SpacingUnitV3Numbers,
@@ -46,7 +46,7 @@ const fixSpaceUnitsV3 = (
 } => {
   let fixed = units
 
-  fixed = mapKeys(fixed, (numberKey) => `${numberKey}`) as any
+  fixed = mapKeys(fixed, (_, numberKey) => `${numberKey}`) as any
 
   fixed = mapValues(fixed, (stringValueWithPx) => {
     const justStringValue = stringValueWithPx.split("px")[0]

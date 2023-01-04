@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { isString } from "remeda"
+import { isString } from "lodash"
 import { ThemeContext, ThemeProvider } from "styled-components/native"
 import { AllThemesType, Color, SpacingUnit, Theme3Type, Theme5LightType, THEMES } from "./tokens"
 
