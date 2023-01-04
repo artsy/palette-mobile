@@ -1,3 +1,21 @@
+# v3.5.2 (Wed Jan 04 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Christopher Pappas ([@damassi](https://github.com/damassi)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix: imports [#37](https://github.com/artsy/palette-mobile/pull/37) ([@pvinis](https://github.com/pvinis))
+- feat(skeleton): Add skeleton loading states [#33](https://github.com/artsy/palette-mobile/pull/33) ([@damassi](https://github.com/damassi) [@pvinis](https://github.com/pvinis))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.5.1 (Wed Jan 04 2023)
 
 #### 🐛 Bug Fix
