@@ -1,3 +1,17 @@
+# v3.5.1 (Wed Jan 04 2023)
+
+#### 🐛 Bug Fix
+
+- tools: remeda -> lodash [#36](https://github.com/artsy/palette-mobile/pull/36) ([@pvinis](https://github.com/pvinis))
+- Bump json5 from 1.0.1 to 1.0.2 [#35](https://github.com/artsy/palette-mobile/pull/35) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.5.0 (Wed Jan 04 2023)
 
 #### 🚀 Enhancement
