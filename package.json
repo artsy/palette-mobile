@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "install:all": "yarn install && yarn bundle-install && yarn pod-install",
