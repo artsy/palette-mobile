@@ -20,7 +20,7 @@ import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Spinner } from "../Spinner"
 import { MeasuredView } from "../../utils/MeasuredView"
-import { isArray, isString } from "remeda"
+import { isArray, isString } from "lodash"
 import { Color } from "../../tokens"
 
 const DEFAULT_FONT_SIZE = 16
