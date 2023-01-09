@@ -1,64 +1,48 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { Dimensions } from "react-native"
+import { ScaledSize, useWindowDimensions } from "react-native"
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context"
 
 export type ScreenOrientation = "landscape" | "portrait"
 
 export type SafeAreaInsets = EdgeInsets
 
-export interface ScreenDimensions {
-  width: number
-  height: number
+export interface ScreenDimensions extends ScaledSize {
   orientation: ScreenOrientation
   size: "small" | "standard" | "large"
   isSmallScreen: boolean
-}
-
-export interface ScreenDimensionsWithSafeAreas extends ScreenDimensions {
   safeAreaInsets: SafeAreaInsets
 }
 
-export const ScreenDimensionsContext = createContext<ScreenDimensionsWithSafeAreas>(null as any)
-
-function getCurrentDimensions(): ScreenDimensions {
-  const { width, height } = Dimensions.get("window")
-  return {
-    width,
-    height,
-    orientation: width > height ? "landscape" : "portrait",
-    size: height < 667 ? "small" : height <= 812 ? "standard" : "large",
-    get isSmallScreen() {
-      return this.size === "small"
-    },
-  }
-}
-
-export const ProvideScreenDimensions = ({ children }: { children: React.ReactNode }) => {
+export const ScreenDimensionsProvider = ({ children }: { children: React.ReactNode }) => {
   const safeAreaInsets = useSafeAreaInsets()
-  const [dimensions, setDimensions] = useState<ScreenDimensions>(getCurrentDimensions())
+  const dimensions = useWindowDimensions()
 
-  useEffect(() => {
-    const onChange = () => {
-      setDimensions(getCurrentDimensions())
-    }
-    Dimensions.addEventListener("change", onChange)
-    return () => {
-      Dimensions.removeEventListener("change", onChange)
-    }
-  }, [])
+  const orientation = dimensions.width > dimensions.height ? "landscape" : "portrait"
+  const size = dimensions.height < 667 ? "small" : dimensions.height <= 812 ? "standard" : "large"
+  const isSmallScreen = size === "small"
 
   return (
-    <ScreenDimensionsContext.Provider value={{ ...dimensions, safeAreaInsets }}>
+    <ScreenDimensionsContext.Provider
+      value={{
+        ...dimensions,
+        safeAreaInsets,
+        orientation,
+        size,
+        isSmallScreen,
+      }}
+    >
       {children}
     </ScreenDimensionsContext.Provider>
   )
 }
 
-/**
- * Call during render to be notified whenever `screenDimensions` changes
- */
+const ScreenDimensionsContext = createContext<ScreenDimensions>(null!)
 export function useScreenDimensions() {
-  return useContext(ScreenDimensionsContext)
+  const context = useContext(ScreenDimensionsContext)
+  if (!context) {
+    throw new Error("useScreenDimensions must be used within a ScreenDimensionsProvider")
+  }
+  return context
 }
 
 /**
