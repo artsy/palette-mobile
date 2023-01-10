@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from "../../atoms"
 import { Text, TextProps } from "../Text"
-import { FC, ReactNode, useCallback, useEffect, useMemo } from "react"
+import { FC, ReactNode, useEffect } from "react"
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -21,7 +21,7 @@ import Animated, {
  */
 export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
-  // const fadeLoopAnim = useAnimatedStyle(() => ({ opacity: opacity.value }))
+  const fadeLoopAnim = useAnimatedStyle(() => ({ opacity: opacity.value }), [opacity])
   useEffect(() => {
     opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
   }, [])
