@@ -1,3 +1,15 @@
+# v4.0.0 (Tue Jan 10 2023)
+
+#### 💥 Breaking Change
+
+- upgrade RN and move some deps around [#38](https://github.com/artsy/palette-mobile/pull/38) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v3.5.2 (Wed Jan 04 2023)
 
 :tada: This release contains work from a new contributor! :tada:
