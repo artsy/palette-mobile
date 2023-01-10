@@ -21,12 +21,18 @@ import Animated, {
  */
 export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
-  const fadeLoopAnim = useMemo(() => useAnimatedStyle(() => ({ opacity: opacity.value })), [])
+  // const fadeLoopAnim = useAnimatedStyle(() => ({ opacity: opacity.value }))
   // useEffect(() => {
   // opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
   // }, [])
 
-  return <Animated.View style={fadeLoopAnim}>{children}</Animated.View>
+  return (
+    <Animated.View
+    //  style={fadeLoopAnim}
+    >
+      {children}
+    </Animated.View>
+  )
 }
 
 export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
