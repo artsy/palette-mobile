@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { Dimensions, ViewStyle, LayoutChangeEvent } from "react-native"
+import { ViewStyle, LayoutChangeEvent, useWindowDimensions } from "react-native"
 import { Box } from "../atoms"
 
 export interface ViewMeasurements {
@@ -32,10 +32,11 @@ export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
 }
 
 export const useOffscreenStyle = (notOffscreen?: boolean): ViewStyle => {
+  const { width, height } = useWindowDimensions()
+
   if (notOffscreen) {
     return {}
   }
 
-  const { width, height } = Dimensions.get("window")
   return { position: "absolute", top: width + height, left: width + height }
 }
