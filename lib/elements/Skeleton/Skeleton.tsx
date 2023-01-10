@@ -1,7 +1,7 @@
-import { Flex, FlexProps } from "../../atoms/Flex"
+import { Flex, FlexProps } from "../../atoms"
 import { Text, TextProps } from "../Text"
 import { useColor } from "../../hooks"
-import React from "react"
+import { FC, ReactNode } from "react"
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -20,7 +20,7 @@ import Animated, {
  *   <SkeletonBox width={100} height={100} />
  * </Skeleton>
  */
-export const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
   opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
   const fadeLoopAnim = useAnimatedStyle(() => ({ opacity: opacity.value }), [])
@@ -28,7 +28,7 @@ export const Skeleton: React.FC<{ children: React.ReactNode }> = ({ children }) 
   return <Animated.View style={fadeLoopAnim}>{children}</Animated.View>
 }
 
-export const SkeletonText: React.FC<TextProps> = ({ children, ...rest }) => {
+export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
   const color = useColor()
 
   return (
@@ -40,7 +40,7 @@ export const SkeletonText: React.FC<TextProps> = ({ children, ...rest }) => {
   )
 }
 
-export const SkeletonBox: React.FC<FlexProps> = ({ children, ...rest }) => {
+export const SkeletonBox: FC<FlexProps> = ({ children, ...rest }) => {
   const color = useColor()
 
   return (
