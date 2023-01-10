@@ -1,6 +1,5 @@
 import { Flex, FlexProps } from "../../atoms"
 import { Text, TextProps } from "../Text"
-import { useColor } from "../../hooks"
 import { FC, ReactNode, useEffect } from "react"
 import Animated, {
   Easing,
@@ -31,11 +30,9 @@ export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
 }
 
 export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
-  const color = useColor()
-
   return (
     <Flex alignSelf="flex-start">
-      <Text {...rest} bg={color("black10")} color={color("black10")}>
+      <Text {...rest} bg="black10" color="black10">
         {children}
       </Text>
     </Flex>
@@ -43,10 +40,8 @@ export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
 }
 
 export const SkeletonBox: FC<FlexProps> = ({ children, ...rest }) => {
-  const color = useColor()
-
   return (
-    <Flex {...rest} bg={color("black10")}>
+    <Flex {...rest} bg="black10">
       {children}
     </Flex>
   )
