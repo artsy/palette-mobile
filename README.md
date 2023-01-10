@@ -24,13 +24,13 @@ If the above guidance still doesn't give you a good sense of what to do, please 
 - Install main library
 
 ```sh
-yarn install @artsy/palette-mobile
+yarn add @artsy/palette-mobile
 ```
 
 - Install native peer deps
 
 ```sh
-yarn install react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg
+yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg
 ```
 
 ## How to contribute
