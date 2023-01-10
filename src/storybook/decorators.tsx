@@ -22,7 +22,7 @@ const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
 
 const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
 
-export const withDarkModeSwitcher: DecoratorFunction<React.ReactNode> = (story) => {
+export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   const [mode, setMode] = useAtom(modeAtom)
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
+import { createContext, FC, ReactNode, useContext, useEffect, useState } from "react"
 import {
   getChildByType,
   getChildrenByType,
@@ -32,7 +32,7 @@ function useScreenContext() {
   return context
 }
 
-const ScreenWrapper = ({ children }: { children?: React.ReactNode }) => {
+const ScreenWrapper = ({ children }: { children?: ReactNode }) => {
   const [options, setStateOptions] = useState<ScreenContextState>({
     handleTopSafeArea: true,
     bottomViewHeight: 0,
@@ -49,7 +49,7 @@ const ScreenWrapper = ({ children }: { children?: React.ReactNode }) => {
   )
 }
 
-const ScreenRoot = ({ children }: { children?: React.ReactNode }) => {
+const ScreenRoot = ({ children }: { children?: ReactNode }) => {
   const header = getChildByType(children, Screen.Header)
   const headerFloating = getChildByType(children, Screen.FloatingHeader)
   const rawHeader = getChildByType(children, Screen.RawHeader)
@@ -111,7 +111,7 @@ const Header = ({ onBack }: HeaderProps) => {
 /**
  * @deprecated Use `Screen.Header` instead.
  */
-const FloatingHeader: React.FC<HeaderProps> = ({ onBack }) => {
+const FloatingHeader: FC<HeaderProps> = ({ onBack }) => {
   useUpdateScreenContext({ header: "floating" })
   const insets = useSafeAreaInsets()
 
@@ -135,7 +135,7 @@ const FloatingHeader: React.FC<HeaderProps> = ({ onBack }) => {
 }
 
 interface RawHeaderProps {
-  children: React.ReactNode
+  children: ReactNode
   nosafe?: boolean
 }
 
@@ -158,7 +158,7 @@ const RawHeader = ({ children, nosafe = false }: RawHeaderProps) => {
 const SCREEN_HORIZONTAL_PADDING: SpacingUnit = 2
 
 interface BodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
-  children?: React.ReactNode
+  children?: ReactNode
   scroll?: boolean
   nosafe?: boolean
   fullwidth?: boolean
@@ -206,13 +206,13 @@ const Body = ({
   )
 }
 
-const Background = ({ children }: { children?: React.ReactNode }) => (
+const Background = ({ children }: { children?: ReactNode }) => (
   <Flex position="absolute" top={0} bottom={0} left={0} right={0}>
     {children}
   </Flex>
 )
 
-const BottomView = ({ children }: { children?: React.ReactNode }) => {
+const BottomView = ({ children }: { children?: ReactNode }) => {
   const { setOptions } = useScreenContext()
   const insets = useSafeAreaInsets()
 
@@ -292,9 +292,7 @@ const BottomView = ({ children }: { children?: React.ReactNode }) => {
  * One use case might be if you need to put an image background or something in the body,
  * but you also need some content with the right padding.
  */
-const BodyXPadding: React.FC<FlexProps> = (props) => (
-  <Flex px={SCREEN_HORIZONTAL_PADDING} {...props} />
-)
+const BodyXPadding: FC<FlexProps> = (props) => <Flex px={SCREEN_HORIZONTAL_PADDING} {...props} />
 
 /**
  * If there is a bottom safe area, this will render nothing.
