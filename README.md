@@ -1,4 +1,5 @@
 # Palette Mobile
+
 # @artsy/palette-mobile [![npm version](https://badge.fury.io/js/%40artsy%2Fpalette-mobile.svg)](https://www.npmjs.com/package/@artsy/palette-mobile) [![Release](https://github.com/artsy/palette-mobile/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/artsy/palette-mobile/actions/workflows/release.yml)
 
 Artsy's Design System on Mobile
@@ -25,11 +26,13 @@ If you'd like to add a new component to Palette please create an issue using the
 ## Local development
 
 Set up using:
+
 ```sh
 yarn install:all
 ```
 
 Run using:
+
 ```sh
 yarn start
 ```
@@ -41,7 +44,7 @@ And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yar
 - [Eigen](https://github.com/artsy/eigen)
 - [Energy](https://github.com/artsy/energy)
 
-You can add this library using `yarn add @artsy/palette-mobile`. *Don't forget to also add all the `peerDependencies` to your project.*
+You can add this library using `yarn add @artsy/palette-mobile`. _Don't forget to also add all the `peerDependencies` to your project._
 
 ## About Artsy
 
@@ -67,5 +70,3 @@ our [job postings][footer_jobs]!
 [footer_twitter]: https://twitter.com/ArtsyOpenSource
 [footer_api]: https://developers.artsy.net/
 [footer_jobs]: https://www.artsy.net/jobs
-
-<!-- ignore this comment -->
