@@ -3,6 +3,7 @@ import { Animated, Easing, Image, TextProps, TouchableOpacity } from "react-nati
 import { FlexProps } from "styled-system"
 import { Flex } from "../../atoms"
 import { useColor } from "../../hooks"
+import { HelpIcon } from "../../svgs"
 import { Text } from "../Text"
 
 export interface BannerProps {
@@ -75,10 +76,8 @@ export const Banner = ({
                 onPress={handleClose}
                 hitSlop={{ bottom: 40, right: 40, left: 40, top: 40 }}
               >
-                <Image
-                  source={require("images/close-x.webp")}
-                  style={{ tintColor: color("black100") }}
-                />
+                {/* TODO: fix this by adding an X icon */}
+                <HelpIcon />
               </TouchableOpacity>
             </Flex>
           )}
