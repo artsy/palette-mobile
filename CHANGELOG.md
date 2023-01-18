@@ -1,3 +1,20 @@
+# v5.0.0 (Wed Jan 18 2023)
+
+#### 💥 Breaking Change
+
+- feat: remove images [#41](https://github.com/artsy/palette-mobile/pull/41) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- more imports ([@pvinis](https://github.com/pvinis))
+- imports ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v4.0.0 (Tue Jan 10 2023)
 
 #### 💥 Breaking Change
