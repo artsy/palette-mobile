@@ -1,3 +1,15 @@
+# v5.1.0 (Thu Feb 02 2023)
+
+#### 🚀 Enhancement
+
+- feat: add more text things from eigen [#44](https://github.com/artsy/palette-mobile/pull/44) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v5.0.0 (Wed Jan 18 2023)
 
 #### 💥 Breaking Change
