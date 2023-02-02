@@ -3,7 +3,7 @@ import { Animated, Easing, Image, TextProps, TouchableOpacity } from "react-nati
 import { FlexProps } from "styled-system"
 import { Flex } from "../../atoms"
 import { useColor } from "../../hooks"
-import { HelpIcon } from "../../svgs"
+import { QuestionCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 
 export interface BannerProps {
@@ -77,7 +77,7 @@ export const Banner = ({
                 hitSlop={{ bottom: 40, right: 40, left: 40, top: 40 }}
               >
                 {/* TODO: fix this by adding an X icon */}
-                <HelpIcon />
+                <QuestionCircleIcon />
               </TouchableOpacity>
             </Flex>
           )}

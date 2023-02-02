@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 import { Box, Flex, Spacer } from "../../atoms"
-import { ArtsyLogoIcon } from "../../svgs"
+import { ArtsyLogoBlackIcon } from "../../svgs"
 
 interface Props {
   shadow?: boolean
@@ -9,7 +9,7 @@ export const ArtsyLogoHeader = ({ shadow = false }: Props) => (
   <>
     <Box mt={2} mb={1} style={shadow ? styles.boxShadowStyle : {}}>
       <Flex alignItems="center">
-        <ArtsyLogoIcon scale={0.75} />
+        <ArtsyLogoBlackIcon scale={0.75} />
       </Flex>
       <Spacer x="1" />
     </Box>

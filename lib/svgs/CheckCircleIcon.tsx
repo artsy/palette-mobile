@@ -13,7 +13,3 @@ export const CheckCircleIcon = ({ fill, ...restProps }: IconProps) => {
     </Icon>
   )
 }
-
-// TODO: remove these aliases once clients have been updated
-export const CircleWhiteCheckIcon = CheckCircleIcon
-export const WinningBidIcon = CheckCircleIcon
