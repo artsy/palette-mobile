@@ -1,3 +1,15 @@
+# v6.1.0 (Thu Feb 02 2023)
+
+#### 🚀 Enhancement
+
+- feat: export two icons [#48](https://github.com/artsy/palette-mobile/pull/48) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v6.0.0 (Thu Feb 02 2023)
 
 ### Release Notes
