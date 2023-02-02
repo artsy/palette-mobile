@@ -16,6 +16,3 @@ export const ArtsyLogoBlackIcon = ({ scale = 1, fill, ...restProps }: ArtsyLogoB
     </Icon>
   )
 }
-
-// TODO: remove this alias once clients have been updated
-export const ArtsyLogoIcon = ArtsyLogoBlackIcon
