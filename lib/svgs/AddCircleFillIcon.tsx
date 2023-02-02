@@ -13,6 +13,3 @@ export const AddCircleFillIcon = ({ fill, ...restProps }: IconProps) => {
     </Icon>
   )
 }
-
-// TODO: remove this alias once clients have been updated
-export const PlusIcon = AddCircleFillIcon
