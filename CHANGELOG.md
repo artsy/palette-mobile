@@ -1,3 +1,56 @@
+# v6.0.0 (Thu Feb 02 2023)
+
+### Release Notes
+
+#### icons: added some, removed aliases ([#46](https://github.com/artsy/palette-mobile/pull/46))
+
+Added:
+- CloseCircleFillIcon
+- GuaranteeIcon
+- ImageIcon
+- Payment2Icon
+- SecureLockIcon
+- StarCircleIcon
+- Tag2Icon
+
+Removed aliases: 
+- ArtsyLogoIcon -> ArtsyLogoBlackIcon
+- ArtsyMarkIcon -> ArtsyMarkBlackIcon
+- CircleBlackCheckIcon -> CheckCircleFillIcon
+- CircleWhiteCheckIcon -> CheckCircleIcon
+- WinningBidIcon -> CheckCircleIcon
+- GroupIcon -> UserMultiIcon
+- SoloIcon -> UserSingleIcon
+- HelpIcon -> QuestionCircleIcon
+- LocationIcon -> MapPinIcon
+- MuseumIcon -> InstitutionIcon
+- OpenEyeIcon -> EyeOpenedIcon
+- ClosedEyeIcon -> EyeClosedIcon
+- TopEstablishedIcon -> EstablishedIcon
+- LosingBidIcon -> CloseCircleIcon
+
+---
+
+#### 💥 Breaking Change
+
+- chore: just a version bump [#47](https://github.com/artsy/palette-mobile/pull/47) ([@pvinis](https://github.com/pvinis))
+- icons: added some, removed aliases [#46](https://github.com/artsy/palette-mobile/pull/46) ([@pvinis](https://github.com/pvinis))
+
+#### 🐛 Bug Fix
+
+- Bump activesupport from 6.1.7 to 6.1.7.2 [#43](https://github.com/artsy/palette-mobile/pull/43) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### ⚠️ Pushed to `main`
+
+- Update AddCircleFillIcon.tsx ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v5.1.1 (Thu Feb 02 2023)
 
 #### 🐛 Bug Fix
