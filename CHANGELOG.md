@@ -1,3 +1,19 @@
+# v5.1.1 (Thu Feb 02 2023)
+
+#### 🐛 Bug Fix
+
+- fix: some index files [#45](https://github.com/artsy/palette-mobile/pull/45) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- Create index.ts ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v5.1.0 (Thu Feb 02 2023)
 
 #### 🚀 Enhancement
