@@ -68,6 +68,8 @@ export const NAMED_LAYER_NAMES = [
   "black100",
   "black60",
   "black30",
+  "black15",
+  "black10",
   "black5",
   "white100",
   "blue150",
