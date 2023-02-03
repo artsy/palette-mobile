@@ -26,6 +26,7 @@ const getStories = () => {
     require("../lib/elements/Avatar/Avatar.stories.tsx"),
     require("../lib/elements/Button/Button.stories.tsx"),
     require("../lib/elements/Checkbox/Checkbox.stories.tsx"),
+    require("../lib/elements/Collapse/Collapse.stories.tsx"),
     require("../lib/elements/Input/Input.stories.tsx"),
     require("../lib/elements/Separator/Separator.stories.tsx"),
     require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
