@@ -13,7 +13,7 @@ import {
   TypographyProps,
 } from "styled-system"
 import { useTheme } from "../../Theme"
-import { TextVariantV3 } from "../../tokens"
+import { TextTreatment, TextTreatmentWithUnits, TextVariantV3 } from "../../tokens"
 import { useFontFamilyFor } from "./helpers"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {
@@ -56,7 +56,7 @@ export const Text = forwardRef(
           style, // keep last so we can override
         ]}
         fontFamily={fontFamily}
-        {...theme.textTreatments[variant]}
+        {...fixTextTreatmentForStyledComponent(theme.textTreatments[variant])}
         children={children}
         color={color}
         {...restProps}
@@ -64,6 +64,24 @@ export const Text = forwardRef(
     )
   }
 )
+
+const fixTextTreatmentForStyledComponent = (treatment: TextTreatment): TextTreatmentWithUnits => {
+  const treatmentWithUnits = { ...treatment } as unknown as TextTreatmentWithUnits
+
+  if (treatment.fontSize !== undefined) {
+    treatmentWithUnits.fontSize = `${treatment.fontSize}px`
+  }
+
+  if (treatment.lineHeight !== undefined) {
+    treatmentWithUnits.lineHeight = `${treatment.lineHeight}px`
+  }
+
+  if (treatment.letterSpacing !== undefined) {
+    treatmentWithUnits.letterSpacing = `${treatment.letterSpacing}em`
+  }
+
+  return treatmentWithUnits
+}
 
 type InnerStyledTextProps = ColorProps & SpaceProps & TypographyProps & FontSizeProps
 const InnerStyledText = styled(RNText)<InnerStyledTextProps>`
