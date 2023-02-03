@@ -1,3 +1,15 @@
+# v7.0.0 (Fri Feb 03 2023)
+
+#### 💥 Breaking Change
+
+- feat: remove react-spring, and replace it with reanimated [#49](https://github.com/artsy/palette-mobile/pull/49) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v6.1.0 (Thu Feb 02 2023)
 
 #### 🚀 Enhancement
