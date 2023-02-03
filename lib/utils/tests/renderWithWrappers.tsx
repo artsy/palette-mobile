@@ -8,7 +8,7 @@ import { Theme } from "../../Theme"
  * by using @testing-library/react-native
  * @param component
  */
-export const renderWithWrappers = (component: ReactElement) => {
+export const renderWithWrappers = (component: ReactElement): any => {
   try {
     return render(component, { wrapper: Providers })
   } catch (error: any) {
