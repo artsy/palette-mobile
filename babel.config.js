@@ -1,3 +1,8 @@
+const plugins = [
+  ["@babel/plugin-proposal-private-methods", { loose: true }],
+  "react-native-reanimated/plugin", // should be LAST
+]
+
 const presets = [
   [
     "module:metro-react-native-babel-preset",
@@ -6,7 +11,5 @@ const presets = [
   "@babel/preset-typescript",
   ["@babel/preset-react", { runtime: "automatic" }], // this is so `import React from "react"` is not needed.
 ]
-
-const plugins = ["react-native-reanimated/plugin"]
 
 module.exports = { presets, plugins }

@@ -24,6 +24,7 @@ const getStories = () => {
     require("../lib/atoms/Spacer/Spacer.stories.tsx"),
     require("../lib/colors.stories.tsx"),
     require("../lib/elements/Avatar/Avatar.stories.tsx"),
+    require("../lib/elements/Button/Button.stories.tsx"),
     require("../lib/elements/Checkbox/Checkbox.stories.tsx"),
     require("../lib/elements/Input/Input.stories.tsx"),
     require("../lib/elements/Separator/Separator.stories.tsx"),

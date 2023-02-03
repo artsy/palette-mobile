@@ -28,6 +28,7 @@ export const Theme = ({
   return <ThemeProvider theme={actualTheme}>{children}</ThemeProvider>
 }
 
+// TODO: make this stricter for types. only allow ColorStrict.
 export interface ColorFuncOverload {
   (colorNumber: undefined): undefined
   (colorNumber: Color): string
