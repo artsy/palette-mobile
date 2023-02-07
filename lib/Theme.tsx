@@ -74,5 +74,4 @@ export const useTheme = () => {
 /**
  * Only use this if it's are absolutely neccessary, and only in tests.
  */
-// tslint:disable-next-line:variable-name
 export const _test_THEMES = THEMES
