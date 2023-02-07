@@ -15,6 +15,8 @@ import {
   TextVariant as TextVariantV3,
 } from "@artsy/palette-tokens/dist/typography/v3"
 
+export type { TextTreatmentWithUnits }
+
 const {
   breakpoints: _mobileDoesntCareAboutBreakpoints,
   mediaQueries: _mobileDoesntCareAboutMediaQueries,
@@ -72,7 +74,6 @@ export const NAMED_LAYER_NAMES = [
   "white100",
   "blue150",
   "blue100",
-  "brand",
   "blue10",
   "green150",
   "green100",
@@ -93,27 +94,28 @@ export const NAMED_LAYER_NAMES = [
 export type ColorNamedLayer = typeof NAMED_LAYER_NAMES[number]
 
 export const USAGE_LAYER_NAMES = [
-  // Anything big/surface: background, cards, button fills, etc.
+  // name: Anything big/surface: background, cards, button fills, etc.
+  // onName: Anything small, texts, icons, etc.
+  // onNameContrast: Anything small, texts, icons, etc based on contrast.
   "background",
-  "surface",
-  "primary",
-  "secondary",
-  "brand",
-  // Anything small, texts, icons, etc.
   "onBackground", // same as onBackgroundHigh
   "onBackgroundHigh",
   "onBackgroundMedium",
   "onBackgroundLow",
+  "surface",
   "onSurface", // same as onSurfaceHigh
   "onSurfaceHigh",
   "onSurfaceMedium",
   "onSurfaceLow",
+  "primary",
   "onPrimaryHigh",
   "onPrimaryMedium",
   "onPrimaryLow",
+  "secondary",
   "onSecondaryHigh",
   "onSecondaryMedium",
   "onSecondaryLow",
+  "brand",
   "onBrand",
 ] as const
 export type ColorUsageLayer = typeof USAGE_LAYER_NAMES[number]
@@ -208,11 +210,11 @@ export const THEMES = {
         onSurface: this.v3.colors.black100,
         onSurfaceHigh: this.v3.colors.black100,
         onSurfaceMedium: this.v3.colors.black60,
-        onSurfaceLow: this.v3.colors.black10,
+        onSurfaceLow: this.v3.colors.black5,
         primary: this.v3.colors.black100,
         onPrimaryHigh: this.v3.colors.white100,
-        onPrimaryMedium: this.v3.colors.black10,
-        onPrimaryLow: this.v3.colors.black10,
+        onPrimaryMedium: this.v3.colors.black5,
+        onPrimaryLow: this.v3.colors.black5,
         secondary: this.v3.colors.black30,
         onSecondaryHigh: this.v3.colors.black100,
         onSecondaryMedium: this.v3.colors.black60,
@@ -247,8 +249,8 @@ export const THEMES = {
         onPrimaryLow: this.v3.colors.black60,
         secondary: this.v3.colors.black60,
         onSecondaryHigh: this.v3.colors.white100,
-        onSecondaryMedium: this.v3.colors.black10,
-        onSecondaryLow: this.v3.colors.black10,
+        onSecondaryMedium: this.v3.colors.black5,
+        onSecondaryLow: this.v3.colors.black5,
         brand: this.v3.colors.blue100,
         onBrand: this.v3.colors.white100,
       },

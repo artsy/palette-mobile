@@ -106,7 +106,6 @@ export const CollapsibleMenuItem = forwardRef<
             </Flex>
           </Flex>
         </Touchable>
-        {/* @ts-expect-error */}
         <Collapse opened={isOpen}>{children}</Collapse>
       </Flex>
     )
