@@ -10,7 +10,7 @@ export const Styled = () => (
   <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
     <Box
       // SpaceProps
-      px="1"
+      px={1}
       // ColorProps
       backgroundColor="blue100"
       // FlexboxProps

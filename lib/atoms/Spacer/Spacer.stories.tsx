@@ -33,16 +33,16 @@ const SpacerRow = (props: { x: SpacerProps["x"] }) => {
 export const Horizontal = () => (
   <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
     <Text weight="medium">Defined (units)</Text>
-    <SpacerRow x="0.5" />
-    <SpacerRow x="1" />
-    <SpacerRow x="2" />
-    <SpacerRow x="4" />
-    <SpacerRow x="6" />
-    <SpacerRow x="12" />
+    <SpacerRow x={0.5} />
+    <SpacerRow x={1} />
+    <SpacerRow x={2} />
+    <SpacerRow x={4} />
+    <SpacerRow x={6} />
+    <SpacerRow x={12} />
 
     <Text weight="medium">Custom (pixels)</Text>
-    <SpacerRow x={15} />
-    <SpacerRow x={50} />
+    <SpacerRow x="15px" />
+    <SpacerRow x="50px" />
   </List>
 )
 
@@ -74,12 +74,12 @@ export const Vertical = () => (
       style={{ marginTop: 50 }}
       contentContainerStyle={{ alignItems: "flex-start", paddingHorizontal: 10 }}
     >
-      <SpacerCol y="0.5" />
-      <SpacerCol y="1" />
-      <SpacerCol y="2" />
-      <SpacerCol y="4" />
-      <SpacerCol y="6" />
-      <SpacerCol y="12" />
+      <SpacerCol y={0.5} />
+      <SpacerCol y={1} />
+      <SpacerCol y={2} />
+      <SpacerCol y={4} />
+      <SpacerCol y={6} />
+      <SpacerCol y={12} />
     </List>
 
     <Text weight="medium">Custom (pixels)</Text>
@@ -88,8 +88,8 @@ export const Vertical = () => (
       style={{ marginTop: 50 }}
       contentContainerStyle={{ alignItems: "flex-start", paddingHorizontal: 10 }}
     >
-      <SpacerCol y={15} />
-      <SpacerCol y={50} />
+      <SpacerCol y="15px" />
+      <SpacerCol y="50px" />
     </List>
   </>
 )
