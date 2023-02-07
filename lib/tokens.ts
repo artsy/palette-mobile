@@ -264,7 +264,5 @@ export type Theme5DarkType = typeof THEMES.v5dark
 export type AllThemesType = Theme3Type & Theme5LightType & Theme5DarkType
 
 // These are for styled-system:
-// tslint:disable-next-line:interface-over-type-literal
 export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
-// tslint:disable-next-line:interface-over-type-literal
 export type ColorsTheme = { colors: Record<Color, any> }
