@@ -26,7 +26,7 @@ export const EntityHeader = ({
 }: EntityHeaderProps) => {
   const followButton = FollowButton && (
     <Flex
-      ml={smallVariant ? "0.5" : "1"}
+      ml={smallVariant ? 0.5 : 1}
       flexDirection="row"
       alignItems="center"
       justifyContent="flex-end"

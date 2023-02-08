@@ -1,6 +1,6 @@
 import { TextStyle } from "react-native"
 import { TextProps } from "."
-import { useTheme } from "../../Theme"
+import { useTheme } from "../.."
 import { NoUndefined } from "../../utils/types"
 
 export const useFontFamilyFor = ({

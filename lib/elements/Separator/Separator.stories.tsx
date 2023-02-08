@@ -9,7 +9,7 @@ export default {
 export const Styled = () => (
   <>
     <Separator />
-    <Spacer y="2" />
+    <Spacer y={2} />
     <Separator borderColor="red" />
   </>
 )

@@ -23,8 +23,8 @@ const {
   ...mobileUsefulTHEME_V3
 } = THEME_V3
 
-type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
-type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
+export type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
+export type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
 
 export type SpacingUnit = SpacingUnitDSValueNumber | SpacingUnitPixelValue
 
@@ -154,18 +154,19 @@ const fixTextTreatments = (
 
 export type { TextVariantV3 }
 
-type ThemeV3Type = {
+export type ThemeV3Type = {
   space: Record<SpacingUnitV3Numbers, `${number}px`>
   colors: Record<ColorNamedLayer, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariantV3, TextTreatment>
 }
-type ThemeV5Type = {
+export type ThemeV5Type = {
   space: Record<SpacingUnitV3Numbers, `${number}px`>
   colors: Record<ColorStrict, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariantV3, TextTreatment>
 }
+export type AllThemesType = ThemeV3Type & ThemeV5Type
 
 export const THEMES: {
   v3: ThemeV3Type

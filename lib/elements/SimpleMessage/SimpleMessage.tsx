@@ -22,7 +22,7 @@ export const SimpleMessage: React.FC<SimpleMessageProps> = ({
   ...restProps
 }) => {
   return (
-    <StyledFlex p="2" {...restProps}>
+    <StyledFlex p={2} {...restProps}>
       <Text color="black60" variant={textVariant}>
         {children}
       </Text>

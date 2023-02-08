@@ -41,7 +41,7 @@ export const States = () => {
   const [variant, setVariant] = useState<NoUndefined<ButtonProps["variant"]>>("fillDark")
   return (
     <List>
-      <Flex flexDirection="row" flexWrap="wrap" px="2">
+      <Flex flexDirection="row" flexWrap="wrap" px={2}>
         {variants.map((variant) => (
           <LinkText color="orange" onPress={() => setVariant(variant)} mr="2">
             {variant}
@@ -69,7 +69,7 @@ export const Variants = () => (
     data={variants}
     renderItem={({ item: variant }) => (
       <Wrap if={variant === "outlineLight" || variant === "fillLight"}>
-        <Flex backgroundColor="pink" p={10}>
+        <Flex backgroundColor="pink" p={1}>
           <Wrap.Content>
             <Button variant={variant} onPress={() => console.log(`tapped ${variant}`)}>
               {variant}
@@ -97,7 +97,7 @@ export const VariantsDisabled = () => (
     data={variants}
     renderItem={({ item: variant }) => (
       <Wrap if={variant === "outlineLight"}>
-        <Flex backgroundColor="black100" p={10}>
+        <Flex backgroundColor="black100" p={1}>
           <Wrap.Content>
             <Button variant={variant} disabled onPress={() => console.log(`tapped ${variant}`)}>
               {variant}
@@ -172,7 +172,7 @@ export const Miscellaneous = () => (
         >
           shortest text
         </Button>
-        <Spacer y="1" />
+        <Spacer y={1} />
         <Button
           size="small"
           icon={<LinkIcon fill="white100" />}

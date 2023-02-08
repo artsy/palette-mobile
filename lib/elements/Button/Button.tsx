@@ -189,18 +189,24 @@ export const Button = ({
           containerColorsAnim,
         ]}
       >
-        <Flex height="100%" mx={25} flexDirection="row" alignItems="center" justifyContent="center">
+        <Flex
+          height="100%"
+          mx="25px"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+        >
           {iconPosition === "left-start" && !!icon ? (
             <Box position="absolute" left={0}>
               {icon}
-              <Spacer x="0.5" />
+              <Spacer x={0.5} />
             </Box>
           ) : null}
 
           {iconPosition === "left" && !!icon ? (
             <>
               {icon}
-              <Spacer x="0.5" />
+              <Spacer x={0.5} />
             </>
           ) : null}
 
@@ -225,7 +231,7 @@ export const Button = ({
 
           {iconPosition === "right" && !!icon ? (
             <>
-              <Spacer x="0.5" />
+              <Spacer x={0.5} />
               {icon}
             </>
           ) : null}

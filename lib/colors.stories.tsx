@@ -6,7 +6,7 @@ import {
   ColorCssString,
   ColorNamedLayer,
   ColorStrict,
-  ColorUsageLayer,
+  ColorRoleLayer,
   isUsageLayerName,
   NAMED_LAYER_NAMES,
 } from "./tokens"
@@ -137,7 +137,7 @@ export const Styled = () => (
   </List>
 )
 
-const useNamedColorName = (theColor: ColorUsageLayer): ColorNamedLayer => {
+const useNamedColorName = (theColor: ColorRoleLayer): ColorNamedLayer => {
   const color = useColor()
   const cssName = useCssColorName(theColor)
 

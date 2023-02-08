@@ -17,7 +17,7 @@ export const BulletedItem = ({
       <Text variant="sm" color={color}>
         {bullet}
       </Text>
-      <Spacer mr={1} />
+      <Spacer x={1} />
       <Text variant="sm" color={color}>
         {children}
       </Text>

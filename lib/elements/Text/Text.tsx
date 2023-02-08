@@ -12,7 +12,7 @@ import {
   typography,
   TypographyProps,
 } from "styled-system"
-import { useTheme } from "../../Theme"
+import { useTheme } from "../.."
 import { TextTreatment, TextTreatmentWithUnits, TextVariantV3 } from "../../tokens"
 import { useFontFamilyFor } from "./helpers"
 

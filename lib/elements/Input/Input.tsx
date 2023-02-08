@@ -15,7 +15,7 @@ import styled from "styled-components/native"
 import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { InputTitle } from "./InputTitle"
 import { Flex } from "../../atoms"
-import { useTheme } from "../../Theme"
+import { useTheme } from "../.."
 import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Spinner } from "../Spinner"
@@ -159,7 +159,7 @@ export const Input = forwardRef<TextInput, InputProps>(
         return
       }
       return (
-        <Flex pr="1" justifyContent="center" flexGrow={0} backgroundColor="background">
+        <Flex pr={1} justifyContent="center" flexGrow={0} backgroundColor="background">
           <TouchableOpacity
             onPress={() => {
               setShowPassword(!showPassword)
@@ -272,7 +272,7 @@ export const Input = forwardRef<TextInput, InputProps>(
           >
             {renderLeftHandSection?.()}
             {!!icon && (
-              <Flex pl="1" justifyContent="center" flexGrow={0} backgroundColor="background">
+              <Flex pl={1} justifyContent="center" flexGrow={0} backgroundColor="background">
                 {icon}
               </Flex>
             )}
@@ -339,7 +339,7 @@ export const Input = forwardRef<TextInput, InputProps>(
             )}
             {renderShowPasswordIcon()}
             {loading ? (
-              <Flex pr="2" justifyContent="center" flexGrow={0}>
+              <Flex pr={2} justifyContent="center" flexGrow={0}>
                 <Spinner
                   size="medium"
                   style={{ marginLeft: 3, width: 15, height: 4, backgroundColor: color("black60") }}
@@ -347,7 +347,7 @@ export const Input = forwardRef<TextInput, InputProps>(
               </Flex>
             ) : (
               !!(value !== undefined && value !== "" && enableClearButton) && (
-                <Flex pr="1" justifyContent="center" flexGrow={0}>
+                <Flex pr={1} justifyContent="center" flexGrow={0}>
                   <TouchableOpacity
                     onPress={() => {
                       localClear()
