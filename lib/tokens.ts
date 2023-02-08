@@ -26,7 +26,7 @@ const {
 export type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
 export type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
 
-type SpacingUnitDSValueNumberNegativeString = `-${SpacingUnitDSValueNumber}`
+type SpacingUnitDSValueNumberNegativeString = `-${SpacingUnitDSValueNumber}` // this should *NOT* be used or exported. it is only an intermediary type for the next line.
 export type SpacingUnitDSValueNumberNegative = ParseNumber<SpacingUnitDSValueNumberNegativeString>
 
 export type SpacingUnit =
@@ -150,7 +150,7 @@ const fixTextTreatments = (
         return undefined
       }
       const justStringValue = originalValue.split(unit)[0]
-      const numberValue = parseInt(justStringValue, 10)
+      const numberValue = Number(justStringValue)
       newTreatment[property] = numberValue
     })
     return newTreatment

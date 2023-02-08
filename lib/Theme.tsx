@@ -1,15 +1,7 @@
 import { useContext } from "react"
 import { isString } from "lodash"
 import { ThemeContext, ThemeProvider } from "styled-components/native"
-import {
-  AllThemesType,
-  Color,
-  SpacingUnit,
-  ThemeV3Type,
-  ThemeV5Type,
-  THEMES,
-  SpacingUnitPixelValue,
-} from "./tokens"
+import { AllThemesType, ThemeV3Type, ThemeV5Type, THEMES } from "./tokens"
 
 const figureOutTheme = (theme: keyof typeof THEMES | AllThemesType): ThemeV3Type | ThemeV5Type => {
   if (!isString(theme)) {

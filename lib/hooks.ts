@@ -7,7 +7,7 @@ const space =
   (theme: AllThemesType): SpaceFn =>
   (spaceName) => {
     const pixelValue = theme.space[spaceName as keyof AllThemesType["space"]]
-    return Number(pixelValue.replace("px", ""))
+    return Number(pixelValue.split("px")[0])
   }
 
 // TODO: make this stricter for types. only allow ColorStrict.

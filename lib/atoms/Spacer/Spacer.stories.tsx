@@ -2,6 +2,7 @@ import { Text } from "../../elements"
 import { bullet } from "../../helpers/text"
 import { useSpace } from "../../hooks"
 import { List } from "../../storybookHelpers"
+import { NoUndefined } from "../../utils/types"
 import { Box } from "../Box"
 import { Spacer, SpacerProps } from "./Spacer"
 
@@ -10,7 +11,7 @@ export default {
   component: Spacer,
 }
 
-const SpacerRow = (props: { x: SpacerProps["x"] }) => {
+const SpacerRow = (props: { x: NoUndefined<SpacerProps["x"]> }) => {
   const space = useSpace()
   const size = props.x
 
@@ -22,9 +23,7 @@ const SpacerRow = (props: { x: SpacerProps["x"] }) => {
         <Box width={20} height={20} backgroundColor="onBackground" />
       </Box>
       <Text color="onBackground">
-        {typeof size === "string"
-          ? `"${size}" ${bullet} ${space(size as any)}px`
-          : `${size as any}px`}
+        {typeof size === "string" ? `${size}` : `${size} ${bullet} ${space(size as any)}px`}
       </Text>
     </Box>
   )
@@ -58,9 +57,7 @@ const SpacerCol = (props: { y: SpacerProps["y"] }) => {
         <Box width={20} height={20} backgroundColor="black" />
       </Box>
       <Text color="black">
-        {typeof size === "string"
-          ? `"${size}" ${bullet} ${space(size as any)}px`
-          : `${size as any}px`}
+        {typeof size === "string" ? `${size}` : `${size} ${bullet} ${space(size as any)}px`}
       </Text>
     </Box>
   )

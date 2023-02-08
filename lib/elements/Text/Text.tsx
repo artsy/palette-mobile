@@ -65,19 +65,15 @@ export const Text = forwardRef(
   }
 )
 
-const fixTextTreatmentForStyledComponent = (treatment: TextTreatment): TextTreatmentWithUnits => {
-  const treatmentWithUnits = { ...treatment } as unknown as TextTreatmentWithUnits
+const fixTextTreatmentForStyledComponent = (treatment: TextTreatment) => {
+  const treatmentWithUnits = { ...treatment } as any
 
-  if (treatment.fontSize !== undefined) {
-    treatmentWithUnits.fontSize = `${treatment.fontSize}px`
-  }
+  // if (treatment.fontSize !== undefined) {
+  //   treatmentWithUnits.fontSize = `${treatment.fontSize}px`
+  // }
 
   if (treatment.lineHeight !== undefined) {
     treatmentWithUnits.lineHeight = `${treatment.lineHeight}px`
-  }
-
-  if (treatment.letterSpacing !== undefined) {
-    treatmentWithUnits.letterSpacing = `${treatment.letterSpacing}em`
   }
 
   return treatmentWithUnits
