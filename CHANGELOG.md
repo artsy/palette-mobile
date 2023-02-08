@@ -1,3 +1,19 @@
+# v8.0.0 (Wed Feb 08 2023)
+
+#### 💥 Breaking Change
+
+- feat: finalizing `SpacingUnit` [#51](https://github.com/artsy/palette-mobile/pull/51) ([@pvinis](https://github.com/pvinis))
+
+#### 🐛 Bug Fix
+
+- docs: add darkmode docs and remove tslint comments [#50](https://github.com/artsy/palette-mobile/pull/50) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v7.0.0 (Fri Feb 03 2023)
 
 #### 💥 Breaking Change
