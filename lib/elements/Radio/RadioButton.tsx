@@ -9,7 +9,7 @@ import {
 import styled from "styled-components/native"
 import { CssTransition } from "../../animation"
 import { Flex, FlexProps } from "../../atoms"
-import { useTheme } from "../../Theme"
+import { useTheme } from "../.."
 import { Text } from "../Text"
 
 const RADIOBUTTON_SIZE = 20
@@ -92,7 +92,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
             <CssTransition
               style={[
                 styles(fontScale).container,
-                { marginRight: space("1") * fontScale },
+                { marginRight: space(1) * fontScale },
                 radioButtonStyle,
               ]}
               animate={["borderColor"]}
@@ -116,7 +116,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
           </Flex>
         </Flex>
 
-        <Flex ml={(RADIOBUTTON_SIZE + space("1")) * fontScale} mt="6px">
+        <Flex ml={`${(RADIOBUTTON_SIZE + space(1)) * fontScale}px`} mt="6px">
           {!!subtitle && (
             <Text variant="xs" color={subtitleColor}>
               {subtitle}

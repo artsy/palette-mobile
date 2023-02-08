@@ -1,4 +1,4 @@
-import { Theme, useTheme } from "./Theme"
+import { useTheme, Theme } from "."
 
 export const ClassTheme = ({
   theme = "v3",

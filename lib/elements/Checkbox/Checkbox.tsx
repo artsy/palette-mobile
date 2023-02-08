@@ -8,7 +8,7 @@ import Animated, {
   withTiming,
   interpolateColor,
 } from "react-native-reanimated"
-import { useTheme } from "../../Theme"
+import { useTheme } from "../.."
 import { Text } from "../Text"
 import { Color } from "../../tokens"
 import { useColor } from "../../hooks"
@@ -135,7 +135,7 @@ export const Checkbox = ({
             {checked && <Checkmark size={checkboxSize} />}
           </Animated.View>
 
-          <Flex ml="1" flex={1}>
+          <Flex ml={1} flex={1}>
             {!!text && (
               <AText
                 variant="sm-display"
@@ -151,7 +151,7 @@ export const Checkbox = ({
         </Flex>
 
         {!!subtitle && (
-          <Flex ml={(checkboxSize + space("1")) * fontScale} mt="0.5">
+          <Flex ml={`${(checkboxSize + space(1)) * fontScale}px`} mt={0.5}>
             <Text variant="xs" color={subtitleColor}>
               {subtitle}
             </Text>

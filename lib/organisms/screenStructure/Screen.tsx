@@ -97,7 +97,7 @@ const Header = ({ onBack }: HeaderProps) => {
 
   return (
     <Flex
-      mt={insets.top}
+      mt={`${insets.top}px`}
       height={NAVBAR_HEIGHT}
       px={SCREEN_HORIZONTAL_PADDING}
       flexDirection="row"
@@ -123,7 +123,7 @@ const FloatingHeader: FC<HeaderProps> = ({ onBack }) => {
         left={0}
         right={0}
         height={NAVBAR_HEIGHT}
-        px={10}
+        px={1}
         flexDirection="row"
         alignItems="center"
       >
@@ -275,7 +275,7 @@ const BottomView = ({ children }: { children?: ReactNode }) => {
       />
       <Flex
         px={SCREEN_HORIZONTAL_PADDING}
-        py={keyboardShowing ? "1" : undefined}
+        py={keyboardShowing ? 1 : undefined}
         backgroundColor="white100"
       >
         {children}

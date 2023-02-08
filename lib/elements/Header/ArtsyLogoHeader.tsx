@@ -11,9 +11,9 @@ export const ArtsyLogoHeader = ({ shadow = false }: Props) => (
       <Flex alignItems="center">
         <ArtsyLogoBlackIcon scale={0.75} />
       </Flex>
-      <Spacer x="1" />
+      <Spacer x={1} />
     </Box>
-    <Spacer x="2" />
+    <Spacer x={2} />
   </>
 )
 

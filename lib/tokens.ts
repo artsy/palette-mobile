@@ -5,11 +5,8 @@
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
-import { mapKeys, mapValues } from "lodash"
-import {
-  Color as ColorV3WithoutDevPurple,
-  SpacingUnit as SpacingUnitV3Numbers,
-} from "@artsy/palette-tokens/dist/themes/v3"
+import { mapValues } from "lodash"
+import { SpacingUnit as SpacingUnitV3Numbers } from "@artsy/palette-tokens/dist/themes/v3"
 import {
   TextTreatment as TextTreatmentWithUnits,
   TextVariant as TextVariantV3,
@@ -26,37 +23,24 @@ const {
   ...mobileUsefulTHEME_V3
 } = THEME_V3
 
-type SpacingUnitV3 = `${SpacingUnitV3Numbers}`
-export type { SpacingUnitV3 }
-type SpacingUnitPixels = number & {} // for things like `12` (which RN interprets as number of pixels)
-type SpacingUnitStringPixels = `${number}px` & {} // for things like `12px`
-export type SpacingUnitStrict = SpacingUnitV3
-export type SpacingUnit = SpacingUnitStrict | SpacingUnitPixels | SpacingUnitStringPixels
+export type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
+export type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
+
+type SpacingUnitDSValueNumberNegativeString = `-${SpacingUnitDSValueNumber}` // this should *NOT* be used or exported. it is only an intermediary type for the next line.
+export type SpacingUnitDSValueNumberNegative = ParseNumber<SpacingUnitDSValueNumberNegativeString>
+
+export type SpacingUnit =
+  | SpacingUnitDSValueNumber
+  | SpacingUnitDSValueNumberNegative
+  | SpacingUnitPixelValue
 
 // this function is converting the space values that come from palette-tokens
 // from a string `"120px"` to a number `120`, and the key values
 // from a number `0.5` to a string `"0.5"`.
 const fixSpaceUnitsV3 = (
-  units: typeof spaceNumbers
-): {
-  "0.5": number
-  "1": number
-  "2": number
-  "4": number
-  "6": number
-  "12": number
-} => {
-  let fixed = units
-
-  fixed = mapKeys(fixed, (_, numberKey) => `${numberKey}`) as any
-
-  fixed = mapValues(fixed, (stringValueWithPx) => {
-    const justStringValue = stringValueWithPx.split("px")[0]
-    const numberValue = parseInt(justStringValue, 10)
-    return numberValue
-  }) as any
-
-  return fixed as any
+  withUnits: typeof spaceNumbers
+): Record<SpacingUnitV3Numbers, SpacingUnitPixelValue> => {
+  return withUnits as Record<SpacingUnitV3Numbers, SpacingUnitPixelValue>
 }
 
 export type ColorCssString = string & {} // just an open rule here to allow for css names and other things for now
@@ -93,7 +77,7 @@ export const NAMED_LAYER_NAMES = [
 ] as const
 export type ColorNamedLayer = typeof NAMED_LAYER_NAMES[number]
 
-export const USAGE_LAYER_NAMES = [
+export const ROLE_LAYER_NAMES = [
   // name: Anything big/surface: background, cards, button fills, etc.
   // onName: Anything small, texts, icons, etc.
   // onNameContrast: Anything small, texts, icons, etc based on contrast.
@@ -118,13 +102,13 @@ export const USAGE_LAYER_NAMES = [
   "brand",
   "onBrand",
 ] as const
-export type ColorUsageLayer = typeof USAGE_LAYER_NAMES[number]
+export type ColorRoleLayer = typeof ROLE_LAYER_NAMES[number]
 
-export type ColorStrict = ColorNamedLayer | ColorUsageLayer
-export type Color = ColorNamedLayer | ColorUsageLayer | ColorCssString
+export type ColorStrict = ColorNamedLayer | ColorRoleLayer
+export type Color = ColorNamedLayer | ColorRoleLayer | ColorCssString
 
-export const isUsageLayerName = (name: Color): name is ColorUsageLayer => {
-  return USAGE_LAYER_NAMES.includes(name as any)
+export const isUsageLayerName = (name: Color): name is ColorRoleLayer => {
+  return ROLE_LAYER_NAMES.includes(name as any)
 }
 
 export const isNamedLayerName = (name: Color): name is ColorNamedLayer => {
@@ -141,16 +125,18 @@ const fixColorV3 = (
   return ourColors
 }
 
-export interface TextTreatment {
+type TextTreatmentWithoutUnits = {
   fontSize: number
   lineHeight: number
   letterSpacing?: number
 }
-// this function is removing the `px` and `em` suffix and making the values into numbers
+export type TextTreatment = TextTreatmentWithoutUnits
+// this function is removing the `px` and `em` suffix and making the values into numbers.
+// https://reactnative.dev/docs/text-style-props#letterspacing, fontSize, and lineHeight all take numbers without units.
 const fixTextTreatments = (
-  variantsWithUnits: Record<"xxl" | "xl" | "lg" | "md" | "sm" | "xs", TextTreatmentWithUnits>
+  withUnits: Record<TextVariantV3, TextTreatmentWithUnits>
 ): Record<TextVariantV3, TextTreatment> => {
-  const textTreatments = mapValues(variantsWithUnits, (treatmentWithUnits) => {
+  const textTreatments = mapValues(withUnits, (treatmentWithUnits) => {
     const newTreatment = {} as TextTreatment
     ;(
       [
@@ -164,24 +150,35 @@ const fixTextTreatments = (
         return undefined
       }
       const justStringValue = originalValue.split(unit)[0]
-      const numberValue = parseInt(justStringValue, 10)
+      const numberValue = Number(justStringValue)
       newTreatment[property] = numberValue
     })
     return newTreatment
   })
-  return textTreatments as any // TODO: fix this type
+  return textTreatments as any
 }
 
 export type { TextVariantV3 }
 
-export interface TextTreatment {
-  fontSize: number
-  lineHeight: number
-  letterSpacing?: number
+export type ThemeV3Type = {
+  space: Record<SpacingUnitV3Numbers, `${number}px`>
+  colors: Record<ColorNamedLayer, string>
+  fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
+  textTreatments: Record<TextVariantV3, TextTreatment>
 }
+export type ThemeV5Type = {
+  space: Record<SpacingUnitV3Numbers, `${number}px`>
+  colors: Record<ColorStrict, string>
+  fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
+  textTreatments: Record<TextVariantV3, TextTreatment>
+}
+export type AllThemesType = ThemeV3Type & ThemeV5Type
 
-// TODO: maybe add types here to make sure each theme is using the right types from above?
-export const THEMES = {
+export const THEMES: {
+  v3: ThemeV3Type
+  v5light: ThemeV5Type
+  v5dark: ThemeV5Type
+} = {
   v3: {
     ...mobileUsefulTHEME_V3,
     space: fixSpaceUnitsV3(spaceNumbers),
@@ -224,10 +221,6 @@ export const THEMES = {
       },
     }
   },
-  /** @deprecated Use `v5light` */
-  get v5() {
-    return this.v5light
-  },
   get v5dark() {
     return {
       ...this.v3,
@@ -258,11 +251,13 @@ export const THEMES = {
   },
 }
 
-export type Theme3Type = typeof THEMES.v3
-export type Theme5LightType = typeof THEMES.v5light
-export type Theme5DarkType = typeof THEMES.v5dark
-export type AllThemesType = Theme3Type & Theme5LightType & Theme5DarkType
-
 // These are for styled-system:
 export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
 export type ColorsTheme = { colors: Record<Color, any> }
+
+// This is some funky typescript to help us flip the type `SpacingUnitDSValueNumber` to negative numbers.
+type ParseNumber<T extends `-${number}`> = T extends any
+  ? T extends `${infer Digit extends number}`
+    ? Digit
+    : never
+  : never

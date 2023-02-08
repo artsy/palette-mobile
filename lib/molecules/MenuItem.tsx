@@ -28,11 +28,11 @@ export const MenuItem = ({
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
-        py="2"
-        px="2"
+        py={2}
+        px={2}
         pr="15px"
       >
-        <Flex flexDirection="row" mr="2">
+        <Flex flexDirection="row" mr={2}>
           <Text variant="md" color="onBackgroundHigh">
             {title}
           </Text>
@@ -44,7 +44,7 @@ export const MenuItem = ({
             </Text>
           </Flex>
         )}
-        {!!(onPress && chevron) && <Flex ml="1">{chevron}</Flex>}
+        {!!(onPress && chevron) && <Flex ml={1}>{chevron}</Flex>}
 
         {!!text && (
           <Text variant="md" color={color("black60")}>
