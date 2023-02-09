@@ -1,3 +1,15 @@
+# v8.1.0 (Thu Feb 09 2023)
+
+#### 🚀 Enhancement
+
+- fix: Button was missing the restProps [#52](https://github.com/artsy/palette-mobile/pull/52) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.0.0 (Wed Feb 08 2023)
 
 #### 💥 Breaking Change
