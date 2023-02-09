@@ -1,4 +1,3 @@
-import { SharedValue } from "react-native-reanimated"
 import { ButtonProps, useColor } from "../.."
 import { NoUndefined } from "../../utils/types"
 

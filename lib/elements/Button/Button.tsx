@@ -1,16 +1,13 @@
 import { useState } from "react"
-import { PressableProps, TextStyle, GestureResponderEvent, Pressable } from "react-native"
+import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
-  interpolateColor,
-  runOnJS,
   useAnimatedReaction,
   useAnimatedStyle,
-  useDerivedValue,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { useColor, Box, BoxProps, Flex, Spacer, Color, ColorStrict } from "../.."
+import { useColor, Box, BoxProps, Flex, Spacer } from "../.."
 import { MeasuredView, ViewMeasurements } from "../../utils/MeasuredView"
 import { Spinner } from "../Spinner"
 import { Text, useTextStyleForPalette } from "../Text"
@@ -179,6 +176,7 @@ export const Button = ({
       testOnly_pressed={testOnly_pressed}
     >
       <Animated.View
+        {...restProps}
         style={[
           {
             height: height,
