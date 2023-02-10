@@ -2,9 +2,8 @@
   "extends": "@artsy",
   "plugins": [
     "npm",
+    "released",
     "all-contributors",
-    "first-time-contributor",
-    "released"
-  ],
-  "onlyPublishWithReleaseLabel": true
+    "first-time-contributor"
+  ]
 }
