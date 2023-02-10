@@ -48,6 +48,7 @@
     "react-native-svg": "*"
   },
   "devDependencies": {
+    "@artsy/auto-config": "1.2.0",
     "@auto-it/all-contributors": "10.38.5",
     "@auto-it/first-time-contributor": "10.38.5",
     "@babel/core": "7.20.12",
