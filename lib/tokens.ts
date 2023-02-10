@@ -25,14 +25,11 @@ const {
 
 export type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
 export type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
+export type SpacingUnitDSValueNumberNegative = Neg<SpacingUnitDSValueNumber>
+export type SpacingUnitDSValue = SpacingUnitDSValueNumber | SpacingUnitDSValueNumberNegative
+type SpacingUnitSpecialValue = 0 | "0px" | "auto"
 
-type SpacingUnitDSValueNumberNegativeString = `-${SpacingUnitDSValueNumber}` // this should *NOT* be used or exported. it is only an intermediary type for the next line.
-export type SpacingUnitDSValueNumberNegative = ParseNumber<SpacingUnitDSValueNumberNegativeString>
-
-export type SpacingUnit =
-  | SpacingUnitDSValueNumber
-  | SpacingUnitDSValueNumberNegative
-  | SpacingUnitPixelValue
+export type SpacingUnit = SpacingUnitDSValue | SpacingUnitPixelValue | SpacingUnitSpecialValue
 
 // this function is converting the space values that come from palette-tokens
 // from a string `"120px"` to a number `120`, and the key values
@@ -256,8 +253,12 @@ export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
 export type ColorsTheme = { colors: Record<Color, any> }
 
 // This is some funky typescript to help us flip the type `SpacingUnitDSValueNumber` to negative numbers.
-type ParseNumber<T extends `-${number}`> = T extends any
-  ? T extends `${infer Digit extends number}`
-    ? Digit
-    : never
-  : never
+type Neg<T extends number> = T extends 0
+  ? 0
+  : `-${T}` extends `${infer U extends number}`
+  ? U
+  : `${T}` extends `-${infer U extends number}`
+  ? U
+  : Extract<[1e999, -1e999] | [-1e999, 1e999] | [0, 0], [T, unknown]> extends [T, infer U]
+  ? U
+  : T
