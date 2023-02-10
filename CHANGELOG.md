@@ -1,3 +1,19 @@
+# v8.2.0 (Fri Feb 10 2023)
+
+#### 🚀  Enhancement
+
+- feat: typescript magic, allowing negative DS values, and 0 and auto [#53](https://github.com/artsy/palette-mobile/pull/53) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- Update .autorc ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.1.0 (Thu Feb 09 2023)
 
 #### 🚀 Enhancement
