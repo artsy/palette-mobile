@@ -209,3 +209,10 @@ export const Playground = () => {
     </>
   )
 }
+
+export const SpacingAround = () => (
+  <Box>
+    <Button m={2}>wow 1</Button>
+    <Button>wow 2</Button>
+  </Box>
+)
