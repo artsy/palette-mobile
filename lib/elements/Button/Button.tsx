@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
@@ -80,6 +80,12 @@ export const Button = ({
   const disabled = useSharedValue<0 | 1>(!!disabledProp ? 1 : 0)
   const loading = useSharedValue<0 | 1>(!!loadingProp ? 1 : 0)
   const pressed = useSharedValue<0 | 1>(!!testOnly_pressed ? 1 : 0)
+
+  useEffect(() => {
+    disabled.value = disabledProp ? 1 : 0
+    loading.value = loadingProp ? 1 : 0
+    pressed.value = testOnly_pressed ? 1 : 0
+  }, [disabledProp, loadingProp, testOnly_pressed])
 
   const color = useColor()
 
@@ -175,18 +181,15 @@ export const Button = ({
       testID={testID}
       testOnly_pressed={testOnly_pressed}
     >
-      <Flex {...restProps}>
-        <Animated.View
-          style={[
-            {
-              height: height,
-              width: block ? "100%" : undefined,
-              borderWidth: 1,
-              borderRadius: 50,
-            },
-            containerColorsAnim,
-          ]}
-        >
+      <Flex
+        {...restProps}
+        height={height}
+        width={block ? "100%" : undefined}
+        borderWidth={1}
+        borderRadius={50}
+        overflow="hidden"
+      >
+        <Animated.View style={containerColorsAnim}>
           <Flex
             height="100%"
             mx="25px"
