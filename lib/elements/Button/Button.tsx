@@ -185,11 +185,12 @@ export const Button = ({
         {...restProps}
         height={height}
         width={block ? "100%" : undefined}
-        borderWidth={1}
         borderRadius={50}
         overflow="hidden"
       >
-        <Animated.View style={containerColorsAnim}>
+        <Animated.View
+          style={[{ borderWidth: 1, borderRadius: 50, overflow: "hidden" }, containerColorsAnim]}
+        >
           <Flex
             height="100%"
             mx="25px"
