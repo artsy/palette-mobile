@@ -42,6 +42,7 @@ const getStories = () => {
     require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
     require("../lib/elements/Touchable/Touchable.stories.tsx"),
     require("../lib/molecules/MenuItem.stories.tsx"),
+    require("../lib/space.stories.tsx"),
     require("../lib/svgs/icons.stories.tsx"),
   ]
 }

@@ -33,7 +33,6 @@
     "events": "^3.3.0",
     "lodash": "^4.17.21",
     "react-nanny": "^2.15.0",
-    "styled-components": "^5.3.6",
     "styled-system": "^5.1.5"
   },
   "peerDependenciesComments": [
@@ -45,7 +44,8 @@
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "styled-components": ">= 5"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
@@ -102,6 +102,7 @@
     "react-test-renderer": "18.2.0",
     "rimraf": "4.1.2",
     "rn-flipper-async-storage-advanced": "1.0.4",
+    "styled-components": "^5.3.6",
     "typescript": "4.9.5"
   },
   "files": [

@@ -1,5 +1,7 @@
+import { useRef } from "react"
+import { View } from "react-native"
 import { List } from "../../storybookHelpers"
-import { Box } from "../Box"
+import { Box, BoxProps } from "../Box"
 
 export default {
   title: "Box",
@@ -26,3 +28,15 @@ export const Styled = () => (
     />
   </List>
 )
+
+export const RegularViewProps = () => {
+  const r = useRef<View>(null)
+  return (
+    <Box
+      px={1}
+      backgroundColor="red100"
+      onLayout={(e) => console.log(e.nativeEvent.layout)}
+      ref={r}
+    />
+  )
+}
