@@ -1,3 +1,27 @@
+# v8.1.1 (Mon Feb 13 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Kizito Egeonu ([@lordkiz](https://github.com/lordkiz)), for all your work!
+
+#### 🐛 Bug Fix
+
+- Add MoneyCircleIcon and WorldGlobeCircleIcon [#56](https://github.com/artsy/palette-mobile/pull/56) ([@lordkiz](https://github.com/lordkiz) [@pvinis](https://github.com/pvinis))
+- fix: button spacing [#55](https://github.com/artsy/palette-mobile/pull/55) ([@pvinis](https://github.com/pvinis))
+- fix: Flex can now have ref without type errors [#54](https://github.com/artsy/palette-mobile/pull/54) ([@pvinis](https://github.com/pvinis))
+- feat: typescript magic, allowing negative DS values, and 0 and auto [#53](https://github.com/artsy/palette-mobile/pull/53) ([@pvinis](https://github.com/pvinis))
+
+#### ⚠️ Pushed to `main`
+
+- Update .autorc ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 2
+
+- Kizito Egeonu ([@lordkiz](https://github.com/lordkiz))
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.2.0 (Mon Feb 13 2023)
 
 #### 🚀  Enhancement
