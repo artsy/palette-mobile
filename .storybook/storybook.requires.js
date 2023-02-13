@@ -6,25 +6,24 @@ import {
   addParameters,
   addArgsEnhancer,
   clearDecorators,
-} from "@storybook/react-native"
+} from "@storybook/react-native";
 
-import { decorators, parameters } from "./preview"
+import { decorators, parameters } from "./preview";
 
 if (decorators) {
   if (__DEV__) {
     // stops the warning from showing on every HMR
     require("react-native").LogBox.ignoreLogs([
       "`clearDecorators` is deprecated and will be removed in Storybook 7.0",
-      'Each child in a list should have a unique "key" prop.',
-    ])
+    ]);
   }
   // workaround for global decorators getting infinitely applied on HMR, see https://github.com/storybookjs/react-native/issues/185
-  clearDecorators()
-  decorators.forEach((decorator) => addDecorator(decorator))
+  clearDecorators();
+  decorators.forEach((decorator) => addDecorator(decorator));
 }
 
 if (parameters) {
-  addParameters(parameters)
+  addParameters(parameters);
 }
 
 const getStories = () => {
@@ -44,7 +43,7 @@ const getStories = () => {
     require("../lib/molecules/MenuItem.stories.tsx"),
     require("../lib/space.stories.tsx"),
     require("../lib/svgs/icons.stories.tsx"),
-  ]
-}
+  ];
+};
 
-configure(getStories, module, false)
+configure(getStories, module, false);

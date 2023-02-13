@@ -175,78 +175,79 @@ export const Button = ({
       testID={testID}
       testOnly_pressed={testOnly_pressed}
     >
-      <Animated.View
-        {...restProps}
-        style={[
-          {
-            height: height,
-            width: block ? "100%" : undefined,
-            borderWidth: 1,
-            borderRadius: 50,
-          },
-          containerColorsAnim,
-        ]}
-      >
-        <Flex
-          height="100%"
-          mx="25px"
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="center"
+      <Flex {...restProps}>
+        <Animated.View
+          style={[
+            {
+              height: height,
+              width: block ? "100%" : undefined,
+              borderWidth: 1,
+              borderRadius: 50,
+            },
+            containerColorsAnim,
+          ]}
         >
-          {iconPosition === "left-start" && !!icon ? (
-            <Box position="absolute" left={0}>
-              {icon}
-              <Spacer x={0.5} />
-            </Box>
-          ) : null}
-
-          {iconPosition === "left" && !!icon ? (
-            <>
-              {icon}
-              <Spacer x={0.5} />
-            </>
-          ) : null}
-
-          <AText
-            style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
-            textAlign="center"
+          <Flex
+            height="100%"
+            mx="25px"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
           >
-            {children}
-          </AText>
+            {iconPosition === "left-start" && !!icon ? (
+              <Box position="absolute" left={0}>
+                {icon}
+                <Spacer x={0.5} />
+              </Box>
+            ) : null}
 
-          {/* This makes sure that in testing environment the button text is
-              not rendered twice, in normal environment this is not visible.
-              This will result in us being able to use getByText over
-              getAllByText()[0] to select the buttons in the test environment. */}
-          {!__TEST__ && (
-            <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-              <Text color="red" style={textStyle}>
-                {longestText ? longestText : children}
-              </Text>
-            </MeasuredView>
-          )}
+            {iconPosition === "left" && !!icon ? (
+              <>
+                {icon}
+                <Spacer x={0.5} />
+              </>
+            ) : null}
 
-          {iconPosition === "right" && !!icon ? (
-            <>
-              <Spacer x={0.5} />
-              {icon}
-            </>
-          ) : null}
-
-          {loading.value === 1 ? (
-            <Box
-              position="absolute"
-              width="100%"
-              height="100%"
-              alignItems="center"
-              justifyContent="center"
+            <AText
+              style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
+              textAlign="center"
             >
-              <Spinner size={size} color={spinnerColor} />
-            </Box>
-          ) : null}
-        </Flex>
-      </Animated.View>
+              {children}
+            </AText>
+
+            {/* This makes sure that in testing environment the button text is
+                not rendered twice, in normal environment this is not visible.
+                This will result in us being able to use getByText over
+                getAllByText()[0] to select the buttons in the test environment. */}
+            {!__TEST__ && (
+              <MeasuredView setMeasuredState={setLongestTextMeasurements}>
+                <Text color="red" style={textStyle}>
+                  {longestText ? longestText : children}
+                </Text>
+              </MeasuredView>
+            )}
+
+            {iconPosition === "right" && !!icon ? (
+              <>
+                <Spacer x={0.5} />
+                {icon}
+              </>
+            ) : null}
+
+            {loading.value === 1 ? (
+              <Box
+                position="absolute"
+                width="100%"
+                height="100%"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Spinner size={size} color={spinnerColor} />
+              </Box>
+            ) : null}
+          </Flex>
+        </Animated.View>
+      </Flex>
     </Pressable>
   )
 }
