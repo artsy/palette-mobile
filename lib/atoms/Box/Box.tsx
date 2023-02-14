@@ -40,4 +40,3 @@ export const Box = styled(View)<BoxProps>`
   ${border}
   ${textAlign}
 `
-Box.displayName = "Box"
