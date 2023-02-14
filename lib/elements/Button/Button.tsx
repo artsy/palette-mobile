@@ -145,18 +145,12 @@ export const Button = ({
 
       const states = colorsForVariantAndState[variant]
       const colors =
-        disabledVal === 1
-          ? states.disabled
-          : loadingVal === 1
-          ? states.loading
-          : pressedVal === 1
-          ? states.pressed
-          : states.active
+        disabledVal === 1 ? states.disabled : pressedVal === 1 ? states.pressed : states.active
       const { bg, border, text } = colors
 
       bgColor.value = toColor(bg)
       borderColor.value = toColor(border)
-      textColor.value = toColor(text)
+      textColor.value = loadingVal === 1 ? "rgba(0, 0, 0, 0)" : text
       underline.value = pressedVal
     },
     [variant]
@@ -237,19 +231,19 @@ export const Button = ({
                 {icon}
               </>
             ) : null}
-
-            {loading.value === 1 ? (
-              <Box
-                position="absolute"
-                width="100%"
-                height="100%"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Spinner size={size} color={spinnerColor} />
-              </Box>
-            ) : null}
           </Flex>
+
+          {loading.value === 1 ? (
+            <Box
+              position="absolute"
+              width="100%"
+              height="100%"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Spinner size={size} color={spinnerColor} />
+            </Box>
+          ) : null}
         </Animated.View>
       </Flex>
     </Pressable>
