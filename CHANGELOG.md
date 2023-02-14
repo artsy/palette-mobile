@@ -1,3 +1,15 @@
+# v8.7.4 (Tue Feb 14 2023)
+
+#### 🐛 Bug Fix
+
+- fix: remove displaynames [#58](https://github.com/artsy/palette-mobile/pull/58) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.7.3 (Tue Feb 14 2023)
 
 #### ⚠️ Pushed to `main`
