@@ -400,4 +400,3 @@ const StyledInput = styled(TextInput)`
   padding: ${themeGet("space.1")};
   font-family: ${themeGet("fonts.sans.regular")};
 `
-StyledInput.displayName = "StyledInput"

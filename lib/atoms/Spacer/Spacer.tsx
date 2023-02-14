@@ -10,4 +10,3 @@ export interface SpacerProps {
  * Used to inject space where it's needed.
  */
 export const Spacer = ({ x, y, ...props }: SpacerProps) => <Box ml={x} mt={y} {...props} />
-Spacer.displayName = "Spacer"

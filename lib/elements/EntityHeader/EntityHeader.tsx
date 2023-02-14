@@ -83,5 +83,3 @@ export const EntityHeader = ({
     </Flex>
   )
 }
-
-EntityHeader.displayName = "EntityHeader"
