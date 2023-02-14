@@ -136,6 +136,9 @@ export const Miscellaneous = () => (
     <Button loading disabled>
       loading and disabled
     </Button>
+    <Button loading disabled icon={<LinkIcon />}>
+      loading and disabled with icon
+    </Button>
     <Button block>block</Button>
     <Flex
       backgroundColor="orange"

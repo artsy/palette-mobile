@@ -1,7 +1,7 @@
 import { ButtonProps, useColor } from "../.."
 import { NoUndefined } from "../../utils/types"
 
-type State = "disabled" | "loading" | "pressed" | "active"
+type State = "disabled" | "pressed" | "active"
 
 export const useColorsForVariantAndState = (): Record<
   NoUndefined<ButtonProps["variant"]>,
@@ -12,13 +12,11 @@ export const useColorsForVariantAndState = (): Record<
   return {
     fillDark: {
       disabled: { bg: color("black30"), border: color("black30"), text: color("onPrimaryHigh") },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("onPrimaryHigh") },
       active: { bg: color("primary"), border: color("primary"), text: color("onPrimaryHigh") },
     },
     fillLight: {
       disabled: { bg: color("black30"), border: color("black30"), text: color("onPrimaryHigh") },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("onPrimaryHigh") },
       active: {
         bg: color("white100"),
@@ -28,13 +26,11 @@ export const useColorsForVariantAndState = (): Record<
     },
     fillGray: {
       disabled: { bg: color("black30"), border: color("black30"), text: color("white100") },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: { bg: color("black10"), border: color("black10"), text: color("black100") },
     },
     fillSuccess: {
       disabled: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: { bg: color("blue10"), border: color("blue10"), text: color("white100") },
     },
@@ -44,7 +40,6 @@ export const useColorsForVariantAndState = (): Record<
         border: color("onBackgroundLow"),
         text: color("onBackgroundLow"),
       },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
         bg: color("background"),
@@ -58,7 +53,6 @@ export const useColorsForVariantAndState = (): Record<
         border: color("black30"),
         text: color("black30"),
       },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
         bg: color("white100"),
@@ -72,7 +66,6 @@ export const useColorsForVariantAndState = (): Record<
         border: color("black30"),
         text: color("black30"),
       },
-      loading: { bg: color("blue100"), border: color("blue100"), text: "transparent" },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
         bg: "rgba(0, 0, 0, 0)",
@@ -82,7 +75,6 @@ export const useColorsForVariantAndState = (): Record<
     },
     text: {
       disabled: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("black30") },
-      loading: { bg: color("black10"), border: color("black10"), text: "transparent" },
       pressed: { bg: color("black10"), border: color("black10"), text: color("blue100") },
       active: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("black100") },
     },
