@@ -1,3 +1,15 @@
+# v8.7.2 (Tue Feb 14 2023)
+
+#### 🐛 Bug Fix
+
+- fix: loading and disabled, and reanim debump [#57](https://github.com/artsy/palette-mobile/pull/57) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.1.1 (Mon Feb 13 2023)
 
 :tada: This release contains work from a new contributor! :tada:
