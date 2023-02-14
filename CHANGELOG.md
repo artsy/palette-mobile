@@ -1,3 +1,15 @@
+# v8.7.3 (Tue Feb 14 2023)
+
+#### ⚠️ Pushed to `main`
+
+- hm ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.7.2 (Tue Feb 14 2023)
 
 #### 🐛 Bug Fix
