@@ -7,10 +7,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { useColor, Box, BoxProps, Flex, Spacer } from "../.."
+import { Spinner, Box, BoxProps, Flex, Spacer, Text, useTextStyleForPalette } from "../.."
 import { MeasuredView, ViewMeasurements } from "../../utils/MeasuredView"
-import { Spinner } from "../Spinner"
-import { Text, useTextStyleForPalette } from "../Text"
 import { useColorsForVariantAndState } from "./colors"
 
 type ButtonSize = "small" | "large"
@@ -70,7 +68,6 @@ export const Button = ({
   longestText,
   onPress,
   size = "large",
-  style,
   variant = "fillDark",
   testOnly_pressed,
   testID,
@@ -86,8 +83,6 @@ export const Button = ({
     loading.value = loadingProp ? 1 : 0
     pressed.value = testOnly_pressed ? 1 : 0
   }, [disabledProp, loadingProp, testOnly_pressed])
-
-  const color = useColor()
 
   const textStyle = useTextStyleForPalette(size === "small" ? "xs" : "sm")
   const [longestTextMeasurements, setLongestTextMeasurements] = useState<ViewMeasurements>({
