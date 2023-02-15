@@ -1,3 +1,15 @@
+# v9.0.0 (Wed Feb 15 2023)
+
+#### 💥 Breaking Change
+
+- fix: button block and animations [#60](https://github.com/artsy/palette-mobile/pull/60) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.7.5 (Wed Feb 15 2023)
 
 ### Release Notes
