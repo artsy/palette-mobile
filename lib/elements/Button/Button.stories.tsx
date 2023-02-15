@@ -204,7 +204,12 @@ export const Playground = () => {
       <RNButton title="disabled" onPress={() => setDisabled((v) => !v)} />
       <RNButton title="block" onPress={() => setBlock((v) => !v)} />
       <List>
-        <Button loading={loading} disabled={disabled} block={block}>
+        <Button
+          loading={loading}
+          disabled={disabled}
+          block={block}
+          longestText="loading false, disabled false, block false"
+        >
           loading {loading ? "true" : "false"}, disabled {disabled ? "true" : "false"}, block{" "}
           {block ? "true" : "false"}
         </Button>
