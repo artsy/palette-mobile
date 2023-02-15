@@ -1,7 +1,7 @@
 /**
  * All of the config for the Artsy theming system, based on the
  * design system from our design team:
- * https://www.notion.so/artsy/Master-Library-810612339f474d0997fe359af4285c56
+ * https://www.figma.com/file/gZNkyqLT8AU3T61tluVJyB/Artsy-3.1-Design-System
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
