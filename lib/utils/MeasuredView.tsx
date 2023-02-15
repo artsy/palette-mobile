@@ -17,6 +17,7 @@ interface Props {
 
 /**
  * A view that renders off-screen, measures the width and height of the view, and reports it back.
+ * Note: it is rendering just null when in test mode.
  */
 export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
   const offscreenStyle = useOffscreenStyle(show)
@@ -24,8 +25,15 @@ export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
     setMeasuredState(event.nativeEvent.layout)
   }, [])
 
+  if (__TEST__) return null
+
   return (
-    <Box style={offscreenStyle} backgroundColor="pink" onLayout={onLayout}>
+    <Box
+      style={offscreenStyle}
+      backgroundColor="pink"
+      onLayout={onLayout}
+      accessibilityElementsHidden
+    >
       {children}
     </Box>
   )

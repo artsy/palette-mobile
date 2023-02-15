@@ -2,14 +2,22 @@ import { useEffect, useState } from "react"
 import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
+  interpolateColor,
   useAnimatedReaction,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { Spinner, Box, BoxProps, Flex, Spacer, Text, useTextStyleForPalette } from "../.."
+import { Spacer } from "../../atoms/Spacer"
+import { Box, BoxProps } from "../../atoms/Box"
+import { Flex } from "../../atoms/Flex"
 import { MeasuredView, ViewMeasurements } from "../../utils/MeasuredView"
+import { Text, useTextStyleForPalette } from "../Text"
 import { useColorsForVariantAndState } from "./colors"
+import { Spinner } from "../Spinner"
+
+const ANIMATION_DURATION = 150
 
 type ButtonSize = "small" | "large"
 type ButtonVariant =
@@ -73,16 +81,17 @@ export const Button = ({
   testID,
   ...restProps
 }: ButtonProps) => {
-  // these are basically booleans
-  const disabled = useSharedValue<0 | 1>(!!disabledProp ? 1 : 0)
-  const loading = useSharedValue<0 | 1>(!!loadingProp ? 1 : 0)
-  const pressed = useSharedValue<0 | 1>(!!testOnly_pressed ? 1 : 0)
+  const [disabled, setDisabled, disabledV] = useStateWithProp(!!disabledProp)
+  const [loading, setLoading, loadingV] = useStateWithProp(!!loadingProp)
+  const [pressed, setPressed, pressedV] = useStateWithProp(!!testOnly_pressed)
 
-  useEffect(() => {
-    disabled.value = disabledProp ? 1 : 0
-    loading.value = loadingProp ? 1 : 0
-    pressed.value = testOnly_pressed ? 1 : 0
-  }, [disabledProp, loadingProp, testOnly_pressed])
+  const pressAnimationProgress = useSharedValue(0)
+  useAnimatedReaction(
+    () => pressedV.value,
+    (pressedVal) => {
+      pressAnimationProgress.value = withTiming(pressedVal, { duration: ANIMATION_DURATION })
+    }
+  )
 
   const textStyle = useTextStyleForPalette(size === "small" ? "xs" : "sm")
   const [longestTextMeasurements, setLongestTextMeasurements] = useState<ViewMeasurements>({
@@ -106,7 +115,7 @@ export const Button = ({
       return
     }
 
-    if (disabled.value === 1 || loading.value === 1) {
+    if (disabled || loading) {
       return
     }
 
@@ -117,132 +126,148 @@ export const Button = ({
     onPress(event)
   }
 
-  const bgColor = useSharedValue("black")
-  const borderColor = useSharedValue("black")
-  const containerColorsAnim = useAnimatedStyle(() => ({
-    backgroundColor: bgColor.value,
-    borderColor: borderColor.value,
-  }))
-
-  const textColor = useSharedValue("black")
-  const underline = useSharedValue<0 | 1>(0)
-  const textAnim = useAnimatedStyle(() => ({
-    color: textColor.value,
-    textDecorationLine: underline.value === 1 ? "underline" : "none",
-  }))
-
   const colorsForVariantAndState = useColorsForVariantAndState()
 
-  useAnimatedReaction(
-    () => [disabled.value, loading.value, pressed.value],
-    ([disabledVal, loadingVal, pressedVal]) => {
-      const toColor = (c: string) => withTiming(c, { duration: 150 })
+  const containerColorsAnim = useAnimatedStyle(() => {
+    const colors = colorsForVariantAndState[variant]
+    if (disabled) {
+      return {
+        backgroundColor: colors.disabled.bg,
+        borderColor: colors.disabled.border,
+      }
+    }
+    return {
+      backgroundColor: interpolateColor(
+        pressAnimationProgress.value,
+        [0, 1],
+        [colors.active.bg, colors.pressed.bg]
+      ),
+      borderColor: interpolateColor(
+        pressAnimationProgress.value,
+        [0, 1],
+        [colors.active.border, colors.pressed.border]
+      ),
+    }
+  })
 
-      const states = colorsForVariantAndState[variant]
-      const colors =
-        disabledVal === 1 ? states.disabled : pressedVal === 1 ? states.pressed : states.active
-      const { bg, border, text } = colors
-
-      bgColor.value = toColor(bg)
-      borderColor.value = toColor(border)
-      textColor.value = loadingVal === 1 ? "rgba(0, 0, 0, 0)" : text
-      underline.value = pressedVal
-    },
-    [variant]
-  )
+  const textAnim = useAnimatedStyle(() => {
+    const colors = colorsForVariantAndState[variant]
+    if (loading) {
+      return { color: "rgba(0, 0, 0, 0)" }
+    }
+    return {
+      color: interpolateColor(
+        pressAnimationProgress.value,
+        [0, 1],
+        [colors.active.text, colors.pressed.text]
+      ),
+      textDecorationLine: pressAnimationProgress.value > 0 ? "underline" : "none",
+    }
+  })
 
   return (
     <Pressable
-      disabled={disabled.value === 1}
+      disabled={disabled}
       onPressIn={() => {
-        if (loading.value === 1) {
+        if (loading) {
           return
         }
-        pressed.value = 1
+        setPressed(true)
       }}
       onPressOut={() => {
-        if (loading.value === 1) {
+        if (loading) {
           return
         }
-        pressed.value = 0
+        setPressed(false)
       }}
       onPress={handlePress}
       testID={testID}
       testOnly_pressed={testOnly_pressed}
     >
-      <Flex
-        {...restProps}
-        height={height}
-        width={block ? "100%" : undefined}
-        borderRadius={50}
-        overflow="hidden"
-      >
-        <Animated.View
-          style={[{ borderWidth: 1, borderRadius: 50, overflow: "hidden" }, containerColorsAnim]}
+      <Flex flexDirection="row">
+        <Flex
+          {...restProps}
+          height={height}
+          width={block ? "100%" : undefined}
+          borderRadius={50}
+          overflow="hidden"
         >
-          <Flex
-            height="100%"
-            mx="25px"
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="center"
-          >
-            {iconPosition === "left-start" && !!icon ? (
-              <Box position="absolute" left={0}>
-                {icon}
-                <Spacer x={0.5} />
-              </Box>
-            ) : null}
-
-            {iconPosition === "left" && !!icon ? (
-              <>
-                {icon}
-                <Spacer x={0.5} />
-              </>
-            ) : null}
-
-            <AText
-              style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
-              textAlign="center"
+          <AFlex borderWidth={1} borderRadius={50} overflow="hidden" style={containerColorsAnim}>
+            <Flex
+              height="100%"
+              mx="25px"
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
             >
-              {children}
-            </AText>
+              {iconPosition === "left-start" && !!icon ? (
+                <Box position="absolute" left={0}>
+                  {icon}
+                  <Spacer x={0.5} />
+                </Box>
+              ) : null}
 
-            {/* This makes sure that in testing environment the button text is
-                not rendered twice, in normal environment this is not visible.
-                This will result in us being able to use getByText over
-                getAllByText()[0] to select the buttons in the test environment. */}
-            {!__TEST__ && (
+              {iconPosition === "left" && !!icon ? (
+                <>
+                  {icon}
+                  <Spacer x={0.5} />
+                </>
+              ) : null}
+
+              <AText
+                style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
+                textAlign="center"
+              >
+                {children}
+              </AText>
+
               <MeasuredView setMeasuredState={setLongestTextMeasurements}>
                 <Text color="red" style={textStyle}>
                   {longestText ? longestText : children}
                 </Text>
               </MeasuredView>
-            )}
 
-            {iconPosition === "right" && !!icon ? (
-              <>
-                <Spacer x={0.5} />
-                {icon}
-              </>
-            ) : null}
-          </Flex>
+              {iconPosition === "right" && !!icon ? (
+                <>
+                  <Spacer x={0.5} />
+                  {icon}
+                </>
+              ) : null}
 
-          {loading.value === 1 ? (
-            <Box
-              position="absolute"
-              width="100%"
-              height="100%"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Spinner size={size} color={spinnerColor} />
-            </Box>
-          ) : null}
-        </Animated.View>
+              {loading ? (
+                <Box
+                  position="absolute"
+                  width="100%"
+                  height="100%"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Spinner size={size} color={spinnerColor} />
+                </Box>
+              ) : null}
+            </Flex>
+          </AFlex>
+        </Flex>
       </Flex>
     </Pressable>
   )
 }
 
 const AText = Animated.createAnimatedComponent(Text)
+const AFlex = Animated.createAnimatedComponent(Flex)
+
+const useStateWithProp = (
+  prop: boolean
+): [
+  boolean,
+  React.Dispatch<React.SetStateAction<boolean>>,
+  Readonly<Animated.SharedValue<1 | 0>>
+] => {
+  const [state, setState] = useState(!!prop)
+  useEffect(() => {
+    setState(!!prop)
+  }, [prop])
+  const stateV = useDerivedValue(() => (!!state ? 1 : 0), [state])
+
+  return [state, setState, stateV]
+}
