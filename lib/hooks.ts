@@ -43,7 +43,7 @@ export const useTheme = (): {
     )
   }
 
-  const defaultTheme = THEMES.v5light
+  const defaultTheme = THEMES.v3light
   const theme = maybeTheme ?? defaultTheme
 
   return {
