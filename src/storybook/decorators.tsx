@@ -7,7 +7,7 @@ import { Appearance } from "react-native"
 import { Flex, Theme, Text, LinkText } from "../../lib"
 
 export const withTheme = (Story) => (
-  <Theme theme="v5light">
+  <Theme theme="v3light">
     <Text color="red">aaww</Text>
     <Story />
   </Theme>
@@ -36,7 +36,7 @@ export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   }, [])
 
   const isDarkMode = mode === "dark" || (mode === "system" && systemMode === "dark")
-  const theme = isDarkMode ? "v5dark" : "v5light"
+  const theme = isDarkMode ? "v3dark" : "v3light"
 
   return (
     <Theme theme={theme}>

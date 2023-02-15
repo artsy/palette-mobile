@@ -163,18 +163,18 @@ export type ThemeV3Type = {
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariantV3, TextTreatment>
 }
-export type ThemeV5Type = {
+export type ThemeV3WithDarkModeSupportType = {
   space: Record<SpacingUnitV3Numbers, `${number}px`>
   colors: Record<ColorStrict, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariantV3, TextTreatment>
 }
-export type AllThemesType = ThemeV3Type & ThemeV5Type
+export type AllThemesType = ThemeV3Type & ThemeV3WithDarkModeSupportType
 
 export const THEMES: {
   v3: ThemeV3Type
-  v5light: ThemeV5Type
-  v5dark: ThemeV5Type
+  v3light: ThemeV3WithDarkModeSupportType
+  v3dark: ThemeV3WithDarkModeSupportType
 } = {
   v3: {
     ...mobileUsefulTHEME_V3,
@@ -190,7 +190,7 @@ export const THEMES: {
     },
     textTreatments: fixTextTreatments(textVariantsWithUnits),
   },
-  get v5light() {
+  get v3light() {
     return {
       ...this.v3,
       colors: {
@@ -218,7 +218,7 @@ export const THEMES: {
       },
     }
   },
-  get v5dark() {
+  get v3dark() {
     return {
       ...this.v3,
       colors: {
