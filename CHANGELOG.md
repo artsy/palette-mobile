@@ -1,3 +1,29 @@
+# v8.7.5 (Wed Feb 15 2023)
+
+### Release Notes
+
+#### feat: less confusing name for darkmode support ([#59](https://github.com/artsy/palette-mobile/pull/59))
+
+Some renames:
+- `v5light` -> `v3light`
+- `v5dark` -> `v3dark`
+
+`v5` was a temporary name, picked to make sure we can try dark mode without messing with v3 (or a potential v4 while we figure stuff out). Now that things are set, we can use `v3` for the non-dark-mode DS, and `v3light` and `v3dark` for v3 with added role name layer (like `background` and `onBackground` etc).
+
+In the future, we will either have a `vX` for a non-dark-mode and `vXlight` and `vXdark`, or if the design team decides to incorporate dark mode, then we will only have a `vXlight` and `vXdark`.
+
+---
+
+#### 🐛 Bug Fix
+
+- feat: less confusing name for darkmode support [#59](https://github.com/artsy/palette-mobile/pull/59) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v8.7.4 (Tue Feb 14 2023)
 
 #### 🐛 Bug Fix
