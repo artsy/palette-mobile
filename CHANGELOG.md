@@ -1,3 +1,16 @@
+# v10.0.0 (Thu Feb 16 2023)
+
+#### 💥 Breaking Change
+
+- refactor(palette): Simplify Lib [#62](https://github.com/artsy/palette-mobile/pull/62) ([@damassi](https://github.com/damassi) [@pvinis](https://github.com/pvinis))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v9.0.0 (Wed Feb 15 2023)
 
 #### 💥 Breaking Change
