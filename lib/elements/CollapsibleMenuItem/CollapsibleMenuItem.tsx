@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { LayoutAnimation, View } from "react-native"
-import { Flex } from "../../atoms"
+import { Flex } from "../Flex"
 import { CheckCircleIcon, ChevronIcon } from "../../svgs"
 import { Collapse } from "../Collapse"
 import { Text } from "../Text"

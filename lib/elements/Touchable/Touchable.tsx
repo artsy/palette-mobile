@@ -6,8 +6,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
-import { Flex } from "../../atoms"
-import { useColor } from "../../hooks"
+import { Flex } from "../Flex"
+import { useColor } from "../../utils/hooks"
 
 interface ExtraTouchableProps {
   flex?: number

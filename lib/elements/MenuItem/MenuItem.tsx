@@ -1,7 +1,8 @@
-import { Flex } from "../atoms"
-import { Text, Touchable } from "../elements"
-import { useColor } from "../hooks"
-import { ChevronIcon } from "../svgs"
+import { Flex } from "../Flex"
+import { Text } from "../Text"
+import { ChevronIcon } from "../../svgs"
+import { Touchable } from "../Touchable"
+import { useColor } from "../../utils/hooks"
 
 export interface MenuItemProps {
   disabled?: boolean

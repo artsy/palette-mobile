@@ -1,4 +1,4 @@
-import { bullet, Box, useSpace, Text, SpacingUnitDSValueNumber } from "."
+import { bullet, Box, useSpace, Text, SpacingUnitDSValueNumber } from "../../"
 import { List } from "./storybookHelpers"
 
 const SpaceLine = ({ space: theSpace }: { space: SpacingUnitDSValueNumber }) => {

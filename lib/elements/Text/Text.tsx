@@ -1,3 +1,4 @@
+import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { forwardRef, Ref } from "react"
 import { StyleProp, TextStyle } from "react-native"
 import { Text as RNText, TextProps as RNTextProps } from "react-native"
@@ -13,12 +14,12 @@ import {
   TypographyProps,
 } from "styled-system"
 import { useTheme } from "../.."
-import { TextTreatment, TextTreatmentWithUnits, TextVariantV3 } from "../../tokens"
+import { TextTreatmentWithoutUnits } from "../../utils/webTokensToMobile"
 import { useFontFamilyFor } from "./helpers"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {
   children?: React.ReactNode
-  variant?: TextVariantV3
+  variant?: TextVariant
   italic?: boolean
   caps?: boolean
   weight?: "regular" | "medium"
@@ -65,7 +66,7 @@ export const Text = forwardRef(
   }
 )
 
-const fixTextTreatmentForStyledComponent = (treatment: TextTreatment) => {
+const fixTextTreatmentForStyledComponent = (treatment: TextTreatmentWithoutUnits) => {
   const treatmentWithUnits = { ...treatment } as any
 
   // if (treatment.fontSize !== undefined) {

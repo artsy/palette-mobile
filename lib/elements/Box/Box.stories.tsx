@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { View } from "react-native"
-import { List } from "../../storybookHelpers"
+import { List } from "../../storybook/storybookHelpers"
 import { Box, BoxProps } from "../Box"
 
 export default {
@@ -11,19 +11,12 @@ export default {
 export const Styled = () => (
   <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
     <Box
-      // SpaceProps
       px={1}
-      // ColorProps
       backgroundColor="blue100"
-      // FlexboxProps
       flexDirection="row"
-      // LayoutProps
       height={30}
-      // PositionProps
       top={2}
-      // BorderProps
       borderBottomWidth={1}
-      // TextAlignProps
       textAlign="center"
     />
   </List>

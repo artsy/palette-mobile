@@ -1,5 +1,5 @@
-import { Flex, Spacer } from "../../atoms"
-import { List } from "../../storybookHelpers"
+import { Flex, Spacer } from "../.."
+import { List } from "../../storybook/storybookHelpers"
 import { Skeleton, SkeletonBox, SkeletonText } from "./Skeleton"
 import { Join } from "../Join"
 import { range } from "lodash"

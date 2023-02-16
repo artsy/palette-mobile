@@ -1,6 +1,6 @@
-import { Flex, FlexProps } from "../../atoms"
+import { Flex, FlexProps } from "../Flex"
 import { Text, TextProps } from "../Text"
-import { useColor } from "../../hooks"
+import { useColor } from "../../utils/hooks"
 import { FC, ReactNode } from "react"
 import Animated, {
   Easing,

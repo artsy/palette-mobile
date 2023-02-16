@@ -1,5 +1,5 @@
 import { G, Icon, IconProps, Path } from "./Icon"
-import { useColor } from "../hooks"
+import { useColor } from "../utils/hooks"
 
 interface ArtsyLogoBlackIconProps extends Omit<IconProps, "width" | "height"> {
   scale?: number

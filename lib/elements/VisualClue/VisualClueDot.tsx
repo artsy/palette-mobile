@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { Animated } from "react-native"
-import { Flex } from "../../atoms"
-import { useColor } from "../../hooks"
+import { Flex } from "../Flex"
+import { useColor } from "../../utils/hooks"
 
 const DOT_DIAMETER = 6
 const ANIMATION_DURATION = 1600

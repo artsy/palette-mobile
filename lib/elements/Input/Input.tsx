@@ -14,14 +14,14 @@ import {
 import styled from "styled-components/native"
 import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { InputTitle } from "./InputTitle"
-import { Flex } from "../../atoms"
+import { Flex } from "../Flex"
 import { useTheme } from "../.."
 import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Spinner } from "../Spinner"
-import { MeasuredView } from "../../utils/MeasuredView"
+import { MeasuredView } from "../../elements/MeasuredView"
 import { isArray, isString } from "lodash"
-import { Color } from "../../tokens"
+import { Color } from "../../types"
 
 const DEFAULT_FONT_SIZE = 16
 export const INPUT_HEIGHT = 50
