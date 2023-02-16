@@ -1,12 +1,11 @@
-import { useContext } from "react"
 import { isString } from "lodash"
-import { ThemeContext, ThemeProvider } from "styled-components/native"
-import { Themes, ThemeType, ThemeWithDarkModeType, THEMES } from "./tokens"
+import { ThemeProvider } from "styled-components/native"
+import { ThemeType, ThemeWithDarkModeType, THEMES } from "./tokens"
 
 type ThemeOptions = keyof typeof THEMES
 
 interface ThemeProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   theme?: ThemeOptions
 }
 
@@ -16,12 +15,7 @@ export const Theme: React.FC<ThemeProps> = ({ children, theme = "v3light" }) => 
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
 }
 
-
 const getTheme = (theme: ThemeOptions): ThemeType | ThemeWithDarkModeType => {
-  if (!isString(theme)) {
-    return theme
-  }
-
   if (theme === "v3light") {
     return THEMES.v3light
   }
@@ -30,7 +24,7 @@ const getTheme = (theme: ThemeOptions): ThemeType | ThemeWithDarkModeType => {
     return THEMES.v3dark
   }
 
-  return THEMES.v3
+  return THEMES.v3light
 }
 
 /**

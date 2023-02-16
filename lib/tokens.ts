@@ -27,7 +27,7 @@ export interface ThemeWithDarkModeType extends ThemeType {
   colors: Record<ColorDSValue, string>
 }
 
-export type Themes = ThemeType & ThemeWithDarkModeType
+export type AllThemesType = ThemeType & ThemeWithDarkModeType
 
 // These are for styled-system
 export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
