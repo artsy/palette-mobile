@@ -1,4 +1,4 @@
-import { Flex, Box } from "../../atoms"
+import { Flex, Box } from "../.."
 
 const BAR_WIDTH = 2
 const BAR_ROUNDNESS = 10

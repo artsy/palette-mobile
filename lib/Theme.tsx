@@ -1,31 +1,30 @@
-import { useContext } from "react"
 import { isString } from "lodash"
-import { ThemeContext, ThemeProvider } from "styled-components/native"
-import { AllThemesType, ThemeV3Type, ThemeV3WithDarkModeSupportType, THEMES } from "./tokens"
+import { ThemeProvider } from "styled-components/native"
+import { ThemeType, ThemeWithDarkModeType, THEMES } from "./tokens"
 
-const figureOutTheme = (
-  theme: keyof typeof THEMES | AllThemesType
-): ThemeV3Type | ThemeV3WithDarkModeSupportType => {
-  if (!isString(theme)) {
-    return theme
-  }
+type ThemeOptions = keyof typeof THEMES
 
-  if (theme === "v3light") return THEMES.v3light
-
-  if (theme === "v3dark") return THEMES.v3dark
-
-  return THEMES.v3
+interface ThemeProps {
+  children?: React.ReactNode
+  theme?: ThemeOptions
 }
 
-export const Theme = ({
-  children,
-  theme = "v3light",
-}: {
-  children?: React.ReactNode
-  theme?: keyof typeof THEMES | AllThemesType
-}) => {
-  const actualTheme = figureOutTheme(theme)
-  return <ThemeProvider theme={actualTheme}>{children}</ThemeProvider>
+export const Theme: React.FC<ThemeProps> = ({ children, theme = "v3light" }) => {
+  const currentTheme = getTheme(theme)
+
+  return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
+}
+
+const getTheme = (theme: ThemeOptions): ThemeType | ThemeWithDarkModeType => {
+  if (theme === "v3light") {
+    return THEMES.v3light
+  }
+
+  if (theme === "v3dark") {
+    return THEMES.v3dark
+  }
+
+  return THEMES.v3light
 }
 
 /**

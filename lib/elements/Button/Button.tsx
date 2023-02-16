@@ -9,10 +9,10 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { Spacer } from "../../atoms/Spacer"
-import { Box, BoxProps } from "../../atoms/Box"
-import { Flex } from "../../atoms/Flex"
-import { MeasuredView, ViewMeasurements } from "../../utils/MeasuredView"
+import { Spacer } from "../Spacer"
+import { Box, BoxProps } from "../Box"
+import { Flex } from "../Flex"
+import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
 import { Text, useTextStyleForPalette } from "../Text"
 import { useColorsForVariantAndState } from "./colors"
 import { Spinner } from "../Spinner"

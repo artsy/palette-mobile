@@ -5,76 +5,41 @@
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
-import { mapValues } from "lodash"
-import { SpacingUnit as SpacingUnitV3Numbers } from "@artsy/palette-tokens/dist/themes/v3"
+import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
+import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
+import { Color, ColorDSValue, ColorLayerName, ColorLayerRole, SpacingUnit } from "./types"
 import {
-  TextTreatment as TextTreatmentWithUnits,
-  TextVariant as TextVariantV3,
-} from "@artsy/palette-tokens/dist/typography/v3"
+  convertWebSpacingUnitsToMobile,
+  convertWebTextTreatmentsToMobile,
+  TextTreatmentWithoutUnits,
+} from "./utils/webTokensToMobile"
 
-export type { TextTreatmentWithUnits }
+const { textVariants, space, colors, fonts } = THEME_V3
 
-const {
-  breakpoints: _mobileDoesntCareAboutBreakpoints,
-  mediaQueries: _mobileDoesntCareAboutMediaQueries,
-  grid: _mobileDoesntCareAboutGrid,
-  textVariants: textVariantsWithUnits,
-  space: spaceNumbers,
-  ...mobileUsefulTHEME_V3
-} = THEME_V3
-
-export type SpacingUnitPixelValue = `${number}px` & {} // for things like `12px`
-export type SpacingUnitDSValueNumber = SpacingUnitV3Numbers
-export type SpacingUnitDSValueNumberNegative = Neg<SpacingUnitDSValueNumber>
-export type SpacingUnitDSValue = SpacingUnitDSValueNumber | SpacingUnitDSValueNumberNegative
-type SpacingUnitSpecialValue = 0 | "0px" | "auto"
-
-export type SpacingUnit = SpacingUnitDSValue | SpacingUnitPixelValue | SpacingUnitSpecialValue
-
-// this function is converting the space values that come from palette-tokens
-// from a string `"120px"` to a number `120`, and the key values
-// from a number `0.5` to a string `"0.5"`.
-const fixSpaceUnitsV3 = (
-  withUnits: typeof spaceNumbers
-): Record<SpacingUnitV3Numbers, SpacingUnitPixelValue> => {
-  return withUnits as Record<SpacingUnitV3Numbers, SpacingUnitPixelValue>
+export interface ThemeType {
+  space: Record<SpacingUnitNumbers, `${number}px`>
+  colors: Record<ColorLayerName, string>
+  fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
+  textTreatments: Record<TextVariant, TextTreatmentWithoutUnits>
 }
 
-export type ColorCssString = string & {} // just an open rule here to allow for css names and other things for now
+export interface ThemeWithDarkModeType extends ThemeType {
+  colors: Record<ColorDSValue, string>
+}
 
-// we love our old purple, great color for our dev stuff nowadays!
-type ColorDevPurple = "devpurple"
+export type AllThemesType = ThemeType & ThemeWithDarkModeType
 
-export const NAMED_LAYER_NAMES = [
-  "black100",
-  "black60",
-  "black30",
-  "black15",
-  "black10",
-  "black5",
-  "white100",
-  "blue150",
-  "blue100",
-  "blue10",
-  "green150",
-  "green100",
-  "green10",
-  "yellow150",
-  "yellow100",
-  "yellow10",
-  "orange150",
-  "orange100",
-  "orange10",
-  "red150",
-  "red100",
-  "red10",
+// These are for styled-system
+export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
+export type ColorsTheme = { colors: Record<Color, any> }
 
+export const COLOR_LAYER_NAME = {
+  ...colors,
   /** Adding this here for dev usage. Avoid using it for actual components. */
-  "devpurple",
-] as const
-export type ColorNamedLayer = typeof NAMED_LAYER_NAMES[number]
+  devpurple: "#6E1EFF",
+}
 
-export const ROLE_LAYER_NAMES = [
+export const COLOR_LAYER_ROLE = [
   // name: Anything big/surface: background, cards, button fills, etc.
   // onName: Anything small, texts, icons, etc.
   // onNameContrast: Anything small, texts, icons, etc based on contrast.
@@ -99,166 +64,77 @@ export const ROLE_LAYER_NAMES = [
   "brand",
   "onBrand",
 ] as const
-export type ColorRoleLayer = typeof ROLE_LAYER_NAMES[number]
 
-export type ColorStrict = ColorNamedLayer | ColorRoleLayer
-export type Color = ColorNamedLayer | ColorRoleLayer | ColorCssString
-
-export const isUsageLayerName = (name: Color): name is ColorRoleLayer => {
-  return ROLE_LAYER_NAMES.includes(name as any)
+const v3: ThemeType = {
+  space: convertWebSpacingUnitsToMobile(space),
+  colors: COLOR_LAYER_NAME,
+  fonts: {
+    sans: {
+      regular: "Unica77LL-Regular",
+      italic: "Unica77LL-Italic",
+      medium: "Unica77LL-Medium",
+      mediumItalic: "Unica77LL-MediumItalic",
+    },
+  },
+  textTreatments: convertWebTextTreatmentsToMobile(textVariants),
 }
 
-export const isNamedLayerName = (name: Color): name is ColorNamedLayer => {
-  return NAMED_LAYER_NAMES.includes(name as any)
+const v3light: ThemeWithDarkModeType = {
+  ...v3,
+  colors: {
+    ...v3.colors,
+    background: colors.white100,
+    onBackground: colors.black100,
+    onBackgroundHigh: colors.black100,
+    onBackgroundMedium: colors.black60,
+    onBackgroundLow: colors.black30,
+    surface: colors.white100,
+    onSurface: colors.black100,
+    onSurfaceHigh: colors.black100,
+    onSurfaceMedium: colors.black60,
+    onSurfaceLow: colors.black5,
+    primary: colors.black100,
+    onPrimaryHigh: colors.white100,
+    onPrimaryMedium: colors.black5,
+    onPrimaryLow: colors.black5,
+    secondary: colors.black30,
+    onSecondaryHigh: colors.black100,
+    onSecondaryMedium: colors.black60,
+    onSecondaryLow: colors.black60,
+    brand: colors.blue100,
+    onBrand: colors.white100,
+  },
 }
 
-const fixColorV3 = (
-  colors: typeof mobileUsefulTHEME_V3.colors
-): Record<ColorNamedLayer, string> => {
-  const ourColors = {
-    ...colors,
-    devpurple: "#6E1EFF",
-  }
-  return ourColors
+const v3dark: ThemeWithDarkModeType = {
+  ...v3,
+  colors: {
+    ...v3.colors,
+    background: colors.black100,
+    onBackground: colors.white100,
+    onBackgroundHigh: colors.white100,
+    onBackgroundMedium: colors.black30,
+    onBackgroundLow: colors.black60,
+    surface: "#333",
+    onSurface: colors.white100,
+    onSurfaceHigh: colors.white100,
+    onSurfaceMedium: colors.black60,
+    onSurfaceLow: "#555",
+    primary: colors.white100,
+    onPrimaryHigh: colors.black100,
+    onPrimaryMedium: colors.black60,
+    onPrimaryLow: colors.black60,
+    secondary: colors.black60,
+    onSecondaryHigh: colors.white100,
+    onSecondaryMedium: colors.black5,
+    onSecondaryLow: colors.black5,
+    brand: colors.blue100,
+    onBrand: colors.white100,
+  },
 }
-
-type TextTreatmentWithoutUnits = {
-  fontSize: number
-  lineHeight: number
-  letterSpacing?: number
-}
-export type TextTreatment = TextTreatmentWithoutUnits
-// this function is removing the `px` and `em` suffix and making the values into numbers.
-// https://reactnative.dev/docs/text-style-props#letterspacing, fontSize, and lineHeight all take numbers without units.
-const fixTextTreatments = (
-  withUnits: Record<TextVariantV3, TextTreatmentWithUnits>
-): Record<TextVariantV3, TextTreatment> => {
-  const textTreatments = mapValues(withUnits, (treatmentWithUnits) => {
-    const newTreatment = {} as TextTreatment
-    ;(
-      [
-        ["fontSize", "px"],
-        ["lineHeight", "px"],
-        ["letterSpacing", "em"],
-      ] as Array<[keyof TextTreatment, string]>
-    ).forEach(([property, unit]) => {
-      const originalValue = treatmentWithUnits[property]
-      if (originalValue === undefined) {
-        return undefined
-      }
-      const justStringValue = originalValue.split(unit)[0]
-      const numberValue = Number(justStringValue)
-      newTreatment[property] = numberValue
-    })
-    return newTreatment
-  })
-  return textTreatments as any
-}
-
-export type { TextVariantV3 }
-
-export type ThemeV3Type = {
-  space: Record<SpacingUnitV3Numbers, `${number}px`>
-  colors: Record<ColorNamedLayer, string>
-  fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
-  textTreatments: Record<TextVariantV3, TextTreatment>
-}
-export type ThemeV3WithDarkModeSupportType = {
-  space: Record<SpacingUnitV3Numbers, `${number}px`>
-  colors: Record<ColorStrict, string>
-  fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
-  textTreatments: Record<TextVariantV3, TextTreatment>
-}
-export type AllThemesType = ThemeV3Type & ThemeV3WithDarkModeSupportType
 
 export const THEMES: {
-  v3: ThemeV3Type
-  v3light: ThemeV3WithDarkModeSupportType
-  v3dark: ThemeV3WithDarkModeSupportType
-} = {
-  v3: {
-    ...mobileUsefulTHEME_V3,
-    space: fixSpaceUnitsV3(spaceNumbers),
-    colors: fixColorV3(mobileUsefulTHEME_V3.colors),
-    fonts: {
-      sans: {
-        regular: "Unica77LL-Regular",
-        italic: "Unica77LL-Italic",
-        medium: "Unica77LL-Medium",
-        mediumItalic: "Unica77LL-MediumItalic",
-      },
-    },
-    textTreatments: fixTextTreatments(textVariantsWithUnits),
-  },
-  get v3light() {
-    return {
-      ...this.v3,
-      colors: {
-        ...this.v3.colors,
-        background: this.v3.colors.white100,
-        onBackground: this.v3.colors.black100,
-        onBackgroundHigh: this.v3.colors.black100,
-        onBackgroundMedium: this.v3.colors.black60,
-        onBackgroundLow: this.v3.colors.black30,
-        surface: this.v3.colors.white100,
-        onSurface: this.v3.colors.black100,
-        onSurfaceHigh: this.v3.colors.black100,
-        onSurfaceMedium: this.v3.colors.black60,
-        onSurfaceLow: this.v3.colors.black5,
-        primary: this.v3.colors.black100,
-        onPrimaryHigh: this.v3.colors.white100,
-        onPrimaryMedium: this.v3.colors.black5,
-        onPrimaryLow: this.v3.colors.black5,
-        secondary: this.v3.colors.black30,
-        onSecondaryHigh: this.v3.colors.black100,
-        onSecondaryMedium: this.v3.colors.black60,
-        onSecondaryLow: this.v3.colors.black60,
-        brand: this.v3.colors.blue100,
-        onBrand: this.v3.colors.white100,
-      },
-    }
-  },
-  get v3dark() {
-    return {
-      ...this.v3,
-      colors: {
-        ...this.v3.colors,
-        background: this.v3.colors.black100,
-        onBackground: this.v3.colors.white100,
-        onBackgroundHigh: this.v3.colors.white100,
-        onBackgroundMedium: this.v3.colors.black30,
-        onBackgroundLow: this.v3.colors.black60,
-        surface: "#333",
-        onSurface: this.v3.colors.white100,
-        onSurfaceHigh: this.v3.colors.white100,
-        onSurfaceMedium: this.v3.colors.black60,
-        onSurfaceLow: "#555",
-        primary: this.v3.colors.white100,
-        onPrimaryHigh: this.v3.colors.black100,
-        onPrimaryMedium: this.v3.colors.black60,
-        onPrimaryLow: this.v3.colors.black60,
-        secondary: this.v3.colors.black60,
-        onSecondaryHigh: this.v3.colors.white100,
-        onSecondaryMedium: this.v3.colors.black5,
-        onSecondaryLow: this.v3.colors.black5,
-        brand: this.v3.colors.blue100,
-        onBrand: this.v3.colors.white100,
-      },
-    }
-  },
-}
-
-// These are for styled-system:
-export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
-export type ColorsTheme = { colors: Record<Color, any> }
-
-// This is some funky typescript to help us flip the type `SpacingUnitDSValueNumber` to negative numbers.
-type Neg<T extends number> = T extends 0
-  ? 0
-  : `-${T}` extends `${infer U extends number}`
-  ? U
-  : `${T}` extends `-${infer U extends number}`
-  ? U
-  : Extract<[1e999, -1e999] | [-1e999, 1e999] | [0, 0], [T, unknown]> extends [T, infer U]
-  ? U
-  : T
+  v3: ThemeType
+  v3light: ThemeWithDarkModeType
+  v3dark: ThemeWithDarkModeType
+} = { v3, v3light, v3dark }

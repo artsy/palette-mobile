@@ -1,5 +1,5 @@
 import { Icon, IconProps, Path } from "./Icon"
-import { useColor } from "../hooks"
+import { useColor } from "../utils/hooks"
 
 export const WorldGlobeCircleIcon = ({ fill, ...restProps }: IconProps) => {
   const color = useColor()

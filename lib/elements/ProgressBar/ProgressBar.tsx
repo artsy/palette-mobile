@@ -1,4 +1,4 @@
-import { Flex } from "../../atoms"
+import { Flex } from "../Flex"
 
 export const ProgressBar: React.FC<{ progress: number }> = ({ progress }) => {
   const progressPercentage = Math.max(progress * 100, 2)

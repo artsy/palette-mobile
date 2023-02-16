@@ -2,9 +2,9 @@ import { useState } from "react"
 import { TouchableOpacity } from "react-native"
 import { LayoutRectangle } from "react-native"
 import { Tab, TabsProps } from "."
-import { Box } from "../../atoms"
+import { Box } from "../.."
 import { CheckIcon, ChevronIcon } from "../../svgs"
-import { useScreenDimensions } from "../../utils/useScreenDimensions"
+import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { TabBarContainer } from "./TabBarContainer"
 
 /**

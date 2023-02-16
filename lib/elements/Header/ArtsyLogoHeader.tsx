@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { Box, Flex, Spacer } from "../../atoms"
+import { Box, Flex, Spacer } from "../.."
 import { ArtsyLogoBlackIcon } from "../../svgs"
 
 interface Props {

@@ -8,9 +8,15 @@ import {
 import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { BackButton, BackButtonWithBackground, Flex, FlexProps, Spacer } from "../../atoms"
-import { SpacingUnit } from "../../tokens"
-import { ArtsyKeyboardAvoidingView } from "../../utils/ArtsyKeyboardAvoidingView"
+import {
+  ArtsyKeyboardAvoidingView,
+  BackButton,
+  BackButtonWithBackground,
+  Flex,
+  FlexProps,
+  Spacer,
+} from ".."
+import { SpacingUnit } from "../../types"
 import { Wrap } from "../../utils/Wrap"
 
 interface ScreenContextState {

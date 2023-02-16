@@ -1,4 +1,4 @@
-import { Spacer } from "../../atoms"
+import { Spacer } from "../.."
 import { Separator } from "./Separator"
 
 export default {

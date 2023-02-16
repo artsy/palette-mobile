@@ -28,21 +28,21 @@ if (parameters) {
 
 const getStories = () => {
   return [
-    require("../lib/atoms/BackButton/BackButton.stories.tsx"),
-    require("../lib/atoms/Box/Box.stories.tsx"),
-    require("../lib/atoms/Spacer/Spacer.stories.tsx"),
-    require("../lib/colors.stories.tsx"),
     require("../lib/elements/Avatar/Avatar.stories.tsx"),
+    require("../lib/elements/BackButton/BackButton.stories.tsx"),
+    require("../lib/elements/Box/Box.stories.tsx"),
     require("../lib/elements/Button/Button.stories.tsx"),
     require("../lib/elements/Checkbox/Checkbox.stories.tsx"),
     require("../lib/elements/Collapse/Collapse.stories.tsx"),
     require("../lib/elements/Input/Input.stories.tsx"),
+    require("../lib/elements/MenuItem/MenuItem.stories.tsx"),
     require("../lib/elements/Separator/Separator.stories.tsx"),
     require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
+    require("../lib/elements/Spacer/Spacer.stories.tsx"),
     require("../lib/elements/Touchable/Touchable.stories.tsx"),
-    require("../lib/molecules/MenuItem.stories.tsx"),
-    require("../lib/space.stories.tsx"),
     require("../lib/svgs/icons.stories.tsx"),
+    require("../lib/utils/colors.stories.tsx"),
+    require("../lib/utils/space.stories.tsx"),
   ];
 };
 

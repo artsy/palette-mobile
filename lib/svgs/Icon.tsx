@@ -13,7 +13,7 @@ import {
   top,
   TopProps,
 } from "styled-system"
-import { Color } from "../tokens"
+import { Color } from "../types"
 
 const DEFAULT_SIZE = 18
 

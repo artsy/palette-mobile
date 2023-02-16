@@ -1,4 +1,4 @@
-import { SpacingUnit } from "../../tokens"
+import { SpacingUnit } from "../../types"
 import { Box } from "../Box"
 
 export interface SpacerProps {

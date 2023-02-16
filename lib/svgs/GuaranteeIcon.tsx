@@ -1,4 +1,4 @@
-import { useColor } from "../hooks"
+import { useColor } from "../utils/hooks"
 import { ClipPath, Defs, G } from "react-native-svg"
 import { Icon, IconProps, Path } from "./Icon"
 

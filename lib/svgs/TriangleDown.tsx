@@ -1,4 +1,4 @@
-import { useColor } from "../hooks"
+import { useColor } from "../utils/hooks"
 import { Icon, IconProps, Path } from "./Icon"
 
 export const TriangleDown = ({ fill, ...restProps }: IconProps) => {

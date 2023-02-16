@@ -1,6 +1,6 @@
 import { themeGet } from "@styled-system/theme-get"
 import styled from "styled-components/native"
-import { Flex, FlexProps } from "../../atoms"
+import { Flex, FlexProps } from "../Flex"
 import { Text, TextProps } from "../Text"
 
 interface SimpleMessageProps extends FlexProps {

@@ -1,5 +1,5 @@
-import { useColor } from "../hooks"
-import { Color } from "../tokens"
+import { useColor } from "../utils/hooks"
+import { Color } from "../types"
 import { Icon, IconProps, Path } from "./Icon"
 
 type ShieldIconProps = IconProps & {

@@ -1,5 +1,5 @@
 import { Circle, Icon, IconProps, Path } from "./Icon"
-import { useColor } from "../hooks"
+import { useColor } from "../utils/hooks"
 
 export const XCircleIcon = ({ fill, ...restProps }: IconProps) => {
   const color = useColor()

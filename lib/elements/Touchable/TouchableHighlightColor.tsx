@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Color } from "../../tokens"
+import { Color } from "../../types"
 import { Touchable, TouchableProps } from "./Touchable"
 
 interface TouchableHighlightState {

@@ -1,5 +1,8 @@
-import { bullet, Box, useSpace, Text, SpacingUnitDSValueNumber } from "."
-import { List } from "./storybookHelpers"
+import { Box, Text } from "../elements"
+import { List } from "../storybook/helpers"
+import { SpacingUnitDSValueNumber } from "../types"
+import { useSpace } from "./hooks"
+import { bullet } from "./text"
 
 const SpaceLine = ({ space: theSpace }: { space: SpacingUnitDSValueNumber }) => {
   const space = useSpace()

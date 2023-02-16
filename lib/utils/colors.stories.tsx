@@ -1,21 +1,15 @@
-import { List, Row } from "./storybookHelpers"
-import { Flex } from "./atoms"
-import { useColor } from "./hooks"
-import { Text } from "./elements/Text"
-import {
-  ColorCssString,
-  ColorNamedLayer,
-  ColorStrict,
-  ColorRoleLayer,
-  isUsageLayerName,
-  NAMED_LAYER_NAMES,
-} from "./tokens"
+import { List, Row } from "../storybook/helpers"
+import { Flex } from "../elements/Flex"
+import { useColor } from "../utils/hooks"
+import { Text } from "../elements/Text"
+import { ColorCSS, ColorDSValue, ColorLayerName, ColorLayerRole, isRoleLayer } from "../types"
+import { COLOR_LAYER_NAME } from "../tokens"
 
 export default {
   title: "Tokens/colors",
 }
 
-const ColorSquare = ({ color: theColor, border }: { color: ColorStrict; border?: boolean }) => {
+const ColorSquare = ({ color: theColor, border }: { color: ColorDSValue; border?: boolean }) => {
   const color = useColor()
 
   const contrast =
@@ -28,7 +22,7 @@ const ColorSquare = ({ color: theColor, border }: { color: ColorStrict; border?:
 
   const cssName = useCssColorName(theColor)
   const namedName = useNamedColorName(theColor as any)
-  const displayName = isUsageLayerName(theColor) ? namedName : cssName
+  const displayName = isRoleLayer(theColor) ? namedName : cssName
 
   return (
     <Flex>
@@ -54,7 +48,7 @@ const ColorSquare = ({ color: theColor, border }: { color: ColorStrict; border?:
   )
 }
 
-export const Styled = () => (
+export const All = () => (
   <List>
     <Row>
       <ColorSquare color="black100" border />
@@ -137,17 +131,19 @@ export const Styled = () => (
   </List>
 )
 
-const useNamedColorName = (theColor: ColorRoleLayer): ColorNamedLayer => {
+const useNamedColorName = (theColor: ColorLayerRole): ColorLayerName => {
   const color = useColor()
   const cssName = useCssColorName(theColor)
 
-  const namedColor = NAMED_LAYER_NAMES.find((name) => color(name) === color(theColor))
+  const namedColor = Object.keys(COLOR_LAYER_NAME).find(
+    (name) => color(name) === color(theColor)
+  ) as ColorLayerName
 
-  if (namedColor === undefined) return cssName as ColorNamedLayer
+  if (namedColor === undefined) return cssName as ColorLayerName
   return namedColor
 }
 
-const useCssColorName = (theColor: ColorStrict): ColorCssString => {
+const useCssColorName = (theColor: ColorDSValue): ColorCSS => {
   const color = useColor()
   return color(theColor)
 }
