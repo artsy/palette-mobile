@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { ViewStyle, LayoutChangeEvent, useWindowDimensions } from "react-native"
-import { Box } from "../atoms"
+import { Box } from "../Box"
 
 export interface ViewMeasurements {
   width: number

@@ -1,4 +1,4 @@
-import { useColor, useTheme } from "../../hooks"
+import { useColor, useTheme } from "../../utils/hooks"
 import { NoUndefined } from "../../utils/types"
 import { ButtonProps } from "./Button"
 

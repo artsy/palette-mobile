@@ -22,7 +22,7 @@ jobs:
       - name: Install deps
         run: yarn install
       - name: Build palette-mobile
-        run: yarn build-lib:clean
+        run: yarn clean && yarn compile
       - name: Release new version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@ import { useAtom } from "jotai"
 import { Appearance } from "react-native"
 import { Flex, Theme, Text, LinkText } from "../../lib"
 
-export const withTheme = (Story) => (
+export const withTheme = (Story: any) => (
   <Theme theme="v3light">
     <Text color="red">aaww</Text>
     <Story />

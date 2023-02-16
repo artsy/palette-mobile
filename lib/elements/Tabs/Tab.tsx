@@ -1,5 +1,5 @@
 import { Pressable, ViewProps, View, ViewStyle } from "react-native"
-import { useColor } from "../../hooks"
+import { useColor } from "../../utils/hooks"
 import { Text } from "../Text"
 
 export interface TabV3Props {

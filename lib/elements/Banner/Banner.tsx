@@ -1,8 +1,8 @@
 import { useRef, useState } from "react"
 import { Animated, Easing, Image, TextProps, TouchableOpacity } from "react-native"
 import { FlexProps } from "styled-system"
-import { Flex } from "../../atoms"
-import { useColor } from "../../hooks"
+import { Flex } from "../Flex"
+import { useColor } from "../../utils/hooks"
 import { QuestionCircleIcon } from "../../svgs"
 import { Text } from "../Text"
 

@@ -1,12 +1,14 @@
 import { THEME_V3 } from "@artsy/palette-tokens"
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
+import { TextTreatment, TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { mapValues } from "lodash"
-import {
-  SpacingUnitPixelValue,
-  TextTreatment,
-  TextTreatmentWithUnits,
-  TextVariantV3,
-} from "../tokens"
+import { SpacingUnitPixelValue } from "../types"
+
+export type TextTreatmentWithoutUnits = {
+  fontSize: number
+  lineHeight: number
+  letterSpacing?: number
+}
 
 /**
  * This function is converting the space values that come from palette-tokens
@@ -27,16 +29,16 @@ export const convertWebSpacingUnitsToMobile = (
  * @see https://reactnative.dev/docs/text-style-props
  */
 export const convertWebTextTreatmentsToMobile = (
-  withUnits: Record<TextVariantV3, TextTreatmentWithUnits>
-): Record<TextVariantV3, TextTreatment> => {
+  withUnits: Record<TextVariant, TextTreatment>
+): Record<TextVariant, TextTreatmentWithoutUnits> => {
   const textTreatments = mapValues(withUnits, (treatmentWithUnits) => {
-    const newTreatment = {} as TextTreatment
+    const newTreatment = {} as TextTreatmentWithoutUnits
 
     const valuesToConvert = [
       ["fontSize", "px"],
       ["lineHeight", "px"],
       ["letterSpacing", "em"],
-    ] as Array<[keyof TextTreatment, string]>
+    ] as Array<[keyof TextTreatmentWithoutUnits, string]>
 
     valuesToConvert.forEach(([property, unit]) => {
       const originalValue = treatmentWithUnits[property]

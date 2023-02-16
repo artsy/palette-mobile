@@ -1,6 +1,6 @@
 import { themeGet } from "@styled-system/theme-get"
 import styled, { css } from "styled-components/native"
-import { Box } from "../../atoms"
+import { Box } from "../.."
 
 const RADIO_DOT_MODES = {
   default: {

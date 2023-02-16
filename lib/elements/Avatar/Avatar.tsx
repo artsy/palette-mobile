@@ -1,7 +1,7 @@
 import { ImgHTMLAttributes } from "react"
 import { Image } from "react-native"
-import { Flex } from "../../atoms"
-import { useColor } from "../../hooks"
+import { Flex } from "../Flex"
+import { useColor } from "../../utils/hooks"
 import { Text, TextProps } from "../Text"
 
 type AvatarSize = "xxs" | "xs" | "sm" | "md"

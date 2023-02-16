@@ -1,6 +1,6 @@
-import { Flex } from "../../atoms"
-import { SpacerProps } from "../../atoms/Spacer"
-import { bullet } from "../../helpers/text"
+import { Flex } from "../Flex"
+import { SpacerProps } from "../Spacer"
+import { bullet } from "../../utils/text"
 import { Avatar } from "../Avatar"
 import { Text } from "../Text"
 

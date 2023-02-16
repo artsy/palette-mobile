@@ -1,5 +1,5 @@
-import { Flex } from "../../atoms"
-import { List } from "../../storybookHelpers"
+import { Flex } from "../Flex"
+import { List } from "../../storybook/storybookHelpers"
 import { TrashIcon } from "../../svgs"
 import { Text } from "../Text"
 import { Touchable } from "./Touchable"

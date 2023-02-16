@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from "../../svgs"
-import { Flex } from "../../atoms"
-import { List } from "../../storybookHelpers"
+import { Flex } from "../Flex"
+import { List } from "../../storybook/storybookHelpers"
 import { Input } from "./Input"
 
 export default {

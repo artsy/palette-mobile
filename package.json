@@ -5,9 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "beta:ios": "bundle e fastlane ios beta",
-    "build-lib:clean": "rimraf dist && yarn build-lib",
-    "build-lib": "tsc",
     "bundle-install": "bundle install",
+    "compile": "tsc",
+    "clean": "rimraf dist",
     "install:all": "yarn install && yarn bundle-install && yarn pod-install",
     "ios": "react-native run-ios",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -21,7 +21,7 @@
     "start:reset-cache": "react-native start --reset-cache",
     "storybook-watcher": "sb-rn-watcher",
     "test": "jest",
-    "test:w": "jest --watch"
+    "type-check": "tsc --noEmit"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
