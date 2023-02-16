@@ -11,7 +11,7 @@ export type SpacingUnitSpecialValue = 0 | "0px" | "auto"
 export type SpacingUnit = SpacingUnitDSValue | SpacingUnitPixelValue | SpacingUnitSpecialValue
 
 export type ColorLayerName = keyof typeof COLOR_LAYER_NAME
-export type ColorLayerRole = keyof typeof COLOR_LAYER_ROLE
+export type ColorLayerRole = typeof COLOR_LAYER_ROLE[number]
 export type ColorCSS = string & {}
 export type ColorDSValue = ColorLayerName | ColorLayerRole
 export type Color = ColorLayerName | ColorLayerRole | ColorCSS

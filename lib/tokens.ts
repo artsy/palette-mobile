@@ -39,28 +39,32 @@ export const COLOR_LAYER_NAME = {
   devpurple: "#6E1EFF",
 }
 
-export const COLOR_LAYER_ROLE = {
-  background: colors.white100,
-  onBackground: colors.black100,
-  onBackgroundHigh: colors.black100,
-  onBackgroundMedium: colors.black60,
-  onBackgroundLow: colors.black30,
-  surface: colors.white100,
-  onSurface: colors.black100,
-  onSurfaceHigh: colors.black100,
-  onSurfaceMedium: colors.black60,
-  onSurfaceLow: colors.black5,
-  primary: colors.black100,
-  onPrimaryHigh: colors.white100,
-  onPrimaryMedium: colors.black5,
-  onPrimaryLow: colors.black5,
-  secondary: colors.black30,
-  onSecondaryHigh: colors.black100,
-  onSecondaryMedium: colors.black60,
-  onSecondaryLow: colors.black60,
-  brand: colors.blue100,
-  onBrand: colors.white100,
-}
+export const COLOR_LAYER_ROLE = [
+  // name: Anything big/surface: background, cards, button fills, etc.
+  // onName: Anything small, texts, icons, etc.
+  // onNameContrast: Anything small, texts, icons, etc based on contrast.
+  "background",
+  "onBackground", // same as onBackgroundHigh
+  "onBackgroundHigh",
+  "onBackgroundMedium",
+  "onBackgroundLow",
+  "surface",
+  "onSurface", // same as onSurfaceHigh
+  "onSurfaceHigh",
+  "onSurfaceMedium",
+  "onSurfaceLow",
+  "primary",
+  "onPrimaryHigh",
+  "onPrimaryMedium",
+  "onPrimaryLow",
+  "secondary",
+  "onSecondaryHigh",
+  "onSecondaryMedium",
+  "onSecondaryLow",
+  "brand",
+  "onBrand",
+] as const
+export type ColorRoleLayer = typeof COLOR_LAYER_ROLE[number]
 
 const v3: ThemeType = {
   space: convertWebSpacingUnitsToMobile(space),
