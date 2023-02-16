@@ -20,6 +20,7 @@
     "start": "react-native start",
     "start:reset-cache": "react-native start --reset-cache",
     "storybook-watcher": "sb-rn-watcher",
+    "sync-after-change": "./scripts/sync-after-change",
     "test": "jest",
     "type-check": "tsc --noEmit"
   },
@@ -79,6 +80,7 @@
     "@typescript-eslint/parser": "^5.51.0",
     "auto": "10.38.5",
     "babel-jest": "29.4.2",
+    "concurrently": "^7.6.0",
     "eslint": "8.33.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-import-resolver-typescript": "3.5.3",
@@ -91,6 +93,7 @@
     "jest-watch-typeahead": "2.2.2",
     "jotai": "1.12.1",
     "metro-react-native-babel-preset": "0.75.0",
+    "nodemon": "^2.0.20",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.70.7",
