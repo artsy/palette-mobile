@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { View } from "react-native"
-import { List } from "../../storybook/storybookHelpers"
+import { List } from "../../storybook/helpers"
 import { Box, BoxProps } from "../Box"
 
 export default {

@@ -1,11 +1,11 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { useContext } from "react"
 import { ThemeContext } from "styled-components"
-import { Themes, THEMES } from "../../tokens"
+import { AllThemesType, THEMES, ThemeType, ThemeWithDarkModeType } from "../../tokens"
 import { Color, ColorDSValue } from "../../types"
 
 export const useTheme = (): {
-  theme: Themes
+  theme: ThemeType | ThemeWithDarkModeType
   space: SpaceFn
   color: ColorFn
 } => {
@@ -36,9 +36,9 @@ export const useTheme = (): {
 type SpaceFn = (spaceName: SpacingUnit) => number
 
 const space =
-  (theme: Themes): SpaceFn =>
+  (theme: AllThemesType): SpaceFn =>
   (spaceName) => {
-    const pixelValue = theme.space[spaceName as keyof Themes["space"]]
+    const pixelValue = theme.space[spaceName as keyof AllThemesType["space"]]
     return Number(pixelValue.split("px")[0])
   }
 
@@ -50,7 +50,7 @@ export interface ColorFn {
 }
 
 const color =
-  (theme: Themes): ColorFn =>
+  (theme: AllThemesType): ColorFn =>
   (colorName: any): any => {
     if (colorName === undefined) {
       return undefined

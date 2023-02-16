@@ -64,7 +64,6 @@ export const COLOR_LAYER_ROLE = [
   "brand",
   "onBrand",
 ] as const
-export type ColorRoleLayer = typeof COLOR_LAYER_ROLE[number]
 
 const v3: ThemeType = {
   space: convertWebSpacingUnitsToMobile(space),

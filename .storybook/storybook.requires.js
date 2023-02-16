@@ -40,9 +40,9 @@ const getStories = () => {
     require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
     require("../lib/elements/Spacer/Spacer.stories.tsx"),
     require("../lib/elements/Touchable/Touchable.stories.tsx"),
-    require("../lib/storybook/colors.stories.tsx"),
-    require("../lib/storybook/space.stories.tsx"),
     require("../lib/svgs/icons.stories.tsx"),
+    require("../lib/utils/colors.stories.tsx"),
+    require("../lib/utils/space.stories.tsx"),
   ];
 };
 

@@ -4,12 +4,12 @@ import { atomWithStorage, createJSONStorage } from "jotai/utils"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useAtom } from "jotai"
 import { Appearance } from "react-native"
-import { Flex, Theme, Text, LinkText } from "../../lib"
+import { Flex, Theme, Text, LinkText } from ".."
 
-export const withTheme = (Story: any) => (
+export const withTheme: DecoratorFunction<ReactNode> = (story) => (
   <Theme theme="v3light">
     <Text color="red">aaww</Text>
-    <Story />
+    {story()}
   </Theme>
 )
 

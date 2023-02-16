@@ -15,3 +15,11 @@ export type ColorLayerRole = typeof COLOR_LAYER_ROLE[number]
 export type ColorCSS = string & {}
 export type ColorDSValue = ColorLayerName | ColorLayerRole
 export type Color = ColorLayerName | ColorLayerRole | ColorCSS
+
+export const isRoleLayer = (name: Color): name is ColorLayerRole => {
+  return COLOR_LAYER_ROLE.includes(name as any)
+}
+
+export const isNameLayer = (name: Color): name is ColorLayerName => {
+  return Object.keys(COLOR_LAYER_NAME).includes(name as any)
+}

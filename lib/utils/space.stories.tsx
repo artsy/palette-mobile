@@ -1,5 +1,5 @@
-import { bullet, Box, useSpace, Text, SpacingUnitDSValueNumber } from "../../"
-import { List } from "./storybookHelpers"
+import { bullet, Box, useSpace, Text, SpacingUnitDSValueNumber } from "../../dist"
+import { List } from "../storybook/helpers"
 
 const SpaceLine = ({ space: theSpace }: { space: SpacingUnitDSValueNumber }) => {
   const space = useSpace()

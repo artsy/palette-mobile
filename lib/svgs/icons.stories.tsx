@@ -1,4 +1,4 @@
-import { List } from "../storybook/storybookHelpers"
+import { List } from "../storybook/helpers"
 import { Icon } from "./Icon"
 import * as Icons from "."
 import { Flex } from "../elements/Flex"
