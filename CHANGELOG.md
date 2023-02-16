@@ -1,3 +1,16 @@
+# v10.0.1 (Thu Feb 16 2023)
+
+#### 🐛 Bug Fix
+
+- fix: export types [#63](https://github.com/artsy/palette-mobile/pull/63) ([@damassi](https://github.com/damassi) [@pvinis](https://github.com/pvinis))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v10.0.0 (Thu Feb 16 2023)
 
 #### 💥 Breaking Change
