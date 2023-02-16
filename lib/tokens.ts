@@ -5,9 +5,9 @@
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
-import { SpacingUnit as SpacingUnitV3Numbers } from "@artsy/palette-tokens/dist/themes/v3"
+import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
-import { Color, Colors, SpacingUnit } from "./types"
+import { Color, ColorDSValue, ColorLayerName, ColorLayerRole, SpacingUnit } from "./types"
 import {
   convertWebSpacingUnitsToMobile,
   convertWebTextTreatmentsToMobile,
@@ -16,22 +16,15 @@ import {
 
 const { textVariants, space, colors, fonts } = THEME_V3
 
-export const mobileTokens = {
-  textVariants,
-  space,
-  colors,
-  fonts,
-}
-
 export interface ThemeType {
-  space: Record<SpacingUnitV3Numbers, `${number}px`>
-  colors: Record<Colors, string>
+  space: Record<SpacingUnitNumbers, `${number}px`>
+  colors: Record<ColorLayerName, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariant, TextTreatmentWithoutUnits>
 }
 
 export interface ThemeWithDarkModeType extends ThemeType {
-  colors: Record<Colors, string>
+  colors: Record<ColorDSValue, string>
 }
 
 export type Themes = ThemeType & ThemeWithDarkModeType
@@ -40,38 +33,38 @@ export type Themes = ThemeType & ThemeWithDarkModeType
 export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
 export type ColorsTheme = { colors: Record<Color, any> }
 
-export const ADDITIONAL_COLOR_LAYERS = {
-  background: mobileTokens.colors.white100,
-  onBackground: mobileTokens.colors.black100,
-  onBackgroundHigh: mobileTokens.colors.black100,
-  onBackgroundMedium: mobileTokens.colors.black60,
-  onBackgroundLow: mobileTokens.colors.black30,
-  surface: mobileTokens.colors.white100,
-  onSurface: mobileTokens.colors.black100,
-  onSurfaceHigh: mobileTokens.colors.black100,
-  onSurfaceMedium: mobileTokens.colors.black60,
-  onSurfaceLow: mobileTokens.colors.black5,
-  primary: mobileTokens.colors.black100,
-  onPrimaryHigh: mobileTokens.colors.white100,
-  onPrimaryMedium: mobileTokens.colors.black5,
-  onPrimaryLow: mobileTokens.colors.black5,
-  secondary: mobileTokens.colors.black30,
-  onSecondaryHigh: mobileTokens.colors.black100,
-  onSecondaryMedium: mobileTokens.colors.black60,
-  onSecondaryLow: mobileTokens.colors.black60,
-  brand: mobileTokens.colors.blue100,
-  onBrand: mobileTokens.colors.white100,
+export const COLOR_LAYER_NAME = {
+  ...colors,
+  /** Adding this here for dev usage. Avoid using it for actual components. */
   devpurple: "#6E1EFF",
 }
 
-const THEME = {
-  ...mobileTokens,
-  colors: {
-    ...mobileTokens.colors,
-    ...ADDITIONAL_COLOR_LAYERS,
-  },
-  space: convertWebSpacingUnitsToMobile(mobileTokens.space),
-  textTreatments: convertWebTextTreatmentsToMobile(mobileTokens.textVariants),
+export const COLOR_LAYER_ROLE = {
+  background: colors.white100,
+  onBackground: colors.black100,
+  onBackgroundHigh: colors.black100,
+  onBackgroundMedium: colors.black60,
+  onBackgroundLow: colors.black30,
+  surface: colors.white100,
+  onSurface: colors.black100,
+  onSurfaceHigh: colors.black100,
+  onSurfaceMedium: colors.black60,
+  onSurfaceLow: colors.black5,
+  primary: colors.black100,
+  onPrimaryHigh: colors.white100,
+  onPrimaryMedium: colors.black5,
+  onPrimaryLow: colors.black5,
+  secondary: colors.black30,
+  onSecondaryHigh: colors.black100,
+  onSecondaryMedium: colors.black60,
+  onSecondaryLow: colors.black60,
+  brand: colors.blue100,
+  onBrand: colors.white100,
+}
+
+const v3: ThemeType = {
+  space: convertWebSpacingUnitsToMobile(space),
+  colors: COLOR_LAYER_NAME,
   fonts: {
     sans: {
       regular: "Unica77LL-Regular",
@@ -80,34 +73,60 @@ const THEME = {
       mediumItalic: "Unica77LL-MediumItalic",
     },
   },
+  textTreatments: convertWebTextTreatmentsToMobile(textVariants),
 }
 
-const THEME_LIGHT = THEME
-
-const THEME_DARK = {
-  ...THEME,
+const v3light: ThemeWithDarkModeType = {
+  ...v3,
   colors: {
-    ...THEME.colors,
-    background: mobileTokens.colors.black100,
-    onBackground: mobileTokens.colors.white100,
-    onBackgroundHigh: mobileTokens.colors.white100,
-    onBackgroundMedium: mobileTokens.colors.black30,
-    onBackgroundLow: mobileTokens.colors.black60,
+    ...v3.colors,
+    background: colors.white100,
+    onBackground: colors.black100,
+    onBackgroundHigh: colors.black100,
+    onBackgroundMedium: colors.black60,
+    onBackgroundLow: colors.black30,
+    surface: colors.white100,
+    onSurface: colors.black100,
+    onSurfaceHigh: colors.black100,
+    onSurfaceMedium: colors.black60,
+    onSurfaceLow: colors.black5,
+    primary: colors.black100,
+    onPrimaryHigh: colors.white100,
+    onPrimaryMedium: colors.black5,
+    onPrimaryLow: colors.black5,
+    secondary: colors.black30,
+    onSecondaryHigh: colors.black100,
+    onSecondaryMedium: colors.black60,
+    onSecondaryLow: colors.black60,
+    brand: colors.blue100,
+    onBrand: colors.white100,
+  },
+}
+
+const v3dark: ThemeWithDarkModeType = {
+  ...v3,
+  colors: {
+    ...v3.colors,
+    background: colors.black100,
+    onBackground: colors.white100,
+    onBackgroundHigh: colors.white100,
+    onBackgroundMedium: colors.black30,
+    onBackgroundLow: colors.black60,
     surface: "#333",
-    onSurface: mobileTokens.colors.white100,
-    onSurfaceHigh: mobileTokens.colors.white100,
-    onSurfaceMedium: mobileTokens.colors.black60,
+    onSurface: colors.white100,
+    onSurfaceHigh: colors.white100,
+    onSurfaceMedium: colors.black60,
     onSurfaceLow: "#555",
-    primary: mobileTokens.colors.white100,
-    onPrimaryHigh: mobileTokens.colors.black100,
-    onPrimaryMedium: mobileTokens.colors.black60,
-    onPrimaryLow: mobileTokens.colors.black60,
-    secondary: mobileTokens.colors.black60,
-    onSecondaryHigh: mobileTokens.colors.white100,
-    onSecondaryMedium: mobileTokens.colors.black5,
-    onSecondaryLow: mobileTokens.colors.black5,
-    brand: mobileTokens.colors.blue100,
-    onBrand: mobileTokens.colors.white100,
+    primary: colors.white100,
+    onPrimaryHigh: colors.black100,
+    onPrimaryMedium: colors.black60,
+    onPrimaryLow: colors.black60,
+    secondary: colors.black60,
+    onSecondaryHigh: colors.white100,
+    onSecondaryMedium: colors.black5,
+    onSecondaryLow: colors.black5,
+    brand: colors.blue100,
+    onBrand: colors.white100,
   },
 }
 
@@ -115,8 +134,4 @@ export const THEMES: {
   v3: ThemeType
   v3light: ThemeWithDarkModeType
   v3dark: ThemeWithDarkModeType
-} = {
-  v3: THEME,
-  v3light: THEME_LIGHT,
-  v3dark: THEME_DARK,
-}
+} = { v3, v3light, v3dark }

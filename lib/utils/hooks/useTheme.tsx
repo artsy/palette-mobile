@@ -2,7 +2,7 @@ import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { useContext } from "react"
 import { ThemeContext } from "styled-components"
 import { Themes, THEMES } from "../../tokens"
-import { AdditionalColorLayers, Color, Colors } from "../../types"
+import { Color, ColorDSValue } from "../../types"
 
 export const useTheme = (): {
   theme: Themes
@@ -45,7 +45,7 @@ const space =
 // TODO: make this stricter for types. only allow ColorStrict.
 export interface ColorFn {
   (colorNumber: undefined): undefined
-  (colorNumber: Colors | AdditionalColorLayers): string
+  (colorNumber: ColorDSValue): string
   (colorNumber: Color | undefined): string | undefined
 }
 
