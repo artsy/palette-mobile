@@ -14,6 +14,7 @@
     "open-xcode": "open ios/PaletteMobile.xcworkspace",
     "pod-install": "cd ios && bundle exec pod install && cd ..",
     "prestart": "sb-rn-get-stories",
+    "prettier-write": "prettier --write --ignore-unknown",
     "release:canary": "auto canary",
     "release": "auto shipit",
     "setup:artsy": "./scripts/download-fonts",
@@ -22,7 +23,8 @@
     "storybook-watcher": "sb-rn-watcher",
     "sync-after-change": "./scripts/sync-after-change",
     "test": "jest",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
@@ -87,11 +89,13 @@
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-storybook": "0.6.10",
+    "husky": "^8.0.3",
     "jest": "29.4.2",
     "jest-environment-jsdom": "29.4.2",
     "jest-extended": "3.2.3",
     "jest-watch-typeahead": "2.2.2",
     "jotai": "1.12.1",
+    "lint-staged": "^13.1.2",
     "metro-react-native-babel-preset": "0.75.0",
     "nodemon": "^2.0.20",
     "react": "18.2.0",
@@ -119,5 +123,14 @@
   },
   "repository": "artsy/palette-mobile",
   "author": "Pavlos Vinieratos <pvinis@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "lint-staged": {
+    "*.@(md)": [
+      "yarn prettier-write"
+    ],
+    "*.@(js|jsx|ts|tsx)": [
+      "yarn lint",
+      "prettier --write --ignore-unknown"
+    ]
+  }
 }
