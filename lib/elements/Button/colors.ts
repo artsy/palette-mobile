@@ -1,5 +1,6 @@
-import { ButtonProps, useColor } from "../.."
+import { useColor, useTheme } from "../../hooks"
 import { NoUndefined } from "../../utils/types"
+import { ButtonProps } from "./Button"
 
 type State = "disabled" | "pressed" | "active"
 

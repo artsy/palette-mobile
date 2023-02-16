@@ -5,12 +5,16 @@
  */
 
 import { THEME_V3 } from "@artsy/palette-tokens"
-import { mapValues } from "lodash"
 import { SpacingUnit as SpacingUnitV3Numbers } from "@artsy/palette-tokens/dist/themes/v3"
 import {
   TextTreatment as TextTreatmentWithUnits,
   TextVariant as TextVariantV3,
 } from "@artsy/palette-tokens/dist/typography/v3"
+import {
+  convertWebSpacingUnitsToMobile,
+  convertWebTextTreatmentsToMobile,
+} from "./utils/webTokensToMobile"
+import { Neg } from "./utils/types"
 
 export type { TextTreatmentWithUnits }
 
@@ -30,15 +34,6 @@ export type SpacingUnitDSValue = SpacingUnitDSValueNumber | SpacingUnitDSValueNu
 type SpacingUnitSpecialValue = 0 | "0px" | "auto"
 
 export type SpacingUnit = SpacingUnitDSValue | SpacingUnitPixelValue | SpacingUnitSpecialValue
-
-// this function is converting the space values that come from palette-tokens
-// from a string `"120px"` to a number `120`, and the key values
-// from a number `0.5` to a string `"0.5"`.
-const fixSpaceUnitsV3 = (
-  withUnits: typeof spaceNumbers
-): Record<SpacingUnitV3Numbers, SpacingUnitPixelValue> => {
-  return withUnits as Record<SpacingUnitV3Numbers, SpacingUnitPixelValue>
-}
 
 export type ColorCssString = string & {} // just an open rule here to allow for css names and other things for now
 
@@ -128,33 +123,6 @@ type TextTreatmentWithoutUnits = {
   letterSpacing?: number
 }
 export type TextTreatment = TextTreatmentWithoutUnits
-// this function is removing the `px` and `em` suffix and making the values into numbers.
-// https://reactnative.dev/docs/text-style-props#letterspacing, fontSize, and lineHeight all take numbers without units.
-const fixTextTreatments = (
-  withUnits: Record<TextVariantV3, TextTreatmentWithUnits>
-): Record<TextVariantV3, TextTreatment> => {
-  const textTreatments = mapValues(withUnits, (treatmentWithUnits) => {
-    const newTreatment = {} as TextTreatment
-    ;(
-      [
-        ["fontSize", "px"],
-        ["lineHeight", "px"],
-        ["letterSpacing", "em"],
-      ] as Array<[keyof TextTreatment, string]>
-    ).forEach(([property, unit]) => {
-      const originalValue = treatmentWithUnits[property]
-      if (originalValue === undefined) {
-        return undefined
-      }
-      const justStringValue = originalValue.split(unit)[0]
-      const numberValue = Number(justStringValue)
-      newTreatment[property] = numberValue
-    })
-    return newTreatment
-  })
-  return textTreatments as any
-}
-
 export type { TextVariantV3 }
 
 export type ThemeV3Type = {
@@ -171,94 +139,83 @@ export type ThemeV3WithDarkModeSupportType = {
 }
 export type AllThemesType = ThemeV3Type & ThemeV3WithDarkModeSupportType
 
+// These are for styled-system
+export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
+export type ColorsTheme = { colors: Record<Color, any> }
+
+const THEME = {
+  ...mobileUsefulTHEME_V3,
+  colors: {
+    ...THEME_V3.colors,
+    background: THEME_V3.colors.white100,
+    onBackground: THEME_V3.colors.black100,
+    onBackgroundHigh: THEME_V3.colors.black100,
+    onBackgroundMedium: THEME_V3.colors.black60,
+    onBackgroundLow: THEME_V3.colors.black30,
+    surface: THEME_V3.colors.white100,
+    onSurface: THEME_V3.colors.black100,
+    onSurfaceHigh: THEME_V3.colors.black100,
+    onSurfaceMedium: THEME_V3.colors.black60,
+    onSurfaceLow: THEME_V3.colors.black5,
+    primary: THEME_V3.colors.black100,
+    onPrimaryHigh: THEME_V3.colors.white100,
+    onPrimaryMedium: THEME_V3.colors.black5,
+    onPrimaryLow: THEME_V3.colors.black5,
+    secondary: THEME_V3.colors.black30,
+    onSecondaryHigh: THEME_V3.colors.black100,
+    onSecondaryMedium: THEME_V3.colors.black60,
+    onSecondaryLow: THEME_V3.colors.black60,
+    brand: THEME_V3.colors.blue100,
+    onBrand: THEME_V3.colors.white100,
+    devpurple: "#6E1EFF",
+  },
+  space: convertWebSpacingUnitsToMobile(spaceNumbers),
+  textTreatments: convertWebTextTreatmentsToMobile(textVariantsWithUnits),
+  fonts: {
+    sans: {
+      regular: "Unica77LL-Regular",
+      italic: "Unica77LL-Italic",
+      medium: "Unica77LL-Medium",
+      mediumItalic: "Unica77LL-MediumItalic",
+    },
+  },
+}
+
+const THEME_LIGHT = THEME
+
+const THEME_DARK = {
+  ...THEME,
+  colors: {
+    ...THEME.colors,
+    background: THEME.colors.black100,
+    onBackground: THEME.colors.white100,
+    onBackgroundHigh: THEME.colors.white100,
+    onBackgroundMedium: THEME.colors.black30,
+    onBackgroundLow: THEME.colors.black60,
+    surface: "#333",
+    onSurface: THEME.colors.white100,
+    onSurfaceHigh: THEME.colors.white100,
+    onSurfaceMedium: THEME.colors.black60,
+    onSurfaceLow: "#555",
+    primary: THEME.colors.white100,
+    onPrimaryHigh: THEME.colors.black100,
+    onPrimaryMedium: THEME.colors.black60,
+    onPrimaryLow: THEME.colors.black60,
+    secondary: THEME.colors.black60,
+    onSecondaryHigh: THEME.colors.white100,
+    onSecondaryMedium: THEME.colors.black5,
+    onSecondaryLow: THEME.colors.black5,
+    brand: THEME.colors.blue100,
+    onBrand: THEME.colors.white100,
+  },
+}
+
 export const THEMES: {
   v3: ThemeV3Type
   v3light: ThemeV3WithDarkModeSupportType
   v3dark: ThemeV3WithDarkModeSupportType
 } = {
-  v3: {
-    ...mobileUsefulTHEME_V3,
-    space: fixSpaceUnitsV3(spaceNumbers),
-    colors: fixColorV3(mobileUsefulTHEME_V3.colors),
-    fonts: {
-      sans: {
-        regular: "Unica77LL-Regular",
-        italic: "Unica77LL-Italic",
-        medium: "Unica77LL-Medium",
-        mediumItalic: "Unica77LL-MediumItalic",
-      },
-    },
-    textTreatments: fixTextTreatments(textVariantsWithUnits),
-  },
-  get v3light() {
-    return {
-      ...this.v3,
-      colors: {
-        ...this.v3.colors,
-        background: this.v3.colors.white100,
-        onBackground: this.v3.colors.black100,
-        onBackgroundHigh: this.v3.colors.black100,
-        onBackgroundMedium: this.v3.colors.black60,
-        onBackgroundLow: this.v3.colors.black30,
-        surface: this.v3.colors.white100,
-        onSurface: this.v3.colors.black100,
-        onSurfaceHigh: this.v3.colors.black100,
-        onSurfaceMedium: this.v3.colors.black60,
-        onSurfaceLow: this.v3.colors.black5,
-        primary: this.v3.colors.black100,
-        onPrimaryHigh: this.v3.colors.white100,
-        onPrimaryMedium: this.v3.colors.black5,
-        onPrimaryLow: this.v3.colors.black5,
-        secondary: this.v3.colors.black30,
-        onSecondaryHigh: this.v3.colors.black100,
-        onSecondaryMedium: this.v3.colors.black60,
-        onSecondaryLow: this.v3.colors.black60,
-        brand: this.v3.colors.blue100,
-        onBrand: this.v3.colors.white100,
-      },
-    }
-  },
-  get v3dark() {
-    return {
-      ...this.v3,
-      colors: {
-        ...this.v3.colors,
-        background: this.v3.colors.black100,
-        onBackground: this.v3.colors.white100,
-        onBackgroundHigh: this.v3.colors.white100,
-        onBackgroundMedium: this.v3.colors.black30,
-        onBackgroundLow: this.v3.colors.black60,
-        surface: "#333",
-        onSurface: this.v3.colors.white100,
-        onSurfaceHigh: this.v3.colors.white100,
-        onSurfaceMedium: this.v3.colors.black60,
-        onSurfaceLow: "#555",
-        primary: this.v3.colors.white100,
-        onPrimaryHigh: this.v3.colors.black100,
-        onPrimaryMedium: this.v3.colors.black60,
-        onPrimaryLow: this.v3.colors.black60,
-        secondary: this.v3.colors.black60,
-        onSecondaryHigh: this.v3.colors.white100,
-        onSecondaryMedium: this.v3.colors.black5,
-        onSecondaryLow: this.v3.colors.black5,
-        brand: this.v3.colors.blue100,
-        onBrand: this.v3.colors.white100,
-      },
-    }
-  },
+  v3: THEME,
+  v3light: THEME_LIGHT,
+  v3dark: THEME_DARK,
 }
-
-// These are for styled-system:
-export type SpacingUnitsTheme = { space: Record<SpacingUnit, any> }
-export type ColorsTheme = { colors: Record<Color, any> }
-
-// This is some funky typescript to help us flip the type `SpacingUnitDSValueNumber` to negative numbers.
-type Neg<T extends number> = T extends 0
-  ? 0
-  : `-${T}` extends `${infer U extends number}`
-  ? U
-  : `${T}` extends `-${infer U extends number}`
-  ? U
-  : Extract<[1e999, -1e999] | [-1e999, 1e999] | [0, 0], [T, unknown]> extends [T, infer U]
-  ? U
-  : T
