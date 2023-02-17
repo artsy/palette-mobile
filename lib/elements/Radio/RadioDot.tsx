@@ -1,62 +1,63 @@
 import { themeGet } from "@styled-system/theme-get"
 import styled, { css } from "styled-components/native"
-import { Box } from "../.."
+import { Box, BoxProps, Flex, FlexProps, useColor } from "../.."
 
-const RADIO_DOT_MODES = {
-  default: {
-    resting: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black10")};
-    `,
-    selected: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black100")};
-      background-color: ${themeGet("colors.black100")};
-    `,
-  },
-  disabled: {
-    resting: css`
-      border: 2px solid;
-      color: transparent;
-      border-color: ${themeGet("colors.black10")};
-      background-color: ${themeGet("colors.black10")};
-    `,
-    selected: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black10")};
-      background-color: ${themeGet("colors.black10")};
-    `,
-  },
-  error: {
-    resting: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.red100")};
-    `,
-    selected: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black100")};
-      background-color: ${themeGet("colors.black100")};
-    `,
-  },
-  hover: {
-    resting: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black10")};
-      background-color: ${themeGet("colors.black10")};
-    `,
-    selected: css`
-      border: 2px solid;
-      color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black100")};
-      background-color: ${themeGet("colors.black100")};
-    `,
-  },
+type RadioDotMode = "default" | "disabled" | "error" | "hover"
+
+export const useColorsForRadioMode = (): Record<
+  RadioDotMode,
+  { resting: FlexProps; selected: FlexProps }
+> => {
+  const color = useColor()
+
+  return {
+    default: {
+      resting: {
+        borderWidth: 2,
+        borderColor: color("black10"),
+      },
+      selected: {
+        borderWidth: 2,
+        borderColor: color("black100"),
+        backgroundColor: color("black100"),
+      },
+    },
+    disabled: {
+      resting: {
+        borderWidth: 2,
+        borderColor: color("black10"),
+        backgroundColor: color("black10"),
+      },
+      selected: {
+        borderWidth: 2,
+        borderColor: color("black10"),
+        backgroundColor: color("black10"),
+      },
+    },
+    error: {
+      resting: {
+        borderWidth: 2,
+        borderColor: color("red100"),
+      },
+      selected: {
+        borderWidth: 2,
+        borderColor: color("black100"),
+        backgroundColor: color("black100"),
+      },
+    },
+    hover: {
+      resting: {
+        borderWidth: 2,
+        borderColor: color("black10"),
+        backgroundColor: color("black10"),
+      },
+      selected: {
+        borderWidth: 2,
+        borderColor: color("black100"),
+        backgroundColor: color("black100"),
+      },
+    },
+  }
 }
 
 interface RadioDotProps {
@@ -72,32 +73,35 @@ export const RadioDot = (props: RadioDotProps) => (
   </Container>
 )
 
-const Container = styled(Box)<RadioDotProps>`
-  width: 20px;
-  height: 20px;
-  border-radius: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+const Container = (props: RadioDotProps) => {
+  const colors = useColorsForRadioMode()
 
-  ${(props) => {
-    const mode = (() => {
-      switch (true) {
-        case props.disabled:
-          return RADIO_DOT_MODES.disabled
-        case props.hover:
-          return RADIO_DOT_MODES.hover
-        case props.error:
-          return RADIO_DOT_MODES.error
-        default:
-          return RADIO_DOT_MODES.default
-      }
-    })()
+  const mode = (() => {
+    switch (true) {
+      case props.disabled:
+        return colors.disabled
+      case props.hover:
+        return colors.hover
+      case props.error:
+        return colors.error
+      default:
+        return colors.default
+    }
+  })()
+  const moreProps = props.selected ? mode.selected : mode.resting
 
-    return props.selected ? mode.selected : mode.resting
-  }};
-`
+  return (
+    <Flex
+      width={20}
+      height={20}
+      borderRadius={50}
+      alignItems="center"
+      justifyContent="center"
+      flexShrink={0}
+      {...moreProps}
+    />
+  )
+}
 
 const Dot = styled(Box)<RadioDotProps>`
   width: 10px;
