@@ -6,9 +6,9 @@ module.exports = {
   setupFilesAfterEnv: [
     "jest-extended",
     "@testing-library/jest-native/extend-expect",
-    "./lib/setupJest.ts",
+    "./src/setupJest.ts",
   ],
-  testMatch: ["<rootDir>/lib/**/*.tests.(ts|tsx|js)"],
+  testMatch: ["<rootDir>/src/**/*.tests.(ts|tsx|js)"],
   testEnvironment: "node",
   testEnvironmentOptions: {
     url: "http://localhost/",

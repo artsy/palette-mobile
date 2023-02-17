@@ -1,8 +1,8 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "lib",
-    "rootDir": "lib",
+    "baseUrl": "src",
+    "rootDir": "src",
     "outDir": "dist",
     "noEmit": false,
     "declaration": true,
@@ -10,5 +10,5 @@
     "skipLibCheck": true,
     "types": ["styled-components-react-native", "jest"]
   },
-  "include": ["lib/**/*"]
+  "include": ["src/**/*"]
 }
