@@ -1,3 +1,21 @@
+# v10.0.2 (Fri Feb 17 2023)
+
+#### 🐛 Bug Fix
+
+- fix: removing sc from radiodot [#66](https://github.com/artsy/palette-mobile/pull/66) ([@pvinis](https://github.com/pvinis))
+
+#### 🏠 Internal
+
+- feat(toolchain): Add lint staged commit checks [#65](https://github.com/artsy/palette-mobile/pull/65) ([@damassi](https://github.com/damassi))
+- feat(toolchain): Add `yarn sync-after-change` for local dev publishing [#64](https://github.com/artsy/palette-mobile/pull/64) ([@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v10.0.1 (Thu Feb 16 2023)
 
 #### 🐛 Bug Fix
