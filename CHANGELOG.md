@@ -1,3 +1,15 @@
+# v10.0.4 (Fri Feb 17 2023)
+
+#### 🐛 Bug Fix
+
+- feat: OMG TYPES FOR STYLED COMPONENTS? FINALLY AND YES PLEASE! [#68](https://github.com/artsy/palette-mobile/pull/68) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v10.0.3 (Fri Feb 17 2023)
 
 #### 🐛 Bug Fix
