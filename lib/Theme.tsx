@@ -1,4 +1,3 @@
-import { isString } from "lodash"
 import { ThemeProvider } from "styled-components/native"
 import { ThemeType, ThemeWithDarkModeType, THEMES } from "./tokens"
 
