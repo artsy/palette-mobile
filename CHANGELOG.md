@@ -1,3 +1,15 @@
+# v11.0.0 (Fri Feb 17 2023)
+
+#### 💥 Breaking Change
+
+- feat: rename src->app, lib->src [#69](https://github.com/artsy/palette-mobile/pull/69) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v10.0.4 (Fri Feb 17 2023)
 
 #### 🐛 Bug Fix
