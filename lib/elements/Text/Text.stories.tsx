@@ -53,6 +53,9 @@ export const Misc: TextStory = () => (
       </Text>
     </View>
     <View />
+    <Text lineHeight="20px" fontSize={30}>
+      wow
+    </Text>
   </List>
 )
 
