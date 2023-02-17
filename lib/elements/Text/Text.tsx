@@ -8,6 +8,7 @@ import {
   ColorProps,
   fontSize,
   FontSizeProps,
+  LineHeightProps,
   space,
   SpaceProps,
   typography,
@@ -84,11 +85,10 @@ type LineHeightTheme = { lineHeights: Record<LineHeight, any> }
 
 type InnerStyledTextProps = ColorProps &
   SpaceProps &
-  TypographyProps<LineHeightTheme> &
-  FontSizeProps
+  TypographyProps &
+  LineHeightProps<LineHeightTheme> // even thought it's included in TypographyProps, adding LineHeightProps again so we can specify the type
 const InnerStyledText = styled(RNText)<InnerStyledTextProps>`
   ${color}
   ${space}
   ${typography}
-  ${fontSize}
 `

@@ -51,9 +51,11 @@ export const Misc: TextStory = () => (
       <Text pl={2} mb={4} mr={80} color="red" backgroundColor="orange">
         Testing the other props
       </Text>
-      <Text lineHeight="20px" />
     </View>
     <View />
+    <Text lineHeight="20px" fontSize={30}>
+      wow
+    </Text>
   </List>
 )
 
