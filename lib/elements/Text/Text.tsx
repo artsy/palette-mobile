@@ -79,7 +79,13 @@ const fixTextTreatmentForStyledComponent = (treatment: TextTreatmentWithoutUnits
   return treatmentWithUnits
 }
 
-type InnerStyledTextProps = ColorProps & SpaceProps & TypographyProps & FontSizeProps
+type LineHeight = `${number}px`
+type LineHeightTheme = { lineHeights: Record<LineHeight, any> }
+
+type InnerStyledTextProps = ColorProps &
+  SpaceProps &
+  TypographyProps<LineHeightTheme> &
+  FontSizeProps
 const InnerStyledText = styled(RNText)<InnerStyledTextProps>`
   ${color}
   ${space}
