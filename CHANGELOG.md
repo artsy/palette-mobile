@@ -1,3 +1,15 @@
+# v10.0.3 (Fri Feb 17 2023)
+
+#### 🐛 Bug Fix
+
+- fix: provider error and text prep [#67](https://github.com/artsy/palette-mobile/pull/67) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v10.0.2 (Fri Feb 17 2023)
 
 #### 🐛 Bug Fix
