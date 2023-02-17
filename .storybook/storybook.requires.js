@@ -28,22 +28,22 @@ if (parameters) {
 
 const getStories = () => {
   return [
-    require("../lib/elements/Avatar/Avatar.stories.tsx"),
-    require("../lib/elements/BackButton/BackButton.stories.tsx"),
-    require("../lib/elements/Box/Box.stories.tsx"),
-    require("../lib/elements/Button/Button.stories.tsx"),
-    require("../lib/elements/Checkbox/Checkbox.stories.tsx"),
-    require("../lib/elements/Collapse/Collapse.stories.tsx"),
-    require("../lib/elements/Input/Input.stories.tsx"),
-    require("../lib/elements/MenuItem/MenuItem.stories.tsx"),
-    require("../lib/elements/Separator/Separator.stories.tsx"),
-    require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
-    require("../lib/elements/Spacer/Spacer.stories.tsx"),
-    require("../lib/elements/Text/Text.stories.tsx"),
-    require("../lib/elements/Touchable/Touchable.stories.tsx"),
-    require("../lib/svgs/icons.stories.tsx"),
-    require("../lib/utils/colors.stories.tsx"),
-    require("../lib/utils/space.stories.tsx"),
+    require("../src/elements/Avatar/Avatar.stories.tsx"),
+    require("../src/elements/BackButton/BackButton.stories.tsx"),
+    require("../src/elements/Box/Box.stories.tsx"),
+    require("../src/elements/Button/Button.stories.tsx"),
+    require("../src/elements/Checkbox/Checkbox.stories.tsx"),
+    require("../src/elements/Collapse/Collapse.stories.tsx"),
+    require("../src/elements/Input/Input.stories.tsx"),
+    require("../src/elements/MenuItem/MenuItem.stories.tsx"),
+    require("../src/elements/Separator/Separator.stories.tsx"),
+    require("../src/elements/Skeleton/Skeleton.stories.tsx"),
+    require("../src/elements/Spacer/Spacer.stories.tsx"),
+    require("../src/elements/Text/Text.stories.tsx"),
+    require("../src/elements/Touchable/Touchable.stories.tsx"),
+    require("../src/svgs/icons.stories.tsx"),
+    require("../src/utils/colors.stories.tsx"),
+    require("../src/utils/space.stories.tsx"),
   ];
 };
 

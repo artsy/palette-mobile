@@ -1,4 +1,4 @@
 module.exports = {
-  stories: ["../lib/**/*.stories.?(ts|tsx|js|jsx)"],
+  stories: ["../src/**/*.stories.?(ts|tsx|js|jsx)"],
   addons: [],
 }
