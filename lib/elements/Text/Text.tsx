@@ -25,6 +25,7 @@ export interface TextProps extends RNTextProps, InnerStyledTextProps {
   weight?: "regular" | "medium"
   maxChars?: number
   underline?: boolean
+  maxWidth?: boolean
 }
 
 export const Text = forwardRef(
@@ -36,6 +37,7 @@ export const Text = forwardRef(
       caps,
       weight = "regular",
       underline = false,
+      maxWidth,
       style,
       children,
       ...restProps
@@ -54,6 +56,7 @@ export const Text = forwardRef(
           ...nativeTextStyle,
           { textAlignVertical: "center" }, // android renders text higher by default, so we bring it down to be consistent with ios
           { textDecorationLine: !!underline ? "underline" : "none" },
+          !!maxWidth ? { width: "100%", maxWidth: 600, alignSelf: "center" } : {},
           style, // keep last so we can override
         ]}
         fontFamily={fontFamily}

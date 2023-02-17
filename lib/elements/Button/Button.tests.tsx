@@ -1,4 +1,4 @@
-import { act, fireEvent, screen } from "@testing-library/react-native"
+import { fireEvent } from "@testing-library/react-native"
 import { Button } from "."
 import { Spinner } from ".."
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"

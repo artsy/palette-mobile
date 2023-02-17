@@ -39,6 +39,7 @@ const getStories = () => {
     require("../lib/elements/Separator/Separator.stories.tsx"),
     require("../lib/elements/Skeleton/Skeleton.stories.tsx"),
     require("../lib/elements/Spacer/Spacer.stories.tsx"),
+    require("../lib/elements/Text/Text.stories.tsx"),
     require("../lib/elements/Touchable/Touchable.stories.tsx"),
     require("../lib/svgs/icons.stories.tsx"),
     require("../lib/utils/colors.stories.tsx"),

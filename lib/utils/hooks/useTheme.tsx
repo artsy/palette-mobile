@@ -1,6 +1,6 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { useContext } from "react"
-import { ThemeContext } from "styled-components"
+import { ThemeContext } from "styled-components/native"
 import { AllThemesType, THEMES, ThemeType, ThemeWithDarkModeType } from "../../tokens"
 import { Color, ColorDSValue } from "../../types"
 

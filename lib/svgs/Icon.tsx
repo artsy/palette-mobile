@@ -1,6 +1,6 @@
 import { PixelRatio } from "react-native"
 import Svg, { SvgProps } from "react-native-svg"
-import styled from "styled-components"
+import styled from "styled-components/native"
 import {
   left,
   LeftProps,
