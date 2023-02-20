@@ -41,6 +41,7 @@ const getStories = () => {
     require("../src/elements/Spacer/Spacer.stories.tsx"),
     require("../src/elements/Text/Text.stories.tsx"),
     require("../src/elements/Touchable/Touchable.stories.tsx"),
+    require("../src/organisms/Screen/Screen.stories.tsx"),
     require("../src/svgs/icons.stories.tsx"),
     require("../src/utils/colors.stories.tsx"),
     require("../src/utils/space.stories.tsx"),
