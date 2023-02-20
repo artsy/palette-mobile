@@ -79,6 +79,7 @@ export const Button = ({
   variant = "fillDark",
   testOnly_pressed,
   testID,
+  hitSlop,
   ...restProps
 }: ButtonProps) => {
   const [disabled, setDisabled, disabledV] = useStateWithProp(!!disabledProp)
@@ -183,6 +184,7 @@ export const Button = ({
       onPress={handlePress}
       testID={testID}
       testOnly_pressed={testOnly_pressed}
+      hitSlop={hitSlop}
     >
       <Flex flexDirection="row">
         <Flex
