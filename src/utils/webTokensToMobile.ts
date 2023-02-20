@@ -53,5 +53,5 @@ export const convertWebTextTreatmentsToMobile = (
     return newTreatment
   })
 
-  return textTreatments as any
+  return textTreatments
 }

@@ -33,8 +33,8 @@ const ANIMATION_DURATION = 250
 
 export const Checkbox = ({
   checked: checkedProp,
-  disabled,
-  error,
+  disabled = false,
+  error = false,
   onPress,
   text,
   subtitle,
@@ -136,7 +136,7 @@ export const Checkbox = ({
           </Animated.View>
 
           <Flex ml={1} flex={1}>
-            {!!text && (
+            {text !== undefined && (
               <AText
                 variant="sm-display"
                 color={textColor}
@@ -150,7 +150,7 @@ export const Checkbox = ({
           </Flex>
         </Flex>
 
-        {!!subtitle && (
+        {subtitle !== undefined && (
           <Flex ml={`${(checkboxSize + space(1)) * fontScale}px`} mt={0.5}>
             <Text variant="xs" color={subtitleColor}>
               {subtitle}

@@ -15,7 +15,7 @@ interface EntityHeaderProps extends SpacerProps {
 }
 
 export const EntityHeader = ({
-  smallVariant,
+  smallVariant = false,
   href,
   imageUrl,
   initials,

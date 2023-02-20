@@ -35,10 +35,10 @@ export const Text = forwardRef(
       variant = "sm",
       italic = false,
       color = "onBackgroundHigh",
-      caps,
+      caps = false,
       weight = "regular",
       underline = false,
-      maxWidth,
+      maxWidth = false,
       style,
       children,
       ...restProps

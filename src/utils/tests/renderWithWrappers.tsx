@@ -11,8 +11,10 @@ import { Theme } from "../../Theme"
 export const renderWithWrappers = (component: ReactElement): any => {
   try {
     return render(component, { wrapper: Providers })
-  } catch (error: any) {
-    throw new Error(error.stack)
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.stack)
+    }
   }
 }
 

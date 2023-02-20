@@ -1,6 +1,6 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { useContext } from "react"
-import { ThemeContext } from "styled-components/native"
+import { DefaultTheme, ThemeContext } from "styled-components/native"
 import { AllThemesType, THEMES, ThemeType, ThemeWithDarkModeType } from "../../tokens"
 import { Color, ColorDSValue } from "../../types"
 
@@ -9,7 +9,7 @@ export const useTheme = (): {
   space: SpaceFn
   color: ColorFn
 } => {
-  const maybeTheme = useContext(ThemeContext)
+  const maybeTheme = useContext<AllThemesType | undefined>(ThemeContext)
 
   // if we are not wrapped in `<Theme>`, if we dev, throw error.
   // if we are in prod, we will default to v2 to avoid a crash.
@@ -27,7 +27,7 @@ export const useTheme = (): {
   const theme = maybeTheme ?? defaultTheme
 
   return {
-    theme: theme,
+    theme,
     space: space(theme),
     color: color(theme),
   }
@@ -38,7 +38,7 @@ type SpaceFn = (spaceName: SpacingUnit) => number
 const space =
   (theme: AllThemesType): SpaceFn =>
   (spaceName) => {
-    const pixelValue = theme.space[spaceName as keyof AllThemesType["space"]]
+    const pixelValue = theme.space[spaceName]
     return Number(pixelValue.split("px")[0])
   }
 
