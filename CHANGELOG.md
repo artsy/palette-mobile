@@ -1,3 +1,19 @@
+# v11.0.1 (Mon Feb 20 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, George Kartalis ([@gkartalis](https://github.com/gkartalis)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: add hitslop on button [#70](https://github.com/artsy/palette-mobile/pull/70) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.0 (Fri Feb 17 2023)
 
 #### 💥 Breaking Change
