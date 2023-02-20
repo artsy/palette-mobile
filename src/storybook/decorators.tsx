@@ -2,10 +2,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { DecoratorFunction } from "@storybook/addons"
 import { useAtom } from "jotai"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
-import React, { ReactNode, useEffect, useState } from "react"
-import { Appearance } from "react-native"
+import { ReactNode, useEffect, useState } from "react"
+import { Appearance, Pressable, Touchable } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { Flex, Theme, Text, LinkText } from ".."
+import { Flex, Theme, Text, LinkText, Join, Spacer } from ".."
 
 export const withTheme: DecoratorFunction<ReactNode> = (story) => (
   <Theme theme="v3light">
@@ -29,6 +29,7 @@ export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"
   )
+  const [showDarkModeSwitcher, setShowDarkModeSwitcher] = useState(false)
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(
@@ -43,20 +44,33 @@ export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   return (
     <Theme theme={theme}>
       {story()}
-      <Flex position="absolute" top={saInsets.top} backgroundColor="background">
-        <Flex flexDirection="row" justifyContent="space-around">
-          <Text color="orange">
-            Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
-          </Text>
-          <LinkText color="orange" onPress={() => void setMode("light")}>
-            light
-          </LinkText>
-          <LinkText color="orange" onPress={() => void setMode("dark")}>
-            dark
-          </LinkText>
-          <LinkText color="orange" onPress={() => void setMode("system")}>
-            system
-          </LinkText>
+      <Flex
+        position="absolute"
+        top={saInsets.top + 5}
+        right={0}
+        backgroundColor={showDarkModeSwitcher ? "background" : "transparent"}
+        width="100%"
+      >
+        <Flex flexDirection="row" justifyContent="flex-end" alignItems="center" height="30px">
+          {showDarkModeSwitcher && (
+            <Join separator={<Spacer x={1} />}>
+              <Text color="orange">
+                Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
+              </Text>
+              <LinkText color="orange" onPress={() => void setMode("light")}>
+                light
+              </LinkText>
+              <LinkText color="orange" onPress={() => void setMode("dark")}>
+                dark
+              </LinkText>
+              <LinkText color="orange" onPress={() => void setMode("system")}>
+                system
+              </LinkText>
+            </Join>
+          )}
+          <Pressable onPress={() => setShowDarkModeSwitcher((v) => !v)}>
+            <Flex width={12} height={12} borderWidth={1} borderColor="black60" mx={1} />
+          </Pressable>
         </Flex>
       </Flex>
     </Theme>
