@@ -4,6 +4,7 @@ import { useAtom } from "jotai"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
 import React, { ReactNode, useEffect, useState } from "react"
 import { Appearance } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Flex, Theme, Text, LinkText } from ".."
 
 export const withTheme: DecoratorFunction<ReactNode> = (story) => (
@@ -23,6 +24,7 @@ const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
 const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
 
 export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
+  const saInsets = useSafeAreaInsets()
   const [mode, setMode] = useAtom(modeAtom)
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"
@@ -40,22 +42,22 @@ export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
 
   return (
     <Theme theme={theme}>
-      <Flex flex={1} backgroundColor="background">
+      {story()}
+      <Flex position="absolute" top={saInsets.top} backgroundColor="background">
         <Flex flexDirection="row" justifyContent="space-around">
           <Text color="orange">
             Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
           </Text>
-          <LinkText color="orange" onPress={() => setMode("light")}>
+          <LinkText color="orange" onPress={() => void setMode("light")}>
             light
           </LinkText>
-          <LinkText color="orange" onPress={() => setMode("dark")}>
+          <LinkText color="orange" onPress={() => void setMode("dark")}>
             dark
           </LinkText>
-          <LinkText color="orange" onPress={() => setMode("system")}>
+          <LinkText color="orange" onPress={() => void setMode("system")}>
             system
           </LinkText>
         </Flex>
-        {story()}
       </Flex>
     </Theme>
   )

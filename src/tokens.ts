@@ -17,6 +17,7 @@ import {
 const { textVariants, space, colors, fonts } = THEME_V3
 
 export interface ThemeType {
+  id: string
   space: Record<SpacingUnitNumbers, `${number}px`>
   colors: Record<ColorLayerName, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
@@ -66,6 +67,7 @@ export const COLOR_LAYER_ROLE = [
 ] as const
 
 const v3: ThemeType = {
+  id: "v3",
   space: convertWebSpacingUnitsToMobile(space),
   colors: COLOR_LAYER_NAME,
   fonts: {
@@ -81,6 +83,7 @@ const v3: ThemeType = {
 
 const v3light: ThemeWithDarkModeType = {
   ...v3,
+  id: "v3light",
   colors: {
     ...v3.colors,
     background: colors.white100,
@@ -108,6 +111,7 @@ const v3light: ThemeWithDarkModeType = {
 
 const v3dark: ThemeWithDarkModeType = {
   ...v3,
+  id: "v3dark",
   colors: {
     ...v3.colors,
     background: colors.black100,

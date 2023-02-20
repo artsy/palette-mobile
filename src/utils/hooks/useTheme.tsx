@@ -6,6 +6,7 @@ import { Color, ColorDSValue } from "../../types"
 
 export const useTheme = (): {
   theme: ThemeType | ThemeWithDarkModeType
+  id: string
   space: SpaceFn
   color: ColorFn
 } => {
@@ -28,6 +29,7 @@ export const useTheme = (): {
 
   return {
     theme,
+    id: theme.id,
     space: space(theme),
     color: color(theme),
   }

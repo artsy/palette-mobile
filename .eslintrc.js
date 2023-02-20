@@ -62,5 +62,9 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": OFF,
     "@typescript-eslint/ban-types": OFF,
     "@typescript-eslint/no-unsafe-argument": OFF,
+    "@typescript-eslint/no-unsafe-assignment": OFF,
+    "@typescript-eslint/no-unsafe-member-access": OFF,
+    "@typescript-eslint/no-unsafe-call": OFF,
+    "@typescript-eslint/no-unsafe-return": OFF,
   },
 }
