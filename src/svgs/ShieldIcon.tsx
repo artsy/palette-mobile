@@ -1,6 +1,6 @@
-import { useColor } from "../utils/hooks"
-import { Color } from "../types"
 import { Icon, IconProps, Path } from "./Icon"
+import { Color } from "../types"
+import { useColor } from "../utils/hooks"
 
 type ShieldIconProps = IconProps & {
   checkColor?: Color

@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from "react-native"
-import { Flex } from "../Flex"
 import { useColor } from "../../utils/hooks"
+import { Flex } from "../Flex"
 import { PopIn } from "../PopIn"
 import { Text } from "../Text"
 

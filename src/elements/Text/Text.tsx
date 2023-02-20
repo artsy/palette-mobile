@@ -14,9 +14,9 @@ import {
   typography,
   TypographyProps,
 } from "styled-system"
+import { useFontFamilyFor } from "./helpers"
 import { useTheme } from "../.."
 import { TextTreatmentWithoutUnits } from "../../utils/webTokensToMobile"
-import { useFontFamilyFor } from "./helpers"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {
   children?: React.ReactNode
@@ -35,10 +35,10 @@ export const Text = forwardRef(
       variant = "sm",
       italic = false,
       color = "onBackgroundHigh",
-      caps,
+      caps = false,
       weight = "regular",
       underline = false,
-      maxWidth,
+      maxWidth = false,
       style,
       children,
       ...restProps

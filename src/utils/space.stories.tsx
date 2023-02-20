@@ -1,19 +1,15 @@
+import { useSpace } from "./hooks"
+import { bullet } from "./text"
 import { Box, Text } from "../elements"
 import { List } from "../storybook/helpers"
 import { SpacingUnitDSValueNumber } from "../types"
-import { useSpace } from "./hooks"
-import { bullet } from "./text"
 
 const SpaceLine = ({ space: theSpace }: { space: SpacingUnitDSValueNumber }) => {
   const space = useSpace()
   return (
     <Box>
       <Box width={space(theSpace)} borderBottomWidth={1} borderColor="black" marginBottom="4px" />
-      <Text color="black">
-        {typeof theSpace === "string"
-          ? `${theSpace}`
-          : `${theSpace} ${bullet} ${space(theSpace as any)}px`}
-      </Text>
+      <Text color="black">{`${theSpace} ${bullet} ${space(theSpace as any)}px`}</Text>
     </Box>
   )
 }

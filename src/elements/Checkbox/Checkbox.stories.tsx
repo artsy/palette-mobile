@@ -1,5 +1,5 @@
-import { List, Row } from "../../storybook/helpers"
 import { Checkbox } from "./Checkbox"
+import { List, Row } from "../../storybook/helpers"
 
 export default {
   title: "Checkbox",

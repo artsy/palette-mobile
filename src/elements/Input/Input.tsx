@@ -1,5 +1,6 @@
 import { EventEmitter } from "events"
 import { themeGet } from "@styled-system/theme-get"
+import { isArray, isString } from "lodash"
 import { useEffect, useImperativeHandle, useRef, useState, forwardRef } from "react"
 import {
   LayoutAnimation,
@@ -12,16 +13,15 @@ import {
   View,
 } from "react-native"
 import styled from "styled-components/native"
-import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { InputTitle } from "./InputTitle"
-import { Flex } from "../Flex"
 import { useTheme } from "../.."
-import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
-import { Text } from "../Text"
-import { Spinner } from "../Spinner"
 import { MeasuredView } from "../../elements/MeasuredView"
-import { isArray, isString } from "lodash"
+import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
+import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { Color } from "../../types"
+import { Flex } from "../Flex"
+import { Spinner } from "../Spinner"
+import { Text } from "../Text"
 
 const DEFAULT_FONT_SIZE = 16
 export const INPUT_HEIGHT = 50

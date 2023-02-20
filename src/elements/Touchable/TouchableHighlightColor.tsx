@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Color } from "../../types"
 import { Touchable, TouchableProps } from "./Touchable"
+import { Color } from "../../types"
 
 interface TouchableHighlightState {
   color: Color

@@ -64,20 +64,25 @@ export const RadioDot = (props: RadioDotProps) => (
   </Container>
 )
 
-const Container = (props: RadioDotProps) => {
+const Container = ({
+  selected = false,
+  hover = false,
+  error = false,
+  disabled = false,
+}: RadioDotProps) => {
   const mode = (() => {
     switch (true) {
-      case props.disabled:
+      case disabled:
         return RADIO_DOT_MODES.disabled
-      case props.hover:
+      case hover:
         return RADIO_DOT_MODES.hover
-      case props.error:
+      case error:
         return RADIO_DOT_MODES.error
       default:
         return RADIO_DOT_MODES.default
     }
   })()
-  const moreProps = props.selected ? mode.selected : mode.resting
+  const moreProps = selected ? mode.selected : mode.resting
 
   return (
     <Flex
@@ -92,7 +97,7 @@ const Container = (props: RadioDotProps) => {
   )
 }
 
-const Dot = (props: RadioDotProps) => (
+const Dot = ({ selected = false, disabled = false }: RadioDotProps) => (
   <Flex
     width={10}
     height={10}
@@ -100,6 +105,6 @@ const Dot = (props: RadioDotProps) => (
     alignItems="center"
     justifyContent="center"
     flexShrink={0}
-    backgroundColor={props.disabled && !props.selected ? "transparent" : "white100"}
+    backgroundColor={disabled && !selected ? "transparent" : "white100"}
   />
 )

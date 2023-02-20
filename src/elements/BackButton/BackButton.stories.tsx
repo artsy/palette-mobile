@@ -1,7 +1,7 @@
-import { Flex } from "../Flex"
+import { BackButton, BackButtonWithBackground } from "./BackButton"
 import { Text } from "../../elements/Text"
 import { List } from "../../storybook/helpers"
-import { BackButton, BackButtonWithBackground } from "./BackButton"
+import { Flex } from "../Flex"
 
 export default {
   title: "BackButton",

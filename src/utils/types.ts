@@ -12,6 +12,7 @@ export type Neg<T extends number> = T extends 0
   ? U
   : `${T}` extends `-${infer U extends number}`
   ? U
-  : Extract<[1e999, -1e999] | [-1e999, 1e999] | [0, 0], [T, unknown]> extends [T, infer U]
+  : // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
+  Extract<[1e999, -1e999] | [-1e999, 1e999] | [0, 0], [T, unknown]> extends [T, infer U]
   ? U
   : T

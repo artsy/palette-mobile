@@ -1,7 +1,5 @@
-import { Touchable, TouchableProps } from "../../elements"
 import { useState } from "react"
 import { PixelRatio, View } from "react-native"
-import { Flex } from "../Flex"
 import Animated, {
   useDerivedValue,
   useAnimatedStyle,
@@ -9,9 +7,11 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated"
 import { useTheme } from "../.."
-import { Text } from "../Text"
+import { Touchable, TouchableProps } from "../../elements"
 import { Color } from "../../types"
 import { useColor } from "../../utils/hooks"
+import { Flex } from "../Flex"
+import { Text } from "../Text"
 
 type DisplayState = "unpressed" | "pressed"
 
@@ -33,8 +33,8 @@ const ANIMATION_DURATION = 250
 
 export const Checkbox = ({
   checked: checkedProp,
-  disabled,
-  error,
+  disabled = false,
+  error = false,
   onPress,
   text,
   subtitle,
@@ -136,7 +136,7 @@ export const Checkbox = ({
           </Animated.View>
 
           <Flex ml={1} flex={1}>
-            {!!text && (
+            {text !== undefined && (
               <AText
                 variant="sm-display"
                 color={textColor}
@@ -150,7 +150,7 @@ export const Checkbox = ({
           </Flex>
         </Flex>
 
-        {!!subtitle && (
+        {subtitle !== undefined && (
           <Flex ml={`${(checkboxSize + space(1)) * fontScale}px`} mt={0.5}>
             <Text variant="xs" color={subtitleColor}>
               {subtitle}

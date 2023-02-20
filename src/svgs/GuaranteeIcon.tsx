@@ -1,6 +1,6 @@
-import { useColor } from "../utils/hooks"
 import { ClipPath, Defs, G } from "react-native-svg"
 import { Icon, IconProps, Path } from "./Icon"
+import { useColor } from "../utils/hooks"
 
 export const GuaranteeIcon = ({ fill, ...restProps }: IconProps) => {
   const color = useColor()

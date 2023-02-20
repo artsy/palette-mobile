@@ -1,6 +1,6 @@
+import { compact } from "lodash"
 import { useEffect, useRef } from "react"
 import { Animated, LayoutRectangle, ScrollView, View } from "react-native"
-import { compact } from "lodash"
 import { Box } from "../.."
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"

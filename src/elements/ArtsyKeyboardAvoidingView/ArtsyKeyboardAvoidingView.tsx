@@ -61,7 +61,7 @@ class KeyboardAvoidingView extends Component<
 > {
   _frame: LayoutRectangle | null = null
   _subscriptions: Array<{ remove(): void }> = []
-  _initialFrameHeight: number = 0
+  _initialFrameHeight = 0
 
   viewRef = createRef<View>()
 
