@@ -1,13 +1,13 @@
-import { Button as RNButton } from "react-native"
+import { capitalize } from "lodash"
 import { useState } from "react"
+import { Button as RNButton } from "react-native"
 import { Button, ButtonProps, CTAButton, FollowButton, LinkButton } from "."
+import { LinkText } from ".."
 import { Box, Flex, Spacer } from "../../"
 import { DataList, List } from "../../storybook/helpers"
 import { BellIcon, LinkIcon } from "../../svgs"
 import { Wrap } from "../../utils/Wrap"
 import { NoUndefined } from "../../utils/types"
-import { capitalize } from "lodash"
-import { LinkText } from ".."
 
 const sizes: Array<NoUndefined<ButtonProps["size"]>> = ["small", "large"]
 const variants: Array<NoUndefined<ButtonProps["variant"]>> = [

@@ -7,9 +7,9 @@ import {
   View,
 } from "react-native"
 import styled from "styled-components/native"
+import { useTheme } from "../.."
 import { CssTransition } from "../../animation"
 import { Flex, FlexProps } from "../Flex"
-import { useTheme } from "../.."
 import { Text } from "../Text"
 
 const RADIOBUTTON_SIZE = 20

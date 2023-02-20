@@ -1,9 +1,9 @@
-import { List } from "../storybook/helpers"
-import { Icon } from "./Icon"
 import * as Icons from "."
+import { Icon } from "./Icon"
 import { Flex } from "../elements/Flex"
 import { Spacer } from "../elements/Spacer"
 import { Text } from "../elements/Text"
+import { List } from "../storybook/helpers"
 
 export default {
   title: "Icons",

@@ -1,8 +1,8 @@
+import { range } from "lodash"
+import { Skeleton, SkeletonBox, SkeletonText } from "./Skeleton"
 import { Flex, Spacer } from "../.."
 import { List } from "../../storybook/helpers"
-import { Skeleton, SkeletonBox, SkeletonText } from "./Skeleton"
 import { Join } from "../Join"
-import { range } from "lodash"
 
 export default {
   title: "Skeleton",

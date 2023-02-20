@@ -1,6 +1,6 @@
-import { SafeAreaProvider } from "react-native-safe-area-context"
 import { render } from "@testing-library/react-native"
 import { ReactElement } from "react"
+import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../../Theme"
 
 /**

@@ -1,5 +1,5 @@
-import { List, Row } from "../../storybook/helpers"
 import { Avatar, AvatarProps } from "./Avatar"
+import { List, Row } from "../../storybook/helpers"
 
 export default {
   title: "Avatar",

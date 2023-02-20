@@ -14,9 +14,9 @@ import {
   typography,
   TypographyProps,
 } from "styled-system"
+import { useFontFamilyFor } from "./helpers"
 import { useTheme } from "../.."
 import { TextTreatmentWithoutUnits } from "../../utils/webTokensToMobile"
-import { useFontFamilyFor } from "./helpers"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {
   children?: React.ReactNode

@@ -1,5 +1,5 @@
-import { useColor } from "../utils/hooks"
 import { Icon, Circle, IconProps, Mask, Path, Rect } from "./Icon"
+import { useColor } from "../utils/hooks"
 
 export const StarCircleFill = ({ fill, ...restProps }: IconProps) => {
   const color = useColor()

@@ -1,8 +1,8 @@
-import { Flex } from "../Flex"
+import { Touchable } from "./Touchable"
 import { List } from "../../storybook/helpers"
 import { TrashIcon } from "../../svgs"
+import { Flex } from "../Flex"
 import { Text } from "../Text"
-import { Touchable } from "./Touchable"
 
 export default {
   title: "Touchable",

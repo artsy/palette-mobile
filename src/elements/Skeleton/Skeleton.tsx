@@ -1,6 +1,3 @@
-import { Flex, FlexProps } from "../Flex"
-import { Text, TextProps } from "../Text"
-import { useColor } from "../../utils/hooks"
 import { FC, ReactNode } from "react"
 import Animated, {
   Easing,
@@ -9,6 +6,9 @@ import Animated, {
   withRepeat,
   withTiming,
 } from "react-native-reanimated"
+import { useColor } from "../../utils/hooks"
+import { Flex, FlexProps } from "../Flex"
+import { Text, TextProps } from "../Text"
 
 /**
  * Creates a skeleton animation for a component.

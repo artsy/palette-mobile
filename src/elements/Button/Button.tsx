@@ -9,13 +9,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { Spacer } from "../Spacer"
+import { useColorsForVariantAndState } from "./colors"
+import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex"
-import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
-import { Text, useTextStyleForPalette } from "../Text"
-import { useColorsForVariantAndState } from "./colors"
+import { Spacer } from "../Spacer"
 import { Spinner } from "../Spinner"
+import { Text, useTextStyleForPalette } from "../Text"
 
 const ANIMATION_DURATION = 150
 

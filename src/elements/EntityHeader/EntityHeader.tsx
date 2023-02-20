@@ -1,7 +1,7 @@
-import { Flex } from "../Flex"
-import { SpacerProps } from "../Spacer"
 import { bullet } from "../../utils/text"
 import { Avatar } from "../Avatar"
+import { Flex } from "../Flex"
+import { SpacerProps } from "../Spacer"
 import { Text } from "../Text"
 
 interface EntityHeaderProps extends SpacerProps {

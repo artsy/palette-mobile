@@ -1,10 +1,10 @@
+import { Spacer, SpacerProps } from "./Spacer"
 import { Text } from "../../elements"
-import { bullet } from "../../utils/text"
-import { useSpace } from "../../utils/hooks"
 import { List } from "../../storybook/helpers"
+import { useSpace } from "../../utils/hooks"
+import { bullet } from "../../utils/text"
 import { NoUndefined } from "../../utils/types"
 import { Box } from "../Box"
-import { Spacer, SpacerProps } from "./Spacer"
 
 export default {
   title: "Spacer",

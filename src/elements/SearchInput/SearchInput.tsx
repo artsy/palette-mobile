@@ -1,6 +1,6 @@
-import { Input, InputProps } from "../Input"
 import { MagnifyingGlassIcon } from "../../svgs"
 import { Flex } from "../Flex"
+import { Input, InputProps } from "../Input"
 
 export interface SearchInputProps extends InputProps {
   enableCancelButton?: boolean

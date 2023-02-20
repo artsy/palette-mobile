@@ -1,7 +1,5 @@
-import { Touchable, TouchableProps } from "../../elements"
 import { useState } from "react"
 import { PixelRatio, View } from "react-native"
-import { Flex } from "../Flex"
 import Animated, {
   useDerivedValue,
   useAnimatedStyle,
@@ -9,9 +7,11 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated"
 import { useTheme } from "../.."
-import { Text } from "../Text"
+import { Touchable, TouchableProps } from "../../elements"
 import { Color } from "../../types"
 import { useColor } from "../../utils/hooks"
+import { Flex } from "../Flex"
+import { Text } from "../Text"
 
 type DisplayState = "unpressed" | "pressed"
 

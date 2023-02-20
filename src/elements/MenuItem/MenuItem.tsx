@@ -1,8 +1,8 @@
+import { ChevronIcon } from "../../svgs"
+import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
-import { ChevronIcon } from "../../svgs"
 import { Touchable } from "../Touchable"
-import { useColor } from "../../utils/hooks"
 
 export interface MenuItemProps {
   disabled?: boolean

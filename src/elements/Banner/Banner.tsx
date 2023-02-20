@@ -1,9 +1,9 @@
 import { useRef, useState } from "react"
 import { Animated, Easing, Image, TextProps, TouchableOpacity } from "react-native"
 import { FlexProps } from "styled-system"
-import { Flex } from "../Flex"
-import { useColor } from "../../utils/hooks"
 import { QuestionCircleIcon } from "../../svgs"
+import { useColor } from "../../utils/hooks"
+import { Flex } from "../Flex"
 import { Text } from "../Text"
 
 export interface BannerProps {
