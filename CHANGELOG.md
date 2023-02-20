@@ -1,3 +1,15 @@
+# v11.0.2 (Mon Feb 20 2023)
+
+#### 🐛 Bug Fix
+
+- fix: some eslint issues [#71](https://github.com/artsy/palette-mobile/pull/71) ([@pvinis](https://github.com/pvinis))
+
+#### Authors: 1
+
+- Pavlos Vinieratos ([@pvinis](https://github.com/pvinis))
+
+---
+
 # v11.0.1 (Mon Feb 20 2023)
 
 :tada: This release contains work from a new contributor! :tada:
