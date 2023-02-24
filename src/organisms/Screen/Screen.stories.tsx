@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react-native"
 import { Screen } from "."
+import { Button } from "../../elements/Button"
 import { Flex } from "../../elements/Flex"
+import { Input } from "../../elements/Input"
 import { Text } from "../../elements/Text"
 
 const ScreenMeta: ComponentMeta<typeof Screen> = {
@@ -38,6 +40,9 @@ export const FullBackgroundDifferentColors: ScreenStory = () => (
     </Screen.Background>
     <Screen.Body backgroundColor="pink">
       <Text>Hello</Text>
+      <Text>
+        Make sure to hit the square button at the bottom-right, to see the safe area correctly
+      </Text>
     </Screen.Body>
   </Screen>
 )
@@ -50,6 +55,9 @@ export const FullBackgroundDifferentColorsManual: ScreenStory = () => (
     <Screen.Body fullwidth>
       <Screen.BodyXPadding flex={1} backgroundColor="orange">
         <Text>Hello</Text>
+        <Text>
+          Make sure to hit the square button at the bottom-right, to see the safe area correctly
+        </Text>
       </Screen.BodyXPadding>
     </Screen.Body>
   </Screen>
@@ -57,7 +65,7 @@ export const FullBackgroundDifferentColorsManual: ScreenStory = () => (
 
 export const RegularHeader: ScreenStory = () => (
   <Screen>
-    {/* tslint:disable-next-line:no-empty */}
+    {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
     <Screen.Header onBack={() => {}} />
     <Screen.Body>
       <Text>Hello</Text>
@@ -77,7 +85,7 @@ export const NoHeader: ScreenStory = () => (
 
 export const FloatingHeader: ScreenStory = () => (
   <Screen>
-    {/* tslint:disable-next-line:no-empty */}
+    {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
     <Screen.FloatingHeader onBack={() => {}} />
     <Screen.Body>
       <Text>Hello</Text>
@@ -94,14 +102,18 @@ export const FloatingHeader: ScreenStory = () => (
 export const ScrollScreen: ScreenStory = () => (
   <Screen>
     <Screen.Body scroll>
-      <Text>Hello</Text>
+      <Text>Hello scroll</Text>
+      <Text>Hello scroll</Text>
+      <Text>Hello scroll</Text>
+      <Text>Hello scroll</Text>
+      <Text>Hello scroll</Text>
     </Screen.Body>
   </Screen>
 )
 
 export const ScrollScreenWithRegularHeader: ScreenStory = () => (
   <Screen>
-    {/* tslint:disable-next-line:no-empty */}
+    {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
     <Screen.Header onBack={() => {}} />
     <Screen.Body scroll>
       <Text>Hello</Text>
@@ -111,10 +123,14 @@ export const ScrollScreenWithRegularHeader: ScreenStory = () => (
 
 export const ScrollScreenWithFloatingHeader: ScreenStory = () => (
   <Screen>
-    {/* tslint:disable-next-line:no-empty */}
+    {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
     <Screen.FloatingHeader onBack={() => {}} />
     <Screen.Body scroll nosafe>
-      <Text>Hello</Text>
+      <Text>Hello scroll with floating</Text>
+      <Text>Hello scroll with floating</Text>
+      <Text>Hello scroll with floating</Text>
+      <Text>Hello scroll with floating</Text>
+      <Text>Hello scroll with floating</Text>
     </Screen.Body>
   </Screen>
 )
@@ -126,6 +142,9 @@ export const ScrollScreenWithBottomView: ScreenStory = () => (
       <Text>Hello</Text>
       <Text>Hello</Text>
       <Text>Hello</Text>
+      <Text>
+        Make sure to hit the square button at the bottom-right, to see the safe area correctly
+      </Text>
       <Text>Hello</Text>
       <Text>Hello</Text>
       <Text>Hello</Text>
@@ -159,7 +178,7 @@ export const ScrollScreenWithBottomView: ScreenStory = () => (
       <Text>Hello</Text>
       <Input />
       <Screen.BottomView>
-        {/* tslint:disable-next-line:no-empty */}
+        {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
         <Button onPress={() => {}} block>
           Bottom Action
         </Button>

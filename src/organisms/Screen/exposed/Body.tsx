@@ -62,7 +62,10 @@ export const Body = ({
         {...restFlexProps}
       >
         <Wrap if={scroll}>
-          <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+          <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          >
             <ScrollView
               keyboardShouldPersistTaps="handled"
               contentInset={{ bottom: bottomViewHeight + space(2) }}

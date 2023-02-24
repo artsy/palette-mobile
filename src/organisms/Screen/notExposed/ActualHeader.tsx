@@ -1,8 +1,12 @@
-// import { Button, DEFAULT_HIT_SLOP, Spacer } from "@artsy/palette-mobile"
-// import { ArrowLeftIcon, Flex, Text, Touchable } from "@artsy/palette-mobile"
-// import { useNavigation } from "@react-navigation/native"
 // import { SelectModeConfig } from "app/system/store/selectModeAtoms"
 import Animated, { FadeInLeft, FadeOutLeft } from "react-native-reanimated"
+import { DEFAULT_HIT_SLOP } from "../../../constants"
+import { Button } from "../../../elements/Button"
+import { Flex } from "../../../elements/Flex"
+import { Spacer } from "../../../elements/Spacer"
+import { Text } from "../../../elements/Text"
+import { Touchable } from "../../../elements/Touchable"
+import { ArrowLeftIcon } from "../../../svgs"
 import { useSetHandledTopSafeArea } from "../atoms"
 
 export const NAVBAR_HEIGHT = 44
@@ -10,7 +14,7 @@ export const NAVBAR_HEIGHT = 44
 export interface ActualHeaderProps {
   title?: string
 
-  onBack?: () => void
+  onBack: () => void
 
   leftElements?: React.ReactNode
   rightElements?: React.ReactNode
@@ -21,7 +25,7 @@ export interface ActualHeaderProps {
   animatedTitle?: boolean
   titleShown?: boolean
 
-  selectModeConfig?: Partial<SelectModeConfig>
+  // selectModeConfig?: Partial<SelectModeConfig>
 }
 
 export const ActualHeader = ({
@@ -34,26 +38,27 @@ export const ActualHeader = ({
   animatedTitle = false,
   titleShown = false,
   selectModeConfig: {
-    selectModeActive,
-    selectModeToggle,
-    selectModeAllSelected,
-    selectModeSelectAll,
-    selectModeUnselectAll,
+    //   selectModeActive,
+    //   selectModeToggle,
+    //   selectModeAllSelected,
+    //   selectModeSelectAll,
+    //   selectModeUnselectAll,
   } = {},
 }: ActualHeaderProps) => {
   useSetHandledTopSafeArea(true)
-  const navigation = useNavigation()
+  // const navigation = useNavigation()
 
   const usingSelectMode = selectModeToggle !== undefined
 
   if (
     __DEV__ &&
     usingSelectMode &&
-    (selectModeActive === undefined ||
-      selectModeToggle === undefined ||
-      selectModeAllSelected === undefined ||
-      selectModeSelectAll === undefined ||
-      selectModeUnselectAll === undefined)
+    // (selectModeActive === undefined ||
+    //   selectModeToggle === undefined ||
+    //   selectModeAllSelected === undefined ||
+    false
+    //   selectModeSelectAll === undefined ||
+    //   selectModeUnselectAll === undefined)
   ) {
     console.warn("For select mode, you need all `selectMode*` props defined.")
     return null
@@ -82,7 +87,8 @@ export const ActualHeader = ({
       default: {
         return (
           <Touchable
-            onPress={onBack ? onBack : () => navigation.goBack()}
+            // onPress={onBack ? onBack : () => navigation.goBack()}
+            onPress={onBack}
             underlayColor="transparent"
             hitSlop={DEFAULT_HIT_SLOP}
           >
@@ -119,7 +125,7 @@ export const ActualHeader = ({
 
   return (
     <Flex height={NAVBAR_HEIGHT} flexDirection="row" px={2}>
-      {!!actualLeftElements && (
+      {actualLeftElements != null && (
         <Flex flexDirection="row" alignItems="center">
           {actualLeftElements}
           <Spacer x={1} />
@@ -145,7 +151,7 @@ export const ActualHeader = ({
             : actualTitle)}
       </Flex>
 
-      {!!actualRightElements && (
+      {actualRightElements != null && (
         <Flex flexDirection="row" alignItems="center">
           <Spacer x={1} />
           {actualRightElements}

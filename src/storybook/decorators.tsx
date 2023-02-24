@@ -3,7 +3,7 @@ import { DecoratorFunction } from "@storybook/addons"
 import { useAtom } from "jotai"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
 import { ReactNode, useEffect, useState } from "react"
-import { Appearance, Pressable, Touchable } from "react-native"
+import { Appearance, Pressable } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Flex, Theme, Text, LinkText, Join, Spacer } from ".."
 
@@ -46,10 +46,12 @@ export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
       {story()}
       <Flex
         position="absolute"
-        top={saInsets.top + 5}
+        top={saInsets.top + 50}
         right={0}
+        width={showDarkModeSwitcher ? "100%" : 50}
         backgroundColor={showDarkModeSwitcher ? "background" : "transparent"}
-        width="100%"
+        borderWidth={1}
+        borderColor={showDarkModeSwitcher ? "black60" : "transparent"}
       >
         <Flex flexDirection="row" justifyContent="flex-end" alignItems="center" height="30px">
           {showDarkModeSwitcher && (
