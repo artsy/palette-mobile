@@ -1,4 +1,4 @@
-import { withDarkModeSwitcher } from "../src/storybook/decorators"
+import { useDarkModeSwitcher } from "../src/storybook/decorators"
 
-export const decorators = [withDarkModeSwitcher]
+export const decorators = [useDarkModeSwitcher]
 export const parameters = {}

@@ -8,16 +8,13 @@ import {
 import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import {
-  ArtsyKeyboardAvoidingView,
-  BackButton,
-  BackButtonWithBackground,
-  Flex,
-  FlexProps,
-  Spacer,
-} from ".."
+
 import { SpacingUnit } from "../../types"
 import { Wrap } from "../../utils/Wrap"
+import { ArtsyKeyboardAvoidingView } from "../ArtsyKeyboardAvoidingView"
+import { BackButton, BackButtonWithBackground } from "../BackButton"
+import { Flex, FlexProps } from "../Flex"
+import { Spacer } from "../Spacer"
 
 interface ScreenContextState {
   handleTopSafeArea: boolean

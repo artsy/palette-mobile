@@ -6,10 +6,10 @@ import Animated, {
   withTiming,
   interpolateColor,
 } from "react-native-reanimated"
-import { useTheme } from "../.."
 import { Touchable, TouchableProps } from "../../elements"
 import { Color } from "../../types"
 import { useColor } from "../../utils/hooks"
+import { useTheme } from "../../utils/hooks/useTheme"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 

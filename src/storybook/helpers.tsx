@@ -1,5 +1,5 @@
 import { FlatList, StyleProp, ViewStyle } from "react-native"
-import { Flex, Spacer } from ".."
+import { Flex, Spacer } from "../elements"
 
 export const DataList = <ItemT,>({
   data,

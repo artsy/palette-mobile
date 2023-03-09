@@ -1,7 +1,6 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { forwardRef, Ref } from "react"
-import { StyleProp, TextStyle } from "react-native"
-import { Text as RNText, TextProps as RNTextProps } from "react-native"
+import { StyleProp, TextStyle, Text as RNText, TextProps as RNTextProps } from "react-native"
 import styled from "styled-components/native"
 import {
   color,
@@ -15,7 +14,7 @@ import {
   TypographyProps,
 } from "styled-system"
 import { useFontFamilyFor } from "./helpers"
-import { useTheme } from "../.."
+import { useTheme } from "../../utils/hooks/useTheme"
 import { TextTreatmentWithoutUnits } from "../../utils/webTokensToMobile"
 
 export interface TextProps extends RNTextProps, InnerStyledTextProps {

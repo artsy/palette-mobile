@@ -1,7 +1,7 @@
 import { fireEvent } from "@testing-library/react-native"
-import { Button } from "."
-import { Spinner } from ".."
+import { Button } from "./Button"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
+import { Spinner } from "../Spinner"
 
 describe("Button", () => {
   it("shows spinner if loading is true", () => {
