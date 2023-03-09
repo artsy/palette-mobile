@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Collapse } from "."
+import { Collapse } from "./Collapse"
 import { LinkText, Text } from "../Text"
 
 export default {

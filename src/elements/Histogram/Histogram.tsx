@@ -1,4 +1,5 @@
-import { Flex, Box } from "../.."
+import { Box } from "../Box"
+import { Flex } from "../Flex"
 
 const BAR_WIDTH = 2
 const BAR_ROUNDNESS = 10

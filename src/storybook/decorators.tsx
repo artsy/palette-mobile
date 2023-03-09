@@ -2,9 +2,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { DecoratorFunction } from "@storybook/addons"
 import { useAtom } from "jotai"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
-import React, { ReactNode, useEffect, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { Appearance } from "react-native"
-import { Flex, Theme, Text, LinkText } from ".."
+import { Theme } from "../Theme"
+import { Flex } from "../elements/Flex"
+import { LinkText, Text } from "../elements/Text"
 
 export const withTheme: DecoratorFunction<ReactNode> = (story) => (
   <Theme theme="v3light">
@@ -22,7 +24,7 @@ const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
 
 const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
 
-export const withDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
+export const useDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   const [mode, setMode] = useAtom(modeAtom)
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"

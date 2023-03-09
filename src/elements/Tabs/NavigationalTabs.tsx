@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { LayoutRectangle } from "react-native"
-import { Tab, TabsProps } from "."
 import { TabBarContainer } from "./TabBarContainer"
-import { Box } from "../.."
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
+import { Box } from "../Box"
+import { Tab, TabsProps } from "../Tabs"
 
 /**
  * Renders a list of tabs. Evenly-spaces them across the screen with

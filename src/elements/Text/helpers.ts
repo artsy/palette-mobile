@@ -1,7 +1,7 @@
 import { TextStyle } from "react-native"
-import { TextProps } from "."
-import { useTheme } from "../.."
+import { useTheme } from "../../utils/hooks/useTheme"
 import { NoUndefined } from "../../utils/types"
+import { TextProps } from "../Text"
 
 export const useFontFamilyFor = ({
   italic,

@@ -1,5 +1,5 @@
 import { Separator } from "./Separator"
-import { Spacer } from "../.."
+import { Spacer } from "../Spacer"
 
 export default {
   title: "Separator",

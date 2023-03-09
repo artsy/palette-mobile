@@ -7,8 +7,8 @@ import {
   View,
 } from "react-native"
 import styled from "styled-components/native"
-import { useTheme } from "../.."
 import { CssTransition } from "../../animation"
+import { useTheme } from "../../utils/hooks/useTheme"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 

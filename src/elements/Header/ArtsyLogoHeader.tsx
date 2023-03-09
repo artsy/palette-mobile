@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native"
-import { Box, Flex, Spacer } from "../.."
 import { ArtsyLogoBlackIcon } from "../../svgs"
+import { Box } from "../Box"
+import { Flex } from "../Flex"
+import { Spacer } from "../Spacer"
 
 interface Props {
   shadow?: boolean

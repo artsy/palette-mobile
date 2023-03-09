@@ -14,11 +14,11 @@ import {
 } from "react-native"
 import styled from "styled-components/native"
 import { InputTitle } from "./InputTitle"
-import { useTheme } from "../.."
 import { MeasuredView } from "../../elements/MeasuredView"
 import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
 import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
 import { Color } from "../../types"
+import { useTheme } from "../../utils/hooks/useTheme"
 import { Flex } from "../Flex"
 import { Spinner } from "../Spinner"
 import { Text } from "../Text"
@@ -97,8 +97,6 @@ export const Input = forwardRef<TextInput, InputProps>(
       title,
       renderLeftHandSection,
       secureTextEntry = false,
-      textContentType,
-      canHidePassword,
       inputTextStyle,
       fixedRightPlaceholder,
       placeholder,

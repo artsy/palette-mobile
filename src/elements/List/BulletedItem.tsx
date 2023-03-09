@@ -1,5 +1,6 @@
-import { Flex, FlexProps, Spacer } from "../.."
 import { bullet } from "../../utils/text"
+import { Flex, FlexProps } from "../Flex"
+import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 
 interface BulletedItemProps extends FlexProps {

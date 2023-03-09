@@ -1,13 +1,18 @@
 import { capitalize } from "lodash"
 import { useState } from "react"
 import { Button as RNButton } from "react-native"
-import { Button, ButtonProps, CTAButton, FollowButton, LinkButton } from "."
-import { LinkText } from ".."
-import { Box, Flex, Spacer } from "../../"
+import { Button, ButtonProps } from "./Button"
+import { CTAButton } from "./CTAButton"
+import { FollowButton } from "./FollowButton"
+import { LinkButton } from "./LinkButton"
 import { DataList, List } from "../../storybook/helpers"
 import { BellIcon, LinkIcon } from "../../svgs"
 import { Wrap } from "../../utils/Wrap"
 import { NoUndefined } from "../../utils/types"
+import { Box } from "../Box"
+import { Flex } from "../Flex"
+import { Spacer } from "../Spacer"
+import { LinkText } from "../Text"
 
 const sizes: Array<NoUndefined<ButtonProps["size"]>> = ["small", "large"]
 const variants: Array<NoUndefined<ButtonProps["variant"]>> = [

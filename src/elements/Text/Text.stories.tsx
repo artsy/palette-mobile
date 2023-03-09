@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react-native"
 import { Platform, Text as RNText, TextStyle, View } from "react-native"
-import { LinkText, Text, TextProps } from "."
 import { DataList, List } from "../../storybook/helpers"
 import { Box } from "../Box"
 import { Flex } from "../Flex"
+import { LinkText, Text, TextProps } from "../Text"
 
 const TextMeta: ComponentMeta<typeof Text> = {
   title: "Theme/Text",

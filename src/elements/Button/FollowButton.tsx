@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "."
+import { Button, ButtonProps } from "./Button"
 import { CheckIcon } from "../../svgs"
 
 type FollowButtonProps = Omit<
