@@ -1,3 +1,15 @@
+# v11.0.3 (Thu Mar 09 2023)
+
+#### 🐛 Bug Fix
+
+- fix(imports): make sure paths are concrete [#73](https://github.com/artsy/palette-mobile/pull/73) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.2 (Mon Feb 20 2023)
 
 #### 🐛 Bug Fix
