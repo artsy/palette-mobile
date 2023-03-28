@@ -65,15 +65,36 @@ export const COLOR_LAYER_ROLE = [
   "onBrand",
 ] as const
 
+const RegularFontFamily = "Unica77LL-Regular"
+const ItalicFontFamily = "Unica77LL-Italic"
+const MediumFontFamily = "Unica77LL-Medium"
+const MediumItalicFontFamily = "Unica77LL-MediumItalic"
+
+const OSSRegularFontFamily = "HelveticaNeue"
+const OSSItalicFontFamily = "HelveticaNeue-Italic"
+const OSSMediumFontFamily = "HelveticaNeue-Medium"
+const OSSMediumItalicFontFamily = "HelveticaNeue-MediumItalic"
+
+const ossFonts = {
+  fonts: {
+    sans: {
+      regular: OSSRegularFontFamily,
+      italic: OSSItalicFontFamily,
+      medium: OSSMediumFontFamily,
+      mediumItalic: OSSMediumItalicFontFamily,
+    },
+  },
+}
+
 const v3: ThemeType = {
   space: convertWebSpacingUnitsToMobile(space),
   colors: COLOR_LAYER_NAME,
   fonts: {
     sans: {
-      regular: "Unica77LL-Regular",
-      italic: "Unica77LL-Italic",
-      medium: "Unica77LL-Medium",
-      mediumItalic: "Unica77LL-MediumItalic",
+      regular: RegularFontFamily,
+      italic: ItalicFontFamily,
+      medium: MediumFontFamily,
+      mediumItalic: MediumItalicFontFamily,
     },
   },
   textTreatments: convertWebTextTreatmentsToMobile(textVariants),
@@ -106,6 +127,11 @@ const v3light: ThemeWithDarkModeType = {
   },
 }
 
+const v3lightOSS: ThemeWithDarkModeType = {
+  ...v3light,
+  fonts: ossFonts.fonts,
+}
+
 const v3dark: ThemeWithDarkModeType = {
   ...v3,
   colors: {
@@ -133,8 +159,15 @@ const v3dark: ThemeWithDarkModeType = {
   },
 }
 
+const v3darkOSS: ThemeWithDarkModeType = {
+  ...v3dark,
+  fonts: ossFonts.fonts,
+}
+
 export const THEMES: {
   v3: ThemeType
   v3light: ThemeWithDarkModeType
   v3dark: ThemeWithDarkModeType
-} = { v3, v3light, v3dark }
+  v3lightOSS: ThemeWithDarkModeType
+  v3darkOSS: ThemeWithDarkModeType
+} = { v3, v3light, v3dark, v3lightOSS, v3darkOSS }
