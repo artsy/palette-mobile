@@ -29,9 +29,11 @@ interface ScreenContextValue {
   setOptions: (opts: Partial<ScreenContextState>) => void
 }
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const ScreenContext = createContext<ScreenContextValue>(null!)
 function useScreenContext() {
   const context = useContext(ScreenContext)
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!context) {
     throw new Error("useScreenContext must be used within a Screen")
   }
@@ -167,12 +169,16 @@ interface BodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
   children?: ReactNode
   scroll?: boolean
   nosafe?: boolean
+  noTopSafe?: boolean
+  noBottomSafe?: boolean
   fullwidth?: boolean
 }
 
 const Body = ({
   scroll = false,
   nosafe = false,
+  noTopSafe = false,
+  noBottomSafe = false,
   fullwidth = false,
   children,
   ...restFlexProps
@@ -181,15 +187,15 @@ const Body = ({
   const bottomView = getChildrenByType(children, Screen.BottomView)
   const { options } = useScreenContext()
   const insets = useSafeAreaInsets()
-  const withTopSafeArea = options.handleTopSafeArea && !nosafe
-  const withBottomSafeArea = !nosafe
+  const withTopSafeArea = options.handleTopSafeArea && !noTopSafe
+  const withBottomSafeArea = !noBottomSafe
 
   return (
     <>
       <Flex
         flex={1}
-        mt={withTopSafeArea ? `${insets.top}px` : undefined}
-        mb={withBottomSafeArea ? `${insets.bottom}px` : undefined}
+        mt={nosafe || withTopSafeArea ? `${insets.top}px` : undefined}
+        mb={nosafe || withBottomSafeArea ? `${insets.bottom}px` : undefined}
         {...restFlexProps}
       >
         <Wrap if={scroll}>
