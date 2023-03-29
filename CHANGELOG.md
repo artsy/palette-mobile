@@ -1,3 +1,15 @@
+# v11.0.4 (Wed Mar 29 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add noTopSafe noBottomSafe props to screen component [#75](https://github.com/artsy/palette-mobile/pull/75) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.3 (Thu Mar 09 2023)
 
 #### 🐛 Bug Fix
