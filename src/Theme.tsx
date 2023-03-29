@@ -23,6 +23,14 @@ const getTheme = (theme: ThemeOptions): ThemeType | ThemeWithDarkModeType => {
     return THEMES.v3dark
   }
 
+  if (theme === "v3lightOSS") {
+    return THEMES.v3lightOSS
+  }
+
+  if (theme === "v3darkOSS") {
+    return THEMES.v3darkOSS
+  }
+
   return THEMES.v3light
 }
 
