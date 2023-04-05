@@ -1,3 +1,21 @@
+# v11.0.5 (Wed Apr 05 2023)
+
+#### 🐛 Bug Fix
+
+- chore(migration): Add missing eigen palette stuff [#78](https://github.com/artsy/palette-mobile/pull/78) ([@damassi](https://github.com/damassi))
+
+#### 🔩 Dependency Updates
+
+- Bump @sideway/formula from 3.0.0 to 3.0.1 [#76](https://github.com/artsy/palette-mobile/pull/76) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump activesupport from 6.1.7.2 to 6.1.7.3 [#74](https://github.com/artsy/palette-mobile/pull/74) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.4 (Wed Mar 29 2023)
 
 #### 🐛 Bug Fix
