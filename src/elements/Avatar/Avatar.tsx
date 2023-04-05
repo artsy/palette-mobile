@@ -53,6 +53,7 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
           borderWidth: 1,
         }}
         source={{ uri: src }}
+        accessibilityLabel="AvatarImage"
       />
     )
   }
@@ -67,6 +68,7 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
       overflow="hidden"
       alignItems="center"
       justifyContent="center"
+      accessibilityLabel="Avatar"
     >
       <Text variant={textSize}>{initials}</Text>
     </Flex>
