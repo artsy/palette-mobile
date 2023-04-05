@@ -28,6 +28,7 @@ const CHECKBOX_SIZEx1 = 20
 const ANIMATION_DURATION = 250
 
 export const Checkbox: React.FC<CheckboxProps> = ({
+  children,
   checked: checkedProp,
   disabled = false,
   error = false,
@@ -144,6 +145,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                   {text} {displayState}
                 </AnimatedText>
               )}
+              {children}
             </Flex>
           </Flex>
 
