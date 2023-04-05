@@ -14,10 +14,6 @@ export function Variants() {
       </Row>
 
       <Row>
-        <Checkbox text="Pressed" testOnly_state="pressed" />
-      </Row>
-
-      <Row>
         <Checkbox text="Checked" checked />
       </Row>
 
