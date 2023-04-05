@@ -14,7 +14,13 @@ export const BackButton = ({
   onPress,
   showX = false,
 }: BackButtonProps) => (
-  <TouchableOpacity onPress={onPress} hitSlop={hitSlop}>
+  <TouchableOpacity
+    onPress={onPress}
+    hitSlop={hitSlop}
+    accessibilityRole="button"
+    accessibilityLabel={showX ? "Close" : "Go back"}
+    accessibilityHint={showX ? "Dismiss this screen" : "Go back to the previous screen"}
+  >
     {showX ? (
       <CloseIcon fill="onBackgroundHigh" width={26} height={26} />
     ) : (
@@ -36,6 +42,9 @@ export const BackButtonWithBackground = ({
       borderRadius={20}
       alignItems="center"
       justifyContent="center"
+      accessibilityRole="button"
+      accessibilityLabel={showX ? "Close" : "Go back"}
+      accessibilityHint={showX ? "Dismiss this screen" : "Go back to the previous screen"}
     >
       {showX ? (
         <CloseIcon fill="onBackgroundHigh" width={26} height={26} />
