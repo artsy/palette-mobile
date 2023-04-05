@@ -37,6 +37,7 @@ const getStories = () => {
     require("../src/elements/Dialog/Dialog.stories.tsx"),
     require("../src/elements/Input/Input.stories.tsx"),
     require("../src/elements/MenuItem/MenuItem.stories.tsx"),
+    require("../src/elements/Message/Message.stories.tsx"),
     require("../src/elements/Separator/Separator.stories.tsx"),
     require("../src/elements/Skeleton/Skeleton.stories.tsx"),
     require("../src/elements/Spacer/Spacer.stories.tsx"),
