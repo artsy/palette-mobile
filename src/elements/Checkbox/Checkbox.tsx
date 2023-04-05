@@ -10,43 +10,39 @@ import { Touchable, TouchableProps } from "../../elements"
 import { Color } from "../../types"
 import { useColor } from "../../utils/hooks"
 import { useTheme } from "../../utils/hooks/useTheme"
-import { Flex } from "../Flex"
+import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 
 type DisplayState = "unpressed" | "pressed"
 
-export interface CheckboxProps {
+export interface CheckboxProps extends FlexProps {
   checked?: boolean
   disabled?: boolean
   error?: boolean
+  onPress?: TouchableProps["onPress"]
   text?: React.ReactElement | string
   subtitle?: React.ReactElement | string
-
-  onPress?: TouchableProps["onPress"]
-
-  /** Used only for tests and stories */
-  testOnly_state?: DisplayState
 }
 
 const CHECKBOX_SIZEx1 = 20
 const ANIMATION_DURATION = 250
 
-export const Checkbox = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   checked: checkedProp,
   disabled = false,
   error = false,
   onPress,
   text,
   subtitle,
-  testOnly_state,
-}: CheckboxProps) => {
+  ...flexProps
+}) => {
   const { color, space } = useTheme()
 
   const fontScale = PixelRatio.getFontScale()
   const checkboxSize = CHECKBOX_SIZEx1 * fontScale
 
   const [checked, setChecked] = useState(checkedProp ?? false)
-  const [displayState, setDisplayState] = useState<DisplayState>(testOnly_state ?? "unpressed")
+  const [displayState, setDisplayState] = useState<DisplayState>("unpressed")
 
   const containerColor: { [key: string]: { border: Color; background: Color } } = {
     unchecked: { border: color("black100"), background: color("white100") },
@@ -106,66 +102,69 @@ export const Checkbox = ({
     : "onBackgroundMedium"
 
   return (
-    <Touchable
-      noFeedback
-      disabled={disabled}
-      onPressIn={() => setDisplayState("pressed")}
-      onPressOut={() => setDisplayState("unpressed")}
-      onPress={(event) => {
-        if (disabled) return
+    <Flex {...flexProps}>
+      <Touchable
+        noFeedback
+        disabled={disabled}
+        onPressIn={() => setDisplayState("pressed")}
+        onPressOut={() => setDisplayState("unpressed")}
+        onPress={(event) => {
+          if (disabled) return
 
-        setChecked(!checked)
-        onPress?.(event)
-      }}
-    >
-      <Flex flex={1}>
-        <Flex flexDirection="row">
-          <Animated.View
-            style={[
-              {
-                width: checkboxSize,
-                height: checkboxSize,
-                alignItems: "center",
-                justifyContent: "center",
-                borderWidth: 1,
-              },
-              toggleAnim,
-            ]}
-          >
-            {checked && <Checkmark size={checkboxSize} />}
-          </Animated.View>
+          setChecked(!checked)
+          onPress?.(event)
+        }}
+      >
+        <Flex flex={1}>
+          <Flex flexDirection="row">
+            <Animated.View
+              style={[
+                {
+                  width: checkboxSize,
+                  height: checkboxSize,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderWidth: 1,
+                },
+                toggleAnim,
+              ]}
+            >
+              {checked && <Checkmark size={checkboxSize} />}
+            </Animated.View>
 
-          <Flex ml={1} flex={1}>
-            {text !== undefined && (
-              <AText
-                variant="sm-display"
-                color={textColor}
-                numberOfLines={2}
-                underline={displayState === "pressed"}
-                style={pressAnim}
-              >
-                {text} {displayState}
-              </AText>
-            )}
+            <Flex ml={1} flex={1}>
+              {text !== undefined && (
+                <AnimatedText
+                  variant="sm-display"
+                  color={textColor}
+                  numberOfLines={2}
+                  underline={displayState === "pressed"}
+                  style={pressAnim}
+                >
+                  {text} {displayState}
+                </AnimatedText>
+              )}
+            </Flex>
           </Flex>
+
+          {subtitle !== undefined && (
+            <Flex ml={`${(checkboxSize + space(1)) * fontScale}px`} mt={0.5}>
+              <Text variant="xs" color={subtitleColor}>
+                {subtitle}
+              </Text>
+            </Flex>
+          )}
         </Flex>
-
-        {subtitle !== undefined && (
-          <Flex ml={`${(checkboxSize + space(1)) * fontScale}px`} mt={0.5}>
-            <Text variant="xs" color={subtitleColor}>
-              {subtitle}
-            </Text>
-          </Flex>
-        )}
-      </Flex>
-    </Touchable>
+      </Touchable>
+    </Flex>
   )
 }
 
-const AText = Animated.createAnimatedComponent(Text)
+const AnimatedText = Animated.createAnimatedComponent(Text)
 
-function Checkmark({ size }: { size: number }) {
+const Checkmark: React.FC<{ size: number }> = ({ size }) => {
   const color = useColor()
+
   return (
     <View
       style={{
