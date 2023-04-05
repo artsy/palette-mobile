@@ -1,3 +1,15 @@
+# v11.0.6 (Wed Apr 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix(migration): fix missing migration items [#79](https://github.com/artsy/palette-mobile/pull/79) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.5 (Wed Apr 05 2023)
 
 #### 🐛 Bug Fix
