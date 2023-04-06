@@ -1,10 +1,9 @@
 import { bullet } from "../../utils/text"
 import { Avatar } from "../Avatar"
-import { Flex } from "../Flex"
-import { SpacerProps } from "../Spacer"
+import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 
-interface EntityHeaderProps extends SpacerProps {
+interface EntityHeaderProps extends FlexProps {
   smallVariant?: boolean
   href?: string
   imageUrl?: string
