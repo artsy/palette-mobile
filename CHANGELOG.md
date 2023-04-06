@@ -1,3 +1,15 @@
+# v11.0.9 (Thu Apr 06 2023)
+
+#### 🐛 Bug Fix
+
+- chore(migration): Move more shared stuff over [#82](https://github.com/artsy/palette-mobile/pull/82) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.8 (Thu Apr 06 2023)
 
 #### 🐛 Bug Fix
