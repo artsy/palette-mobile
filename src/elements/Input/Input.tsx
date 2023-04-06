@@ -79,9 +79,16 @@ export interface InputProps extends Omit<TextInputProps, "placeholder"> {
   renderLeftHandSection?(): JSX.Element
 }
 
+// Wrapping some of the RNTextInput functionality, so we can call our own funcs too.
+export interface InputRef {
+  focus: () => void
+  blur: () => void
+  clear: () => void
+}
+
 export type Input = TextInput
 
-export const Input = forwardRef<TextInput, InputProps>(
+export const Input = forwardRef<InputRef, InputProps>(
   (
     {
       containerStyle,

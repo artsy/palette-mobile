@@ -1,68 +1,26 @@
-import { useEffect, useRef } from "react"
-import { Animated } from "react-native"
-import { useColor } from "../../utils/hooks"
+import { StyleProp, ViewStyle } from "react-native"
+import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
 
 const DOT_DIAMETER = 6
-const ANIMATION_DURATION = 1600
 
-export const VisualClueDot = () => {
-  const scaleAnimation = useRef(new Animated.Value(1))
-  const opacityAnimation = useRef(new Animated.Value(1))
+interface VisualClueDotProps {
+  diameter?: number
+  style?: StyleProp<ViewStyle>
+}
 
+export const VisualClueDot: React.FC<VisualClueDotProps> = ({ diameter = DOT_DIAMETER, style }) => {
   const color = useColor()
-
-  useEffect(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(scaleAnimation.current, {
-          toValue: 3,
-          duration: ANIMATION_DURATION,
-          useNativeDriver: true,
-        }),
-        Animated.timing(scaleAnimation.current, {
-          toValue: 1,
-          duration: 0,
-          useNativeDriver: true,
-        }),
-      ])
-    ).start()
-
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(opacityAnimation.current, {
-          toValue: 0.14,
-          duration: ANIMATION_DURATION / 2,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacityAnimation.current, {
-          toValue: 0,
-          duration: ANIMATION_DURATION / 2,
-          useNativeDriver: true,
-        }),
-      ])
-    ).start()
-  }, [])
 
   return (
     <Flex
       style={{
-        height: DOT_DIAMETER,
-        minWidth: DOT_DIAMETER,
-        borderRadius: DOT_DIAMETER / 2,
+        height: diameter,
+        minWidth: diameter,
+        borderRadius: diameter / 2,
         backgroundColor: color("blue100"),
+        ...(style as object),
       }}
-    >
-      <Animated.View
-        style={{
-          height: DOT_DIAMETER,
-          minWidth: DOT_DIAMETER,
-          borderRadius: DOT_DIAMETER / 2,
-          backgroundColor: color("blue100"),
-          transform: [{ scale: scaleAnimation.current }],
-          opacity: opacityAnimation.current,
-        }}
-      />
-    </Flex>
+    />
   )
 }
