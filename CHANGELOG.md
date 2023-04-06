@@ -1,3 +1,15 @@
+# v11.0.7 (Thu Apr 06 2023)
+
+#### 🐛 Bug Fix
+
+- fix: replace spacerprops with flexprops [#80](https://github.com/artsy/palette-mobile/pull/80) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.6 (Wed Apr 05 2023)
 
 #### 🐛 Bug Fix
