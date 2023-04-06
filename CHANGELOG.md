@@ -1,3 +1,15 @@
+# v11.0.8 (Thu Apr 06 2023)
+
+#### 🐛 Bug Fix
+
+- chore(scripts): rename yarn local-palette-dev [#81](https://github.com/artsy/palette-mobile/pull/81) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.7 (Thu Apr 06 2023)
 
 #### 🐛 Bug Fix
