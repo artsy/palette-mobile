@@ -22,7 +22,7 @@
     "start": "react-native start",
     "start:reset-cache": "react-native start --reset-cache",
     "storybook-watcher": "sb-rn-watcher",
-    "sync-after-change": "./scripts/sync-after-change",
+    "local-palette-dev": "./scripts/sync-after-change",
     "test": "jest",
     "type-check": "tsc --noEmit",
     "prepare": "husky install"
