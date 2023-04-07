@@ -1,0 +1,44 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.1.0
+  auto: artsy/auto@2.1.0
+
+only_main: &only_main
+  context: hokusai
+  filters:
+    branches:
+      only: main
+
+workflows:
+  build-deploy:
+    jobs:
+      - node/test:
+          name: test
+          version: "18.15"
+          pkg-manager: yarn
+          run-command: "test:ci"
+
+      - node/run:
+          name: type-check
+          version: "18.15"
+          pkg-manager: yarn
+          yarn-run: "type-check"
+
+      - auto/publish-canary:
+          context: npm-deploy
+          filters:
+            branches:
+              ignore: main
+          requires:
+            - test
+            - type-check
+
+      - auto/publish:
+          context: npm-deploy
+          filters:
+            branches:
+              only: main
+          requires:
+            - test
+            - type-check
