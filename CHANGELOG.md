@@ -1,3 +1,15 @@
+# v11.0.10 (Fri Apr 07 2023)
+
+#### 🐛 Bug Fix
+
+- fix(checkbox): move from eigen [#83](https://github.com/artsy/palette-mobile/pull/83) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.9 (Thu Apr 06 2023)
 
 #### 🐛 Bug Fix
