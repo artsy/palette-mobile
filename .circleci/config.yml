@@ -17,7 +17,7 @@ workflows:
           name: test
           version: "18.15"
           pkg-manager: yarn
-          run-command: "test:ci"
+          run-command: "test"
 
       - node/run:
           name: type-check
