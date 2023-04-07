@@ -1,3 +1,15 @@
+# v11.0.11 (Fri Apr 07 2023)
+
+#### 🐛 Bug Fix
+
+- ci(circle): Add CircleCI support [#84](https://github.com/artsy/palette-mobile/pull/84) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.10 (Fri Apr 07 2023)
 
 #### 🐛 Bug Fix
