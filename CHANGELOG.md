@@ -1,3 +1,15 @@
+# v11.0.13 (Thu Apr 13 2023)
+
+#### 🐛 Bug Fix
+
+- ci(npm): Fix package publishing [#86](https://github.com/artsy/palette-mobile/pull/86) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.12 (Thu Apr 13 2023)
 
 #### 🐛 Bug Fix
