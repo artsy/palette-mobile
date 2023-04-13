@@ -60,6 +60,8 @@ And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yar
 
 You can add this library using `yarn add @artsy/palette-mobile`. _Don't forget to also add all the `peerDependencies` to your project._
 
+For connecting Palette to a locally running version of our mobile apps, see [these docs](https://github.com/artsy/eigen/blob/main/docs/developing_local_palette.md).
+
 ## About Artsy
 
 <a href="https://www.artsy.net/">
