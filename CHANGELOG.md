@@ -1,3 +1,15 @@
+# v11.0.12 (Thu Apr 13 2023)
+
+#### 🐛 Bug Fix
+
+- docs(dev): Update README with notes on yalc [#85](https://github.com/artsy/palette-mobile/pull/85) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.11 (Fri Apr 07 2023)
 
 #### 🐛 Bug Fix
