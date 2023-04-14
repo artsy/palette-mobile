@@ -1,3 +1,15 @@
+# v11.0.14 (Fri Apr 14 2023)
+
+#### 🐛 Bug Fix
+
+- fix: reanimated button crash fix [#87](https://github.com/artsy/palette-mobile/pull/87) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.13 (Thu Apr 13 2023)
 
 #### 🐛 Bug Fix
