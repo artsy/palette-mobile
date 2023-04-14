@@ -1,3 +1,15 @@
+# v11.0.15 (Fri Apr 14 2023)
+
+#### 🐛 Bug Fix
+
+- fix(button): fix worklet crash error in eigen [#88](https://github.com/artsy/palette-mobile/pull/88) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.14 (Fri Apr 14 2023)
 
 #### 🐛 Bug Fix
