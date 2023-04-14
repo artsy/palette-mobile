@@ -269,7 +269,12 @@ const useStateWithProp = (
   useEffect(() => {
     setState(!!prop)
   }, [prop])
-  const stateV = useDerivedValue(() => (!!state ? 1 : 0), [state])
+  const stateV = useDerivedValue(() => {
+    if (!!state) {
+      return 1
+    }
+    return 0
+  }, [state])
 
   return [state, setState, stateV]
 }
