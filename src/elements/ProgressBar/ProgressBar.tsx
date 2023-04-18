@@ -5,21 +5,23 @@ import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
 
 export interface ProgressBarProps {
-  progress: number
-  height?: number
-  trackColor?: Color
+  animationDuration?: number
   backgroundColor?: Color
+  height?: number
   onCompletion?: () => void
+  progress: number
+  trackColor?: Color
 }
 
 const clamp = (num: number, min: number, max: number) => Math.max(min, Math.min(num, max))
 
 export const ProgressBar = ({
-  progress: unclampedProgress,
-  height = 2,
-  trackColor = "blue100",
+  animationDuration = 200,
   backgroundColor = "black30",
+  height = 2,
   onCompletion,
+  progress: unclampedProgress,
+  trackColor = "blue100",
 }: ProgressBarProps) => {
   const color = useColor()
   const width = useSharedValue("0%")
@@ -29,7 +31,7 @@ export const ProgressBar = ({
   const [onCompletionCalled, setOnCompletionCalled] = useState(false)
 
   useEffect(() => {
-    width.value = withTiming(`${progress}%`, { duration: 500 })
+    width.value = withTiming(`${progress}%`, { duration: animationDuration })
 
     if (progress === 100 && !onCompletionCalled) {
       onCompletion?.()
