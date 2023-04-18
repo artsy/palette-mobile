@@ -1,3 +1,15 @@
+# v11.0.16 (Tue Apr 18 2023)
+
+#### 🐛 Bug Fix
+
+- feat(progress-bar): Add `animationDuration` prop [#89](https://github.com/artsy/palette-mobile/pull/89) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.15 (Fri Apr 14 2023)
 
 #### 🐛 Bug Fix
