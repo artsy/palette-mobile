@@ -1,3 +1,15 @@
+# v11.0.19 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- build(deps): followup on rn upgrade [#92](https://github.com/artsy/palette-mobile/pull/92) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.18 (Tue Apr 25 2023)
 
 :tada: This release contains work from a new contributor! :tada:
