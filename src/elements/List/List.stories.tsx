@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react-native"
-import { List } from "storybook/helpers"
 import { BulletedItem } from "./BulletedItem"
+import { List } from "../../storybook/helpers"
 import { Flex } from "../Flex"
 import { Spacer } from "../Spacer"
 import { Text } from "../Text"

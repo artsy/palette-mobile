@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react-native"
 import { useState } from "react"
-import { List } from "storybook/helpers"
 import { Dialog, DialogProps } from "."
+import { List } from "../../storybook/helpers"
 import { Button } from "../Button"
 
 const DialogDemo: React.FC<Omit<DialogProps, "isVisible" | "primaryCta" | "title">> = (props) => {

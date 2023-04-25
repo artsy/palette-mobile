@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/react-native"
-import { DataList, List } from "storybook/helpers"
 import { Input } from "./Input"
+import { DataList, List } from "../../storybook/helpers"
 import { MagnifyingGlassIcon } from "../../svgs"
 import { Box } from "../Box"
 
