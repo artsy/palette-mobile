@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react-native"
-import { withTheme } from "storybook/decorators"
-import { List } from "storybook/helpers"
 import { Message } from "./Message"
+import { withTheme } from "../../storybook/decorators"
+import { List } from "../../storybook/helpers"
 
 storiesOf("Message", module)
   .addDecorator(withTheme)
