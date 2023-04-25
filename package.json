@@ -24,7 +24,7 @@
     "setup:artsy": "./scripts/download-fonts",
     "start:reset-cache": "react-native start --reset-cache",
     "start": "react-native start",
-    "../../storybook-watcher": "sb-rn-watcher",
+    "storybook-watcher": "sb-rn-watcher",
     "test": "jest",
     "type-check": "tsc --noEmit"
   },
