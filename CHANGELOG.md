@@ -1,3 +1,19 @@
+# v11.0.18 (Tue Apr 25 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Laura Bhayani ([@laurabeth](https://github.com/laurabeth)), for all your work!
+
+#### 🐛 Bug Fix
+
+- chore: update react native version [#91](https://github.com/artsy/palette-mobile/pull/91) ([@laurabeth](https://github.com/laurabeth))
+
+#### Authors: 1
+
+- Laura Bhayani ([@laurabeth](https://github.com/laurabeth))
+
+---
+
 # v11.0.17 (Tue Apr 25 2023)
 
 :tada: This release contains work from a new contributor! :tada:
