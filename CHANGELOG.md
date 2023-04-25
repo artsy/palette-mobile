@@ -1,3 +1,19 @@
+# v11.0.17 (Tue Apr 25 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Dima Tretyak ([@dimatretyak](https://github.com/dimatretyak)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: add `EmptyCheckCircleIcon` [#90](https://github.com/artsy/palette-mobile/pull/90) ([@dimatretyak](https://github.com/dimatretyak))
+
+#### Authors: 1
+
+- Dima Tretyak ([@dimatretyak](https://github.com/dimatretyak))
+
+---
+
 # v11.0.16 (Tue Apr 18 2023)
 
 #### 🐛 Bug Fix
