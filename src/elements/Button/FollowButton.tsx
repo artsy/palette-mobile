@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from "./Button"
-import { CheckIcon } from "../../svgs"
+import { CheckIcon } from "@artsy/palette-mobile"
+import { Button, ButtonProps } from "."
 
 type FollowButtonProps = Omit<
   ButtonProps,

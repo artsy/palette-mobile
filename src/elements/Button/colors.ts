@@ -1,6 +1,6 @@
-import { ButtonProps } from "./Button"
-import { useColor, useTheme } from "../../utils/hooks"
-import { NoUndefined } from "../../utils/types"
+import { useColor } from "@artsy/palette-mobile"
+import { NoUndefined } from "@artsy/palette-mobile/dist/utils/types"
+import { ButtonProps } from "."
 
 type State = "disabled" | "pressed" | "active"
 
