@@ -1,14 +1,3 @@
-import {
-  Box,
-  BoxProps,
-  Flex,
-  Spacer,
-  SpacingUnit,
-  Spinner,
-  useColor,
-  Text,
-  useTextStyleForPalette,
-} from "@artsy/palette-mobile"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
 import { useState } from "react"
 import { PressableProps, TextStyle, GestureResponderEvent, Pressable } from "react-native"
@@ -16,8 +5,16 @@ import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { config } from "react-spring"
 // @ts-ignore
 import { animated, Spring } from "react-spring/renderprops-native"
-import { MeasuredView, ViewMeasurements } from "shared/utils"
 import styled from "styled-components/native"
+import { SpacingUnit } from "../../types"
+import { useColor } from "../../utils/hooks"
+import { Box, BoxProps } from "../Box"
+import { Flex } from "../Flex/Flex"
+import { MeasuredView, ViewMeasurements } from "../MeasuredView"
+import { Spacer } from "../Spacer"
+import { Spinner } from "../Spinner"
+import { Text } from "../Text/Text"
+import { useTextStyleForPalette } from "../Text/helpers"
 
 export interface ButtonProps extends BoxProps {
   children: React.ReactNode

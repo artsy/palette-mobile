@@ -39,6 +39,7 @@
     "events": "^3.3.0",
     "lodash": "^4.17.21",
     "react-nanny": "^2.15.0",
+    "react-spring": "8.0.23",
     "styled-system": "^5.1.5"
   },
   "peerDependenciesComments": [
