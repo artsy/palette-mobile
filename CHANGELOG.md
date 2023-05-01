@@ -1,3 +1,15 @@
+# v11.0.20 (Mon May 01 2023)
+
+#### 🐛 Bug Fix
+
+- feat(old-button): Copy old Eigen button over to palette-mobile [#94](https://github.com/artsy/palette-mobile/pull/94) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.19 (Tue Apr 25 2023)
 
 #### 🐛 Bug Fix
