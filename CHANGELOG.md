@@ -1,3 +1,19 @@
+# v11.0.22 (Wed May 03 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix: crash in eigen caused by tooltip [#96](https://github.com/artsy/palette-mobile/pull/96) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v11.0.21 (Wed May 03 2023)
 
 #### 🐛 Bug Fix
