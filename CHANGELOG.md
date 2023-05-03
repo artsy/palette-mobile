@@ -1,3 +1,15 @@
+# v11.0.21 (Wed May 03 2023)
+
+#### 🐛 Bug Fix
+
+- fix(import): fix super relative imports [#95](https://github.com/artsy/palette-mobile/pull/95) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.20 (Mon May 01 2023)
 
 #### 🐛 Bug Fix
