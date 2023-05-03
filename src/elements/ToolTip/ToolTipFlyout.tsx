@@ -30,14 +30,17 @@ export const ToolTipFlyout: React.FC<Props> = ({
   const initialBoxDimensions = { height: 0, width: 0 }
   const boxDimensions = useSharedValue(initialBoxDimensions)
 
-  const animationStyle = useAnimatedStyle(() => ({
-    height: withTiming(boxDimensions.value.height, {
-      duration: 500,
-    }),
-    width: withTiming(boxDimensions.value.width, {
-      duration: 500,
-    }),
-  }))
+  const animationStyle = useAnimatedStyle(() => {
+    "worklet"
+    return {
+      height: withTiming(boxDimensions.value.height, {
+        duration: 500,
+      }),
+      width: withTiming(boxDimensions.value.width, {
+        duration: 500,
+      }),
+    }
+  })
 
   useEffect(() => {
     if (text) {
