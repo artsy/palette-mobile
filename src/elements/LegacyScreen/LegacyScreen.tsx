@@ -55,11 +55,11 @@ const ScreenWrapper = ({ children }: { children?: ReactNode }) => {
 }
 
 const ScreenRoot = ({ children }: { children?: ReactNode }) => {
-  const header = getChildByType(children, Screen.Header)
-  const headerFloating = getChildByType(children, Screen.FloatingHeader)
-  const rawHeader = getChildByType(children, Screen.RawHeader)
-  const background = getChildByType(children, Screen.Background)
-  const bodyChildren = getChildrenByTypeDeep(children, Screen.Body)
+  const header = getChildByType(children, LegacyScreen.Header)
+  const headerFloating = getChildByType(children, LegacyScreen.FloatingHeader)
+  const rawHeader = getChildByType(children, LegacyScreen.RawHeader)
+  const background = getChildByType(children, LegacyScreen.Background)
+  const bodyChildren = getChildrenByTypeDeep(children, LegacyScreen.Body)
 
   return (
     <Flex flex={1} backgroundColor="background">
@@ -86,6 +86,7 @@ const useUpdateScreenContext = ({
       void setOptions({
         handleTopSafeArea: header === "none" || header === "floating" || header === "raw-safe",
       }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [header]
   )
 }
@@ -162,7 +163,7 @@ const RawHeader = ({ children, nosafe = false }: RawHeaderProps) => {
 
 const SCREEN_HORIZONTAL_PADDING: SpacingUnit = 2
 
-interface BodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
+interface LegacyBodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
   children?: ReactNode
   scroll?: boolean
   nosafe?: boolean
@@ -179,9 +180,9 @@ const Body = ({
   fullwidth = false,
   children,
   ...restFlexProps
-}: BodyProps) => {
-  const childrenExceptBottomView = removeChildrenByType(children, Screen.BottomView)
-  const bottomView = getChildrenByType(children, Screen.BottomView)
+}: LegacyBodyProps) => {
+  const childrenExceptBottomView = removeChildrenByType(children, LegacyScreen.BottomView)
+  const bottomView = getChildrenByType(children, LegacyScreen.BottomView)
   const { options } = useScreenContext()
   const insets = useSafeAreaInsets()
   const withTopSafeArea = options.handleTopSafeArea && !noTopSafe
@@ -319,7 +320,7 @@ const SafeBottomPadding = () => {
   return <Spacer y={2} />
 }
 
-export const Screen = Object.assign(ScreenWrapper, {
+export const LegacyScreen = Object.assign(ScreenWrapper, {
   Body,
   Header,
   FloatingHeader,
