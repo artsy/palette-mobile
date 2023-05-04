@@ -1,3 +1,15 @@
+# v11.0.25 (Thu May 04 2023)
+
+#### 🐛 Bug Fix
+
+- fix(legacy-screen): use legacy screen code from Eigen [#99](https://github.com/artsy/palette-mobile/pull/99) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.24 (Thu May 04 2023)
 
 #### 🐛 Bug Fix
