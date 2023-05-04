@@ -108,6 +108,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.70.8",
+    "react-native-device-info": "10.3.0",
     "react-native-flipper": "0.178.1",
     "react-native-haptic-feedback": "1.14.0",
     "react-native-linear-gradient": "2.6.2",
