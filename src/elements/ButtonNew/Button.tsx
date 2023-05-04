@@ -88,9 +88,13 @@ export const Button = ({
 
   const pressAnimationProgress = useSharedValue(0)
   useAnimatedReaction(
-    () => pressedV.value,
+    () => {
+      return pressedV.value
+    },
     (pressedVal) => {
-      pressAnimationProgress.value = withTiming(pressedVal, { duration: ANIMATION_DURATION })
+      return (pressAnimationProgress.value = withTiming(pressedVal, {
+        duration: ANIMATION_DURATION,
+      }))
     }
   )
 
