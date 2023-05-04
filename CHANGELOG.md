@@ -1,3 +1,15 @@
+# v11.0.23 (Thu May 04 2023)
+
+#### 🐛 Bug Fix
+
+- fix: no more implicit returns in reanimated hooks [#97](https://github.com/artsy/palette-mobile/pull/97) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v11.0.22 (Wed May 03 2023)
 
 :tada: This release contains work from a new contributor! :tada:
