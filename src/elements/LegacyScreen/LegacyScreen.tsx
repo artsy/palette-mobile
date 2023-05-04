@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useContext, useEffect, useState } from "react"
+import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react"
 import {
   getChildByType,
   getChildrenByType,
@@ -8,13 +8,14 @@ import {
 import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-
-import { SpacingUnit } from "../../types"
+import { SpacingUnitDSValueNumber } from "../../types"
 import { Wrap } from "../../utils/Wrap"
 import { ArtsyKeyboardAvoidingView } from "../ArtsyKeyboardAvoidingView"
 import { BackButton, BackButtonWithBackground } from "../BackButton"
 import { Flex, FlexProps } from "../Flex"
 import { Spacer } from "../Spacer"
+import { Text } from "../Text"
+import { Touchable } from "../Touchable"
 
 interface ScreenContextState {
   handleTopSafeArea: boolean
@@ -26,18 +27,16 @@ interface ScreenContextValue {
   setOptions: (opts: Partial<ScreenContextState>) => void
 }
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const ScreenContext = createContext<ScreenContextValue>(null!)
 function useScreenContext() {
   const context = useContext(ScreenContext)
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!context) {
     throw new Error("useScreenContext must be used within a Screen")
   }
   return context
 }
 
-const ScreenWrapper = ({ children }: { children?: ReactNode }) => {
+const ScreenWrapper = ({ children }: { children?: React.ReactNode }) => {
   const [options, setStateOptions] = useState<ScreenContextState>({
     handleTopSafeArea: true,
     bottomViewHeight: 0,
@@ -54,19 +53,17 @@ const ScreenWrapper = ({ children }: { children?: ReactNode }) => {
   )
 }
 
-const ScreenRoot = ({ children }: { children?: ReactNode }) => {
+const ScreenRoot = ({ children }: { children?: React.ReactNode }) => {
   const header = getChildByType(children, LegacyScreen.Header)
   const headerFloating = getChildByType(children, LegacyScreen.FloatingHeader)
-  const rawHeader = getChildByType(children, LegacyScreen.RawHeader)
   const background = getChildByType(children, LegacyScreen.Background)
   const bodyChildren = getChildrenByTypeDeep(children, LegacyScreen.Body)
 
   return (
-    <Flex flex={1} backgroundColor="background">
+    <Flex flex={1} backgroundColor="white100">
       {background /* fullscreen */}
 
       {header}
-      {rawHeader}
       {bodyChildren}
 
       {headerFloating /* floating, so keep close to the bottom */}
@@ -74,18 +71,11 @@ const ScreenRoot = ({ children }: { children?: ReactNode }) => {
   )
 }
 
-const useUpdateScreenContext = ({
-  header,
-}: {
-  header: "none" | "regular" | "floating" | "raw-safe" | "raw-nosafe"
-}) => {
+const useUpdateScreenContext = ({ header }: { header: "none" | "regular" | "floating" }) => {
   const { setOptions } = useScreenContext()
 
   useEffect(
-    () =>
-      void setOptions({
-        handleTopSafeArea: header === "none" || header === "floating" || header === "raw-safe",
-      }),
+    () => void setOptions({ handleTopSafeArea: header === "none" || header === "floating" }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [header]
   )
@@ -95,9 +85,11 @@ const NAVBAR_HEIGHT = 44
 
 interface HeaderProps {
   onBack?: () => void
+  title?: string
+  onSkip?: () => void
 }
 
-const Header = ({ onBack }: HeaderProps) => {
+export const Header: React.FC<HeaderProps> = ({ onBack, title, onSkip }) => {
   useUpdateScreenContext({ header: "regular" })
   const insets = useSafeAreaInsets()
 
@@ -105,11 +97,30 @@ const Header = ({ onBack }: HeaderProps) => {
     <Flex
       mt={`${insets.top}px`}
       height={NAVBAR_HEIGHT}
-      px={SCREEN_HORIZONTAL_PADDING}
       flexDirection="row"
       alignItems="center"
+      justifyContent="space-between"
+      px={SCREEN_HORIZONTAL_PADDING}
     >
-      <BackButton onPress={onBack} />
+      <Flex>
+        {!!onBack && (
+          <BackButton
+            onPress={onBack}
+            style={{ flex: 1, justifyContent: "center" }}
+            hitSlop={{ left: 20, right: 20 }}
+          />
+        )}
+      </Flex>
+      {!!title && <Text>{title}</Text>}
+      {!!onSkip && (
+        <Touchable haptic="impactLight" onPress={onSkip}>
+          <Flex height="100%" justifyContent="center">
+            <Text textAlign="right" variant="xs">
+              Skip
+            </Text>
+          </Flex>
+        </Touchable>
+      )}
     </Flex>
   )
 }
@@ -117,7 +128,7 @@ const Header = ({ onBack }: HeaderProps) => {
 /**
  * @deprecated Use `Screen.Header` instead.
  */
-const FloatingHeader: FC<HeaderProps> = ({ onBack }) => {
+export const FloatingHeader: React.FC<HeaderProps> = ({ onBack }) => {
   useUpdateScreenContext({ header: "floating" })
   const insets = useSafeAreaInsets()
 
@@ -140,33 +151,11 @@ const FloatingHeader: FC<HeaderProps> = ({ onBack }) => {
   return null
 }
 
-interface RawHeaderProps {
-  children: ReactNode
-  nosafe?: boolean
-}
+const SCREEN_HORIZONTAL_PADDING: SpacingUnitDSValueNumber = 2
 
-/**
- * Use `RawHeader` when you need to make a custom header that we have no support for yet.
- */
-const RawHeader = ({ children, nosafe = false }: RawHeaderProps) => {
-  useUpdateScreenContext({ header: nosafe ? "raw-nosafe" : "raw-safe" })
-  const saInsets = useSafeAreaInsets()
-
-  return (
-    <Wrap if={!nosafe}>
-      <Flex top={saInsets.top}>
-        <Wrap.Content>{children}</Wrap.Content>
-      </Flex>
-    </Wrap>
-  )
-}
-
-const SCREEN_HORIZONTAL_PADDING: SpacingUnit = 2
-
-interface LegacyBodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
-  children?: ReactNode
+interface BodyProps extends Pick<FlexProps, "backgroundColor"> {
+  children?: React.ReactNode
   scroll?: boolean
-  nosafe?: boolean
   noTopSafe?: boolean
   noBottomSafe?: boolean
   fullwidth?: boolean
@@ -174,13 +163,12 @@ interface LegacyBodyProps extends Partial<Pick<FlexProps, "backgroundColor">> {
 
 const Body = ({
   scroll = false,
-  nosafe = false,
   noTopSafe = false,
   noBottomSafe = false,
   fullwidth = false,
   children,
   ...restFlexProps
-}: LegacyBodyProps) => {
+}: BodyProps) => {
   const childrenExceptBottomView = removeChildrenByType(children, LegacyScreen.BottomView)
   const bottomView = getChildrenByType(children, LegacyScreen.BottomView)
   const { options } = useScreenContext()
@@ -192,8 +180,8 @@ const Body = ({
     <>
       <Flex
         flex={1}
-        mt={nosafe || withTopSafeArea ? `${insets.top}px` : undefined}
-        mb={nosafe || withBottomSafeArea ? `${insets.bottom}px` : undefined}
+        mt={withTopSafeArea ? `${insets.top}px` : undefined}
+        mb={withBottomSafeArea ? `${insets.bottom}px` : undefined}
         {...restFlexProps}
       >
         <Wrap if={scroll}>
@@ -216,13 +204,13 @@ const Body = ({
   )
 }
 
-const Background = ({ children }: { children?: ReactNode }) => (
+const Background: React.FC<PropsWithChildren> = ({ children }) => (
   <Flex position="absolute" top={0} bottom={0} left={0} right={0}>
     {children}
   </Flex>
 )
 
-const BottomView = ({ children }: { children?: ReactNode }) => {
+const BottomView: React.FC<PropsWithChildren> = ({ children }) => {
   const { setOptions } = useScreenContext()
   const insets = useSafeAreaInsets()
 
@@ -302,7 +290,9 @@ const BottomView = ({ children }: { children?: ReactNode }) => {
  * One use case might be if you need to put an image background or something in the body,
  * but you also need some content with the right padding.
  */
-const BodyXPadding: FC<FlexProps> = (props) => <Flex px={SCREEN_HORIZONTAL_PADDING} {...props} />
+const BodyXPadding: React.FC<FlexProps> = (props) => (
+  <Flex px={SCREEN_HORIZONTAL_PADDING} {...props} />
+)
 
 /**
  * If there is a bottom safe area, this will render nothing.
@@ -324,7 +314,6 @@ export const LegacyScreen = Object.assign(ScreenWrapper, {
   Body,
   Header,
   FloatingHeader,
-  RawHeader,
   Background,
   BottomView,
   BodyXPadding,
