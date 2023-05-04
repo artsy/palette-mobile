@@ -1,3 +1,15 @@
+# v11.0.24 (Thu May 04 2023)
+
+#### 🐛 Bug Fix
+
+- feat(screen): Add screen component from energy [#98](https://github.com/artsy/palette-mobile/pull/98) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.23 (Thu May 04 2023)
 
 #### 🐛 Bug Fix
