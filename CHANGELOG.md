@@ -1,3 +1,15 @@
+# v11.0.26 (Fri May 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: mark all reanimated hooks functions as worklets explicitly [#100](https://github.com/artsy/palette-mobile/pull/100) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v11.0.25 (Thu May 04 2023)
 
 #### 🐛 Bug Fix
