@@ -134,6 +134,7 @@ export const Button = ({
   const colorsForVariantAndState = useColorsForVariantAndState()
 
   const containerColorsAnim = useAnimatedStyle(() => {
+    "worklet"
     const colors = colorsForVariantAndState[variant]
     if (disabled) {
       return {
@@ -157,7 +158,6 @@ export const Button = ({
 
   const textAnim = useAnimatedStyle(() => {
     "worklet"
-
     const colors = colorsForVariantAndState[variant]
     if (loading) {
       return { color: "rgba(0, 0, 0, 0)" }
