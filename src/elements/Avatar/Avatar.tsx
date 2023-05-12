@@ -4,7 +4,7 @@ import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Text, TextProps } from "../Text"
 
-type AvatarSize = "xxs" | "xs" | "sm" | "md"
+export type AvatarSize = "xxs" | "xs" | "sm" | "md"
 
 export interface AvatarProps extends ImgHTMLAttributes<any> {
   src?: string

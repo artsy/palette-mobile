@@ -1,36 +1,40 @@
+import { isValidElement, useMemo } from "react"
 import { bullet } from "../../utils/text"
-import { Avatar } from "../Avatar"
+import { Avatar, AvatarSize } from "../Avatar"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 
 interface EntityHeaderProps extends FlexProps {
-  smallVariant?: boolean
-  href?: string
+  avatarSize?: AvatarSize
+  // @deprecated Use `RightButton` instead
+  FollowButton?: JSX.Element
+  RightButton?: JSX.Element
   imageUrl?: string
   initials?: string
-  meta?: string
+  meta?: string | JSX.Element
   name: string
-  FollowButton?: JSX.Element
+  smallVariant?: boolean
 }
 
 export const EntityHeader = ({
-  smallVariant = false,
-  href,
+  avatarSize = "xs",
+  FollowButton,
+  RightButton,
   imageUrl,
   initials,
-  name,
   meta,
-  FollowButton,
+  name,
+  smallVariant = false,
   ...restProps
 }: EntityHeaderProps) => {
-  const followButton = FollowButton && (
+  const rightButton = (RightButton || FollowButton) && (
     <Flex
       ml={smallVariant ? 0.5 : 1}
       flexDirection="row"
       alignItems="center"
       justifyContent="flex-end"
     >
-      {FollowButton}
+      {RightButton || FollowButton}
     </Flex>
   )
 
@@ -40,23 +44,32 @@ export const EntityHeader = ({
     </Text>
   )
 
-  const headerMeta = !!meta && (
-    <Text
-      ellipsizeMode="tail"
-      numberOfLines={1}
-      variant="xs"
-      color="black60"
-      style={{ flexShrink: 1 }}
-    >
-      {meta}
-    </Text>
-  )
+  const headerMeta = useMemo(() => {
+    if (meta) {
+      if (isValidElement(meta)) {
+        return meta
+      }
+
+      return (
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          variant="xs"
+          color="black60"
+          style={{ flexShrink: 1 }}
+        >
+          {meta}
+        </Text>
+      )
+    }
+    return null
+  }, [meta])
 
   return (
     <Flex flexDirection="row" flexWrap="nowrap" {...restProps}>
       {!!(imageUrl || initials) && (
         <Flex mr={1} justifyContent="center">
-          <Avatar size="xs" src={imageUrl} initials={initials} />
+          <Avatar size={avatarSize} src={imageUrl} initials={initials} />
         </Flex>
       )}
 
@@ -68,7 +81,7 @@ export const EntityHeader = ({
             {bullet}
           </Text>
 
-          {followButton}
+          {rightButton}
         </Flex>
       ) : (
         <Flex justifyContent="space-between" width={0} flexGrow={1} flexDirection="row">
@@ -76,7 +89,7 @@ export const EntityHeader = ({
             {headerName}
             {headerMeta}
           </Flex>
-          {followButton}
+          {rightButton}
         </Flex>
       )}
     </Flex>
