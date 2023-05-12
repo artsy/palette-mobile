@@ -1,3 +1,19 @@
+# v11.0.27 (Fri May 12 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: add right button support to entity header [#101](https://github.com/artsy/palette-mobile/pull/101) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v11.0.26 (Fri May 05 2023)
 
 #### 🐛 Bug Fix
