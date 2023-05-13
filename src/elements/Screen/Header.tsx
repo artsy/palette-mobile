@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <>
+      <Flex pr={1}>
         {leftElements ? (
           <>{leftElements}</>
         ) : (
@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         <Spacer x={1} />
-      </>
+      </Flex>
     )
   }
 
@@ -57,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <Flex flex={1} {...titleProps}>
+      <Flex flex={1} {...titleProps} justifySelf="stretch">
         <Text variant="md" numberOfLines={1}>
           {title}
         </Text>
@@ -71,10 +71,10 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <>
+      <Flex pl={1}>
         <Spacer x={1} />
         {rightElements}
-      </>
+      </Flex>
     )
   }
 
