@@ -1,9 +1,7 @@
-import { isTablet } from "react-native-device-info"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
-import { Flex } from "../Flex"
+import { Flex, FlexProps } from "../Flex"
 import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
@@ -18,20 +16,20 @@ export interface HeaderProps {
   rightElements?: React.ReactNode
   scrollY?: number
   title?: string
+  titleProps?: FlexProps
   titleShown?: boolean
 }
 
 export const Header: React.FC<HeaderProps> = ({
   hideLeftElements,
   hideRightElements,
-  hideTitle,
   leftElements,
-  onBack,
   rightElements,
+  onBack,
   title,
+  hideTitle,
+  titleProps = {},
 }) => {
-  const insets = useSafeAreaInsets()
-
   const Left = () => {
     if (hideLeftElements) {
       return null
@@ -44,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
         ) : (
           // If no left elements passed, show back button
           <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
-            <ArrowLeftIcon fill="onBackgroundHigh" marginLeft="-4px" top="1px" />
+            <ArrowLeftIcon fill="onBackgroundHigh" top="2px" />
           </Touchable>
         )}
 
@@ -59,7 +57,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <Flex width={isTablet() ? "100%" : "70%"} flex={1}>
+      <Flex flex={1} {...titleProps}>
         <Text variant="md" numberOfLines={1}>
           {title}
         </Text>
@@ -85,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
       height={NAVBAR_HEIGHT}
       flexDirection="row"
       px={2}
-      top={insets.top}
+      py={1}
       zIndex={ZINDEX.header}
       backgroundColor="background"
       alignItems="center"

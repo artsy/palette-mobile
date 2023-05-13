@@ -1,16 +1,25 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { Flex } from "../Flex"
+import { Flex, FlexProps } from "../Flex"
 
-export const ScreenBase: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export interface ScreenBaseProps {
+  children: React.ReactNode
+  safeArea?: boolean
+}
+
+export const ScreenBase: React.FC<ScreenBaseProps> = ({ children, safeArea = true }) => {
+  const insets = useSafeAreaInsets()
+
   return (
-    <Flex flex={1} backgroundColor="background">
+    <Flex flex={1} backgroundColor="background" mt={safeArea ? (insets.top as FlexProps["mt"]) : 0}>
       {children}
 
-      <SafeAreaCover />
+      {/* TODO: Is this needed? */}
+      {/* <SafeAreaCover /> */}
     </Flex>
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SafeAreaCover = () => {
   const insets = useSafeAreaInsets()
 
