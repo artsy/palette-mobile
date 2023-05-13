@@ -1,3 +1,15 @@
+# v11.0.28 (Sat May 13 2023)
+
+#### 🐛 Bug Fix
+
+- chore(screen): make stuff consistent [#102](https://github.com/artsy/palette-mobile/pull/102) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.27 (Fri May 12 2023)
 
 :tada: This release contains work from a new contributor! :tada:
