@@ -13,14 +13,12 @@ export const ScreenBase: React.FC<ScreenBaseProps> = ({ children, safeArea = tru
     <Flex flex={1} backgroundColor="background" mt={safeArea ? (insets.top as FlexProps["mt"]) : 0}>
       {children}
 
-      {/* TODO: Is this needed? */}
-      {/* <SafeAreaCover /> */}
+      <SafeAreaCover safeArea />
     </Flex>
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SafeAreaCover = () => {
+const SafeAreaCover: React.FC<{ safeArea: boolean }> = ({ safeArea }) => {
   const insets = useSafeAreaInsets()
 
   return (
@@ -28,7 +26,7 @@ const SafeAreaCover = () => {
       position="absolute"
       left={0}
       right={0}
-      top={0}
+      top={safeArea ? -insets.top : 0}
       height={insets.top}
       backgroundColor="background"
     />
