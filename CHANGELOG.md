@@ -1,3 +1,15 @@
+# v11.0.29 (Sat May 13 2023)
+
+#### 🐛 Bug Fix
+
+- fix(screen): fix safe area [#103](https://github.com/artsy/palette-mobile/pull/103) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.28 (Sat May 13 2023)
 
 #### 🐛 Bug Fix
