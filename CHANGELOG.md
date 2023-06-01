@@ -1,3 +1,15 @@
+# v11.0.30 (Thu Jun 01 2023)
+
+#### 🐛 Bug Fix
+
+- feat(tabs): Add Tabs component [#104](https://github.com/artsy/palette-mobile/pull/104) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.29 (Sat May 13 2023)
 
 #### 🐛 Bug Fix
