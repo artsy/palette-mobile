@@ -4,12 +4,13 @@ import { BottomView } from "./BottomView"
 import { FloatingHeader } from "./FloatingHeader"
 import { FullWidthDivider } from "./FullWidthDivider"
 import { FullWidthItem } from "./FullWidthItem"
-import { Header } from "./Header"
+import { AnimatedTabsHeader, Header } from "./Header"
 import { ScreenBase } from "./ScreenBase"
 
 export * from "./constants"
 
 export const Screen = Object.assign(ScreenBase, {
+  AnimatedTabsHeader,
   Background,
   Body,
   BottomView,
