@@ -4,7 +4,7 @@ import { TabBarContainer } from "./TabBarContainer"
 import { CheckIcon, ChevronIcon } from "../../svgs"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Box } from "../Box"
-import { Tab, TabsProps } from "../Tabs"
+import { Tab, TabsProps } from "../LegacyTabs"
 
 /**
  * Renders a list of tabs. Evenly-spaces them across the screen with

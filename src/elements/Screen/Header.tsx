@@ -1,8 +1,10 @@
+import Animated, { Easing, FadeInDown, FadeOut } from "react-native-reanimated"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
 import { Flex, FlexProps } from "../Flex"
 import { Spacer } from "../Spacer"
+import { useTabsContext } from "../Tabs/TabsContext"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
 
@@ -20,14 +22,22 @@ export interface HeaderProps {
   titleShown?: boolean
 }
 
+export const AnimatedTabsHeader: React.FC<HeaderProps> = (props) => {
+  const { currentScrollY } = useTabsContext()
+
+  return <Header scrollY={currentScrollY} animated={true} {...props} />
+}
+
 export const Header: React.FC<HeaderProps> = ({
+  animated = false,
   hideLeftElements,
   hideRightElements,
-  leftElements,
-  rightElements,
-  onBack,
-  title,
   hideTitle,
+  leftElements,
+  onBack,
+  rightElements,
+  scrollY = 0,
+  title,
   titleProps = {},
 }) => {
   const Left = () => {
@@ -56,12 +66,36 @@ export const Header: React.FC<HeaderProps> = ({
       return null
     }
 
+    if (!animated) {
+      return (
+        <Flex flex={1} {...titleProps} justifySelf="stretch">
+          <Text variant="md" numberOfLines={1}>
+            {title}
+          </Text>
+        </Flex>
+      )
+    }
+
+    if (scrollY < NAVBAR_HEIGHT) {
+      return <Flex flex={1} flexDirection="row" />
+    }
+
     return (
-      <Flex flex={1} {...titleProps} justifySelf="stretch">
-        <Text variant="md" numberOfLines={1}>
-          {title}
-        </Text>
-      </Flex>
+      <>
+        <Animated.View
+          entering={FadeInDown.duration(400).easing(Easing.out(Easing.exp))}
+          exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
+          style={{
+            flex: 1,
+          }}
+        >
+          <Flex alignItems="center">
+            <Text variant="md" numberOfLines={1}>
+              {title}
+            </Text>
+          </Flex>
+        </Animated.View>
+      </>
     )
   }
 
