@@ -1,3 +1,15 @@
+# v11.0.32 (Fri Jun 02 2023)
+
+#### 🐛 Bug Fix
+
+- fix(header): Make expand [#106](https://github.com/artsy/palette-mobile/pull/106) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.31 (Fri Jun 02 2023)
 
 #### 🐛 Bug Fix
