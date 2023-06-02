@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
     const display = scrollY < NAVBAR_HEIGHT ? "none" : "flex"
 
     return (
-      <>
+      <Flex flex={1} flexDirection="row">
         <Animated.View
           entering={FadeInDown.duration(400).easing(Easing.out(Easing.exp))}
           exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
@@ -96,7 +96,7 @@ export const Header: React.FC<HeaderProps> = ({
             </Text>
           </Flex>
         </Animated.View>
-      </>
+      </Flex>
     )
   }
 
