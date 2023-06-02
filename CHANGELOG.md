@@ -1,3 +1,15 @@
+# v11.0.31 (Fri Jun 02 2023)
+
+#### 🐛 Bug Fix
+
+- fix(header): make text more configurable [#105](https://github.com/artsy/palette-mobile/pull/105) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.30 (Thu Jun 01 2023)
 
 #### 🐛 Bug Fix
