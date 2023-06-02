@@ -1,3 +1,4 @@
+import React from "react"
 import Animated, { Easing, FadeInDown, FadeOut } from "react-native-reanimated"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
@@ -68,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({
 
     if (!animated) {
       return (
-        <Flex flex={1} {...titleProps} justifySelf="stretch">
+        <Flex flex={1} justifySelf="stretch" {...titleProps}>
           <Text variant="md" numberOfLines={1}>
             {title}
           </Text>
@@ -76,9 +77,8 @@ export const Header: React.FC<HeaderProps> = ({
       )
     }
 
-    if (scrollY < NAVBAR_HEIGHT) {
-      return <Flex flex={1} flexDirection="row" />
-    }
+    // Show / hide the title to avoid rerenders, which retrigger the animation
+    const display = scrollY < NAVBAR_HEIGHT ? "none" : "flex"
 
     return (
       <>
@@ -86,10 +86,11 @@ export const Header: React.FC<HeaderProps> = ({
           entering={FadeInDown.duration(400).easing(Easing.out(Easing.exp))}
           exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
           style={{
+            display,
             flex: 1,
           }}
         >
-          <Flex alignItems="center">
+          <Flex alignItems="center" {...titleProps}>
             <Text variant="md" numberOfLines={1}>
               {title}
             </Text>
