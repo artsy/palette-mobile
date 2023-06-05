@@ -1,3 +1,15 @@
+# v11.0.33 (Mon Jun 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): Ensure title content is properly centered [#107](https://github.com/artsy/palette-mobile/pull/107) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.32 (Fri Jun 02 2023)
 
 #### 🐛 Bug Fix
