@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <Flex pr={1}>
+      <Flex pr={1} width={50}>
         {leftElements ? (
           <>{leftElements}</>
         ) : (
@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
             flex: 1,
           }}
         >
-          <Flex alignItems="center" {...titleProps}>
+          <Flex alignItems="center" width="100%" {...titleProps}>
             <Text variant="md" numberOfLines={1}>
               {title}
             </Text>
@@ -106,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     return (
-      <Flex pl={1}>
+      <Flex width={50} alignItems="flex-end">
         <Spacer x={1} />
         {rightElements}
       </Flex>
@@ -122,6 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
       zIndex={ZINDEX.header}
       backgroundColor="background"
       alignItems="center"
+      width="100%"
     >
       <Left />
       <Center />
