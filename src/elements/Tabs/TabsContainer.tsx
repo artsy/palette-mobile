@@ -2,6 +2,7 @@ import {
   Tabs as BaseTabs,
   MaterialTabBar,
   CollapsibleProps,
+  MaterialTabItem,
 } from "react-native-collapsible-tab-view"
 import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
@@ -55,6 +56,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 borderBottomWidth: 1,
                 borderColor: color("black30"),
               }}
+              TabItemComponent={(props) => <MaterialTabItem {...props} />}
               contentContainerStyle={{}}
               activeColor={color("onBackground")}
               inactiveColor={color("onBackgroundMedium")}
