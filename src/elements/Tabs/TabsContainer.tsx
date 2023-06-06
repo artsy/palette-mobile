@@ -3,13 +3,23 @@ import {
   MaterialTabBar,
   CollapsibleProps,
   MaterialTabItem,
+  TabItemProps,
 } from "react-native-collapsible-tab-view"
 import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
+import { Box } from "../Box"
+import { Flex } from "../Flex"
+import { Text } from "../Text"
 
 const TAB_BAR_HEIGHT = 50
 
+interface Indicator {
+  tabName: string
+  Component: React.FC<TabItemProps<string>>
+}
+
 export interface TabsContainerProps extends CollapsibleProps {
+  indicators?: Indicator[]
   // This prop is more immediate than onTabChange, which waits till the
   // transition takes place
   onTabPress?: (tabName: string) => void
@@ -18,6 +28,7 @@ export interface TabsContainerProps extends CollapsibleProps {
 
 export const TabsContainer: React.FC<TabsContainerProps> = ({
   children,
+  indicators = [],
   initialTabName,
   renderHeader,
   tabScrollEnabled = false,
@@ -56,7 +67,20 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 borderBottomWidth: 1,
                 borderColor: color("black30"),
               }}
-              TabItemComponent={(props) => <MaterialTabItem {...props} />}
+              TabItemComponent={(props) => {
+                const Indicator = indicators.find((indicator) => {
+                  return indicator.tabName === props.name
+                })
+
+                return (
+                  <Box flex={1}>
+                    <Flex position="absolute" width="100%">
+                      {!!Indicator?.Component && <Indicator.Component {...props} />}
+                    </Flex>
+                    <MaterialTabItem {...props}>hi 2</MaterialTabItem>
+                  </Box>
+                )
+              }}
               contentContainerStyle={{}}
               activeColor={color("onBackground")}
               inactiveColor={color("onBackgroundMedium")}
