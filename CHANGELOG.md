@@ -1,3 +1,15 @@
+# v11.0.35 (Tue Jun 06 2023)
+
+#### 🐛 Bug Fix
+
+- feat(tabs): Add support for Indicators [#109](https://github.com/artsy/palette-mobile/pull/109) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.34 (Tue Jun 06 2023)
 
 #### 🐛 Bug Fix
