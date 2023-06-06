@@ -1,3 +1,15 @@
+# v11.0.34 (Tue Jun 06 2023)
+
+#### 🐛 Bug Fix
+
+- build(deps): add react-native-pager-view [#108](https://github.com/artsy/palette-mobile/pull/108) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.33 (Mon Jun 05 2023)
 
 #### 🐛 Bug Fix
