@@ -1,3 +1,15 @@
+# v11.0.37 (Wed Jun 07 2023)
+
+#### 🐛 Bug Fix
+
+- refactor: adjust tab header animation [#111](https://github.com/artsy/palette-mobile/pull/111) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.0.36 (Wed Jun 07 2023)
 
 #### 🐛 Bug Fix
