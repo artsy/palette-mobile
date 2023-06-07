@@ -1,5 +1,5 @@
 import React from "react"
-import Animated, { Easing, FadeInDown, FadeOut } from "react-native-reanimated"
+import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({
     if (!animated) {
       return (
         <Flex flex={1} justifySelf="stretch" {...titleProps}>
-          <Text variant="md" numberOfLines={1}>
+          <Text backgroundColor="green100" variant="sm-display" numberOfLines={1}>
             {title}
           </Text>
         </Flex>
@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({
     return (
       <Flex flex={1} flexDirection="row">
         <Animated.View
-          entering={FadeInDown.duration(400).easing(Easing.out(Easing.exp))}
+          entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
           exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
           style={{
             display,
@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
           }}
         >
           <Flex alignItems="center" width="100%" {...titleProps}>
-            <Text variant="md" numberOfLines={1}>
+            <Text variant="sm-display" numberOfLines={1}>
               {title}
             </Text>
           </Flex>
