@@ -1,3 +1,15 @@
+# v11.0.38 (Thu Jun 08 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Update TabsContainer.tsx ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.37 (Wed Jun 07 2023)
 
 #### 🐛 Bug Fix
