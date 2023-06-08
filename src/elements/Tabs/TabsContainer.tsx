@@ -77,7 +77,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                     <Flex position="absolute" width="100%">
                       {!!Indicator?.Component && <Indicator.Component {...props} />}
                     </Flex>
-                    <MaterialTabItem {...props}>hi 2</MaterialTabItem>
+                    <MaterialTabItem {...props} />
                   </Box>
                 )
               }}
