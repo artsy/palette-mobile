@@ -1,4 +1,6 @@
-import { DisplayInsets, PlacementType } from "./ToolTip"
+import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
+import { EdgeInsets } from "react-native-safe-area-context"
+import { Padding, PointerPlacementType, ToolTipPlacementType } from "./ToolTip"
 
 export interface Size {
   width: number
@@ -9,73 +11,85 @@ export interface Point {
   y: number
 }
 export type Rectangle = Point & Size
+export type Layout = Rectangle & { pageX: number; pageY: number }
 
-export const swapSizeDimensions = (size: Size): Size => ({
-  height: size.width,
-  width: size.height,
-})
-
-interface GeometryInputs {
-  arrowSize: Size
-  adjustedContentSize: Size
-  childRectangle: Rectangle
-  childContentSpacing: number
-  computedDisplayInsets: DisplayInsets
+export interface GeometryInputs {
+  unconstrained?: boolean
+  contentSize: Size
+  anchor: Layout
+  padding?: Padding
   windowDimensions: Size
+  screenPadding?: Padding
+  safeAreaInsets?: EdgeInsets
 }
 
 export interface GeometryOutputs {
-  toolTipOrigin: Point
-  anchorPoint: Point
-  placement: PlacementType
   adjustedContentSize: Size
+  pointerProps: { pointerPlacement: PointerPlacementType; mx?: number }
+  toolTipOrigin: Point
+  tooltipPlacement: ToolTipPlacementType
 }
 
-export const makeChildlessRectangle = ({
-  computedDisplayInsets,
-  windowDimensions,
-  computedPlacement,
-}: {
-  computedDisplayInsets: DisplayInsets
-  windowDimensions: Size
-  computedPlacement: PlacementType
-}): Rectangle => {
-  switch (computedPlacement) {
-    case "bottom":
-      return { x: windowDimensions.width / 2, y: computedDisplayInsets.top, width: 1, height: 1 }
+// do we have a const file to pull from for these translations?
+const paddingToPx = (
+  padding?: Padding
+): { top: number; bottom: number; left: number; right: number } => {
+  const translate = (value: SpacingUnit | 0 | undefined) => {
+    switch (value) {
+      case 0.5:
+        return 5
+      case 1:
+        return 10
+      case 2:
+        return 20
+      case 4:
+        return 40
+      case 6:
+        return 60
+      case 12:
+        return 120
+      case 0:
+      default:
+        return 0
+    }
+  }
 
-    case "right":
-      return { x: computedDisplayInsets.left, y: windowDimensions.height / 2, width: 1, height: 1 }
-
-    case "left":
-      return {
-        x: windowDimensions.width - computedDisplayInsets.right!,
-        y: windowDimensions.height / 2,
-        width: 1,
-        height: 1,
-      }
-
-    case "top":
-    default:
-      return {
-        x: windowDimensions.width / 2,
-        y: windowDimensions.height - computedDisplayInsets.bottom!,
-        width: 1,
-        height: 1,
-      }
+  return {
+    top: translate(padding?.top),
+    bottom: translate(padding?.bottom),
+    left: translate(padding?.left),
+    right: translate(padding?.right),
   }
 }
 
-export const computeCenterGeometry = ({
-  childRectangle: childRect,
-  adjustedContentSize: contentSize,
-  computedDisplayInsets: computedDisplayInsets,
-  windowDimensions: windowDimensions,
+const POINTER_SIZE: Size = { height: 12, width: 10 }
+
+export const computeBottomGeometry = ({
+  anchor,
+  contentSize,
+  padding,
+  windowDimensions,
+  safeAreaInsets = { top: 0, bottom: 0, left: 0, right: 0 },
+  screenPadding,
+  unconstrained,
 }: GeometryInputs): GeometryOutputs => {
-  const maxWidth =
-    windowDimensions.width - (computedDisplayInsets.left + computedDisplayInsets.right)
-  const maxHeight =
-    windowDimensions.height - (computedDisplayInsets.top + computedDisplayInsets.bottom)
+  console.debug("BOTTOM GEO INPUTS", {
+    anchor,
+    contentSize,
+    padding,
+    safeAreaInsets,
+    screenPadding,
+    unconstrained,
+    windowDimensions,
+  })
+  const { top, bottom, left, right } = paddingToPx(padding)
+  const maxWidth = windowDimensions.width
+  const maxHeight = windowDimensions.height
+  let tooltipPlacement: ToolTipPlacementType = "bottom"
+  let pointerProps: GeometryOutputs["pointerProps"] = {
+    pointerPlacement: "top",
+    mx: undefined,
+  }
 
   const adjustedContentSize: Size = {
     width: contentSize.width >= maxWidth ? maxWidth : -1,
@@ -83,283 +97,122 @@ export const computeCenterGeometry = ({
   }
 
   const toolTipOrigin: Point = {
-    x:
-      adjustedContentSize.width === -1
-        ? (maxWidth - contentSize.width) / 2 + computedDisplayInsets.left
-        : computedDisplayInsets.left,
-    y:
-      adjustedContentSize.height === -1
-        ? (maxHeight - contentSize.height) / 2 + computedDisplayInsets.top
-        : computedDisplayInsets.top,
+    x: anchor.x + anchor.width / 2.0 - contentSize.width / 2.0,
+    y: unconstrained
+      ? anchor.pageY - anchor.height / 2
+      : anchor.y + contentSize.height / 2 + POINTER_SIZE.height,
   }
 
-  const anchorPoint = { x: childRect.x + childRect.width / 2.0, y: childRect.y }
+  // if tooltip origin is beyond left bounds
+  if (toolTipOrigin.x <= 0) {
+    toolTipOrigin.x = 5
+    pointerProps = {
+      pointerPlacement: "top-left",
+      mx: anchor.width / 2 - left,
+    }
+  }
+
+  // if tooltip origin is beyond right bounds
+  if (toolTipOrigin.x > windowDimensions.width - contentSize.width) {
+    toolTipOrigin.x = windowDimensions.width - contentSize.width - 5
+    pointerProps = {
+      pointerPlacement: "top-right",
+      mx: anchor.width / 2 - right,
+    }
+  }
+
+  // if tooltip origin is beyond bottom bounds
+  if (!!unconstrained && toolTipOrigin.y + safeAreaInsets.bottom > windowDimensions.height) {
+    tooltipPlacement = "top"
+  } else if (
+    !unconstrained &&
+    anchor.pageY + contentSize.height + top + bottom + POINTER_SIZE.height + safeAreaInsets.bottom >
+      windowDimensions.height
+  ) {
+    tooltipPlacement = "top"
+  }
 
   return {
-    toolTipOrigin,
-    anchorPoint,
-    placement: "center",
     adjustedContentSize,
+    pointerProps,
+    toolTipOrigin,
+    tooltipPlacement,
   }
 }
 
 export const computeTopGeometry = ({
-  childRectangle,
-  adjustedContentSize: contentSize,
-  arrowSize,
-  computedDisplayInsets,
+  anchor,
+  contentSize,
+  padding,
+  safeAreaInsets = { top: 0, bottom: 0, left: 0, right: 0 },
+  screenPadding,
+  unconstrained,
   windowDimensions,
-  childContentSpacing,
 }: GeometryInputs): GeometryOutputs => {
-  const maxWidth =
-    windowDimensions.width - (computedDisplayInsets.left + computedDisplayInsets.right)
+  console.debug("TOP GEO INPUTS", {
+    anchor,
+    contentSize,
+    padding,
+    safeAreaInsets,
+    screenPadding,
+    unconstrained,
+    windowDimensions,
+  })
+  const { top, bottom, left, right } = paddingToPx(padding)
+  const screen = paddingToPx(screenPadding)
+  const maxWidth = windowDimensions.width - (screen.left + screen.right)
+  const maxHeight = windowDimensions.height - (screen.top + screen.bottom)
 
   const adjustedContentSize: Size = {
     width: Math.min(maxWidth, contentSize.width),
-    height: contentSize.height,
+    height: Math.min(maxHeight, contentSize.height),
+  }
+
+  let tooltipPlacement: ToolTipPlacementType = "top"
+  let pointerProps: GeometryOutputs["pointerProps"] = {
+    pointerPlacement: "bottom",
+    mx: undefined,
   }
 
   const toolTipOrigin: Point = {
-    x:
-      contentSize.width >= maxWidth
-        ? computedDisplayInsets.left
-        : Math.max(
-            computedDisplayInsets.left,
-            childRectangle.x + (childRectangle.width - adjustedContentSize.width) / 2
-          ),
-    y: Math.max(
-      computedDisplayInsets.top - childContentSpacing,
-      childRectangle.y - contentSize.height - arrowSize.height - childContentSpacing
-    ),
+    x: anchor.x + anchor.width / 2.0 - contentSize.width / 2.0,
+    y: unconstrained
+      ? anchor.y - bottom - adjustedContentSize.height - POINTER_SIZE.height
+      : anchor.pageY - anchor.height / 2.0,
   }
 
-  const anchorPoint: Point = {
-    x: childRectangle.x + childRectangle.width / 2.0,
-    y: childRectangle.y - childContentSpacing,
+  // if tooltip origin is beyond left bounds
+  if (toolTipOrigin.x < 0) {
+    toolTipOrigin.x = 5
+    pointerProps = {
+      pointerPlacement: "bottom-left",
+      mx: anchor.width / 2 - left,
+    }
   }
 
-  // make sure arrow does not extend beyond computedDisplayInsets
-  if (anchorPoint.x + arrowSize.width > windowDimensions.width - computedDisplayInsets.right) {
-    anchorPoint.x =
-      windowDimensions.width -
-      computedDisplayInsets.right -
-      Math.abs(arrowSize.width - arrowSize.height) -
-      8
-  } else if (anchorPoint.x - arrowSize.width < computedDisplayInsets.left) {
-    anchorPoint.x = computedDisplayInsets.left + Math.abs(arrowSize.width - arrowSize.height) + 8
+  // if tooltip origin is beyond right bounds
+  if (toolTipOrigin.x > windowDimensions.width - contentSize.width) {
+    toolTipOrigin.x = windowDimensions.width - contentSize.width - 5
+    pointerProps = {
+      pointerPlacement: "bottom-right",
+      mx: anchor.width / 2 - right,
+    }
   }
 
-  const topPlacementBottomBound = anchorPoint.y - arrowSize.height
-
-  if (toolTipOrigin.y + contentSize.height > topPlacementBottomBound) {
-    adjustedContentSize.height = topPlacementBottomBound - toolTipOrigin.y
-  }
-
-  if (toolTipOrigin.x + contentSize.width > maxWidth) {
-    toolTipOrigin.x =
-      windowDimensions.width - computedDisplayInsets.right - adjustedContentSize.width
-  }
-
-  return {
-    toolTipOrigin: toolTipOrigin,
-    anchorPoint,
-    placement: "top",
-    adjustedContentSize,
-  }
-}
-
-export const computeBottomGeometry = ({
-  childRectangle: childRect,
-  adjustedContentSize: contentSize,
-  arrowSize,
-  computedDisplayInsets,
-  windowDimensions,
-  childContentSpacing,
-}: GeometryInputs): GeometryOutputs => {
-  const maxWidth =
-    windowDimensions.width - (computedDisplayInsets.left + computedDisplayInsets.right)
-
-  const adjustedContentSize: Size = {
-    width: Math.min(maxWidth, contentSize.width),
-    height: contentSize.height,
-  }
-
-  const toolTipOrigin: Point = {
-    x:
-      contentSize.width >= maxWidth
-        ? computedDisplayInsets.left
-        : Math.max(
-            computedDisplayInsets.left,
-            childRect.x + (childRect.width - adjustedContentSize.width) / 2
-          ),
-    y: Math.min(
-      windowDimensions.height - computedDisplayInsets.bottom + childContentSpacing,
-      childRect.y + childRect.height + arrowSize.height + childContentSpacing
-    ),
-  }
-
-  const anchorPoint: Point = {
-    x: childRect.x + childRect.width / 2.0,
-    y: childRect.y + childRect.height + childContentSpacing,
-  }
-
-  // make sure arrow does not extend beyond computedDisplayInsets
-  if (anchorPoint.x + arrowSize.width > windowDimensions.width - computedDisplayInsets.right) {
-    anchorPoint.x =
-      windowDimensions.width -
-      computedDisplayInsets.right -
-      Math.abs(arrowSize.width - arrowSize.height) -
-      8
-  } else if (anchorPoint.x - arrowSize.width < computedDisplayInsets.left) {
-    anchorPoint.x = computedDisplayInsets.left + Math.abs(arrowSize.width - arrowSize.height) + 8
-  }
-
-  if (
-    toolTipOrigin.y + contentSize.height >
-    windowDimensions.height - computedDisplayInsets.bottom
+  // if tooltip origin is beyond top bounds
+  if (unconstrained && toolTipOrigin.y - safeAreaInsets.top < 0) {
+    tooltipPlacement = "bottom"
+  } else if (
+    !!unconstrained &&
+    anchor.pageY - top - bottom - contentSize.height - safeAreaInsets.top < 0
   ) {
-    adjustedContentSize.height =
-      windowDimensions.height - computedDisplayInsets.bottom - toolTipOrigin.y
-  }
-
-  if (toolTipOrigin.x + contentSize.width > maxWidth) {
-    toolTipOrigin.x =
-      windowDimensions.width - computedDisplayInsets.right - adjustedContentSize.width
+    tooltipPlacement = "bottom"
   }
 
   return {
-    toolTipOrigin: toolTipOrigin,
-    anchorPoint,
-    placement: "bottom",
     adjustedContentSize,
-  }
-}
-
-export const computeLeftGeometry = ({
-  childRectangle: childRect,
-  adjustedContentSize: contentSize,
-  arrowSize,
-  computedDisplayInsets,
-  windowDimensions,
-  childContentSpacing,
-}: GeometryInputs): GeometryOutputs => {
-  const maxHeight =
-    windowDimensions.height - (computedDisplayInsets.top + computedDisplayInsets.bottom)
-
-  const adjustedContentSize: Size = {
-    width: contentSize.width,
-    height: Math.min(maxHeight, contentSize.height),
-  }
-
-  const toolTipOrigin: Point = {
-    x: Math.max(
-      computedDisplayInsets.left - childContentSpacing,
-      childRect.x - contentSize.width - arrowSize.width - childContentSpacing
-    ),
-    y:
-      contentSize.height >= maxHeight
-        ? computedDisplayInsets.top
-        : Math.max(
-            computedDisplayInsets.top,
-            childRect.y + (childRect.height - adjustedContentSize.height) / 2
-          ),
-  }
-
-  const anchorPoint: Point = {
-    x: childRect.x - childContentSpacing,
-    y: childRect.y + childRect.height / 2.0,
-  }
-
-  // make sure arrow does not extend beyond computedDisplayInsets
-  if (anchorPoint.y + arrowSize.width > windowDimensions.height - computedDisplayInsets.bottom) {
-    anchorPoint.y =
-      windowDimensions.height -
-      computedDisplayInsets.bottom -
-      Math.abs(arrowSize.height - arrowSize.width) -
-      8
-  } else if (anchorPoint.y - arrowSize.height < computedDisplayInsets.top) {
-    anchorPoint.y = computedDisplayInsets.top + Math.abs(arrowSize.height - arrowSize.width) + 8
-  }
-
-  const leftPlacementRightBound = anchorPoint.x - arrowSize.width
-
-  if (toolTipOrigin.x + contentSize.width > leftPlacementRightBound) {
-    adjustedContentSize.width = leftPlacementRightBound - toolTipOrigin.x
-  }
-
-  if (toolTipOrigin.y + contentSize.height > maxHeight) {
-    toolTipOrigin.y =
-      windowDimensions.height - computedDisplayInsets.bottom - adjustedContentSize.height
-  }
-
-  return {
-    toolTipOrigin: toolTipOrigin,
-    anchorPoint,
-    placement: "left",
-    adjustedContentSize,
-  }
-}
-
-export const computeRightGeometry = ({
-  childRectangle: childRect,
-  adjustedContentSize: contentSize,
-  arrowSize,
-  computedDisplayInsets,
-  windowDimensions,
-  childContentSpacing,
-}: GeometryInputs): GeometryOutputs => {
-  const maxHeight =
-    windowDimensions.height - (computedDisplayInsets.top + computedDisplayInsets.bottom)
-
-  const adjustedContentSize: Size = {
-    width: contentSize.width,
-    height: Math.min(maxHeight, contentSize.height),
-  }
-
-  const toolTipOrigin: Point = {
-    x: Math.min(
-      windowDimensions.width - computedDisplayInsets.right + childContentSpacing,
-      childRect.x + childRect.width + arrowSize.width + childContentSpacing
-    ),
-    y:
-      contentSize.height >= maxHeight
-        ? computedDisplayInsets.top
-        : Math.max(
-            computedDisplayInsets.top,
-            childRect.y + (childRect.height - adjustedContentSize.height) / 2
-          ),
-  }
-
-  const anchorPoint: Point = {
-    x: childRect.x + childRect.width + childContentSpacing,
-    y: childRect.y + childRect.height / 2.0,
-  }
-
-  // make sure arrow does not extend beyond computedDisplayInsets
-  if (anchorPoint.y + arrowSize.width > windowDimensions.height - computedDisplayInsets.bottom) {
-    anchorPoint.y =
-      windowDimensions.height -
-      computedDisplayInsets.bottom -
-      Math.abs(arrowSize.height - arrowSize.width) -
-      8
-  } else if (anchorPoint.y - arrowSize.height < computedDisplayInsets.top) {
-    anchorPoint.y = computedDisplayInsets.top + Math.abs(arrowSize.height - arrowSize.width) + 8
-  }
-
-  if (toolTipOrigin.x + contentSize.width > windowDimensions.width - computedDisplayInsets.right) {
-    adjustedContentSize.width =
-      windowDimensions.width - computedDisplayInsets.right - toolTipOrigin.x
-  }
-
-  if (toolTipOrigin.y + contentSize.height > maxHeight) {
-    toolTipOrigin.y =
-      windowDimensions.height - computedDisplayInsets.bottom - adjustedContentSize.height
-  }
-
-  return {
+    pointerProps,
     toolTipOrigin,
-    anchorPoint,
-    placement: "right",
-    adjustedContentSize,
+    tooltipPlacement,
   }
 }
