@@ -88,6 +88,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
               indicatorStyle={{
                 backgroundColor: color("onBackground"),
                 height: 1,
+                bottom: -1,
               }}
             />
           </>
