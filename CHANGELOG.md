@@ -1,3 +1,15 @@
+# v11.0.39 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): ensure border overlaps [#112](https://github.com/artsy/palette-mobile/pull/112) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.38 (Thu Jun 08 2023)
 
 #### ⚠️ Pushed to `main`
