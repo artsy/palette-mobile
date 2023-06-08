@@ -1,11 +1,11 @@
 import React from "react"
 import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated"
+import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
 import { Flex, FlexProps } from "../Flex"
 import { Spacer } from "../Spacer"
-import { useTabsContext } from "../Tabs/TabsContext"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
 
@@ -23,8 +23,8 @@ export interface HeaderProps {
   titleShown?: boolean
 }
 
-export const AnimatedTabsHeader: React.FC<HeaderProps> = (props) => {
-  const { currentScrollY } = useTabsContext()
+export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
+  const { currentScrollY } = useScreenScrollContext()
 
   return <Header scrollY={currentScrollY} animated={true} {...props} />
 }

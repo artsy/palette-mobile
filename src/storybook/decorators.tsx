@@ -4,6 +4,7 @@ import { useAtom } from "jotai"
 import { atomWithStorage, createJSONStorage } from "jotai/utils"
 import { ReactNode, useEffect, useState } from "react"
 import { Appearance } from "react-native"
+import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
 import { Flex } from "../elements/Flex"
 import { LinkText, Text } from "../elements/Text"
@@ -41,24 +42,26 @@ export const useDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
   const theme = isDarkMode ? "v3dark" : "v3light"
 
   return (
-    <Theme theme={theme}>
-      <Flex flex={1} backgroundColor="background">
-        <Flex flexDirection="row" justifyContent="space-around">
-          <Text color="orange">
-            Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
-          </Text>
-          <LinkText color="orange" onPress={() => setMode("light")}>
-            light
-          </LinkText>
-          <LinkText color="orange" onPress={() => setMode("dark")}>
-            dark
-          </LinkText>
-          <LinkText color="orange" onPress={() => setMode("system")}>
-            system
-          </LinkText>
+    <SafeAreaProvider>
+      <Theme theme={theme}>
+        <Flex flex={1} backgroundColor="background">
+          <Flex flexDirection="row" justifyContent="space-around">
+            <Text color="orange">
+              Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
+            </Text>
+            <LinkText color="orange" onPress={() => setMode("light")}>
+              light
+            </LinkText>
+            <LinkText color="orange" onPress={() => setMode("dark")}>
+              dark
+            </LinkText>
+            <LinkText color="orange" onPress={() => setMode("system")}>
+              system
+            </LinkText>
+          </Flex>
+          {story()}
         </Flex>
-        {story()}
-      </Flex>
-    </Theme>
+      </Theme>
+    </SafeAreaProvider>
   )
 }

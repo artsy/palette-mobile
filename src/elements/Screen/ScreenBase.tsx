@@ -1,20 +1,32 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { ScreenScrollContextProvider } from "./ScreenScrollContext"
 import { Flex, FlexProps } from "../Flex"
 
-export interface ScreenBaseProps {
+export interface ScreenBaseProps extends FlexProps {
   children: React.ReactNode
   safeArea?: boolean
 }
 
-export const ScreenBase: React.FC<ScreenBaseProps> = ({ children, safeArea = true }) => {
+export const ScreenBase: React.FC<ScreenBaseProps> = ({
+  children,
+  safeArea = true,
+  ...flexProps
+}) => {
   const insets = useSafeAreaInsets()
 
   return (
-    <Flex flex={1} backgroundColor="background" mt={safeArea ? (insets.top as FlexProps["mt"]) : 0}>
-      {children}
+    <ScreenScrollContextProvider>
+      <Flex
+        flex={1}
+        backgroundColor="background"
+        mt={safeArea ? (insets.top as FlexProps["mt"]) : 0}
+        {...flexProps}
+      >
+        {children}
 
-      <SafeAreaCover safeArea />
-    </Flex>
+        <SafeAreaCover safeArea />
+      </Flex>
+    </ScreenScrollContextProvider>
   )
 }
 
