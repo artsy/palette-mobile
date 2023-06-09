@@ -14,20 +14,19 @@ export type Rectangle = Point & Size
 export type Layout = Rectangle & { pageX: number; pageY: number }
 
 export interface GeometryInputs {
-  unconstrained?: boolean
-  contentSize: Size
   anchor: Layout
+  contentSize: Size
   padding?: Padding
-  windowDimensions: Size
-  screenPadding?: Padding
   safeAreaInsets?: EdgeInsets
+  toolTipOrigin: Point
+  unconstrained?: boolean
+  windowDimensions: Size
 }
 
 export interface GeometryOutputs {
-  adjustedContentSize: Size
   pointerProps: { pointerPlacement: PointerPlacementType; mx?: number }
   toolTipOrigin: Point
-  tooltipPlacement: ToolTipPlacementType
+  toolTipPlacement: ToolTipPlacementType
 }
 
 // do we have a const file to pull from for these translations?
@@ -63,156 +62,187 @@ const paddingToPx = (
 }
 
 const POINTER_SIZE: Size = { height: 12, width: 10 }
+const GUTTER = 5
 
-export const computeBottomGeometry = ({
-  anchor,
-  contentSize,
-  padding,
-  windowDimensions,
-  safeAreaInsets = { top: 0, bottom: 0, left: 0, right: 0 },
-  screenPadding,
-  unconstrained,
-}: GeometryInputs): GeometryOutputs => {
-  console.debug("BOTTOM GEO INPUTS", {
-    anchor,
-    contentSize,
-    padding,
-    safeAreaInsets,
-    screenPadding,
-    unconstrained,
-    windowDimensions,
-  })
-  const { top, bottom, left, right } = paddingToPx(padding)
-  const maxWidth = windowDimensions.width
-  const maxHeight = windowDimensions.height
-  let tooltipPlacement: ToolTipPlacementType = "bottom"
-  let pointerProps: GeometryOutputs["pointerProps"] = {
-    pointerPlacement: "top",
-    mx: undefined,
-  }
-
-  const adjustedContentSize: Size = {
-    width: contentSize.width >= maxWidth ? maxWidth : -1,
-    height: contentSize.height >= maxHeight ? maxHeight : -1,
-  }
-
-  const toolTipOrigin: Point = {
-    x: anchor.x + anchor.width / 2.0 - contentSize.width / 2.0,
-    y: unconstrained
-      ? anchor.pageY - anchor.height / 2
-      : anchor.y + contentSize.height / 2 + POINTER_SIZE.height,
-  }
-
-  // if tooltip origin is beyond left bounds
-  if (toolTipOrigin.x <= 0) {
-    toolTipOrigin.x = 5
-    pointerProps = {
-      pointerPlacement: "top-left",
-      mx: anchor.width / 2 - left,
-    }
-  }
-
-  // if tooltip origin is beyond right bounds
-  if (toolTipOrigin.x > windowDimensions.width - contentSize.width) {
-    toolTipOrigin.x = windowDimensions.width - contentSize.width - 5
-    pointerProps = {
-      pointerPlacement: "top-right",
-      mx: anchor.width / 2 - right,
-    }
-  }
-
-  // if tooltip origin is beyond bottom bounds
-  if (!!unconstrained && toolTipOrigin.y + safeAreaInsets.bottom > windowDimensions.height) {
-    tooltipPlacement = "top"
-  } else if (
-    !unconstrained &&
-    anchor.pageY + contentSize.height + top + bottom + POINTER_SIZE.height + safeAreaInsets.bottom >
-      windowDimensions.height
-  ) {
-    tooltipPlacement = "top"
-  }
-
+const computeToolTipTopPlacementOriginPoint = (
+  anchor: Layout,
+  contentSize: Size,
+  padding: Padding | undefined,
+  unconstrained?: boolean
+): Point => {
+  console.log("computeToolTipTopPlacementOriginPoint")
+  const { bottom } = paddingToPx(padding)
   return {
-    adjustedContentSize,
-    pointerProps,
-    toolTipOrigin,
-    tooltipPlacement,
+    x: anchor.x + anchor.width / 2 - contentSize.width / 2,
+    y: unconstrained
+      ? anchor.y - anchor.height / 2
+      : anchor.y - contentSize.height - bottom - POINTER_SIZE.height,
+  }
+}
+const computeToolTipBottomPlacementOriginPoint = (
+  anchor: Layout,
+  contentSize: Size,
+  unconstrained?: boolean
+) => {
+  console.log("computeToolTipBottomPlacementOriginPoint")
+  return {
+    x: anchor.x + anchor.width / 2 - contentSize.width / 2,
+    y: unconstrained
+      ? anchor.y + contentSize.height
+      : anchor.y + anchor.height + POINTER_SIZE.height,
+  }
+}
+export const computeToolTipOriginPoint = (
+  anchor: Layout,
+  contentSize: Size,
+  padding: Padding | undefined,
+  placement: ToolTipPlacementType,
+  unconstrained?: boolean
+) => {
+  switch (placement) {
+    case "top":
+      return computeToolTipTopPlacementOriginPoint(anchor, contentSize, padding, unconstrained)
+    case "bottom":
+    default:
+      return computeToolTipBottomPlacementOriginPoint(anchor, contentSize, unconstrained)
   }
 }
 
-export const computeTopGeometry = ({
-  anchor,
-  contentSize,
-  padding,
-  safeAreaInsets = { top: 0, bottom: 0, left: 0, right: 0 },
-  screenPadding,
-  unconstrained,
-  windowDimensions,
-}: GeometryInputs): GeometryOutputs => {
-  console.debug("TOP GEO INPUTS", {
-    anchor,
-    contentSize,
-    padding,
-    safeAreaInsets,
-    screenPadding,
-    unconstrained,
-    windowDimensions,
-  })
-  const { top, bottom, left, right } = paddingToPx(padding)
-  const screen = paddingToPx(screenPadding)
-  const maxWidth = windowDimensions.width - (screen.left + screen.right)
-  const maxHeight = windowDimensions.height - (screen.top + screen.bottom)
-
-  const adjustedContentSize: Size = {
-    width: Math.min(maxWidth, contentSize.width),
-    height: Math.min(maxHeight, contentSize.height),
-  }
-
-  let tooltipPlacement: ToolTipPlacementType = "top"
-  let pointerProps: GeometryOutputs["pointerProps"] = {
-    pointerPlacement: "bottom",
-    mx: undefined,
-  }
-
-  const toolTipOrigin: Point = {
-    x: anchor.x + anchor.width / 2.0 - contentSize.width / 2.0,
-    y: unconstrained
-      ? anchor.y - bottom - adjustedContentSize.height - POINTER_SIZE.height
-      : anchor.pageY - anchor.height / 2.0,
+// Immaterial whether left or right overflow for now
+// as we are only supporting bottom and top placements
+const evaluateForXAxisOverflow = (
+  anchorWidth: number,
+  contentWidth: number,
+  padding: Padding | undefined,
+  toolTipPlacement: ToolTipPlacementType,
+  toolTipOrigin: Point,
+  windowWidth: number
+): GeometryOutputs => {
+  console.log("evaluateForXAxisOverflow", toolTipOrigin.x)
+  const { left, right } = paddingToPx(padding)
+  const pointerPlacement = toolTipPlacement === "bottom" ? "top" : "bottom"
+  const output: GeometryOutputs = {
+    pointerProps: { pointerPlacement },
+    toolTipOrigin,
+    toolTipPlacement,
   }
 
   // if tooltip origin is beyond left bounds
   if (toolTipOrigin.x < 0) {
-    toolTipOrigin.x = 5
-    pointerProps = {
-      pointerPlacement: "bottom-left",
-      mx: anchor.width / 2 - left,
+    output.toolTipOrigin.x = 5
+    output.pointerProps = {
+      pointerPlacement: `${pointerPlacement}-left` as PointerPlacementType,
+      mx: anchorWidth / 2 - left,
     }
   }
 
   // if tooltip origin is beyond right bounds
-  if (toolTipOrigin.x > windowDimensions.width - contentSize.width) {
-    toolTipOrigin.x = windowDimensions.width - contentSize.width - 5
-    pointerProps = {
-      pointerPlacement: "bottom-right",
-      mx: anchor.width / 2 - right,
+  if (toolTipOrigin.x > windowWidth - contentWidth) {
+    output.toolTipOrigin.x = windowWidth - contentWidth - GUTTER
+    output.pointerProps = {
+      pointerPlacement: `${pointerPlacement}-left` as PointerPlacementType,
+      mx: anchorWidth / 2 - right,
     }
   }
 
-  // if tooltip origin is beyond top bounds
-  if (unconstrained && toolTipOrigin.y - safeAreaInsets.top < 0) {
-    tooltipPlacement = "bottom"
-  } else if (
-    !!unconstrained &&
-    anchor.pageY - top - bottom - contentSize.height - safeAreaInsets.top < 0
-  ) {
-    tooltipPlacement = "bottom"
-  }
+  return output
+}
 
-  return {
-    adjustedContentSize,
-    pointerProps,
-    toolTipOrigin,
-    tooltipPlacement,
+const evaluateForTopBoundsOverflow = (
+  anchorY: number,
+  contentHeight: number,
+  safeAreaHeader: number,
+  toolTipOriginY: number,
+  unconstrained?: boolean
+): ToolTipPlacementType => {
+  console.log("evaluateForTopBoundsOverflow")
+  // if tooltip origin is beyond top bounds
+  if (!unconstrained && toolTipOriginY - safeAreaHeader < 0) {
+    return "bottom"
+  } else if (!!unconstrained && anchorY - contentHeight - safeAreaHeader < 0) {
+    return "bottom"
   }
+  return "top"
+}
+const evaluateForBottomBoundsOverflow = (
+  anchorY: number,
+  contentHeight: number,
+  safeAreaFooter: number,
+  toolTipOriginY: number,
+  windowHeight: number,
+  unconstrained?: boolean
+): ToolTipPlacementType => {
+  console.log("evaluateForBottomBoundsOverflow")
+  // if tooltip origin is beyond bottom bounds
+  if (!!unconstrained && toolTipOriginY + safeAreaFooter > windowHeight) {
+    return "top"
+  } else if (
+    !unconstrained &&
+    anchorY + contentHeight + POINTER_SIZE.height + safeAreaFooter > windowHeight
+  ) {
+    return "top"
+  }
+  return "bottom"
+}
+const evaluateForYAxisOverflow = (
+  anchorY: number,
+  contentHeight: number,
+  placement: ToolTipPlacementType,
+  safeAreaFooter: number,
+  toolTipOriginY: number,
+  windowHeight: number,
+  unconstrained?: boolean
+) => {
+  switch (placement) {
+    case "top":
+      return evaluateForTopBoundsOverflow(
+        anchorY,
+        contentHeight,
+        safeAreaFooter,
+        toolTipOriginY,
+        unconstrained
+      )
+    case "bottom":
+    default:
+      return evaluateForBottomBoundsOverflow(
+        anchorY,
+        contentHeight,
+        safeAreaFooter,
+        toolTipOriginY,
+        windowHeight,
+        unconstrained
+      )
+  }
+}
+
+export const evaluateForXYAxisOverflow = (
+  anchor: Layout,
+  contentSize: Size,
+  padding: Padding | undefined,
+  placement: ToolTipPlacementType,
+  safeAreaInsets: EdgeInsets,
+  toolTipOrigin: Point,
+  windowDimensions: Size,
+  unconstrained?: boolean
+): GeometryOutputs => {
+  const xEval: GeometryOutputs = evaluateForXAxisOverflow(
+    anchor.width,
+    contentSize.width,
+    padding,
+    placement,
+    toolTipOrigin,
+    windowDimensions.width
+  )
+
+  const yEval: ToolTipPlacementType = evaluateForYAxisOverflow(
+    anchor.y,
+    contentSize.height,
+    placement,
+    safeAreaInsets.bottom,
+    toolTipOrigin.y,
+    windowDimensions.height,
+    unconstrained
+  )
+  const outputs = { ...xEval, tooltipPlacement: yEval }
+  return outputs
 }

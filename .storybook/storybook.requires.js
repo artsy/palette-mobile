@@ -48,6 +48,7 @@ const getStories = () => {
     require("../src/elements/Tabs/Tabs.stories.tsx"),
     require("../src/elements/Text/Text.stories.tsx"),
     require("../src/elements/ToolTip/ToolTip.stories.tsx"),
+    require("../src/elements/ToolTip/v2/ToolTip.stories.tsx"),
     require("../src/elements/Touchable/Touchable.stories.tsx"),
     require("../src/elements/VisualClue/VisualClue.stories.tsx"),
     require("../src/svgs/icons.stories.tsx"),
