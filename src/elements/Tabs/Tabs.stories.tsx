@@ -1,38 +1,72 @@
 import { storiesOf } from "@storybook/react-native"
 import { Tabs } from "./Tabs"
-import { Flex } from "../Flex"
+import { Screen } from "../Screen"
 import { Text } from "../Text"
 
 storiesOf("Tabs", module)
   .add("Simple Tabs", () => (
-    <Flex alignSelf="center" mt="200px" alignItems="center" flexWrap="wrap">
-      <Tabs>
-        <Tabs.Tab name="Tab 1" label="Tab 1">
-          <Tabs.ScrollView>
-            <Text>Tab 1 content</Text>
-          </Tabs.ScrollView>
-        </Tabs.Tab>
-        <Tabs.Tab name="Tab 2" label="Tab 2">
-          <Tabs.ScrollView>
-            <Text>Tab 2 content</Text>
-          </Tabs.ScrollView>
-        </Tabs.Tab>
-      </Tabs>
-    </Flex>
+    <Tabs>
+      <Tabs.Tab name="Tab 1" label="Tab 1">
+        <Tabs.ScrollView>
+          <Text>Tab 1 content</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+      <Tabs.Tab name="Tab 2" label="Tab 2">
+        <Tabs.ScrollView>
+          <Text>Tab 2 content</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+    </Tabs>
   ))
   .add("Tabs with Indicator", () => (
-    <Flex alignSelf="center" mt="200px" flexWrap="wrap">
-      <Tabs indicators={[{ tabName: "tab1", Component: () => <Text textAlign="right">hi</Text> }]}>
-        <Tabs.Tab name="tab1" label="Tab 1">
-          <Tabs.ScrollView>
-            <Text>Tab 1 content</Text>
-          </Tabs.ScrollView>
-        </Tabs.Tab>
-        <Tabs.Tab name="tab2" label="Tab 2">
-          <Tabs.ScrollView>
-            <Text>Tab 2 content</Text>
-          </Tabs.ScrollView>
-        </Tabs.Tab>
-      </Tabs>
-    </Flex>
+    <Tabs indicators={[{ tabName: "tab1", Component: () => <Text textAlign="right">hi</Text> }]}>
+      <Tabs.Tab name="tab1" label="Tab 1">
+        <Tabs.ScrollView>
+          <Text>Tab 1 content</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+      <Tabs.Tab name="tab2" label="Tab 2">
+        <Tabs.ScrollView>
+          <Text>Tab 2 content</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+    </Tabs>
+  ))
+  .add("Tabs with AnimatedHeader", () => (
+    <Screen>
+      <Screen.AnimatedHeader title="Title" />
+
+      <Screen.Body fullwidth>
+        <Tabs>
+          <Tabs.Tab name="tab1" label="Tab 1">
+            <Tabs.ScrollView>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Text my={1} key={i}>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum."
+                </Text>
+              ))}
+            </Tabs.ScrollView>
+          </Tabs.Tab>
+          <Tabs.Tab name="tab2" label="Tab 2">
+            <Tabs.ScrollView>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Text my={1} key={i}>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum."
+                </Text>
+              ))}
+            </Tabs.ScrollView>
+          </Tabs.Tab>
+        </Tabs>
+      </Screen.Body>
+    </Screen>
   ))

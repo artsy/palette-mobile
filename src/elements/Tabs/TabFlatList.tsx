@@ -1,6 +1,6 @@
 import { FlatListProps } from "react-native"
 import { Tabs } from "react-native-collapsible-tab-view"
-import { useListenForTabContentScroll } from "./useListenForTabContentScroll"
+import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScroll"
 import { useSpace } from "../../utils/hooks/useSpace"
 
 export function TabFlatList<T>(props: FlatListProps<T>) {

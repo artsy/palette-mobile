@@ -23,7 +23,7 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
 }) => {
   return (
     <Screen>
-      <Screen.AnimatedTabsHeader title={title} {...headerProps} />
+      <Screen.AnimatedHeader title={title} {...headerProps} />
 
       <Screen.Body fullwidth>
         <TabsContainer

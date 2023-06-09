@@ -1,19 +1,8 @@
 import { useEffect, useState } from "react"
-import { useCurrentTabScrollY } from "react-native-collapsible-tab-view"
 import { runOnJS, SharedValue, useAnimatedReaction, useSharedValue } from "react-native-reanimated"
-import { useTabsContext } from "./TabsContext"
-import { NAVBAR_HEIGHT } from "../Screen/constants"
+import { NAVBAR_HEIGHT } from "../constants"
 
-export const useListenForTabContentScroll = () => {
-  const scrollY = useAnimatedTabsHeaderScrolling(useCurrentTabScrollY())
-  const { updateCurrentScrollY } = useTabsContext()
-
-  useEffect(() => {
-    updateCurrentScrollY(scrollY)
-  }, [scrollY, updateCurrentScrollY])
-}
-
-const useAnimatedTabsHeaderScrolling = (scrollY: SharedValue<number>) => {
+export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>) => {
   const listenForScroll = useSharedValue(true)
   const [currScrollY, setCurrScrollY] = useState(scrollY.value)
 
