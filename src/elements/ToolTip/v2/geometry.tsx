@@ -118,7 +118,6 @@ const evaluateForXAxisOverflow = (
   toolTipOrigin: Point,
   windowWidth: number
 ): GeometryOutputs => {
-  console.log("evaluateForXAxisOverflow", toolTipOrigin.x)
   const { left, right } = paddingToPx(padding)
   const pointerPlacement = toolTipPlacement === "bottom" ? "top" : "bottom"
   const output: GeometryOutputs = {

@@ -98,7 +98,8 @@ export const ToolTip: FC<ToolTipProps> = ({
     // pointer to a left or right aligned anchor
     mx?: number
   }>({ pointerPlacement: "top" })
-  const [toolTipOrigin, setToolTipOrigin] = useState<Point>({ x: 0, y: 0 })
+  const [origin, setOrigin] = useState<Point>({ x: 0, y: 0 })
+  const [overflowOrigin, setOverflowOrigin] = useState<Point | null>(null)
   const [tooltipPlacement, setTooltipPlacement] = useState<ToolTipPlacementType>(placement)
 
   const measureChildRectangle = () => {
@@ -107,7 +108,7 @@ export const ToolTip: FC<ToolTipProps> = ({
         wrapperRef.current.measure((x, y, width, height, pageX, pageY) => {
           if (isEqual(anchorRef.current, { x, y, width, height, pageX, pageY })) return
           anchorRef.current = { x, y, width, height, pageX, pageY }
-          setToolTipOrigin((prev) => {
+          setOrigin((prev) => {
             if (anchorRef.current === null) return prev
             return computeToolTipOriginPoint(
               anchorRef.current,
@@ -140,7 +141,7 @@ export const ToolTip: FC<ToolTipProps> = ({
       paddingAggregate,
       tooltipPlacement,
       safeAreaInsets,
-      toolTipOrigin,
+      origin,
       windowDimensions,
       unconstrained
     )
@@ -148,9 +149,19 @@ export const ToolTip: FC<ToolTipProps> = ({
     if (!isEqual(geometry.pointerProps, pointerProps)) {
       setPointerProps(geometry.pointerProps)
     }
-    if (!isEqual(geometry.toolTipOrigin, toolTipOrigin)) {
-      setToolTipOrigin(geometry.toolTipOrigin)
+
+    /**
+     * we want to do computations with the true origin point,
+     * so we shouldn't make any manual adjustments to that value.
+     * instead we set and use the overflow origin for
+     * the case in which such adjustments are necessary.
+     */
+    if (!isEqual(geometry.toolTipOrigin, origin)) {
+      setOverflowOrigin(geometry.toolTipOrigin)
+    } else if (isEqual(geometry.toolTipOrigin, origin) && overflowOrigin !== null) {
+      setOverflowOrigin(null)
     }
+
     if (geometry.toolTipPlacement !== tooltipPlacement) {
       setTooltipPlacement(geometry.toolTipPlacement)
     }
@@ -159,10 +170,11 @@ export const ToolTip: FC<ToolTipProps> = ({
     paddingAggregate,
     tooltipPlacement,
     safeAreaInsets,
-    toolTipOrigin,
+    origin,
     windowDimensions,
     unconstrained,
     pointerProps,
+    overflowOrigin,
   ])
 
   const renderContent = () => {
@@ -170,8 +182,8 @@ export const ToolTip: FC<ToolTipProps> = ({
       <Box
         display={isVisible ? "flex" : "none"}
         position="absolute"
-        left={toolTipOrigin.x}
-        top={toolTipOrigin.y}
+        left={overflowOrigin?.x ?? origin.x}
+        top={overflowOrigin?.y ?? origin.y}
       >
         <Pointer {...pointerProps}>
           <Box
@@ -211,6 +223,9 @@ export const ToolTip: FC<ToolTipProps> = ({
   }
 
   useEffect(() => {
+    console.log("tooltip origin: ", origin)
+    console.log("overflow origin: ", overflowOrigin)
+
     if (isVisible && anchorRef.current) {
       computeGeometry()
     }
