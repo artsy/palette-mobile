@@ -1,3 +1,15 @@
+# v11.0.40 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- feat(screen): Add scroll tracking support for animated headers [#114](https://github.com/artsy/palette-mobile/pull/114) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.39 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix
