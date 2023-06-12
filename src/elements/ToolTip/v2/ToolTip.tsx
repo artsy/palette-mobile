@@ -64,7 +64,7 @@ interface ToolTipProps extends PropsWithChildren {
  * @param isVisible Whether or not the tooltip is visible
  * @param onClose Callback for when the tooltip is closed
  * @param placement Where the tooltip should be placed relative to the child
- * @param unconstrained Whether or not the tooltip should be constrained by its immediate parent (this should almost always be false)
+ * @param unconstrained Default is false. If this is true, the tooltip will be positioned relative to the window coordinate grid, instead of its immediate parent.
  */
 // TODO: Animation
 export const ToolTip: FC<ToolTipProps> = ({
@@ -82,6 +82,9 @@ export const ToolTip: FC<ToolTipProps> = ({
   ...rest // maxWidth, maxHeight, width, height
 }) => {
   const interactionPromise = useRef<InteractionManagerPromise | null>(null)
+
+  // wrapperRef allows us to take measurements of
+  // the component we intend to anchor to
   const wrapperRef = useRef<View | null>(null)
   const anchorRef = useRef<Layout | null>(null)
 
@@ -117,7 +120,6 @@ export const ToolTip: FC<ToolTipProps> = ({
               tooltipPlacement,
               unconstrained
             )
-            console.log(point)
             return point
           })
         })
