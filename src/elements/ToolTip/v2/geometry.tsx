@@ -70,7 +70,6 @@ const computeToolTipTopPlacementOriginPoint = (
   padding: Padding | undefined,
   unconstrained?: boolean
 ): Point => {
-  console.log("computeToolTipTopPlacementOriginPoint")
   const { bottom } = paddingToPx(padding)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
@@ -84,7 +83,8 @@ const computeToolTipBottomPlacementOriginPoint = (
   contentSize: Size,
   unconstrained?: boolean
 ) => {
-  console.log("computeToolTipBottomPlacementOriginPoint")
+  // console.log(anchor.x, anchor.width, contentSize.width)
+  // console.log(anchor.x + anchor.width / 2 - contentSize.width / 2)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
     y: unconstrained
@@ -120,15 +120,16 @@ const evaluateForXAxisOverflow = (
 ): GeometryOutputs => {
   const { left, right } = paddingToPx(padding)
   const pointerPlacement = toolTipPlacement === "bottom" ? "top" : "bottom"
+  // create a copy so that none of the original values are mutated
   const output: GeometryOutputs = {
     pointerProps: { pointerPlacement },
-    toolTipOrigin,
+    toolTipOrigin: { ...toolTipOrigin },
     toolTipPlacement,
   }
 
   // if tooltip origin is beyond left bounds
   if (toolTipOrigin.x < 0) {
-    output.toolTipOrigin.x = 5
+    output.toolTipOrigin.x = GUTTER
     output.pointerProps = {
       pointerPlacement: `${pointerPlacement}-left` as PointerPlacementType,
       mx: anchorWidth / 2 - left,
@@ -154,7 +155,6 @@ const evaluateForTopBoundsOverflow = (
   toolTipOriginY: number,
   unconstrained?: boolean
 ): ToolTipPlacementType => {
-  console.log("evaluateForTopBoundsOverflow")
   // if tooltip origin is beyond top bounds
   if (!unconstrained && toolTipOriginY - safeAreaHeader < 0) {
     return "bottom"
@@ -171,7 +171,6 @@ const evaluateForBottomBoundsOverflow = (
   windowHeight: number,
   unconstrained?: boolean
 ): ToolTipPlacementType => {
-  console.log("evaluateForBottomBoundsOverflow")
   // if tooltip origin is beyond bottom bounds
   if (!!unconstrained && toolTipOriginY + safeAreaFooter > windowHeight) {
     return "top"

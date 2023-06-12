@@ -10,7 +10,7 @@ storiesOf("ToolTip V2", module).add("Top placement", () => {
     <>
       <ScreenDimensionsProvider>
         <Flex flex={1} width="100%" justifyContent="center">
-          <Flex width="100%" alignItems="flex-start">
+          <Flex width="100%" alignItems="flex-end">
             <ToolTip
               isVisible={true}
               content="This is some content. How fancy!"
