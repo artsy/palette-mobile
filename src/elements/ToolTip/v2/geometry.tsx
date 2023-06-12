@@ -1,4 +1,5 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
+import { cloneDeep } from "lodash"
 import { EdgeInsets } from "react-native-safe-area-context"
 import { Padding, PointerPlacementType, ToolTipPlacementType } from "./ToolTip"
 
@@ -83,8 +84,6 @@ const computeToolTipBottomPlacementOriginPoint = (
   contentSize: Size,
   unconstrained?: boolean
 ) => {
-  // console.log(anchor.x, anchor.width, contentSize.width)
-  // console.log(anchor.x + anchor.width / 2 - contentSize.width / 2)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
     y: unconstrained
@@ -120,12 +119,12 @@ const evaluateForXAxisOverflow = (
 ): GeometryOutputs => {
   const { left, right } = paddingToPx(padding)
   const pointerPlacement = toolTipPlacement === "bottom" ? "top" : "bottom"
-  // create a copy so that none of the original values are mutated
-  const output: GeometryOutputs = {
+  // create a clone so that none of the passed values are mutated
+  const output: GeometryOutputs = cloneDeep({
     pointerProps: { pointerPlacement },
-    toolTipOrigin: { ...toolTipOrigin },
+    toolTipOrigin,
     toolTipPlacement,
-  }
+  })
 
   // if tooltip origin is beyond left bounds
   if (toolTipOrigin.x < 0) {
@@ -140,7 +139,7 @@ const evaluateForXAxisOverflow = (
   if (toolTipOrigin.x > windowWidth - contentWidth) {
     output.toolTipOrigin.x = windowWidth - contentWidth - GUTTER
     output.pointerProps = {
-      pointerPlacement: `${pointerPlacement}-left` as PointerPlacementType,
+      pointerPlacement: `${pointerPlacement}-right` as PointerPlacementType,
       mx: anchorWidth / 2 - right,
     }
   }

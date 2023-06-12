@@ -231,10 +231,6 @@ export const ToolTip: FC<ToolTipProps> = ({
   }
 
   useEffect(() => {
-    console.log({ origin })
-  }, [origin])
-
-  useEffect(() => {
     if (isVisible && anchorRef.current) {
       computeGeometry()
     }
@@ -243,7 +239,7 @@ export const ToolTip: FC<ToolTipProps> = ({
   return (
     <>
       <Box ref={wrapperRef as any} onLayout={measureChildRectangle}>
-        <TouchableWithoutFeedback onPress={() => onClose()}>{children}</TouchableWithoutFeedback>
+        {children}
       </Box>
 
       {isVisible && renderContent()}
