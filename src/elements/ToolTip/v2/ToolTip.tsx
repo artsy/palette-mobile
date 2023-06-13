@@ -103,7 +103,7 @@ export const ToolTip: FC<ToolTipProps> = ({
   }>({ pointerPlacement: "top" })
   const [origin, setOrigin] = useState<Point | null>({ x: 0, y: 0 })
   const [adjustedOrigin, setAdjustedOrigin] = useState<Point | null>(null)
-  const [tooltipPlacement, setTooltipPlacement] = useState<ToolTipPlacementType>(placement)
+  const [toolTipPlacement, setToolTipPlacement] = useState<ToolTipPlacementType>(placement)
 
   const measureChildRectangle = () => {
     const doMeasurement = () => {
@@ -113,13 +113,13 @@ export const ToolTip: FC<ToolTipProps> = ({
           anchorRef.current = { x, y, width, height, pageX, pageY }
           setOrigin(() => {
             if (anchorRef.current === null) return null
-            const point = computeToolTipOriginPoint(
-              anchorRef.current,
+            const point = computeToolTipOriginPoint({
+              anchor: anchorRef.current,
               contentSize,
-              paddingAggregate,
-              tooltipPlacement,
-              unconstrained
-            )
+              padding: paddingAggregate,
+              toolTipPlacement,
+              unconstrained,
+            })
             return point
           })
         })
@@ -139,18 +139,18 @@ export const ToolTip: FC<ToolTipProps> = ({
   }
 
   const computeGeometry = useCallback(() => {
-    if (origin === null) return
+    if (origin === null || anchorRef.current === null) return
 
-    const geometry: GeometryOutputs = evaluateForXYAxisOverflow(
-      anchorRef.current!,
+    const geometry: GeometryOutputs = evaluateForXYAxisOverflow({
+      anchor: anchorRef.current,
       contentSize,
-      paddingAggregate,
-      tooltipPlacement,
+      padding: paddingAggregate,
+      toolTipPlacement,
       safeAreaInsets,
-      origin,
+      toolTipOrigin: origin, // we want to do computations with the true origin point
       windowDimensions,
-      unconstrained
-    )
+      unconstrained,
+    })
 
     if (!isEqual(geometry.pointerProps, pointerProps)) {
       setPointerProps(geometry.pointerProps)
@@ -171,13 +171,13 @@ export const ToolTip: FC<ToolTipProps> = ({
       setAdjustedOrigin(null)
     }
 
-    if (geometry.toolTipPlacement !== tooltipPlacement) {
-      setTooltipPlacement(geometry.toolTipPlacement)
+    if (geometry.toolTipPlacement !== toolTipPlacement) {
+      setToolTipPlacement(geometry.toolTipPlacement)
     }
   }, [
     contentSize,
     paddingAggregate,
-    tooltipPlacement,
+    toolTipPlacement,
     safeAreaInsets,
     origin,
     windowDimensions,

@@ -15,13 +15,7 @@ export type Rectangle = Point & Size
 export type Layout = Rectangle & { pageX: number; pageY: number }
 
 export interface GeometryInputs {
-  anchor: Layout
-  contentSize: Size
-  padding?: Padding
-  safeAreaInsets?: EdgeInsets
-  toolTipOrigin: Point
-  unconstrained?: boolean
-  windowDimensions: Size
+  toolTipPlacement: ToolTipPlacementType
 }
 
 export interface GeometryOutputs {
@@ -65,12 +59,15 @@ const paddingToPx = (
 const POINTER_SIZE: Size = { height: 12, width: 10 }
 const GUTTER = 5
 
-const computeToolTipTopPlacementOriginPoint = (
-  anchor: Layout,
-  contentSize: Size,
-  padding: Padding | undefined,
+interface OriginGeometryInputs {
+  anchor: Layout
+  contentSize: Size
+  padding?: Padding
   unconstrained?: boolean
-): Point => {
+}
+
+const computeToolTipTopPlacementOriginPoint = (inputs: OriginGeometryInputs): Point => {
+  const { anchor, contentSize, padding, unconstrained } = inputs
   const { bottom } = paddingToPx(padding)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
@@ -79,44 +76,40 @@ const computeToolTipTopPlacementOriginPoint = (
       : anchor.y - contentSize.height - bottom - POINTER_SIZE.height,
   }
 }
-const computeToolTipBottomPlacementOriginPoint = (
-  anchor: Layout,
-  contentSize: Size,
-  unconstrained?: boolean
-) => {
+const computeToolTipBottomPlacementOriginPoint = (inputs: OriginGeometryInputs) => {
+  const { anchor, contentSize, unconstrained } = inputs
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
     y: unconstrained
-      ? anchor.y + contentSize.height
+      ? anchor.pageY + contentSize.height
       : anchor.y + anchor.height + POINTER_SIZE.height,
   }
 }
-export const computeToolTipOriginPoint = (
-  anchor: Layout,
-  contentSize: Size,
-  padding: Padding | undefined,
-  placement: ToolTipPlacementType,
-  unconstrained?: boolean
-) => {
-  switch (placement) {
+export const computeToolTipOriginPoint = (inputs: GeometryInputs & OriginGeometryInputs) => {
+  const { toolTipPlacement, ...rest } = inputs
+  switch (toolTipPlacement) {
     case "top":
-      return computeToolTipTopPlacementOriginPoint(anchor, contentSize, padding, unconstrained)
+      return computeToolTipTopPlacementOriginPoint(rest)
     case "bottom":
     default:
-      return computeToolTipBottomPlacementOriginPoint(anchor, contentSize, unconstrained)
+      return computeToolTipBottomPlacementOriginPoint(rest)
   }
 }
 
+interface XAxisGeometryInputs {
+  anchor: Layout
+  contentSize: Size
+  padding?: Padding
+  toolTipPlacement: ToolTipPlacementType
+  toolTipOrigin: Point
+  windowDimensions: Size
+}
 // Immaterial whether left or right overflow for now
 // as we are only supporting bottom and top placements
 const evaluateForXAxisOverflow = (
-  anchorWidth: number,
-  contentWidth: number,
-  padding: Padding | undefined,
-  toolTipPlacement: ToolTipPlacementType,
-  toolTipOrigin: Point,
-  windowWidth: number
+  inputs: XAxisGeometryInputs & GeometryInputs
 ): GeometryOutputs => {
+  const { anchor, contentSize, padding, toolTipPlacement, toolTipOrigin, windowDimensions } = inputs
   const { left, right } = paddingToPx(padding)
   const pointerPlacement = toolTipPlacement === "bottom" ? "top" : "bottom"
   // create a clone so that none of the passed values are mutated
@@ -131,115 +124,76 @@ const evaluateForXAxisOverflow = (
     output.toolTipOrigin.x = GUTTER
     output.pointerProps = {
       pointerPlacement: `${pointerPlacement}-left` as PointerPlacementType,
-      mx: anchorWidth / 2 - left,
+      mx: anchor.width / 2 - left,
     }
   }
 
   // if tooltip origin is beyond right bounds
-  if (toolTipOrigin.x > windowWidth - contentWidth) {
-    output.toolTipOrigin.x = windowWidth - contentWidth - GUTTER
+  if (toolTipOrigin.x > windowDimensions.width - contentSize.width) {
+    output.toolTipOrigin.x = windowDimensions.width - contentSize.width - GUTTER
     output.pointerProps = {
       pointerPlacement: `${pointerPlacement}-right` as PointerPlacementType,
-      mx: anchorWidth / 2 - right,
+      mx: anchor.width / 2 - right,
     }
   }
 
   return output
 }
 
-const evaluateForTopBoundsOverflow = (
-  anchorY: number,
-  contentHeight: number,
-  safeAreaHeader: number,
-  toolTipOriginY: number,
+interface YAxisGeometryInputs {
+  anchor: Layout
+  contentSize: Size
+  safeAreaInsets: EdgeInsets
+  toolTipOrigin: Point
   unconstrained?: boolean
+  windowDimensions: Size
+}
+
+// if tooltip origin is beyond top bounds
+const evaluateForTopBoundsOverflow = (
+  inputs: Omit<YAxisGeometryInputs, "windowDimensions">
 ): ToolTipPlacementType => {
-  // if tooltip origin is beyond top bounds
-  if (!unconstrained && toolTipOriginY - safeAreaHeader < 0) {
+  const { anchor, contentSize, safeAreaInsets, toolTipOrigin, unconstrained } = inputs
+  if (!unconstrained && toolTipOrigin.y - safeAreaInsets.top < 0) {
     return "bottom"
-  } else if (!!unconstrained && anchorY - contentHeight - safeAreaHeader < 0) {
+  } else if (!!unconstrained && anchor.y - contentSize.height - safeAreaInsets.top < 0) {
     return "bottom"
   }
   return "top"
 }
-const evaluateForBottomBoundsOverflow = (
-  anchorY: number,
-  contentHeight: number,
-  safeAreaFooter: number,
-  toolTipOriginY: number,
-  windowHeight: number,
-  unconstrained?: boolean
-): ToolTipPlacementType => {
-  // if tooltip origin is beyond bottom bounds
-  if (!!unconstrained && toolTipOriginY + safeAreaFooter > windowHeight) {
+
+// if tooltip origin is beyond bottom bounds
+const evaluateForBottomBoundsOverflow = (inputs: YAxisGeometryInputs): ToolTipPlacementType => {
+  const { anchor, contentSize, safeAreaInsets, toolTipOrigin, unconstrained, windowDimensions } =
+    inputs
+  if (!!unconstrained && toolTipOrigin.y + safeAreaInsets.bottom > windowDimensions.height) {
     return "top"
   } else if (
     !unconstrained &&
-    anchorY + contentHeight + POINTER_SIZE.height + safeAreaFooter > windowHeight
+    anchor.y + contentSize.height + POINTER_SIZE.height + safeAreaInsets.bottom >
+      windowDimensions.height
   ) {
     return "top"
   }
   return "bottom"
 }
-const evaluateForYAxisOverflow = (
-  anchorY: number,
-  contentHeight: number,
-  placement: ToolTipPlacementType,
-  safeAreaFooter: number,
-  toolTipOriginY: number,
-  windowHeight: number,
-  unconstrained?: boolean
-) => {
-  switch (placement) {
+
+const evaluateForYAxisOverflow = (inputs: YAxisGeometryInputs & GeometryInputs) => {
+  const { toolTipPlacement, ...rest } = inputs
+  switch (toolTipPlacement) {
     case "top":
-      return evaluateForTopBoundsOverflow(
-        anchorY,
-        contentHeight,
-        safeAreaFooter,
-        toolTipOriginY,
-        unconstrained
-      )
+      return evaluateForTopBoundsOverflow(rest)
     case "bottom":
     default:
-      return evaluateForBottomBoundsOverflow(
-        anchorY,
-        contentHeight,
-        safeAreaFooter,
-        toolTipOriginY,
-        windowHeight,
-        unconstrained
-      )
+      return evaluateForBottomBoundsOverflow(rest)
   }
 }
 
 export const evaluateForXYAxisOverflow = (
-  anchor: Layout,
-  contentSize: Size,
-  padding: Padding | undefined,
-  placement: ToolTipPlacementType,
-  safeAreaInsets: EdgeInsets,
-  toolTipOrigin: Point,
-  windowDimensions: Size,
-  unconstrained?: boolean
+  inputs: GeometryInputs & OriginGeometryInputs & XAxisGeometryInputs & YAxisGeometryInputs
 ): GeometryOutputs => {
-  const xEval: GeometryOutputs = evaluateForXAxisOverflow(
-    anchor.width,
-    contentSize.width,
-    padding,
-    placement,
-    toolTipOrigin,
-    windowDimensions.width
-  )
-
-  const yEval: ToolTipPlacementType = evaluateForYAxisOverflow(
-    anchor.y,
-    contentSize.height,
-    placement,
-    safeAreaInsets.bottom,
-    toolTipOrigin.y,
-    windowDimensions.height,
-    unconstrained
-  )
+  const xEval: GeometryOutputs = evaluateForXAxisOverflow(inputs)
+  const yEval: ToolTipPlacementType = evaluateForYAxisOverflow(inputs)
   const outputs = { ...xEval, tooltipPlacement: yEval }
   return outputs
 }
