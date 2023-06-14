@@ -1,7 +1,8 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { cloneDeep } from "lodash"
 import { EdgeInsets } from "react-native-safe-area-context"
-import { Padding, PointerPlacementType, ToolTipPlacementType } from "./ToolTip"
+import { PointerPlacementType } from "./Pointer"
+import { Padding, ToolTipPlacementType } from "./ToolTip"
 
 export interface Size {
   width: number
@@ -143,6 +144,7 @@ const evaluateForXAxisOverflow = (
 interface YAxisGeometryInputs {
   anchor: Layout
   contentSize: Size
+  padding?: Padding
   safeAreaInsets: EdgeInsets
   toolTipOrigin: Point
   unconstrained?: boolean
@@ -164,13 +166,25 @@ const evaluateForTopBoundsOverflow = (
 
 // if tooltip origin is beyond bottom bounds
 const evaluateForBottomBoundsOverflow = (inputs: YAxisGeometryInputs): ToolTipPlacementType => {
-  const { anchor, contentSize, safeAreaInsets, toolTipOrigin, unconstrained, windowDimensions } =
-    inputs
-  if (!!unconstrained && toolTipOrigin.y + safeAreaInsets.bottom > windowDimensions.height) {
+  const {
+    anchor,
+    contentSize,
+    padding,
+    safeAreaInsets,
+    toolTipOrigin,
+    unconstrained,
+    windowDimensions,
+  } = inputs
+  const { top, bottom } = paddingToPx(padding)
+  if (
+    !!unconstrained &&
+    toolTipOrigin.y + contentSize.height + top + bottom + POINTER_SIZE.height >
+      windowDimensions.height - safeAreaInsets.bottom
+  ) {
     return "top"
   } else if (
     !unconstrained &&
-    anchor.y + contentSize.height + POINTER_SIZE.height + safeAreaInsets.bottom >
+    anchor.pageY + contentSize.height + POINTER_SIZE.height + safeAreaInsets.bottom >
       windowDimensions.height
   ) {
     return "top"
@@ -194,6 +208,6 @@ export const evaluateForXYAxisOverflow = (
 ): GeometryOutputs => {
   const xEval: GeometryOutputs = evaluateForXAxisOverflow(inputs)
   const yEval: ToolTipPlacementType = evaluateForYAxisOverflow(inputs)
-  const outputs = { ...xEval, tooltipPlacement: yEval }
+  const outputs = { ...xEval, toolTipPlacement: yEval }
   return outputs
 }

@@ -9,7 +9,7 @@ import {
   useWindowDimensions,
 } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { Pointer } from "./Pointer"
+import { Pointer, PointerPlacementType } from "./Pointer"
 import {
   GeometryOutputs,
   Layout,
@@ -35,13 +35,6 @@ export interface Padding {
 }
 
 export type ToolTipPlacementType = "top" | "bottom"
-export type PointerPlacementType =
-  | "top"
-  | "top-left"
-  | "top-right"
-  | "bottom"
-  | "bottom-left"
-  | "bottom-right"
 
 interface ToolTipProps extends PropsWithChildren {
   title?: string
@@ -78,11 +71,8 @@ export const ToolTip: FC<ToolTipProps> = ({
   placement = "bottom",
   title,
   unconstrained,
-  useInteractionManager = false,
   ...rest // maxWidth, maxHeight, width, height
 }) => {
-  const interactionPromise = useRef<InteractionManagerPromise | null>(null)
-
   // wrapperRef allows us to take measurements of
   // the component we intend to anchor to
   const wrapperRef = useRef<View | null>(null)
@@ -105,8 +95,8 @@ export const ToolTip: FC<ToolTipProps> = ({
   const [adjustedOrigin, setAdjustedOrigin] = useState<Point | null>(null)
   const [toolTipPlacement, setToolTipPlacement] = useState<ToolTipPlacementType>(placement)
 
-  const measureChildRectangle = () => {
-    const doMeasurement = () => {
+  const measureAnchorRectangle = useCallback(
+    (toolTipPlacement: ToolTipPlacementType) => {
       if (wrapperRef.current?.measure) {
         wrapperRef.current.measure((x, y, width, height, pageX, pageY) => {
           if (isEqual(anchorRef.current, { x, y, width, height, pageX, pageY })) return
@@ -124,19 +114,9 @@ export const ToolTip: FC<ToolTipProps> = ({
           })
         })
       }
-    }
-
-    if (useInteractionManager) {
-      if (interactionPromise.current) {
-        interactionPromise.current.cancel()
-      }
-      interactionPromise.current = InteractionManager.runAfterInteractions(() => {
-        doMeasurement()
-      })
-    } else {
-      doMeasurement()
-    }
-  }
+    },
+    [contentSize, paddingAggregate, unconstrained]
+  )
 
   const computeGeometry = useCallback(() => {
     if (origin === null || anchorRef.current === null) return
@@ -147,21 +127,18 @@ export const ToolTip: FC<ToolTipProps> = ({
       padding: paddingAggregate,
       toolTipPlacement,
       safeAreaInsets,
-      toolTipOrigin: origin, // we want to do computations with the true origin point
+      toolTipOrigin: origin, // we always want to do computations with the true origin point
       windowDimensions,
       unconstrained,
     })
 
+    if (geometry.toolTipPlacement !== toolTipPlacement) {
+      setToolTipPlacement(geometry.toolTipPlacement)
+      measureAnchorRectangle(geometry.toolTipPlacement)
+    }
     if (!isEqual(geometry.pointerProps, pointerProps)) {
       setPointerProps(geometry.pointerProps)
     }
-
-    /**
-     * we want to do computations with the true origin point,
-     * so we shouldn't make any manual adjustments to that value.
-     * instead we set and use the overflow origin for
-     * the case in which such adjustments are necessary.
-     */
     if (
       !isEqual(geometry.toolTipOrigin, origin) &&
       !isEqual(geometry.toolTipOrigin, adjustedOrigin)
@@ -170,20 +147,17 @@ export const ToolTip: FC<ToolTipProps> = ({
     } else if (isEqual(geometry.toolTipOrigin, origin) && adjustedOrigin !== null) {
       setAdjustedOrigin(null)
     }
-
-    if (geometry.toolTipPlacement !== toolTipPlacement) {
-      setToolTipPlacement(geometry.toolTipPlacement)
-    }
   }, [
+    origin,
     contentSize,
     paddingAggregate,
     toolTipPlacement,
     safeAreaInsets,
-    origin,
     windowDimensions,
     unconstrained,
     pointerProps,
     adjustedOrigin,
+    measureAnchorRectangle,
   ])
 
   const renderContent = () => {
@@ -240,7 +214,7 @@ export const ToolTip: FC<ToolTipProps> = ({
 
   return (
     <>
-      <Box ref={wrapperRef as any} onLayout={measureChildRectangle}>
+      <Box ref={wrapperRef as any} onLayout={() => measureAnchorRectangle(toolTipPlacement)}>
         {children}
       </Box>
 

@@ -1,6 +1,13 @@
 import { FC, PropsWithChildren, useCallback, useEffect, useState } from "react"
-import { PointerPlacementType } from "./ToolTip"
 import { Flex } from "../../Flex"
+
+export type PointerPlacementType =
+  | "top"
+  | "top-left"
+  | "top-right"
+  | "bottom"
+  | "bottom-left"
+  | "bottom-right"
 
 interface PointerProps extends PropsWithChildren {
   pointerPlacement: PointerPlacementType
