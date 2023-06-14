@@ -79,6 +79,7 @@ const computeToolTipTopPlacementOriginPoint = (inputs: OriginGeometryInputs): Po
 }
 const computeToolTipBottomPlacementOriginPoint = (inputs: OriginGeometryInputs) => {
   const { anchor, contentSize, unconstrained } = inputs
+  console.log("contentSize", contentSize)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
     y: unconstrained

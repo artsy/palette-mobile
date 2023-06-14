@@ -1,13 +1,7 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { isEqual } from "lodash"
 import { FC, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from "react"
-import {
-  InteractionManager,
-  LayoutChangeEvent,
-  TouchableWithoutFeedback,
-  View,
-  useWindowDimensions,
-} from "react-native"
+import { TouchableWithoutFeedback, View, useWindowDimensions } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Pointer, PointerPlacementType } from "./Pointer"
 import {
@@ -21,12 +15,6 @@ import {
 import { Box } from "../../Box"
 import { Text } from "../../Text"
 
-interface InteractionManagerPromise {
-  then: (onfulfilled?: () => any, onrejected?: () => any) => Promise<any>
-  done: (...args: any[]) => any
-  cancel: () => void
-}
-
 export interface Padding {
   top?: SpacingUnit | 0
   bottom?: SpacingUnit | 0
@@ -36,29 +24,29 @@ export interface Padding {
 
 export type ToolTipPlacementType = "top" | "bottom"
 
-interface ToolTipProps extends PropsWithChildren {
-  title?: string
-  content?: string
-  padding?: Partial<Padding>
-  isVisible?: boolean
-  onClose?: Function
-  placement?: ToolTipPlacementType
-  useInteractionManager?: boolean
-  unconstrained?: boolean
-  maxWidth?: number
-  maxHeight?: number
-  width?: number
-  height?: number
-}
-
 /**
- *
+ * ToolTipV2
  * @param padding Padding around the content of the tooltip
  * @param isVisible Whether or not the tooltip is visible
  * @param onClose Callback for when the tooltip is closed
  * @param placement Where the tooltip should be placed relative to the child
  * @param unconstrained Default is false. If this is true, the tooltip will be positioned relative to the window coordinate grid, instead of its immediate parent.
  */
+export interface ToolTipProps extends PropsWithChildren {
+  content?: string
+  height?: number
+  title?: string
+  isVisible?: boolean
+  padding?: Partial<Padding>
+  maxHeight?: number
+  maxWidth?: number
+  onClose?: Function
+  placement?: ToolTipPlacementType
+  useInteractionManager?: boolean
+  unconstrained?: boolean
+  width?: number
+}
+
 // TODO: Animation
 export const ToolTip: FC<ToolTipProps> = ({
   children,
@@ -73,10 +61,9 @@ export const ToolTip: FC<ToolTipProps> = ({
   unconstrained,
   ...rest // maxWidth, maxHeight, width, height
 }) => {
-  // wrapperRef allows us to take measurements of
-  // the component we intend to anchor to
   const wrapperRef = useRef<View | null>(null)
   const anchorRef = useRef<Layout | null>(null)
+  const contentRef = useRef<View | null>(null)
 
   const windowDimensions = useWindowDimensions()
   const safeAreaInsets = useSafeAreaInsets()
@@ -118,8 +105,18 @@ export const ToolTip: FC<ToolTipProps> = ({
     [contentSize, paddingAggregate, unconstrained]
   )
 
+  const measureTooltipContentRectangle = useCallback(() => {
+    if (contentRef.current?.measure) {
+      contentRef.current.measure((x, y, width, height) => {
+        if (isEqual(contentSize, { width, height })) return
+        console.log("contentRef.current.measure", { width, height })
+        setContentSize({ width, height })
+      })
+    }
+  }, [contentSize])
+
   const computeGeometry = useCallback(() => {
-    if (origin === null || anchorRef.current === null) return
+    if (!origin || !anchorRef.current) return
 
     const geometry: GeometryOutputs = evaluateForXYAxisOverflow({
       anchor: anchorRef.current,
@@ -160,57 +157,17 @@ export const ToolTip: FC<ToolTipProps> = ({
     measureAnchorRectangle,
   ])
 
-  const renderContent = () => {
-    if (origin === null) return null
-    return (
-      <Box
-        display={isVisible ? "flex" : "none"}
-        position="absolute"
-        left={adjustedOrigin?.x ?? origin.x}
-        top={adjustedOrigin?.y ?? origin.y}
-      >
-        <Pointer {...pointerProps}>
-          <Box
-            onLayout={(event: LayoutChangeEvent) => {
-              const { width, height } = event.nativeEvent.layout
-              setContentSize((prev) => {
-                if (isEqual(prev, { width, height })) return prev
-                return { width, height }
-              })
-            }}
-            backgroundColor="black100"
-            borderRadius={4}
-            pt={paddingAggregate.top}
-            pb={paddingAggregate.bottom}
-            pl={paddingAggregate.left}
-            pr={paddingAggregate.right}
-            {...rest}
-          >
-            <TouchableWithoutFeedback onPress={() => onClose()}>
-              <>
-                {!!title && (
-                  <Text color="white100" variant="sm-display">
-                    {title}
-                  </Text>
-                )}
-                {!!content && (
-                  <Text color="white100" variant="xs">
-                    {content}
-                  </Text>
-                )}
-              </>
-            </TouchableWithoutFeedback>
-          </Box>
-        </Pointer>
-      </Box>
-    )
-  }
+  useEffect(() => {
+    if (isVisible) {
+      console.log("measureContentRectangle")
+      measureTooltipContentRectangle()
+    }
+  }, [isVisible, measureTooltipContentRectangle])
 
   useEffect(() => {
-    if (isVisible && anchorRef.current) {
-      computeGeometry()
-    }
-  }, [isVisible, computeGeometry])
+    console.log("computeGeometry")
+    computeGeometry()
+  }, [computeGeometry])
 
   return (
     <>
@@ -218,7 +175,42 @@ export const ToolTip: FC<ToolTipProps> = ({
         {children}
       </Box>
 
-      {isVisible && renderContent()}
+      {origin && (
+        <Box
+          display={isVisible ? "flex" : "none"}
+          position="absolute"
+          left={adjustedOrigin?.x ?? origin.x}
+          top={adjustedOrigin?.y ?? origin.y}
+        >
+          <Pointer {...pointerProps}>
+            <Box
+              ref={contentRef as any}
+              onLayout={measureTooltipContentRectangle}
+              backgroundColor="black100"
+              pt={paddingAggregate.top}
+              pb={paddingAggregate.bottom}
+              pl={paddingAggregate.left}
+              pr={paddingAggregate.right}
+              {...rest}
+            >
+              <TouchableWithoutFeedback onPress={() => onClose()}>
+                <>
+                  {!!title && (
+                    <Text color="white100" variant="sm-display">
+                      {title}
+                    </Text>
+                  )}
+                  {!!content && (
+                    <Text color="white100" variant="xs">
+                      {content}
+                    </Text>
+                  )}
+                </>
+              </TouchableWithoutFeedback>
+            </Box>
+          </Pointer>
+        </Box>
+      )}
     </>
   )
 }
