@@ -41,6 +41,7 @@
     "moti": "^0.25.3",
     "react-nanny": "^2.15.0",
     "react-native-collapsible-tab-view": "^6.1.4",
+    "react-native-fast-image": "^8.6.3",
     "react-native-pager-view": "^6.2.0",
     "react-spring": "8.0.23",
     "styled-system": "^5.1.5"
