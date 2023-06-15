@@ -150,5 +150,41 @@ describe("ToolTip geometry", () => {
         expect(toolTipPlacement).toEqual(output.toolTipPlacement)
       }
     )
+
+    it.each<[string, boolean, Partial<GeometryOutputs>]>([
+      [
+        "top level",
+        true,
+        {
+          toolTipPlacement: "bottom",
+        },
+      ],
+      [
+        "nested",
+        false,
+        {
+          toolTipPlacement: "bottom",
+        },
+      ],
+    ])(
+      "should return the adjusted placement for a %s anchor with top overflow",
+      (_, unconstrained, output) => {
+        const inputs = {
+          anchor: topAlignedAnchor,
+          contentSize,
+          toolTipPlacement: "top" as const,
+          unconstrained,
+        }
+        const toolTipOrigin = computeToolTipOriginPoint(inputs)
+        const { toolTipPlacement } = evaluateForXYAxisOverflow({
+          ...inputs,
+          safeAreaInsets,
+          toolTipOrigin,
+          windowDimensions,
+        })
+
+        expect(toolTipPlacement).toEqual(output.toolTipPlacement)
+      }
+    )
   })
 })

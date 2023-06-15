@@ -1,8 +1,9 @@
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { isEqual } from "lodash"
-import { FC, PropsWithChildren, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { FC, PropsWithChildren, useEffect, useMemo, useRef, useState } from "react"
 import { TouchableWithoutFeedback, View, useWindowDimensions } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { useDeepCompareEffect, useDeepCompareCallback } from "use-deep-compare"
 import { Pointer, PointerPlacementType } from "./Pointer"
 import {
   GeometryOutputs,
@@ -81,8 +82,9 @@ export const ToolTip: FC<ToolTipProps> = ({
   const [origin, setOrigin] = useState<Point | null>({ x: 0, y: 0 })
   const [adjustedOrigin, setAdjustedOrigin] = useState<Point | null>(null)
   const [toolTipPlacement, setToolTipPlacement] = useState<ToolTipPlacementType>(placement)
+  const [geometry, setGeometry] = useState<GeometryOutputs | null>(null)
 
-  const measureAnchorRectangle = useCallback(
+  const measureAnchorRectangle = useDeepCompareCallback(
     (toolTipPlacement: ToolTipPlacementType) => {
       if (wrapperRef.current?.measure) {
         wrapperRef.current.measure((x, y, width, height, pageX, pageY) => {
@@ -105,20 +107,19 @@ export const ToolTip: FC<ToolTipProps> = ({
     [contentSize, paddingAggregate, unconstrained]
   )
 
-  const measureTooltipContentRectangle = useCallback(() => {
+  const measureTooltipContentRectangle = useDeepCompareCallback(() => {
     if (contentRef.current?.measure) {
       contentRef.current.measure((x, y, width, height) => {
         if (isEqual(contentSize, { width, height })) return
-        console.log("contentRef.current.measure", { width, height })
         setContentSize({ width, height })
       })
     }
   }, [contentSize])
 
-  const computeGeometry = useCallback(() => {
-    if (!origin || !anchorRef.current) return
+  const computeGeometry = useDeepCompareCallback(() => {
+    if (!origin || !anchorRef.current || contentSize.width === 0 || contentSize.height === 0) return
 
-    const geometry: GeometryOutputs = evaluateForXYAxisOverflow({
+    const outputs: GeometryOutputs = evaluateForXYAxisOverflow({
       anchor: anchorRef.current,
       contentSize,
       padding: paddingAggregate,
@@ -128,44 +129,46 @@ export const ToolTip: FC<ToolTipProps> = ({
       windowDimensions,
       unconstrained,
     })
+    if (!isEqual(outputs, geometry)) {
+      setGeometry(outputs)
+    }
+  }, [
+    contentSize,
+    geometry,
+    origin,
+    paddingAggregate,
+    safeAreaInsets,
+    toolTipPlacement,
+    unconstrained,
+    windowDimensions,
+  ])
 
-    if (geometry.toolTipPlacement !== toolTipPlacement) {
+  useDeepCompareEffect(() => {
+    if (geometry && geometry.toolTipPlacement !== toolTipPlacement) {
       setToolTipPlacement(geometry.toolTipPlacement)
       measureAnchorRectangle(geometry.toolTipPlacement)
     }
-    if (!isEqual(geometry.pointerProps, pointerProps)) {
+    if (geometry && !isEqual(geometry.pointerProps, pointerProps)) {
       setPointerProps(geometry.pointerProps)
     }
     if (
+      geometry &&
       !isEqual(geometry.toolTipOrigin, origin) &&
       !isEqual(geometry.toolTipOrigin, adjustedOrigin)
     ) {
       setAdjustedOrigin(geometry.toolTipOrigin)
-    } else if (isEqual(geometry.toolTipOrigin, origin) && adjustedOrigin !== null) {
+    } else if (geometry && isEqual(geometry.toolTipOrigin, origin) && adjustedOrigin !== null) {
       setAdjustedOrigin(null)
     }
-  }, [
-    origin,
-    contentSize,
-    paddingAggregate,
-    toolTipPlacement,
-    safeAreaInsets,
-    windowDimensions,
-    unconstrained,
-    pointerProps,
-    adjustedOrigin,
-    measureAnchorRectangle,
-  ])
+  }, [adjustedOrigin, geometry, measureAnchorRectangle, origin, pointerProps, toolTipPlacement])
 
-  useEffect(() => {
+  useDeepCompareEffect(() => {
     if (isVisible) {
-      console.log("measureContentRectangle")
       measureTooltipContentRectangle()
     }
   }, [isVisible, measureTooltipContentRectangle])
 
   useEffect(() => {
-    console.log("computeGeometry")
     computeGeometry()
   }, [computeGeometry])
 
@@ -175,9 +178,9 @@ export const ToolTip: FC<ToolTipProps> = ({
         {children}
       </Box>
 
-      {origin && (
+      {isVisible && origin && (
         <Box
-          display={isVisible ? "flex" : "none"}
+          display="flex"
           position="absolute"
           left={adjustedOrigin?.x ?? origin.x}
           top={adjustedOrigin?.y ?? origin.y}

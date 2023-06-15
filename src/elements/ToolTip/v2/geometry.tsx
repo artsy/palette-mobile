@@ -25,7 +25,6 @@ export interface GeometryOutputs {
   toolTipPlacement: ToolTipPlacementType
 }
 
-// do we have a const file to pull from for these translations?
 const paddingToPx = (
   padding?: Padding
 ): { top: number; bottom: number; left: number; right: number } => {
@@ -79,7 +78,6 @@ const computeToolTipTopPlacementOriginPoint = (inputs: OriginGeometryInputs): Po
 }
 const computeToolTipBottomPlacementOriginPoint = (inputs: OriginGeometryInputs) => {
   const { anchor, contentSize, unconstrained } = inputs
-  console.log("contentSize", contentSize)
   return {
     x: anchor.x + anchor.width / 2 - contentSize.width / 2,
     y: unconstrained

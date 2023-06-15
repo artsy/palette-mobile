@@ -37,7 +37,10 @@ module.exports = {
       },
     ],
 
-    "react-hooks/exhaustive-deps": WARN,
+    "react-hooks/exhaustive-deps": [
+      WARN,
+      { additionalHooks: "(useDeepCompareEffect|useDeepCompareCallback|useDeepCompareMemo)" },
+    ],
 
     /**
      * Errors

@@ -11,10 +11,10 @@ export default {
 }
 
 export const DefaultPlacement = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   return (
     <ScreenDimensionsProvider>
-      <Flex flex={1} width="100%" justifyContent="center">
+      <Flex flex={1} width="100%" justifyContent="center" backgroundColor="blue10">
         <Flex width="100%" alignItems="center">
           <ToolTip
             isVisible={isVisible}
@@ -32,7 +32,7 @@ export const DefaultPlacement = () => {
 }
 
 export const TopPlacement = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   return (
     <ScreenDimensionsProvider>
       <Flex flex={1} width="100%" justifyContent="center">

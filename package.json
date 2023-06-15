@@ -43,7 +43,8 @@
     "react-native-collapsible-tab-view": "^6.1.4",
     "react-native-pager-view": "^6.2.0",
     "react-spring": "8.0.23",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "use-deep-compare": "^1.1.0"
   },
   "peerDependenciesComments": [
     "ADD ANY DEPS THAT ARE NEEDED FOR PALETTE AND HAVE NATIVE CODE."
