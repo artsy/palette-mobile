@@ -1,3 +1,15 @@
+# v11.2.0 (Thu Jun 15 2023)
+
+#### 🚀 Enhancement
+
+- feat(image): Add new <Image> component [#117](https://github.com/artsy/palette-mobile/pull/117) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.1.0 (Thu Jun 15 2023)
 
 #### 🚀 Enhancement
