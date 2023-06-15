@@ -1,3 +1,15 @@
+# v11.1.0 (Thu Jun 15 2023)
+
+#### 🚀 Enhancement
+
+- feat(screen): Make FloatingHeader more customizable [#116](https://github.com/artsy/palette-mobile/pull/116) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.41 (Thu Jun 15 2023)
 
 #### 🐛 Bug Fix
