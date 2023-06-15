@@ -69,10 +69,12 @@ export const Header: React.FC<HeaderProps> = ({
 
     if (!animated) {
       return (
-        <Flex flex={1} justifySelf="stretch" {...titleProps}>
-          <Text variant="sm-display" numberOfLines={1}>
-            {title}
-          </Text>
+        <Flex flex={1} flexDirection="row">
+          <Flex alignItems="center" width="100%" {...titleProps}>
+            <Text variant="sm-display" numberOfLines={1}>
+              {title}
+            </Text>
+          </Flex>
         </Flex>
       )
     }
