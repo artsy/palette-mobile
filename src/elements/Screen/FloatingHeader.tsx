@@ -1,15 +1,19 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { ZINDEX } from "./constants"
 import { BackButtonWithBackground } from "../BackButton"
-import { Flex } from "../Flex"
+import { Flex, FlexProps } from "../Flex"
 import { Spacer } from "../Spacer"
 
-export interface FloatingHeaderProps {
+export interface FloatingHeaderProps extends FlexProps {
   onBack?: () => void
   rightElements?: React.ReactNode
 }
 
-export const FloatingHeader = ({ onBack, rightElements }: FloatingHeaderProps) => {
+export const FloatingHeader: React.FC<FloatingHeaderProps> = ({
+  onBack,
+  rightElements,
+  ...flexProps
+}) => {
   const insets = useSafeAreaInsets()
 
   return (
@@ -24,6 +28,7 @@ export const FloatingHeader = ({ onBack, rightElements }: FloatingHeaderProps) =
       py={1}
       flexDirection="row"
       alignItems="center"
+      {...flexProps}
     >
       <BackButtonWithBackground onPress={onBack} />
 
