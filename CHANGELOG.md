@@ -1,3 +1,15 @@
+# v11.0.41 (Thu Jun 15 2023)
+
+#### 🐛 Bug Fix
+
+- fix(screen): fix centering on non-animated title [#115](https://github.com/artsy/palette-mobile/pull/115) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.0.40 (Fri Jun 09 2023)
 
 #### 🐛 Bug Fix
