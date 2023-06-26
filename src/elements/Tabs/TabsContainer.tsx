@@ -1,3 +1,4 @@
+import { Platform } from "react-native"
 import {
   Tabs as BaseTabs,
   MaterialTabBar,
@@ -9,7 +10,6 @@ import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
 import { Box } from "../Box"
 import { Flex } from "../Flex"
-import { Text } from "../Text"
 
 const TAB_BAR_HEIGHT = 50
 
@@ -37,6 +37,8 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
 }) => {
   const space = useSpace()
   const color = useColor()
+
+  const isIOS = Platform.OS === "ios"
 
   return (
     <BaseTabs.Container
@@ -88,7 +90,8 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
               indicatorStyle={{
                 backgroundColor: color("onBackground"),
                 height: 1,
-                bottom: -1,
+                // on android this line breaks the active indicator and it is not visible
+                ...(isIOS && { bottom: -1 }),
               }}
             />
           </>
