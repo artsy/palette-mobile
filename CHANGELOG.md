@@ -1,3 +1,15 @@
+# v11.2.1 (Mon Jun 26 2023)
+
+#### 🐛 Bug Fix
+
+- fix: indicator on android is not visible [#118](https://github.com/artsy/palette-mobile/pull/118) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.2.0 (Thu Jun 15 2023)
 
 #### 🚀 Enhancement
