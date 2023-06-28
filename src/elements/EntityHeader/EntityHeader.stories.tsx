@@ -99,7 +99,7 @@ export const WithRightButton = () => {
   )
 }
 
-export const WithLockIcon = () => {
+export const WithPrivateIcon = () => {
   return (
     <Box>
       <Text variant="md">Avatar Sizes</Text>
@@ -114,7 +114,7 @@ export const WithLockIcon = () => {
               initials="AN"
               meta="Meta stuff"
               avatarSize={size}
-              showLockIcon
+              displayPrivateIcon
             />
           </Box>
         ))}

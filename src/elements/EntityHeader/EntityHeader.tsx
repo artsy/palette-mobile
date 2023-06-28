@@ -17,7 +17,7 @@ export interface EntityHeaderProps extends FlexProps {
   meta?: string | JSX.Element
   name: string
   smallVariant?: boolean
-  showLockIcon?: boolean
+  displayPrivateIcon?: boolean
 }
 
 export const EntityHeader = ({
@@ -29,7 +29,7 @@ export const EntityHeader = ({
   meta,
   name,
   smallVariant = false,
-  showLockIcon,
+  displayPrivateIcon,
   ...restProps
 }: EntityHeaderProps) => {
   const rightButton = (RightButton || FollowButton) && (
@@ -54,7 +54,7 @@ export const EntityHeader = ({
       >
         {name}
       </Text>
-      {showLockIcon && <LockIcon ml="2px" />}
+      {displayPrivateIcon && <LockIcon ml="2px" />}
     </Flex>
   )
 
