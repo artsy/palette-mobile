@@ -1,4 +1,5 @@
 import { isValidElement, useMemo } from "react"
+import { LockIcon } from "../../svgs"
 import { bullet } from "../../utils/text"
 import { Avatar, AvatarSize } from "../Avatar"
 import { Flex, FlexProps } from "../Flex"
@@ -6,7 +7,9 @@ import { Text } from "../Text"
 
 interface EntityHeaderProps extends FlexProps {
   avatarSize?: AvatarSize
-  // @deprecated Use `RightButton` instead
+  /**
+   * @deprecated Use `RightButton` instead
+   */
   FollowButton?: JSX.Element
   RightButton?: JSX.Element
   imageUrl?: string
@@ -14,6 +17,7 @@ interface EntityHeaderProps extends FlexProps {
   meta?: string | JSX.Element
   name: string
   smallVariant?: boolean
+  showLockIcon?: boolean
 }
 
 export const EntityHeader = ({
@@ -25,6 +29,7 @@ export const EntityHeader = ({
   meta,
   name,
   smallVariant = false,
+  showLockIcon,
   ...restProps
 }: EntityHeaderProps) => {
   const rightButton = (RightButton || FollowButton) && (
@@ -41,6 +46,12 @@ export const EntityHeader = ({
   const headerName = (
     <Text ellipsizeMode="tail" numberOfLines={1} variant="sm" style={{ flexShrink: 1 }}>
       {name}
+      {showLockIcon ? (
+        <>
+          {" "}
+          <LockIcon />
+        </>
+      ) : null}
     </Text>
   )
 
