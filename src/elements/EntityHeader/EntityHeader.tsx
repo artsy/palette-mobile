@@ -5,7 +5,7 @@ import { Avatar, AvatarSize } from "../Avatar"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 
-interface EntityHeaderProps extends FlexProps {
+export interface EntityHeaderProps extends FlexProps {
   avatarSize?: AvatarSize
   /**
    * @deprecated Use `RightButton` instead
