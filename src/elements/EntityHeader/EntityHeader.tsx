@@ -44,15 +44,18 @@ export const EntityHeader = ({
   )
 
   const headerName = (
-    <Text ellipsizeMode="tail" numberOfLines={1} variant="sm" style={{ flexShrink: 1 }}>
-      {name}
-      {showLockIcon ? (
-        <>
-          {" "}
-          <LockIcon />
-        </>
-      ) : null}
-    </Text>
+    <Flex flexDirection="row" alignItems="center">
+      <Text
+        ellipsizeMode="tail"
+        numberOfLines={1}
+        variant="sm"
+        lineHeight="18px"
+        style={{ flexShrink: 1 }}
+      >
+        {name}
+      </Text>
+      {showLockIcon && <LockIcon ml="2px" />}
+    </Flex>
   )
 
   const headerMeta = useMemo(() => {
