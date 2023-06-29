@@ -1,3 +1,19 @@
+# v11.2.2 (Thu Jun 29 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat(CX-3748): Add private icon to Entity Header [#119](https://github.com/artsy/palette-mobile/pull/119) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v11.2.1 (Mon Jun 26 2023)
 
 #### 🐛 Bug Fix
