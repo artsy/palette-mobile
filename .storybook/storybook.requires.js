@@ -36,6 +36,7 @@ const getStories = () => {
     require("../src/elements/Collapse/Collapse.stories.tsx"),
     require("../src/elements/CollapsibleMenuItem/CollapsibleMenuItem.stories.tsx"),
     require("../src/elements/Dialog/Dialog.stories.tsx"),
+    require("../src/elements/EntityHeader/EntityHeader.stories.tsx"),
     require("../src/elements/Image/Image.stories.tsx"),
     require("../src/elements/Input/Input.stories.tsx"),
     require("../src/elements/List/List.stories.tsx"),
