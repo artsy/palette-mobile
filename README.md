@@ -42,6 +42,7 @@ If you'd like to add a new component to Palette please create an issue using the
 Set up using:
 
 ```sh
+yarn setup:artsy
 yarn install:all
 ```
 
