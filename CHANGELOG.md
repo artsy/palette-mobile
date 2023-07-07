@@ -1,3 +1,19 @@
+# v11.2.3 (Fri Jul 07 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret)), for all your work!
+
+#### 🐛 Bug Fix
+
+- doc(setup): improve setup instructions [#121](https://github.com/artsy/palette-mobile/pull/121) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.2 (Thu Jun 29 2023)
 
 :tada: This release contains work from a new contributor! :tada:
