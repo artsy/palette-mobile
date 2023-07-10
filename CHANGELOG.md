@@ -1,3 +1,15 @@
+# v11.2.4 (Mon Jul 10 2023)
+
+#### 🐛 Bug Fix
+
+- fix: tab title breaking in smaller phone layouts [#123](https://github.com/artsy/palette-mobile/pull/123) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George Kartalis ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.2.3 (Fri Jul 07 2023)
 
 :tada: This release contains work from a new contributor! :tada:
