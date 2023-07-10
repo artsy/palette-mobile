@@ -86,7 +86,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
               contentContainerStyle={{}}
               activeColor={color("onBackground")}
               inactiveColor={color("onBackgroundMedium")}
-              labelStyle={{ marginTop: 0 }} // removing the horizonal margin from the lib
+              labelStyle={{ marginHorizontal: 0 }} // removing the horizonal margin from the lib
               indicatorStyle={{
                 backgroundColor: color("onBackground"),
                 height: 1,
