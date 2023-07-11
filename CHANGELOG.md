@@ -1,3 +1,16 @@
+# v11.2.5 (Tue Jul 11 2023)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump tough-cookie from 4.1.2 to 4.1.3 [#122](https://github.com/artsy/palette-mobile/pull/122) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump semver from 5.7.1 to 5.7.2 [#124](https://github.com/artsy/palette-mobile/pull/124) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v11.2.4 (Mon Jul 10 2023)
 
 #### 🐛 Bug Fix
