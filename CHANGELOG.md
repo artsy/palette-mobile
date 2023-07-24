@@ -1,3 +1,19 @@
+# v11.2.7 (Mon Jul 24 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Daria Kozlova ([@dariakoko](https://github.com/dariakoko)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix: adjust the size of LockIcon [#127](https://github.com/artsy/palette-mobile/pull/127) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v11.2.6 (Mon Jul 24 2023)
 
 #### 🐛 Bug Fix
