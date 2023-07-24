@@ -54,7 +54,7 @@ export const EntityHeader = ({
       >
         {name}
       </Text>
-      {displayPrivateIcon && <LockIcon ml="2px" />}
+      {displayPrivateIcon && <LockIcon ml="2px" width={16} height={16} testID="lock-icon" />}
     </Flex>
   )
 
