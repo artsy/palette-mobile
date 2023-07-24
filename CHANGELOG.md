@@ -1,3 +1,15 @@
+# v11.2.6 (Mon Jul 24 2023)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump word-wrap from 1.2.3 to 1.2.4 [#126](https://github.com/artsy/palette-mobile/pull/126) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v11.2.5 (Tue Jul 11 2023)
 
 #### 🐛 Bug Fix
