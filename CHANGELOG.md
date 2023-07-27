@@ -1,3 +1,15 @@
+# v11.2.8 (Thu Jul 27 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Pill): Pill element [#128](https://github.com/artsy/palette-mobile/pull/128) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.7 (Mon Jul 24 2023)
 
 :tada: This release contains work from a new contributor! :tada:
