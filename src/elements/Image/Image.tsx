@@ -4,6 +4,7 @@ import { PixelRatio } from "react-native"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import { Easing } from "react-native-reanimated"
 import { createGeminiUrl } from "../../utils/createGeminiUrl"
+import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
 import { Skeleton, SkeletonBox } from "../Skeleton"
@@ -30,13 +31,15 @@ export const Image: React.FC<ImageProps> = ({
   performResize = true,
   src,
   style,
-  ...imageProps
+  resizeMode,
+  ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
   const dimensions = useImageDimensions({ aspectRatio, width, height })
+  const color = useColor()
 
   let uri = src
-  if (performResize && dimensions) {
+  if (performResize) {
     uri = createGeminiUrl({
       imageURL: src,
       width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
@@ -45,7 +48,7 @@ export const Image: React.FC<ImageProps> = ({
   }
 
   return (
-    <Flex position="relative">
+    <Flex position="relative" {...flexProps}>
       {!!loading && (
         <Flex position="absolute" zIndex={1}>
           <Skeleton>
@@ -59,8 +62,8 @@ export const Image: React.FC<ImageProps> = ({
         transition={{ type: "timing", duration: 400, easing: Easing.sin }}
       >
         <FastImage
-          style={[style, dimensions]}
-          {...imageProps}
+          style={[dimensions, style, { backgroundColor: color("black30") }]}
+          resizeMode={resizeMode}
           onLoadStart={() => setLoading(true)}
           onLoadEnd={() => setLoading(false)}
           source={{
@@ -76,10 +79,6 @@ export const Image: React.FC<ImageProps> = ({
 const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "height">) => {
   const screenDimensions = useScreenDimensions()
 
-  if (!props.aspectRatio && !props.height && !props.width) {
-    return null
-  }
-
   const imageWidth = props.width ?? screenDimensions.width
 
   let imageHeight
@@ -88,7 +87,7 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
     imageHeight = props.height
   } else {
     if (!props.aspectRatio) {
-      console.error("[CachedImage] Error: `aspectRatio` is required if `height` is not provided.")
+      console.error("[Image] Error: `aspectRatio` is required if `height` is not provided.")
     }
 
     const aspectRatio = props.aspectRatio ?? 1
