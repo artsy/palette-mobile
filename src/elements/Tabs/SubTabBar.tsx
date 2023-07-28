@@ -15,6 +15,8 @@ export const SubTabBar: React.FC<React.PropsWithChildren> = ({ children }) => {
   const space = useSpace()
 
   const style = useAnimatedStyle(() => {
+    "worklet"
+
     return {
       transform: [
         {

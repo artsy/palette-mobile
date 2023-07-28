@@ -27,6 +27,7 @@ export const ProgressBar = ({
   const width = useSharedValue("0%")
   const progress = clamp(unclampedProgress, 0, 100)
   const progressAnim = useAnimatedStyle(() => {
+    "worklet"
     return { width: width.value }
   })
 
