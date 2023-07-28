@@ -14,5 +14,5 @@ export function ScreenFlatList<T>(props: FlatListProps<T>) {
     handleScroll = scrollHandler
   }
 
-  return <Animated.FlatList {...props} onScroll={handleScroll} />
+  return <Animated.FlatList<T> {...props} onScroll={handleScroll} />
 }

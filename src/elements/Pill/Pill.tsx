@@ -47,6 +47,8 @@ export const Pill: React.FC<PillProps> = ({
         animate={useMemo(
           () =>
             ({ hovered, pressed }) => {
+              "worklet"
+
               return {
                 opacity: hovered || pressed ? 0.5 : 1,
               }

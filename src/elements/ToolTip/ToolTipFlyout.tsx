@@ -31,6 +31,7 @@ export const ToolTipFlyout: React.FC<Props> = ({
   const boxDimensions = useSharedValue(initialBoxDimensions)
 
   const animationStyle = useAnimatedStyle(() => {
+    "worklet"
     return {
       height: withTiming(boxDimensions.value.height, {
         duration: 500,
