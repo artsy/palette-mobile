@@ -93,6 +93,11 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 // on android this line breaks the active indicator and it is not visible
                 ...(isIOS && { bottom: -1 }),
               }}
+              tabStyle={{
+                // resets the default padding 10 from the lib
+                // to prevent linebreaks on the tab titles
+                paddingHorizontal: 0,
+              }}
             />
           </>
         )
