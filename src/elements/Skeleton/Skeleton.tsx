@@ -24,7 +24,6 @@ export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
   opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
   const fadeLoopAnim = useAnimatedStyle(() => {
-    "worklet"
     return { opacity: opacity.value }
   }, [])
 

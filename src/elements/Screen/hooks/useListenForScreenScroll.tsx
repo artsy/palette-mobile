@@ -10,7 +10,6 @@ export const useListenForScreenScroll = () => {
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
-      "worklet"
       animatedScrollY.value = event.contentOffset.y
     },
   })

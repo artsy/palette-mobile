@@ -23,13 +23,9 @@ export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>) => {
 
   useAnimatedReaction(
     () => {
-      "worklet"
-
       return [scrollY.value, listenForScroll.value] as const
     },
     ([animatedScrollY, isListeningForScroll], previousScroll) => {
-      "worklet"
-
       const [prevScrollY] = previousScroll ?? [0, false]
 
       // Hacky way to avoid some weird header behavior.
