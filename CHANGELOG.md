@@ -1,3 +1,15 @@
+# v11.2.9 (Fri Jul 28 2023)
+
+#### 🐛 Bug Fix
+
+- fix(Pill): export Pill from index [#129](https://github.com/artsy/palette-mobile/pull/129) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.8 (Thu Jul 27 2023)
 
 #### 🐛 Bug Fix
