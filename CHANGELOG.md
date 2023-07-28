@@ -1,3 +1,15 @@
+# v11.2.10 (Fri Jul 28 2023)
+
+#### 🐛 Bug Fix
+
+- fix: reset tab padding style to avoid line breaks [#130](https://github.com/artsy/palette-mobile/pull/130) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.2.9 (Fri Jul 28 2023)
 
 #### 🐛 Bug Fix
