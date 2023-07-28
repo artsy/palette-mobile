@@ -1,3 +1,15 @@
+# v11.2.12 (Fri Jul 28 2023)
+
+#### 🐛 Bug Fix
+
+- build(REVERT): bumps palette to reanimated 3 [#131](https://github.com/artsy/palette-mobile/pull/131) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v11.2.11 (Fri Jul 28 2023)
 
 #### 🐛 Bug Fix
