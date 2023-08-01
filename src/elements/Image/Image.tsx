@@ -1,14 +1,17 @@
 import { MotiView } from "moti"
 import { useState } from "react"
 import { PixelRatio } from "react-native"
-import FastImage from "react-native-fast-image"
+import FastImage, { FastImageProps } from "react-native-fast-image"
 import { Easing } from "react-native-reanimated"
 import { createGeminiUrl } from "../../utils/createGeminiUrl"
+import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
-import { Flex, FlexProps } from "../Flex"
+import { Flex } from "../Flex"
 import { Skeleton, SkeletonBox } from "../Skeleton"
 
-export interface ImageProps extends FlexProps {
+type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "source">
+
+export interface ImageProps extends CustomFastImageProps {
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
   aspectRatio?: number
   /** Supplied width of image. If none provided, defaults to screen width */
@@ -27,10 +30,13 @@ export const Image: React.FC<ImageProps> = ({
   height,
   performResize = true,
   src,
+  style,
+  resizeMode,
   ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
   const dimensions = useImageDimensions({ aspectRatio, width, height })
+  const color = useColor()
 
   let uri = src
   if (performResize) {
@@ -56,7 +62,8 @@ export const Image: React.FC<ImageProps> = ({
         transition={{ type: "timing", duration: 400, easing: Easing.sin }}
       >
         <FastImage
-          style={dimensions}
+          style={[dimensions, style, { backgroundColor: color("black30") }]}
+          resizeMode={resizeMode}
           onLoadStart={() => setLoading(true)}
           onLoadEnd={() => setLoading(false)}
           source={{
@@ -80,7 +87,7 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
     imageHeight = props.height
   } else {
     if (!props.aspectRatio) {
-      console.error("[CachedImage] Error: `aspectRatio` is required if `height` is not provided.")
+      console.error("[Image] Error: `aspectRatio` is required if `height` is not provided.")
     }
 
     const aspectRatio = props.aspectRatio ?? 1
