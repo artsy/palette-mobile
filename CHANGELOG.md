@@ -1,3 +1,15 @@
+# v11.2.13 (Tue Aug 01 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Image): enable more styling on the Image element and more [#120](https://github.com/artsy/palette-mobile/pull/120) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.12 (Fri Jul 28 2023)
 
 #### 🐛 Bug Fix
