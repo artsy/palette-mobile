@@ -43,6 +43,7 @@
     "react-native-collapsible-tab-view": "^6.1.4",
     "react-native-fast-image": "^8.6.3",
     "react-native-pager-view": "^6.2.0",
+    "react-native-popover-view": "^5.1.7",
     "react-spring": "8.0.23",
     "styled-system": "^5.1.5"
   },
