@@ -1,6 +1,7 @@
 import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
+import { useMemo } from "react"
 import styled, { FlattenInterpolation, css } from "styled-components"
 import { CloseIcon } from "../../svgs"
 import { IconProps } from "../../svgs/Icon"
@@ -38,7 +39,23 @@ export const Pill: React.FC<PillProps> = ({
 
   return (
     <Flex {...rest}>
-      <Container variant={variant} selected={selected} disabled={disabled} onPress={onPress}>
+      <Container
+        variant={variant}
+        selected={selected}
+        disabled={disabled}
+        onPress={onPress}
+        animate={useMemo(
+          () =>
+            ({ hovered, pressed }) => {
+              "worklet"
+
+              return {
+                opacity: hovered || pressed ? 0.5 : 1,
+              }
+            },
+          []
+        )}
+      >
         {variant === "artist" && (
           <Thumbnail src={src!} height={30} width={30} style={{ overflow: "hidden" }} />
         )}
