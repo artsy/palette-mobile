@@ -1,3 +1,15 @@
+# v11.2.16 (Wed Aug 02 2023)
+
+#### 🐛 Bug Fix
+
+- fix(Pill): animate moti using worklet [#135](https://github.com/artsy/palette-mobile/pull/135) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.15 (Wed Aug 02 2023)
 
 #### 🐛 Bug Fix
