@@ -1,6 +1,7 @@
 import { Color, THEME } from "@artsy/palette-tokens"
 import { ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
+import { Easing } from "react-native-reanimated"
 import styled from "styled-components"
 import { CloseIcon } from "../../svgs"
 import { shadows } from "../../utils/shadows"
@@ -13,9 +14,9 @@ interface PopoverProps {
   title?: React.ReactElement
   content?: React.ReactElement
   onPressOutside?: () => void
-  // called when its dismissed
+  // Called when its dismissed
   onDismiss?: () => void
-  // special case, use this when chaining multiple elements that need
+  // Special case, use this when chaining multiple elements that need
   // to be displayed in a chained way
   onCloseComplete?: RNPopover["props"]["onCloseComplete"]
   placement?: "top" | "bottom" | "left" | "right"
@@ -23,9 +24,6 @@ interface PopoverProps {
   visible?: boolean
 }
 
-/**
- * Popover has a limitation from the lib we use, we cannot display
- */
 export const Popover = ({
   variant = "dark",
   children,
@@ -50,6 +48,10 @@ export const Popover = ({
       onRequestClose={onPressOutside}
       placement={placement as RNPopover["props"]["placement"]}
       arrowSize={{ height: 11, width: 22 }}
+      animationConfig={{
+        duration: 400,
+        easing: Easing.out(Easing.exp),
+      }}
     >
       <Container variant={variant} p={1}>
         <Flex flexDirection="row" justifyContent="space-between" alignItems="center">

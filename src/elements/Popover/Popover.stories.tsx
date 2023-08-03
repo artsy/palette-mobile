@@ -6,7 +6,7 @@ import { Flex } from "../Flex"
 import { Text } from "../Text"
 
 storiesOf("Popover", module)
-  .add("variants", () => {
+  .add("Variants", () => {
     const [visible, setVisible] = useState<string | null>(null)
 
     return (
@@ -62,7 +62,7 @@ storiesOf("Popover", module)
       </Flex>
     )
   })
-  .add("with title and/or content", () => {
+  .add("With title and/or content", () => {
     const [visible, setVisible] = useState<string | null>(null)
 
     return (
@@ -139,7 +139,7 @@ storiesOf("Popover", module)
       </Flex>
     )
   })
-  .add("edge positions", () => {
+  .add("Edge positions", () => {
     const [topVisible, setTopVisible] = useState(true)
     const [bottomVisible, setBottomVisible] = useState(false)
     return (
