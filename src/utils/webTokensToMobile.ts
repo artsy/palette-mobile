@@ -1,4 +1,4 @@
-import { THEME_V3 } from "@artsy/palette-tokens"
+import { THEME } from "@artsy/palette-tokens"
 import { SpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
 import { TextTreatment, TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { mapValues } from "lodash"
@@ -16,7 +16,7 @@ export type TextTreatmentWithoutUnits = {
  * `0.5` to a string `"0.5"`.
  */
 export const convertWebSpacingUnitsToMobile = (
-  withUnits: typeof THEME_V3.space
+  withUnits: typeof THEME.space
 ): Record<SpacingUnit, SpacingUnitPixelValue> => {
   return withUnits as Record<SpacingUnit, SpacingUnitPixelValue>
 }

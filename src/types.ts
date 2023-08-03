@@ -1,4 +1,4 @@
-import { SpacingUnit as BaseSpacingUnit } from "@artsy/palette-tokens/dist/themes/v3"
+import { SpacingUnit as BaseSpacingUnit } from "@artsy/palette-tokens"
 import { COLOR_LAYER_ROLE, COLOR_LAYER_NAME } from "./tokens"
 import { Neg } from "./utils/types"
 
