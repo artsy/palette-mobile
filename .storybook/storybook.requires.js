@@ -43,6 +43,7 @@ const getStories = () => {
     require("../src/elements/MenuItem/MenuItem.stories.tsx"),
     require("../src/elements/Message/Message.stories.tsx"),
     require("../src/elements/Pill/Pill.stories.tsx"),
+    require("../src/elements/Popover/Popover.stories.tsx"),
     require("../src/elements/ProgressBar/ProgressBar.stories.tsx"),
     require("../src/elements/Screen/Screen.stories.tsx"),
     require("../src/elements/Separator/Separator.stories.tsx"),
