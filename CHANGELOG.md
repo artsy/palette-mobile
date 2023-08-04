@@ -1,3 +1,16 @@
+# v11.2.17 (Fri Aug 04 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Popover): add Popover element [#137](https://github.com/artsy/palette-mobile/pull/137) ([@araujobarret](https://github.com/araujobarret) [@damassi](https://github.com/damassi))
+
+#### Authors: 2
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v11.2.16 (Wed Aug 02 2023)
 
 #### 🐛 Bug Fix
