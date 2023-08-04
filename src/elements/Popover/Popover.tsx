@@ -4,7 +4,6 @@ import RNPopover from "react-native-popover-view"
 import { Easing } from "react-native-reanimated"
 import styled from "styled-components"
 import { CloseIcon } from "../../svgs"
-import { shadows } from "../../utils/shadows"
 import { Flex } from "../Flex"
 import { Touchable } from "../Touchable"
 
@@ -75,6 +74,18 @@ const Container = styled(Flex)<{ variant: PopoverVariant }>`
   background-color: ${({ variant }) => POPOVER_VARIANTS[variant].backgroundColor};
 `
 
+const DROP_SHADOW = {
+  shadowColor: THEME.colors["black100"],
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.23,
+  shadowRadius: 2.62,
+
+  elevation: 4,
+}
+
 export const POPOVER_VARIANTS: Record<
   "light" | "dark",
   { backgroundColor: string; fill: Color; shadow?: ViewStyle }
@@ -82,7 +93,7 @@ export const POPOVER_VARIANTS: Record<
   light: {
     backgroundColor: THEME.colors["white100"],
     fill: "black100",
-    shadow: shadows.DROP_SHADOW,
+    shadow: DROP_SHADOW,
   },
   dark: {
     backgroundColor: THEME.colors["black100"],
