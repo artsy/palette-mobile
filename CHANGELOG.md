@@ -1,3 +1,15 @@
+# v12.0.0 (Mon Aug 07 2023)
+
+#### 💥 Breaking Change
+
+- chore(palette-tokens): bump palette-tokens to v5 [#136](https://github.com/artsy/palette-mobile/pull/136) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v11.2.17 (Fri Aug 04 2023)
 
 #### 🐛 Bug Fix
