@@ -33,7 +33,7 @@
     "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
   ],
   "dependencies": {
-    "@artsy/palette-tokens": "^4.0.1",
+    "@artsy/palette-tokens": "^5.0.0",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",

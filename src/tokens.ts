@@ -4,17 +4,17 @@
  * https://www.figma.com/file/gZNkyqLT8AU3T61tluVJyB/Artsy-3.1-Design-System
  */
 
-import { THEME_V3 } from "@artsy/palette-tokens"
+import { THEME } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
-import { Color, ColorDSValue, ColorLayerName, ColorLayerRole, SpacingUnit } from "./types"
+import { Color, ColorDSValue, ColorLayerName, SpacingUnit } from "./types"
 import {
   convertWebSpacingUnitsToMobile,
   convertWebTextTreatmentsToMobile,
   TextTreatmentWithoutUnits,
 } from "./utils/webTokensToMobile"
 
-const { textVariants, space, colors, fonts } = THEME_V3
+const { textVariants, space, colors } = THEME
 
 export interface ThemeType {
   space: Record<SpacingUnitNumbers, `${number}px`>
