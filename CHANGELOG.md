@@ -1,3 +1,15 @@
+# v12.0.1 (Mon Aug 07 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add Tabs.Masonry and bump react-native-collapsible-tab-view from 6.1.4 to 6.2.0 [#133](https://github.com/artsy/palette-mobile/pull/133) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v12.0.0 (Mon Aug 07 2023)
 
 #### 💥 Breaking Change
