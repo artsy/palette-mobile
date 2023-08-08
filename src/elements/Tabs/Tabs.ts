@@ -7,6 +7,7 @@ import {
 } from "react-native-collapsible-tab-view"
 import { SubTabBar } from "./SubTabBar"
 import { TabFlatList } from "./TabFlatList"
+import { TabMasonry } from "./TabMasonry"
 import { TabScrollView } from "./TabScrollView"
 import { TabsContainer } from "./TabsContainer"
 import { TabsWithHeader } from "./TabsWithHeader"
@@ -14,6 +15,7 @@ import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScro
 
 export const Tabs = Object.assign(TabsContainer, {
   FlatList: TabFlatList,
+  Masonry: TabMasonry,
   Lazy: BaseTabs.Lazy,
   ScrollView: TabScrollView,
   SectionList: BaseTabs.SectionList,
