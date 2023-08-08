@@ -4,8 +4,7 @@ import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScro
 import { useSpace } from "../../utils/hooks/useSpace"
 
 export function TabMasonry<T>(props: MasonryFlashListProps<T>) {
-  // this unfortunatelly triggers some extra rerenders need to check WHY
-  // useListenForTabContentScroll()
+  useListenForTabContentScroll()
 
   const space = useSpace()
 
@@ -13,10 +12,10 @@ export function TabMasonry<T>(props: MasonryFlashListProps<T>) {
 
   return (
     <Tabs.MasonryFlashList
-      // contentContainerStyle={{
-      //   paddingHorizontal: space(2),
-      //   ...contentContainerStyle,
-      // }}
+      contentContainerStyle={{
+        paddingHorizontal: space(2),
+        ...contentContainerStyle,
+      }}
       {...props}
     />
   )

@@ -2771,9 +2771,9 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
-"@shopify/flash-list@https://github.com/gkartalis/flash-list.git#gkartalis/add-recyclerlistview_unsafe":
+"@shopify/flash-list@https://github.com/gkartalis/flash-list.git#gkartalis/local-recycler":
   version "1.5.0"
-  resolved "https://github.com/gkartalis/flash-list.git#a89a65f2fe0d8b96e9602440d6412d96bdb7f12e"
+  resolved "https://github.com/gkartalis/flash-list.git#02346742e71b4ba98b3e798a16a7dfb1759b7454"
   dependencies:
     recyclerlistview "4.2.0"
     tslib "2.4.0"
