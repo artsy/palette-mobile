@@ -2771,9 +2771,10 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
-"@shopify/flash-list@https://github.com/gkartalis/flash-list.git#gkartalis/local-recycler":
+"@shopify/flash-list@^1.5.0":
   version "1.5.0"
-  resolved "https://github.com/gkartalis/flash-list.git#02346742e71b4ba98b3e798a16a7dfb1759b7454"
+  resolved "https://registry.yarnpkg.com/@shopify/flash-list/-/flash-list-1.5.0.tgz#f1cf3c4f9bb706a58c3d1f794ddfaedb5872f431"
+  integrity sha512-XeocevDIXastr6jh3TPo1MzV5XkdqTyWtw/j8kUhz9EOBc2SzNWbpJWyzrAsYKlqYNrnxxs0P9C0amlX2jaQnw==
   dependencies:
     recyclerlistview "4.2.0"
     tslib "2.4.0"
@@ -9582,9 +9583,10 @@ react-native-codegen@^0.70.6:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
-"react-native-collapsible-tab-view@https://github.com/gkartalis/react-native-collapsible-tab-view.git#gkartalis/fix-masonry-recycling":
-  version "6.2.0"
-  resolved "https://github.com/gkartalis/react-native-collapsible-tab-view.git#d799eeb6e16e8005ee02b33bea6cb6e23f95aeec"
+react-native-collapsible-tab-view@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible-tab-view/-/react-native-collapsible-tab-view-6.2.1.tgz#b48760cd98c0156bc89300516ae10ff55f7df298"
+  integrity sha512-pgmpZYSg6TPYmhv3Dw/czFJHk4AzcYN2df3EMlKwFqbu1ifmlA866hBUVDX3mlbRaros75U5S1wpGCwlqqXLTQ==
   dependencies:
     use-deep-compare "^1.1.0"
 
