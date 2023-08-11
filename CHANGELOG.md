@@ -1,3 +1,15 @@
+# v12.0.3 (Fri Aug 11 2023)
+
+#### 🐛 Bug Fix
+
+- feat: Add onPress to ToolTip [#140](https://github.com/artsy/palette-mobile/pull/140) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v12.0.2 (Fri Aug 11 2023)
 
 :tada: This release contains work from a new contributor! :tada:
