@@ -19,6 +19,8 @@ interface ToolTipProps {
   position?: "TOP" | "BOTTOM"
   tapToDismiss?: boolean
   testID?: string
+  /** horizontal margin of tooltip */
+  xOffset?: number
   /** vertical margin of tooltip */
   yOffset?: number
 }
@@ -56,6 +58,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   position = "TOP",
   tapToDismiss = false,
   testID,
+  xOffset = 0,
   yOffset = 5,
 }) => {
   const { space } = useTheme()
@@ -94,11 +97,12 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         setToolTip,
       }}
     >
-      {enabled && position === "TOP" && (
+      {!!enabled && position === "TOP" && (
         <>
           <ToolTipFlyout
             containerStyle={{
               bottom: childrenDimensions.height + yOffset,
+              left: xOffset,
               ...extraStyle,
             }}
             tapToDismiss={tapToDismiss}
@@ -109,10 +113,10 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             testID={testID}
             text={toolTipText}
           />
-          {enabled && position === "TOP" && toolTipText && (
+          {!!enabled && position === "TOP" && !!toolTipText && (
             <TriangleDown
               style={{
-                left: triangleXDisplacement,
+                left: triangleXDisplacement + xOffset,
                 position: "absolute",
                 bottom: childrenDimensions.height + yOffset - 5, // where 5 is the triangle icon size
               }}
@@ -144,7 +148,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       >
         {children}
       </View>
-      {enabled && position === "BOTTOM" && (
+      {!!enabled && position === "BOTTOM" && (
         <>
           <ToolTipFlyout
             containerStyle={{
@@ -159,11 +163,11 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             testID={testID}
             text={toolTipText}
           />
-          {enabled && position === "BOTTOM" && toolTipText && (
+          {!!enabled && position === "BOTTOM" && !!toolTipText && (
             <TriangleDown
               style={{
                 transform: [{ rotate: "180deg" }],
-                left: triangleXDisplacement,
+                left: triangleXDisplacement + xOffset,
                 position: "absolute",
                 top: childrenDimensions.height + yOffset - 5, // where 5 is the triangle icon size,
               }}
@@ -176,7 +180,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
        * letter of the text will need. With this info we can correctly estimate the required total width.
        * Also this helps us to know beforehand the size (width and height) to animate/inflate the container to
        */}
-      {enabled && toolTipText && (
+      {!!enabled && !!toolTipText && (
         <View
           style={{ position: "absolute", opacity: 0 }}
           onLayout={({ nativeEvent }) => {
