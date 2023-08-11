@@ -16,6 +16,7 @@ interface ToolTipProps {
   enabled?: Boolean
   initialToolTipText?: string
   maxWidth?: number
+  onPress?: () => void
   position?: "TOP" | "BOTTOM"
   tapToDismiss?: boolean
   testID?: string
@@ -55,6 +56,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   enabled = true,
   initialToolTipText,
   maxWidth,
+  onPress,
   position = "TOP",
   tapToDismiss = false,
   testID,
@@ -109,6 +111,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             height={finalToolTipHeight}
             width={finalToolTipWidth}
             onClose={dismissToolTip}
+            onToolTipPress={onPress}
             position={position}
             testID={testID}
             text={toolTipText}
@@ -159,6 +162,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             height={finalToolTipHeight}
             width={finalToolTipWidth}
             onClose={dismissToolTip}
+            onToolTipPress={onPress}
             position={position}
             testID={testID}
             text={toolTipText}
