@@ -1,3 +1,19 @@
+# v12.0.2 (Fri Aug 11 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Ole ([@olerichter00](https://github.com/olerichter00)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: Add xOffset prop to ToolTip [#139](https://github.com/artsy/palette-mobile/pull/139) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v12.0.1 (Mon Aug 07 2023)
 
 #### 🐛 Bug Fix
