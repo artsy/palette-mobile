@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "12.0.1",
+  "version": "12.0.2",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "android": "react-native run-android",
