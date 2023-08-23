@@ -1,3 +1,15 @@
+# v12.0.4 (Wed Aug 23 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Update README.md ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v12.0.3 (Fri Aug 11 2023)
 
 #### 🐛 Bug Fix
