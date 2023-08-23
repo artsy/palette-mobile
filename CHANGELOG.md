@@ -1,3 +1,15 @@
+# v12.0.5 (Wed Aug 23 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Popover): add background color [#141](https://github.com/artsy/palette-mobile/pull/141) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v12.0.4 (Wed Aug 23 2023)
 
 #### ⚠️ Pushed to `main`
