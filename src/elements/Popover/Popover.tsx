@@ -39,7 +39,7 @@ export const Popover = ({
 
   return (
     <RNPopover
-      backgroundStyle={{ opacity: 1, backgroundColor: "transparent" }}
+      backgroundStyle={{ opacity: 0.5, backgroundColor: THEME.colors["black100"] }}
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}
