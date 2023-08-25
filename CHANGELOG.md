@@ -1,3 +1,15 @@
+# v13.0.0 (Fri Aug 25 2023)
+
+#### 💥 Breaking Change
+
+- feat: masonry [#138](https://github.com/artsy/palette-mobile/pull/138) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v12.0.5 (Wed Aug 23 2023)
 
 #### 🐛 Bug Fix
