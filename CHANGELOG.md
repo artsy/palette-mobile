@@ -1,3 +1,15 @@
+# v13.0.1 (Tue Aug 29 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Tabs): add pointerEvents none to tabsWithHeader title [#143](https://github.com/artsy/palette-mobile/pull/143) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.0 (Fri Aug 25 2023)
 
 #### 💥 Breaking Change
