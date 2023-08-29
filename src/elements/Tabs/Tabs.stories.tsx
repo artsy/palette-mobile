@@ -1,6 +1,8 @@
 import { storiesOf } from "@storybook/react-native"
 import { Tabs } from "./Tabs"
+import { Flex } from "../Flex"
 import { Screen } from "../Screen"
+import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 
 storiesOf("Tabs", module)
@@ -69,4 +71,24 @@ storiesOf("Tabs", module)
         </Tabs>
       </Screen.Body>
     </Screen>
+  ))
+  .add("Tabs with header", () => (
+    <Tabs.TabsWithHeader
+      title="My header"
+      BelowTitleHeaderComponent={() => (
+        <Flex pointerEvents="none" p={2}>
+          <Text>Title</Text>
+          <Text>Description</Text>
+        </Flex>
+      )}
+    >
+      <Tabs.Tab name="tab1" label="Tab 1">
+        <Tabs.ScrollView>
+          <Text>{"Some long text ".repeat(150)}</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+      <Tabs.Tab name="tab2" label="Tab 2">
+        <Text>{"Some long text ".repeat(150)}</Text>
+      </Tabs.Tab>
+    </Tabs.TabsWithHeader>
   ))
