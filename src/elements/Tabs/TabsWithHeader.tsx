@@ -35,7 +35,7 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
 
             return (
               <>
-                <Flex my={1} pl={2} justifyContent="center" alignSelf="flex-start">
+                <Flex my={1} pl={2} justifyContent="center" pointerEvents="none">
                   <Text variant="lg-display" numberOfLines={2}>
                     {title}
                   </Text>
