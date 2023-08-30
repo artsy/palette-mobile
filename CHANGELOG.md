@@ -1,3 +1,15 @@
+# v13.0.3 (Wed Aug 30 2023)
+
+#### 🐛 Bug Fix
+
+- feat(TabsWithHeader): show BelowTitleHeaderComponent if we don't display the title [#144](https://github.com/artsy/palette-mobile/pull/144) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.2 (Wed Aug 30 2023)
 
 #### 🐛 Bug Fix
