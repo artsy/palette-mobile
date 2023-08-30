@@ -74,10 +74,11 @@ storiesOf("Tabs", module)
   ))
   .add("Tabs with header", () => (
     <Tabs.TabsWithHeader
-      title="My header"
+      title="Artist Header"
+      showLargeHeaderText={false}
       BelowTitleHeaderComponent={() => (
         <Flex pointerEvents="none" p={2}>
-          <Text>Title</Text>
+          <Text>Artist</Text>
           <Text>Description</Text>
         </Flex>
       )}

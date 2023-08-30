@@ -21,6 +21,8 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
   title,
   ...rest
 }) => {
+  const showTitle = showLargeHeaderText && !!title
+
   return (
     <Screen>
       <Screen.AnimatedHeader title={title} {...headerProps} />
@@ -29,17 +31,15 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
         <TabsContainer
           {...rest}
           renderHeader={() => {
-            if (!showLargeHeaderText || !title) {
-              return null
-            }
-
             return (
               <>
-                <Flex my={1} pl={2} justifyContent="center" pointerEvents="none">
-                  <Text variant="lg-display" numberOfLines={2}>
-                    {title}
-                  </Text>
-                </Flex>
+                {!!showTitle && (
+                  <Flex my={1} pl={2} justifyContent="center" pointerEvents="none">
+                    <Text variant="lg-display" numberOfLines={2}>
+                      {title}
+                    </Text>
+                  </Flex>
+                )}
                 {!!BelowTitleHeaderComponent && <BelowTitleHeaderComponent />}
               </>
             )
