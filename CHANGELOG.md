@@ -1,3 +1,15 @@
+# v13.0.2 (Wed Aug 30 2023)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump activesupport from 6.1.7.3 to 6.1.7.6 [#142](https://github.com/artsy/palette-mobile/pull/142) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v13.0.1 (Tue Aug 29 2023)
 
 #### 🐛 Bug Fix
