@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { runOnJS, SharedValue, useAnimatedReaction, useSharedValue } from "react-native-reanimated"
 import { NAVBAR_HEIGHT } from "../constants"
 
-export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>) => {
+export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>, scrollYOffset = 0) => {
   const listenForScroll = useSharedValue(true)
   const [currScrollY, setCurrScrollY] = useState(scrollY.value)
+  const HEADER_HEIGHT = useMemo(() => NAVBAR_HEIGHT + scrollYOffset, [scrollYOffset])
 
   // Needed to run on JS thread
   const update = (y: number) => {
@@ -30,14 +31,14 @@ export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>) => {
 
       // Hacky way to avoid some weird header behavior.
       // look at HACKS.md for more info.
-      const suddenlyScrolled = Math.abs(animatedScrollY - prevScrollY) > NAVBAR_HEIGHT
+      const suddenlyScrolled = Math.abs(animatedScrollY - prevScrollY) > HEADER_HEIGHT
 
       if (isListeningForScroll && suddenlyScrolled) {
         return
       }
 
-      const prevTitleShown = prevScrollY >= NAVBAR_HEIGHT
-      const currTitleShown = animatedScrollY >= NAVBAR_HEIGHT
+      const prevTitleShown = prevScrollY >= HEADER_HEIGHT
+      const currTitleShown = animatedScrollY >= HEADER_HEIGHT
 
       if (prevTitleShown === currTitleShown) {
         return
@@ -45,7 +46,7 @@ export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>) => {
 
       runOnJS(update)(Math.floor(animatedScrollY))
     },
-    [scrollY]
+    [scrollY, HEADER_HEIGHT]
   )
 
   return currScrollY

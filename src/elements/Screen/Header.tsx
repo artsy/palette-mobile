@@ -18,15 +18,24 @@ export interface HeaderProps {
   onBack?: () => void
   rightElements?: React.ReactNode
   scrollY?: number
+  // For header with more content use the offset to achieve a more granular control when to show the animated header
+  scrollYOffset?: number
   title?: string
   titleProps?: FlexProps
   titleShown?: boolean
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
-  const { currentScrollY } = useScreenScrollContext()
+  const { currentScrollY, scrollYDetectionOffset } = useScreenScrollContext()
 
-  return <Header scrollY={currentScrollY} animated={true} {...props} />
+  return (
+    <Header
+      scrollY={currentScrollY}
+      scrollYOffset={scrollYDetectionOffset}
+      animated={true}
+      {...props}
+    />
+  )
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -38,6 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
   onBack,
   rightElements,
   scrollY = 0,
+  scrollYOffset = 0,
   title,
   titleProps = {},
 }) => {
@@ -80,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
     }
 
     // Show / hide the title to avoid rerenders, which retrigger the animation
-    const display = scrollY < NAVBAR_HEIGHT ? "none" : "flex"
+    const display = scrollY < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
 
     return (
       <Flex flex={1} flexDirection="row">
