@@ -1,3 +1,15 @@
+# v13.0.5 (Mon Sep 11 2023)
+
+#### 🐛 Bug Fix
+
+- chore: add build status on circle ci [#146](https://github.com/artsy/palette-mobile/pull/146) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.4 (Mon Sep 11 2023)
 
 #### 🐛 Bug Fix
