@@ -4,8 +4,8 @@ import { useScreenScrollContext } from "../../Screen/ScreenScrollContext"
 import { useAnimatedHeaderScrolling } from "../../Screen/hooks/useAnimatedHeaderScrolling"
 
 export const useListenForTabContentScroll = () => {
-  const scrollY = useAnimatedHeaderScrolling(useCurrentTabScrollY())
-  const { updateCurrentScrollY } = useScreenScrollContext()
+  const { updateCurrentScrollY, scrollYOffset } = useScreenScrollContext()
+  const scrollY = useAnimatedHeaderScrolling(useCurrentTabScrollY(), scrollYOffset)
 
   useEffect(() => {
     updateCurrentScrollY(scrollY)

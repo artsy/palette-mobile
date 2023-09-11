@@ -4,9 +4,9 @@ import { useAnimatedHeaderScrolling } from "./useAnimatedHeaderScrolling"
 import { useScreenScrollContext } from "../ScreenScrollContext"
 
 export const useListenForScreenScroll = () => {
-  const { updateCurrentScrollY } = useScreenScrollContext()
+  const { updateCurrentScrollY, scrollYOffset } = useScreenScrollContext()
   const animatedScrollY = useSharedValue(0)
-  const scrollY = useAnimatedHeaderScrolling(animatedScrollY)
+  const scrollY = useAnimatedHeaderScrolling(animatedScrollY, scrollYOffset)
 
   const scrollHandler = useAnimatedScrollHandler({
     onScroll: (event) => {
