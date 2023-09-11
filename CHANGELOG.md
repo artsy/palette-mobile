@@ -1,3 +1,15 @@
+# v13.0.4 (Mon Sep 11 2023)
+
+#### 🐛 Bug Fix
+
+- chore: support icon positioning in Message component [#145](https://github.com/artsy/palette-mobile/pull/145) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.3 (Wed Aug 30 2023)
 
 #### 🐛 Bug Fix
