@@ -1,3 +1,15 @@
+# v13.0.6 (Mon Sep 11 2023)
+
+#### 🐛 Bug Fix
+
+- feat(tabs): adds scroll offsets to the tabs when checking scroll position [#147](https://github.com/artsy/palette-mobile/pull/147) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.5 (Mon Sep 11 2023)
 
 #### 🐛 Bug Fix
