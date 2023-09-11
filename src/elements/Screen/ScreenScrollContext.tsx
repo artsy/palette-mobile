@@ -4,30 +4,30 @@ export interface ScreenScrollContextProps {
   currentScrollY: number
   updateCurrentScrollY: (scrollY: number) => void
   // used by the hooks when measuring the scroll position in a more granular way
-  scrollYDetectionOffset?: number
-  updateScrollYDetectionOffset: (offset: number) => void
+  scrollYOffset?: number
+  updateScrollYOffset: (offset: number) => void
 }
 
 const ScreenScrollContext = createContext<ScreenScrollContextProps>({
   currentScrollY: 0,
   updateCurrentScrollY: () => {},
-  scrollYDetectionOffset: undefined,
-  updateScrollYDetectionOffset: () => {},
+  scrollYOffset: undefined,
+  updateScrollYOffset: () => {},
 })
 
 export const ScreenScrollContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [currentScrollY, setCurrentScrollY] = useState(0)
-  const [scrollYDetectionOffset, setScrollYDetectionOffset] =
-    useState<ScreenScrollContextProps["scrollYDetectionOffset"]>(undefined)
+  const [scrollYOffset, setScrollYOffset] =
+    useState<ScreenScrollContextProps["scrollYOffset"]>(undefined)
 
   const providerValue = {
     currentScrollY,
-    scrollYDetectionOffset,
+    scrollYOffset,
     updateCurrentScrollY: (scrollY: number) => {
       setCurrentScrollY(scrollY)
     },
-    updateScrollYDetectionOffset: (scrollYDetectionOffset: number) => {
-      setScrollYDetectionOffset(scrollYDetectionOffset)
+    updateScrollYOffset: (yOffset: number) => {
+      setScrollYOffset(yOffset)
     },
   }
 

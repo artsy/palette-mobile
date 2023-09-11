@@ -26,15 +26,10 @@ export interface HeaderProps {
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
-  const { currentScrollY, scrollYDetectionOffset } = useScreenScrollContext()
+  const { currentScrollY, scrollYOffset } = useScreenScrollContext()
 
   return (
-    <Header
-      scrollY={currentScrollY}
-      scrollYOffset={scrollYDetectionOffset}
-      animated={true}
-      {...props}
-    />
+    <Header scrollY={currentScrollY} scrollYOffset={scrollYOffset} animated={true} {...props} />
   )
 }
 
