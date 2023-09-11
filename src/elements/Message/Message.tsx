@@ -12,6 +12,7 @@ export interface MessageProps {
   bodyTextStyle?: TextProps
   containerStyle?: FlexProps
   IconComponent?: React.FC<any>
+  iconPosition?: "left" | "right"
   onClose?: () => void
   showCloseButton?: boolean
   testID?: string
@@ -25,6 +26,7 @@ export const Message: React.FC<MessageProps> = ({
   bodyTextStyle,
   containerStyle,
   IconComponent,
+  iconPosition = "left",
   onClose,
   showCloseButton = false,
   testID,
@@ -71,7 +73,7 @@ export const Message: React.FC<MessageProps> = ({
         <Flex px={2} py={1} flexDirection="row" justifyContent="space-between">
           <Flex flex={1}>
             <Flex flexDirection="row">
-              {!!IconComponent && (
+              {!!IconComponent && iconPosition === "left" && (
                 <Flex mr={1}>
                   <IconComponent />
                 </Flex>
@@ -86,6 +88,12 @@ export const Message: React.FC<MessageProps> = ({
               </Text>
             )}
           </Flex>
+
+          {!!IconComponent && iconPosition === "right" && (
+            <Flex mr={1} justifyContent="center">
+              <IconComponent />
+            </Flex>
+          )}
 
           {!!showCloseButton && (
             <Flex style={{ marginTop: 2 }}>
