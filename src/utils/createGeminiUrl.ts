@@ -1,5 +1,7 @@
 import { Platform } from "react-native"
 
+export type GeminiResizeMode = "fit" | "fill"
+
 export function createGeminiUrl({
   imageURL,
   width,
@@ -13,7 +15,7 @@ export function createGeminiUrl({
   height: number
   geminiHost?: string
   imageQuality?: number
-  resizeMode?: "fit" | "fill"
+  resizeMode?: GeminiResizeMode
 }) {
   const src = encodeURIComponent(imageURL)
 

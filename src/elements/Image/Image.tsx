@@ -3,7 +3,7 @@ import { useState } from "react"
 import { PixelRatio } from "react-native"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import { Easing } from "react-native-reanimated"
-import { createGeminiUrl } from "../../utils/createGeminiUrl"
+import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
@@ -22,6 +22,8 @@ export interface ImageProps extends CustomFastImageProps {
   performResize?: boolean
   /** Source url to the image  */
   src: string
+  /** Gemini resize_to param  */
+  geminiResizeMode?: GeminiResizeMode
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -32,6 +34,7 @@ export const Image: React.FC<ImageProps> = ({
   src,
   style,
   resizeMode,
+  geminiResizeMode,
   ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
@@ -44,6 +47,7 @@ export const Image: React.FC<ImageProps> = ({
       imageURL: src,
       width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
       height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
+      resizeMode: geminiResizeMode,
     })
   }
 
