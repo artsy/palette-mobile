@@ -1,3 +1,19 @@
+# v13.0.8 (Thu Sep 14 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Anandaroop Roy ([@anandaroop](https://github.com/anandaroop)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix(image): set default Gemini resize mode to `fill` [#149](https://github.com/artsy/palette-mobile/pull/149) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v13.0.7 (Tue Sep 12 2023)
 
 #### 🐛 Bug Fix
