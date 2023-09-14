@@ -8,7 +8,7 @@ export function createGeminiUrl({
   height,
   geminiHost = "d7hftxdivxxvm.cloudfront.net",
   imageQuality = 80,
-  resizeMode = "fit",
+  resizeMode = "fill",
 }: {
   imageURL: string
   width: number
