@@ -1,3 +1,15 @@
+# v13.0.9 (Fri Sep 15 2023)
+
+#### 🐛 Bug Fix
+
+- docs: update readme with Developing Features using Local Versions [#150](https://github.com/artsy/palette-mobile/pull/150) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.0.8 (Thu Sep 14 2023)
 
 :tada: This release contains work from a new contributor! :tada:
