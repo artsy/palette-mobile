@@ -1,3 +1,15 @@
+# v13.0.10 (Mon Sep 18 2023)
+
+#### 🐛 Bug Fix
+
+- fix: Add flowDirection prop to tooltip component [#151](https://github.com/artsy/palette-mobile/pull/151) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v13.0.9 (Fri Sep 15 2023)
 
 #### 🐛 Bug Fix
