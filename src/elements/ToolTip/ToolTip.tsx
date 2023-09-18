@@ -14,6 +14,8 @@ interface ToolTipContextValues {
 interface ToolTipProps {
   children?: React.ReactNode
   enabled?: Boolean
+  /** The direction the tooltip should flow. If not provided, the tooltip will flow to the left if it is near the right edge of the screen, and vice-versa */
+  flowDirection?: "LEFT" | "RIGHT"
   initialToolTipText?: string
   maxWidth?: number
   onPress?: () => void
@@ -54,6 +56,7 @@ export const ToolTipContext = createContext<ToolTipContextValues>({
 export const ToolTip: React.FC<ToolTipProps> = ({
   children,
   enabled = true,
+  flowDirection,
   initialToolTipText,
   maxWidth,
   onPress,
@@ -88,8 +91,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   // Calculate the direction of flow of the tooltip. So a tooltip near the right edge of the screen
   // should flow to the left so it remains in the viewport, and vice-versa. Without this, tooltip
   // around the edges can flow off screen
-  const nearLeftEdge = pageX < mWidth / 4
-  const nearRightEdge = pageX > mWidth - mWidth / 4
+  const nearLeftEdge = pageX < mWidth / 4 || flowDirection === "RIGHT"
+  const nearRightEdge = pageX > mWidth - mWidth / 4 || flowDirection === "LEFT"
   const extraStyle = nearLeftEdge ? { left: 0 } : nearRightEdge ? { right: 0 } : undefined
 
   return (
