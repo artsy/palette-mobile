@@ -1,3 +1,15 @@
+# v13.0.11 (Tue Sep 19 2023)
+
+#### 🐛 Bug Fix
+
+- fix: progressive onboarding positioning on android [#153](https://github.com/artsy/palette-mobile/pull/153) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.10 (Mon Sep 18 2023)
 
 #### 🐛 Bug Fix
