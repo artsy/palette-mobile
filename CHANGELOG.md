@@ -1,3 +1,15 @@
+# v13.0.12 (Tue Sep 19 2023)
+
+#### 🐛 Bug Fix
+
+- feat: change port to avoid conflict with Eigen [#152](https://github.com/artsy/palette-mobile/pull/152) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v13.0.11 (Tue Sep 19 2023)
 
 #### 🐛 Bug Fix
