@@ -1,5 +1,5 @@
 import { Color, THEME } from "@artsy/palette-tokens"
-import { ViewStyle } from "react-native"
+import { Platform, StatusBar, ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
 import { Easing } from "react-native-reanimated"
 import styled from "styled-components"
@@ -43,6 +43,8 @@ export const Popover = ({
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}
+      // this is required to make sure that the popover is positioned correctly on android
+      verticalOffset={Platform.OS === "android" ? -(StatusBar.currentHeight ?? 0) : 0}
       onCloseComplete={onCloseComplete}
       onRequestClose={onPressOutside}
       placement={placement as RNPopover["props"]["placement"]}
