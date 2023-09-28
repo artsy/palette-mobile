@@ -1,3 +1,15 @@
+# v13.0.13 (Thu Sep 28 2023)
+
+#### 🐛 Bug Fix
+
+- feat(DIA-110): remove artist variant and replaces with profile on Pill element [#155](https://github.com/artsy/palette-mobile/pull/155) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.12 (Tue Sep 19 2023)
 
 #### 🐛 Bug Fix
