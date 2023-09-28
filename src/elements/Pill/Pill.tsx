@@ -9,7 +9,7 @@ import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
 import { Text } from "../Text"
 
-export const PILL_VARIANT_NAMES = ["default", "search", "filter", "artist", "badge"] as const
+export const PILL_VARIANT_NAMES = ["default", "search", "filter", "profile", "badge"] as const
 export type PillState = "default" | "selected" | "disabled"
 export type PillVariant = typeof PILL_VARIANT_NAMES[number]
 
@@ -20,8 +20,11 @@ export type PillProps = (FlexProps & {
   onPress?: MotiPressableProps["onPress"]
 }) &
   (
-    | { variant?: Extract<PillVariant, "default" | "filter" | "badge" | "search">; src?: never }
-    | { variant: Extract<PillVariant, "artist">; src?: string }
+    | {
+        variant?: Extract<PillVariant, "default" | "filter" | "badge" | "search">
+        src?: never
+      }
+    | { variant: Extract<PillVariant, "profile">; src?: string }
   )
 
 export const Pill: React.FC<PillProps> = ({
@@ -36,6 +39,8 @@ export const Pill: React.FC<PillProps> = ({
 }) => {
   const stateString = selected ? "selected" : disabled ? "disabled" : "default"
   const color = TEXT_COLOR[variant][stateString]
+  const showCloseIcon =
+    (variant === "filter" && !disabled) || (["profile"].includes(variant) && selected)
 
   return (
     <Flex {...rest}>
@@ -56,8 +61,8 @@ export const Pill: React.FC<PillProps> = ({
           []
         )}
       >
-        {variant === "artist" && (
-          <Thumbnail src={src!} height={30} width={30} style={{ overflow: "hidden" }} />
+        {variant === "profile" && src && (
+          <Thumbnail src={src} height={30} width={30} style={{ overflow: "hidden" }} />
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
@@ -65,9 +70,7 @@ export const Pill: React.FC<PillProps> = ({
           {children}
         </Text>
 
-        {((variant === "filter" && !disabled) || (variant === "artist" && selected)) && (
-          <CloseIcon fill={color} ml={0.5} width={15} height={15} />
-        )}
+        {showCloseIcon && <CloseIcon fill={color} ml={0.5} width={15} height={15} />}
       </Container>
     </Flex>
   )
@@ -122,11 +125,13 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
       ${PILL_STATES.default}
     `,
   },
-  artist: {
+  profile: {
     default: css`
+      background-color: ${themeGet("colors.black5")};
+      border-color: ${themeGet("colors.black5")};
       border-radius: 25px;
       height: 50px;
-      padding: 0 ${themeGet("space.2")} 0 ${themeGet("space.1")};
+      padding: 0 ${themeGet("space.2")}};
     `,
     selected: css`
       border-color: ${themeGet("colors.blue100")};
@@ -170,7 +175,7 @@ const defaultColors: Record<PillState, Color> = {
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
   search: defaultColors,
-  artist: {
+  profile: {
     ...defaultColors,
     selected: "black100",
   },

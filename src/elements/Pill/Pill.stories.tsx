@@ -52,11 +52,11 @@ storiesOf("Pill", module)
       </Flex>
 
       <Flex flexDirection="row">
-        <Pill variant="artist">Artist</Pill>
-        <Pill variant="artist" selected ml={1}>
+        <Pill variant="profile">Profile</Pill>
+        <Pill variant="profile" selected ml={1}>
           Selected
         </Pill>
-        <Pill variant="artist" disabled ml={1}>
+        <Pill variant="profile" disabled ml={1}>
           Disabled
         </Pill>
       </Flex>
@@ -72,15 +72,15 @@ storiesOf("Pill", module)
       </Flex>
     </List>
   ))
-  .add("Artist with image", () => (
+  .add("Profile with image", () => (
     <List contentContainerStyle={{ marginHorizontal: 20 }}>
-      <Pill variant="artist" src={src}>
+      <Pill variant="profile" src={src}>
         Artist
       </Pill>
-      <Pill variant="artist" src={src} selected ml={1}>
+      <Pill variant="profile" src={src} selected ml={1}>
         Selected
       </Pill>
-      <Pill variant="artist" src={src} disabled ml={1}>
+      <Pill variant="profile" src={src} disabled ml={1}>
         Disabled
       </Pill>
     </List>
