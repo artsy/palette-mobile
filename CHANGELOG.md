@@ -1,3 +1,15 @@
+# v13.0.14 (Thu Sep 28 2023)
+
+#### 🐛 Bug Fix
+
+- fix: remove unnecessary padding from IconComponent in Message [#157](https://github.com/artsy/palette-mobile/pull/157) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.13 (Thu Sep 28 2023)
 
 #### 🐛 Bug Fix
