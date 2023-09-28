@@ -1,3 +1,15 @@
+# v13.0.15 (Thu Sep 28 2023)
+
+#### 🐛 Bug Fix
+
+- feat(Pill): adjust horizontal padding of profile variant [#156](https://github.com/artsy/palette-mobile/pull/156) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.14 (Thu Sep 28 2023)
 
 #### 🐛 Bug Fix
