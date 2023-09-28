@@ -62,7 +62,9 @@ export const Pill: React.FC<PillProps> = ({
         )}
       >
         {variant === "profile" && src && (
-          <Thumbnail src={src} height={30} width={30} style={{ overflow: "hidden" }} />
+          <Flex overflow="hidden" borderRadius={50} height={30} width={30} mr={1}>
+            <Thumbnail src={src} height={30} width={30} />
+          </Flex>
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
@@ -97,8 +99,6 @@ const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
 
 const Thumbnail = styled(Image)`
   background-color: ${themeGet("colors.black30")};
-  border-radius: 50px;
-  margin-right: ${themeGet("space.1")};
 `
 
 const PILL_STATES = {
