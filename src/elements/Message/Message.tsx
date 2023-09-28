@@ -90,7 +90,7 @@ export const Message: React.FC<MessageProps> = ({
           </Flex>
 
           {!!IconComponent && iconPosition === "right" && (
-            <Flex mr={1} justifyContent="center">
+            <Flex mr={showCloseButton ? 1 : 0} justifyContent="center">
               <IconComponent />
             </Flex>
           )}
