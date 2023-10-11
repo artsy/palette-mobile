@@ -1,3 +1,15 @@
+# v13.0.18 (Wed Oct 11 2023)
+
+#### 🐛 Bug Fix
+
+- fix: make innerRef optional [#160](https://github.com/artsy/palette-mobile/pull/160) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.17 (Wed Oct 11 2023)
 
 #### 🐛 Bug Fix
