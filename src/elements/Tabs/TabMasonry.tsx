@@ -6,7 +6,7 @@ import { useSpace } from "../../utils/hooks/useSpace"
 
 export function TabMasonry<T>(
   props: MasonryFlashListProps<T> & {
-    innerRef?: RefObject<MasonryFlashListRef<T>> | null | undefined
+    innerRef?: RefObject<MasonryFlashListRef<T>> | null
   }
 ) {
   useListenForTabContentScroll()
