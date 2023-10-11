@@ -1,3 +1,15 @@
+# v13.0.17 (Wed Oct 11 2023)
+
+#### 🐛 Bug Fix
+
+- chore: support flatlist ref [#159](https://github.com/artsy/palette-mobile/pull/159) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.16 (Thu Sep 28 2023)
 
 #### 🐛 Bug Fix
