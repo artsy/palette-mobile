@@ -1,3 +1,15 @@
+# v13.0.19 (Fri Oct 13 2023)
+
+#### 🐛 Bug Fix
+
+- feat(DIA-134): add ImageSetIcon [#161](https://github.com/artsy/palette-mobile/pull/161) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos Alberto de Araujo Barreto ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.18 (Wed Oct 11 2023)
 
 #### 🐛 Bug Fix
