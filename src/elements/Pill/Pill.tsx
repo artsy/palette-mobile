@@ -68,7 +68,7 @@ export const Pill: React.FC<PillProps> = ({
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
-        <Text variant="xs" color={color}>
+        <Text variant="xs" color={color} lineHeight={Icon ? "18px" : "15px"}>
           {children}
         </Text>
 
