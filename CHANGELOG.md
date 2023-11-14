@@ -1,3 +1,15 @@
+# v13.0.20 (Tue Nov 14 2023)
+
+#### 🐛 Bug Fix
+
+- feat(checkbox): expose custom accessibilityProps to the View wrapping the icon [#164](https://github.com/artsy/palette-mobile/pull/164) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.0.19 (Fri Oct 13 2023)
 
 #### 🐛 Bug Fix
