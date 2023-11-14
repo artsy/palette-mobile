@@ -1,6 +1,7 @@
 import { themeGet } from "@styled-system/theme-get"
 import { useState } from "react"
 import {
+  AccessibilityProps,
   PixelRatio,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -23,6 +24,7 @@ export interface CheckboxProps extends TouchableWithoutFeedbackProps, FlexProps 
   text?: React.ReactElement | string
   subtitle?: React.ReactElement | string
   children?: React.ReactElement | string
+  innerAccessibilityProps?: AccessibilityProps
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -33,6 +35,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   text,
   subtitle,
   children,
+  innerAccessibilityProps,
   ...restProps
 }) => {
   const { color, space } = useTheme()
@@ -89,7 +92,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     >
       <Flex flex={1} {...restProps}>
         <Flex flexDirection="row">
-          <Flex mt="2px">
+          <Flex mt="2px" {...innerAccessibilityProps}>
             <CssTransition
               style={[
                 styles(fontScale).container,
