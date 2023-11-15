@@ -1,3 +1,15 @@
+# v13.0.22 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- Fix(ONYX-508): Fix vertical centering of text within pills [#163](https://github.com/artsy/palette-mobile/pull/163) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v13.0.21 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
