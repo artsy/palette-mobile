@@ -1,3 +1,15 @@
+# v13.0.21 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- fix: specify compatible kotlin version to avoid dup class error [#165](https://github.com/artsy/palette-mobile/pull/165) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v13.0.20 (Tue Nov 14 2023)
 
 #### 🐛 Bug Fix
