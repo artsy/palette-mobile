@@ -7,7 +7,7 @@ import { CloseIcon } from "../../svgs"
 import { IconProps } from "../../svgs/Icon"
 import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
-import { Text, useTextStyleForPalette } from "../Text"
+import { Text } from "../Text"
 
 export const PILL_VARIANT_NAMES = ["default", "search", "filter", "profile", "badge"] as const
 export type PillState = "default" | "selected" | "disabled"
@@ -37,7 +37,6 @@ export const Pill: React.FC<PillProps> = ({
   onPress,
   ...rest
 }) => {
-  const textStyle = useTextStyleForPalette("xs")
   const stateString = selected ? "selected" : disabled ? "disabled" : "default"
   const color = TEXT_COLOR[variant][stateString]
   const showCloseIcon =
@@ -69,7 +68,7 @@ export const Pill: React.FC<PillProps> = ({
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
-        <Text style={textStyle} color={color}>
+        <Text variant="xs" color={color} style={{ marginBottom: 2 }}>
           {children}
         </Text>
 
