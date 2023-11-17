@@ -27,6 +27,21 @@ jobs:
       - run: yarn install:all
       - run: yarn ios
 
+  build-android:
+    docker:
+      - image: cimg/android:2023.11.1-node
+    steps:
+      - checkout
+      - run:
+          name: Check for relevant changes in Android files
+          command: |
+            if ! git diff --name-only origin/main... | grep -E 'android/|.*\.gradle$|.*\.java$|.*\.xml$'; then
+              echo "No relevant changes detected in Android files. Skipping Android build."
+              circleci step halt
+            fi
+      - run: yarn install:all
+      - run: yarn android
+
 workflows:
   build-deploy:
     jobs:
@@ -43,6 +58,11 @@ workflows:
           yarn-run: "type-check"
 
       - build-ios:
+          requires:
+            - test
+            - type-check
+
+      - build-android:
           requires:
             - test
             - type-check
