@@ -40,7 +40,9 @@ jobs:
               circleci step halt
             fi
       - run: yarn install
-      - run: yarn android
+      - run:
+          name: Build Android App
+          command: cd android && ./gradlew assembleDebug
 
 workflows:
   build-deploy:
