@@ -1,3 +1,15 @@
+# v13.0.24 (Fri Nov 17 2023)
+
+#### 🐛 Bug Fix
+
+- ci: add iOS and Android basic ci check [#168](https://github.com/artsy/palette-mobile/pull/168) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v13.0.23 (Fri Nov 17 2023)
 
 #### 🐛 Bug Fix
