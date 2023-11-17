@@ -39,7 +39,7 @@ jobs:
               echo "No relevant changes detected in Android files. Skipping Android build."
               circleci step halt
             fi
-      - run: yarn install:all
+      - run: yarn install
       - run: yarn android
 
 workflows:
