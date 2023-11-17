@@ -44,5 +44,13 @@ target 'PaletteMobile' do
         end
       end
     end
+
+    installer.pods_project.targets.each do |target|
+      if target.name == "React" || target.name == "React-Core"
+        target.build_configurations.each do |config|
+          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = ['$(inherited)', 'RCT_METRO_PORT=8082']
+        end
+      end
+    end
   end
 end
