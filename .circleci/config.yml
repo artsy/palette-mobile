@@ -3,12 +3,23 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
   auto: artsy/auto@2.1.0
+  macos: circleci/macos@2.4.0
 
 only_main: &only_main
   context: hokusai
   filters:
     branches:
       only: main
+
+jobs:
+  build-ios:
+    macos:
+      xcode: "15.1.0"
+    steps:
+      - checkout
+      - run: yarn install
+      - run: cd ios && pod install
+      - run: yarn ios
 
 workflows:
   build-deploy:
@@ -24,6 +35,11 @@ workflows:
           version: "18.15"
           pkg-manager: yarn
           yarn-run: "type-check"
+
+      - build-ios:
+          requires:
+            - test
+            - type-check
 
       - auto/publish-canary:
           context: npm-deploy
