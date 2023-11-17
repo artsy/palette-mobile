@@ -17,8 +17,14 @@ jobs:
       xcode: "15.1.0"
     steps:
       - checkout
-      - run: yarn install
-      - run: cd ios && pod install
+      - run:
+          name: Check if iOS directory or Podfile.lock changed
+          command: |
+            if ! git diff --name-only $CIRCLE_COMPARE_URL | grep -E 'ios/|Podfile.lock'; then
+              echo "No changes in iOS directory or Podfile.lock. Skipping build."
+              circleci step halt
+            fi
+      - run: yarn install:all
       - run: yarn ios
 
 workflows:
