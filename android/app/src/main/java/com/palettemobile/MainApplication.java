@@ -19,7 +19,6 @@ public class MainApplication extends Application implements ReactApplication {
       new ReactNativeHost(this) {
         @Override
         public boolean getUseDeveloperSupport() {
-          // TEST Android change
           return BuildConfig.DEBUG;
         }
 
