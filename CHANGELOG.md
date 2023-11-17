@@ -1,3 +1,15 @@
+# v13.0.23 (Fri Nov 17 2023)
+
+#### 🐛 Bug Fix
+
+- fix: patch upgrade for rn ios build issue, fix port not being respected [#167](https://github.com/artsy/palette-mobile/pull/167) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v13.0.22 (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix
