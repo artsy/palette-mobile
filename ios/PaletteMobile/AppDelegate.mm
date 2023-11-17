@@ -33,6 +33,8 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 {
   RCTAppSetupPrepareApp(application);
 
+  NSLog(@"Check the check!");
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
 #if RCT_NEW_ARCH_ENABLED
