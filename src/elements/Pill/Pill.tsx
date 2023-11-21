@@ -95,7 +95,6 @@ const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
 
   ${(props) => {
     const states = PILL_VARIANTS[props.variant!]
-    console.log({ states })
 
     return css`
       ${states.default}
@@ -132,6 +131,10 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
     default: css`
       ${PILL_STATES.default}
       border-style: dashed;
+    `,
+    selected: css`
+      background-color: ${themeGet("colors.blue10")};
+      border-color: ${themeGet("colors.blue10")};
     `,
   },
   search: {
