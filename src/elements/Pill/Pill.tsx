@@ -9,7 +9,14 @@ import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
 import { Text } from "../Text"
 
-export const PILL_VARIANT_NAMES = ["default", "search", "filter", "profile", "badge"] as const
+export const PILL_VARIANT_NAMES = [
+  "badge",
+  "default",
+  "dotted",
+  "filter",
+  "profile",
+  "search",
+] as const
 export type PillState = "default" | "selected" | "disabled"
 export type PillVariant = typeof PILL_VARIANT_NAMES[number]
 
@@ -21,7 +28,7 @@ export type PillProps = (FlexProps & {
 }) &
   (
     | {
-        variant?: Extract<PillVariant, "default" | "filter" | "badge" | "search">
+        variant?: Extract<PillVariant, "default" | "filter" | "badge" | "search" | "dotted">
         src?: never
       }
     | { variant: Extract<PillVariant, "profile">; src?: string }
@@ -88,6 +95,7 @@ const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
 
   ${(props) => {
     const states = PILL_VARIANTS[props.variant!]
+    console.log({ states })
 
     return css`
       ${states.default}
@@ -119,6 +127,13 @@ const PILL_STATES = {
 
 const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<any>>> = {
   default: PILL_STATES,
+  dotted: {
+    ...PILL_STATES,
+    default: css`
+      ${PILL_STATES.default}
+      border-style: dashed;
+    `,
+  },
   search: {
     ...PILL_STATES,
     default: css`
@@ -174,6 +189,7 @@ const defaultColors: Record<PillState, Color> = {
 }
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
+  dotted: defaultColors,
   search: defaultColors,
   profile: {
     ...defaultColors,

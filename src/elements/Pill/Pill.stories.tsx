@@ -62,6 +62,16 @@ storiesOf("Pill", module)
       </Flex>
 
       <Flex flexDirection="row">
+        <Pill variant="search">Unique</Pill>
+        <Pill variant="search" selected ml={1}>
+          Painting
+        </Pill>
+        <Pill variant="search" disabled ml={1}>
+          Sculpture
+        </Pill>
+      </Flex>
+
+      <Flex flexDirection="row">
         <Pill variant="search">Search</Pill>
         <Pill variant="search" selected ml={1}>
           Selected
