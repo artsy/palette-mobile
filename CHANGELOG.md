@@ -1,3 +1,15 @@
+# v13.0.25 (Wed Nov 22 2023)
+
+#### 🐛 Bug Fix
+
+- feat: support dotted pill [#169](https://github.com/artsy/palette-mobile/pull/169) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.24 (Fri Nov 17 2023)
 
 #### 🐛 Bug Fix
