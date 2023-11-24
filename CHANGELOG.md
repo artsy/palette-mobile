@@ -1,3 +1,15 @@
+# v13.0.26 (Fri Nov 24 2023)
+
+#### 🐛 Bug Fix
+
+- chore: update gray shade of dotted pill [#170](https://github.com/artsy/palette-mobile/pull/170) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.25 (Wed Nov 22 2023)
 
 #### 🐛 Bug Fix
