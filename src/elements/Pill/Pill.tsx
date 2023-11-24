@@ -134,8 +134,8 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
     `,
     selected: css`
       ${PILL_STATES.selected}
-      background-color: ${themeGet("colors.black60")};
-      border-color: ${themeGet("colors.black60")};
+      background-color: ${themeGet("colors.black10")};
+      border-color: ${themeGet("colors.black10")};
     `,
   },
   search: {
