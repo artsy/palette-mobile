@@ -134,8 +134,8 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
     `,
     selected: css`
       ${PILL_STATES.selected}
-      background-color: ${themeGet("colors.black60")};
-      border-color: ${themeGet("colors.black60")};
+      background-color: ${themeGet("colors.black10")};
+      border-color: ${themeGet("colors.black10")};
     `,
   },
   search: {
@@ -193,7 +193,10 @@ const defaultColors: Record<PillState, Color> = {
 }
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
-  dotted: defaultColors,
+  dotted: {
+    ...defaultColors,
+    selected: "black100",
+  },
   search: defaultColors,
   profile: {
     ...defaultColors,
