@@ -193,7 +193,10 @@ const defaultColors: Record<PillState, Color> = {
 }
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
-  dotted: defaultColors,
+  dotted: {
+    ...defaultColors,
+    selected: "black100",
+  },
   search: defaultColors,
   profile: {
     ...defaultColors,
