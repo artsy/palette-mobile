@@ -1,3 +1,15 @@
+# v13.0.27 (Mon Dec 11 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add grid and list icons [#171](https://github.com/artsy/palette-mobile/pull/171) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.26 (Fri Nov 24 2023)
 
 #### 🐛 Bug Fix
