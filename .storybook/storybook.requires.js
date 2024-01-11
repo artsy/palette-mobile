@@ -30,6 +30,7 @@ const getStories = () => {
   return [
     require("../src/elements/Avatar/Avatar.stories.tsx"),
     require("../src/elements/BackButton/BackButton.stories.tsx"),
+    require("../src/elements/Banner/Banner.stories.tsx"),
     require("../src/elements/Box/Box.stories.tsx"),
     require("../src/elements/ButtonNew/Button.stories.tsx"),
     require("../src/elements/Checkbox/Checkbox.stories.tsx"),

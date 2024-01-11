@@ -1,32 +1,27 @@
 import { useRef, useState } from "react"
-import { Animated, Easing, Image, TextProps, TouchableOpacity } from "react-native"
+import { Animated, Easing, TouchableOpacity } from "react-native"
 import { FlexProps } from "styled-system"
-import { QuestionCircleIcon } from "../../svgs"
-import { useColor } from "../../utils/hooks"
+import { DEFAULT_HIT_SLOP } from "../../constants"
+import { CloseIcon } from "../../svgs"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 
-export interface BannerProps {
-  title: string
+export type BannerVariant = keyof typeof BANNER_VARIANTS
+
+export interface BannerProps extends FlexProps {
   text: string
   onClose?: () => void
-  showCloseButton?: boolean
-  containerStyle?: FlexProps
-  titleStyle?: TextProps
-  bodyTextStyle?: TextProps
+  dismissable?: boolean
+  variant?: BannerVariant
 }
 
 export const Banner = ({
-  title,
   text,
   onClose,
-  showCloseButton = false,
-  containerStyle,
-  titleStyle,
-  bodyTextStyle,
+  dismissable = false,
+  variant = "defaultLight",
+  ...restProps
 }: BannerProps) => {
-  const color = useColor()
-
   const [tempHeight, setTempHeight] = useState<number | undefined>(undefined)
 
   const scaleYAnim = useRef(new Animated.Value(0)).current
@@ -58,26 +53,22 @@ export const Banner = ({
         ],
       }}
     >
-      <Flex backgroundColor={color("blue10")} {...containerStyle}>
-        <Flex px={2} py={1} flexDirection="row" justifyContent="space-between">
-          <Flex flex={1}>
-            <Text fontSize="13px" color={color("blue100")} {...titleStyle}>
-              {title}
-            </Text>
-            <Text fontSize="13px" color={color("black100")} {...bodyTextStyle}>
+      <Flex backgroundColor={BANNER_VARIANTS[variant].backgroundColor} {...restProps}>
+        <Flex px={2} py={1} flexDirection="row" alignItems="center" justifyContent="space-between">
+          <Flex flex={1} alignItems="center">
+            <Text textAlign="center" variant="xs" color={BANNER_VARIANTS[variant].color}>
               {text}
             </Text>
           </Flex>
 
-          {!!showCloseButton && (
-            <Flex style={{ marginTop: 2 }}>
+          {!!dismissable && (
+            <Flex>
               <TouchableOpacity
                 testID="banner-close-button"
                 onPress={handleClose}
-                hitSlop={{ bottom: 40, right: 40, left: 40, top: 40 }}
+                hitSlop={DEFAULT_HIT_SLOP}
               >
-                {/* TODO: fix this by adding an X icon */}
-                <QuestionCircleIcon />
+                <CloseIcon fill={BANNER_VARIANTS[variant].color} />
               </TouchableOpacity>
             </Flex>
           )}
@@ -85,4 +76,27 @@ export const Banner = ({
       </Flex>
     </Animated.View>
   )
+}
+
+const BANNER_VARIANTS = {
+  defaultLight: {
+    backgroundColor: "black10",
+    color: "black100",
+  },
+  defaultDark: {
+    backgroundColor: "black100",
+    color: "white100",
+  },
+  success: {
+    backgroundColor: "green100",
+    color: "white100",
+  },
+  error: {
+    backgroundColor: "red100",
+    color: "white100",
+  },
+  brand: {
+    backgroundColor: "brand",
+    color: "white100",
+  },
 }
