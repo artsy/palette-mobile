@@ -1,3 +1,15 @@
+# v13.0.28 (Fri Jan 12 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Update Banner Component [#172](https://github.com/artsy/palette-mobile/pull/172) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.0.27 (Mon Dec 11 2023)
 
 #### 🐛 Bug Fix
