@@ -2707,10 +2707,10 @@
   dependencies:
     joi "^17.2.1"
 
-"@react-native-community/cli@9.3.4":
-  version "9.3.4"
-  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-9.3.4.tgz#a5d7d4a0ea3c318f499ff051d3c835a0d5de8e5e"
-  integrity sha512-FxqouQ2UXErwqwU+tWDbMC7HxT8A+AzAaCE723H0SWjOxLPlkChp7P1QOEdOpnA7G/Ss6hl3uS9AWRVypP5kBg==
+"@react-native-community/cli@9.3.5":
+  version "9.3.5"
+  resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-9.3.5.tgz#73626d3be8f5e2e6389f2555d126666fb8de4389"
+  integrity sha512-X+/xSysHsb0rXUWZKtXnKGhUNMRPxYzyhBc3VMld+ygPaFG57TAdK9rFGRu7NkIsRI6qffF/SukQPVlBZIfBHg==
   dependencies:
     "@react-native-community/cli-clean" "^9.2.1"
     "@react-native-community/cli-config" "^9.2.1"
@@ -9052,10 +9052,10 @@ rc@^1.2.8, rc@~1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-devtools-core@4.24.0:
-  version "4.24.0"
-  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.24.0.tgz#7daa196bdc64f3626b3f54f2ff2b96f7c4fdf017"
-  integrity sha512-Rw7FzYOOzcfyUPaAm9P3g0tFdGqGq2LLiAI+wjYcp6CsF3DeeMrRS3HZAho4s273C29G/DJhx0e8BpRE/QZNGg==
+react-devtools-core@4.27.7:
+  version "4.27.7"
+  resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.27.7.tgz#458a6541483078d60a036c75bf88f54c478086ec"
+  integrity sha512-12N0HrhCPbD76Z7SkyJdGdXdPGouUsgV6tlEsbSpAnLDO06tjXZP+irht4wPdYwJAJRQ85DxL48eQoz7UmrSuQ==
   dependencies:
     shell-quote "^1.6.1"
     ws "^7"
@@ -9183,13 +9183,13 @@ react-native-swipe-gestures@^1.0.5:
   resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
   integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
 
-react-native@0.70.14:
-  version "0.70.14"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.70.14.tgz#3dedd2ed762d47666c2fe804cff8079b286e1845"
-  integrity sha512-QeZvPJnDkF4K2QB4cX3xZM0gMVqa6r7ema7342PAAJpDvieO9JdI25dBI+hMvMO3jGRS3MUapcPqJvcxLEyNZQ==
+react-native@0.70.15:
+  version "0.70.15"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.70.15.tgz#65f2c5c399ff8e2a892cef9b094cc0888653a874"
+  integrity sha512-pm2ZPpA+m0Kl0THAy2fptnp7B9+QPexpfad9fSXfqjPufrXG2alwW8kYCn2EO5ZUX6bomZjFEswz6RzdRN/p9A==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
-    "@react-native-community/cli" "9.3.4"
+    "@react-native-community/cli" "9.3.5"
     "@react-native-community/cli-platform-android" "9.3.4"
     "@react-native-community/cli-platform-ios" "9.3.0"
     "@react-native/assets" "1.0.0"
@@ -9209,7 +9209,7 @@ react-native@0.70.14:
     nullthrows "^1.1.1"
     pretty-format "^26.5.2"
     promise "^8.3.0"
-    react-devtools-core "4.24.0"
+    react-devtools-core "4.27.7"
     react-native-codegen "^0.70.7"
     react-native-gradle-plugin "^0.70.3"
     react-refresh "^0.4.0"
