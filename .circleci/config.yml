@@ -25,6 +25,7 @@ jobs:
               circleci step halt
             fi
       - run: yarn install:all
+      - run: cd ios && bundle exec pod update hermes-engine —no-repo-update && cd ..
       - run: yarn ios
 
   build-android:
