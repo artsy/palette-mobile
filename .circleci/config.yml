@@ -52,13 +52,13 @@ workflows:
     jobs:
       - node/test:
           name: test
-          version: "18.15"
+          version: "20.9.0"
           pkg-manager: yarn
           run-command: "test"
 
       - node/run:
           name: type-check
-          version: "18.15"
+          version: "20.9.0"
           pkg-manager: yarn
           yarn-run: "type-check"
 
