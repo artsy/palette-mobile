@@ -13,9 +13,6 @@ only_main: &only_main
 
 jobs:
   build-ios:
-    executor:
-      name: node/default
-      tag: "20.9.0"
     macos:
       xcode: "15.1.0"
     steps:
@@ -31,9 +28,6 @@ jobs:
       - run: yarn ios
 
   build-android:
-    executor:
-      name: node/default
-      tag: "20.9.0"
     docker:
       - image: cimg/android:2023.12.1-node
     steps:
@@ -55,9 +49,6 @@ jobs:
 
 workflows:
   build-deploy:
-    executor:
-      name: node/default
-      tag: "20.9.0"
     jobs:
       - node/test:
           name: test
