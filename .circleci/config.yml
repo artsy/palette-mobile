@@ -40,8 +40,8 @@ jobs:
               circleci step halt
             fi
       - run:
-        name: Install ninja
-        command: sudo apt-get install ninja-build
+          name: Install ninja
+          command: sudo apt-get install ninja-build
       - run: yarn install
       - run:
           name: Build Android App
