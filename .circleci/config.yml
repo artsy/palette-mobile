@@ -39,6 +39,9 @@ jobs:
               echo "No relevant changes detected in Android files. Skipping Android build."
               circleci step halt
             fi
+      - run:
+        name: Install ninja
+        command: sudo apt-get install ninja-build
       - run: yarn install
       - run:
           name: Build Android App
