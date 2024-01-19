@@ -26,7 +26,7 @@ jobs:
             fi
       - run: bundle install
       - run: yarn install
-      - run: cd ios && bundle exec pod update hermes-engine —no-repo-update && cd ..
+      - run: cd ios && bundle exec pod update hermes-engine --no-repo-update && cd ..
       - run: yarn install:all
       - run: yarn ios
 
