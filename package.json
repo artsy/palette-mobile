@@ -135,7 +135,8 @@
     "@types/react": "^17.0.39"
   },
   "engines": {
-    "node": ">=16"
+    "node": "20.x",
+    "yarn": "1.x"
   },
   "files": [
     "dist"
