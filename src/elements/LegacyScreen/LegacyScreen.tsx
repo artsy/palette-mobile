@@ -204,13 +204,13 @@ const Body = ({
   )
 }
 
-const Background: React.FC<PropsWithChildren> = ({ children }) => (
+const Background: React.FC<PropsWithChildren<{}>> = ({ children }) => (
   <Flex position="absolute" top={0} bottom={0} left={0} right={0}>
     {children}
   </Flex>
 )
 
-const BottomView: React.FC<PropsWithChildren> = ({ children }) => {
+const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { setOptions } = useScreenContext()
   const insets = useSafeAreaInsets()
 

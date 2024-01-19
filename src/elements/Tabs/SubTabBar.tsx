@@ -9,7 +9,7 @@ import { useSpace } from "../../utils/hooks/useSpace"
  *
  * Useful for views where subcontent has a s
  */
-export const SubTabBar: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const SubTabBar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const { top } = useHeaderMeasurements()
   const scrollY = useCurrentTabScrollY()
   const space = useSpace()
