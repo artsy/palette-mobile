@@ -24,8 +24,8 @@ jobs:
               echo "No changes in iOS directory or Podfile.lock. Skipping build."
               circleci step halt
             fi
-      - run: yarn install:all
       - run: cd ios && bundle exec pod update hermes-engine —no-repo-update && cd ..
+      - run: yarn install:all
       - run: yarn ios
 
   build-android:
