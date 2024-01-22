@@ -80,8 +80,6 @@ workflows:
           requires:
             - test
             - type-check
-            - build-android
-            - build-ios
 
       - auto/publish:
           context: npm-deploy
