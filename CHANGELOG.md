@@ -1,3 +1,15 @@
+# v13.0.29 (Mon Jan 22 2024)
+
+#### 🐛 Bug Fix
+
+- chore: support animated sticky sub header [#176](https://github.com/artsy/palette-mobile/pull/176) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.28 (Fri Jan 12 2024)
 
 #### 🐛 Bug Fix
