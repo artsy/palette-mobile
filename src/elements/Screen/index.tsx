@@ -9,6 +9,7 @@ import { ScreenBase } from "./ScreenBase"
 import { ScreenFlatList } from "./ScreenFlatList"
 import { ScreenScrollContextProvider, useScreenScrollContext } from "./ScreenScrollContext"
 import { ScreenScrollView } from "./ScreenScrollView"
+import { StickySubHeader } from "./StickySubHeader"
 
 export * from "./constants"
 
@@ -24,6 +25,7 @@ export const Screen = Object.assign(ScreenBase, {
   Header,
   ScreenScrollContextProvider,
   ScrollView: ScreenScrollView,
+  StickySubHeader: StickySubHeader,
 
   // Hooks
   useScreenScrollContext,

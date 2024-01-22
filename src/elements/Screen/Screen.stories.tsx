@@ -81,6 +81,29 @@ storiesOf("Screen", module)
     </Screen>
   ))
 
+  .add("FlatList With AnimatedHeader and StickySubHeader", () => (
+    <Screen>
+      <Screen.AnimatedHeader title="Title" />
+
+      <Screen.StickySubHeader title="Title">
+        <Flex width="100%" height={60} backgroundColor="red10" />
+      </Screen.StickySubHeader>
+
+      <Screen.Body>
+        <Screen.FlatList
+          data={Array.from({ length: 50 }).map((_, i) => "Item " + i)}
+          renderItem={({ item, index }) => {
+            return (
+              <Text my={1} key={index}>
+                {item}
+              </Text>
+            )
+          }}
+        />
+      </Screen.Body>
+    </Screen>
+  ))
+
   .add("Fullwidth", () => (
     <Screen>
       <Screen.Header title="Title" />
