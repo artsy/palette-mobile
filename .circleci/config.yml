@@ -4,6 +4,65 @@ orbs:
   node: circleci/node@5.2.0
   auto: artsy/auto@2.1.0
   macos: circleci/macos@2.4.1
+  test-auto:
+    version: 2.1
+    description: "Publish NPM packages and canary deployments with Intuit's Auto"
+    orbs:
+      yarn: artsy/yarn@5.1.3
+      auto: auto/release@0.2.3
+      utils: artsy/orb-tools@0.5.0
+    executors:
+      node:
+        parameters:
+          node-version:
+            type: string
+            default: "14.18.1"
+        docker:
+          - image: cimg/node:<< parameters.node-version >>
+    jobs:
+      publish:
+        parameters:
+          node-version:
+            type: string
+            default: "14.18.1"
+          version:
+            type: string
+            default: v10.36.5
+          args:
+            type: string
+            default: ""
+        executor:
+          name: node
+          node-version: << parameters.node-version >>
+        environment:
+          AUTO_VERSION: << parameters.version >>
+        steps:
+          - yarn/pre-release
+          - auto/shipit:
+              arguments: << parameters.args >>
+      publish-canary:
+        parameters:
+          node-version:
+            type: string
+            default: "14.18.1"
+          version:
+            type: string
+            default: v10.36.5
+          args:
+            type: string
+            default: ""
+        executor:
+          name: node
+          node-version: << parameters.node-version >>
+        environment:
+          AUTO_VERSION: << parameters.version >>
+        steps:
+          - utils/skip-if-fork-or-not-pr:
+              pr-skip-message: "Skipping, only deploys canaries on PR builds"
+              fork-skip-message: "Skipping, can't deploy canaries from a fork"
+          - yarn/pre-release
+          - auto/canary:
+              arguments: << parameters.args >>
 
 only_main: &only_main
   context: hokusai
@@ -77,8 +136,9 @@ workflows:
             - test
             - type-check
 
-      - auto/publish-canary:
+      - test-auto/publish-canary:
           context: npm-deploy
+          node-version: "20.9.0"
           filters:
             branches:
               ignore: main
@@ -86,8 +146,9 @@ workflows:
             - test
             - type-check
 
-      - auto/publish:
+      - test-auto/publish:
           context: npm-deploy
+          node-version: "20.9.0"
           filters:
             branches:
               only: main
