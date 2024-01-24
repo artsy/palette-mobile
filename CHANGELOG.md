@@ -1,3 +1,16 @@
+# v13.0.30 (Wed Jan 24 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump react-native from 0.70.14 to 0.72.10 [#175](https://github.com/artsy/palette-mobile/pull/175) ([@gkartalis](https://github.com/gkartalis) [@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 2
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.0.29 (Mon Jan 22 2024)
 
 #### 🐛 Bug Fix
