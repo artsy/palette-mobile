@@ -27,7 +27,7 @@ export const ProgressBar = ({
   const width = useSharedValue("0%")
   const progress = clamp(unclampedProgress, 0, 100)
   const progressAnim = useAnimatedStyle(() => {
-    return { width: width.value }
+    return { width: Number(width.value) }
   })
 
   const [onCompletionCalled, setOnCompletionCalled] = useState(false)

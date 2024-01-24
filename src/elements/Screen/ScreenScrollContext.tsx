@@ -15,7 +15,9 @@ const ScreenScrollContext = createContext<ScreenScrollContextProps>({
   updateScrollYOffset: () => {},
 })
 
-export const ScreenScrollContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const ScreenScrollContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
+  children,
+}) => {
   const [currentScrollY, setCurrentScrollY] = useState(0)
   const [scrollYOffset, setScrollYOffset] =
     useState<ScreenScrollContextProps["scrollYOffset"]>(undefined)

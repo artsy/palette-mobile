@@ -1,15 +1,20 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.1.0
-  auto: artsy/auto@2.1.0
-  macos: circleci/macos@2.4.0
+  node: circleci/node@5.2.0
+  auto: artsy/auto@2.2.0
+  macos: circleci/macos@2.4.1
 
 only_main: &only_main
   context: hokusai
   filters:
     branches:
       only: main
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:20.9.0
 
 jobs:
   build-ios:
@@ -29,7 +34,7 @@ jobs:
 
   build-android:
     docker:
-      - image: cimg/android:2023.11.1-node
+      - image: cimg/android:2023.12.1-node
     steps:
       - checkout
       - run:
@@ -39,6 +44,9 @@ jobs:
               echo "No relevant changes detected in Android files. Skipping Android build."
               circleci step halt
             fi
+      - run:
+          name: Install ninja
+          command: sudo apt-get install ninja-build
       - run: yarn install
       - run:
           name: Build Android App
@@ -49,13 +57,13 @@ workflows:
     jobs:
       - node/test:
           name: test
-          version: "18.15"
+          version: "20.9.0"
           pkg-manager: yarn
           run-command: "test"
 
       - node/run:
           name: type-check
-          version: "18.15"
+          version: "20.9.0"
           pkg-manager: yarn
           yarn-run: "type-check"
 
@@ -71,6 +79,7 @@ workflows:
 
       - auto/publish-canary:
           context: npm-deploy
+          node-version: "20.9.0"
           filters:
             branches:
               ignore: main
@@ -80,6 +89,7 @@ workflows:
 
       - auto/publish:
           context: npm-deploy
+          node-version: "20.9.0"
           filters:
             branches:
               only: main

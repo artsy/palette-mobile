@@ -2,6 +2,7 @@ import { themeGet } from "@styled-system/theme-get"
 import { useState } from "react"
 import {
   AccessibilityProps,
+  Insets,
   PixelRatio,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -17,7 +18,10 @@ import { Text } from "../Text"
 const CHECKBOX_SIZE = 20
 const DURATION = 250
 
-export interface CheckboxProps extends TouchableWithoutFeedbackProps, FlexProps {
+export interface CheckboxProps
+  extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
+    Omit<FlexProps, "hitSlop"> {
+  hitSlop?: Insets
   checked?: boolean
   disabled?: boolean
   error?: boolean

@@ -1,5 +1,6 @@
 import { themeGet } from "@styled-system/theme-get"
 import {
+  Insets,
   PixelRatio,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -15,7 +16,10 @@ import { Text } from "../Text"
 const RADIOBUTTON_SIZE = 20
 const DURATION = 150
 
-export interface RadioButtonProps extends TouchableWithoutFeedbackProps, FlexProps {
+export interface RadioButtonProps
+  extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
+    Omit<FlexProps, "hitSlop"> {
+  hitSlop?: Insets
   selected?: boolean
   focused?: boolean
   disabled?: boolean
