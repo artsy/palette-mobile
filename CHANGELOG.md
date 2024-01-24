@@ -1,3 +1,15 @@
+# v13.0.31 (Wed Jan 24 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support listening for screen events [#177](https://github.com/artsy/palette-mobile/pull/177) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.30 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix
