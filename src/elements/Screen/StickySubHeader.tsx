@@ -10,11 +10,12 @@ import { Text } from "../Text"
 
 export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   title: string
+  subTitle?: string
 }
 
 const STICKY_BAR_HEIGHT = 52
 
-export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, children }) => {
+export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitle, children }) => {
   const { currentScrollY, scrollYOffset = 0 } = useScreenScrollContext()
   const space = useSpace()
 
@@ -45,6 +46,11 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, childre
           <Text variant="lg-display" color="white100">
             {title}
           </Text>
+          {subTitle && (
+            <Text variant="xs" mt={0.5} color="white100">
+              {subTitle}
+            </Text>
+          )}
         </Flex>
       )}
 
@@ -60,9 +66,14 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, childre
         }}
       >
         {/* If we don't specify a height for the text, we will get text jumps as the parent component height changes  */}
-        <Text variant="lg-display" style={{ height: stickyBarHeight }}>
-          {title}
-        </Text>
+        <Flex style={{ height: stickyBarHeight }}>
+          <Text variant="lg-display">{title}</Text>
+          {subTitle && (
+            <Text variant="xs" mt={0.5}>
+              {subTitle}
+            </Text>
+          )}
+        </Flex>
       </MotiView>
 
       {children}
