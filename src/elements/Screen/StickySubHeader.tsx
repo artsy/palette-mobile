@@ -46,7 +46,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
           <Text variant="lg-display" color="white100">
             {title}
           </Text>
-          {subTitle && (
+          {!!subTitle && (
             <Text variant="xs" mt={0.5} color="white100">
               {subTitle}
             </Text>
