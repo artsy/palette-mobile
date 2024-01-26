@@ -1,3 +1,15 @@
+# v13.0.32 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support dynamic height for sticky tabs [#178](https://github.com/artsy/palette-mobile/pull/178) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.31 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix
