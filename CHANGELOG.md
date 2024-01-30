@@ -1,3 +1,15 @@
+# v13.0.33 (Tue Jan 30 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump react-native-svg from 13.7.0 to .14.1.0 [#179](https://github.com/artsy/palette-mobile/pull/179) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.0.32 (Fri Jan 26 2024)
 
 #### 🐛 Bug Fix
