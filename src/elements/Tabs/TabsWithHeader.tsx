@@ -6,7 +6,7 @@ import { HeaderProps } from "../Screen/Header"
 import { Text } from "../Text"
 
 export interface TabsWithHeaderProps extends TabsContainerProps {
-  title: string
+  title: string | JSX.Element
   BelowTitleHeaderComponent?: () => JSX.Element
   headerProps?: HeaderProps
   showLargeHeaderText?: boolean
