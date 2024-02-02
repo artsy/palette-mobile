@@ -1,3 +1,15 @@
+# v13.0.34 (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- feat(constants): Add global opacity setter [#181](https://github.com/artsy/palette-mobile/pull/181) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v13.0.33 (Tue Jan 30 2024)
 
 #### 🐛 Bug Fix
