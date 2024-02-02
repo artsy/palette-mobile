@@ -20,7 +20,7 @@ export interface HeaderProps {
   scrollY?: number
   // For header with more content use the offset to achieve a more granular control when to show the animated header
   scrollYOffset?: number
-  title?: string
+  title?: string | JSX.Element
   titleProps?: FlexProps
   titleShown?: boolean
 }
