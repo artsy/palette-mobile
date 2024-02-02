@@ -6,6 +6,7 @@ import {
   MaterialTabItem,
   TabItemProps,
 } from "react-native-collapsible-tab-view"
+import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
 import { Box } from "../Box"
@@ -79,7 +80,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                     <Flex position="absolute" width="100%">
                       {!!Indicator?.Component && <Indicator.Component {...props} />}
                     </Flex>
-                    <MaterialTabItem {...props} />
+                    <MaterialTabItem pressOpacity={DEFAULT_ACTIVE_OPACITY} {...props} />
                   </Box>
                 )
               }}
