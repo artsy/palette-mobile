@@ -1,3 +1,15 @@
+# v13.0.35 (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): Ensure tabs use default active opacity [#182](https://github.com/artsy/palette-mobile/pull/182) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v13.0.34 (Fri Feb 02 2024)
 
 #### 🐛 Bug Fix
