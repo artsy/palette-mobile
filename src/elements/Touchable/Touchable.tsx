@@ -6,6 +6,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
+import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { Color } from "../../types"
 import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
@@ -58,7 +59,7 @@ export const Touchable: React.FC<TouchableProps> = ({
   ) : (
     <TouchableHighlight
       underlayColor={underlayColor ?? "transparent"}
-      activeOpacity={0.8}
+      activeOpacity={DEFAULT_ACTIVE_OPACITY}
       {...props}
       onPress={onPressWrapped}
     >
