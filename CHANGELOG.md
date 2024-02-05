@@ -1,3 +1,15 @@
+# v13.1.0 (Mon Feb 05 2024)
+
+#### 🚀 Enhancement
+
+- feat(avatar): Fade in on load [#180](https://github.com/artsy/palette-mobile/pull/180) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v13.0.36 (Fri Feb 02 2024)
 
 #### 🐛 Bug Fix
