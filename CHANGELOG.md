@@ -1,3 +1,15 @@
+# v13.1.1 (Fri Feb 09 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support gap columnGap and rowGap in Box, Flex [#184](https://github.com/artsy/palette-mobile/pull/184) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.1.0 (Mon Feb 05 2024)
 
 #### 🚀 Enhancement
