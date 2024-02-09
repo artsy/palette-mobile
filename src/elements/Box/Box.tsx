@@ -1,4 +1,4 @@
-import { View, ViewProps } from "react-native"
+import { View, ViewProps, ViewStyle } from "react-native"
 import styled from "styled-components/native"
 import {
   border,
@@ -18,6 +18,12 @@ import {
 } from "styled-system"
 import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
 
+type GapProps = {
+  gap?: ViewStyle["gap"]
+  rowGap?: ViewStyle["rowGap"]
+  columnGap?: ViewStyle["columnGap"]
+}
+
 export interface BoxProps
   extends ViewProps,
     SpaceProps<SpacingUnitsTheme>,
@@ -26,6 +32,7 @@ export interface BoxProps
     LayoutProps,
     PositionProps,
     BorderProps,
+    GapProps,
     TextAlignProps {}
 
 /**
