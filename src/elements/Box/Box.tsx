@@ -26,7 +26,7 @@ type GapProps = {
 }
 
 const gap = (props: GapProps) => css`
-  gap: ${props.gap};
+  gap: ${props.gap}px;
   column-gap: ${props.columnGap}px;
   row-gap: ${props.rowGap}px;
 `
