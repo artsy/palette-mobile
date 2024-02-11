@@ -1,3 +1,15 @@
+# v13.1.2 (Sun Feb 11 2024)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): Fix padding on large title [#185](https://github.com/artsy/palette-mobile/pull/185) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
 # v13.1.1 (Fri Feb 09 2024)
 
 #### 🐛 Bug Fix
