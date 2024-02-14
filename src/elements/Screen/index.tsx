@@ -5,6 +5,7 @@ import { FloatingHeader } from "./FloatingHeader"
 import { FullWidthDivider } from "./FullWidthDivider"
 import { FullWidthItem } from "./FullWidthItem"
 import { AnimatedHeader, Header } from "./Header"
+import { LazyScrollContext } from "./LazyScrollContext"
 import { ScreenBase } from "./ScreenBase"
 import { ScreenFlatList } from "./ScreenFlatList"
 import { ScreenScrollContextProvider, useScreenScrollContext } from "./ScreenScrollContext"
@@ -31,4 +32,5 @@ export const Screen = Object.assign(ScreenBase, {
   // Hooks
   useListenForScreenScroll,
   useScreenScrollContext,
+  LazyScrollContext,
 })
