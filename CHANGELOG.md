@@ -1,3 +1,15 @@
+# v13.1.3 (Thu Feb 15 2024)
+
+#### 🐛 Bug Fix
+
+- fix: disable width calculation if no long text is specified [#187](https://github.com/artsy/palette-mobile/pull/187) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.2 (Sun Feb 11 2024)
 
 #### 🐛 Bug Fix
