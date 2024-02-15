@@ -194,7 +194,7 @@ export const Button: React.FC<ButtonProps> = ({
                       This will result in us being able to use getByText over
                       getAllByText()[0] to select the buttons in the test environment.
                   */}
-                  {!__TEST__ && (
+                  {!__TEST__ && longestText && (
                     <MeasuredView setMeasuredState={setLongestTextMeasurements}>
                       <Text color="red" style={textStyle}>
                         {longestText ? longestText : children}
@@ -204,7 +204,7 @@ export const Button: React.FC<ButtonProps> = ({
                   <AnimatedText
                     style={[
                       {
-                        width: Math.ceil(longestTextMeasurements.width),
+                        width: longestText ? Math.ceil(longestTextMeasurements.width) : "auto",
                         color: springProps.textColor,
                         textDecorationLine: springProps.textDecorationLine,
                       },
