@@ -1,3 +1,15 @@
+# v13.1.4 (Thu Feb 15 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add Screen.LazyScrollContext [#186](https://github.com/artsy/palette-mobile/pull/186) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.3 (Thu Feb 15 2024)
 
 #### 🐛 Bug Fix
