@@ -24,6 +24,8 @@ export interface ImageProps extends CustomFastImageProps {
   src: string
   /** Gemini resize_to param  */
   geminiResizeMode?: GeminiResizeMode
+  /** Show loading state  */
+  showLoadingState?: boolean
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -35,11 +37,20 @@ export const Image: React.FC<ImageProps> = ({
   style,
   resizeMode,
   geminiResizeMode,
+  showLoadingState = false,
   ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
   const dimensions = useImageDimensions({ aspectRatio, width, height })
   const color = useColor()
+
+  if (showLoadingState) {
+    return (
+      <Skeleton>
+        <SkeletonBox {...dimensions} />
+      </Skeleton>
+    )
+  }
 
   let uri = src
   if (performResize) {
