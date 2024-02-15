@@ -1,7 +1,7 @@
 import { ReactElement } from "react"
-import { useHasSeenItem } from "./hooks/useHasSeenItem"
+import { useHasSeenItem } from "./useHasSeenItem"
 
-export function LazyScrollContext<T>(props: {
+export function LazyFlatlist<T>(props: {
   keyExtractor: (item: T) => string
   children: (props: {
     viewedItems: Set<string>

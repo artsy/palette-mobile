@@ -24,15 +24,8 @@ export interface ImageProps extends CustomFastImageProps {
   src: string
   /** Gemini resize_to param  */
   geminiResizeMode?: GeminiResizeMode
-  /**
-   *
-   * Delay rendering component
-   * As long as this is set to true, the component will render a skeleton and we won't load the image
-   * This is useful for cases where we want to delay the rendering of the image for performance issues
-   *
-   **/
-  //
-  delayRendering?: boolean
+  /** Show loading state  */
+  showLoadingState?: boolean
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -44,14 +37,14 @@ export const Image: React.FC<ImageProps> = ({
   style,
   resizeMode,
   geminiResizeMode,
-  delayRendering = false,
+  showLoadingState = false,
   ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
   const dimensions = useImageDimensions({ aspectRatio, width, height })
   const color = useColor()
 
-  if (delayRendering) {
+  if (showLoadingState) {
     return (
       <Skeleton>
         <SkeletonBox {...dimensions} />
