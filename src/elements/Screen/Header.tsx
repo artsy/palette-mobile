@@ -1,3 +1,4 @@
+import { MotiView } from "moti"
 import React from "react"
 import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
@@ -101,9 +102,15 @@ const Center: React.FC<{
         }}
       >
         <Flex alignItems="center" width="100%" {...titleProps}>
-          <Text variant="sm-display" numberOfLines={1}>
-            {title}
-          </Text>
+          <MotiView
+            animate={{
+              opacity: display === "flex" ? 1 : 0,
+            }}
+          >
+            <Text variant="sm-display" numberOfLines={1}>
+              {title}
+            </Text>
+          </MotiView>
         </Flex>
       </Animated.View>
     </Flex>
