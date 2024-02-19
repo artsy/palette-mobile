@@ -28,7 +28,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
 
   // The styles are kept in a variable to make sure they're always in sync with the hidden text component
   const styles = {
-    paddingVertical: space(1),
+    paddingVertical: visible ? space(1) : 0,
     paddingHorizontal: space(2),
   }
 
