@@ -1,3 +1,15 @@
+# v13.1.5 (Tue Feb 20 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Screen header improvements [#188](https://github.com/artsy/palette-mobile/pull/188) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.4 (Thu Feb 15 2024)
 
 #### 🐛 Bug Fix
