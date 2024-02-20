@@ -1,3 +1,4 @@
+import { MotiView } from "moti"
 import React from "react"
 import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
@@ -26,11 +27,7 @@ export interface HeaderProps {
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
-  const { currentScrollY, scrollYOffset } = useScreenScrollContext()
-
-  return (
-    <Header scrollY={currentScrollY} scrollYOffset={scrollYOffset} animated={true} {...props} />
-  )
+  return <Header animated={true} {...props} />
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -41,85 +38,9 @@ export const Header: React.FC<HeaderProps> = ({
   leftElements,
   onBack,
   rightElements,
-  scrollY = 0,
-  scrollYOffset = 0,
   title,
   titleProps = {},
 }) => {
-  const Left = () => {
-    if (hideLeftElements) {
-      return null
-    }
-
-    return (
-      <Flex pr={1} width={50}>
-        {leftElements ? (
-          <>{leftElements}</>
-        ) : (
-          // If no left elements passed, show back button
-          <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
-            <ArrowLeftIcon fill="onBackgroundHigh" top="2px" />
-          </Touchable>
-        )}
-
-        <Spacer x={1} />
-      </Flex>
-    )
-  }
-
-  const Center = () => {
-    if (hideTitle) {
-      return null
-    }
-
-    if (!animated) {
-      return (
-        <Flex flex={1} flexDirection="row">
-          <Flex alignItems="center" width="100%" {...titleProps}>
-            <Text variant="sm-display" numberOfLines={1}>
-              {title}
-            </Text>
-          </Flex>
-        </Flex>
-      )
-    }
-
-    // Show / hide the title to avoid rerenders, which retrigger the animation
-    const display = scrollY < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
-
-    return (
-      <Flex flex={1} flexDirection="row">
-        <Animated.View
-          entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
-          exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
-          style={{
-            display,
-            flex: 1,
-          }}
-        >
-          <Flex alignItems="center" width="100%" {...titleProps}>
-            <Text variant="sm-display" numberOfLines={1}>
-              {title}
-            </Text>
-          </Flex>
-        </Animated.View>
-      </Flex>
-    )
-  }
-
-  const Right = () => {
-    if (hideRightElements) {
-      return null
-    }
-
-    return (
-      <Flex width={50} alignItems="flex-end">
-        <Spacer x={1} />
-        {rightElements}
-      </Flex>
-    )
-  }
-
   return (
     <Flex
       height={NAVBAR_HEIGHT}
@@ -131,9 +52,87 @@ export const Header: React.FC<HeaderProps> = ({
       alignItems="center"
       width="100%"
     >
-      <Left />
-      <Center />
-      <Right />
+      {!hideLeftElements && <Left leftElements={leftElements} onBack={onBack} />}
+
+      {!hideTitle && <Center animated={animated} titleProps={titleProps} title={title} />}
+      {!hideRightElements && !!rightElements && <Right rightElements={rightElements} />}
+    </Flex>
+  )
+}
+
+const Right: React.FC<{ rightElements: React.ReactNode }> = ({ rightElements }) => {
+  return (
+    <Flex width={50} alignItems="flex-end">
+      <Spacer x={1} />
+      {rightElements}
+    </Flex>
+  )
+}
+
+const Center: React.FC<{
+  animated: boolean
+  titleProps: HeaderProps["titleProps"]
+  title: HeaderProps["title"]
+}> = ({ animated, titleProps, title }) => {
+  const { scrollYOffset = 0, currentScrollY = 0 } = useScreenScrollContext()
+
+  if (!animated) {
+    return (
+      <Flex flex={1} flexDirection="row">
+        <Flex alignItems="center" width="100%" {...titleProps}>
+          <Text variant="sm-display" numberOfLines={1}>
+            {title}
+          </Text>
+        </Flex>
+      </Flex>
+    )
+  }
+
+  // Show / hide the title to avoid rerenders, which retrigger the animation
+  const display = currentScrollY < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
+
+  return (
+    <Flex flex={1} flexDirection="row">
+      <Animated.View
+        entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
+        exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
+        style={{
+          display,
+          flex: 1,
+        }}
+      >
+        <Flex alignItems="center" width="100%" {...titleProps}>
+          <MotiView
+            animate={{
+              opacity: display === "flex" ? 1 : 0,
+            }}
+          >
+            <Text variant="sm-display" numberOfLines={1}>
+              {title}
+            </Text>
+          </MotiView>
+        </Flex>
+      </Animated.View>
+    </Flex>
+  )
+}
+
+const Left: React.FC<{
+  leftElements: HeaderProps["leftElements"]
+  onBack: HeaderProps["onBack"]
+}> = ({ leftElements, onBack }) => {
+  return (
+    <Flex pr={1} width={50}>
+      {leftElements ? (
+        <>{leftElements}</>
+      ) : (
+        // If no left elements passed, show back button
+        <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
+          <ArrowLeftIcon fill="onBackgroundHigh" top="2px" />
+        </Touchable>
+      )}
+
+      <Spacer x={1} />
     </Flex>
   )
 }
