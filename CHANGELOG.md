@@ -1,3 +1,15 @@
+# v13.1.8 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: title centering when no right element is present [#190](https://github.com/artsy/palette-mobile/pull/190) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.7 (Wed Feb 21 2024)
 
 #### 🐛 Bug Fix
