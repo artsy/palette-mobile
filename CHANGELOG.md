@@ -1,3 +1,15 @@
+# v13.1.7 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: content jump after switching tabs [#189](https://github.com/artsy/palette-mobile/pull/189) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.6 (Wed Feb 21 2024)
 
 #### ⚠️ Pushed to `main`
