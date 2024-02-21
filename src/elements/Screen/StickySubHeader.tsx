@@ -1,7 +1,6 @@
-import { MotiView } from "moti"
 import React, { useState } from "react"
 import { LayoutChangeEvent } from "react-native"
-import { useDerivedValue } from "react-native-reanimated"
+import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT } from "./constants"
 import { useSpace } from "../../utils/hooks"
@@ -14,7 +13,7 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   subTitle?: string
 }
 
-const STICKY_BAR_HEIGHT = 52
+const STICKY_BAR_HEIGHT = 42
 
 export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitle, children }) => {
   const { currentScrollY, scrollYOffset = 0 } = useScreenScrollContext()
@@ -26,17 +25,32 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
     if (stickyBarHeight === null) {
       return true
     }
-    return currentScrollY >= NAVBAR_HEIGHT + scrollYOffset
-  })
+    return currentScrollY < NAVBAR_HEIGHT + scrollYOffset
+  }, [currentScrollY, scrollYOffset, stickyBarHeight])
 
   const handleLayout = (event: LayoutChangeEvent) => {
     setStickyHeaderHeight(event.nativeEvent.layout.height)
   }
 
   // The styles are kept in a variable to make sure they're always in sync with the hidden text component
-  const styles = {
+  const sharedStyles = {
     paddingHorizontal: space(2),
   }
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      height: withTiming(visible.value ? stickyBarHeight || STICKY_BAR_HEIGHT : 0, {
+        duration: 100,
+      }),
+      transform: [
+        {
+          translateY: withTiming(visible.value ? 0 : -(stickyBarHeight || STICKY_BAR_HEIGHT), {
+            duration: 100,
+          }),
+        },
+      ],
+    }
+  })
 
   return (
     <Flex>
@@ -47,7 +61,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
           position="absolute"
           backgroundColor="white100"
           zIndex={-1000}
-          style={styles}
+          style={sharedStyles}
         >
           <Flex mb={1}>
             <Text variant="lg-display" color="white100">
@@ -62,22 +76,14 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
         </Flex>
       )}
 
-      <MotiView
-        animate={{
-          height: visible.value ? stickyBarHeight || undefined : 0,
-          transform: [{ translateY: visible.value ? 0 : -(stickyBarHeight || STICKY_BAR_HEIGHT) }],
-        }}
-        style={styles}
-        transition={{
-          type: "timing",
-          duration: 100,
-        }}
-      >
+      <Animated.View style={[sharedStyles, animatedStyles]}>
         {/* If we don't specify a height for the text, we will get text jumps as the parent component height changes  */}
         <Flex style={{ height: stickyBarHeight }} mb={1}>
-          <MotiView
-            animate={{
-              opacity: visible.value ? 1 : 0,
+          <Animated.View
+            style={{
+              opacity: withTiming(visible.value ? 1 : 0, {
+                duration: 100,
+              }),
             }}
           >
             <Text variant="lg-display">{title}</Text>
@@ -86,9 +92,9 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
                 {subTitle}
               </Text>
             )}
-          </MotiView>
+          </Animated.View>
         </Flex>
-      </MotiView>
+      </Animated.View>
 
       {children}
       <Separator borderColor="black10" />
