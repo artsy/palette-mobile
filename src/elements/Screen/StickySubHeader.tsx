@@ -79,20 +79,12 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
       <Animated.View style={[sharedStyles, animatedStyles]}>
         {/* If we don't specify a height for the text, we will get text jumps as the parent component height changes  */}
         <Flex style={{ height: stickyBarHeight }} mb={1}>
-          <Animated.View
-            style={{
-              opacity: withTiming(visible.value ? 1 : 0, {
-                duration: 100,
-              }),
-            }}
-          >
-            <Text variant="lg-display">{title}</Text>
-            {subTitle && (
-              <Text variant="xs" mt={0.5}>
-                {subTitle}
-              </Text>
-            )}
-          </Animated.View>
+          <Text variant="lg-display">{title}</Text>
+          {subTitle && (
+            <Text variant="xs" mt={0.5}>
+              {subTitle}
+            </Text>
+          )}
         </Flex>
       </Animated.View>
 
