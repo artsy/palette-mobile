@@ -1,3 +1,15 @@
+# v13.1.9 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: opacity animation in android [#191](https://github.com/artsy/palette-mobile/pull/191) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.8 (Wed Feb 21 2024)
 
 #### 🐛 Bug Fix
