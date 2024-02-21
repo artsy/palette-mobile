@@ -52,15 +52,21 @@ export const Header: React.FC<HeaderProps> = ({
       alignItems="center"
       width="100%"
     >
-      {!hideLeftElements && <Left leftElements={leftElements} onBack={onBack} />}
-
-      {!hideTitle && <Center animated={animated} titleProps={titleProps} title={title} />}
-      {!hideRightElements && !!rightElements && <Right rightElements={rightElements} />}
+      <Left leftElements={leftElements} onBack={onBack} hideLeftElements={hideLeftElements} />
+      <Center animated={animated} titleProps={titleProps} title={title} hideTitle={hideTitle} />
+      <Right rightElements={rightElements} hideRightElements={hideRightElements} />
     </Flex>
   )
 }
 
-const Right: React.FC<{ rightElements: React.ReactNode }> = ({ rightElements }) => {
+const Right: React.FC<{
+  hideRightElements: HeaderProps["hideRightElements"]
+  rightElements: React.ReactNode
+}> = ({ hideRightElements, rightElements }) => {
+  if (hideRightElements) {
+    return null
+  }
+
   return (
     <Flex width={50} alignItems="flex-end">
       <Spacer x={1} />
@@ -71,14 +77,19 @@ const Right: React.FC<{ rightElements: React.ReactNode }> = ({ rightElements }) 
 
 const Center: React.FC<{
   animated: boolean
+  hideTitle: HeaderProps["hideTitle"]
   titleProps: HeaderProps["titleProps"]
   title: HeaderProps["title"]
-}> = ({ animated, titleProps, title }) => {
+}> = ({ animated, hideTitle, titleProps, title }) => {
   const { scrollYOffset = 0, currentScrollY = 0 } = useScreenScrollContext()
+
+  if (hideTitle) {
+    return null
+  }
 
   if (!animated) {
     return (
-      <Flex flex={1} flexDirection="row">
+      <Flex flex={1} flexDirection="row" width="100%">
         <Flex alignItems="center" width="100%" {...titleProps}>
           <Text variant="sm-display" numberOfLines={1}>
             {title}
@@ -118,9 +129,14 @@ const Center: React.FC<{
 }
 
 const Left: React.FC<{
+  hideLeftElements: HeaderProps["hideLeftElements"]
   leftElements: HeaderProps["leftElements"]
   onBack: HeaderProps["onBack"]
-}> = ({ leftElements, onBack }) => {
+}> = ({ hideLeftElements, leftElements, onBack }) => {
+  if (hideLeftElements) {
+    return null
+  }
+
   return (
     <Flex pr={1} width={50}>
       {leftElements ? (
