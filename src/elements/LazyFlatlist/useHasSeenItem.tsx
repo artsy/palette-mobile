@@ -7,7 +7,7 @@ export const useHasSeenItem = <T,>({ keyExtractor }: { keyExtractor: (item: T) =
 
   const viewabilityConfig = useRef<ViewabilityConfig>({
     // Percent of of the item that is visible for a partially occluded item to count as "viewable"
-    itemVisiblePercentThreshold: 80,
+    itemVisiblePercentThreshold: 20,
     minimumViewTime: 300,
     waitForInteraction: false,
   }).current
