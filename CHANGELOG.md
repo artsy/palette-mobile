@@ -1,3 +1,15 @@
+# v13.1.6 (Wed Feb 21 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update README.md ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.5 (Tue Feb 20 2024)
 
 #### 🐛 Bug Fix
