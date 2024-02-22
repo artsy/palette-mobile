@@ -1,9 +1,13 @@
-import { MotiView } from "moti"
-import { useState } from "react"
-import { InteractionManager, PixelRatio } from "react-native"
+import { memo } from "react"
+import { PixelRatio } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
-import { Easing } from "react-native-reanimated"
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated"
 import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -31,64 +35,68 @@ export interface ImageProps extends CustomFastImageProps {
   src: string
 }
 
-export const Image: React.FC<ImageProps> = ({
-  aspectRatio,
-  width,
-  height,
-  performResize = true,
-  src,
-  style,
-  resizeMode,
-  geminiResizeMode,
-  showLoadingState = false,
-  blurhash,
-  ...flexProps
-}) => {
-  const [loading, setLoading] = useState(true)
-  const dimensions = useImageDimensions({ aspectRatio, width, height })
-  const color = useColor()
+export const Image: React.FC<ImageProps> = memo(
+  ({
+    aspectRatio,
+    width,
+    height,
+    performResize = true,
+    src,
+    style,
+    resizeMode,
+    geminiResizeMode,
+    showLoadingState = false,
+    blurhash,
+    ...flexProps
+  }) => {
+    const loading = useSharedValue(true)
+    const dimensions = useImageDimensions({ aspectRatio, width, height })
+    const color = useColor()
 
-  if (showLoadingState) {
-    return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
-  }
-
-  let uri = src
-  if (performResize) {
-    uri = createGeminiUrl({
-      imageURL: src,
-      width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
-      height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
-      resizeMode: geminiResizeMode,
+    const animatedStyles = useAnimatedStyle(() => {
+      return {
+        opacity: withTiming(loading.value ? 1 : 0, { duration: 200, easing: Easing.sin }),
+      }
     })
+
+    if (showLoadingState) {
+      return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+    }
+
+    let uri = src
+    if (performResize) {
+      uri = createGeminiUrl({
+        imageURL: src,
+        width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
+        height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
+        resizeMode: geminiResizeMode,
+      })
+    }
+
+    const onAnimationEnd = () => {
+      "worklet"
+      loading.value = false
+    }
+
+    return (
+      <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
+        <FastImage
+          style={[dimensions, style, { backgroundColor: color("black30") }]}
+          resizeMode={resizeMode}
+          onLoadEnd={onAnimationEnd}
+          source={{
+            priority: FastImage.priority.normal,
+            uri,
+          }}
+        />
+
+        <Animated.View style={[dimensions, { position: "absolute" }, animatedStyles]}>
+          <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+        </Animated.View>
+      </Flex>
+    )
   }
-
-  return (
-    <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
-      <FastImage
-        style={[dimensions, style, { backgroundColor: color("black30") }]}
-        resizeMode={resizeMode}
-        onLoadEnd={() =>
-          InteractionManager.runAfterInteractions(() => {
-            setLoading(false)
-          })
-        }
-        source={{
-          priority: FastImage.priority.normal,
-          uri,
-        }}
-      />
-
-      <MotiView
-        from={{ opacity: 0 }}
-        animate={{ opacity: loading ? 1 : 0 }}
-        transition={{ type: "timing", duration: 200, easing: Easing.sin }}
-        style={{ ...dimensions, position: "absolute" }}
-      >
-        <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
-      </MotiView>
-    </Flex>
-  )
-}
+)
 
 const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "height">) => {
   const screenDimensions = useScreenDimensions()
