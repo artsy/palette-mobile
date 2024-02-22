@@ -1,6 +1,6 @@
 import { MotiView } from "moti"
 import { useState } from "react"
-import { PixelRatio } from "react-native"
+import { InteractionManager, PixelRatio } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import { Easing } from "react-native-reanimated"
@@ -16,7 +16,7 @@ export interface ImageProps extends CustomFastImageProps {
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
   aspectRatio?: number
   /** BlurHash code */
-  blurhash?: string
+  blurhash?: string | null | undefined
   /** Gemini resize_to param  */
   geminiResizeMode?: GeminiResizeMode
   /** Resize on the fly using Gemini. Defaults to true */
@@ -45,16 +45,11 @@ export const Image: React.FC<ImageProps> = ({
   ...flexProps
 }) => {
   const [loading, setLoading] = useState(true)
-  const [hideSkeleton, setHideSkeleton] = useState(false)
   const dimensions = useImageDimensions({ aspectRatio, width, height })
   const color = useColor()
 
   if (showLoadingState) {
-    return (
-      <Skeleton>
-        <SkeletonBox {...dimensions} />
-      </Skeleton>
-    )
+    return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
   }
 
   let uri = src
@@ -68,29 +63,29 @@ export const Image: React.FC<ImageProps> = ({
   }
 
   return (
-    <Flex position="relative" {...flexProps}>
-      <MotiView
-        animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ type: "timing", duration: 400, easing: Easing.sin }}
-        onDidAnimate={(_, didAnimationFinish, __, { attemptedValue }) => {
-          if (didAnimationFinish && attemptedValue === 1) {
-            setHideSkeleton(true)
-          }
+    <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
+      <FastImage
+        style={[dimensions, style, { backgroundColor: color("black30") }]}
+        resizeMode={resizeMode}
+        onLoadEnd={() =>
+          InteractionManager.runAfterInteractions(() => {
+            setLoading(false)
+          })
+        }
+        source={{
+          priority: FastImage.priority.normal,
+          uri,
         }}
-      >
-        <FastImage
-          style={[dimensions, style, { backgroundColor: color("black30") }]}
-          resizeMode={resizeMode}
-          onLoadStart={() => setLoading(true)}
-          onLoadEnd={() => setLoading(false)}
-          source={{
-            priority: FastImage.priority.normal,
-            uri,
-          }}
-        />
-      </MotiView>
+      />
 
-      {!hideSkeleton && <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />}
+      <MotiView
+        from={{ opacity: 0 }}
+        animate={{ opacity: loading ? 1 : 0 }}
+        transition={{ type: "timing", duration: 200, easing: Easing.sin }}
+        style={{ ...dimensions, position: "absolute" }}
+      >
+        <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+      </MotiView>
     </Flex>
   )
 }
@@ -121,19 +116,22 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
   return dimensions
 }
 
-type ImageSkeletonProps = { dimensions: { width: number; height: number }; blurhash?: string }
+type ImageSkeletonProps = {
+  dimensions: { width: number; height: number }
+  blurhash?: string | null | undefined
+}
 
 const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash }) => {
   if (!!blurhash) {
     return (
-      <Flex position="absolute" zIndex={-1} {...dimensions}>
+      <Flex position="absolute" backgroundColor="black10" {...dimensions}>
         <Blurhash blurhash={blurhash} style={{ flex: 1 }} />
       </Flex>
     )
   }
 
   return (
-    <Flex position="absolute" zIndex={-1}>
+    <Flex position="absolute">
       <Skeleton>
         <SkeletonBox {...dimensions} />
       </Skeleton>
