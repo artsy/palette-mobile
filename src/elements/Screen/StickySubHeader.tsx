@@ -10,12 +10,19 @@ import { Text } from "../Text"
 
 export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   title: string
+  separatorComponent?: React.ReactNode
   subTitle?: string
 }
 
 const STICKY_BAR_HEIGHT = 42
+const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black10" />
 
-export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitle, children }) => {
+export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
+  title,
+  separatorComponent = DEFAULT_SEPARATOR_COMPONENT,
+  subTitle,
+  children,
+}) => {
   const { currentScrollY, scrollYOffset = 0 } = useScreenScrollContext()
   const space = useSpace()
 
@@ -89,7 +96,8 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({ title, subTitl
       </Animated.View>
 
       {children}
-      <Separator borderColor="black10" />
+
+      {separatorComponent}
     </Flex>
   )
 }
