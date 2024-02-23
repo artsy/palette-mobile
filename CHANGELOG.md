@@ -1,3 +1,15 @@
+# v13.1.10 (Fri Feb 23 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add seperatorComponent prop to StickySubHeader [#192](https://github.com/artsy/palette-mobile/pull/192) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v13.1.9 (Wed Feb 21 2024)
 
 #### 🐛 Bug Fix
