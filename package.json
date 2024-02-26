@@ -41,6 +41,7 @@
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
     "react-nanny": "^2.15.0",
+    "react-native-blurhash": "^1.1.11",
     "react-native-collapsible-tab-view": "6.2.1",
     "react-native-fast-image": "^8.6.3",
     "react-native-pager-view": "^6.2.0",
@@ -58,7 +59,8 @@
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
     "react-native-svg": "*",
-    "styled-components": ">= 5"
+    "styled-components": ">= 5",
+    "react-native-blurhash": "^1.1.11"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",

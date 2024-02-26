@@ -1,8 +1,13 @@
-import { MotiView } from "moti"
-import { useState } from "react"
+import { memo } from "react"
 import { PixelRatio } from "react-native"
+import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
-import { Easing } from "react-native-reanimated"
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated"
 import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -14,82 +19,84 @@ type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "
 export interface ImageProps extends CustomFastImageProps {
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
   aspectRatio?: number
-  /** Supplied width of image. If none provided, defaults to screen width */
-  width?: number
-  /** Supplied height of image. If none provided, defaults to width / aspectRatio */
-  height?: number
-  /** Resize on the fly using Gemini. Defaults to true */
-  performResize?: boolean
-  /** Source url to the image  */
-  src: string
+  /** BlurHash code */
+  blurhash?: string | null | undefined
   /** Gemini resize_to param  */
   geminiResizeMode?: GeminiResizeMode
+  /** Resize on the fly using Gemini. Defaults to true */
+  performResize?: boolean
+  /** Supplied height of image. If none provided, defaults to width / aspectRatio */
+  height?: number
+  /** Supplied width of image. If none provided, defaults to screen width */
+  width?: number
   /** Show loading state  */
   showLoadingState?: boolean
+  /** Source url to the image  */
+  src: string
 }
 
-export const Image: React.FC<ImageProps> = ({
-  aspectRatio,
-  width,
-  height,
-  performResize = true,
-  src,
-  style,
-  resizeMode,
-  geminiResizeMode,
-  showLoadingState = false,
-  ...flexProps
-}) => {
-  const [loading, setLoading] = useState(true)
-  const dimensions = useImageDimensions({ aspectRatio, width, height })
-  const color = useColor()
+export const Image: React.FC<ImageProps> = memo(
+  ({
+    aspectRatio,
+    width,
+    height,
+    performResize = true,
+    src,
+    style,
+    resizeMode,
+    geminiResizeMode,
+    showLoadingState = false,
+    blurhash,
+    ...flexProps
+  }) => {
+    const loading = useSharedValue(true)
+    const dimensions = useImageDimensions({ aspectRatio, width, height })
+    const color = useColor()
 
-  if (showLoadingState) {
-    return (
-      <Skeleton>
-        <SkeletonBox {...dimensions} />
-      </Skeleton>
-    )
-  }
-
-  let uri = src
-  if (performResize) {
-    uri = createGeminiUrl({
-      imageURL: src,
-      width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
-      height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
-      resizeMode: geminiResizeMode,
+    const animatedStyles = useAnimatedStyle(() => {
+      return {
+        opacity: withTiming(loading.value ? 1 : 0, { duration: 200, easing: Easing.sin }),
+      }
     })
-  }
 
-  return (
-    <Flex position="relative" {...flexProps}>
-      {!!loading && (
-        <Flex position="absolute" zIndex={1}>
-          <Skeleton>
-            <SkeletonBox {...dimensions} />
-          </Skeleton>
-        </Flex>
-      )}
+    if (showLoadingState) {
+      return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+    }
 
-      <MotiView
-        animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ type: "timing", duration: 400, easing: Easing.sin }}
-      >
+    let uri = src
+    if (performResize) {
+      uri = createGeminiUrl({
+        imageURL: src,
+        width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
+        height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
+        resizeMode: geminiResizeMode,
+      })
+    }
+
+    const onAnimationEnd = () => {
+      "worklet"
+      loading.value = false
+    }
+
+    return (
+      <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
         <FastImage
           style={[dimensions, style, { backgroundColor: color("black30") }]}
           resizeMode={resizeMode}
-          onLoadStart={() => setLoading(true)}
-          onLoadEnd={() => setLoading(false)}
+          onLoadEnd={onAnimationEnd}
           source={{
             priority: FastImage.priority.normal,
             uri,
           }}
         />
-      </MotiView>
-    </Flex>
-  )
-}
+
+        <Animated.View style={[dimensions, { position: "absolute" }, animatedStyles]}>
+          <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+        </Animated.View>
+      </Flex>
+    )
+  }
+)
 
 const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "height">) => {
   const screenDimensions = useScreenDimensions()
@@ -115,4 +122,27 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
   }
 
   return dimensions
+}
+
+type ImageSkeletonProps = {
+  dimensions: { width: number; height: number }
+  blurhash?: string | null | undefined
+}
+
+const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash }) => {
+  if (!!blurhash) {
+    return (
+      <Flex position="absolute" backgroundColor="black10" {...dimensions}>
+        <Blurhash blurhash={blurhash} style={{ flex: 1 }} />
+      </Flex>
+    )
+  }
+
+  return (
+    <Flex position="absolute">
+      <Skeleton>
+        <SkeletonBox {...dimensions} />
+      </Skeleton>
+    </Flex>
+  )
 }
