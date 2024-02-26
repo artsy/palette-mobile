@@ -1,3 +1,16 @@
+# v13.1.11 (Mon Feb 26 2024)
+
+#### 🐛 Bug Fix
+
+- feat(h13): Add BlurHash to Image [#173](https://github.com/artsy/palette-mobile/pull/173) ([@MrSltun](https://github.com/MrSltun) [@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 2
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.10 (Fri Feb 23 2024)
 
 #### 🐛 Bug Fix
