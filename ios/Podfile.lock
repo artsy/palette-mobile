@@ -386,7 +386,8 @@ PODS:
   - React-jsinspector (0.72.10)
   - React-logger (0.72.10):
     - glog
-  - react-native-blurhash (1.1.11):
+  - react-native-blurhash (2.0.0):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-flipper (0.178.1):
     - React-Core
@@ -799,7 +800,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 45ef2ec6dcde31b90469175ec76ddac77b91dfc3
   React-jsinspector: de0198127395fec3058140a20c045167f761bb16
   React-logger: dc3a2b174d79c2da635059212747d8d929b54e06
-  react-native-blurhash: a59e6bf8117a0304488ed576abd440f4b0777a8c
+  react-native-blurhash: 684ec1be4719536f3f90129c7f6e3c6941768652
   react-native-flipper: a171cbd0bbc75544b0061d8e9f035e87d5233104
   react-native-pager-view: 0ccb8bf60e2ebd38b1f3669fa3650ecce81db2df
   react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
