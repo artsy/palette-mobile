@@ -1,3 +1,15 @@
+# v13.1.12 (Tue Feb 27 2024)
+
+#### 🐛 Bug Fix
+
+- fix: show separator properly [#194](https://github.com/artsy/palette-mobile/pull/194) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.11 (Mon Feb 26 2024)
 
 #### 🐛 Bug Fix
