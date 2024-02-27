@@ -15,7 +15,7 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
 }
 
 const STICKY_BAR_HEIGHT = 42
-const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black10" />
+const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black5" />
 
 export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   title,
@@ -97,7 +97,8 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
 
       {children}
 
-      {separatorComponent}
+      {/* check if children are defined, return children below */}
+      {children !== undefined && separatorComponent}
     </Flex>
   )
 }
