@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { PixelRatio } from "react-native"
+import { PixelRatio, Platform, Image as RNImage, ImageProps as RNImageProps } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import Animated, {
@@ -16,7 +16,7 @@ import { Skeleton, SkeletonBox } from "../Skeleton"
 
 type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "source">
 
-export interface ImageProps extends CustomFastImageProps {
+export interface ImageProps {
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
   aspectRatio?: number
   /** BlurHash code */
@@ -33,6 +33,10 @@ export interface ImageProps extends CustomFastImageProps {
   showLoadingState?: boolean
   /** Source url to the image  */
   src: string
+  /** Resize mode */
+  resizeMode?: RNImageProps["resizeMode"] | CustomFastImageProps["resizeMode"]
+  /** Style */
+  style?: CustomFastImageProps["style"]
 }
 
 export const Image: React.FC<ImageProps> = memo(
@@ -80,15 +84,29 @@ export const Image: React.FC<ImageProps> = memo(
 
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
-        <FastImage
-          style={[dimensions, style, { backgroundColor: color("black30") }]}
-          resizeMode={resizeMode}
-          onLoadEnd={onAnimationEnd}
-          source={{
-            priority: FastImage.priority.normal,
-            uri,
-          }}
-        />
+        {Platform.OS === "android" ? (
+          <RNImage
+            style={[dimensions, { backgroundColor: color("black30") }]}
+            resizeMode={resizeMode}
+            source={{ uri }}
+            onLoadEnd={onAnimationEnd}
+          />
+        ) : (
+          <FastImage
+            style={[
+              dimensions,
+              style as CustomFastImageProps["style"],
+              { backgroundColor: color("black30") },
+            ]}
+            resizeMode={FastImage.resizeMode.contain}
+            onLoadEnd={onAnimationEnd}
+            source={{
+              priority: FastImage.priority.normal,
+              uri,
+              cache: FastImage.cacheControl.immutable,
+            }}
+          />
+        )}
 
         <Animated.View style={[dimensions, { position: "absolute" }, animatedStyles]}>
           <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
