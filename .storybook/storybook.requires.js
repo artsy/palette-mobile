@@ -50,6 +50,7 @@ const getStories = () => {
     require("../src/elements/Separator/Separator.stories.tsx"),
     require("../src/elements/Skeleton/Skeleton.stories.tsx"),
     require("../src/elements/Spacer/Spacer.stories.tsx"),
+    require("../src/elements/Switch/Switch.stories.tsx"),
     require("../src/elements/Tabs/Tabs.stories.tsx"),
     require("../src/elements/Text/Text.stories.tsx"),
     require("../src/elements/ToolTip/ToolTip.stories.tsx"),
