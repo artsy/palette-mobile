@@ -1,3 +1,15 @@
+# v13.1.13 (Thu Feb 29 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Add Android app icon [#196](https://github.com/artsy/palette-mobile/pull/196) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.12 (Tue Feb 27 2024)
 
 #### 🐛 Bug Fix
