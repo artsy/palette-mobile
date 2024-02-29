@@ -1,3 +1,15 @@
+# v13.1.14 (Thu Feb 29 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add Switch component [#197](https://github.com/artsy/palette-mobile/pull/197) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.13 (Thu Feb 29 2024)
 
 #### 🐛 Bug Fix
