@@ -28,13 +28,13 @@ export const Variants = () => {
       {/* Default state */}
       <Flex width={200} flexDirection="row" justifyContent="space-between">
         <Text>Default State</Text>
-        <Switch value={switches[0].value} onChange={() => handleSwitchChange(1)} />
+        <Switch value={switches[0].value} onValueChange={() => handleSwitchChange(1)} />
       </Flex>
 
       {/* Disabled state */}
       <Flex width={200} flexDirection="row" justifyContent="space-between">
         <Text>Disabled</Text>
-        <Switch disabled value={switches[1].value} onChange={() => handleSwitchChange(2)} />
+        <Switch disabled value={switches[1].value} onValueChange={() => handleSwitchChange(2)} />
       </Flex>
 
       {/* Custom Colors #1 */}
@@ -42,7 +42,7 @@ export const Variants = () => {
         <Text>Custom Colors 1</Text>
         <Switch
           value={switches[2].value}
-          onChange={() => handleSwitchChange(3)}
+          onValueChange={() => handleSwitchChange(3)}
           trackColorActive="red100"
           trackColorInactive="green100"
           thumbColorActive="yellow100"
@@ -55,7 +55,7 @@ export const Variants = () => {
         <Text>Custom Colors 2</Text>
         <Switch
           value={switches[3].value}
-          onChange={() => handleSwitchChange(4)}
+          onValueChange={() => handleSwitchChange(4)}
           thumbColorActive="yellow100"
           trackColorActive="blue100"
           thumbColorInactive="white100"
