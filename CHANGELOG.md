@@ -1,3 +1,15 @@
+# v13.1.15 (Fri Mar 01 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Update onChange prop in Switch [#198](https://github.com/artsy/palette-mobile/pull/198) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.14 (Thu Feb 29 2024)
 
 #### 🐛 Bug Fix
