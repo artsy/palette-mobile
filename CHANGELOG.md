@@ -1,3 +1,15 @@
+# v13.1.16 (Fri Mar 01 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Export Switch component [#199](https://github.com/artsy/palette-mobile/pull/199) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.15 (Fri Mar 01 2024)
 
 #### 🐛 Bug Fix
