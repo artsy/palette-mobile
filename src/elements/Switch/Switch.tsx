@@ -4,8 +4,6 @@ import { useColor } from "../../utils/hooks"
 
 type CustomSwitchProps = Omit<
   RNSwitchProps,
-  | "onValueChange"
-  | "onChange"
   | "trackColor"
   | "thumbColor"
   | "ios_backgroundColor"
@@ -15,7 +13,6 @@ type CustomSwitchProps = Omit<
 >
 
 export interface SwitchProps extends CustomSwitchProps {
-  onChange: (value: boolean) => void | Promise<void>
   /**
    * The circular thumb's color on the 'ON' switch.
    */
@@ -36,7 +33,6 @@ export interface SwitchProps extends CustomSwitchProps {
 
 export const Switch = ({
   value,
-  onChange,
   thumbColorActive = Platform.OS === "ios" ? "white100" : "blue100",
   thumbColorInactive = Platform.OS === "ios" ? "white100" : "black10",
   trackColorActive = Platform.OS === "ios" ? "blue100" : "blue10",
@@ -66,7 +62,6 @@ export const Switch = ({
       accessibilityRole="switch"
       value={value}
       disabled={disabled}
-      onValueChange={onChange}
       thumbColor={thumbColor}
       trackColor={trackColor}
       ios_backgroundColor={iosBackground}
