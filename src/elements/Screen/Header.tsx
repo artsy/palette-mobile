@@ -5,8 +5,8 @@ import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
+import { useScreenDimensions } from "../../utils/hooks"
 import { Flex, FlexProps } from "../Flex"
-import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
 
@@ -41,6 +41,8 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   titleProps = {},
 }) => {
+  const screenWidth = useScreenDimensions().width
+
   return (
     <Flex
       height={NAVBAR_HEIGHT}
@@ -49,12 +51,38 @@ export const Header: React.FC<HeaderProps> = ({
       py={1}
       zIndex={ZINDEX.header}
       backgroundColor="background"
+      width={screenWidth}
+      position="relative"
+      justifyContent="space-between"
       alignItems="center"
-      width="100%"
     >
-      <Left leftElements={leftElements} onBack={onBack} hideLeftElements={hideLeftElements} />
       <Center animated={animated} titleProps={titleProps} title={title} hideTitle={hideTitle} />
+
+      <Left leftElements={leftElements} onBack={onBack} hideLeftElements={hideLeftElements} />
       <Right rightElements={rightElements} hideRightElements={hideRightElements} />
+    </Flex>
+  )
+}
+
+const Left: React.FC<{
+  hideLeftElements: HeaderProps["hideLeftElements"]
+  leftElements: HeaderProps["leftElements"]
+  onBack: HeaderProps["onBack"]
+}> = ({ hideLeftElements, leftElements, onBack }) => {
+  if (hideLeftElements) {
+    return null
+  }
+
+  return (
+    <Flex alignItems="center">
+      {leftElements ? (
+        <>{leftElements}</>
+      ) : (
+        // If no left elements passed, show back button
+        <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
+          <ArrowLeftIcon fill="onBackgroundHigh" />
+        </Touchable>
+      )}
     </Flex>
   )
 }
@@ -67,12 +95,7 @@ const Right: React.FC<{
     return null
   }
 
-  return (
-    <Flex width={50} alignItems="flex-end">
-      <Spacer x={1} />
-      {rightElements}
-    </Flex>
-  )
+  return <Flex alignItems="center">{rightElements}</Flex>
 }
 
 const Center: React.FC<{
@@ -89,8 +112,13 @@ const Center: React.FC<{
 
   if (!animated) {
     return (
-      <Flex flex={1} flexDirection="row" width="100%">
-        <Flex alignItems="center" width="100%" {...titleProps}>
+      <Flex
+        position="absolute"
+        left="50%"
+        style={{ transform: "translateX(-50%)" }}
+        flexDirection="row"
+      >
+        <Flex alignItems="center" {...titleProps}>
           <Text variant="sm-display" numberOfLines={1}>
             {title}
           </Text>
@@ -103,7 +131,7 @@ const Center: React.FC<{
   const display = currentScrollY < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
 
   return (
-    <Flex flex={1} flexDirection="row">
+    <Flex flexDirection="row">
       <Animated.View
         entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
         exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
@@ -124,31 +152,6 @@ const Center: React.FC<{
           </MotiView>
         </Flex>
       </Animated.View>
-    </Flex>
-  )
-}
-
-const Left: React.FC<{
-  hideLeftElements: HeaderProps["hideLeftElements"]
-  leftElements: HeaderProps["leftElements"]
-  onBack: HeaderProps["onBack"]
-}> = ({ hideLeftElements, leftElements, onBack }) => {
-  if (hideLeftElements) {
-    return null
-  }
-
-  return (
-    <Flex pr={1} width={50}>
-      {leftElements ? (
-        <>{leftElements}</>
-      ) : (
-        // If no left elements passed, show back button
-        <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
-          <ArrowLeftIcon fill="onBackgroundHigh" top="2px" />
-        </Touchable>
-      )}
-
-      <Spacer x={1} />
     </Flex>
   )
 }
