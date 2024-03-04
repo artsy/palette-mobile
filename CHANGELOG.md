@@ -1,3 +1,15 @@
+# v13.1.17 (Mon Mar 04 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Update disabled switch colors for iOS [#202](https://github.com/artsy/palette-mobile/pull/202) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.16 (Fri Mar 01 2024)
 
 #### 🐛 Bug Fix
