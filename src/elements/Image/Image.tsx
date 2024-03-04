@@ -1,5 +1,5 @@
-import { memo } from "react"
-import { PixelRatio } from "react-native"
+import { memo, useCallback } from "react"
+import { PixelRatio, View } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import Animated, {
@@ -51,13 +51,21 @@ export const Image: React.FC<ImageProps> = memo(
   }) => {
     const loading = useSharedValue(true)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
+
     const color = useColor()
 
     const animatedStyles = useAnimatedStyle(() => {
       return {
-        opacity: withTiming(loading.value ? 1 : 0, { duration: 200, easing: Easing.sin }),
+        opacity: withTiming(loading.value ? 0 : 1, { duration: 200, easing: Easing.sin }),
       }
-    })
+    }, [])
+
+    const onAnimationEnd = useCallback(() => {
+      "worklet"
+      loading.value = false
+      // No need to get the js thread involved here
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     if (showLoadingState) {
       return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
@@ -73,25 +81,28 @@ export const Image: React.FC<ImageProps> = memo(
       })
     }
 
-    const onAnimationEnd = () => {
-      "worklet"
-      loading.value = false
-    }
-
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
-        <FastImage
-          style={[dimensions, style, { backgroundColor: color("black30") }]}
-          resizeMode={resizeMode}
-          onLoadEnd={onAnimationEnd}
-          source={{
-            priority: FastImage.priority.normal,
-            uri,
-          }}
-        />
-
-        <Animated.View style={[dimensions, { position: "absolute" }, animatedStyles]}>
+        <View style={[dimensions, { position: "absolute" }]}>
           <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+        </View>
+
+        <Animated.View style={animatedStyles}>
+          <FastImage
+            style={[
+              dimensions,
+              style,
+              // If we have a blurhash, we don't want to show a background color
+              // That might flash before the image loads
+              { backgroundColor: blurhash ? "transparent" : color("black30") },
+            ]}
+            resizeMode={resizeMode}
+            onLoadEnd={onAnimationEnd}
+            source={{
+              priority: FastImage.priority.normal,
+              uri,
+            }}
+          />
         </Animated.View>
       </Flex>
     )
@@ -133,7 +144,7 @@ const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash }) =
   if (!!blurhash) {
     return (
       <Flex position="absolute" backgroundColor="black10" {...dimensions}>
-        <Blurhash blurhash={blurhash} style={{ flex: 1 }} />
+        <Blurhash blurhash={blurhash} style={{ flex: 1 }} decodeWidth={16} decodeHeight={16} />
       </Flex>
     )
   }
