@@ -52,7 +52,7 @@ export const Switch = ({
     thumbColor = Platform.OS === "ios" ? color("white100") : color("black30")
     trackColor = {
       false: color("black10"),
-      true: color("black10"),
+      true: Platform.OS === "ios" ? color("black30") : color("black10"),
     }
     iosBackground = color("black10")
   }
