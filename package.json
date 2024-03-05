@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "13.1.18",
+  "version": "13.1.19",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "android": "RCT_METRO_PORT=8082 react-native run-android --port 8082",
