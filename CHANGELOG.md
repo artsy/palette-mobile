@@ -1,3 +1,15 @@
+# v13.1.19 (Tue Mar 05 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Screen header element styling [#203](https://github.com/artsy/palette-mobile/pull/203) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v13.1.18 (Tue Mar 05 2024)
 
 #### 🐛 Bug Fix
