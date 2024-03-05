@@ -26,6 +26,57 @@ storiesOf("Screen", module)
       </Screen.BottomView>
     </Screen>
   ))
+  .add("With Header and Right Element", () => (
+    <Screen>
+      <Screen.Header
+        title="Title"
+        rightElements={<Text variant="xs">Very long right element</Text>}
+      />
+      <Screen.Body scroll>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Text my={1} key={i}>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+          </Text>
+        ))}
+      </Screen.Body>
+      <Screen.BottomView>
+        <Flex backgroundColor="black30" height={100} width="100%">
+          <Text>Footer</Text>
+        </Flex>
+      </Screen.BottomView>
+    </Screen>
+  ))
+  .add("With Custom Left Element", () => (
+    <Screen>
+      <Screen.Header
+        title="Title"
+        leftElements={<Text variant="xs">Very long left element</Text>}
+        rightElements={<Text variant="xs">right element</Text>}
+      />
+      <Screen.Body scroll>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Text my={1} key={i}>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum."
+          </Text>
+        ))}
+      </Screen.Body>
+      <Screen.BottomView>
+        <Flex backgroundColor="black30" height={100} width="100%">
+          <Text>Footer</Text>
+        </Flex>
+      </Screen.BottomView>
+    </Screen>
+  ))
   .add("ScrollView With AnimatedHeader", () => (
     <Screen>
       <Screen.AnimatedHeader title="Title" />

@@ -6,7 +6,6 @@ import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
 import { Flex, FlexProps } from "../Flex"
-import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
 
@@ -68,8 +67,7 @@ const Right: React.FC<{
   }
 
   return (
-    <Flex width={50} alignItems="flex-end">
-      <Spacer x={1} />
+    <Flex flex={1} alignItems="flex-end">
       {rightElements}
     </Flex>
   )
@@ -89,12 +87,10 @@ const Center: React.FC<{
 
   if (!animated) {
     return (
-      <Flex flex={1} flexDirection="row" width="100%">
-        <Flex alignItems="center" width="100%" {...titleProps}>
-          <Text variant="sm-display" numberOfLines={1}>
-            {title}
-          </Text>
-        </Flex>
+      <Flex alignItems="center" {...titleProps}>
+        <Text variant="sm-display" numberOfLines={1}>
+          {title}
+        </Text>
       </Flex>
     )
   }
@@ -103,7 +99,7 @@ const Center: React.FC<{
   const display = currentScrollY < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
 
   return (
-    <Flex flex={1} flexDirection="row">
+    <Flex flexDirection="row">
       <Animated.View
         entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
         exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
@@ -112,7 +108,7 @@ const Center: React.FC<{
           flex: 1,
         }}
       >
-        <Flex alignItems="center" width="100%" {...titleProps}>
+        <Flex alignItems="center" {...titleProps}>
           <MotiView
             animate={{
               opacity: display === "flex" ? 1 : 0,
@@ -138,7 +134,7 @@ const Left: React.FC<{
   }
 
   return (
-    <Flex pr={1} width={50}>
+    <Flex flex={1}>
       {leftElements ? (
         <>{leftElements}</>
       ) : (
@@ -147,8 +143,6 @@ const Left: React.FC<{
           <ArrowLeftIcon fill="onBackgroundHigh" top="2px" />
         </Touchable>
       )}
-
-      <Spacer x={1} />
     </Flex>
   )
 }
