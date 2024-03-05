@@ -1,3 +1,15 @@
+# v13.1.18 (Tue Mar 05 2024)
+
+#### 🐛 Bug Fix
+
+- fix: make sure image comes on top of the skeleton [#201](https://github.com/artsy/palette-mobile/pull/201) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.17 (Mon Mar 04 2024)
 
 #### 🐛 Bug Fix
