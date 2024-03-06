@@ -1,3 +1,15 @@
+# v13.1.20 (Wed Mar 06 2024)
+
+#### 🐛 Bug Fix
+
+- fix: progressbar crash in dev and broken in prod [#204](https://github.com/artsy/palette-mobile/pull/204) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.1.19 (Tue Mar 05 2024)
 
 #### 🐛 Bug Fix
