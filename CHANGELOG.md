@@ -1,3 +1,15 @@
+# v13.1.21 (Mon Mar 11 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add onboarding state in pills [#205](https://github.com/artsy/palette-mobile/pull/205) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.1.20 (Wed Mar 06 2024)
 
 #### 🐛 Bug Fix
