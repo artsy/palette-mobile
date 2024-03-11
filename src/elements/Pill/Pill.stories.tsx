@@ -106,5 +106,17 @@ storiesOf("Pill", module)
       </List>
     )
   })
+  .add("Onboarding", () => {
+    return (
+      <List contentContainerStyle={{ marginHorizontal: 20 }}>
+        <Pill variant="onboarding" selected>
+          Yes, I love collecting art
+        </Pill>
+        <Pill variant="onboarding" ml={1}>
+          No, I'm just starting out
+        </Pill>
+      </List>
+    )
+  })
 
 const src = "https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
