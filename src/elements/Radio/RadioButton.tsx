@@ -89,7 +89,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
       }}
     >
       <Flex {...restProps}>
-        <Flex flexDirection="row">
+        <Flex flexDirection="row" alignItems="center">
           <Flex mt="2px">
             <CssTransition
               style={[
