@@ -1,3 +1,15 @@
+# v13.1.22 (Mon Mar 18 2024)
+
+#### 🐛 Bug Fix
+
+- fix(radio): fix alignment between button and text [#206](https://github.com/artsy/palette-mobile/pull/206) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v13.1.21 (Mon Mar 11 2024)
 
 #### 🐛 Bug Fix
