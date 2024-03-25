@@ -1,5 +1,17 @@
 import { ReactNode } from "react"
 import { View } from "react-native"
 
-export const Collapse = ({ opened, children }: { opened: boolean; children: ReactNode }) =>
-  opened ? <View>{children}</View> : null
+interface CollapseProps {
+  opened: boolean
+  children: ReactNode
+  /**
+   * Prevents the component from unmounting when it is closed  (display: none)
+   */
+  preventUnmount?: boolean
+}
+
+export const Collapse: React.FC<CollapseProps> = ({ opened, children, preventUnmount = false }) => {
+  if (preventUnmount) return <View style={{ display: opened ? null : "none" }}>{children}</View>
+
+  return opened ? <View>{children}</View> : null
+}
