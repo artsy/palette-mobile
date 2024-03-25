@@ -17,10 +17,11 @@ import {
   TextInput,
   TextInputFocusEventData,
   TextInputProps,
+  TouchableOpacity,
 } from "react-native"
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import styled from "styled-components"
-import { EyeClosedIcon, EyeOpenedIcon, XCircleIcon } from "../../svgs"
+import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
 import { useColor, useSpace } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
 import { Flex } from "../Flex"
@@ -44,9 +45,11 @@ export interface Input2Props extends TextInputProps {
   loading?: boolean
   onClear?(): void
   onHintPress?: () => void
+  onSelectTap?: () => void
   optional?: boolean
   required?: boolean
   showLimit?: boolean
+  selectDisplayLabel?: string | undefined | null
   title?: string
   unit?: string | undefined | null
 }
@@ -74,14 +77,16 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       hintText = "What's this?",
       icon,
       loading = false,
-      onChangeText,
       onBlur,
-      onFocus,
+      onChangeText,
       onClear,
+      onFocus,
+      onSelectTap,
       placeholder,
       secureTextEntry = false,
       unit,
       value: propValue,
+      selectDisplayLabel,
       ...props
     },
     ref
@@ -104,7 +109,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       editable: editable,
     })
 
-    const hasLeftComponent = !!unit || !!icon
+    const hasLeftComponent = !!unit || !!icon || !!onSelectTap
 
     const animatedState = useSharedValue<InputState>(getInputState({ isFocused: !!focused, value }))
 
@@ -155,7 +160,11 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addClearListener])
 
-    const { width: unitWidth = 0 } = useMeasure({ ref: leftComponentRef })
+    const { width: leftComponentWidth = 0 } = useMeasure({
+      ref: leftComponentRef,
+      extraDeps: unit ? [unit] : [],
+    })
+
     const { width: rightComponentWidth = 0 } = useMeasure({ ref: rightComponentRef })
 
     const handleChangeText = useCallback(
@@ -190,7 +199,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
         color: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputTextColor),
         paddingLeft: withTiming(
-          hasLeftComponent ? unitWidth + HORIZONTAL_PADDING + 5 : HORIZONTAL_PADDING
+          hasLeftComponent ? leftComponentWidth + HORIZONTAL_PADDING + 5 : HORIZONTAL_PADDING
         ),
       }
     })
@@ -202,9 +211,15 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelFontSize),
         marginLeft: withTiming(
           hasLeftComponent && !focused && !value
-            ? unitWidth + HORIZONTAL_PADDING
+            ? leftComponentWidth + HORIZONTAL_PADDING
             : HORIZONTAL_PADDING
         ),
+      }
+    })
+
+    const selectComponentStyles = useAnimatedStyle(() => {
+      return {
+        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
       }
     })
 
@@ -224,6 +239,8 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       handleChangeText("")
       onClear?.()
     }, [onClear, handleChangeText])
+
+    const hasTitle = !!props.title
 
     const renderLeftComponent = useCallback(() => {
       if (unit) {
@@ -261,11 +278,32 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         )
       }
 
+      if (onSelectTap) {
+        return (
+          <TouchableOpacity onPress={onSelectTap} style={{ position: "absolute", zIndex: 1000 }}>
+            <AnimatedFlex
+              justifyContent="space-between"
+              alignItems="center"
+              height={INPUT_MIN_HEIGHT}
+              ref={leftComponentRef}
+              minWidth={105}
+              top={hasTitle ? LABEL_HEIGHT : 0}
+              flexDirection="row"
+              px={`${HORIZONTAL_PADDING}px`}
+              borderRightWidth={1}
+              style={selectComponentStyles}
+            >
+              <Text color={editable ? "black100" : "black30"}>{selectDisplayLabel}</Text>
+              <TriangleDown fill="black60" width={10} />
+            </AnimatedFlex>
+          </TouchableOpacity>
+        )
+      }
+
       return null
-    }, [unit, editable, icon])
+    }, [unit, icon, onSelectTap, editable, hasTitle, selectComponentStyles, selectDisplayLabel])
 
     const renderRightComponent = useCallback(() => {
-      const hasTitle = !!props.title
       if (fixedRightPlaceholder) {
         return (
           <Flex
@@ -363,11 +401,11 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       enableClearButton,
       value,
       secureTextEntry,
-      showPassword,
+      hasTitle,
       editable,
       color,
       handleClear,
-      props.title,
+      showPassword,
     ])
 
     return (
@@ -596,3 +634,5 @@ export const getInputVariant = ({
 }
 
 export type Input2 = TextInput
+
+const AnimatedFlex = Animated.createAnimatedComponent(Flex)

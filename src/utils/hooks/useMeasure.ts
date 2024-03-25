@@ -9,7 +9,13 @@ type Position = {
   pageY: number
 }
 
-export const useMeasure = ({ ref }: { ref: MutableRefObject<any> }) => {
+export const useMeasure = ({
+  ref,
+  extraDeps = [],
+}: {
+  ref: MutableRefObject<any>
+  extraDeps?: Array<string>
+}) => {
   const [position, setPosition] = useState<null | Position>(null)
 
   useEffect(() => {
@@ -28,8 +34,7 @@ export const useMeasure = ({ ref }: { ref: MutableRefObject<any> }) => {
         console.error("measurement failed")
       }
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(position)])
+  }, [JSON.stringify(position), ...extraDeps])
 
   return { ...position }
 }
