@@ -11,7 +11,8 @@ interface CollapseProps {
 }
 
 export const Collapse: React.FC<CollapseProps> = ({ opened, children, preventUnmount = false }) => {
-  if (preventUnmount) return <View style={{ display: opened ? null : "none" }}>{children}</View>
+  if (preventUnmount)
+    return <View style={{ display: opened ? undefined : "none" }}>{children}</View>
 
   return opened ? <View>{children}</View> : null
 }
