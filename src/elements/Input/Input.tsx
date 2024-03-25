@@ -149,6 +149,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       return () => {
         inputEvents.removeListener("clear", localClear)
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
