@@ -67,6 +67,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
   (
     {
       addClearListener = false,
+      defaultValue,
       editable = true,
       enableClearButton = false,
       fixedRightPlaceholder,
@@ -80,7 +81,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       placeholder,
       secureTextEntry = false,
       unit,
-      value,
+      value: propValue,
       ...props
     },
     ref
@@ -90,6 +91,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
+    const [value, setValue] = useState(propValue ?? defaultValue ?? "")
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
 
@@ -158,9 +160,10 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const handleChangeText = useCallback(
       (text: string) => {
+        setValue(text)
         onChangeText?.(text)
       },
-      [onChangeText]
+      [onChangeText, setValue]
     )
 
     const styles = {
@@ -262,13 +265,14 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     }, [unit, editable, icon])
 
     const renderRightComponent = useCallback(() => {
+      const hasTitle = !!props.title
       if (fixedRightPlaceholder) {
         return (
           <Flex
             justifyContent="center"
             position="absolute"
             right={`${HORIZONTAL_PADDING}px`}
-            top={LABEL_HEIGHT}
+            top={hasTitle ? LABEL_HEIGHT : 0}
             height={INPUT_MIN_HEIGHT}
             ref={rightComponentRef}
           >
@@ -283,7 +287,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
             justifyContent="center"
             position="absolute"
             right={`${HORIZONTAL_PADDING}px`}
-            top={LABEL_HEIGHT}
+            top={hasTitle ? LABEL_HEIGHT : 0}
             height={INPUT_MIN_HEIGHT}
             ref={rightComponentRef}
           >
@@ -305,7 +309,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
             justifyContent="center"
             position="absolute"
             right={`${HORIZONTAL_PADDING}px`}
-            top={LABEL_HEIGHT}
+            top={hasTitle ? LABEL_HEIGHT : 0}
             height={INPUT_MIN_HEIGHT}
             zIndex={100}
             ref={rightComponentRef}
@@ -315,6 +319,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
               onPress={handleClear}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
               accessibilityLabel="Clear input button"
+              testID="clear-input-button"
             >
               <XCircleIcon fill="black30" />
             </Touchable>
@@ -328,7 +333,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
             justifyContent="center"
             position="absolute"
             right={`${HORIZONTAL_PADDING}px`}
-            top={LABEL_HEIGHT}
+            top={hasTitle ? LABEL_HEIGHT : 0}
             height={INPUT_MIN_HEIGHT}
             zIndex={100}
             ref={rightComponentRef}
@@ -362,6 +367,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       editable,
       color,
       handleClear,
+      props.title,
     ])
 
     return (
@@ -395,7 +401,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
           editable={editable}
           ref={inputRef as RefObject<TextInput>}
           placeholderTextColor={color("black60")}
-          placeholder={delayedFocused ? placeholder : ""}
+          placeholder={delayedFocused || !props.title ? placeholder : ""}
           secureTextEntry={!showPassword}
           {...props}
         />
