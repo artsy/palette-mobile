@@ -100,7 +100,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
-    const [value, setValue] = useState(propValue ?? defaultValue ?? "")
+    const [value, setValue] = useState(propValue ?? defaultValue)
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
 
