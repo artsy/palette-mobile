@@ -37,6 +37,9 @@ export const emitInput2ClearEvent = () => {
 
 export interface Input2Props extends TextInputProps {
   addClearListener?: boolean
+  // We are applying some optimisations to make sure the UX is smooth
+  // These lead to some issues when the parent component wants further control of the value
+  disableOnChangeOptimisation?: boolean
   enableClearButton?: boolean
   error?: string
   fixedRightPlaceholder?: string
@@ -48,8 +51,8 @@ export interface Input2Props extends TextInputProps {
   onSelectTap?: () => void
   optional?: boolean
   required?: boolean
-  showLimit?: boolean
   selectDisplayLabel?: string | undefined | null
+  showLimit?: boolean
   title?: string
   unit?: string | undefined | null
 }
@@ -87,6 +90,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       unit,
       value: propValue,
       selectDisplayLabel,
+      disableOnChangeOptimisation = false,
       ...props
     },
     ref
@@ -111,7 +115,12 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const hasLeftComponent = !!unit || !!icon || !!onSelectTap
 
-    const animatedState = useSharedValue<InputState>(getInputState({ isFocused: !!focused, value }))
+    const animatedState = useSharedValue<InputState>(
+      getInputState({
+        isFocused: !!focused,
+        value: disableOnChangeOptimisation ? propValue : value,
+      })
+    )
 
     useImperativeHandle(ref, () => inputRef.current as Input2Ref)
 
@@ -169,10 +178,12 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const handleChangeText = useCallback(
       (text: string) => {
-        setValue(text)
+        if (!disableOnChangeOptimisation) {
+          setValue(text)
+        }
         onChangeText?.(text)
       },
-      [onChangeText, setValue]
+      [onChangeText, setValue, disableOnChangeOptimisation]
     )
 
     const styles = {
@@ -192,14 +203,19 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       fontFamily: THEME.fonts.sans,
     }
 
-    animatedState.value = getInputState({ isFocused: !!focused, value })
+    animatedState.value = getInputState({
+      isFocused: !!focused,
+      value: disableOnChangeOptimisation ? propValue : value,
+    })
 
     const textInputAnimatedStyles = useAnimatedStyle(() => {
       return {
         borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
         color: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputTextColor),
         paddingLeft: withTiming(
-          hasLeftComponent ? leftComponentWidth + HORIZONTAL_PADDING + 5 : HORIZONTAL_PADDING
+          hasLeftComponent
+            ? leftComponentWidth + (!!onSelectTap ? HORIZONTAL_PADDING : 0)
+            : HORIZONTAL_PADDING
         ),
       }
     })
@@ -211,7 +227,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelFontSize),
         marginLeft: withTiming(
           hasLeftComponent && !focused && !value
-            ? leftComponentWidth + HORIZONTAL_PADDING
+            ? leftComponentWidth + (!!onSelectTap ? HORIZONTAL_PADDING : 0)
             : HORIZONTAL_PADDING
         ),
       }
@@ -246,14 +262,14 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       if (unit) {
         return (
           <Flex
-            flexDirection="row"
             position="absolute"
-            left={`${HORIZONTAL_PADDING}px`}
-            top={43}
+            px={`${HORIZONTAL_PADDING}px`}
+            height={INPUT_MIN_HEIGHT}
             ref={leftComponentRef}
-            zIndex={40}
-            justifyContent="center"
+            top={hasTitle ? LABEL_HEIGHT : 0}
             alignItems="center"
+            justifyContent="center"
+            zIndex={100}
           >
             <Text color={editable ? "black60" : "black30"} variant="sm-display">
               {unit}
@@ -266,11 +282,12 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         return (
           <Flex
             position="absolute"
-            left={HORIZONTAL_PADDING}
-            justifyContent="center"
-            alignItems="center"
+            px={`${HORIZONTAL_PADDING}px`}
             height={INPUT_MIN_HEIGHT}
             ref={leftComponentRef}
+            top={hasTitle ? LABEL_HEIGHT : 0}
+            alignItems="center"
+            justifyContent="center"
             zIndex={100}
           >
             {icon}
@@ -411,11 +428,18 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     return (
       <Flex>
         {!!props.onHintPress && (
-          <Touchable onPress={props.onHintPress} haptic="impactLight">
-            <Text underline variant="xs" color="black60" textAlign="right" mb={0.5}>
-              {hintText}
-            </Text>
-          </Touchable>
+          <Flex
+            style={{
+              alignItems: "flex-end",
+              top: space(2),
+            }}
+          >
+            <Touchable onPress={props.onHintPress} haptic="impactLight">
+              <Text underline variant="xs" color="black60">
+                {hintText}
+              </Text>
+            </Touchable>
+          </Flex>
         )}
 
         {!!props.title && (
@@ -431,12 +455,13 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         {renderRightComponent()}
 
         <AnimatedStyledInput
-          value={value}
+          value={disableOnChangeOptimisation ? propValue : value}
           onChangeText={handleChangeText}
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
           onBlur={handleBlur}
           editable={editable}
+          verticalAlign={props.multiline ? "top" : "auto"}
           ref={inputRef as RefObject<TextInput>}
           placeholderTextColor={color("black60")}
           placeholder={delayedFocused || !props.title ? placeholder : ""}
