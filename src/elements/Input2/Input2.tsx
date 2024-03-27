@@ -8,6 +8,7 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from "react"
@@ -18,9 +19,11 @@ import {
   TextInputFocusEventData,
   TextInputProps,
   TouchableOpacity,
+  ViewProps,
 } from "react-native"
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import styled from "styled-components"
+import { INPUT_VARIANTS, InputState, InputVariant, getInputState, getInputVariant } from "./helpers"
 import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
 import { useColor, useSpace } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
@@ -45,6 +48,8 @@ export interface Input2Props extends TextInputProps {
   fixedRightPlaceholder?: string
   hintText?: string
   icon?: JSX.Element
+  leftComponentWidth?: number
+  selectComponentWidth?: number
   loading?: boolean
   onClear?(): void
   onHintPress?: () => void
@@ -62,6 +67,8 @@ export const INPUT_BORDER_RADIUS = 4
 export const INPUT_MIN_HEIGHT = 56
 export const MULTILINE_INPUT_MIN_HEIGHT = 110
 export const LABEL_HEIGHT = 25
+export const LEFT_COMPONENT_WIDTH = 40
+export const SELECT_COMPONENT_WIDTH = 120
 
 export interface Input2Ref {
   focus: () => void
@@ -79,6 +86,8 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       fixedRightPlaceholder,
       hintText = "What's this?",
       icon,
+      leftComponentWidth = LEFT_COMPONENT_WIDTH,
+      selectComponentWidth = SELECT_COMPONENT_WIDTH,
       loading = false,
       onBlur,
       onChangeText,
@@ -104,7 +113,6 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
 
-    const leftComponentRef = useRef(null)
     const rightComponentRef = useRef(null)
     const inputRef = useRef<TextInput>()
 
@@ -113,7 +121,10 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       editable: editable,
     })
 
-    const hasLeftComponent = !!unit || !!icon || !!onSelectTap
+    const hasLeftComponent = useMemo(
+      () => !!unit || !!icon || !!onSelectTap,
+      [unit, icon, onSelectTap]
+    )
 
     const animatedState = useSharedValue<InputState>(
       getInputState({
@@ -169,11 +180,6 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addClearListener])
 
-    const { width: leftComponentWidth = 0 } = useMeasure({
-      ref: leftComponentRef,
-      extraDeps: unit ? [unit] : [],
-    })
-
     const { width: rightComponentWidth = 0 } = useMeasure({ ref: rightComponentRef })
 
     const handleChangeText = useCallback(
@@ -186,22 +192,37 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       [onChangeText, setValue, disableOnChangeOptimisation]
     )
 
+    const textInputPaddingLeft = useMemo(() => {
+      if (!hasLeftComponent) {
+        return HORIZONTAL_PADDING
+      }
+
+      if (onSelectTap) {
+        return selectComponentWidth + HORIZONTAL_PADDING
+      }
+
+      return leftComponentWidth
+    }, [hasLeftComponent, leftComponentWidth, onSelectTap, selectComponentWidth])
+
     const styles = {
       fontFamily: THEME.fonts.sans,
       fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
       minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
       borderWidth: 1,
       paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
+      paddingLeft: textInputPaddingLeft,
     }
 
-    const labelStyles = {
-      // this is neeeded too make sure the label is on top of the input
-      backgroundColor: "white",
-      marginRight: space(0.5),
-      paddingHorizontal: space(0.5),
-      zIndex: 100,
-      fontFamily: THEME.fonts.sans,
-    }
+    const labelStyles = useMemo(() => {
+      return {
+        // this is neeeded too make sure the label is on top of the input
+        backgroundColor: "white",
+        marginRight: space(0.5),
+        paddingHorizontal: space(0.5),
+        zIndex: 100,
+        fontFamily: THEME.fonts.sans,
+      }
+    }, [space])
 
     animatedState.value = getInputState({
       isFocused: !!focused,
@@ -212,24 +233,19 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       return {
         borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
         color: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputTextColor),
-        paddingLeft: withTiming(
-          hasLeftComponent
-            ? leftComponentWidth + (!!onSelectTap ? HORIZONTAL_PADDING : 0)
-            : HORIZONTAL_PADDING
-        ),
       }
     })
 
     const labelAnimatedStyles = useAnimatedStyle(() => {
+      // Only add a margin if the input has a left component and it is not focused and has no value
+      const marginLeft =
+        textInputPaddingLeft && !focused && !value ? textInputPaddingLeft : HORIZONTAL_PADDING
+
       return {
         color: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelColor),
         top: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelTop),
         fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelFontSize),
-        marginLeft: withTiming(
-          hasLeftComponent && !focused && !value
-            ? leftComponentWidth + (!!onSelectTap ? HORIZONTAL_PADDING : 0)
-            : HORIZONTAL_PADDING
-        ),
+        marginLeft: withTiming(marginLeft),
       }
     })
 
@@ -259,37 +275,29 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     const hasTitle = !!props.title
 
     const renderLeftComponent = useCallback(() => {
-      if (unit) {
-        return (
-          <Flex
-            position="absolute"
-            px={`${HORIZONTAL_PADDING}px`}
-            height={INPUT_MIN_HEIGHT}
-            ref={leftComponentRef}
-            top={hasTitle ? LABEL_HEIGHT : 0}
-            alignItems="center"
-            justifyContent="center"
-            zIndex={100}
-          >
-            <Text color={editable ? "black60" : "black30"} variant="sm-display">
-              {unit}
-            </Text>
-          </Flex>
-        )
+      const leftComponentSharedStyles: ViewProps["style"] = {
+        position: "absolute",
+        paddingHorizontal: HORIZONTAL_PADDING,
+        height: INPUT_MIN_HEIGHT,
+        top: hasTitle ? LABEL_HEIGHT : 0,
+        alignItems: "center",
+        zIndex: 100,
       }
 
-      if (icon) {
+      if (unit || icon) {
         return (
           <Flex
-            position="absolute"
-            px={`${HORIZONTAL_PADDING}px`}
-            height={INPUT_MIN_HEIGHT}
-            ref={leftComponentRef}
-            top={hasTitle ? LABEL_HEIGHT : 0}
-            alignItems="center"
-            justifyContent="center"
-            zIndex={100}
+            style={{
+              ...leftComponentSharedStyles,
+              justifyContent: "center",
+              width: leftComponentWidth,
+            }}
           >
+            {unit && (
+              <Text color={editable ? "black60" : "black30"} variant="sm-display">
+                {unit}
+              </Text>
+            )}
             {icon}
           </Flex>
         )
@@ -299,16 +307,16 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         return (
           <TouchableOpacity onPress={onSelectTap} style={{ position: "absolute", zIndex: 1000 }}>
             <AnimatedFlex
-              justifyContent="space-between"
-              alignItems="center"
-              height={INPUT_MIN_HEIGHT}
-              ref={leftComponentRef}
-              minWidth={105}
-              top={hasTitle ? LABEL_HEIGHT : 0}
-              flexDirection="row"
-              px={`${HORIZONTAL_PADDING}px`}
-              borderRightWidth={1}
-              style={selectComponentStyles}
+              style={[
+                {
+                  ...leftComponentSharedStyles,
+                  width: selectComponentWidth,
+                  flexDirection: "row",
+                  borderRightWidth: 1,
+                  justifyContent: "space-between",
+                },
+                selectComponentStyles,
+              ]}
             >
               <Text color={editable ? "black100" : "black30"}>{selectDisplayLabel}</Text>
               <TriangleDown fill="black60" width={10} />
@@ -318,7 +326,17 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       }
 
       return null
-    }, [unit, icon, onSelectTap, editable, hasTitle, selectComponentStyles, selectDisplayLabel])
+    }, [
+      hasTitle,
+      unit,
+      icon,
+      onSelectTap,
+      leftComponentWidth,
+      editable,
+      selectComponentWidth,
+      selectComponentStyles,
+      selectDisplayLabel,
+    ])
 
     const renderRightComponent = useCallback(() => {
       if (fixedRightPlaceholder) {
@@ -425,30 +443,91 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       showPassword,
     ])
 
+    const renderBottomComponent = useCallback(() => {
+      if (!!props.error) {
+        return (
+          <Text color="red100" variant="xs" px={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+            {props.error}
+          </Text>
+        )
+      }
+
+      return (
+        <Flex flexDirection="row" justifyContent="space-between">
+          {!!props.required || !!props.optional ? (
+            <Text color="black60" variant="xs" pl={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+              {!!props.required && "* Required"}
+              {!!props.optional && "* Optional"}
+            </Text>
+          ) : (
+            // Adding this empty flex to make sure that the maxLength text is always on the right
+            <Flex />
+          )}
+          {!!props.maxLength && !!props.showLimit && (
+            <Text color="black60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+              {(value || "").length} / {props.maxLength}
+            </Text>
+          )}
+        </Flex>
+      )
+    }, [props.error, props.maxLength, props.optional, props.required, props.showLimit, value])
+
+    const renderHint = useCallback(() => {
+      if (!props.onHintPress) {
+        return null
+      }
+
+      return (
+        <Flex
+          style={{
+            alignItems: "flex-end",
+            top: space(2),
+          }}
+        >
+          <Touchable onPress={props.onHintPress} haptic="impactLight">
+            <Text underline variant="xs" color="black60">
+              {hintText}
+            </Text>
+          </Touchable>
+        </Flex>
+      )
+    }, [hintText, props.onHintPress, space])
+
+    const getPlaceholder = useCallback(() => {
+      // Show placeholder always if there is no title
+      // This is because we won't have a title animation
+      if (!props.title) {
+        return placeholder
+      }
+
+      // On blur, we want to show the placeholder immediately
+      if (delayedFocused) {
+        return placeholder
+      }
+
+      // On focus, we want to show the placeholder after the title animation has finished
+      return ""
+    }, [delayedFocused, props.title, placeholder])
+
+    const renderAnimatedTitle = useCallback(() => {
+      if (!props.title) {
+        return null
+      }
+
+      return (
+        <Flex flexDirection="row" zIndex={100} pointerEvents="none" height={LABEL_HEIGHT}>
+          <AnimatedText style={[labelStyles, labelAnimatedStyles]} numberOfLines={1}>
+            {props.title}
+          </AnimatedText>
+        </Flex>
+      )
+    }, [labelStyles, labelAnimatedStyles, props.title])
+
     return (
       <Flex>
-        {!!props.onHintPress && (
-          <Flex
-            style={{
-              alignItems: "flex-end",
-              top: space(2),
-            }}
-          >
-            <Touchable onPress={props.onHintPress} haptic="impactLight">
-              <Text underline variant="xs" color="black60">
-                {hintText}
-              </Text>
-            </Touchable>
-          </Flex>
-        )}
+        {renderHint()}
 
-        {!!props.title && (
-          <Flex flexDirection="row" zIndex={100} pointerEvents="none" height={LABEL_HEIGHT}>
-            <AnimatedText style={[labelStyles, labelAnimatedStyles]} numberOfLines={1}>
-              {props.title}
-            </AnimatedText>
-          </Flex>
-        )}
+        {renderAnimatedTitle()}
 
         {renderLeftComponent()}
 
@@ -464,36 +543,13 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
           verticalAlign={props.multiline ? "top" : "auto"}
           ref={inputRef as RefObject<TextInput>}
           placeholderTextColor={color("black60")}
-          placeholder={delayedFocused || !props.title ? placeholder : ""}
+          placeholder={getPlaceholder()}
           secureTextEntry={!showPassword}
           {...props}
         />
 
-        {/* If an input has an error, we don't need to show "Required" and maxChars per design */}
-        {!props.error && (
-          <Flex flexDirection="row" justifyContent="space-between">
-            {!!props.required || !!props.optional ? (
-              <Text color="black60" variant="xs" pl={`${HORIZONTAL_PADDING}px`} mt={0.5}>
-                {!!props.required && "* Required"}
-                {!!props.optional && "* Optional"}
-              </Text>
-            ) : (
-              // Adding this empty flex to make sure that the maxLength text is always on the right
-              <Flex />
-            )}
-            {!!props.maxLength && !!props.showLimit && (
-              <Text color="black60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
-                {(value || "").length} / {props.maxLength}
-              </Text>
-            )}
-          </Flex>
-        )}
-
-        {!!props.error && (
-          <Text color="red100" variant="xs" px={`${HORIZONTAL_PADDING}px`} mt={0.5}>
-            {props.error}
-          </Text>
-        )}
+        {/* Contains error and other data we display below the textinput */}
+        {renderBottomComponent()}
       </Flex>
     )
   }
@@ -507,157 +563,6 @@ const StyledInput = styled(TextInput)`
 
 const AnimatedStyledInput = Animated.createAnimatedComponent(StyledInput)
 const AnimatedText = Animated.createAnimatedComponent(Text)
-
-const SHRINKED_LABEL_TOP = 13
-const EXPANDED_LABEL_TOP = 41
-
-type VariantState = {
-  untouched: {
-    inputBorderColor: string
-    labelFontSize: number
-    labelColor: string
-    labelTop: number
-    inputTextColor: string
-  }
-  touched: {
-    inputBorderColor: string
-    labelFontSize: number
-    labelColor: string
-    labelTop: number
-    inputTextColor: string
-  }
-  focused: {
-    inputBorderColor: string
-    labelFontSize: number
-    labelColor: string
-    labelTop: number
-    inputTextColor: string
-  }
-}
-
-const DEFAULT_VARIANT_STATES: VariantState = {
-  // Unfocused input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.black60,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Unfocused input with value
-  touched: {
-    inputBorderColor: THEME.colors.black60,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black60,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Focused input with or without value
-  focused: {
-    inputBorderColor: THEME.colors.blue100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.blue100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-}
-
-const ERROR_VARIANT_STATES: VariantState = {
-  // Unfocused error input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Unfocused error input with value
-  touched: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Focused error input with or without value
-  focused: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-}
-
-const DISABLED_VARIANT_STATES: VariantState = {
-  // Unfocused disabled input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
-  // Unfocused disabled input with value
-  touched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
-  // Focused disabled input with or without value
-  // Adding this just to satisfy typescript because a disabled input can't be focused
-  focused: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
-}
-
-export const INPUT_VARIANTS = {
-  default: DEFAULT_VARIANT_STATES,
-  error: ERROR_VARIANT_STATES,
-  disabled: DISABLED_VARIANT_STATES,
-}
-
-export type InputState = keyof typeof DEFAULT_VARIANT_STATES
-export type InputVariant = keyof typeof INPUT_VARIANTS
-
-export const getInputState = ({
-  isFocused,
-  value,
-}: {
-  isFocused: boolean
-  value: string | undefined
-}): InputState => {
-  if (isFocused) {
-    return "focused"
-  } else if (value) {
-    return "touched"
-  } else {
-    return "untouched"
-  }
-}
-
-export const getInputVariant = ({
-  editable,
-  hasError,
-}: {
-  editable: boolean
-  hasError: boolean
-}) => {
-  if (hasError) {
-    return "error"
-  }
-  if (!editable) {
-    return "disabled"
-  }
-  return "default"
-}
+const AnimatedFlex = Animated.createAnimatedComponent(Flex)
 
 export type Input2 = TextInput
-
-const AnimatedFlex = Animated.createAnimatedComponent(Flex)
