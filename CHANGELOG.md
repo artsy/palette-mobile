@@ -1,3 +1,16 @@
+# v13.1.23 (Wed Mar 27 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Export CollapseProps interface to make Storybook happy [#209](https://github.com/artsy/palette-mobile/pull/209) ([@olerichter00](https://github.com/olerichter00))
+- feat: Add `preventUnmount` prop to `CollapsibleMenuItem` [#208](https://github.com/artsy/palette-mobile/pull/208) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v13.1.22 (Mon Mar 18 2024)
 
 #### 🐛 Bug Fix
