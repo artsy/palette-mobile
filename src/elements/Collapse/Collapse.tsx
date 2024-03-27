@@ -5,7 +5,7 @@ interface CollapseProps {
   opened: boolean
   children: ReactNode
   /**
-   * Prevents the component from unmounting when it is closed  (display: none)
+   * Prevent the content from being unmounted when it is collapsed (display: none)
    */
   preventUnmount?: boolean
 }
