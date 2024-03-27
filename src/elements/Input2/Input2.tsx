@@ -40,8 +40,10 @@ export const emitInput2ClearEvent = () => {
 
 export interface Input2Props extends TextInputProps {
   addClearListener?: boolean
-  // We are applying some optimisations to make sure the UX is smooth
-  // These lead to some issues when the parent component wants further control of the value
+  /**
+   * We are applying some optimisations to make sure the UX is smooth
+   * These lead to some issues when the parent component wants further control of the value
+   */
   disableOnChangeOptimisation?: boolean
   enableClearButton?: boolean
   error?: string
