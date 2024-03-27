@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { View } from "react-native"
 
-interface CollapseProps {
+export interface CollapseProps {
   opened: boolean
   children: ReactNode
 }
