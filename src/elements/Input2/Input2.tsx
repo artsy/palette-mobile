@@ -96,6 +96,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       onSelectTap,
       placeholder,
       secureTextEntry = false,
+      style: styleProp = {},
       unit,
       value: propValue,
       selectDisplayLabel,
@@ -211,6 +212,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       borderWidth: 1,
       paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
       paddingLeft: textInputPaddingLeft,
+      ...(styleProp as {}),
     }
 
     const labelStyles = useMemo(() => {
