@@ -11,10 +11,6 @@ interface CollapsableMenuItemProps {
   title: string
   isExpanded?: boolean
   disabled?: boolean
-  /**
-   * Prevents the component from unmounting when it is closed  (display: none)
-   */
-  preventUnmount?: boolean
   onExpand?: () => void
   onCollapse?: () => void
 }
@@ -32,16 +28,7 @@ export const CollapsibleMenuItem = forwardRef<
   React.PropsWithChildren<CollapsableMenuItemProps>
 >(
   (
-    {
-      children,
-      overtitle,
-      title,
-      isExpanded = false,
-      disabled = false,
-      preventUnmount,
-      onExpand,
-      onCollapse,
-    },
+    { children, overtitle, title, isExpanded = false, disabled = false, onExpand, onCollapse },
     ref
   ) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -118,9 +105,7 @@ export const CollapsibleMenuItem = forwardRef<
             </Flex>
           </Flex>
         </Touchable>
-        <Collapse opened={isOpen} preventUnmount={preventUnmount}>
-          {children}
-        </Collapse>
+        <Collapse opened={isOpen}>{children}</Collapse>
       </Flex>
     )
   }
