@@ -1,3 +1,365 @@
+# v13.1.24 (Tue Apr 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: add zIndex to the ToolTip component [#210](https://github.com/artsy/palette-mobile/pull/210) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
+# v13.1.23 (Wed Mar 27 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Export CollapseProps interface to make Storybook happy [#209](https://github.com/artsy/palette-mobile/pull/209) ([@olerichter00](https://github.com/olerichter00))
+- feat: Add `preventUnmount` prop to `CollapsibleMenuItem` [#208](https://github.com/artsy/palette-mobile/pull/208) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
+# v13.1.22 (Mon Mar 18 2024)
+
+#### 🐛 Bug Fix
+
+- fix(radio): fix alignment between button and text [#206](https://github.com/artsy/palette-mobile/pull/206) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
+# v13.1.21 (Mon Mar 11 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add onboarding state in pills [#205](https://github.com/artsy/palette-mobile/pull/205) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v13.1.20 (Wed Mar 06 2024)
+
+#### 🐛 Bug Fix
+
+- fix: progressbar crash in dev and broken in prod [#204](https://github.com/artsy/palette-mobile/pull/204) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v13.1.19 (Tue Mar 05 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Screen header element styling [#203](https://github.com/artsy/palette-mobile/pull/203) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
+# v13.1.18 (Tue Mar 05 2024)
+
+#### 🐛 Bug Fix
+
+- fix: make sure image comes on top of the skeleton [#201](https://github.com/artsy/palette-mobile/pull/201) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.17 (Mon Mar 04 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Update disabled switch colors for iOS [#202](https://github.com/artsy/palette-mobile/pull/202) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.16 (Fri Mar 01 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Export Switch component [#199](https://github.com/artsy/palette-mobile/pull/199) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.15 (Fri Mar 01 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Update onChange prop in Switch [#198](https://github.com/artsy/palette-mobile/pull/198) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.14 (Thu Feb 29 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add Switch component [#197](https://github.com/artsy/palette-mobile/pull/197) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.13 (Thu Feb 29 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Add Android app icon [#196](https://github.com/artsy/palette-mobile/pull/196) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.12 (Tue Feb 27 2024)
+
+#### 🐛 Bug Fix
+
+- fix: show separator properly [#194](https://github.com/artsy/palette-mobile/pull/194) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.11 (Mon Feb 26 2024)
+
+#### 🐛 Bug Fix
+
+- feat(h13): Add BlurHash to Image [#173](https://github.com/artsy/palette-mobile/pull/173) ([@MrSltun](https://github.com/MrSltun) [@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 2
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
+# v13.1.10 (Fri Feb 23 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add seperatorComponent prop to StickySubHeader [#192](https://github.com/artsy/palette-mobile/pull/192) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
+# v13.1.9 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: opacity animation in android [#191](https://github.com/artsy/palette-mobile/pull/191) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.8 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: title centering when no right element is present [#190](https://github.com/artsy/palette-mobile/pull/190) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.7 (Wed Feb 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: content jump after switching tabs [#189](https://github.com/artsy/palette-mobile/pull/189) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.6 (Wed Feb 21 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update README.md ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.5 (Tue Feb 20 2024)
+
+#### 🐛 Bug Fix
+
+- chore: Screen header improvements [#188](https://github.com/artsy/palette-mobile/pull/188) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.4 (Thu Feb 15 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add Screen.LazyScrollContext [#186](https://github.com/artsy/palette-mobile/pull/186) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.3 (Thu Feb 15 2024)
+
+#### 🐛 Bug Fix
+
+- fix: disable width calculation if no long text is specified [#187](https://github.com/artsy/palette-mobile/pull/187) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v13.1.2 (Sun Feb 11 2024)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): Fix padding on large title [#185](https://github.com/artsy/palette-mobile/pull/185) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v13.1.1 (Fri Feb 09 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support gap columnGap and rowGap in Box, Flex [#184](https://github.com/artsy/palette-mobile/pull/184) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v13.1.0 (Mon Feb 05 2024)
+
+#### 🚀 Enhancement
+
+- feat(avatar): Fade in on load [#180](https://github.com/artsy/palette-mobile/pull/180) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v13.0.36 (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- feat(tabs): Update type to allow title to render jsx [#183](https://github.com/artsy/palette-mobile/pull/183) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v13.0.35 (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix(tabs): Ensure tabs use default active opacity [#182](https://github.com/artsy/palette-mobile/pull/182) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v13.0.34 (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- feat(constants): Add global opacity setter [#181](https://github.com/artsy/palette-mobile/pull/181) ([@damassi](https://github.com/damassi))
+
+#### Authors: 1
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+
+---
+
+# v13.0.33 (Tue Jan 30 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump react-native-svg from 13.7.0 to .14.1.0 [#179](https://github.com/artsy/palette-mobile/pull/179) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v13.0.32 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support dynamic height for sticky tabs [#178](https://github.com/artsy/palette-mobile/pull/178) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.0.31 (Wed Jan 24 2024)
 
 #### 🐛 Bug Fix

@@ -6,7 +6,7 @@ import { HeaderProps } from "../Screen/Header"
 import { Text } from "../Text"
 
 export interface TabsWithHeaderProps extends TabsContainerProps {
-  title: string
+  title: string | JSX.Element
   BelowTitleHeaderComponent?: () => JSX.Element
   headerProps?: HeaderProps
   showLargeHeaderText?: boolean
@@ -34,7 +34,7 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
             return (
               <>
                 {!!showTitle && (
-                  <Flex my={1} pl={2} justifyContent="center" pointerEvents="none">
+                  <Flex my={1} px={2} justifyContent="center" pointerEvents="none">
                     <Text variant="lg-display" numberOfLines={2}>
                       {title}
                     </Text>

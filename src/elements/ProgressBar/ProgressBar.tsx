@@ -24,16 +24,16 @@ export const ProgressBar = ({
   trackColor = "blue100",
 }: ProgressBarProps) => {
   const color = useColor()
-  const width = useSharedValue("0%")
+  const width = useSharedValue(0)
   const progress = clamp(unclampedProgress, 0, 100)
   const progressAnim = useAnimatedStyle(() => {
-    return { width: Number(width.value) }
+    return { width: `${width.value}%` }
   })
 
   const [onCompletionCalled, setOnCompletionCalled] = useState(false)
 
   useEffect(() => {
-    width.value = withTiming(`${progress}%`, { duration: animationDuration })
+    width.value = withTiming(progress, { duration: animationDuration })
 
     if (progress === 100 && !onCompletionCalled) {
       onCompletion?.()

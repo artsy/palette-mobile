@@ -1,5 +1,11 @@
 import { ReactNode } from "react"
 import { View } from "react-native"
 
-export const Collapse = ({ opened, children }: { opened: boolean; children: ReactNode }) =>
-  opened ? <View>{children}</View> : null
+export interface CollapseProps {
+  opened: boolean
+  children: ReactNode
+}
+
+export const Collapse: React.FC<CollapseProps> = ({ opened, children }) => {
+  return <View style={{ display: opened ? undefined : "none" }}>{children}</View>
+}

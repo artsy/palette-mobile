@@ -62,3 +62,34 @@ storiesOf("Image", module)
       </Flex>
     )
   })
+  .add("With default fallback screen width + blurhash", () => (
+    <Image
+      aspectRatio={0.62}
+      blurhash="LXK,+3H#yArKH~bGx:tM.atxM*k9"
+      src="https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
+    />
+  ))
+  .add("With width and height + blurhash", () => (
+    <Image
+      blurhash="LXK,+3H#yArKH~bGx:tM.atxM*k9"
+      width={250}
+      height={400}
+      src="https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
+    />
+  ))
+  .add("With aspect ratio + blurhash", () => (
+    <Image
+      blurhash="LXK,+3H#yArKH~bGx:tM.atxM*k9"
+      width={250}
+      aspectRatio={0.62}
+      src="https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
+    />
+  ))
+  .add("Without automatic resizing + blurhash", () => (
+    <Image
+      blurhash="LXK,+3H#yArKH~bGx:tM.atxM*k9"
+      aspectRatio={0.62}
+      performResize={false}
+      src="https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
+    />
+  ))
