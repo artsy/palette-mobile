@@ -1,3 +1,15 @@
+# v13.1.25 (Tue Apr 02 2024)
+
+#### 🐛 Bug Fix
+
+- Increase zIndex for the ToolTip component [#211](https://github.com/artsy/palette-mobile/pull/211) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v13.1.24 (Tue Apr 02 2024)
 
 #### 🐛 Bug Fix
