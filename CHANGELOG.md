@@ -1,3 +1,19 @@
+# v13.1.26 (Tue Apr 02 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat(AMBER-342): Adds HideIcon [#212](https://github.com/artsy/palette-mobile/pull/212) ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+#### Authors: 1
+
+- Lily Pace ([@lilyfromseattle](https://github.com/lilyfromseattle))
+
+---
+
 # v13.1.25 (Tue Apr 02 2024)
 
 #### 🐛 Bug Fix
