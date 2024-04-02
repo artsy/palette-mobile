@@ -74,6 +74,7 @@ export const ToolTipFlyout: React.FC<Props> = ({
             backgroundColor: color("black100"),
             position: "absolute",
             alignSelf: "center",
+            zIndex: 1,
           },
           containerStyle,
           animationStyle,
