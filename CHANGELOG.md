@@ -1,3 +1,15 @@
+# v13.1.27 (Mon Apr 15 2024)
+
+#### 🐛 Bug Fix
+
+- feat(DIA-558): add personIcon and multiplePersonsIcon [#213](https://github.com/artsy/palette-mobile/pull/213) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.1.26 (Tue Apr 02 2024)
 
 :tada: This release contains work from a new contributor! :tada:
