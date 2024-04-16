@@ -202,7 +202,6 @@ export const Input = forwardRef<InputRef, InputProps>(
               <Text
                 numberOfLines={1}
                 style={{
-                  borderColor: "red",
                   borderWidth: 1,
                   flex: 1,
                   fontFamily,

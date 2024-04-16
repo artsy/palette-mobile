@@ -1,14 +1,14 @@
 import { MagnifyingGlassIcon } from "../../svgs"
 import { Flex } from "../Flex"
-import { Input, InputProps } from "../Input"
+import { Input2, Input2Props } from "../Input2"
 
-export interface SearchInputProps extends InputProps {
+export interface SearchInputProps extends Input2Props {
   enableCancelButton?: boolean
   onCancelPress?: () => void
 }
 
 export const SearchInput = ({
-  enableCancelButton,
+  enableCancelButton = true,
   onChangeText,
   onClear,
   onCancelPress,
@@ -16,10 +16,10 @@ export const SearchInput = ({
 }: SearchInputProps) => {
   return (
     <Flex flexDirection="row" justifyContent="center">
-      <Input
+      <Input2
         icon={<MagnifyingGlassIcon width={18} height={18} fill="onBackgroundHigh" />}
         autoCorrect={false}
-        enableClearButton
+        enableClearButton={enableCancelButton}
         returnKeyType="search"
         onClear={() => {
           onClear?.()

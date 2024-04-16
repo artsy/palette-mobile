@@ -25,7 +25,7 @@ import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-na
 import styled from "styled-components"
 import { INPUT_VARIANTS, InputState, InputVariant, getInputState, getInputVariant } from "./helpers"
 import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
-import { useColor, useSpace } from "../../utils/hooks"
+import { useTheme } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
 import { Flex } from "../Flex"
 import { Spinner } from "../Spinner"
@@ -68,6 +68,7 @@ export const HORIZONTAL_PADDING = 15
 export const INPUT_BORDER_RADIUS = 4
 export const INPUT_MIN_HEIGHT = 56
 export const MULTILINE_INPUT_MIN_HEIGHT = 110
+export const MULTILINE_INPUT_MAX_HEIGHT = 300
 export const LABEL_HEIGHT = 25
 export const LEFT_COMPONENT_WIDTH = 40
 export const SELECT_COMPONENT_WIDTH = 120
@@ -107,8 +108,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     },
     ref
   ) => {
-    const space = useSpace()
-    const color = useColor()
+    const { color, theme, space } = useTheme()
 
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
@@ -138,7 +138,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
 
     useImperativeHandle(ref, () => inputRef.current as Input2Ref)
 
-    const fontFamily = THEME.fonts.sans
+    const fontFamily = theme.fonts.sans.regular
 
     useEffect(() => {
       /* to make the font work for secure text inputs,
@@ -201,6 +201,9 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       }
 
       if (onSelectTap) {
+        // if (value) {
+        //   return HORIZONTAL_PADDING
+        // }
         return selectComponentWidth + HORIZONTAL_PADDING
       }
 
@@ -208,9 +211,10 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     }, [hasLeftComponent, leftComponentWidth, onSelectTap, selectComponentWidth])
 
     const styles = {
-      fontFamily: THEME.fonts.sans,
+      fontFamily: fontFamily,
       fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
       minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
+      maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
       borderWidth: 1,
       paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
       paddingLeft: textInputPaddingLeft,
@@ -222,11 +226,10 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
         // this is neeeded too make sure the label is on top of the input
         backgroundColor: "white",
         marginRight: space(0.5),
-        paddingHorizontal: space(0.5),
         zIndex: 100,
-        fontFamily: THEME.fonts.sans,
+        fontFamily: fontFamily,
       }
-    }, [space])
+    }, [fontFamily, space])
 
     animatedState.value = getInputState({
       isFocused: !!focused,
@@ -241,9 +244,13 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
     })
 
     const labelAnimatedStyles = useAnimatedStyle(() => {
+      const hasValue = disableOnChangeOptimisation ? !!propValue : !!value
+
       // Only add a margin if the input has a left component and it is not focused and has no value
       const marginLeft =
-        textInputPaddingLeft && !focused && !value ? textInputPaddingLeft : HORIZONTAL_PADDING
+        textInputPaddingLeft && !focused && !hasValue
+          ? textInputPaddingLeft - 3
+          : HORIZONTAL_PADDING
 
       return {
         color: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelColor),
@@ -469,12 +476,21 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
           )}
           {!!props.maxLength && !!props.showLimit && (
             <Text color="black60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
-              {(value || "").length} / {props.maxLength}
+              {((disableOnChangeOptimisation ? propValue : value) || "").length} / {props.maxLength}
             </Text>
           )}
         </Flex>
       )
-    }, [props.error, props.maxLength, props.optional, props.required, props.showLimit, value])
+    }, [
+      disableOnChangeOptimisation,
+      propValue,
+      props.error,
+      props.maxLength,
+      props.optional,
+      props.required,
+      props.showLimit,
+      value,
+    ])
 
     const renderHint = useCallback(() => {
       if (!props.onHintPress) {
@@ -521,14 +537,15 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       return (
         <Flex flexDirection="row" zIndex={100} pointerEvents="none" height={LABEL_HEIGHT}>
           <AnimatedText style={[labelStyles, labelAnimatedStyles]} numberOfLines={1}>
-            {props.title}
+            {" "}
+            {props.title}{" "}
           </AnimatedText>
         </Flex>
       )
     }, [labelStyles, labelAnimatedStyles, props.title])
 
     return (
-      <Flex>
+      <Flex flexGrow={1}>
         {renderHint()}
 
         {renderAnimatedTitle()}
@@ -544,7 +561,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
           onFocus={handleFocus}
           onBlur={handleBlur}
           editable={editable}
-          verticalAlign={props.multiline ? "top" : "auto"}
+          textAlignVertical={props.multiline ? "top" : "center"}
           ref={inputRef as RefObject<TextInput>}
           placeholderTextColor={color("black60")}
           placeholder={getPlaceholder()}

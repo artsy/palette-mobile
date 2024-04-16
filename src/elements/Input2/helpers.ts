@@ -1,7 +1,7 @@
 import { THEME } from "@artsy/palette-tokens"
 
 export const SHRINKED_LABEL_TOP = 13
-export const EXPANDED_LABEL_TOP = 41
+export const EXPANDED_LABEL_TOP = 40
 
 export type VariantState = {
   untouched: {
