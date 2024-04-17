@@ -1,3 +1,15 @@
+# v13.1.29 (Wed Apr 17 2024)
+
+#### 🐛 Bug Fix
+
+- fix(APPL-872): return null if Collapse is not opened [#215](https://github.com/artsy/palette-mobile/pull/215) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.1.28 (Wed Apr 17 2024)
 
 #### 🐛 Bug Fix
