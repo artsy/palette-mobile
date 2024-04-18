@@ -39,7 +39,7 @@ export const Popover = ({
 
   return (
     <RNPopover
-      backgroundStyle={{ opacity: 0.5, backgroundColor: THEME.colors["black100"] }}
+      backgroundStyle={{ opacity: 0.5, backgroundColor: THEME.colors.black100 }}
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}
@@ -58,7 +58,7 @@ export const Popover = ({
         <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
           {title ? title : <Flex />}
           {!noCloseIcon && (
-            <Touchable onPress={onDismiss}>
+            <Touchable onPress={onDismiss} accessibilityRole="button" aria-label="Close popover">
               <Flex ml={0.5}>
                 <CloseIcon width={18} height={18} fill={style.fill} />
               </Flex>
@@ -77,7 +77,7 @@ const Container = styled(Flex)<{ variant: PopoverVariant }>`
 `
 
 const DROP_SHADOW = {
-  shadowColor: THEME.colors["black100"],
+  shadowColor: THEME.colors.black100,
   shadowOffset: {
     width: 0,
     height: 2,
@@ -93,12 +93,12 @@ export const POPOVER_VARIANTS: Record<
   { backgroundColor: string; fill: Color; shadow?: ViewStyle }
 > = {
   light: {
-    backgroundColor: THEME.colors["white100"],
+    backgroundColor: THEME.colors.white100,
     fill: "black100",
     shadow: DROP_SHADOW,
   },
   dark: {
-    backgroundColor: THEME.colors["black100"],
+    backgroundColor: THEME.colors.black100,
     fill: "white100",
   },
 }
