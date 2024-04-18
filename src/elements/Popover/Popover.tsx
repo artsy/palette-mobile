@@ -58,7 +58,7 @@ export const Popover = ({
         <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
           {title ? title : <Flex />}
           {!noCloseIcon && (
-            <Touchable onPress={onDismiss} accessibilityRole="button" aria-label="Close popover">
+            <Touchable onPress={onDismiss} accessibilityRole="button" aria-label="Dismiss popover">
               <Flex ml={0.5}>
                 <CloseIcon width={18} height={18} fill={style.fill} />
               </Flex>
