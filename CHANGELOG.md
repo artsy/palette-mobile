@@ -1,3 +1,15 @@
+# v13.1.30 (Thu Apr 18 2024)
+
+#### 🐛 Bug Fix
+
+- feat(a11y): Add accessibility label on popover [#216](https://github.com/artsy/palette-mobile/pull/216) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.1.29 (Wed Apr 17 2024)
 
 #### 🐛 Bug Fix
