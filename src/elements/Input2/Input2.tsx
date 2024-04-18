@@ -215,6 +215,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
       fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
       minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
       maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
+      height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
       borderWidth: 1,
       paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
       paddingLeft: textInputPaddingLeft,
@@ -560,6 +561,7 @@ export const Input2 = forwardRef<Input2Ref, Input2Props>(
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          scrollEnabled={false}
           editable={editable}
           textAlignVertical={props.multiline ? "top" : "center"}
           ref={inputRef as RefObject<TextInput>}
