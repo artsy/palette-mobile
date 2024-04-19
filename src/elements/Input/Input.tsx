@@ -111,6 +111,8 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
+    // const throttlePropValue = useThrottle(propValue)
+
     const [value, setValue] = useState(propValue ?? defaultValue)
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
@@ -136,6 +138,14 @@ export const Input = forwardRef<InputRef, InputProps>(
     )
 
     useImperativeHandle(ref, () => inputRef.current as InputRef)
+
+    useEffect(() => {
+      // If the prop value changes, update the local state
+      // This optimisation is not needed if no propValue has been specified
+      if (propValue !== undefined && propValue !== value) {
+        setValue(propValue)
+      }
+    }, [propValue, value])
 
     const fontFamily = theme.fonts.sans.regular
 
