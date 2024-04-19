@@ -1,31 +1,36 @@
 import { EventEmitter } from "events"
-import { themeGet } from "@styled-system/theme-get"
-import { isArray, isString } from "lodash"
-import { useEffect, useImperativeHandle, useRef, useState, forwardRef } from "react"
+
+import { THEME } from "@artsy/palette-tokens"
+import themeGet from "@styled-system/theme-get"
+import {
+  RefObject,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
 import {
   LayoutAnimation,
-  Platform,
+  NativeSyntheticEvent,
   TextInput,
+  TextInputFocusEventData,
   TextInputProps,
-  TextStyle,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
+  ViewProps,
 } from "react-native"
-import styled from "styled-components/native"
-import { InputTitle } from "./InputTitle"
-import { MeasuredView } from "../../elements/MeasuredView"
-import { EyeOpenedIcon, XCircleIcon } from "../../svgs"
-import { EyeClosedIcon } from "../../svgs/EyeClosedIcon"
-import { Color } from "../../types"
-import { useTheme } from "../../utils/hooks/useTheme"
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
+import styled from "styled-components"
+import { INPUT_VARIANTS, InputState, InputVariant, getInputState, getInputVariant } from "./helpers"
+import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
+import { useTheme } from "../../utils/hooks"
+import { useMeasure } from "../../utils/hooks/useMeasure"
 import { Flex } from "../Flex"
 import { Spinner } from "../Spinner"
 import { Text } from "../Text"
-
-const DEFAULT_FONT_SIZE = 16
-export const INPUT_HEIGHT = 50
-export const INPUT_HEIGHT_MULTILINE = 100
+import { Touchable } from "../Touchable"
 
 export const inputEvents = new EventEmitter()
 
@@ -33,375 +38,542 @@ export const emitInputClearEvent = () => {
   inputEvents.emit("clear")
 }
 
-export interface InputProps extends Omit<TextInputProps, "placeholder"> {
-  containerStyle?: React.ComponentProps<typeof Flex>["style"]
-  description?: string
-  descriptionColor?: Color
-  error?: string
-  icon?: JSX.Element
-  loading?: boolean
+export interface InputProps extends TextInputProps {
+  addClearListener?: boolean
+  /**
+   * We are applying some optimisations to make sure the UX is smooth
+   * These lead to some issues when the parent component wants further control of the value
+   */
   disabled?: boolean
+  enableClearButton?: boolean
+  error?: string
+  fixedRightPlaceholder?: string
+  hintText?: string
+  icon?: JSX.Element
+  leftComponentWidth?: number
+  loading?: boolean
+  onClear?(): void
+  onHintPress?: () => void
+  onSelectTap?: () => void
   optional?: boolean
   required?: boolean
-  title?: string
+  selectComponentWidth?: number
+  selectDisplayLabel?: string | undefined | null
   showLimit?: boolean
-  fontSize?: number
-  /**
-   * This placeholder is fixed to the right side of the input
-   */
-  fixedRightPlaceholder?: string
-  /**
-   * The placeholder can be an array of string, specifically for android, because of a bug.
-   * On ios, the longest string will always be picked, as ios can add ellipsis.
-   * On android, the longest string **that fits** will be picked, as android doesn't use ellipsis.
-   * The way to use it is to put the longest string first, and the shortest string last.
-   *
-   * Check `HACKS.md` for more info.
-   *
-   * @example
-   * const placeholders = [
-   *   "Wow this is a great and very long placeholder",
-   *   "Wow this is a great and long placeholder",
-   *   "Wow this is a great placeholder",
-   *   "Wow",
-   * ]
-   * ...
-   * <Input
-   *   placeholder={placeholders}
-   * />
-   */
-  placeholder?: string | string[]
-  enableClearButton?: boolean
-  canHidePassword?: boolean
-  inputTextStyle?: TextStyle
-  addClearListener?: boolean
-  onClear?(): void
-  renderLeftHandSection?(): JSX.Element
+  title?: string
+  unit?: string | undefined | null
 }
 
-// Wrapping some of the RNTextInput functionality, so we can call our own funcs too.
+export const HORIZONTAL_PADDING = 15
+export const INPUT_BORDER_RADIUS = 4
+export const INPUT_MIN_HEIGHT = 56
+export const MULTILINE_INPUT_MIN_HEIGHT = 110
+export const MULTILINE_INPUT_MAX_HEIGHT = 300
+export const LABEL_HEIGHT = 25
+export const LEFT_COMPONENT_WIDTH = 40
+export const SELECT_COMPONENT_WIDTH = 120
+
 export interface InputRef {
   focus: () => void
   blur: () => void
   clear: () => void
 }
 
-export type Input = TextInput
-
 export const Input = forwardRef<InputRef, InputProps>(
   (
     {
-      containerStyle,
-      description,
-      descriptionColor,
-      disabled,
-      error,
-      icon,
-      loading,
-      optional,
-      required,
-      enableClearButton,
-      title,
-      renderLeftHandSection,
-      secureTextEntry = false,
-      inputTextStyle,
-      fixedRightPlaceholder,
-      placeholder,
-      multiline,
-      maxLength,
-      onFocus,
-      onBlur,
-      onClear,
-      onChangeText,
-      defaultValue,
-      value: propValue,
-      showLimit,
       addClearListener = false,
-      fontSize = DEFAULT_FONT_SIZE,
-      style,
-      ...restProps
+      defaultValue,
+      disabled = false,
+      enableClearButton = false,
+      fixedRightPlaceholder,
+      hintText = "What's this?",
+      icon,
+      leftComponentWidth = LEFT_COMPONENT_WIDTH,
+      selectComponentWidth = SELECT_COMPONENT_WIDTH,
+      loading = false,
+      onBlur,
+      onChangeText,
+      onClear,
+      onFocus,
+      onSelectTap,
+      placeholder,
+      secureTextEntry = false,
+      style: styleProp = {},
+      unit,
+      value: propValue,
+      selectDisplayLabel,
+      ...props
     },
     ref
   ) => {
-    const { color, theme } = useTheme()
-    const [focused, setFocused] = useState(false)
+    const { color, theme, space } = useTheme()
+
+    const [focused, setIsFocused] = useState(false)
+    const [delayedFocused, setDelayedFocused] = useState(false)
+    const [value, setValue] = useState(propValue ?? defaultValue)
+
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
-    const [value, setValue] = useState(propValue ?? defaultValue ?? "")
-    const input = useRef<TextInput>()
 
-    const localClear = () => {
-      input.current?.clear()
-      localOnChangeText("")
-      onClear?.()
-    }
+    const rightComponentRef = useRef(null)
+    const inputRef = useRef<TextInput>()
 
-    useImperativeHandle(ref, () => input.current!)
+    const variant: InputVariant = getInputVariant({
+      hasError: !!props.error,
+      disabled: disabled,
+    })
+
+    const hasLeftComponent = useMemo(
+      () => !!unit || !!icon || !!onSelectTap,
+      [unit, icon, onSelectTap]
+    )
+
+    const animatedState = useSharedValue<InputState>(
+      getInputState({
+        isFocused: !!focused,
+        value: value,
+      })
+    )
+
+    useImperativeHandle(ref, () => inputRef.current as InputRef)
 
     const fontFamily = theme.fonts.sans.regular
+
+    useEffect(() => {
+      /* to make the font work for secure text inputs,
+      see https://github.com/facebook/react-native/issues/30123#issuecomment-711076098 */
+      inputRef.current?.setNativeProps({
+        style: { fontFamily },
+      })
+    }, [fontFamily])
+
+    useEffect(() => {
+      // We don't need to delay hiding the placeholder
+      if (!focused && delayedFocused) {
+        setDelayedFocused(false)
+      }
+
+      let delayFocusedTimeout: NodeJS.Timeout
+
+      // We only want to show the placeholder after we're sure the title animation has finished
+      if (!delayedFocused && focused) {
+        delayFocusedTimeout = setTimeout(() => {
+          setDelayedFocused(focused)
+        }, 200)
+      }
+
+      return () => {
+        if (delayFocusedTimeout) {
+          clearTimeout(delayFocusedTimeout)
+        }
+      }
+    }, [focused, delayedFocused])
 
     useEffect(() => {
       if (!addClearListener) {
         return
       }
 
-      inputEvents.addListener("clear", localClear)
+      inputEvents.addListener("clear", handleClear)
 
       return () => {
-        inputEvents.removeListener("clear", localClear)
+        inputEvents.removeListener("clear", handleClear)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [addClearListener])
 
-    useEffect(() => {
-      /* to make the font work for secure text inputs,
-      see https://github.com/facebook/react-native/issues/30123#issuecomment-711076098 */
-      input.current?.setNativeProps({
-        style: { fontFamily },
-      })
-    }, [fontFamily])
+    const { width: rightComponentWidth = 0 } = useMeasure({ ref: rightComponentRef })
 
-    const renderShowPasswordIcon = () => {
-      if (!secureTextEntry) {
-        return
+    const handleChangeText = useCallback(
+      (text: string) => {
+        setValue(text)
+        onChangeText?.(text)
+      },
+      [onChangeText]
+    )
+
+    const textInputPaddingLeft = useMemo(() => {
+      if (!hasLeftComponent) {
+        return HORIZONTAL_PADDING
       }
-      return (
-        <Flex pr={1} justifyContent="center" flexGrow={0} backgroundColor="background">
-          <TouchableOpacity
-            onPress={() => {
-              setShowPassword(!showPassword)
+
+      if (onSelectTap) {
+        // if (value) {
+        //   return HORIZONTAL_PADDING
+        // }
+        return selectComponentWidth + HORIZONTAL_PADDING
+      }
+
+      return leftComponentWidth
+    }, [hasLeftComponent, leftComponentWidth, onSelectTap, selectComponentWidth])
+
+    const styles = {
+      fontFamily: fontFamily,
+      fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+      minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
+      maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
+      height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
+      borderWidth: 1,
+      paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
+      paddingLeft: textInputPaddingLeft,
+      ...(styleProp as {}),
+    }
+
+    const labelStyles = useMemo(() => {
+      return {
+        // this is neeeded too make sure the label is on top of the input
+        backgroundColor: "white",
+        marginRight: space(0.5),
+        zIndex: 100,
+        fontFamily: fontFamily,
+      }
+    }, [fontFamily, space])
+
+    animatedState.value = getInputState({
+      isFocused: !!focused,
+      value: value,
+    })
+
+    const textInputAnimatedStyles = useAnimatedStyle(() => {
+      return {
+        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
+        color: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputTextColor),
+      }
+    })
+
+    const labelAnimatedStyles = useAnimatedStyle(() => {
+      const hasValue = !!value
+
+      // Only add a margin if the input has a left component and it is not focused and has no value
+      const marginLeft =
+        textInputPaddingLeft && !focused && !hasValue
+          ? textInputPaddingLeft - 3
+          : HORIZONTAL_PADDING
+
+      return {
+        color: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelColor),
+        top: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelTop),
+        fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelFontSize),
+        marginLeft: withTiming(marginLeft),
+      }
+    })
+
+    const selectComponentStyles = useAnimatedStyle(() => {
+      return {
+        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
+      }
+    })
+
+    const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      setIsFocused(true)
+      onFocus?.(e)
+    }
+
+    const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+      setIsFocused(false)
+      onBlur?.(e)
+    }
+
+    const handleClear = useCallback(() => {
+      LayoutAnimation.configureNext({ ...LayoutAnimation.Presets.easeInEaseOut, duration: 200 })
+      inputRef.current?.clear()
+      handleChangeText("")
+      onClear?.()
+    }, [onClear, handleChangeText])
+
+    const hasTitle = !!props.title
+
+    const renderLeftComponent = useCallback(() => {
+      const leftComponentSharedStyles: ViewProps["style"] = {
+        position: "absolute",
+        paddingHorizontal: HORIZONTAL_PADDING,
+        height: INPUT_MIN_HEIGHT,
+        top: hasTitle ? LABEL_HEIGHT : 0,
+        alignItems: "center",
+        zIndex: 100,
+      }
+
+      if (unit || icon) {
+        return (
+          <Flex
+            style={{
+              ...leftComponentSharedStyles,
+              justifyContent: "center",
+              width: leftComponentWidth,
             }}
-            accessibilityLabel={showPassword ? "hide password button" : "show password button"}
-            hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
           >
-            {!showPassword ? <EyeClosedIcon fill="black30" /> : <EyeOpenedIcon fill="black60" />}
-          </TouchableOpacity>
-        </Flex>
-      )
-    }
-
-    const localOnChangeText = (text: string) => {
-      setValue(text)
-      onChangeText?.(text)
-    }
-
-    const [placeholderWidths, setPlaceholderWidths] = useState<number[]>([])
-    const [inputWidth, setInputWidth] = useState(0)
-    const placeholderMeasuringHack =
-      Platform.OS === "android" && isArray(placeholder) ? (
-        <>
-          {placeholder.map((placeholderString, index) => (
-            <MeasuredView
-              key={`${index}`}
-              setMeasuredState={({ width }) =>
-                setPlaceholderWidths((widths) => {
-                  widths[index] = width
-                  return widths
-                })
-              }
-            >
-              <Text
-                numberOfLines={1}
-                style={{
-                  borderWidth: 1,
-                  flex: 1,
-                  fontFamily,
-                  fontSize: 15,
-                  textAlign: "left",
-                  ...inputTextStyle,
-                }}
-              >
-                {placeholderString}
+            {unit && (
+              <Text color={disabled ? "black30" : "black60"} variant="sm-display">
+                {unit}
               </Text>
-            </MeasuredView>
-          ))}
-        </>
-      ) : null
-
-    const actualPlaceholder = () => {
-      if (placeholder === undefined) {
-        return placeholder
+            )}
+            {icon}
+          </Flex>
+        )
       }
 
-      // ios works well. just return the longest placeholder
-      if (Platform.OS === "ios") {
-        return isArray(placeholder) ? placeholder[0] : placeholder
+      if (onSelectTap) {
+        return (
+          <TouchableOpacity onPress={onSelectTap} style={{ position: "absolute", zIndex: 1000 }}>
+            <AnimatedFlex
+              style={[
+                {
+                  ...leftComponentSharedStyles,
+                  width: selectComponentWidth,
+                  flexDirection: "row",
+                  borderRightWidth: 1,
+                  justifyContent: "space-between",
+                },
+                selectComponentStyles,
+              ]}
+            >
+              <Text color={disabled ? "black30" : "black100"}>{selectDisplayLabel}</Text>
+              <TriangleDown fill="black60" width={10} />
+            </AnimatedFlex>
+          </TouchableOpacity>
+        )
       }
 
-      // if it's android and we only have one string, return that string
-      if (isString(placeholder)) {
-        return placeholder
+      return null
+    }, [
+      hasTitle,
+      unit,
+      icon,
+      onSelectTap,
+      leftComponentWidth,
+      disabled,
+      selectComponentWidth,
+      selectComponentStyles,
+      selectDisplayLabel,
+    ])
+
+    const renderRightComponent = useCallback(() => {
+      if (fixedRightPlaceholder) {
+        return (
+          <Flex
+            justifyContent="center"
+            position="absolute"
+            right={`${HORIZONTAL_PADDING}px`}
+            top={hasTitle ? LABEL_HEIGHT : 0}
+            height={INPUT_MIN_HEIGHT}
+            ref={rightComponentRef}
+          >
+            <Text color={disabled ? "black30" : "black60"}>{fixedRightPlaceholder}</Text>
+          </Flex>
+        )
       }
 
-      // otherwise, find a placeholder that has longest width that fits in the inputtext
-      const longestFittingStringIndex = placeholderWidths.findIndex((placeholderWidth) => {
-        return placeholderWidth <= inputWidth - 10 /* 10px left margin that the StyleInput has */
-      })
-      if (longestFittingStringIndex > -1) {
-        return placeholder[longestFittingStringIndex]
+      if (loading) {
+        return (
+          <Flex
+            justifyContent="center"
+            position="absolute"
+            right={`${HORIZONTAL_PADDING}px`}
+            top={hasTitle ? LABEL_HEIGHT : 0}
+            height={INPUT_MIN_HEIGHT}
+            ref={rightComponentRef}
+          >
+            <Spinner
+              size="medium"
+              style={{
+                right: 0,
+                width: 15,
+                backgroundColor: color("black60"),
+              }}
+            />
+          </Flex>
+        )
       }
 
-      // otherwise just return the shortest placeholder
-      return placeholder[placeholder.length - 1]
-    }
+      if (enableClearButton && value) {
+        return (
+          <Flex
+            justifyContent="center"
+            position="absolute"
+            right={`${HORIZONTAL_PADDING}px`}
+            top={hasTitle ? LABEL_HEIGHT : 0}
+            height={INPUT_MIN_HEIGHT}
+            zIndex={100}
+            ref={rightComponentRef}
+          >
+            <Touchable
+              haptic="impactMedium"
+              onPress={handleClear}
+              hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
+              accessibilityLabel="Clear input button"
+              testID="clear-input-button"
+            >
+              <XCircleIcon fill="black30" />
+            </Touchable>
+          </Flex>
+        )
+      }
 
-    return (
-      <Flex flexGrow={1} style={containerStyle}>
-        <Flex flexDirection="row" alignItems="center">
-          <InputTitle optional={optional} required={required}>
-            {title}
-          </InputTitle>
-          {!!maxLength && !!showLimit && (
-            <Text color="black60" variant="xs" marginLeft="auto">
-              {maxLength - value.length}
+      if (secureTextEntry) {
+        return (
+          <Flex
+            justifyContent="center"
+            position="absolute"
+            right={`${HORIZONTAL_PADDING}px`}
+            top={hasTitle ? LABEL_HEIGHT : 0}
+            height={INPUT_MIN_HEIGHT}
+            zIndex={100}
+            ref={rightComponentRef}
+          >
+            <Touchable
+              haptic
+              onPress={() => {
+                LayoutAnimation.configureNext({
+                  ...LayoutAnimation.Presets.easeInEaseOut,
+                  duration: 200,
+                })
+                setShowPassword(!showPassword)
+              }}
+              accessibilityLabel={showPassword ? "hide password button" : "show password button"}
+              hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
+            >
+              {!showPassword ? <EyeClosedIcon fill="black30" /> : <EyeOpenedIcon fill="black60" />}
+            </Touchable>
+          </Flex>
+        )
+      }
+
+      return null
+    }, [
+      fixedRightPlaceholder,
+      loading,
+      enableClearButton,
+      value,
+      secureTextEntry,
+      hasTitle,
+      disabled,
+      color,
+      handleClear,
+      showPassword,
+    ])
+
+    const renderBottomComponent = useCallback(() => {
+      if (!!props.error) {
+        return (
+          <Text color="red100" variant="xs" px={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+            {props.error}
+          </Text>
+        )
+      }
+
+      return (
+        <Flex flexDirection="row" justifyContent="space-between">
+          {!!props.required || !!props.optional ? (
+            <Text color="black60" variant="xs" pl={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+              {!!props.required && "* Required"}
+              {!!props.optional && "* Optional"}
+            </Text>
+          ) : (
+            // Adding this empty flex to make sure that the maxLength text is always on the right
+            <Flex />
+          )}
+          {!!props.maxLength && !!props.showLimit && (
+            <Text color="black60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+              {(value || "").length} / {props.maxLength}
             </Text>
           )}
         </Flex>
+      )
+    }, [props.error, props.maxLength, props.optional, props.required, props.showLimit, value])
 
-        {!!description && (
-          <Text color={descriptionColor ?? "black60"} variant="xs" mb={0.5}>
-            {description}
-          </Text>
-        )}
-        <TouchableWithoutFeedback onPressIn={() => input.current?.focus()}>
-          <View
-            style={[
-              {
-                flexDirection: "row",
-                borderWidth: 1,
-                borderColor: color(computeBorderColor({ disabled, error: !!error, focused })),
-                minHeight: multiline ? INPUT_HEIGHT_MULTILINE : INPUT_HEIGHT,
-                backgroundColor: disabled ? color("black5") : color("background"),
-              },
-              style,
-            ]}
-          >
-            {renderLeftHandSection?.()}
-            {!!icon && (
-              <Flex pl={1} justifyContent="center" flexGrow={0} backgroundColor="background">
-                {icon}
-              </Flex>
-            )}
-            <Flex flex={1}>
-              {placeholderMeasuringHack}
-              <StyledInput
-                multiline={multiline}
-                // we need this one to make RN focus on the input with the keyboard. https://github.com/facebook/react-native/issues/16826#issuecomment-940126791
-                scrollEnabled={multiline ? false : undefined}
-                maxLength={maxLength}
-                editable={!disabled}
-                onLayout={(event) => {
-                  const newWidth = event.nativeEvent.layout.width
-                  if (newWidth > inputWidth) {
-                    requestAnimationFrame(() => setInputWidth(newWidth))
-                  } else {
-                    setInputWidth(newWidth)
-                  }
-                }}
-                ref={input}
-                placeholderTextColor={color("black60")}
-                style={[
-                  {
-                    flex: 1,
-                    fontSize,
-                    color: color("onBackgroundHigh"),
-                    backgroundColor: color("background"),
-                  },
-                  inputTextStyle,
-                ]}
-                numberOfLines={multiline ? undefined : 1}
-                secureTextEntry={!showPassword}
-                textAlignVertical={multiline ? "top" : "center"}
-                placeholder={actualPlaceholder()}
-                value={value}
-                {...(restProps as any)}
-                onChangeText={localOnChangeText}
-                onFocus={(e) => {
-                  if (Platform.OS === "android") {
-                    LayoutAnimation.configureNext(
-                      LayoutAnimation.create(60, "easeInEaseOut", "opacity")
-                    )
-                  }
-                  setFocused(true)
-                  onFocus?.(e)
-                }}
-                onBlur={(e) => {
-                  if (Platform.OS === "android") {
-                    LayoutAnimation.configureNext(
-                      LayoutAnimation.create(60, "easeInEaseOut", "opacity")
-                    )
-                  }
-                  setFocused(false)
-                  onBlur?.(e)
-                }}
-              />
-            </Flex>
-            {!!fixedRightPlaceholder && value === "" && (
-              <Flex pr={1} justifyContent="center" alignItems="center">
-                <Text variant="sm" color="black60">
-                  {fixedRightPlaceholder}
-                </Text>
-              </Flex>
-            )}
-            {renderShowPasswordIcon()}
-            {loading ? (
-              <Flex pr={2} justifyContent="center" flexGrow={0}>
-                <Spinner
-                  size="medium"
-                  style={{ marginLeft: 3, width: 15, height: 4, backgroundColor: color("black60") }}
-                />
-              </Flex>
-            ) : (
-              !!(value !== undefined && value !== "" && enableClearButton) && (
-                <Flex pr={1} justifyContent="center" flexGrow={0}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      localClear()
-                    }}
-                    hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
-                    accessibilityLabel="Clear input button"
-                  >
-                    <XCircleIcon fill="black30" />
-                  </TouchableOpacity>
-                </Flex>
-              )
-            )}
-          </View>
-        </TouchableWithoutFeedback>
-        {!!error && (
-          <Text color="red100" mt={1} variant="xs" testID="input-error">
-            {error}
-          </Text>
-        )}
+    const renderHint = useCallback(() => {
+      if (!props.onHintPress) {
+        return null
+      }
+
+      return (
+        <Flex
+          style={{
+            alignItems: "flex-end",
+            top: space(2),
+          }}
+        >
+          <Touchable onPress={props.onHintPress} haptic="impactLight">
+            <Text underline variant="xs" color="black60">
+              {hintText}
+            </Text>
+          </Touchable>
+        </Flex>
+      )
+    }, [hintText, props.onHintPress, space])
+
+    const getPlaceholder = useCallback(() => {
+      // Show placeholder always if there is no title
+      // This is because we won't have a title animation
+      if (!props.title) {
+        return placeholder
+      }
+
+      // On blur, we want to show the placeholder immediately
+      if (delayedFocused) {
+        return placeholder
+      }
+
+      // On focus, we want to show the placeholder after the title animation has finished
+      return ""
+    }, [delayedFocused, props.title, placeholder])
+
+    const renderAnimatedTitle = useCallback(() => {
+      if (!props.title) {
+        return null
+      }
+
+      return (
+        <Flex flexDirection="row" zIndex={100} pointerEvents="none" height={LABEL_HEIGHT}>
+          <AnimatedText style={[labelStyles, labelAnimatedStyles]} numberOfLines={1}>
+            {" "}
+            {props.title}{" "}
+          </AnimatedText>
+        </Flex>
+      )
+    }, [labelStyles, labelAnimatedStyles, props.title])
+
+    return (
+      <Flex flexGrow={1}>
+        {renderHint()}
+
+        {renderAnimatedTitle()}
+
+        {renderLeftComponent()}
+
+        {renderRightComponent()}
+
+        <AnimatedStyledInput
+          value={value}
+          onChangeText={handleChangeText}
+          style={[styles, textInputAnimatedStyles]}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          scrollEnabled={false}
+          editable={!disabled}
+          textAlignVertical={props.multiline ? "top" : "center"}
+          ref={inputRef as RefObject<TextInput>}
+          placeholderTextColor={color("black60")}
+          placeholder={getPlaceholder()}
+          secureTextEntry={!showPassword}
+          {...props}
+        />
+
+        {/* Contains error and other data we display below the textinput */}
+        {renderBottomComponent()}
       </Flex>
     )
   }
 )
 
-export const computeBorderColor = ({
-  disabled,
-  error,
-  focused,
-}: {
-  disabled?: boolean
-  error?: boolean
-  focused?: boolean
-}): Color => {
-  switch (true) {
-    case error:
-      return "red100"
-
-    case disabled:
-      return "onBackgroundLow"
-
-    case focused:
-      return "onBackgroundMedium"
-
-    default:
-      return "onBackgroundLow"
-  }
-}
-
 const StyledInput = styled(TextInput)`
-  padding: ${themeGet("space.1")};
+  padding: ${HORIZONTAL_PADDING}px;
   font-family: ${themeGet("fonts.sans.regular")};
+  border-radius: ${INPUT_BORDER_RADIUS}px;
 `
+
+const AnimatedStyledInput = Animated.createAnimatedComponent(StyledInput)
+const AnimatedText = Animated.createAnimatedComponent(Text)
+const AnimatedFlex = Animated.createAnimatedComponent(Flex)
+
+export type Input = TextInput

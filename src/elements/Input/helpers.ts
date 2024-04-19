@@ -135,16 +135,16 @@ export const getInputState = ({
 }
 
 export const getInputVariant = ({
-  editable,
+  disabled,
   hasError,
 }: {
-  editable: boolean
+  disabled: boolean
   hasError: boolean
 }) => {
   if (hasError) {
     return "error"
   }
-  if (!editable) {
+  if (disabled) {
     return "disabled"
   }
   return "default"
