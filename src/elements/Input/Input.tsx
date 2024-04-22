@@ -111,7 +111,6 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
-    // const throttlePropValue = useThrottle(propValue)
 
     const [value, setValue] = useState(propValue ?? defaultValue)
 
@@ -179,6 +178,21 @@ export const Input = forwardRef<InputRef, InputProps>(
       }
     }, [focused, delayedFocused])
 
+    const handleChangeText = useCallback(
+      (text: string) => {
+        setValue(text)
+        onChangeText?.(text)
+      },
+      [onChangeText]
+    )
+
+    const handleClear = useCallback(() => {
+      LayoutAnimation.configureNext({ ...LayoutAnimation.Presets.easeInEaseOut, duration: 200 })
+      inputRef.current?.clear()
+      handleChangeText("")
+      onClear?.()
+    }, [onClear, handleChangeText])
+
     useEffect(() => {
       if (!addClearListener) {
         return
@@ -189,18 +203,9 @@ export const Input = forwardRef<InputRef, InputProps>(
       return () => {
         inputEvents.removeListener("clear", handleClear)
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [addClearListener])
+    }, [addClearListener, handleClear])
 
     const { width: rightComponentWidth = 0 } = useMeasure({ ref: rightComponentRef })
-
-    const handleChangeText = useCallback(
-      (text: string) => {
-        setValue(text)
-        onChangeText?.(text)
-      },
-      [onChangeText]
-    )
 
     const textInputPaddingLeft = useMemo(() => {
       if (!hasLeftComponent) {
@@ -208,9 +213,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       }
 
       if (onSelectTap) {
-        // if (value) {
-        //   return HORIZONTAL_PADDING
-        // }
         return selectComponentWidth + HORIZONTAL_PADDING
       }
 
@@ -283,13 +285,6 @@ export const Input = forwardRef<InputRef, InputProps>(
       setIsFocused(false)
       onBlur?.(e)
     }
-
-    const handleClear = useCallback(() => {
-      LayoutAnimation.configureNext({ ...LayoutAnimation.Presets.easeInEaseOut, duration: 200 })
-      inputRef.current?.clear()
-      handleChangeText("")
-      onClear?.()
-    }, [onClear, handleChangeText])
 
     const hasTitle = !!props.title
 

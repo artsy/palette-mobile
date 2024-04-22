@@ -9,6 +9,10 @@ type Position = {
   pageY: number
 }
 
+/*
+  useMeasure is a hook that measures the position of a ref element
+  and returns the x, y, width, height, pageX, pageY of the element
+*/
 export const useMeasure = ({
   ref,
   extraDeps = [],
