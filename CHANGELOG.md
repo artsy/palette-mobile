@@ -1,3 +1,26 @@
+# v13.2.0 (Tue Apr 23 2024)
+
+#### 🚀 Enhancement
+
+- fix(ci): Fix missing .allcontributorsrc file for auto.rc [#222](https://github.com/artsy/palette-mobile/pull/222) ([@damassi](https://github.com/damassi))
+
+#### 🐛 Bug Fix
+
+- fix(ci): Remove all contributors [#223](https://github.com/artsy/palette-mobile/pull/223) ([@damassi](https://github.com/damassi))
+- feat(entityheader): add theme support [#221](https://github.com/artsy/palette-mobile/pull/221) ([@damassi](https://github.com/damassi))
+- build(package.json): fixes package json repo property [#220](https://github.com/artsy/palette-mobile/pull/220) ([@gkartalis](https://github.com/gkartalis))
+- build(deps): bump auto deps [#219](https://github.com/artsy/palette-mobile/pull/219) ([@gkartalis](https://github.com/gkartalis))
+- fix: rn followups - pod install [#218](https://github.com/artsy/palette-mobile/pull/218) ([@gkartalis](https://github.com/gkartalis))
+- chore: upgrade rn to latest minor version [#217](https://github.com/artsy/palette-mobile/pull/217) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 3
+
+- Christopher Pappas ([@damassi](https://github.com/damassi))
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.1.30 (Thu Apr 18 2024)
 
 #### 🐛 Bug Fix
