@@ -18,6 +18,7 @@ export interface EntityHeaderProps extends FlexProps {
   name: string
   smallVariant?: boolean
   displayPrivateIcon?: boolean
+  theme?: "dark" | "light"
 }
 
 export const EntityHeader = ({
@@ -30,6 +31,7 @@ export const EntityHeader = ({
   name,
   smallVariant = false,
   displayPrivateIcon,
+  theme = "light",
   ...restProps
 }: EntityHeaderProps) => {
   const rightButton = (RightButton || FollowButton) && (
@@ -46,6 +48,7 @@ export const EntityHeader = ({
   const headerName = (
     <Flex flexDirection="row" alignItems="center">
       <Text
+        color={theme === "light" ? "black100" : "white100"}
         ellipsizeMode="tail"
         numberOfLines={1}
         variant="sm"
@@ -54,7 +57,15 @@ export const EntityHeader = ({
       >
         {name}
       </Text>
-      {displayPrivateIcon && <LockIcon ml="2px" width={16} height={16} testID="lock-icon" />}
+      {displayPrivateIcon && (
+        <LockIcon
+          ml="2px"
+          width={16}
+          height={16}
+          testID="lock-icon"
+          fill={theme === "light" ? "black100" : "white100"}
+        />
+      )}
     </Flex>
   )
 
@@ -69,7 +80,7 @@ export const EntityHeader = ({
           ellipsizeMode="tail"
           numberOfLines={1}
           variant="xs"
-          color="black60"
+          color={theme === "light" ? "black60" : "white100"}
           style={{ flexShrink: 1 }}
         >
           {meta}
@@ -77,13 +88,19 @@ export const EntityHeader = ({
       )
     }
     return null
-  }, [meta])
+  }, [meta, theme])
 
+  console.log(theme)
   return (
     <Flex flexDirection="row" flexWrap="nowrap" {...restProps}>
       {!!(imageUrl || initials) && (
         <Flex mr={1} justifyContent="center">
-          <Avatar size={avatarSize} src={imageUrl} initials={initials} />
+          <Avatar
+            size={avatarSize}
+            src={imageUrl}
+            initials={initials}
+            color={theme === "light" ? "black100" : "white100"}
+          />
         </Flex>
       )}
 
@@ -91,7 +108,7 @@ export const EntityHeader = ({
         <Flex flexDirection="row" justifyContent="flex-start" flexGrow={1} alignItems="center">
           {headerName}
 
-          <Text variant="sm" ml="0.5">
+          <Text variant="sm" ml="0.5" color={theme === "light" ? "black100" : "white100"}>
             {bullet}
           </Text>
 
