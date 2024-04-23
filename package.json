@@ -147,7 +147,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "artsy/palette-mobile",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artsy/palette-mobile.git"
+  },
   "author": "Pavlos Vinieratos <pvinis@gmail.com>",
   "license": "MIT",
   "lint-staged": {
