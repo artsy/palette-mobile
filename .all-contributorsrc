@@ -1,0 +1,14 @@
+{
+  "projectName": "@artsy/palette-mobile",
+  "projectOwner": "@artsy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "CONTRIBUTORS.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributors": [],
+  "contributorsPerLine": 7
+}
