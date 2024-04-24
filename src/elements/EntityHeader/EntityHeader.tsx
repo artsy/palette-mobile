@@ -90,7 +90,6 @@ export const EntityHeader = ({
     return null
   }, [meta, theme])
 
-  console.log(theme)
   return (
     <Flex flexDirection="row" flexWrap="nowrap" {...restProps}>
       {!!(imageUrl || initials) && (
