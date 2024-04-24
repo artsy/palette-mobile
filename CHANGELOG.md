@@ -1,3 +1,15 @@
+# v13.2.1 (Wed Apr 24 2024)
+
+#### 🐛 Bug Fix
+
+- fix: remove unnecessary console.log from EntityHeader [#224](https://github.com/artsy/palette-mobile/pull/224) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.2.0 (Tue Apr 23 2024)
 
 #### 🚀 Enhancement
