@@ -38,7 +38,8 @@ export const useMeasure = ({
         console.error("measurement failed")
       }
     )
-  }, [JSON.stringify(position), ...extraDeps])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(position), ref, ...extraDeps])
 
   return { ...position }
 }

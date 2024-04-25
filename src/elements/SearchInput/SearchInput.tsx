@@ -4,14 +4,12 @@ import { Input, InputProps } from "../Input"
 
 export interface SearchInputProps extends InputProps {
   enableCancelButton?: boolean
-  onCancelPress?: () => void
 }
 
 export const SearchInput = ({
   enableCancelButton = true,
   onChangeText,
   onClear,
-  onCancelPress,
   ...props
 }: SearchInputProps) => {
   return (

@@ -319,7 +319,11 @@ export const Input = forwardRef<InputRef, InputProps>(
 
       if (onSelectTap) {
         return (
-          <TouchableOpacity onPress={onSelectTap} style={{ position: "absolute", zIndex: 1000 }}>
+          <TouchableOpacity
+            onPress={onSelectTap}
+            style={{ zIndex: 1000, top: 2 }}
+            hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          >
             <AnimatedFlex
               style={[
                 {
@@ -498,7 +502,16 @@ export const Input = forwardRef<InputRef, InputProps>(
             top: space(2),
           }}
         >
-          <Touchable onPress={props.onHintPress} haptic="impactLight">
+          <Touchable
+            onPress={props.onHintPress}
+            haptic="impactLight"
+            hitSlop={{
+              top: 5,
+              right: 10,
+              bottom: 5,
+              left: 10,
+            }}
+          >
             <Text underline variant="xs" color="black60">
               {hintText}
             </Text>
