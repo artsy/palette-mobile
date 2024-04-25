@@ -4,14 +4,12 @@ import { Input, InputProps } from "../Input"
 
 export interface SearchInputProps extends InputProps {
   enableCancelButton?: boolean
-  onCancelPress?: () => void
 }
 
 export const SearchInput = ({
-  enableCancelButton,
+  enableCancelButton = true,
   onChangeText,
   onClear,
-  onCancelPress,
   ...props
 }: SearchInputProps) => {
   return (
@@ -19,7 +17,7 @@ export const SearchInput = ({
       <Input
         icon={<MagnifyingGlassIcon width={18} height={18} fill="onBackgroundHigh" />}
         autoCorrect={false}
-        enableClearButton
+        enableClearButton={enableCancelButton}
         returnKeyType="search"
         onClear={() => {
           onClear?.()

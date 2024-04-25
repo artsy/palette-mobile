@@ -32,18 +32,10 @@ describe("Input", () => {
   })
 
   it("should render the clear button when input is not empty and pressing it should clear the input", () => {
-    const {
-      getByDisplayValue,
-      queryByDisplayValue,
-      getByPlaceholderText,
-      getByText,
-      getByLabelText,
-    } = renderWithWrappers(<Input description="Input" placeholder="USD" enableClearButton />)
+    const { getByDisplayValue, queryByDisplayValue, getByPlaceholderText, getByLabelText } =
+      renderWithWrappers(<Input placeholder="USD" enableClearButton />)
     // placeholder is rendered
     getByPlaceholderText("USD")
-
-    // description is rendered
-    getByText("Input")
 
     fireEvent(getByPlaceholderText("USD"), "onChangeText", "Banksy")
 
@@ -57,10 +49,10 @@ describe("Input", () => {
   })
 
   it("should show the correct show/hide password icon", () => {
-    const { getByText, getByPlaceholderText, queryByLabelText, getByLabelText } =
-      renderWithWrappers(<Input description="Password" placeholder="password" secureTextEntry />)
+    const { getByPlaceholderText, queryByLabelText, getByLabelText } = renderWithWrappers(
+      <Input placeholder="password" secureTextEntry />
+    )
 
-    getByText("Password")
     getByPlaceholderText("password")
 
     getByLabelText("show password button")
