@@ -321,7 +321,7 @@ export const Input = forwardRef<InputRef, InputProps>(
         return (
           <TouchableOpacity
             onPress={onSelectTap}
-            style={{ zIndex: 1000, top: 2 }}
+            style={{ position: "absolute" }}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           >
             <AnimatedFlex
@@ -557,10 +557,6 @@ export const Input = forwardRef<InputRef, InputProps>(
 
         {renderAnimatedTitle()}
 
-        {renderLeftComponent()}
-
-        {renderRightComponent()}
-
         <AnimatedStyledInput
           value={value}
           onChangeText={handleChangeText}
@@ -576,6 +572,10 @@ export const Input = forwardRef<InputRef, InputProps>(
           secureTextEntry={!showPassword}
           {...props}
         />
+
+        {renderRightComponent()}
+
+        {renderLeftComponent()}
 
         {/* Contains error and other data we display below the textinput */}
         {renderBottomComponent()}
