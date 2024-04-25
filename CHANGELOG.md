@@ -1,3 +1,15 @@
+# v13.2.2 (Thu Apr 25 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add new input component [#207](https://github.com/artsy/palette-mobile/pull/207) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.1 (Wed Apr 24 2024)
 
 #### 🐛 Bug Fix
