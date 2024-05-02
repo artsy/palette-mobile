@@ -2,7 +2,8 @@ import { EventEmitter } from "events"
 
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
-import _ from "lodash"
+import isString from "lodash/isString"
+import isArray from "lodash/isArray"
 import {
   RefObject,
   forwardRef,
