@@ -350,13 +350,20 @@ export const Input = forwardRef<InputRef, InputProps>(
         return (
           <TouchableOpacity
             onPress={onSelectTap}
-            style={{ position: "absolute" }}
+            style={[
+              leftComponentSharedStyles,
+              {
+                width: selectComponentWidth,
+              },
+            ]}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           >
             <AnimatedFlex
               style={[
                 {
-                  ...leftComponentSharedStyles,
+                  paddingHorizontal: HORIZONTAL_PADDING,
+                  height: INPUT_MIN_HEIGHT,
+                  alignItems: "center",
                   width: selectComponentWidth,
                   flexDirection: "row",
                   borderRightWidth: 1,
