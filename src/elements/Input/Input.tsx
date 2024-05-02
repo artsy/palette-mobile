@@ -2,8 +2,8 @@ import { EventEmitter } from "events"
 
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
-import isString from "lodash/isString"
 import isArray from "lodash/isArray"
+import isString from "lodash/isString"
 import {
   RefObject,
   forwardRef,
@@ -246,17 +246,19 @@ export const Input = forwardRef<InputRef, InputProps>(
       return leftComponentWidth
     }, [hasLeftComponent, leftComponentWidth, onSelectTap, selectComponentWidth])
 
-    const styles = {
-      fontFamily: fontFamily,
-      fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-      minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
-      maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
-      height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
-      borderWidth: 1,
-      paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
-      paddingLeft: textInputPaddingLeft,
-      ...(styleProp as {}),
-    }
+    const styles = useMemo(() => {
+      return {
+        fontFamily: fontFamily,
+        fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+        minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
+        maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
+        height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
+        borderWidth: 1,
+        paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
+        paddingLeft: textInputPaddingLeft,
+        ...(styleProp as {}),
+      }
+    }, [fontFamily, styleProp, props.multiline, rightComponentWidth, textInputPaddingLeft])
 
     const labelStyles = useMemo(() => {
       return {
@@ -553,11 +555,11 @@ export const Input = forwardRef<InputRef, InputProps>(
       }
 
       if (Platform.OS === "ios") {
-        return _.isArray(placeholder) ? placeholder[0] : placeholder
+        return isArray(placeholder) ? placeholder[0] : placeholder
       }
 
       // if it's android and we only have one string, return that string
-      if (_.isString(placeholder)) {
+      if (isString(placeholder)) {
         return placeholder
       }
       // otherwise, find a placeholder that has longest width that fits in the inputtext
@@ -604,7 +606,12 @@ export const Input = forwardRef<InputRef, InputProps>(
     }, [labelStyles, labelAnimatedStyles, props.title])
 
     const renderAndroidPlaceholderMeasuringHack = useCallback(() => {
-      if (Platform.OS === "ios" || !_.isArray(placeholder)) {
+      if (Platform.OS === "ios" || !isArray(placeholder)) {
+        return null
+      }
+
+      // Do not render the hack if we have already measured the placeholder
+      if (placeholderWidths.current.length > 0) {
         return null
       }
 
@@ -632,8 +639,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           ))}
         </Flex>
       )
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [placeholder])
+    }, [placeholder, styles])
 
     return (
       <Flex flexGrow={1}>
