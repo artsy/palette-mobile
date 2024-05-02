@@ -2,6 +2,8 @@ import { EventEmitter } from "events"
 
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
+import isArray from "lodash/isArray"
+import isString from "lodash/isString"
 import {
   RefObject,
   forwardRef,
@@ -15,6 +17,7 @@ import {
 import {
   LayoutAnimation,
   NativeSyntheticEvent,
+  Platform,
   TextInput,
   TextInputFocusEventData,
   TextInputProps,
@@ -38,7 +41,7 @@ export const emitInputClearEvent = () => {
   inputEvents.emit("clear")
 }
 
-export interface InputProps extends TextInputProps {
+export interface InputProps extends Omit<TextInputProps, "placeholder"> {
   addClearListener?: boolean
   /**
    * We are applying some optimisations to make sure the UX is smooth
@@ -56,6 +59,27 @@ export interface InputProps extends TextInputProps {
   onHintPress?: () => void
   onSelectTap?: () => void
   optional?: boolean
+  /**
+   * The placeholder can be an array of string, specifically for android, because of a bug.
+   * On ios, the longest string will always be picked, as ios can add ellipsis.
+   * On android, the longest string **that fits** will be picked, as android doesn't use ellipsis.
+   * The way to use it is to put the longest string first, and the shortest string last.
+   *
+   * Check `HACKS.md` for more info.
+   *
+   * @example
+   * const placeholders = [
+   *   "Wow this is a great and very long placeholder",
+   *   "Wow this is a great and long placeholder",
+   *   "Wow this is a great placeholder",
+   *   "Wow",
+   * ]
+   * ...
+   * <Input
+   *   placeholder={placeholders}
+   * />
+   */
+  placeholder?: string | string[]
   required?: boolean
   selectComponentWidth?: number
   selectDisplayLabel?: string | undefined | null
@@ -115,6 +139,9 @@ export const Input = forwardRef<InputRef, InputProps>(
     const [value, setValue] = useState(propValue ?? defaultValue)
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
+
+    const [inputWidth, setInputWidth] = useState(0)
+    const placeholderWidths = useRef<number[]>([])
 
     const rightComponentRef = useRef(null)
     const inputRef = useRef<TextInput>()
@@ -219,17 +246,19 @@ export const Input = forwardRef<InputRef, InputProps>(
       return leftComponentWidth
     }, [hasLeftComponent, leftComponentWidth, onSelectTap, selectComponentWidth])
 
-    const styles = {
-      fontFamily: fontFamily,
-      fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-      minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
-      maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
-      height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
-      borderWidth: 1,
-      paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
-      paddingLeft: textInputPaddingLeft,
-      ...(styleProp as {}),
-    }
+    const styles = useMemo(() => {
+      return {
+        fontFamily: fontFamily,
+        fontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+        minHeight: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : INPUT_MIN_HEIGHT,
+        maxHeight: props.multiline ? MULTILINE_INPUT_MAX_HEIGHT : undefined,
+        height: props.multiline ? MULTILINE_INPUT_MIN_HEIGHT : undefined,
+        borderWidth: 1,
+        paddingRight: rightComponentWidth + HORIZONTAL_PADDING,
+        paddingLeft: textInputPaddingLeft,
+        ...(styleProp as {}),
+      }
+    }, [fontFamily, styleProp, props.multiline, rightComponentWidth, textInputPaddingLeft])
 
     const labelStyles = useMemo(() => {
       return {
@@ -321,13 +350,20 @@ export const Input = forwardRef<InputRef, InputProps>(
         return (
           <TouchableOpacity
             onPress={onSelectTap}
-            style={{ position: "absolute" }}
+            style={[
+              leftComponentSharedStyles,
+              {
+                width: selectComponentWidth,
+              },
+            ]}
             hitSlop={{ top: 10, right: 10, bottom: 10, left: 10 }}
           >
             <AnimatedFlex
               style={[
                 {
-                  ...leftComponentSharedStyles,
+                  paddingHorizontal: HORIZONTAL_PADDING,
+                  height: INPUT_MIN_HEIGHT,
+                  alignItems: "center",
                   width: selectComponentWidth,
                   flexDirection: "row",
                   borderRightWidth: 1,
@@ -520,21 +556,46 @@ export const Input = forwardRef<InputRef, InputProps>(
       )
     }, [hintText, props.onHintPress, space])
 
+    const getPlatformSpecificPlaceholder = useCallback(() => {
+      if (!placeholder) {
+        return ""
+      }
+
+      if (Platform.OS === "ios") {
+        return isArray(placeholder) ? placeholder[0] : placeholder
+      }
+
+      // if it's android and we only have one string, return that string
+      if (isString(placeholder)) {
+        return placeholder
+      }
+      // otherwise, find a placeholder that has longest width that fits in the inputtext
+      const longestFittingStringIndex = placeholderWidths.current.findIndex((placeholderWidth) => {
+        return placeholderWidth <= inputWidth
+      })
+      if (longestFittingStringIndex > -1) {
+        return placeholder[longestFittingStringIndex]
+      }
+
+      // otherwise just return the shortest placeholder
+      return placeholder[placeholder.length - 1]
+    }, [inputWidth, placeholder])
+
     const getPlaceholder = useCallback(() => {
       // Show placeholder always if there is no title
       // This is because we won't have a title animation
       if (!props.title) {
-        return placeholder
+        return getPlatformSpecificPlaceholder()
       }
 
       // On blur, we want to show the placeholder immediately
       if (delayedFocused) {
-        return placeholder
+        return getPlatformSpecificPlaceholder()
       }
 
       // On focus, we want to show the placeholder after the title animation has finished
       return ""
-    }, [delayedFocused, props.title, placeholder])
+    }, [delayedFocused, getPlatformSpecificPlaceholder, props.title])
 
     const renderAnimatedTitle = useCallback(() => {
       if (!props.title) {
@@ -551,8 +612,46 @@ export const Input = forwardRef<InputRef, InputProps>(
       )
     }, [labelStyles, labelAnimatedStyles, props.title])
 
+    const renderAndroidPlaceholderMeasuringHack = useCallback(() => {
+      if (Platform.OS === "ios" || !isArray(placeholder)) {
+        return null
+      }
+
+      // Do not render the hack if we have already measured the placeholder
+      if (placeholderWidths.current.length > 0) {
+        return null
+      }
+
+      return (
+        <Flex
+          style={{
+            position: "absolute",
+            top: -10000, // make sure its off the screen
+            width: 10000, // make sure Texts can take as much space as they need
+            alignItems: "baseline", // this is to make Texts get the smallest width they can get to fit the text
+          }}
+        >
+          {placeholder.map((placeholderString, index) => (
+            <Text
+              onLayout={(event) => {
+                placeholderWidths.current[index] = event.nativeEvent.layout.width
+              }}
+              numberOfLines={1}
+              style={{
+                ...styles,
+              }}
+            >
+              {placeholderString}
+            </Text>
+          ))}
+        </Flex>
+      )
+    }, [placeholder, styles])
+
     return (
       <Flex flexGrow={1}>
+        {renderAndroidPlaceholderMeasuringHack()}
+
         {renderHint()}
 
         {renderAnimatedTitle()}
@@ -563,6 +662,9 @@ export const Input = forwardRef<InputRef, InputProps>(
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onLayout={(event) => {
+            setInputWidth(event.nativeEvent.layout.width)
+          }}
           scrollEnabled={false}
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}
