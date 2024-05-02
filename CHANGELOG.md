@@ -1,3 +1,15 @@
+# v13.2.3 (Thu May 02 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support placeholders in Input [#225](https://github.com/artsy/palette-mobile/pull/225) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.2 (Thu Apr 25 2024)
 
 #### 🐛 Bug Fix
