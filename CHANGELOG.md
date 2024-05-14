@@ -1,3 +1,15 @@
+# v13.2.4 (Tue May 14 2024)
+
+#### 🐛 Bug Fix
+
+- feat: move follow button func to palette [#226](https://github.com/artsy/palette-mobile/pull/226) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.3 (Thu May 02 2024)
 
 #### 🐛 Bug Fix
