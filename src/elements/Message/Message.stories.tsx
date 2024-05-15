@@ -1,4 +1,5 @@
 import { storiesOf } from "@storybook/react-native"
+import { Text } from "react-native"
 import { Message } from "./Message"
 import { withTheme } from "../../storybook/decorators"
 import { List } from "../../storybook/helpers"
@@ -8,6 +9,9 @@ storiesOf("Message", module)
   .add("Variants", () => (
     <List contentContainerStyle={{ marginHorizontal: 20, alignItems: "stretch" }}>
       <Message variant="default" title="Without Close Button" text="Text" />
+      <Message variant="default" title="Without Close Button">
+        <Text>Text</Text>
+      </Message>
       <Message variant="default" showCloseButton title="Title" text="Text" />
       <Message
         variant="default"
