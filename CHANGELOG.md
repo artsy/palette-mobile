@@ -1,3 +1,15 @@
+# v13.2.5 (Wed May 15 2024)
+
+#### 🐛 Bug Fix
+
+- chore: add support to children in message component [#227](https://github.com/artsy/palette-mobile/pull/227) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.4 (Tue May 14 2024)
 
 #### 🐛 Bug Fix
