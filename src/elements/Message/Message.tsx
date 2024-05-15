@@ -24,6 +24,7 @@ export interface MessageProps {
 
 export const Message: React.FC<MessageProps> = ({
   bodyTextStyle,
+  children,
   containerStyle,
   IconComponent,
   iconPosition = "left",
@@ -87,6 +88,7 @@ export const Message: React.FC<MessageProps> = ({
                 {text}
               </Text>
             )}
+            {children}
           </Flex>
 
           {!!IconComponent && iconPosition === "right" && (
