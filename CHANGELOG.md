@@ -1,3 +1,15 @@
+# v13.2.6 (Tue May 21 2024)
+
+#### 🐛 Bug Fix
+
+- chore: update commit author to shared account #trivial [#228](https://github.com/artsy/palette-mobile/pull/228) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v13.2.5 (Wed May 15 2024)
 
 #### 🐛 Bug Fix
