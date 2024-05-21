@@ -86,6 +86,12 @@ workflows:
           requires:
             - test
             - type-check
+          pre-steps:
+            - run:
+                name: Show Git Config
+                command: |
+                  echo "Git User Name: $(git config user.name)"
+                  echo "Git User Email: $(git config user.email)"
 
       - auto/publish:
           context: npm-deploy
