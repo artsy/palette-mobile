@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
+import { ViewStyle } from "react-native"
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import { Color } from "../../types"
+import { useSpace } from "../../utils/hooks"
 import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
 
@@ -11,6 +13,7 @@ export interface ProgressBarProps {
   onCompletion?: () => void
   progress: number
   trackColor?: Color
+  style?: ViewStyle
 }
 
 const clamp = (num: number, min: number, max: number) => Math.max(min, Math.min(num, max))
@@ -22,8 +25,10 @@ export const ProgressBar = ({
   onCompletion,
   progress: unclampedProgress,
   trackColor = "blue100",
+  style,
 }: ProgressBarProps) => {
   const color = useColor()
+  const space = useSpace()
   const width = useSharedValue(0)
   const progress = clamp(unclampedProgress, 0, 100)
   const progressAnim = useAnimatedStyle(() => {
@@ -42,7 +47,15 @@ export const ProgressBar = ({
   }, [progress])
 
   return (
-    <Flex width="100%" backgroundColor={backgroundColor} my={1}>
+    <Flex
+      width="10%"
+      backgroundColor={backgroundColor}
+      style={{
+        marginVertical: space(1),
+        width: "100%",
+        ...style,
+      }}
+    >
       <Animated.View
         testID="progress-bar-track"
         style={[progressAnim, { height, backgroundColor: color(trackColor) }]}
