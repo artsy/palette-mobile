@@ -1,3 +1,15 @@
+# v13.2.8 (Mon May 27 2024)
+
+#### 🐛 Bug Fix
+
+- chore: support progress bar styles [#230](https://github.com/artsy/palette-mobile/pull/230) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.7 (Mon May 27 2024)
 
 #### 🐛 Bug Fix
