@@ -1,3 +1,15 @@
+# v13.2.7 (Mon May 27 2024)
+
+#### 🐛 Bug Fix
+
+- fix: loading state to FollowButton, hides checkmark when loading [#229](https://github.com/artsy/palette-mobile/pull/229) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.6 (Tue May 21 2024)
 
 #### 🐛 Bug Fix
