@@ -516,7 +516,7 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFlashList (1.5.0):
+  - RNFlashList (1.6.4):
     - React-Core
   - RNReactNativeHapticFeedback (1.14.0):
     - React-Core
@@ -823,7 +823,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFlashList: 25b0e092b4470c84db0386d4f5316dc34123bb6d
+  RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNReactNativeHapticFeedback: 1e3efeca9628ff9876ee7cdd9edec1b336913f8c
   RNReanimated: 9f7068e43b9358a46a688d94a5a3adb258139457
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a

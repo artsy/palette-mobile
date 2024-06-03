@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@artsy/palette-tokens": "^5.0.0",
-    "@shopify/flash-list": "^1.5.0",
+    "@shopify/flash-list": "^1.6.4",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
@@ -55,12 +55,12 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
+    "react-native-blurhash": "^1.1.11",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
     "react-native-svg": "*",
-    "styled-components": ">= 5",
-    "react-native-blurhash": "^1.1.11"
+    "styled-components": ">= 5"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
