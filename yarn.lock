@@ -10232,10 +10232,10 @@ react-native-blurhash@^1.1.11:
   resolved "https://registry.yarnpkg.com/react-native-blurhash/-/react-native-blurhash-1.1.11.tgz#cef102cc0239eb30c184235caf3fcb0b1f3ce33d"
   integrity sha512-lYFf0C6vBz+wr5p81ABlzT9vSWmg4qTrtYGObBzhPOFIM8T0BHXbz0cCIE/gWgKFohLEWrwXFQ78GgHLlw7Jig==
 
-react-native-collapsible-tab-view@6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-collapsible-tab-view/-/react-native-collapsible-tab-view-6.2.1.tgz#b48760cd98c0156bc89300516ae10ff55f7df298"
-  integrity sha512-pgmpZYSg6TPYmhv3Dw/czFJHk4AzcYN2df3EMlKwFqbu1ifmlA866hBUVDX3mlbRaros75U5S1wpGCwlqqXLTQ==
+react-native-collapsible-tab-view@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-collapsible-tab-view/-/react-native-collapsible-tab-view-7.0.1.tgz#8a62439bf65f99e627358dbaf6eac3dc95589fd2"
+  integrity sha512-vAYG8vnu59fnnaqd59Vr1kNZ+VViMVnGvfoBB0SGgp0PXsMgBSax+9AavM/DZUjSpycfkA7teZx9XtYdt2ytSA==
   dependencies:
     use-deep-compare "^1.1.0"
 
