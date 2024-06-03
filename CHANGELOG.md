@@ -1,3 +1,15 @@
+# v13.2.9 (Mon Jun 03 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump @shopify/flash-list and react-native-collapsible-tab-view [#231](https://github.com/artsy/palette-mobile/pull/231) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.8 (Mon May 27 2024)
 
 #### 🐛 Bug Fix
