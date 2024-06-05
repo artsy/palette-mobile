@@ -10,6 +10,7 @@ export interface BackButtonProps {
   onPress?: () => void
   showX?: boolean
   style?: TouchableOpacityProps["style"]
+  iconSize?: number
 }
 
 export const BackButton: React.FC<BackButtonProps> = ({
@@ -18,6 +19,7 @@ export const BackButton: React.FC<BackButtonProps> = ({
   onPress,
   showX = false,
   style,
+  iconSize = 18,
 }) => {
   return (
     <TouchableOpacity
@@ -29,9 +31,9 @@ export const BackButton: React.FC<BackButtonProps> = ({
       style={style}
     >
       {showX ? (
-        <CloseIcon fill={color} width={26} height={26} />
+        <CloseIcon fill={color} width={iconSize} height={iconSize} />
       ) : (
-        <ChevronIcon direction="left" fill={color} />
+        <ChevronIcon direction="left" fill={color} height={iconSize} width={iconSize} />
       )}
     </TouchableOpacity>
   )
