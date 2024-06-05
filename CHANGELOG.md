@@ -1,3 +1,15 @@
+# v13.2.10 (Wed Jun 05 2024)
+
+#### 🐛 Bug Fix
+
+- chore: allow disabling keyboard avoidance [#232](https://github.com/artsy/palette-mobile/pull/232) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.9 (Mon Jun 03 2024)
 
 #### 🐛 Bug Fix
