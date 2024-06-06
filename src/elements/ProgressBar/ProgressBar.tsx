@@ -14,6 +14,7 @@ export interface ProgressBarProps {
   progress: number
   trackColor?: Color
   style?: ViewStyle
+  progressBarStyle?: ViewStyle
 }
 
 const clamp = (num: number, min: number, max: number) => Math.max(min, Math.min(num, max))
@@ -26,6 +27,7 @@ export const ProgressBar = ({
   progress: unclampedProgress,
   trackColor = "blue100",
   style,
+  progressBarStyle,
 }: ProgressBarProps) => {
   const color = useColor()
   const space = useSpace()
@@ -58,7 +60,7 @@ export const ProgressBar = ({
     >
       <Animated.View
         testID="progress-bar-track"
-        style={[progressAnim, { height, backgroundColor: color(trackColor) }]}
+        style={[progressAnim, { height, backgroundColor: color(trackColor) }, progressBarStyle]}
       />
     </Flex>
   )
