@@ -1,3 +1,4 @@
+import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { themeGet } from "@styled-system/theme-get"
 import {
   Insets,
@@ -25,6 +26,7 @@ export interface RadioButtonProps
   disabled?: boolean
   error?: boolean
   text?: React.ReactElement | string
+  textVariant?: TextVariant
   subtitle?: React.ReactElement | string
   accessibilityState?: { checked: boolean }
 }
@@ -35,6 +37,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   error,
   onPress,
   text,
+  textVariant = "md",
   subtitle,
   accessibilityState,
   ...restProps
@@ -111,7 +114,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
           <Flex justifyContent="center">
             {!!text && (
-              <Text variant="md" color={textColor}>
+              <Text variant={textVariant} color={textColor}>
                 {text}
               </Text>
             )}
