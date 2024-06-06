@@ -1,3 +1,15 @@
+# v13.2.13 (Thu Jun 06 2024)
+
+#### 🐛 Bug Fix
+
+- chore: support progressBarStyle for ProgressBar component [#235](https://github.com/artsy/palette-mobile/pull/235) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.12 (Wed Jun 05 2024)
 
 #### 🐛 Bug Fix
