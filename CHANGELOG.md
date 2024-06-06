@@ -1,3 +1,15 @@
+# v13.2.14 (Thu Jun 06 2024)
+
+#### 🐛 Bug Fix
+
+- chore: support text variants for radio button [#236](https://github.com/artsy/palette-mobile/pull/236) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.13 (Thu Jun 06 2024)
 
 #### 🐛 Bug Fix
