@@ -81,7 +81,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     : checkboxStyles[error ? "error" : "default"][isChecked ? "checked" : "unchecked"]
 
   const textColor = error ? color("red100") : disabled ? color("black30") : color("black100")
-  const subtitleColor = error ? color("red100") : color("black30")
+  const subtitleColor = error ? color("red100") : disabled ? color("black30") : color("black60")
 
   return (
     <TouchableWithoutFeedback
