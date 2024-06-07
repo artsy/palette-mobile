@@ -1,3 +1,15 @@
+# v13.2.16 (Fri Jun 07 2024)
+
+#### 🐛 Bug Fix
+
+- fix: checkbox subtitle text color [#238](https://github.com/artsy/palette-mobile/pull/238) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.15 (Fri Jun 07 2024)
 
 #### 🐛 Bug Fix
