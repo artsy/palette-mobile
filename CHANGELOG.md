@@ -1,3 +1,15 @@
+# v13.2.17 (Tue Jun 18 2024)
+
+#### 🐛 Bug Fix
+
+- chore: support innerRef inside Screen.Flatlist [#239](https://github.com/artsy/palette-mobile/pull/239) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.16 (Fri Jun 07 2024)
 
 #### 🐛 Bug Fix
