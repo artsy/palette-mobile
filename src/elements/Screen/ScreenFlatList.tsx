@@ -3,7 +3,11 @@ import { FlatListProps } from "react-native"
 import Animated from "react-native-reanimated"
 import { useListenForScreenScroll } from "./hooks/useListenForScreenScroll"
 
-export function ScreenFlatList<T>(props: FlatListProps<T>) {
+export type ScreenFlatListProps<T> = FlatListProps<T> & {
+  innerRef?: React.Ref<Animated.FlatList<T>>
+}
+
+export function ScreenFlatList<T>(props: ScreenFlatListProps<T>) {
   const { scrollHandler } = useListenForScreenScroll()
 
   let handleScroll
@@ -14,5 +18,5 @@ export function ScreenFlatList<T>(props: FlatListProps<T>) {
     handleScroll = scrollHandler
   }
 
-  return <Animated.FlatList {...props} onScroll={handleScroll} />
+  return <Animated.FlatList ref={props.innerRef} {...props} onScroll={handleScroll} />
 }
