@@ -42,7 +42,7 @@ export const emitInputClearEvent = () => {
   inputEvents.emit("clear")
 }
 
-export interface InputProps extends Omit<TextInputProps, "placeholder"> {
+export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChangeText"> {
   addClearListener?: boolean
   /**
    * We are applying some optimisations to make sure the UX is smooth
@@ -60,6 +60,7 @@ export interface InputProps extends Omit<TextInputProps, "placeholder"> {
   onHintPress?: () => void
   onSelectTap?: () => void
   optional?: boolean
+  onChangeText?: (text: string, unmaskedText: string) => void
   /**
    * The placeholder can be an array of string, specifically for android, because of a bug.
    * On ios, the longest string will always be picked, as ios can add ellipsis.
@@ -87,6 +88,15 @@ export interface InputProps extends Omit<TextInputProps, "placeholder"> {
   showLimit?: boolean
   title?: string
   unit?: string | undefined | null
+  /**
+   * A mask to apply to the input value.
+   * Make sure to use mask values using only the digit 9 and non-digit characters.
+   *
+   * @example
+   * <Input mask="999-99-9999" />
+   * <Input mask="(999)-99-9999 999-99-9999" />
+   * <Input mask="999-99-9999 999-99-9999 999-99-9999" />
+   */
   mask?: string | string[] | undefined
 }
 
