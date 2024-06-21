@@ -27,6 +27,7 @@ import {
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import styled from "styled-components"
 import { INPUT_VARIANTS, InputState, InputVariant, getInputState, getInputVariant } from "./helpers"
+import { maskValue, unmaskText } from "./maskValue"
 import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
 import { useTheme } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
@@ -86,6 +87,7 @@ export interface InputProps extends Omit<TextInputProps, "placeholder"> {
   showLimit?: boolean
   title?: string
   unit?: string | undefined | null
+  mask?: string | string[] | undefined
 }
 
 export const HORIZONTAL_PADDING = 15
@@ -114,6 +116,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       hintText = "What's this?",
       icon,
       leftComponentWidth = LEFT_COMPONENT_WIDTH,
+      mask,
       selectComponentWidth = SELECT_COMPONENT_WIDTH,
       loading = false,
       onBlur,
@@ -136,7 +139,12 @@ export const Input = forwardRef<InputRef, InputProps>(
     const [focused, setIsFocused] = useState(false)
     const [delayedFocused, setDelayedFocused] = useState(false)
 
-    const [value, setValue] = useState(propValue ?? defaultValue)
+    const [value, setValue] = useState(
+      maskValue({
+        currentValue: propValue ?? defaultValue ?? "",
+        mask: mask,
+      })
+    )
 
     const [showPassword, setShowPassword] = useState(!secureTextEntry)
 
@@ -169,9 +177,15 @@ export const Input = forwardRef<InputRef, InputProps>(
       // If the prop value changes, update the local state
       // This optimisation is not needed if no propValue has been specified
       if (propValue !== undefined && propValue !== value) {
-        setValue(propValue)
+        setValue(maskValue({ currentValue: propValue || "", mask }))
       }
-    }, [propValue, value])
+    }, [propValue, value, mask])
+
+    useEffect(() => {
+      // If the mask value changes, update the value state to be formatted again
+      setValue(maskValue({ currentValue: value, mask }))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mask])
 
     const fontFamily = theme.fonts.sans.regular
 
@@ -207,10 +221,11 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const handleChangeText = useCallback(
       (text: string) => {
-        setValue(text)
-        onChangeText?.(text)
+        const newText = maskValue({ currentValue: text, mask: mask, previousValue: value })
+        setValue(newText)
+        onChangeText?.(newText, unmaskText(text))
       },
-      [onChangeText]
+      [onChangeText, value, mask]
     )
 
     const handleClear = useCallback(() => {
