@@ -1,3 +1,15 @@
+# v13.2.18 (Mon Jun 24 2024)
+
+#### 🐛 Bug Fix
+
+- feat: support masks [#240](https://github.com/artsy/palette-mobile/pull/240) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.17 (Tue Jun 18 2024)
 
 #### 🐛 Bug Fix
