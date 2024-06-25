@@ -231,12 +231,13 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const handleChangeText = useCallback(
       (text: string) => {
-        const newText = maskValue({ currentValue: text, mask: mask, previousValue: value }) || ""
-        setValue(newText)
         if (mask) {
+          const newText = maskValue({ currentValue: text, mask: mask, previousValue: value }) || ""
+          setValue(newText)
           onChangeText?.(newText, unmaskText(text))
         } else {
-          onChangeText?.(newText)
+          setValue(text)
+          onChangeText?.(text)
         }
       },
       [onChangeText, value, mask]
