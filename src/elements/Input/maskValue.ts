@@ -17,7 +17,7 @@ export const maskValue = ({
   mask,
   previousValue = "",
 }: {
-  currentValue: string
+  currentValue: string | undefined
   mask: string | string[] | undefined
   previousValue?: string
 }) => {

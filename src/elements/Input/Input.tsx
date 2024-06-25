@@ -60,7 +60,7 @@ export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChan
   onHintPress?: () => void
   onSelectTap?: () => void
   optional?: boolean
-  onChangeText?: (text: string, unmaskedText: string) => void
+  onChangeText?: (text: string, unmaskedText?: string) => void
   /**
    * The placeholder can be an array of string, specifically for android, because of a bug.
    * On ios, the longest string will always be picked, as ios can add ellipsis.
@@ -151,7 +151,7 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const [value, setValue] = useState(
       maskValue({
-        currentValue: propValue ?? defaultValue ?? "",
+        currentValue: propValue ?? defaultValue,
         mask: mask,
       })
     )
@@ -231,9 +231,13 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const handleChangeText = useCallback(
       (text: string) => {
-        const newText = maskValue({ currentValue: text, mask: mask, previousValue: value })
+        const newText = maskValue({ currentValue: text, mask: mask, previousValue: value }) || ""
         setValue(newText)
-        onChangeText?.(newText, unmaskText(text))
+        if (mask) {
+          onChangeText?.(newText, unmaskText(text))
+        } else {
+          onChangeText?.(newText)
+        }
       },
       [onChangeText, value, mask]
     )
