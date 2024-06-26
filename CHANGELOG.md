@@ -1,3 +1,15 @@
+# v13.2.19 (Wed Jun 26 2024)
+
+#### 🐛 Bug Fix
+
+- fix(Input): proper typing and initial state [#241](https://github.com/artsy/palette-mobile/pull/241) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.18 (Mon Jun 24 2024)
 
 #### 🐛 Bug Fix
