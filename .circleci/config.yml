@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.2.0
   auto: artsy/auto@2.2.0
-  macos: circleci/macos@2.4.1
+  macos: circleci/macos@2.5.1
 
 only_main: &only_main
   context: hokusai
@@ -19,7 +19,8 @@ executors:
 jobs:
   build-ios:
     macos:
-      xcode: "15.1.0"
+      xcode: 15.1
+      resource_class: macos.m1.medium.gen1
     steps:
       - checkout
       - run:
