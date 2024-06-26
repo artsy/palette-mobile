@@ -1,3 +1,15 @@
+# v13.2.20 (Wed Jun 26 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps-CI): update macOS orb to version 2.5.1 [#242](https://github.com/artsy/palette-mobile/pull/242) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.19 (Wed Jun 26 2024)
 
 #### 🐛 Bug Fix
