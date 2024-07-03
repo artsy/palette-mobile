@@ -27,7 +27,7 @@ const variants: Array<NoUndefined<ButtonProps["variant"]>> = [
 ]
 
 export default {
-  title: "Button",
+  title: "ButtonNew",
   component: Button,
 }
 

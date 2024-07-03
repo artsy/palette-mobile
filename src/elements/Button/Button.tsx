@@ -6,7 +6,7 @@ import { config } from "react-spring"
 // @ts-ignore
 import { animated, Spring } from "react-spring/renderprops-native"
 import styled from "styled-components/native"
-import { SpacingUnit } from "../../types"
+import { Color, SpacingUnit } from "../../types"
 import { useColor } from "../../utils/hooks"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex/Flex"
@@ -112,8 +112,6 @@ export const Button: React.FC<ButtonProps> = ({
     }
   }
 
-  const spinnerColor = variant === "text" ? "blue100" : "white100"
-
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress === undefined || onPress === null) {
       return
@@ -214,19 +212,19 @@ export const Button: React.FC<ButtonProps> = ({
                   >
                     {children}
                   </AnimatedText>
-                  {iconPosition === "right" && !!icon ? (
+                  {iconPosition === "right" && !!icon && (
                     <>
                       <Spacer x={0.5} />
                       {icon}
                     </>
-                  ) : null}
+                  )}
                 </Flex>
 
-                {displayState === DisplayState.Loading ? (
+                {displayState === DisplayState.Loading && (
                   <SpinnerContainer>
-                    <Spinner size={size} color={spinnerColor} />
+                    <Spinner size={size} color={to.loaderColor} />
                   </SpinnerContainer>
-                ) : null}
+                )}
               </Flex>
             </AnimatedContainer>
           </Flex>
@@ -244,6 +242,7 @@ const useStyleForVariantAndState = (
   borderColor: string
   borderWidth?: number
   textColor: string
+  loaderColor: Color
   textDecorationLine?: TextStyle["textDecorationLine"]
 } => {
   const color = useColor()
@@ -251,14 +250,6 @@ const useStyleForVariantAndState = (
   const retval = {
     textDecorationLine: "none",
   } as ReturnType<typeof useStyleForVariantAndState>
-
-  if (state === DisplayState.Loading) {
-    retval.backgroundColor = variant === "text" ? color("black10") : color("blue100")
-    retval.borderColor = "rgba(0, 0, 0, 0)"
-    retval.borderWidth = 0
-    retval.textColor = "rgba(0, 0, 0, 0)"
-    return retval
-  }
 
   switch (variant) {
     case "fillDark":
@@ -272,13 +263,19 @@ const useStyleForVariantAndState = (
           retval.backgroundColor = color("black30")
           retval.borderColor = color("black30")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("black100")
+          retval.borderColor = color("black100")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "white100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -294,6 +291,12 @@ const useStyleForVariantAndState = (
           retval.borderColor = color("black30")
           retval.textColor = color("white100")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("white100")
+          retval.borderColor = color("white100")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "black100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
@@ -301,7 +304,7 @@ const useStyleForVariantAndState = (
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -317,6 +320,12 @@ const useStyleForVariantAndState = (
           retval.borderColor = color("black30")
           retval.textColor = color("white100")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("black10")
+          retval.borderColor = color("black10")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "black100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
@@ -324,7 +333,7 @@ const useStyleForVariantAndState = (
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -339,13 +348,19 @@ const useStyleForVariantAndState = (
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("blue100")
+          retval.borderColor = color("blue100")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "white100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue10")
           retval.borderColor = color("blue10")
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -361,6 +376,12 @@ const useStyleForVariantAndState = (
           retval.borderColor = color("black30")
           retval.textColor = color("black30")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("white100")
+          retval.borderColor = color("black60")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "black100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
@@ -368,7 +389,7 @@ const useStyleForVariantAndState = (
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -384,6 +405,12 @@ const useStyleForVariantAndState = (
           retval.borderColor = color("black30")
           retval.textColor = color("black30")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = color("white100")
+          retval.borderColor = color("black30")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "black100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
@@ -391,7 +418,7 @@ const useStyleForVariantAndState = (
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -407,14 +434,20 @@ const useStyleForVariantAndState = (
           retval.borderColor = color("black30")
           retval.textColor = color("black30")
           break
+        case DisplayState.Loading:
+          retval.backgroundColor = "rgba(0, 0, 0, 0)"
+          retval.borderColor = color("white100")
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "white100"
+          break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
-          retval.textColor = color("white100")
+          retval.textColor = "rgba(0, 0, 0, 0)"
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
@@ -428,17 +461,21 @@ const useStyleForVariantAndState = (
         case DisplayState.Disabled:
           retval.textColor = color("black30")
           break
+        case DisplayState.Loading:
+          retval.textColor = "rgba(0, 0, 0, 0)"
+          retval.loaderColor = "blue100"
+          break
         case DisplayState.Pressed:
           retval.textColor = color("blue100")
           retval.textDecorationLine = "underline"
           break
         default:
-          assertNever(state)
+          null
       }
       break
 
     default:
-      assertNever(variant)
+      null
   }
 
   return retval
