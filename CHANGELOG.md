@@ -1,3 +1,15 @@
+# v13.2.21 (Wed Jul 03 2024)
+
+#### 🐛 Bug Fix
+
+- feat(Button): respect variant style given loading state [#243](https://github.com/artsy/palette-mobile/pull/243) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.20 (Wed Jun 26 2024)
 
 #### 🐛 Bug Fix
