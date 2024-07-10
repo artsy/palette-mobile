@@ -17,7 +17,7 @@ export interface MessageProps {
   showCloseButton?: boolean
   testID?: string
   text?: string
-  title: string
+  title?: string
   titleStyle?: TextProps
   variant?: MessageVariant
 }
@@ -79,9 +79,11 @@ export const Message: React.FC<MessageProps> = ({
                   <IconComponent />
                 </Flex>
               )}
-              <Text pr={2} variant="xs" color={color(colors[variant].title)} {...titleStyle}>
-                {title}
-              </Text>
+              {!!title && (
+                <Text pr={2} variant="xs" color={color(colors[variant].title)} {...titleStyle}>
+                  {title}
+                </Text>
+              )}
             </Flex>
             {!!text && (
               <Text variant="xs" color={color(colors[variant].text)} {...bodyTextStyle}>
