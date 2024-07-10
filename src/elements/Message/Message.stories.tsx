@@ -12,6 +12,7 @@ storiesOf("Message", module)
       <Message variant="default" title="Without Close Button">
         <Text>Text</Text>
       </Message>
+      <Message variant="default" text="Without title" />
       <Message variant="default" showCloseButton title="Title" text="Text" />
       <Message
         variant="default"
