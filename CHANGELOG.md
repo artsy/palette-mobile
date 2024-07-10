@@ -1,3 +1,15 @@
+# v13.2.22 (Wed Jul 10 2024)
+
+#### 🐛 Bug Fix
+
+- feat(Message): makes title optional [#245](https://github.com/artsy/palette-mobile/pull/245) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.21 (Wed Jul 03 2024)
 
 #### 🐛 Bug Fix
