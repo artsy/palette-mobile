@@ -1,3 +1,15 @@
+# v13.2.23 (Wed Jul 10 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add select/copy support to text fields by default [#244](https://github.com/artsy/palette-mobile/pull/244) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v13.2.22 (Wed Jul 10 2024)
 
 #### 🐛 Bug Fix
