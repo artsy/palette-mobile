@@ -695,7 +695,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           onLayout={(event) => {
             setInputWidth(event.nativeEvent.layout.width)
           }}
-          scrollEnabled={false}
+          scrollEnabled={props.multiline}
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}
           ref={inputRef as RefObject<TextInput>}
