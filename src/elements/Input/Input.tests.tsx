@@ -69,4 +69,10 @@ describe("Input", () => {
     expect(queryByLabelText("hide password button")).toBeFalsy()
     getByLabelText("show password button")
   })
+
+  it("enables scrolling when multiline is true", () => {
+    const { getByTestId } = renderWithWrappers(<Input testID={testID} multiline />)
+
+    expect(getByTestId(testID).props.scrollEnabled).toBe(true)
+  })
 })
