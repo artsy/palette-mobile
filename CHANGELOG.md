@@ -1,3 +1,19 @@
+# v13.2.24 (Fri Jul 26 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Adam Iskounen ([@iskounen](https://github.com/iskounen)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix: multiline input scrolling [#246](https://github.com/artsy/palette-mobile/pull/246) ([@iskounen](https://github.com/iskounen))
+
+#### Authors: 1
+
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v13.2.23 (Wed Jul 10 2024)
 
 #### 🐛 Bug Fix
