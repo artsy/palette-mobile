@@ -6,6 +6,7 @@ import {
   useHeaderMeasurements,
 } from "react-native-collapsible-tab-view"
 import { SubTabBar } from "./SubTabBar"
+import { TabFlashList } from "./TabFlashList"
 import { TabFlatList } from "./TabFlatList"
 import { TabMasonry } from "./TabMasonry"
 import { TabScrollView } from "./TabScrollView"
@@ -15,6 +16,7 @@ import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScro
 
 export const Tabs = Object.assign(TabsContainer, {
   FlatList: TabFlatList,
+  FlashList: TabFlashList,
   Masonry: TabMasonry,
   Lazy: BaseTabs.Lazy,
   ScrollView: TabScrollView,
