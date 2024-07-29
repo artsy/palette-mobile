@@ -1,3 +1,15 @@
+# v13.2.25 (Mon Jul 29 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add tab.flashlist support [#247](https://github.com/artsy/palette-mobile/pull/247) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.24 (Fri Jul 26 2024)
 
 :tada: This release contains work from a new contributor! :tada:
