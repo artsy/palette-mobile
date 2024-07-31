@@ -1,3 +1,15 @@
+# v13.2.26 (Wed Jul 31 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump collapsible-tab-view [#248](https://github.com/artsy/palette-mobile/pull/248) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.25 (Mon Jul 29 2024)
 
 #### 🐛 Bug Fix
