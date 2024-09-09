@@ -1,5 +1,5 @@
 import { ButtonProps } from "./Button"
-import { useColor } from "../../utils/hooks/useColor"
+import { useColor } from "../../utils/hooks"
 import { NoUndefined } from "../../utils/types"
 
 type State = "disabled" | "pressed" | "active"
@@ -37,15 +37,15 @@ export const useColorsForVariantAndState = (): Record<
     },
     outline: {
       disabled: {
-        bg: color("background"),
-        border: color("onBackgroundLow"),
-        text: color("onBackgroundLow"),
+        bg: color("white100"),
+        border: color("black100"),
+        text: color("black100"),
       },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
-        bg: color("background"),
-        border: color("onBackgroundMedium"),
-        text: color("onBackgroundHigh"),
+        bg: color("white100"),
+        border: color("black60"),
+        text: color("black100"),
       },
     },
     outlineGray: {
@@ -57,7 +57,7 @@ export const useColorsForVariantAndState = (): Record<
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
         bg: color("white100"),
-        border: color("black30"),
+        border: color("black60"),
         text: color("black100"),
       },
     },
