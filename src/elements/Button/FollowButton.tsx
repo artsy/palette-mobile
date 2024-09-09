@@ -32,11 +32,9 @@ export const FollowButton = ({
         <>
           <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
           {!!followCount && followCount > 1 && (
-            <>
-              <Text variant="xs" color="black60">
-                {" " + formatLargeNumber(followCount, 1)}
-              </Text>
-            </>
+            <Text variant="xs" color="black60">
+              {" " + formatLargeNumber(followCount, 1)}
+            </Text>
           )}
         </>
       )}
