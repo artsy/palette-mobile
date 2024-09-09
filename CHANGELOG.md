@@ -1,3 +1,15 @@
+# v13.2.27 (Mon Sep 09 2024)
+
+#### 🐛 Bug Fix
+
+- feat(Button): swaps the current button by the new button using reanimated [#249](https://github.com/artsy/palette-mobile/pull/249) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.26 (Wed Jul 31 2024)
 
 #### 🐛 Bug Fix
