@@ -1,3 +1,15 @@
+# v13.2.28 (Tue Sep 10 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bumps react-native-reanimated from 3.3.0 to 3.6.3 [#250](https://github.com/artsy/palette-mobile/pull/250) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.27 (Mon Sep 09 2024)
 
 #### 🐛 Bug Fix
