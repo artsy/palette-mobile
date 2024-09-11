@@ -1,3 +1,15 @@
+# v13.2.29 (Wed Sep 11 2024)
+
+#### 🐛 Bug Fix
+
+- feat: Add TrendingIcon [#251](https://github.com/artsy/palette-mobile/pull/251) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.2.28 (Tue Sep 10 2024)
 
 #### 🐛 Bug Fix
