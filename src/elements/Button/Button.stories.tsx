@@ -89,9 +89,15 @@ export const VariantsLoading = () => (
   <DataList
     data={variants}
     renderItem={({ item: variant }) => (
-      <Button variant={variant} loading onPress={() => console.log(`tapped ${variant}`)}>
-        {variant}
-      </Button>
+      <Wrap if={variant === "outlineLight"} key={`variant_loading_${variant}`}>
+        <Flex backgroundColor="black100" p={1}>
+          <Wrap.Content>
+            <Button variant={variant} loading onPress={() => console.log(`tapped ${variant}`)}>
+              {variant}
+            </Button>
+          </Wrap.Content>
+        </Flex>
+      </Wrap>
     )}
   />
 )

@@ -167,6 +167,7 @@ export const Button = ({
 
   const textAnim = useAnimatedStyle(() => {
     const colors = colorsForVariantAndState[variant]
+
     if (loading) {
       return { color: colors.loading.text }
     }
@@ -180,9 +181,7 @@ export const Button = ({
       textDecorationLine: pressAnimationProgress.value > 0 ? "underline" : "none",
     }
   })
-
-  console.log("longestTextMeasurements", longestTextMeasurements)
-  console.log(Math.ceil(longestTextMeasurements.width))
+  const loaderColor = colorsForVariantAndState[variant].loading.loader
 
   return (
     <Pressable
@@ -216,60 +215,47 @@ export const Button = ({
               alignItems="center"
               justifyContent="center"
             >
-              {!loading ? (
+              {iconPosition === "left-start" && !!icon ? (
+                <Box position="absolute" left={0}>
+                  {icon}
+                  <Spacer x={0.5} />
+                </Box>
+              ) : null}
+              {iconPosition === "left" && !!icon ? (
                 <>
-                  {iconPosition === "left-start" && !!icon ? (
-                    <Box position="absolute" left={0}>
-                      {icon}
-                      <Spacer x={0.5} />
-                    </Box>
-                  ) : null}
-                  {iconPosition === "left" && !!icon ? (
-                    <>
-                      {icon}
-                      <Spacer x={0.5} />
-                    </>
-                  ) : null}
-                  <AText
-                    style={[
-                      { width: Math.ceil(longestTextMeasurements.width) },
-                      textStyle,
-                      textAnim,
-                    ]}
-                    textAlign="center"
-                    selectable={false}
-                  >
-                    {children}
-                  </AText>
-                  <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                    <Text color="red" style={textStyle}>
-                      {longestText ? longestText : children}
-                    </Text>
-                  </MeasuredView>
-                  {iconPosition === "right" && !!icon ? (
-                    <>
-                      <Spacer x={0.5} />
-                      {icon}
-                    </>
-                  ) : null}
+                  {icon}
+                  <Spacer x={0.5} />
                 </>
-              ) : (
+              ) : null}
+              <AText
+                style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
+                textAlign="center"
+                selectable={false}
+              >
+                {children}
+              </AText>
+              <MeasuredView setMeasuredState={setLongestTextMeasurements}>
+                <Text color="red" style={textStyle}>
+                  {longestText ? longestText : children}
+                </Text>
+              </MeasuredView>
+              {iconPosition === "right" && !!icon && (
                 <>
-                  <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                    <Text color="red" style={textStyle}>
-                      {longestText ? longestText : children}
-                    </Text>
-                  </MeasuredView>
-                  <Box
-                    position="absolute"
-                    width={Math.ceil(longestTextMeasurements.width)}
-                    height="100%"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Spinner size={size} color="black100" />
-                  </Box>
+                  <Spacer x={0.5} />
+                  {icon}
                 </>
+              )}
+
+              {loading && (
+                <Box
+                  position="absolute"
+                  width="100%"
+                  height="100%"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Spinner size={size} color={loaderColor} />
+                </Box>
               )}
             </Flex>
           </AFlex>
