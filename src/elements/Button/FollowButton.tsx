@@ -19,6 +19,7 @@ export const FollowButton = ({
   loading,
   ...restProps
 }: FollowButtonProps) => {
+  const label = isFollowed ? "Following" : "Follow"
   return (
     <Button
       variant={isFollowed ? "outline" : "outlineGray"}
@@ -28,9 +29,11 @@ export const FollowButton = ({
       loading={loading}
       {...restProps}
     >
-      {!loading && (
+      {!!loading ? (
+        `${label} ${followCount && followCount > 1 ? formatLargeNumber(followCount, 1) : ""}`
+      ) : (
         <>
-          <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
+          <Text variant="xs">{label}</Text>
           {!!followCount && followCount > 1 && (
             <Text variant="xs" color="black60">
               {" " + formatLargeNumber(followCount, 1)}

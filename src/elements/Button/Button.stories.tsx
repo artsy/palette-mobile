@@ -89,9 +89,15 @@ export const VariantsLoading = () => (
   <DataList
     data={variants}
     renderItem={({ item: variant }) => (
-      <Button variant={variant} loading onPress={() => console.log(`tapped ${variant}`)}>
-        {variant}
-      </Button>
+      <Wrap if={variant === "outlineLight"} key={`variant_loading_${variant}`}>
+        <Flex backgroundColor="black100" p={1}>
+          <Wrap.Content>
+            <Button variant={variant} loading onPress={() => console.log(`tapped ${variant}`)}>
+              {variant}
+            </Button>
+          </Wrap.Content>
+        </Flex>
+      </Wrap>
     )}
   />
 )
@@ -118,6 +124,7 @@ export const TheFollowButton = () => {
 
   return (
     <List>
+      <FollowButton loading isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton followCount={4} isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton followCount={40} isFollowed={follow} onPress={() => setFollow((v) => !v)} />
