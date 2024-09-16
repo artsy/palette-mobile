@@ -1,3 +1,16 @@
+# v13.2.30 (Mon Sep 16 2024)
+
+#### 🐛 Bug Fix
+
+- refactor(Button): enable loading state for button [#253](https://github.com/artsy/palette-mobile/pull/253) ([@gkartalis](https://github.com/gkartalis) [@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 2
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.29 (Wed Sep 11 2024)
 
 #### 🐛 Bug Fix
