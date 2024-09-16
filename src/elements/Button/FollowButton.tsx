@@ -1,6 +1,7 @@
 import { CheckIcon } from "../../svgs/CheckIcon"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
+import { Spinner } from "../Spinner"
 import { Text } from "../Text"
 
 type FollowButtonProps = Omit<
@@ -28,7 +29,9 @@ export const FollowButton = ({
       loading={loading}
       {...restProps}
     >
-      {!loading && (
+      {loading ? (
+        <Spinner size="small" />
+      ) : (
         <>
           <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
           {!!followCount && followCount > 1 && (

@@ -117,8 +117,6 @@ export const Button = ({
     }
   })()
 
-  const spinnerColor = variant === "text" ? "blue100" : "white100"
-
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress === undefined || onPress === null) {
       return
@@ -145,6 +143,14 @@ export const Button = ({
         borderColor: colors.disabled.border,
       }
     }
+
+    if (loading) {
+      return {
+        backgroundColor: colors.loading.bg,
+        borderColor: colors.loading.border,
+      }
+    }
+
     return {
       backgroundColor: interpolateColor(
         pressAnimationProgress.value,
@@ -162,7 +168,7 @@ export const Button = ({
   const textAnim = useAnimatedStyle(() => {
     const colors = colorsForVariantAndState[variant]
     if (loading) {
-      return { color: "rgba(0, 0, 0, 0)" }
+      return { color: colors.loading.text }
     }
 
     return {
@@ -174,6 +180,9 @@ export const Button = ({
       textDecorationLine: pressAnimationProgress.value > 0 ? "underline" : "none",
     }
   })
+
+  console.log("longestTextMeasurements", longestTextMeasurements)
+  console.log(Math.ceil(longestTextMeasurements.width))
 
   return (
     <Pressable
@@ -207,52 +216,61 @@ export const Button = ({
               alignItems="center"
               justifyContent="center"
             >
-              {iconPosition === "left-start" && !!icon ? (
-                <Box position="absolute" left={0}>
-                  {icon}
-                  <Spacer x={0.5} />
-                </Box>
-              ) : null}
-
-              {iconPosition === "left" && !!icon ? (
+              {!loading ? (
                 <>
-                  {icon}
-                  <Spacer x={0.5} />
+                  {iconPosition === "left-start" && !!icon ? (
+                    <Box position="absolute" left={0}>
+                      {icon}
+                      <Spacer x={0.5} />
+                    </Box>
+                  ) : null}
+                  {iconPosition === "left" && !!icon ? (
+                    <>
+                      {icon}
+                      <Spacer x={0.5} />
+                    </>
+                  ) : null}
+                  <AText
+                    style={[
+                      { width: Math.ceil(longestTextMeasurements.width) },
+                      textStyle,
+                      textAnim,
+                    ]}
+                    textAlign="center"
+                    selectable={false}
+                  >
+                    {children}
+                  </AText>
+                  <MeasuredView setMeasuredState={setLongestTextMeasurements}>
+                    <Text color="red" style={textStyle}>
+                      {longestText ? longestText : children}
+                    </Text>
+                  </MeasuredView>
+                  {iconPosition === "right" && !!icon ? (
+                    <>
+                      <Spacer x={0.5} />
+                      {icon}
+                    </>
+                  ) : null}
                 </>
-              ) : null}
-
-              <AText
-                style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
-                textAlign="center"
-                selectable={false}
-              >
-                {children}
-              </AText>
-
-              <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                <Text color="red" style={textStyle}>
-                  {longestText ? longestText : children}
-                </Text>
-              </MeasuredView>
-
-              {iconPosition === "right" && !!icon ? (
+              ) : (
                 <>
-                  <Spacer x={0.5} />
-                  {icon}
+                  <MeasuredView setMeasuredState={setLongestTextMeasurements}>
+                    <Text color="red" style={textStyle}>
+                      {longestText ? longestText : children}
+                    </Text>
+                  </MeasuredView>
+                  <Box
+                    position="absolute"
+                    width={Math.ceil(longestTextMeasurements.width)}
+                    height="100%"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Spinner size={size} color="black100" />
+                  </Box>
                 </>
-              ) : null}
-
-              {loading ? (
-                <Box
-                  position="absolute"
-                  width="100%"
-                  height="100%"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Spinner size={size} color={spinnerColor} />
-                </Box>
-              ) : null}
+              )}
             </Flex>
           </AFlex>
         </Flex>

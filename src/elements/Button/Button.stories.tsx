@@ -118,6 +118,7 @@ export const TheFollowButton = () => {
 
   return (
     <List>
+      <FollowButton loading isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton followCount={4} isFollowed={follow} onPress={() => setFollow((v) => !v)} />
       <FollowButton followCount={40} isFollowed={follow} onPress={() => setFollow((v) => !v)} />
