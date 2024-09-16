@@ -3181,10 +3181,10 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@react-native-async-storage/async-storage@1.17.11":
-  version "1.17.11"
-  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.17.11.tgz#7ec329c1b9f610e344602e806b04d7c928a2341d"
-  integrity sha512-bzs45n5HNcDq6mxXnSsOHysZWn1SbbebNxldBXCQs8dSvF8Aor9KCdpm+TpnnGweK3R6diqsT8lFhX77VX0NFw==
+"@react-native-async-storage/async-storage@1.19.8":
+  version "1.19.8"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.19.8.tgz#a29fc4f4aa5c85805f8b3edea84e19f797c59fdd"
+  integrity sha512-O25eaSbmH+LEmOobkpwf43bAGIkqE9YGzfWcirTszI90xk4ItaDWpgJsQx9LeAbeAKzVkn1h+Nq5Bo6I6q2oFA==
   dependencies:
     merge-options "^3.0.4"
 
@@ -10301,10 +10301,10 @@ react-native-fast-image@^8.6.3:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.6.3.tgz#6edc3f9190092a909d636d93eecbcc54a8822255"
   integrity sha512-Sdw4ESidXCXOmQ9EcYguNY2swyoWmx53kym2zRsvi+VeFCHEdkO+WG1DK+6W81juot40bbfLNhkc63QnWtesNg==
 
-react-native-flipper@0.178.1:
-  version "0.178.1"
-  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.178.1.tgz#bc630e51666a4d353106ab3f883a8044f477da88"
-  integrity sha512-Jn6BgGyHjQ8tHrXDqAQkWc3n/WHc6trU5g+F/SIyEemGSE/er3SCqilgb5oYHIkz0ag26ANXFDvxaj4q5FLiWA==
+react-native-flipper@0.265.0:
+  version "0.265.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.265.0.tgz#385c6fb26b27e3812bad374f2ae2ec2cdb1833bb"
+  integrity sha512-GA5Y84eOAl4xtl3q/zmTbegD3rq7OpB5MBGKVH5cmr1DnJY2DgKdALVbqmDOK3mR9sj4z6VBWiRpiU9j4j1eMg==
 
 react-native-haptic-feedback@1.14.0:
   version "1.14.0"
