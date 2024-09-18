@@ -1,3 +1,15 @@
+# v13.2.32 (Wed Sep 18 2024)
+
+#### 🐛 Bug Fix
+
+- chore(Button): Revert Button upgrade commits [#259](https://github.com/artsy/palette-mobile/pull/259) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.31 (Wed Sep 18 2024)
 
 #### 🐛 Bug Fix
