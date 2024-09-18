@@ -117,6 +117,8 @@ export const Button = ({
     }
   })()
 
+  const spinnerColor = variant === "text" ? "blue100" : "white100"
+
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress === undefined || onPress === null) {
       return
@@ -143,14 +145,6 @@ export const Button = ({
         borderColor: colors.disabled.border,
       }
     }
-
-    if (loading) {
-      return {
-        backgroundColor: colors.loading.bg,
-        borderColor: colors.loading.border,
-      }
-    }
-
     return {
       backgroundColor: interpolateColor(
         pressAnimationProgress.value,
@@ -167,9 +161,8 @@ export const Button = ({
 
   const textAnim = useAnimatedStyle(() => {
     const colors = colorsForVariantAndState[variant]
-
     if (loading) {
-      return { color: colors.loading.text }
+      return { color: "rgba(0, 0, 0, 0)" }
     }
 
     return {
@@ -181,7 +174,6 @@ export const Button = ({
       textDecorationLine: pressAnimationProgress.value > 0 ? "underline" : "none",
     }
   })
-  const loaderColor = colorsForVariantAndState[variant].loading.loader
 
   return (
     <Pressable
@@ -221,12 +213,14 @@ export const Button = ({
                   <Spacer x={0.5} />
                 </Box>
               ) : null}
+
               {iconPosition === "left" && !!icon ? (
                 <>
                   {icon}
                   <Spacer x={0.5} />
                 </>
               ) : null}
+
               <AText
                 style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
                 textAlign="center"
@@ -234,19 +228,21 @@ export const Button = ({
               >
                 {children}
               </AText>
+
               <MeasuredView setMeasuredState={setLongestTextMeasurements}>
                 <Text color="red" style={textStyle}>
                   {longestText ? longestText : children}
                 </Text>
               </MeasuredView>
-              {iconPosition === "right" && !!icon && (
+
+              {iconPosition === "right" && !!icon ? (
                 <>
                   <Spacer x={0.5} />
                   {icon}
                 </>
-              )}
+              ) : null}
 
-              {loading && (
+              {loading ? (
                 <Box
                   position="absolute"
                   width="100%"
@@ -254,9 +250,9 @@ export const Button = ({
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Spinner size={size} color={loaderColor} />
+                  <Spinner size={size} color={spinnerColor} />
                 </Box>
-              )}
+              ) : null}
             </Flex>
           </AFlex>
         </Flex>
