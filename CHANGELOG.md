@@ -1,3 +1,15 @@
+# v13.2.33 (Thu Sep 19 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump reanimated from 3.3.0 to 3.8.1 [#260](https://github.com/artsy/palette-mobile/pull/260) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.32 (Wed Sep 18 2024)
 
 #### 🐛 Bug Fix
