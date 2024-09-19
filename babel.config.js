@@ -8,7 +8,7 @@ module.exports = {
   ],
   presets: [
     [
-      "module:metro-react-native-babel-preset",
+      "module:@react-native/babel-preset",
       { useTransformReactJSXExperimental: true }, // this is so `import React from "react"` is not needed.
     ],
     "@babel/preset-typescript",
