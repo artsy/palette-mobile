@@ -1,10 +1,10 @@
 import { flowRight } from "lodash"
-import { FlatListProps } from "react-native"
+import { FlatList, FlatListProps } from "react-native"
 import Animated from "react-native-reanimated"
 import { useListenForScreenScroll } from "./hooks/useListenForScreenScroll"
 
 export type ScreenFlatListProps<T> = FlatListProps<T> & {
-  innerRef?: React.Ref<Animated.FlatList<T>>
+  innerRef?: React.ForwardedRef<FlatList<T>>
 }
 
 export function ScreenFlatList<T>(props: ScreenFlatListProps<T>) {
