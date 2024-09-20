@@ -4,7 +4,8 @@
     "baseUrl": "src",
     "rootDir": "src",
     "outDir": "dist",
-    "noEmit": true,
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
     "declaration": true,
     "jsx": "react-jsx", // This is for vscode not to suggest importing React, after react17.
     "skipLibCheck": true,
