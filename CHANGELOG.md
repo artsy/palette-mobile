@@ -1,3 +1,15 @@
+# v13.2.35 (Fri Sep 20 2024)
+
+#### 🐛 Bug Fix
+
+- chore: remove tsappconfig and toggle noemit [#261](https://github.com/artsy/palette-mobile/pull/261) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.34 (Thu Sep 19 2024)
 
 #### 🐛 Bug Fix
