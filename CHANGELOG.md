@@ -1,3 +1,15 @@
+# v13.2.36 (Tue Sep 24 2024)
+
+#### 🐛 Bug Fix
+
+- feat(dev): Add pull-lock to Palette Mobile [#262](https://github.com/artsy/palette-mobile/pull/262) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v13.2.35 (Fri Sep 20 2024)
 
 #### 🐛 Bug Fix
