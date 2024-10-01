@@ -2348,6 +2348,13 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@egjs/hammerjs@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
+  integrity sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==
+  dependencies:
+    "@types/hammerjs" "^2.0.36"
+
 "@emotion/cache@^10.0.27":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
@@ -4082,6 +4089,11 @@
   integrity sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==
   dependencies:
     "@types/node" "*"
+
+"@types/hammerjs@^2.0.36":
+  version "2.0.45"
+  resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.45.tgz#ffa764bb68a66c08db6efb9c816eb7be850577b1"
+  integrity sha512-qkcUlZmX6c4J8q45taBKTL3p+LbITgyx7qhlPYOdOHZB7B31K0mXbP5YA7i7SgDeEGuI9MnumiKPEMrxg8j3KQ==
 
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
@@ -10235,7 +10247,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@15.8.1, prop-types@^15.5.8, prop-types@^15.8.1:
+prop-types@*, prop-types@15.8.1, prop-types@^15.5.8, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -10394,6 +10406,16 @@ react-native-flipper@0.265.0:
   version "0.265.0"
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.265.0.tgz#385c6fb26b27e3812bad374f2ae2ec2cdb1833bb"
   integrity sha512-GA5Y84eOAl4xtl3q/zmTbegD3rq7OpB5MBGKVH5cmr1DnJY2DgKdALVbqmDOK3mR9sj4z6VBWiRpiU9j4j1eMg==
+
+react-native-gesture-handler@2.19.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.19.0.tgz#16deaefcefe77d6b4b7fa48a82ef52be61ddbb07"
+  integrity sha512-Cc6DnSnn5hhgiuJOtlOJmXkbBBOZkW9UnJJG+DrWPq2jJuNvM4g5qq2plsywhxQj9xT7FyXZwVVblaXabfGZvQ==
+  dependencies:
+    "@egjs/hammerjs" "^2.0.17"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    prop-types "^15.7.2"
 
 react-native-haptic-feedback@1.14.0:
   version "1.14.0"

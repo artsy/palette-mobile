@@ -44,6 +44,7 @@
     "react-native-blurhash": "^1.1.11",
     "react-native-collapsible-tab-view": "^8.0.0",
     "react-native-fast-image": "^8.6.3",
+    "react-native-gesture-handler": "2.19.0",
     "react-native-pager-view": "^6.2.0",
     "react-native-popover-view": "^5.1.7",
     "react-spring": "8.0.23",
