@@ -1,3 +1,15 @@
+# v13.2.37 (Tue Oct 08 2024)
+
+#### 🐛 Bug Fix
+
+- feat(Chip): add chip element [#264](https://github.com/artsy/palette-mobile/pull/264) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.36 (Tue Sep 24 2024)
 
 #### 🐛 Bug Fix
