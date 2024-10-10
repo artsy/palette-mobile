@@ -95,8 +95,8 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
               {subTitle}
             </Text>
           )}
+          {Component}
         </Flex>
-        {Component}
       </Animated.View>
 
       {children}
