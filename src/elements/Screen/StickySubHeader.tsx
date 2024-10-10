@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { LayoutChangeEvent } from "react-native"
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
@@ -12,6 +12,7 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   title: string
   separatorComponent?: React.ReactNode
   subTitle?: string
+  Component?: React.ReactNode
 }
 
 const STICKY_BAR_HEIGHT = 42
@@ -22,6 +23,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   separatorComponent = DEFAULT_SEPARATOR_COMPONENT,
   subTitle,
   children,
+  Component,
 }) => {
   const { currentScrollY, scrollYOffset = 0 } = useScreenScrollContext()
   const space = useSpace()
@@ -79,6 +81,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
                 {subTitle}
               </Text>
             )}
+            {Component}
           </Flex>
         </Flex>
       )}
@@ -93,6 +96,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
             </Text>
           )}
         </Flex>
+        {Component}
       </Animated.View>
 
       {children}
