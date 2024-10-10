@@ -1,3 +1,15 @@
+# v13.2.39 (Thu Oct 10 2024)
+
+#### 🐛 Bug Fix
+
+- fix: sticky sub header padding [#266](https://github.com/artsy/palette-mobile/pull/266) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v13.2.38 (Thu Oct 10 2024)
 
 #### 🐛 Bug Fix
