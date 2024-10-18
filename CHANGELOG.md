@@ -1,3 +1,15 @@
+# v13.2.40 (Fri Oct 18 2024)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump react-native from 0.73.9 to 0.73.10 [#267](https://github.com/artsy/palette-mobile/pull/267) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v13.2.39 (Thu Oct 10 2024)
 
 #### 🐛 Bug Fix
