@@ -6,7 +6,7 @@ jest.mock("react-native-safe-area-context", () => mockSafeAreaContext)
 
 jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper")
 
-require("react-native-reanimated/src/reanimated2/jestUtils").setUpTests()
+require("react-native-reanimated").setUpTests()
 // @ts-expect-error
 global.__reanimatedWorkletInit = () => {}
 jest.mock("react-native-reanimated", () => require("react-native-reanimated/mock"))
