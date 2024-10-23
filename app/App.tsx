@@ -1,14 +1,12 @@
 import React from "react"
-import { StorybookUIRoot } from "../.storybook/Storybook"
-import FlipperAsyncStorage from "rn-flipper-async-storage-advanced"
 import { LogBox } from "react-native"
+import { StorybookUIRoot } from "../.storybook/Storybook"
 
 LogBox.ignoreLogs(['Each child in a list should have a unique "key" prop.'])
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <>
-      <FlipperAsyncStorage />
       <StorybookUIRoot />
     </>
   )
