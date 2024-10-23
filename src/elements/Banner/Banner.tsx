@@ -9,10 +9,11 @@ import { Text } from "../Text"
 export type BannerVariant = keyof typeof BANNER_VARIANTS
 
 export interface BannerProps extends FlexProps {
-  text: string
+  text?: string
   onClose?: () => void
   dismissable?: boolean
   variant?: BannerVariant
+  children?: React.ReactNode
 }
 
 export const Banner = ({
@@ -20,6 +21,7 @@ export const Banner = ({
   onClose,
   dismissable = false,
   variant = "defaultLight",
+  children,
   ...restProps
 }: BannerProps) => {
   const [tempHeight, setTempHeight] = useState<number | undefined>(undefined)
@@ -55,11 +57,15 @@ export const Banner = ({
     >
       <Flex backgroundColor={BANNER_VARIANTS[variant].backgroundColor} {...restProps}>
         <Flex px={2} py={1} flexDirection="row" alignItems="center" justifyContent="space-between">
-          <Flex flex={1} alignItems="center">
-            <Text textAlign="center" variant="xs" color={BANNER_VARIANTS[variant].color}>
-              {text}
-            </Text>
-          </Flex>
+          {text ? (
+            <Flex flex={1} alignItems="center">
+              <Text textAlign="center" variant="xs" color={BANNER_VARIANTS[variant].color}>
+                {text}
+              </Text>
+            </Flex>
+          ) : (
+            <Flex flex={1}>{children}</Flex>
+          )}
 
           {!!dismissable && (
             <Flex>
