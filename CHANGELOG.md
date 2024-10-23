@@ -1,3 +1,15 @@
+# v13.2.41 (Wed Oct 23 2024)
+
+#### 🐛 Bug Fix
+
+- feat(ONYX-1294): add ArrowUpRightIcon and FireIcon [#270](https://github.com/artsy/palette-mobile/pull/270) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v13.2.40 (Fri Oct 18 2024)
 
 #### 🐛 Bug Fix
