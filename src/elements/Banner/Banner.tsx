@@ -8,13 +8,16 @@ import { Text } from "../Text"
 
 export type BannerVariant = keyof typeof BANNER_VARIANTS
 
-export interface BannerProps extends FlexProps {
-  text?: string
+export interface CommonBannerProps extends FlexProps {
   onClose?: () => void
   dismissable?: boolean
   variant?: BannerVariant
-  children?: React.ReactNode
 }
+
+type BannerWithText = CommonBannerProps & { text: string; children?: never }
+type BannerWithChildren = CommonBannerProps & { text?: never; children: React.ReactNode }
+
+export type BannerProps = BannerWithText | BannerWithChildren
 
 export const Banner = ({
   text,
