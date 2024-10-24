@@ -1,3 +1,19 @@
+# v13.2.42 (Thu Oct 24 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Rachel Quartararo ([@rquartararo](https://github.com/rquartararo)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat(EMI-2128): allow banner to contain children [#271](https://github.com/artsy/palette-mobile/pull/271) ([@rquartararo](https://github.com/rquartararo))
+
+#### Authors: 1
+
+- Rachel Quartararo ([@rquartararo](https://github.com/rquartararo))
+
+---
+
 # v13.2.41 (Wed Oct 23 2024)
 
 #### 🐛 Bug Fix
