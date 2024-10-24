@@ -1,5 +1,6 @@
 import { Banner } from "./Banner"
 import { List } from "../../storybook/helpers"
+import { LinkText } from "../Text"
 
 export default {
   title: "Banner",
@@ -20,6 +21,16 @@ export const States = () => {
       <Banner dismissable text="Success" variant="success" />
       <Banner dismissable text="Error" variant="error" />
       <Banner dismissable text="Brand" variant="brand" />
+      <Banner dismissable variant="error">
+        <LinkText
+          textAlign="center"
+          variant="xs"
+          color="white100"
+          onPress={() => console.log(`tapped`)}
+        >
+          Link
+        </LinkText>
+      </Banner>
     </List>
   )
 }
