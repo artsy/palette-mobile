@@ -1,7 +1,3 @@
-declare module "" {
-  global {
-    const __TEST__: boolean
-  }
-}
+declare module "" {}
 
 declare function assertNever(val: never): void

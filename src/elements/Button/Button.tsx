@@ -8,6 +8,7 @@ import { animated, Spring } from "react-spring/renderprops-native"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
 import { useColor } from "../../utils/hooks"
+import { isTesting } from "../../utils/isTesting"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex/Flex"
 import { MeasuredView, ViewMeasurements } from "../MeasuredView"
@@ -192,7 +193,7 @@ export const Button: React.FC<ButtonProps> = ({
                       This will result in us being able to use getByText over
                       getAllByText()[0] to select the buttons in the test environment.
                   */}
-                  {!__TEST__ && longestText && (
+                  {!isTesting() && longestText && (
                     <MeasuredView setMeasuredState={setLongestTextMeasurements}>
                       <Text color="red" style={textStyle}>
                         {longestText ? longestText : children}
