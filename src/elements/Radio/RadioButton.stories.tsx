@@ -20,7 +20,7 @@ storiesOf("RadioButton", module).add("Default", () => {
         alignItems: "flex-start",
       }}
     >
-      <Flex flexDirection="row" gap={20}>
+      <Flex flexDirection="row" gap={2}>
         <RadioButton
           onPress={() => {
             setMetric("cm")
