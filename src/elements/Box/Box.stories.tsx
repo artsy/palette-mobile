@@ -47,7 +47,7 @@ const colors = ["red10", "green10", "yellow10", "devpurple", "red100", "black10"
 export const GapProps = () => (
   <List style={{ marginHorizontal: 20 }}>
     <Text>Gap 👇</Text>
-    <Box borderWidth={1} borderColor="black100" gap={10} flexWrap="wrap" flexDirection="row">
+    <Box borderWidth={1} borderColor="black100" gap={1} flexWrap="wrap" flexDirection="row">
       {colors.map((color) => (
         <Box key={`${color}-1`} backgroundColor={color} width={100} height={100}>
           <Text>{color}</Text>
@@ -56,7 +56,7 @@ export const GapProps = () => (
     </Box>
 
     <Text>Row gap 👇</Text>
-    <Box borderWidth={1} borderColor="black100" rowGap={10} flexWrap="wrap" flexDirection="row">
+    <Box borderWidth={1} borderColor="black100" rowGap={1} flexWrap="wrap" flexDirection="row">
       {colors.map((color) => (
         <Box key={`${color}-2`} backgroundColor={color} width={100} height={100}>
           <Text>{color}</Text>
@@ -65,7 +65,7 @@ export const GapProps = () => (
     </Box>
 
     <Text>Column gap 👇</Text>
-    <Box borderWidth={1} borderColor="black100" columnGap={10} flexWrap="wrap" flexDirection="row">
+    <Box borderWidth={1} borderColor="black100" columnGap={1} flexWrap="wrap" flexDirection="row">
       {colors.map((color) => (
         <Box key={`${color}-3`} backgroundColor={color} width={100} height={100}>
           <Text>{color}</Text>

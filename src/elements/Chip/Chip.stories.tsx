@@ -9,7 +9,7 @@ export default {
 
 export const Variations = () => {
   return (
-    <Flex p={2} justifyContent="center" alignItems="center" gap={20}>
+    <Flex p={2} justifyContent="center" alignItems="center" gap={2}>
       <Chip title="Only title" />
       <Chip title="Title and subtitle" subtitle="Subtitle" />
       <Chip

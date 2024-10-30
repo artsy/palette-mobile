@@ -1,4 +1,5 @@
-import { View, ViewProps, ViewStyle } from "react-native"
+import { SpacingUnit } from "@artsy/palette-tokens"
+import { View, ViewProps } from "react-native"
 import styled from "styled-components/native"
 import {
   border,
@@ -13,16 +14,32 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  system,
   textAlign,
   TextAlignProps,
 } from "styled-system"
 import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
 
 type GapProps = {
-  gap?: ViewStyle["gap"]
-  rowGap?: ViewStyle["rowGap"]
-  columnGap?: ViewStyle["columnGap"]
+  gap?: SpacingUnit
+  rowGap?: SpacingUnit
+  columnGap?: SpacingUnit
 }
+
+const gap = system({
+  gap: {
+    property: "gap",
+    scale: "space",
+  },
+  rowGap: {
+    property: "rowGap",
+    scale: "space",
+  },
+  columnGap: {
+    property: "columnGap",
+    scale: "space",
+  },
+})
 
 export interface BoxProps
   extends ViewProps,
@@ -46,4 +63,5 @@ export const Box = styled(View)<BoxProps>`
   ${position}
   ${border}
   ${textAlign}
+  ${gap}
 `
