@@ -1,3 +1,15 @@
+# v13.2.43 (Wed Oct 30 2024)
+
+#### 🐛 Bug Fix
+
+- feat(gap): use our spacing tokens with gap prop [#274](https://github.com/artsy/palette-mobile/pull/274) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v13.2.42 (Thu Oct 24 2024)
 
 :tada: This release contains work from a new contributor! :tada:
