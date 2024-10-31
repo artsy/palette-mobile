@@ -25,7 +25,7 @@
     "start:reset-cache": "react-native start --reset-cache --port 8082",
     "start": "react-native start --port 8082",
     "storybook-watcher": "sb-rn-watcher",
-    "test": "jest",
+    "test": "jest --maxWorkers=2",
     "type-check": "tsc --noEmit"
   },
   "dependenciesComments": [
