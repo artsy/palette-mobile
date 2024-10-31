@@ -39,6 +39,7 @@ export const Text = forwardRef(
       weight = "regular",
       underline = false,
       maxWidth = false,
+      selectable = false,
       style,
       children,
       ...restProps
@@ -53,6 +54,7 @@ export const Text = forwardRef(
     return (
       <InnerStyledText
         ref={ref}
+        selectable={selectable}
         style={[
           ...nativeTextStyle,
           { textAlignVertical: "center" }, // android renders text higher by default, so we bring it down to be consistent with ios
