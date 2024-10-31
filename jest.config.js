@@ -3,11 +3,7 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js"],
   preset: "react-native",
   rootDir: ".",
-  setupFilesAfterEnv: [
-    "jest-extended",
-    "@testing-library/jest-native/extend-expect",
-    "./src/setupJest.ts",
-  ],
+  setupFilesAfterEnv: ["jest-extended", "./src/setupJest.ts"],
   testMatch: ["<rootDir>/src/**/*.tests.(ts|tsx|js)"],
   testEnvironment: "node",
   testEnvironmentOptions: {
