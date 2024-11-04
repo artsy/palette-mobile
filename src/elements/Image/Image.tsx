@@ -1,7 +1,7 @@
+import { Image as ExpoImage, ImageProps as ExpoImageProps } from "expo-image"
 import { memo, useCallback } from "react"
 import { PixelRatio, View } from "react-native"
 import { Blurhash } from "react-native-blurhash"
-import FastImage, { FastImageProps } from "react-native-fast-image"
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -14,7 +14,7 @@ import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
 import { Skeleton, SkeletonBox } from "../Skeleton"
 
-type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "source">
+type CustomFastImageProps = Omit<ExpoImageProps, "onLoadStart" | "onLoadEnd" | "source">
 
 export interface ImageProps extends CustomFastImageProps {
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
@@ -88,7 +88,7 @@ export const Image: React.FC<ImageProps> = memo(
         </View>
 
         <Animated.View style={animatedStyles}>
-          <FastImage
+          <ExpoImage
             style={[
               dimensions,
               style,
@@ -99,9 +99,9 @@ export const Image: React.FC<ImageProps> = memo(
             resizeMode={resizeMode}
             onLoadEnd={onAnimationEnd}
             source={{
-              priority: FastImage.priority.normal,
               uri,
             }}
+            priority="normal"
           />
         </Animated.View>
       </Flex>

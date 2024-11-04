@@ -8,3 +8,10 @@ require("react-native-reanimated/src/reanimated2/jestUtils").setUpTests()
 // @ts-expect-error
 global.__reanimatedWorkletInit = () => {}
 jest.mock("react-native-reanimated", () => require("react-native-reanimated/mock"))
+
+jest.mock("expo-image", () => {
+  const ReactNative = require("react-native")
+  return {
+    Image: ReactNative.Image,
+  }
+})
