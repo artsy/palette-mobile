@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient"
 import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react"
 import {
   getChildByType,
@@ -6,7 +7,6 @@ import {
   removeChildrenByType,
 } from "react-nanny"
 import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
-import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { SpacingUnitDSValueNumber } from "../../types"
 import { Wrap } from "../../utils/Wrap"

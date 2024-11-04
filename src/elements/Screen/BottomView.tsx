@@ -1,4 +1,4 @@
-import LinearGradient from "react-native-linear-gradient"
+import { LinearGradient } from "expo-linear-gradient"
 import { SCREEN_HORIZONTAL_PADDING } from "./constants"
 import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
