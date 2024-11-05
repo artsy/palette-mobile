@@ -1,7 +1,7 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
+import * as Haptics from "expo-haptics"
 import { useState } from "react"
 import { PressableProps, TextStyle, GestureResponderEvent, Pressable } from "react-native"
-import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { config } from "react-spring"
 // @ts-ignore
 import { animated, Spring } from "react-spring/renderprops-native"
@@ -9,6 +9,7 @@ import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
 import { useColor } from "../../utils/hooks"
 import { isTesting } from "../../utils/isTesting"
+import { triggerHaptic } from "../../utils/triggerHaptic"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex/Flex"
 import { MeasuredView, ViewMeasurements } from "../MeasuredView"
@@ -42,7 +43,7 @@ export interface ButtonProps extends BoxProps {
    * <Button haptic="impactHeavy" />
    * to add haptic feedback on the button.
    */
-  haptic?: HapticFeedbackTypes | true
+  haptic?: Haptics.NotificationFeedbackType | Haptics.ImpactFeedbackStyle | true
 
   /** Displays a loader in the button */
   loading?: boolean
@@ -133,9 +134,7 @@ export const Button: React.FC<ButtonProps> = ({
       setInnerDisplayState(DisplayState.Enabled)
     }
 
-    if (haptic !== undefined) {
-      Haptic.trigger(haptic === true ? "impactLight" : haptic)
-    }
+    triggerHaptic(haptic)
 
     onPress(event)
   }

@@ -1,7 +1,7 @@
 import { EventEmitter } from "events"
-
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
+import * as Haptics from "expo-haptics"
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import {
@@ -472,7 +472,7 @@ export const Input = forwardRef<InputRef, InputProps>(
             ref={rightComponentRef}
           >
             <Touchable
-              haptic="impactMedium"
+              haptic={Haptics.ImpactFeedbackStyle.Light}
               onPress={handleClear}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
               accessibilityLabel="Clear input button"
@@ -570,7 +570,7 @@ export const Input = forwardRef<InputRef, InputProps>(
         >
           <Touchable
             onPress={props.onHintPress}
-            haptic="impactLight"
+            haptic={Haptics.ImpactFeedbackStyle.Light}
             hitSlop={{
               top: 5,
               right: 10,

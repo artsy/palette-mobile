@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics"
 import { LinearGradient } from "expo-linear-gradient"
 import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react"
 import {
@@ -113,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onBack, title, onSkip }) => {
       </Flex>
       {!!title && <Text>{title}</Text>}
       {!!onSkip && (
-        <Touchable haptic="impactLight" onPress={onSkip}>
+        <Touchable haptic={Haptics.ImpactFeedbackStyle.Light} onPress={onSkip}>
           <Flex height="100%" justifyContent="center">
             <Text textAlign="right" variant="xs">
               Skip

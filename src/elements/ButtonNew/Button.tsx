@@ -1,6 +1,6 @@
+import * as Haptics from "expo-haptics"
 import { useEffect, useState } from "react"
 import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
-import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
   interpolateColor,
   useAnimatedReaction,
@@ -11,6 +11,7 @@ import Animated, {
 } from "react-native-reanimated"
 import { useColorsForVariantAndState } from "./colors"
 import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
+import { triggerHaptic } from "../../utils/triggerHaptic"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex"
 import { Spacer } from "../Spacer"
@@ -47,7 +48,7 @@ export interface ButtonProps extends BoxProps {
    * <Button haptic="impactHeavy" />
    * to add haptic feedback on the button.
    */
-  haptic?: HapticFeedbackTypes | true
+  haptic?: Haptics.NotificationFeedbackType | Haptics.ImpactFeedbackStyle | true
 
   /** Displays a loader in the button */
   loading?: boolean
@@ -124,9 +125,7 @@ export const Button = ({
       return
     }
 
-    if (haptic !== undefined) {
-      Haptic.trigger(haptic === true ? "impactLight" : haptic)
-    }
+    triggerHaptic(haptic)
 
     onPress(event)
   }
