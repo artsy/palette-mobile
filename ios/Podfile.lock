@@ -1125,8 +1125,6 @@ PODS:
     - React-perflogger (= 0.73.10)
   - RNCAsyncStorage (1.19.8):
     - React-Core
-  - RNDeviceInfo (10.3.0):
-    - React-Core
   - RNFlashList (1.6.4):
     - React-Core
   - RNReactNativeHapticFeedback (1.14.0):
@@ -1219,7 +1217,6 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
-  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -1348,8 +1345,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
-  RNDeviceInfo:
-    :path: "../node_modules/react-native-device-info"
   RNFlashList:
     :path: "../node_modules/@shopify/flash-list"
   RNReactNativeHapticFeedback:
@@ -1426,7 +1421,6 @@ SPEC CHECKSUMS:
   React-utils: c3a9bede4e9aa5c0a8184958cd4c09ff461fd60f
   ReactCommon: 92194c3d756b82bff5b75450544b2863b4df0d5f
   RNCAsyncStorage: 687bb9e85dd3d45b966662440dcfc0cd962347e6
-  RNDeviceInfo: 4701f0bf2a06b34654745053db0ce4cb0c53ada7
   RNFlashList: b521ebdd7f9352673817f1d98e8bdc0c8cf8545b
   RNReactNativeHapticFeedback: 1e3efeca9628ff9876ee7cdd9edec1b336913f8c
   RNReanimated: 8a4d86eb951a4a99d8e86266dc71d7735c0c30a9
@@ -1436,4 +1430,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7a369b0551d27fdc50b2dc05078f6a86d275e65d
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.14.3
