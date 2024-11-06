@@ -1,3 +1,15 @@
+# v13.2.44 (Wed Nov 06 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add new heart and follow icons [#275](https://github.com/artsy/palette-mobile/pull/275) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v13.2.43 (Wed Oct 30 2024)
 
 #### 🐛 Bug Fix
