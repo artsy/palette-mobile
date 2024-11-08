@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics"
 import React from "react"
 import {
   GestureResponderEvent,
@@ -5,15 +6,14 @@ import {
   TouchableHighlightProps,
   TouchableWithoutFeedback,
 } from "react-native"
-import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { Color } from "../../types"
-import { useColor } from "../../utils/hooks/useColor"
+import { triggerHaptic } from "../../utils/triggerHaptic"
 import { Flex } from "../Flex"
 
 interface ExtraTouchableProps {
   flex?: number
-  haptic?: HapticFeedbackTypes | true
+  haptic?: Haptics.NotificationFeedbackType | Haptics.ImpactFeedbackStyle | true
   noFeedback?: boolean
   underlayColor?: Color
 }
@@ -35,8 +35,6 @@ export const Touchable: React.FC<TouchableProps> = ({
   underlayColor,
   ...props
 }) => {
-  const color = useColor()
-
   const inner =
     React.Children.count(children) === 1 ? children : <Flex flex={flex}>{children}</Flex>
 
@@ -45,9 +43,7 @@ export const Touchable: React.FC<TouchableProps> = ({
       return
     }
 
-    if (haptic !== undefined) {
-      Haptic.trigger(haptic === true ? "impactLight" : haptic)
-    }
+    triggerHaptic(haptic)
 
     onPress(evt)
   }

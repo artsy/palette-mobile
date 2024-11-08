@@ -30,7 +30,7 @@ yarn add @artsy/palette-mobile
 - Install native peer deps
 
 ```sh
-yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg
+yarn add react-native-haptic-feedback react-native-reanimated react-native-svg
 ```
 
 ## How to contribute

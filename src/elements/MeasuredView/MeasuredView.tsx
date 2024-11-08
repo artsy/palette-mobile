@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import { ViewStyle, LayoutChangeEvent, useWindowDimensions } from "react-native"
+import { isTesting } from "../../utils/isTesting"
 import { Box } from "../Box"
 
 export interface ViewMeasurements {
@@ -25,7 +26,7 @@ export const MeasuredView = ({ children, setMeasuredState, show }: Props) => {
     setMeasuredState(event.nativeEvent.layout)
   }, [])
 
-  if (__TEST__) return null
+  if (isTesting()) return null
 
   return (
     <Box
