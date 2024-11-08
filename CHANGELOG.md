@@ -1,3 +1,15 @@
+# v13.2.45 (Fri Nov 08 2024)
+
+#### 🐛 Bug Fix
+
+- feat(DIA-937): add apple and google icons [#277](https://github.com/artsy/palette-mobile/pull/277) ([@iskounen](https://github.com/iskounen))
+
+#### Authors: 1
+
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v13.2.44 (Wed Nov 06 2024)
 
 #### 🐛 Bug Fix
