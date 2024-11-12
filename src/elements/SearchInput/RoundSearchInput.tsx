@@ -1,7 +1,7 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useRef, useState } from "react"
-import { LayoutAnimation, Platform, TextInput, TextInputProps } from "react-native"
+import { LayoutAnimation, TextInput, TextInputProps } from "react-native"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -76,7 +76,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
 
   const inputStyles = {
     flex: 1,
-    height: CONTAINER_HEIGHT,
+    height: SEARCH_INPUT_CONTAINER_HEIGHT,
     fontFamily: theme.theme.fonts.sans.regular,
     fontSize: 16,
   }
@@ -113,16 +113,16 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         ))}
       </Flex>
     )
-  }, [placeholder])
+  }, [placeholder, inputStyles])
 
   return (
     <Flex
       flexDirection="row"
       style={{
-        height: CONTAINER_HEIGHT,
+        height: SEARCH_INPUT_CONTAINER_HEIGHT,
         paddingRight: CONTAINER_HORIZONTAL_PADDING,
         paddingLeft: 2 * CONTAINER_HORIZONTAL_PADDING + 16,
-        borderRadius: CONTAINER_BORDER_RADIUS,
+        borderRadius: SEARCH_INPUT_CONTAINER_BORDER_RADIUS,
         backgroundColor: color("black5"),
       }}
     >
@@ -152,7 +152,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       />
       <Flex
         position="absolute"
-        height={CONTAINER_HEIGHT}
+        height={SEARCH_INPUT_CONTAINER_HEIGHT}
         justifyContent="center"
         alignItems="center"
         style={{
@@ -161,7 +161,6 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       >
         <Touchable
           onPress={() => {
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
             ref.current?.blur()
             setIsFocused(false)
             onLeftIconPress?.()
@@ -190,7 +189,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
   )
 }
 
-const CONTAINER_HEIGHT = 48
+export const SEARCH_INPUT_CONTAINER_HEIGHT = 48
 const CONTAINER_HORIZONTAL_PADDING = 16
-const CONTAINER_BORDER_RADIUS = 24
+export const SEARCH_INPUT_CONTAINER_BORDER_RADIUS = 24
 const ICON_SIZE = 24
