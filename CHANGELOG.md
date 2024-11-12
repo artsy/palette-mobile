@@ -1,3 +1,15 @@
+# v14.0.1 (Tue Nov 12 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add RoundSearchInput component [#278](https://github.com/artsy/palette-mobile/pull/278) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.0 (Tue Nov 12 2024)
 
 #### 💥 Breaking Change
