@@ -1,8 +1,23 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const ArrowLeftIcon = ({ fill, ...restProps }: IconProps) => {
+interface ArrowLeftIconProps extends IconProps {
+  long?: boolean
+}
+export const ArrowLeftIcon = ({ fill, long = false, ...restProps }: ArrowLeftIconProps) => {
   const color = useColor()
+
+  if (long) {
+    return (
+      <Icon {...restProps} viewBox="0 0 24 24">
+        <Path
+          d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z"
+          fill={color(fill)}
+          fillRule="evenodd"
+        />
+      </Icon>
+    )
+  }
   return (
     <Icon {...restProps} viewBox="0 0 18 18">
       <Path
