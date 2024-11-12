@@ -3,7 +3,7 @@ import { FlatList, FlatListProps } from "react-native"
 import Animated from "react-native-reanimated"
 import { useListenForScreenScroll } from "./hooks/useListenForScreenScroll"
 
-export type ScreenFlatListProps<T> = FlatListProps<T> & {
+export type ScreenFlatListProps<T> = Omit<FlatListProps<T>, "CellRendererComponent"> & {
   innerRef?: React.ForwardedRef<FlatList<T>>
 }
 
