@@ -1,9 +1,12 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
-import { useCallback, useRef, useState } from "react"
-import { LayoutAnimation, TextInput, TextInputProps } from "react-native"
+import { MotiView } from "moti"
+import React, { useCallback, useMemo, useRef, useState } from "react"
+import { TextInput, TextInputProps } from "react-native"
+import { Easing } from "react-native-reanimated"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
+import { useIsKeyboardVisible } from "../../utils/hooks/useIsKeyboardVisible"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
@@ -43,7 +46,6 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
   const [inputWidth, setInputWidth] = useState(0)
   const placeholderWidths = useRef<number[]>([])
 
-  const [isFocused, setIsFocused] = useState(false)
   const color = useColor()
 
   const getPlaceholder = useCallback(() => {
@@ -74,12 +76,14 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
     throw new Error("Avoid controlled inputs and use the defaultValue prop instead")
   }
 
-  const inputStyles = {
-    flex: 1,
-    height: SEARCH_INPUT_CONTAINER_HEIGHT,
-    fontFamily: theme.theme.fonts.sans.regular,
-    fontSize: 16,
-  }
+  const inputStyles = useMemo(() => {
+    return {
+      flex: 1,
+      height: SEARCH_INPUT_CONTAINER_HEIGHT,
+      fontFamily: theme.theme.fonts.sans.regular,
+      fontSize: 16,
+    }
+  }, [])
 
   const renderAndroidPlaceholderMeasuringHack = useCallback(() => {
     if (!isArray(placeholder)) {
@@ -143,53 +147,79 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         maxLength={100}
         clearButtonMode="always"
         placeholderTextColor={color("black60")}
-        onFocus={(e) => {
-          setIsFocused(true)
-          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-          rest.onFocus?.(e)
-        }}
         enterKeyHint="search"
         returnKeyType="search"
       />
-      <Flex
-        position="absolute"
-        height={SEARCH_INPUT_CONTAINER_HEIGHT}
-        justifyContent="center"
-        alignItems="center"
-        style={{
-          paddingHorizontal: CONTAINER_HORIZONTAL_PADDING,
-        }}
-      >
-        <Touchable
-          onPress={() => {
-            ref.current?.blur()
-            setIsFocused(false)
-            onLeftIconPress?.()
-          }}
-          haptic="impactLight"
-        >
-          {!isFocused ? (
-            <MagnifyingGlassIcon
-              fill="black60"
-              width={ICON_SIZE}
-              height={ICON_SIZE}
-              style={{
-                transform: [
-                  {
-                    scaleX: -1,
-                  },
-                ],
-              }}
-            />
-          ) : (
-            <ArrowLeftIcon long fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
-          )}
-        </Touchable>
-      </Flex>
+      <IconContainer onLeftIconPress={onLeftIconPress} />
     </Flex>
   )
 }
 
+const IconContainer: React.FC<{
+  onLeftIconPress?: () => void
+}> = ({ onLeftIconPress }) => {
+  const isKeyboardVisible = useIsKeyboardVisible(true)
+
+  return (
+    <Flex
+      position="absolute"
+      height={SEARCH_INPUT_CONTAINER_HEIGHT}
+      justifyContent="center"
+      alignItems="center"
+      style={{
+        paddingHorizontal: CONTAINER_HORIZONTAL_PADDING,
+      }}
+    >
+      <Touchable
+        onPress={() => {
+          onLeftIconPress?.()
+        }}
+        haptic="impactLight"
+      >
+        <MotiView
+          animate={{
+            opacity: isKeyboardVisible ? 0 : 1,
+            rotate: isKeyboardVisible ? "180deg" : "0deg",
+          }}
+          transition={{ rotation: { type: "timing", easing: Easing.linear } }}
+          style={{
+            position: "absolute",
+            height: SEARCH_INPUT_CONTAINER_HEIGHT,
+            justifyContent: "center",
+          }}
+        >
+          <MagnifyingGlassIcon
+            fill="black60"
+            width={ICON_SIZE}
+            height={ICON_SIZE}
+            style={{
+              transform: [
+                {
+                  scaleX: -1,
+                },
+              ],
+            }}
+          />
+        </MotiView>
+
+        <MotiView
+          animate={{
+            opacity: isKeyboardVisible ? 1 : 0,
+            rotate: isKeyboardVisible ? "180deg" : "0deg",
+          }}
+          transition={{ rotation: { type: "timing", easing: Easing.linear } }}
+          style={{
+            position: "absolute",
+            height: SEARCH_INPUT_CONTAINER_HEIGHT,
+            justifyContent: "center",
+          }}
+        >
+          <ArrowLeftIcon long fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
+        </MotiView>
+      </Touchable>
+    </Flex>
+  )
+}
 export const SEARCH_INPUT_CONTAINER_HEIGHT = 48
 const CONTAINER_HORIZONTAL_PADDING = 16
 export const SEARCH_INPUT_CONTAINER_BORDER_RADIUS = 24
