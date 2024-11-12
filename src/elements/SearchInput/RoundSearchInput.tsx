@@ -102,6 +102,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       >
         {placeholder.map((placeholderString, index) => (
           <Text
+            key={index}
             onLayout={(event) => {
               placeholderWidths.current[index] = event.nativeEvent.layout.width
             }}
