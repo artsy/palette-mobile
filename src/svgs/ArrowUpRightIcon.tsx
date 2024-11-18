@@ -7,7 +7,7 @@ export const ArrowUpRightIcon = ({ fill, ...restProps }: IconProps) => {
   return (
     <Icon {...restProps} viewBox="0 0 18 18">
       <Path
-        d="M4.16531 14.625L3.375 13.8347L11.9597 5.25H6.75V4.125H13.875V11.25H12.75V6.04031L4.16531 14.625Z"
+        d="M4.17188 14.8125L3.1875 13.8281L11.6625 5.34375H6.64688V3.9375H14.0531V11.3438H12.6469V6.32813L4.17188 14.8125Z"
         fillRule="nonzero"
         fill={color(fill)}
       />
