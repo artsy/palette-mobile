@@ -1,3 +1,15 @@
+# v14.0.2 (Mon Nov 18 2024)
+
+#### 🐛 Bug Fix
+
+- fix(ONYX-1395): update urgency signals, follow and save icons [#282](https://github.com/artsy/palette-mobile/pull/282) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v14.0.1 (Tue Nov 12 2024)
 
 #### 🐛 Bug Fix
