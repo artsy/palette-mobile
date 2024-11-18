@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/react-native"
+import { act, fireEvent, screen } from "@testing-library/react-native"
 import { Input } from "./Input"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 
@@ -31,21 +31,19 @@ describe("Input", () => {
     getByText("input has an error")
   })
 
-  it("should render the clear button when input is not empty and pressing it should clear the input", () => {
-    const { getByDisplayValue, queryByDisplayValue, getByPlaceholderText, getByLabelText } =
-      renderWithWrappers(<Input placeholder="USD" enableClearButton />)
-    // placeholder is rendered
-    getByPlaceholderText("USD")
+  it("should render the clear button when input is not empty and pressing it should clear the input", async () => {
+    renderWithWrappers(<Input testID={testID} placeholder="USD" enableClearButton />)
+    act(() => {
+      fireEvent(screen.getByTestId(testID), "onChangeText", "Banksy")
+    })
 
-    fireEvent(getByPlaceholderText("USD"), "onChangeText", "Banksy")
+    screen.findByDisplayValue("Banksy")
 
-    getByDisplayValue("Banksy")
+    screen.getByLabelText("Clear input button")
 
-    getByLabelText("Clear input button")
+    fireEvent.press(screen.getByLabelText("Clear input button"))
 
-    fireEvent.press(getByLabelText("Clear input button"))
-
-    expect(queryByDisplayValue("Banksy")).toBeFalsy()
+    expect(screen.queryByDisplayValue("Banksy")).toBeFalsy()
   })
 
   it("should show the correct show/hide password icon", () => {

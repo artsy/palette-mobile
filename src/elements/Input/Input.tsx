@@ -695,7 +695,7 @@ export const Input = forwardRef<InputRef, InputProps>(
 
         <AnimatedStyledInput
           // Only use a controlled input if specified
-          {...(propValue || mask ? { value } : {})}
+          {...((propValue !== undefined && propValue !== null) || mask ? { value } : {})}
           onChangeText={handleChangeText}
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
