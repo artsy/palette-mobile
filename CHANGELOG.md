@@ -1,3 +1,15 @@
+# v14.0.3 (Mon Nov 18 2024)
+
+#### 🐛 Bug Fix
+
+- chore: remove layout animation from round search input [#283](https://github.com/artsy/palette-mobile/pull/283) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.2 (Mon Nov 18 2024)
 
 #### 🐛 Bug Fix
