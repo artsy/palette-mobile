@@ -49,6 +49,10 @@ export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChan
    * These lead to some issues when the parent component wants further control of the value
    */
   disabled?: boolean
+  /**
+   * Enables the clear button
+   * @warning This prop only works if `value` is specified
+   */
   enableClearButton?: boolean
   error?: string
   fixedRightPlaceholder?: string
