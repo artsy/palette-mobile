@@ -98,6 +98,13 @@ export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChan
    * <Input mask="999-99-9999 999-99-9999 999-99-9999" />
    */
   mask?: string | string[] | undefined
+  /**
+   * @warning This prop affects the performance of the input
+   * and should be avoided if possible.
+   * Use `defaultValue` instead.
+   * See: https://github.com/facebook/react-native-website/pull/4247
+   */
+  value?: string | undefined
 }
 
 export const HORIZONTAL_PADDING = 15
@@ -687,7 +694,8 @@ export const Input = forwardRef<InputRef, InputProps>(
         {renderAnimatedTitle()}
 
         <AnimatedStyledInput
-          value={value}
+          // Only use a controlled input if specified
+          {...(propValue || mask ? { value } : {})}
           onChangeText={handleChangeText}
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
