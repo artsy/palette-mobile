@@ -1,7 +1,7 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useRef, useState } from "react"
-import { LayoutAnimation, TextInput, TextInputProps } from "react-native"
+import { TextInput, TextInputProps } from "react-native"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -145,7 +145,6 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         placeholderTextColor={color("black60")}
         onFocus={(e) => {
           setIsFocused(true)
-          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
           rest.onFocus?.(e)
         }}
         enterKeyHint="search"
