@@ -716,6 +716,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           ref={inputRef as RefObject<TextInput>}
           placeholderTextColor={color("black60")}
           placeholder={getPlaceholder()}
+          defaultValue={defaultValue}
           secureTextEntry={!showPassword}
           {...props}
         />
