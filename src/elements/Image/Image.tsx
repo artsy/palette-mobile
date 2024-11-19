@@ -56,13 +56,13 @@ export const Image: React.FC<ImageProps> = memo(
 
     const animatedStyles = useAnimatedStyle(() => {
       return {
-        opacity: withTiming(loading.value ? 0 : 1, { duration: 200, easing: Easing.sin }),
+        opacity: withTiming(loading.get() ? 0 : 1, { duration: 200, easing: Easing.sin }),
       }
     }, [])
 
     const onAnimationEnd = useCallback(() => {
       "worklet"
-      loading.value = false
+      loading.set(() => false)
       // No need to get the js thread involved here
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

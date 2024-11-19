@@ -34,13 +34,13 @@ export const ProgressBar = ({
   const width = useSharedValue(0)
   const progress = clamp(unclampedProgress, 0, 100)
   const progressAnim = useAnimatedStyle(() => {
-    return { width: `${width.value}%` }
+    return { width: `${width.get()}%` }
   })
 
   const [onCompletionCalled, setOnCompletionCalled] = useState(false)
 
   useEffect(() => {
-    width.value = withTiming(progress, { duration: animationDuration })
+    width.set(() => withTiming(progress, { duration: animationDuration }))
 
     if (progress === 100 && !onCompletionCalled) {
       onCompletion?.()

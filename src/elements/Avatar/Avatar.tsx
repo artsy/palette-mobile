@@ -1,4 +1,4 @@
-import { ImgHTMLAttributes, useState } from "react"
+import { ImgHTMLAttributes, useEffect, useState } from "react"
 import { Image } from "react-native"
 import Animated, {
   useAnimatedStyle,
@@ -51,17 +51,21 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
 
   const opacity = useSharedValue(0)
 
-  opacity.value = withDelay(
-    100,
-    withTiming(1, {
-      duration: 200,
-      easing: Easing.sin,
-    })
-  )
+  useEffect(() => {
+    opacity.set(() =>
+      withDelay(
+        100,
+        withTiming(1, {
+          duration: 200,
+          easing: Easing.sin,
+        })
+      )
+    )
+  }, [loading])
 
   const style = useAnimatedStyle(() => {
     return {
-      opacity: loading ? 0 : opacity.value,
+      opacity: loading ? 0 : opacity.get(),
     }
   }, [loading])
 
