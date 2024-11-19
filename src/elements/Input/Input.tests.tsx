@@ -35,9 +35,8 @@ describe("Input", () => {
 
   it("should render the clear button when input is not empty and pressing it should clear the input", async () => {
     renderWithWrappers(<Input testID={testID} placeholder="USD" enableClearButton />)
-    act(() => {
-      fireEvent(screen.getByTestId(testID), "onChangeText", "Banksy")
-    })
+
+    fireEvent(screen.getByTestId(testID), "onChangeText", "Banksy")
 
     screen.findByDisplayValue("Banksy")
 
