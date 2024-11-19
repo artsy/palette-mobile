@@ -1,3 +1,17 @@
+# v14.0.4 (Tue Nov 19 2024)
+
+#### 🐛 Bug Fix
+
+- refactor: proper use of useSharedValue [#284](https://github.com/artsy/palette-mobile/pull/284) ([@gkartalis](https://github.com/gkartalis))
+- chore: allow using uncontrolled inputs [#281](https://github.com/artsy/palette-mobile/pull/281) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 2
+
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.3 (Mon Nov 18 2024)
 
 #### 🐛 Bug Fix
