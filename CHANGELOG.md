@@ -1,3 +1,16 @@
+# v14.0.5 (Tue Nov 19 2024)
+
+#### 🐛 Bug Fix
+
+- chore: fix test failures and warnings from last upgrade [#285](https://github.com/artsy/palette-mobile/pull/285) ([@gkartalis](https://github.com/gkartalis) [@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 2
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.4 (Tue Nov 19 2024)
 
 #### 🐛 Bug Fix
