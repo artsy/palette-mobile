@@ -32,10 +32,10 @@ export const ToolTipFlyout: React.FC<Props> = ({
 
   const animationStyle = useAnimatedStyle(() => {
     return {
-      height: withTiming(boxDimensions.get().height, {
+      height: withTiming(boxDimensions.value.height, {
         duration: 500,
       }),
-      width: withTiming(boxDimensions.get().width, {
+      width: withTiming(boxDimensions.value.width, {
         duration: 500,
       }),
     }
@@ -43,12 +43,12 @@ export const ToolTipFlyout: React.FC<Props> = ({
 
   useEffect(() => {
     if (text) {
-      boxDimensions.set(() => ({
+      boxDimensions.value = {
         height,
         width,
-      }))
+      }
     } else {
-      boxDimensions.set(() => initialBoxDimensions)
+      boxDimensions.value = initialBoxDimensions
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, height, width])

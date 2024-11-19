@@ -14,7 +14,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:testing-library/react",
     "prettier", // "prettier" needs to be last!
   ],
   parserOptions: {
@@ -98,11 +97,4 @@ module.exports = {
     "react-native/no-inline-styles": OFF,
     "react/react-in-jsx-scope": OFF,
   },
-  overrides: [
-    {
-      // Test files only
-      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      extends: ["plugin:testing-library/react"],
-    },
-  ],
 }

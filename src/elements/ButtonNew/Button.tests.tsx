@@ -1,4 +1,4 @@
-import { fireEvent, screen } from "@testing-library/react-native"
+import { fireEvent } from "@testing-library/react-native"
 import { Button } from "./Button"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 import { Spinner } from "../Spinner"
@@ -12,13 +12,13 @@ describe("Button", () => {
   it("invokes the onClick callback", () => {
     const onPress = jest.fn()
 
-    renderWithWrappers(
+    const { getByTestId } = renderWithWrappers(
       <Button testID="the-button" onPress={onPress}>
         wow
       </Button>
     )
 
-    fireEvent.press(screen.getByTestId("the-button"))
+    fireEvent.press(getByTestId("the-button"))
 
     expect(onPress).toHaveBeenCalled()
   })
@@ -26,13 +26,13 @@ describe("Button", () => {
   it("does not invoke the onClick callback if loading is true", () => {
     const onPress = jest.fn()
 
-    renderWithWrappers(
+    const { getByTestId } = renderWithWrappers(
       <Button testID="the-button" onPress={onPress} loading>
         wow
       </Button>
     )
 
-    fireEvent.press(screen.getByTestId("the-button"))
+    fireEvent.press(getByTestId("the-button"))
 
     expect(onPress).not.toHaveBeenCalled()
   })
@@ -40,13 +40,13 @@ describe("Button", () => {
   it("does not invoke the onClick callback if disabled is true", () => {
     const onPress = jest.fn()
 
-    renderWithWrappers(
+    const { getByTestId } = renderWithWrappers(
       <Button testID="the-button" onPress={onPress} disabled>
         wow
       </Button>
     )
 
-    fireEvent.press(screen.getByTestId("the-button"))
+    fireEvent.press(getByTestId("the-button"))
 
     expect(onPress).not.toHaveBeenCalled()
   })

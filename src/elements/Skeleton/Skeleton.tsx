@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from "react"
+import { FC, ReactNode } from "react"
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -22,13 +22,9 @@ import { Text, TextProps } from "../Text"
  */
 export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useSharedValue(0.5)
-
-  useEffect(() => {
-    opacity.set(() => withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true))
-  }, [opacity])
-
+  opacity.value = withRepeat(withTiming(1, { duration: 1000, easing: Easing.ease }), -1, true)
   const fadeLoopAnim = useAnimatedStyle(() => {
-    return { opacity: opacity.get() }
+    return { opacity: opacity.value }
   }, [])
 
   return <Animated.View style={fadeLoopAnim}>{children}</Animated.View>

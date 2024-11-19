@@ -311,18 +311,15 @@ export const Input = forwardRef<InputRef, InputProps>(
       }
     }, [fontFamily, space])
 
-    useEffect(() => {
-      const inputState = getInputState({
-        isFocused: !!focused,
-        value: value,
-      })
-      animatedState.set(() => inputState)
-    }, [value, focused, animatedState])
+    animatedState.value = getInputState({
+      isFocused: !!focused,
+      value: value,
+    })
 
     const textInputAnimatedStyles = useAnimatedStyle(() => {
       return {
-        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputBorderColor),
-        color: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputTextColor),
+        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
+        color: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputTextColor),
       }
     })
 
@@ -336,16 +333,16 @@ export const Input = forwardRef<InputRef, InputProps>(
           : HORIZONTAL_PADDING
 
       return {
-        color: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelColor),
-        top: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelTop),
-        fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelFontSize),
+        color: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelColor),
+        top: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelTop),
+        fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.value].labelFontSize),
         marginLeft: withTiming(marginLeft),
       }
     })
 
     const selectComponentStyles = useAnimatedStyle(() => {
       return {
-        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputBorderColor),
+        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.value].inputBorderColor),
       }
     })
 
