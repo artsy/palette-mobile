@@ -12,9 +12,11 @@ describe("Input", () => {
   })
 
   it("uses correct font family", () => {
-    const { getByTestId } = renderWithWrappers(<Input testID={testID} />)
+    const { getByPlaceholderText } = renderWithWrappers(
+      <Input testID={testID} placeholder="input" />
+    )
 
-    expect(getByTestId(testID).props.style[0].fontFamily).toEqual("Unica77LL-Regular")
+    expect(getByPlaceholderText("input")).toHaveStyle({ fontFamily: "Unica77LL-Regular" })
   })
 
   it("mutates given text as value", () => {
