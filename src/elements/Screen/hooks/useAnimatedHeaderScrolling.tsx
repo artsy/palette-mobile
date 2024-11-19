@@ -4,7 +4,7 @@ import { NAVBAR_HEIGHT } from "../constants"
 
 export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>, scrollYOffset = 0) => {
   const listenForScroll = useSharedValue(true)
-  const [currScrollY, setCurrScrollY] = useState(scrollY.value)
+  const [currScrollY, setCurrScrollY] = useState(scrollY.get())
   const HEADER_HEIGHT = useMemo(() => NAVBAR_HEIGHT + scrollYOffset, [scrollYOffset])
 
   // Needed to run on JS thread
@@ -14,17 +14,17 @@ export const useAnimatedHeaderScrolling = (scrollY: SharedValue<number>, scrollY
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      listenForScroll.value = false
+      listenForScroll.set(() => false)
     }, 1000)
 
     return () => {
       clearTimeout(timer)
     }
-  }, [listenForScroll])
+  }, [listenForScroll.get()])
 
   useAnimatedReaction(
     () => {
-      return [scrollY.value, listenForScroll.value] as const
+      return [scrollY.get(), listenForScroll.get()] as const
     },
     ([animatedScrollY, isListeningForScroll], previousScroll) => {
       const [prevScrollY] = previousScroll ?? [0, false]

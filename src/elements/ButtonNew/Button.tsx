@@ -92,9 +92,11 @@ export const Button = ({
       return pressedV.value
     },
     (pressedVal) => {
-      return (pressAnimationProgress.value = withTiming(pressedVal, {
-        duration: ANIMATION_DURATION,
-      }))
+      return pressAnimationProgress.set(() =>
+        withTiming(pressedVal, {
+          duration: ANIMATION_DURATION,
+        })
+      )
     }
   )
 
@@ -143,12 +145,12 @@ export const Button = ({
     }
     return {
       backgroundColor: interpolateColor(
-        pressAnimationProgress.value,
+        pressAnimationProgress.get(),
         [0, 1],
         [colors.active.bg, colors.pressed.bg]
       ),
       borderColor: interpolateColor(
-        pressAnimationProgress.value,
+        pressAnimationProgress.get(),
         [0, 1],
         [colors.active.border, colors.pressed.border]
       ),
@@ -162,11 +164,11 @@ export const Button = ({
     }
     return {
       color: interpolateColor(
-        pressAnimationProgress.value,
+        pressAnimationProgress.get(),
         [0, 1],
         [colors.active.text, colors.pressed.text]
       ),
-      textDecorationLine: pressAnimationProgress.value > 0 ? "underline" : "none",
+      textDecorationLine: pressAnimationProgress.get() > 0 ? "underline" : "none",
     }
   })
 

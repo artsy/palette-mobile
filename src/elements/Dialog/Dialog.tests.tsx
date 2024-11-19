@@ -1,10 +1,10 @@
-import { fireEvent } from "@testing-library/react-native"
+import { fireEvent, screen } from "@testing-library/react-native"
 import { Dialog } from "./Dialog"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 
 describe("Dialog", () => {
   it("renders without error", () => {
-    const { getByText } = renderWithWrappers(
+    renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -15,11 +15,11 @@ describe("Dialog", () => {
       />
     )
 
-    expect(getByText("title")).toBeTruthy()
+    expect(screen.getByText("title")).toBeOnTheScreen()
   })
 
   it("should render details if it is passed", () => {
-    const { getByText } = renderWithWrappers(
+    renderWithWrappers(
       <Dialog
         title="title"
         detail="Some unique detail"
@@ -31,13 +31,13 @@ describe("Dialog", () => {
       />
     )
 
-    expect(getByText("Some unique detail")).toBeTruthy()
+    expect(screen.getByText("Some unique detail")).toBeOnTheScreen()
   })
 
   it("should render the primary action button", () => {
     const primaryActionMock = jest.fn()
 
-    const { getByTestId, getByText } = renderWithWrappers(
+    renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -47,18 +47,18 @@ describe("Dialog", () => {
         }}
       />
     )
-    const primaryButton = getByTestId("dialog-primary-action-button")
+    const primaryButton = screen.getByTestId("dialog-primary-action-button")
 
     fireEvent.press(primaryButton)
 
     expect(primaryActionMock).toHaveBeenCalled()
-    expect(getByText("Primary Action Button")).toBeTruthy()
+    expect(screen.getByText("Primary Action Button")).toBeOnTheScreen()
   })
 
   it("should render the secondary action button if it is passed", () => {
     const secondaryActionMock = jest.fn()
 
-    const { getByTestId, getByText } = renderWithWrappers(
+    renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -72,17 +72,17 @@ describe("Dialog", () => {
         }}
       />
     )
-    const secondaryButton = getByTestId("dialog-secondary-action-button")
+    const secondaryButton = screen.getByTestId("dialog-secondary-action-button")
 
     fireEvent.press(secondaryButton)
 
     expect(secondaryActionMock).toHaveBeenCalled()
-    expect(getByText("Secondary Action Button")).toBeTruthy()
+    expect(screen.getByText("Secondary Action Button")).toBeOnTheScreen()
   })
 
   it("should call onBackgroundPress when backdrop is pressed", () => {
     const onBackgroundPressMock = jest.fn()
-    const { getByTestId } = renderWithWrappers(
+    renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -94,7 +94,7 @@ describe("Dialog", () => {
       />
     )
 
-    fireEvent.press(getByTestId("dialog-backdrop"))
+    fireEvent.press(screen.getByTestId("dialog-backdrop"))
 
     expect(onBackgroundPressMock).toHaveBeenCalled()
   })
