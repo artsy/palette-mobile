@@ -222,7 +222,7 @@ export const Button: React.FC<ButtonProps> = ({
 
                 {displayState === DisplayState.Loading && (
                   <SpinnerContainer>
-                    <Spinner size={size} color={to.loaderColor} />
+                    <Spinner size={size} color={to.loaderColor} testID="button-loading-spinner" />
                   </SpinnerContainer>
                 )}
               </Flex>
