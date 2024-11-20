@@ -1,3 +1,15 @@
+# v14.0.6 (Wed Nov 20 2024)
+
+#### 🐛 Bug Fix
+
+- chore: increase hitslop of search icon [#287](https://github.com/artsy/palette-mobile/pull/287) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.5 (Tue Nov 19 2024)
 
 #### 🐛 Bug Fix
