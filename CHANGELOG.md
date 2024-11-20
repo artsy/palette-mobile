@@ -1,3 +1,15 @@
+# v14.0.7 (Wed Nov 20 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add button loading spinner testid [#288](https://github.com/artsy/palette-mobile/pull/288) ([@iskounen](https://github.com/iskounen))
+
+#### Authors: 1
+
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v14.0.6 (Wed Nov 20 2024)
 
 #### 🐛 Bug Fix
