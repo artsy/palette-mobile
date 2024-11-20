@@ -2,6 +2,7 @@ import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useRef, useState } from "react"
 import { TextInput, TextInputProps } from "react-native"
+import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -165,6 +166,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
             setIsFocused(false)
             onLeftIconPress?.()
           }}
+          hitSlop={DEFAULT_HIT_SLOP}
           haptic="impactLight"
         >
           {!isFocused ? (
