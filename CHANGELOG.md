@@ -1,3 +1,15 @@
+# v14.0.8 (Wed Nov 20 2024)
+
+#### 🐛 Bug Fix
+
+- chore: revert "add button loading spinner testid" [#289](https://github.com/artsy/palette-mobile/pull/289) ([@iskounen](https://github.com/iskounen))
+
+#### Authors: 1
+
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v14.0.7 (Wed Nov 20 2024)
 
 #### 🐛 Bug Fix
