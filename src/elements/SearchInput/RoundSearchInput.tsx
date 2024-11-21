@@ -1,7 +1,8 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
-import { useCallback, useRef, useState } from "react"
-import { TextInput, TextInputProps } from "react-native"
+import { useCallback, useMemo, useRef, useState } from "react"
+import { Platform, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
+import { backgroundColor } from "styled-system"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
@@ -75,12 +76,15 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
     throw new Error("Avoid controlled inputs and use the defaultValue prop instead")
   }
 
-  const inputStyles = {
-    flex: 1,
-    height: SEARCH_INPUT_CONTAINER_HEIGHT,
-    fontFamily: theme.theme.fonts.sans.regular,
-    fontSize: 16,
-  }
+  const inputStyles: StyleProp<TextStyle> = useMemo(() => {
+    return {
+      flex: 1,
+      height: SEARCH_INPUT_CONTAINER_HEIGHT,
+      fontFamily: theme.theme.fonts.sans.regular,
+      fontSize: 16,
+      lineHeight: 20,
+    }
+  }, [])
 
   const renderAndroidPlaceholderMeasuringHack = useCallback(() => {
     if (!isArray(placeholder)) {
@@ -170,18 +174,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
           haptic="impactLight"
         >
           {!isFocused ? (
-            <MagnifyingGlassIcon
-              fill="black60"
-              width={ICON_SIZE}
-              height={ICON_SIZE}
-              style={{
-                transform: [
-                  {
-                    scaleX: -1,
-                  },
-                ],
-              }}
-            />
+            <MagnifyingGlassIcon fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
           ) : (
             <ArrowLeftIcon long fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
           )}
