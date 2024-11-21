@@ -1,4 +1,9 @@
 {
   "name": "PaletteMobile",
-  "displayName": "Palette Mobile"
+  "android": {
+    "package": "com.artsymobile.palettemobile"
+  },
+  "splash": {
+    "backgroundColor": "#ffffff"
+  }
 }
