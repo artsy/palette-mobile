@@ -1,3 +1,15 @@
+# v14.0.9 (Thu Nov 21 2024)
+
+#### 🐛 Bug Fix
+
+- fix: QA issues on new input [#290](https://github.com/artsy/palette-mobile/pull/290) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.8 (Wed Nov 20 2024)
 
 #### 🐛 Bug Fix
