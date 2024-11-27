@@ -1,3 +1,16 @@
+# v14.0.10 (Wed Nov 27 2024)
+
+#### 🐛 Bug Fix
+
+- chore: upgrade reanimated to 3.16.3 [#291](https://github.com/artsy/palette-mobile/pull/291) ([@MounirDhahri](https://github.com/MounirDhahri) [@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 2
+
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.9 (Thu Nov 21 2024)
 
 #### 🐛 Bug Fix
