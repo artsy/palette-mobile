@@ -1,3 +1,15 @@
+# v14.0.11 (Fri Dec 06 2024)
+
+#### 🐛 Bug Fix
+
+- chore: make post-merge hook executable #trivial [#292](https://github.com/artsy/palette-mobile/pull/292) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v14.0.10 (Wed Nov 27 2024)
 
 #### 🐛 Bug Fix
