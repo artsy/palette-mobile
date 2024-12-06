@@ -1,3 +1,15 @@
+# v14.0.12 (Fri Dec 06 2024)
+
+#### 🐛 Bug Fix
+
+- chore: error when requesting resize for a gemini url [#293](https://github.com/artsy/palette-mobile/pull/293) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v14.0.11 (Fri Dec 06 2024)
 
 #### 🐛 Bug Fix
