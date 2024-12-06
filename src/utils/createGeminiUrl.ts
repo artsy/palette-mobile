@@ -2,6 +2,11 @@ import { Platform } from "react-native"
 
 export type GeminiResizeMode = "fit" | "fill"
 
+const geminiHosts = [
+  "https://d7hftxdivxxvm.cloudfront.net",
+  "https://d196wkiy8qx2u5.cloudfront.net",
+]
+
 export function createGeminiUrl({
   imageURL,
   width,
@@ -17,6 +22,13 @@ export function createGeminiUrl({
   imageQuality?: number
   resizeMode?: GeminiResizeMode
 }) {
+  if (geminiHosts.some((host) => imageURL.includes(host))) {
+    console.error(
+      "Image: `performResize` on self referential url. Avoid resizing gemini urls. Pass performResize={false} to fix this.",
+      { imageURL }
+    )
+  }
+
   const src = encodeURIComponent(imageURL)
 
   const roundedHeight = Math.round(height)
