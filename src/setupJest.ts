@@ -1,5 +1,3 @@
-// @ts-expect-error
-global.__TEST__ = true
 import "@testing-library/react-native/extend-expect"
 
 import mockSafeAreaContext from "react-native-safe-area-context/jest/mock"
