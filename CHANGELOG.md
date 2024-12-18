@@ -1,3 +1,15 @@
+# v14.0.13 (Wed Dec 18 2024)
+
+#### 🐛 Bug Fix
+
+- feat: allow VisualClue color to be customized [#295](https://github.com/artsy/palette-mobile/pull/295) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v14.0.12 (Fri Dec 06 2024)
 
 #### 🐛 Bug Fix
