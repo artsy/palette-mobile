@@ -1,3 +1,15 @@
+# v14.0.14 (Tue Dec 31 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add a11y to checkbox + testid [#296](https://github.com/artsy/palette-mobile/pull/296) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.13 (Wed Dec 18 2024)
 
 #### 🐛 Bug Fix
