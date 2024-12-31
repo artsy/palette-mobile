@@ -43,12 +43,21 @@ export interface CheckProps {
   error?: boolean
   hover?: boolean
   selected?: boolean
+  testID?: string
 }
 
 /** Toggeable check mark */
-export const Check: React.FC<CheckProps> = ({ disabled, selected, ...rest }) => {
+export const Check: React.FC<CheckProps> = ({ disabled, selected, testID, ...rest }) => {
   return (
-    <Container disabled={disabled} selected={selected} {...rest}>
+    <Container
+      disabled={disabled}
+      selected={selected}
+      {...rest}
+      aria-disabled={disabled}
+      aria-checked={selected}
+      accessibilityRole="checkbox"
+      testID={testID}
+    >
       {!!selected && <CheckIcon fill="white100" />}
     </Container>
   )
