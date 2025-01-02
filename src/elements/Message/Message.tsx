@@ -12,7 +12,7 @@ export interface MessageProps {
   bodyTextStyle?: TextProps
   containerStyle?: FlexProps
   IconComponent?: React.FC<any>
-  iconPosition?: "left" | "right"
+  iconPosition?: "left" | "right" | "bottom"
   onClose?: () => void
   showCloseButton?: boolean
   testID?: string
@@ -70,12 +70,12 @@ export const Message: React.FC<MessageProps> = ({
         ],
       }}
     >
-      <Flex backgroundColor={color(colors[variant].background)} {...containerStyle}>
-        <Flex px={2} py={1} flexDirection="row" justifyContent="space-between">
+      <Flex px={2} backgroundColor={color(colors[variant].background)} {...containerStyle}>
+        <Flex py={1} flexDirection="row" justifyContent="space-between">
           <Flex flex={1}>
             <Flex flexDirection="row">
               {!!IconComponent && iconPosition === "left" && (
-                <Flex mr={1}>
+                <Flex mr={1} testID="icon-component-left">
                   <IconComponent />
                 </Flex>
               )}
@@ -94,7 +94,11 @@ export const Message: React.FC<MessageProps> = ({
           </Flex>
 
           {!!IconComponent && iconPosition === "right" && (
-            <Flex mr={showCloseButton ? 1 : 0} justifyContent="center">
+            <Flex
+              mr={showCloseButton ? 1 : 0}
+              justifyContent="center"
+              testID="icon-component-right"
+            >
               <IconComponent />
             </Flex>
           )}
@@ -111,6 +115,12 @@ export const Message: React.FC<MessageProps> = ({
             </Flex>
           )}
         </Flex>
+
+        {!!IconComponent && iconPosition === "bottom" && (
+          <Flex mb={1} justifyContent="center" testID="icon-component-bottom">
+            <IconComponent />
+          </Flex>
+        )}
       </Flex>
     </Animated.View>
   )

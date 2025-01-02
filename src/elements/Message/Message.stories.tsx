@@ -3,6 +3,8 @@ import { Text } from "react-native"
 import { Message } from "./Message"
 import { withTheme } from "../../storybook/decorators"
 import { List } from "../../storybook/helpers"
+import { InfoCircleIcon } from "../../svgs"
+import { Button } from "../Button"
 
 storiesOf("Message", module)
   .addDecorator(withTheme)
@@ -41,5 +43,34 @@ storiesOf("Message", module)
       <Message variant="success" showCloseButton title="Success" text="Text" />
       <Message variant="warning" showCloseButton title="Warning" text="Text" />
       <Message variant="error" showCloseButton title="Error" text="Text" />
+    </List>
+  ))
+  .add("IconComponent position", () => (
+    <List contentContainerStyle={{ marginHorizontal: 20, alignItems: "stretch" }}>
+      <Message
+        variant="default"
+        showCloseButton
+        title="Default position"
+        text="Text"
+        IconComponent={() => <InfoCircleIcon />}
+      />
+      <Message
+        iconPosition="right"
+        variant="default"
+        showCloseButton
+        title="Rign"
+        text="Text"
+        IconComponent={() => <Button size="small">Click</Button>}
+      />
+      <Message
+        iconPosition="bottom"
+        variant="default"
+        showCloseButton
+        title="Bottom"
+        text="Text"
+        IconComponent={() => {
+          return <Button size="small">Click</Button>
+        }}
+      />
     </List>
   ))
