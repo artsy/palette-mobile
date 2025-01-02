@@ -6,7 +6,7 @@ import { useColor } from "../../utils/hooks/useColor"
 import { Flex, FlexProps } from "../Flex"
 import { Text, TextProps } from "../Text"
 
-type MessageVariant = "default" | "info" | "success" | "alert" | "warning" | "error"
+type MessageVariant = "default" | "info" | "success" | "alert" | "warning" | "error" | "dark"
 
 export interface MessageProps {
   bodyTextStyle?: TextProps
@@ -110,7 +110,7 @@ export const Message: React.FC<MessageProps> = ({
                 onPress={handleClose}
                 hitSlop={{ bottom: 10, right: 10, left: 10, top: 10 }}
               >
-                <CloseIcon fill={color("black100")} />
+                <CloseIcon fill={colors[variant].icon} />
               </TouchableOpacity>
             </Flex>
           )}
@@ -126,35 +126,50 @@ export const Message: React.FC<MessageProps> = ({
   )
 }
 
-const colors: Record<MessageVariant, { background: Color; title: Color; text: Color }> = {
+const colors: Record<
+  MessageVariant,
+  { background: Color; title: Color; text: Color; icon?: Color }
+> = {
   default: {
     background: "black5",
     title: "black100",
     text: "black60",
+    icon: "black100",
   },
   info: {
     background: "blue10",
     title: "blue100",
     text: "black100",
+    icon: "black100",
   },
   success: {
     background: "green10",
     title: "green150",
     text: "black100",
+    icon: "black100",
   },
   alert: {
     background: "orange10",
     title: "orange150",
     text: "black100",
+    icon: "black100",
   },
   warning: {
     background: "yellow10",
     title: "yellow150",
     text: "black100",
+    icon: "black100",
   },
   error: {
     background: "red10",
     title: "red100",
     text: "black100",
+    icon: "black100",
+  },
+  dark: {
+    background: "black100",
+    title: "white100",
+    text: "white100",
+    icon: "white100",
   },
 }

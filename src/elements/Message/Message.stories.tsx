@@ -43,6 +43,7 @@ storiesOf("Message", module)
       <Message variant="success" showCloseButton title="Success" text="Text" />
       <Message variant="warning" showCloseButton title="Warning" text="Text" />
       <Message variant="error" showCloseButton title="Error" text="Text" />
+      <Message variant="dark" showCloseButton title="Error" text="Text" />
     </List>
   ))
   .add("IconComponent position", () => (
@@ -70,6 +71,20 @@ storiesOf("Message", module)
         text="Text"
         IconComponent={() => {
           return <Button size="small">Click</Button>
+        }}
+      />
+      <Message
+        iconPosition="bottom"
+        variant="dark"
+        showCloseButton
+        title="Bottom, dark"
+        text="Text"
+        IconComponent={() => {
+          return (
+            <Button variant="fillLight" size="small">
+              Click
+            </Button>
+          )
         }}
       />
     </List>
