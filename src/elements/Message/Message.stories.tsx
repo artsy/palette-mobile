@@ -81,7 +81,7 @@ storiesOf("Message", module)
         text="Text"
         IconComponent={() => {
           return (
-            <Button variant="fillLight" size="small">
+            <Button variant="outlineLight" size="small">
               Click
             </Button>
           )
