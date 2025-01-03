@@ -1,3 +1,15 @@
+# v14.0.15 (Fri Jan 03 2025)
+
+#### 🐛 Bug Fix
+
+- feat(ONYX-1459): add bottom icon position and dark variant to message component [#297](https://github.com/artsy/palette-mobile/pull/297) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v14.0.14 (Tue Dec 31 2024)
 
 #### 🐛 Bug Fix
