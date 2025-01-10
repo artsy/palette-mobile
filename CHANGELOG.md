@@ -1,3 +1,15 @@
+# v14.0.16 (Fri Jan 10 2025)
+
+#### 🐛 Bug Fix
+
+- feat: add link pill variant [#298](https://github.com/artsy/palette-mobile/pull/298) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.15 (Fri Jan 03 2025)
 
 #### 🐛 Bug Fix
