@@ -6,13 +6,13 @@ import { useColor } from "../../utils/hooks/useColor"
 import { Flex, FlexProps } from "../Flex"
 import { Text, TextProps } from "../Text"
 
-type MessageVariant = "default" | "info" | "success" | "alert" | "warning" | "error"
+type MessageVariant = "default" | "info" | "success" | "alert" | "warning" | "error" | "dark"
 
 export interface MessageProps {
   bodyTextStyle?: TextProps
   containerStyle?: FlexProps
   IconComponent?: React.FC<any>
-  iconPosition?: "left" | "right"
+  iconPosition?: "left" | "right" | "bottom"
   onClose?: () => void
   showCloseButton?: boolean
   testID?: string
@@ -70,12 +70,12 @@ export const Message: React.FC<MessageProps> = ({
         ],
       }}
     >
-      <Flex backgroundColor={color(colors[variant].background)} {...containerStyle}>
-        <Flex px={2} py={1} flexDirection="row" justifyContent="space-between">
+      <Flex px={2} backgroundColor={color(colors[variant].background)} {...containerStyle}>
+        <Flex py={1} flexDirection="row" justifyContent="space-between">
           <Flex flex={1}>
             <Flex flexDirection="row">
               {!!IconComponent && iconPosition === "left" && (
-                <Flex mr={1}>
+                <Flex mr={1} testID="icon-component-left">
                   <IconComponent />
                 </Flex>
               )}
@@ -94,7 +94,11 @@ export const Message: React.FC<MessageProps> = ({
           </Flex>
 
           {!!IconComponent && iconPosition === "right" && (
-            <Flex mr={showCloseButton ? 1 : 0} justifyContent="center">
+            <Flex
+              mr={showCloseButton ? 1 : 0}
+              justifyContent="center"
+              testID="icon-component-right"
+            >
               <IconComponent />
             </Flex>
           )}
@@ -106,45 +110,66 @@ export const Message: React.FC<MessageProps> = ({
                 onPress={handleClose}
                 hitSlop={{ bottom: 10, right: 10, left: 10, top: 10 }}
               >
-                <CloseIcon fill={color("black100")} />
+                <CloseIcon fill={colors[variant].icon} />
               </TouchableOpacity>
             </Flex>
           )}
         </Flex>
+
+        {!!IconComponent && iconPosition === "bottom" && (
+          <Flex mb={1} justifyContent="center" testID="icon-component-bottom">
+            <IconComponent />
+          </Flex>
+        )}
       </Flex>
     </Animated.View>
   )
 }
 
-const colors: Record<MessageVariant, { background: Color; title: Color; text: Color }> = {
+const colors: Record<
+  MessageVariant,
+  { background: Color; title: Color; text: Color; icon?: Color }
+> = {
   default: {
     background: "black5",
     title: "black100",
     text: "black60",
+    icon: "black100",
   },
   info: {
     background: "blue10",
     title: "blue100",
     text: "black100",
+    icon: "black100",
   },
   success: {
     background: "green10",
     title: "green150",
     text: "black100",
+    icon: "black100",
   },
   alert: {
     background: "orange10",
     title: "orange150",
     text: "black100",
+    icon: "black100",
   },
   warning: {
     background: "yellow10",
     title: "yellow150",
     text: "black100",
+    icon: "black100",
   },
   error: {
     background: "red10",
     title: "red100",
     text: "black100",
+    icon: "black100",
+  },
+  dark: {
+    background: "black100",
+    title: "white100",
+    text: "white100",
+    icon: "white100",
   },
 }
