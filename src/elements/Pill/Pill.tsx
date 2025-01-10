@@ -17,9 +17,10 @@ export const PILL_VARIANT_NAMES = [
   "profile",
   "search",
   "onboarding",
+  "link",
 ] as const
 export type PillState = "default" | "selected" | "disabled"
-export type PillVariant = typeof PILL_VARIANT_NAMES[number]
+export type PillVariant = (typeof PILL_VARIANT_NAMES)[number]
 
 export type PillProps = (FlexProps & {
   selected?: boolean
@@ -29,10 +30,7 @@ export type PillProps = (FlexProps & {
 }) &
   (
     | {
-        variant?: Extract<
-          PillVariant,
-          "default" | "filter" | "badge" | "search" | "dotted" | "onboarding"
-        >
+        variant?: Extract<PillVariant, keyof typeof PILL_VARIANTS>
         src?: never
       }
     | { variant: Extract<PillVariant, "profile">; src?: string }
@@ -197,6 +195,14 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
       border-color: ${themeGet("colors.black60")};
     `,
   },
+  link: {
+    ...PILL_STATES,
+    default: css`
+      ${PILL_STATES.default}
+      border-color: ${themeGet("colors.black5")};
+      background-color: ${themeGet("colors.black5")};
+    `,
+  },
 }
 
 const defaultColors: Record<PillState, Color> = {
@@ -225,4 +231,5 @@ const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
     ...defaultColors,
     disabled: "black100",
   },
+  link: defaultColors,
 }
