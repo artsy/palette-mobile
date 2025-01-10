@@ -118,5 +118,12 @@ storiesOf("Pill", module)
       </List>
     )
   })
+  .add("Link", () => {
+    return (
+      <List contentContainerStyle={{ marginHorizontal: 20 }}>
+        <Pill variant="link">Yes, I love collecting art</Pill>
+      </List>
+    )
+  })
 
 const src = "https://d32dm0rphc51dk.cloudfront.net/A983VUIZusVBKy420xP3ow/normalized.jpg"
