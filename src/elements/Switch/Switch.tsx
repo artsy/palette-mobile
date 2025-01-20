@@ -33,8 +33,12 @@ export interface SwitchProps extends CustomSwitchProps {
 
 export const Switch = ({
   value,
-  thumbColorActive = Platform.OS === "ios" ? "white100" : "blue100",
-  thumbColorInactive = Platform.OS === "ios" ? "white100" : "black10",
+  // Regardless of the color scheme, the thumb and track colors are always white
+  // @ts-expect-error
+  thumbColorActive = Platform.OS === "ios" ? "white" : "blue100",
+  // Regardless of the color scheme, the thumb and track colors are always white
+  // @ts-expect-error
+  thumbColorInactive = Platform.OS === "ios" ? "white" : "black10",
   trackColorActive = Platform.OS === "ios" ? "blue100" : "blue10",
   trackColorInactive = "black30",
   disabled,

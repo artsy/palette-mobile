@@ -9,7 +9,7 @@ type ShieldIconProps = IconProps & {
 
 export const ShieldIcon = ({
   checkColor = "blue100",
-  shieldColor = "onBackground",
+  shieldColor = "black100",
   width = 22,
   height = 22,
   fill,

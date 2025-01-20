@@ -49,7 +49,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
         shadowOpacity: 0,
         shadowRadius: 0,
         elevation: 0,
-        backgroundColor: color("background"),
+        backgroundColor: color("white100"),
       }}
       initialTabName={initialTabName}
       containerStyle={{
@@ -85,11 +85,11 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 )
               }}
               contentContainerStyle={{}}
-              activeColor={color("onBackground")}
-              inactiveColor={color("onBackgroundMedium")}
+              activeColor={color("black100")}
+              inactiveColor={color("black60")}
               labelStyle={{ marginHorizontal: 0 }} // removing the horizonal margin from the lib
               indicatorStyle={{
-                backgroundColor: color("onBackground"),
+                backgroundColor: color("black100"),
                 height: 1,
                 // on android this line breaks the active indicator and it is not visible
                 ...(isIOS && { bottom: -1 }),

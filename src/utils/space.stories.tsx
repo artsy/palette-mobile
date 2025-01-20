@@ -9,7 +9,7 @@ const SpaceLine = ({ space: theSpace }: { space: SpacingUnitDSValueNumber }) => 
   return (
     <Box>
       <Box width={space(theSpace)} borderBottomWidth={1} borderColor="black" marginBottom="4px" />
-      <Text color="black">{`${theSpace} ${bullet} ${space(theSpace as any)}px`}</Text>
+      <Text color="black100">{`${theSpace} ${bullet} ${space(theSpace as any)}px`}</Text>
     </Box>
   )
 }

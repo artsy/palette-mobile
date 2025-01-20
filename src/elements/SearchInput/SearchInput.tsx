@@ -15,7 +15,7 @@ export const SearchInput = ({
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Input
-        icon={<MagnifyingGlassIcon width={18} height={18} fill="onBackgroundHigh" />}
+        icon={<MagnifyingGlassIcon width={18} height={18} fill="black100" />}
         autoCorrect={false}
         enableClearButton={enableCancelButton}
         returnKeyType="search"

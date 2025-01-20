@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
       flexDirection="row"
       px={2}
       zIndex={ZINDEX.header}
-      backgroundColor="background"
+      backgroundColor="white100"
       alignItems="center"
     >
       <Flex flex={1}>
@@ -125,7 +125,7 @@ const Left: React.FC<{
     <>
       {leftElements || (
         <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
-          <ArrowLeftIcon fill="onBackgroundHigh" />
+          <ArrowLeftIcon fill="black100" />
         </Touchable>
       )}
     </>

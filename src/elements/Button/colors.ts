@@ -37,15 +37,15 @@ export const useColorsForVariantAndState = (): Record<
     },
     outline: {
       disabled: {
-        bg: color("background"),
-        border: color("onBackgroundLow"),
-        text: color("onBackgroundLow"),
+        bg: color("black100"),
+        border: color("black30"),
+        text: color("black30"),
       },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
       active: {
-        bg: color("background"),
-        border: color("onBackgroundMedium"),
-        text: color("onBackgroundHigh"),
+        bg: color("black100"),
+        border: color("black60"),
+        text: color("white100"),
       },
     },
     outlineGray: {

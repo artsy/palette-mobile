@@ -34,7 +34,7 @@ export const Text = forwardRef(
     {
       variant = "sm",
       italic = false,
-      color = "onBackgroundHigh",
+      color = "black100",
       caps = false,
       weight = "regular",
       underline = false,

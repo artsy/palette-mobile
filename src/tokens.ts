@@ -6,6 +6,7 @@
 
 import { THEME } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
+import { THEME_DARK } from "@artsy/palette-tokens/dist/themes/v3Dark"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { Color, ColorDSValue, ColorLayerName, SpacingUnit } from "./types"
 import {
@@ -109,27 +110,28 @@ const v3light: ThemeWithDarkModeType = {
 const v3dark: ThemeWithDarkModeType = {
   ...v3,
   colors: {
-    ...v3.colors,
-    background: colors.black100,
-    onBackground: colors.white100,
-    onBackgroundHigh: colors.white100,
-    onBackgroundMedium: colors.black30,
-    onBackgroundLow: colors.black60,
+    ...THEME_DARK.colors,
+    devpurple: "rgb(136, 82, 237)",
+    background: THEME_DARK.colors.black100,
+    onBackground: THEME_DARK.colors.white100,
+    onBackgroundHigh: THEME_DARK.colors.white100,
+    onBackgroundMedium: THEME_DARK.colors.black30,
+    onBackgroundLow: THEME_DARK.colors.black60,
     surface: "#333",
-    onSurface: colors.white100,
-    onSurfaceHigh: colors.white100,
-    onSurfaceMedium: colors.black60,
+    onSurface: THEME_DARK.colors.white100,
+    onSurfaceHigh: THEME_DARK.colors.white100,
+    onSurfaceMedium: THEME_DARK.colors.black60,
     onSurfaceLow: "#555",
-    primary: colors.white100,
-    onPrimaryHigh: colors.black100,
-    onPrimaryMedium: colors.black60,
-    onPrimaryLow: colors.black60,
-    secondary: colors.black60,
-    onSecondaryHigh: colors.white100,
-    onSecondaryMedium: colors.black5,
-    onSecondaryLow: colors.black5,
-    brand: colors.blue100,
-    onBrand: colors.white100,
+    primary: THEME_DARK.colors.white100,
+    onPrimaryHigh: THEME_DARK.colors.black100,
+    onPrimaryMedium: THEME_DARK.colors.black60,
+    onPrimaryLow: THEME_DARK.colors.black60,
+    secondary: THEME_DARK.colors.black60,
+    onSecondaryHigh: THEME_DARK.colors.white100,
+    onSecondaryMedium: THEME_DARK.colors.black5,
+    onSecondaryLow: THEME_DARK.colors.black5,
+    brand: THEME_DARK.colors.blue100,
+    onBrand: THEME_DARK.colors.white100,
   },
 }
 

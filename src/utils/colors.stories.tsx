@@ -94,8 +94,8 @@ export const All = () => (
       <ColorSquare color="background" border />
     </Row>
     <Row>
-      <ColorSquare color="onBackgroundHigh" border />
-      <ColorSquare color="onBackgroundMedium" />
+      <ColorSquare color="black100" border />
+      <ColorSquare color="black60" />
       <ColorSquare color="onBackgroundLow" />
     </Row>
     <Row>

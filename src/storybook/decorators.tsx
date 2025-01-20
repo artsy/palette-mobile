@@ -46,7 +46,7 @@ export const useDarkModeSwitcher: DecoratorFunction<ReactNode> = (story) => {
     <ScreenDimensionsProvider>
       <SafeAreaProvider>
         <Theme theme={theme}>
-          <Flex flex={1} backgroundColor="background">
+          <Flex flex={1} backgroundColor="white100">
             <Flex flexDirection="row" justifyContent="space-around">
               <Text color="orange">
                 Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
