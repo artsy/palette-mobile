@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
       flexDirection="row"
       px={2}
       zIndex={ZINDEX.header}
-      backgroundColor="white100"
+      backgroundColor="background"
       alignItems="center"
     >
       <Flex flex={1}>

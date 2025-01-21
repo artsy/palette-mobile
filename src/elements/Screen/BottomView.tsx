@@ -23,7 +23,7 @@ export const BottomView: React.FC<BottomViewProps> = ({ children, darkMode }) =>
         }}
         pointerEvents="none"
       />
-      <Flex px={SCREEN_HORIZONTAL_PADDING} pt={1} pb={4} backgroundColor="white100">
+      <Flex px={SCREEN_HORIZONTAL_PADDING} pt={1} pb={4} backgroundColor="background">
         {children}
       </Flex>
     </>

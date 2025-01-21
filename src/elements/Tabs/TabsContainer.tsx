@@ -49,7 +49,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
         shadowOpacity: 0,
         shadowRadius: 0,
         elevation: 0,
-        backgroundColor: color("white100"),
+        backgroundColor: color("background"),
       }}
       initialTabName={initialTabName}
       containerStyle={{

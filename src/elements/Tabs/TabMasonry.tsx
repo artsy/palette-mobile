@@ -2,6 +2,7 @@ import { MasonryFlashListProps, MasonryFlashListRef } from "@shopify/flash-list"
 import { RefObject } from "react"
 import { Tabs } from "react-native-collapsible-tab-view"
 import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScroll"
+import { useColor } from "../../utils/hooks"
 import { useSpace } from "../../utils/hooks/useSpace"
 
 export function TabMasonry<T>(
@@ -12,6 +13,7 @@ export function TabMasonry<T>(
   useListenForTabContentScroll()
 
   const space = useSpace()
+  const color = useColor()
 
   const contentContainerStyle = (props.contentContainerStyle ?? {}) as object
 
@@ -19,6 +21,7 @@ export function TabMasonry<T>(
     <Tabs.MasonryFlashList
       contentContainerStyle={{
         paddingHorizontal: space(2),
+        backgroundColor: color("background"),
         ...contentContainerStyle,
       }}
       {...props}
