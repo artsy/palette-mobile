@@ -1,4 +1,5 @@
 import { MagnifyingGlassIcon } from "../../svgs"
+import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Input, InputProps } from "../Input"
 
@@ -12,6 +13,8 @@ export const SearchInput = ({
   onClear,
   ...props
 }: SearchInputProps) => {
+  const color = useColor()
+
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Input
@@ -21,6 +24,9 @@ export const SearchInput = ({
         returnKeyType="search"
         onClear={() => {
           onClear?.()
+        }}
+        style={{
+          color: color("black100"),
         }}
         onChangeText={onChangeText}
         {...props}

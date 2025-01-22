@@ -41,6 +41,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
   ...rest
 }) => {
   const theme = useTheme()
+
   const ref = useRef<TextInput>(null)
   const [inputWidth, setInputWidth] = useState(0)
   const placeholderWidths = useRef<number[]>([])
@@ -83,6 +84,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       fontFamily: theme.theme.fonts.sans.regular,
       fontSize: 16,
       lineHeight: 20,
+      color: color("black100"),
     }
   }, [])
 
