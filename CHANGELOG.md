@@ -1,3 +1,19 @@
+# v14.0.17 (Wed Feb 05 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Janae Hijaz Edwards ([@JanaeHijaz](https://github.com/JanaeHijaz)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: adding new ArrowBackIcon [#301](https://github.com/artsy/palette-mobile/pull/301) ([@JanaeHijaz](https://github.com/JanaeHijaz))
+
+#### Authors: 1
+
+- Janae Hijaz Edwards ([@JanaeHijaz](https://github.com/JanaeHijaz))
+
+---
+
 # v14.0.16 (Fri Jan 10 2025)
 
 #### 🐛 Bug Fix
