@@ -1,3 +1,15 @@
+# v14.0.19 (Fri Feb 07 2025)
+
+#### 🐛 Bug Fix
+
+- fix: entity header ellipsizeMode [#302](https://github.com/artsy/palette-mobile/pull/302) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.18 (Fri Feb 07 2025)
 
 #### 🐛 Bug Fix
