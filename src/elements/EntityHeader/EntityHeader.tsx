@@ -1,4 +1,5 @@
 import { isValidElement, useMemo } from "react"
+import { Text as RNText } from "react-native"
 import { LockIcon } from "../../svgs"
 import { bullet } from "../../utils/text"
 import { Avatar, AvatarSize } from "../Avatar"
@@ -47,16 +48,16 @@ export const EntityHeader = ({
 
   const headerName = (
     <Flex flexDirection="row" alignItems="center">
-      <Text
-        color={theme === "light" ? "black100" : "white100"}
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        variant="sm"
-        lineHeight="18px"
-        style={{ flexShrink: 1 }}
-      >
-        {name}
-      </Text>
+      <RNText ellipsizeMode="tail" numberOfLines={1}>
+        <Text
+          color={theme === "light" ? "black100" : "white100"}
+          variant="sm"
+          lineHeight="18px"
+          style={{ flexShrink: 1 }}
+        >
+          {name}
+        </Text>
+      </RNText>
       {displayPrivateIcon && (
         <LockIcon
           ml="2px"
