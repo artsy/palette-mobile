@@ -93,7 +93,6 @@ const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  padding: 20px;
 
   ${(props) => {
     const states = PILL_VARIANTS[props.variant!]
@@ -114,7 +113,7 @@ const PILL_STATES = {
   default: css`
     border-radius: 15px;
     height: 30px;
-    padding: 0 ${themeGet("space.2")};
+    padding: 0 15px;
   `,
   selected: css`
     border-color: ${themeGet("colors.blue100")};
@@ -151,11 +150,9 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
   },
   search: {
     ...PILL_STATES,
-    default: css`
-      ${PILL_STATES.default}
-    `,
   },
   profile: {
+    ...PILL_STATES,
     default: css`
       background-color: ${themeGet("colors.black5")};
       border-color: ${themeGet("colors.black5")};
@@ -166,13 +163,11 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
     selected: css`
       border-color: ${themeGet("colors.blue100")};
     `,
-    disabled: css``,
   },
   badge: {
     default: css`
+      ${PILL_STATES.default}
       border-radius: 15px;
-      height: 30px;
-      padding: 0 15px;
       background-color: ${themeGet("colors.blue10")};
       border-color: ${themeGet("colors.blue10")};
     `,

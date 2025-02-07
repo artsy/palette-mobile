@@ -19,78 +19,74 @@ storiesOf("Pill", module)
         alignItems: "flex-start",
       }}
     >
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill>Default</Pill>
-        <Pill selected ml={1}>
-          Selected
-        </Pill>
-        <Pill disabled ml={1}>
-          Disabled
-        </Pill>
+        <Pill selected>Selected</Pill>
+        <Pill disabled>Disabled</Pill>
       </Flex>
 
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill variant="filter">Filter</Pill>
-        <Pill variant="filter" selected ml={1}>
+        <Pill variant="filter" selected>
           Selected
         </Pill>
-        <Pill variant="filter" disabled ml={1}>
+        <Pill variant="filter" disabled>
           Disabled
         </Pill>
       </Flex>
 
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill Icon={GraphIcon} variant="badge">
           Badge
         </Pill>
-        <Pill Icon={GraphIcon} variant="badge" selected ml={1}>
+        <Pill Icon={GraphIcon} variant="badge" selected>
           Selected
         </Pill>
-        <Pill Icon={GraphIcon} variant="badge" disabled ml={1}>
+        <Pill Icon={GraphIcon} variant="badge" disabled>
           Disabled
         </Pill>
       </Flex>
 
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill variant="profile">Profile</Pill>
-        <Pill variant="profile" selected ml={1}>
+        <Pill variant="profile" selected>
           Selected
         </Pill>
-        <Pill variant="profile" disabled ml={1}>
+        <Pill variant="profile" disabled>
           Disabled
         </Pill>
       </Flex>
 
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill variant="search">Unique</Pill>
-        <Pill variant="search" selected ml={1}>
+        <Pill variant="search" selected>
           Painting
         </Pill>
-        <Pill variant="search" disabled ml={1}>
+        <Pill variant="search" disabled>
           Sculpture
         </Pill>
       </Flex>
 
-      <Flex flexDirection="row">
+      <Flex flexDirection="row" gap={1}>
         <Pill variant="search">Search</Pill>
-        <Pill variant="search" selected ml={1}>
+        <Pill variant="search" selected>
           Selected
         </Pill>
-        <Pill variant="search" disabled ml={1}>
+        <Pill variant="search" disabled>
           Search
         </Pill>
       </Flex>
     </List>
   ))
   .add("Profile with image", () => (
-    <List contentContainerStyle={{ marginHorizontal: 20 }}>
+    <List contentContainerStyle={{ marginHorizontal: 20, gap: 1 }}>
       <Pill variant="profile" src={src}>
         Artist
       </Pill>
-      <Pill variant="profile" src={src} selected ml={1}>
+      <Pill variant="profile" src={src} selected>
         Selected
       </Pill>
-      <Pill variant="profile" src={src} disabled ml={1}>
+      <Pill variant="profile" src={src} disabled>
         Disabled
       </Pill>
     </List>
@@ -99,7 +95,7 @@ storiesOf("Pill", module)
     const [selected, setSelected] = useState(false)
 
     return (
-      <List contentContainerStyle={{ marginHorizontal: 20 }}>
+      <List contentContainerStyle={{ marginHorizontal: 20, gap: 1 }}>
         <Pill selected={selected} onPress={() => setSelected((prev) => !prev)}>
           Pill
         </Pill>
@@ -108,13 +104,11 @@ storiesOf("Pill", module)
   })
   .add("Onboarding", () => {
     return (
-      <List contentContainerStyle={{ marginHorizontal: 20 }}>
+      <List contentContainerStyle={{ marginHorizontal: 20, gap: 1 }}>
         <Pill variant="onboarding" selected>
           Yes, I love collecting art
         </Pill>
-        <Pill variant="onboarding" ml={1}>
-          No, I'm just starting out
-        </Pill>
+        <Pill variant="onboarding">No, I'm just starting out</Pill>
       </List>
     )
   })
