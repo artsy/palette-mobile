@@ -1,3 +1,15 @@
+# v14.0.18 (Fri Feb 07 2025)
+
+#### 🐛 Bug Fix
+
+- chore(ONYX-1507): update Pill Component to match designs [#300](https://github.com/artsy/palette-mobile/pull/300) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v14.0.17 (Wed Feb 05 2025)
 
 :tada: This release contains work from a new contributor! :tada:
