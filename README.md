@@ -17,6 +17,12 @@ Palette is a collection of primitive, product-agnostic elements that help encaps
 
 If the component applies to Artsy as a brand and can/will be used across multiple digital products, then Palette is a great place for it. If it's highly product specific then it's best to leave the component where it's used. We can always move things later!
 
+## Looking for home view components?
+
+The server-driven home view architecture launched in Eigen (Q4 2024) makes use of a standard library of home view section components.
+
+Those components may make use of palette-mobile primitives, but they are not defined here. Instead they are defined [directly in Eigen](https://github.com/artsy/eigen/tree/main/src/app/Scenes/HomeView/Sections) and documented in [this Notion page](https://www.notion.so/artsy/Home-view-section-reference-150cab0764a0803fb00ed5dc3d860d1f).
+
 If the above guidance still doesn't give you a good sense of what to do, please join the mobile practice meetings.
 
 # How to install
