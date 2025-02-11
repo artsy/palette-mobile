@@ -1,3 +1,15 @@
+# v14.0.20 (Tue Feb 11 2025)
+
+#### 🐛 Bug Fix
+
+- docs(home view): add a link to Notion docs [#303](https://github.com/artsy/palette-mobile/pull/303) ([@anandaroop](https://github.com/anandaroop))
+
+#### Authors: 1
+
+- Anandaroop Roy ([@anandaroop](https://github.com/anandaroop))
+
+---
+
 # v14.0.19 (Fri Feb 07 2025)
 
 #### 🐛 Bug Fix
