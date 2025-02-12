@@ -1,3 +1,15 @@
+# v14.0.22 (Wed Feb 12 2025)
+
+#### 🐛 Bug Fix
+
+- chore: use isTestEnvironment instead of __test__ [#294](https://github.com/artsy/palette-mobile/pull/294) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.21 (Wed Feb 12 2025)
 
 #### 🐛 Bug Fix
