@@ -1,3 +1,15 @@
+# v14.0.21 (Wed Feb 12 2025)
+
+#### 🐛 Bug Fix
+
+- chore: upgrade reanimated version [#304](https://github.com/artsy/palette-mobile/pull/304) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.20 (Tue Feb 11 2025)
 
 #### 🐛 Bug Fix
