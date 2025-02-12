@@ -1,7 +1,7 @@
 import { G, Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const EditIcon = ({ fill, ...restProps }: IconProps) => {
+export const EditIcon = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 18 18">

@@ -19,7 +19,7 @@ export const AllIcons = () => (
       const name = icon[0]
       return (
         <Flex flexDirection="row" alignItems="center">
-          <Comp fill="onBackgroundHigh" />
+          <Comp fill="black100" />
           <Spacer x={1} />
           <Text>{name}</Text>
         </Flex>

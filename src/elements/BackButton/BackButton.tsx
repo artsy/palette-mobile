@@ -14,7 +14,7 @@ export interface BackButtonProps {
 }
 
 export const BackButton: React.FC<BackButtonProps> = ({
-  color = "onBackgroundHigh",
+  color = "black100",
   hitSlop = DEFAULT_HIT_SLOP,
   onPress,
   showX = false,
@@ -40,7 +40,7 @@ export const BackButton: React.FC<BackButtonProps> = ({
 }
 
 export const BackButtonWithBackground: React.FC<BackButtonProps> = ({
-  color = "onBackgroundHigh",
+  color = "black100",
   hitSlop = DEFAULT_HIT_SLOP,
   onPress,
   showX = false,
@@ -49,7 +49,7 @@ export const BackButtonWithBackground: React.FC<BackButtonProps> = ({
   return (
     <TouchableOpacity onPress={onPress} hitSlop={hitSlop}>
       <Flex
-        backgroundColor="background"
+        backgroundColor="white100"
         width={40}
         height={40}
         borderRadius={20}

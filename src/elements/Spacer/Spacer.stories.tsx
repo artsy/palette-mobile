@@ -18,11 +18,11 @@ const SpacerRow = (props: { x: NoUndefined<SpacerProps["x"]> }) => {
   return (
     <Box>
       <Box flexDirection="row">
-        <Box width={20} height={20} backgroundColor="onBackground" />
+        <Box width={20} height={20} backgroundColor="black100" />
         <Spacer {...props} />
-        <Box width={20} height={20} backgroundColor="onBackground" />
+        <Box width={20} height={20} backgroundColor="black100" />
       </Box>
-      <Text color="onBackground">
+      <Text color="black100">
         {typeof size === "string" ? `${size}` : `${size} ${bullet} ${space(size as any)}px`}
       </Text>
     </Box>
@@ -52,11 +52,11 @@ const SpacerCol = (props: { y: SpacerProps["y"] }) => {
   return (
     <Box>
       <Box flexDirection="column">
-        <Box width={20} height={20} backgroundColor="black" />
+        <Box width={20} height={20} backgroundColor="black100" />
         <Spacer {...props} />
-        <Box width={20} height={20} backgroundColor="black" />
+        <Box width={20} height={20} backgroundColor="black100" />
       </Box>
-      <Text color="black">
+      <Text color="black100">
         {typeof size === "string" ? `${size}` : `${size} ${bullet} ${space(size as any)}px`}
       </Text>
     </Box>

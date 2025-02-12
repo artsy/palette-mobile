@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const Payment2Icon = ({ fill, ...restProps }: IconProps) => {
+export const Payment2Icon = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
 
   return (

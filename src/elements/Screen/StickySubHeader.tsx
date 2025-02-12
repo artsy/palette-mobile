@@ -68,7 +68,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
         <Flex
           onLayout={(event) => handleLayout(event)}
           position="absolute"
-          backgroundColor="white100"
+          backgroundColor="background"
           zIndex={-1000}
           style={sharedStyles}
         >

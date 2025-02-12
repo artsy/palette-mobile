@@ -1,7 +1,7 @@
 import { Icon, Circle, IconProps, Mask, Path, Rect } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const StarCircleFill = ({ fill, ...restProps }: IconProps) => {
+export const StarCircleFill = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 20 20">
@@ -12,7 +12,7 @@ export const StarCircleFill = ({ fill, ...restProps }: IconProps) => {
         y="0"
         width="20"
         height="20"
-        fill="black"
+        fill={color("black100")}
       >
         <Rect fill={color("white100")} width="20" height="20" />
         <Path

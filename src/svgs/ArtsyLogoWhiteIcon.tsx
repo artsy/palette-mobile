@@ -1,6 +1,6 @@
 import { G, Icon, IconProps, Path } from "./Icon"
 
-export const ArtsyLogoWhiteIcon = ({ fill, ...restProps }: IconProps) => {
+export const ArtsyLogoWhiteIcon = ({ fill = "black100", ...restProps }: IconProps) => {
   return (
     <Icon {...restProps} viewBox="0 0 94 32">
       <G fill="none" fillRule="evenodd">

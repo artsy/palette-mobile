@@ -31,21 +31,16 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
   }
 
   return (
-    <Touchable
-      onPress={onPress}
-      onPressIn={handleOnPressIn}
-      onPressOut={handleOnPressOut}
-      noFeedback
-    >
+    <Touchable onPress={onPress} onPressIn={handleOnPressIn} onPressOut={handleOnPressOut}>
       <Flex flexDirection="row" minWidth={200} height={70} overflow="hidden" borderRadius={5}>
         {!!image && <Image src={image} width={70} height={70} />}
 
         <View
-          state={animatedState}
           style={{
             flex: 1,
             padding: space(1),
             justifyContent: "center",
+            backgroundColor: color("black5"),
           }}
         >
           {!!subtitle && (

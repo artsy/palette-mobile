@@ -1,11 +1,11 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const TrendingIcon = ({ fill, ...restprops }: IconProps) => {
+export const TrendingIcon = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
 
   return (
-    <Icon {...restprops} viewBox="0 0 18 18">
+    <Icon {...restProps} viewBox="0 0 18 18">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

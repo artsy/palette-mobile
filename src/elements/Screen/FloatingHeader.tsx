@@ -28,6 +28,7 @@ export const FloatingHeader: React.FC<FloatingHeaderProps> = ({
       py={1}
       flexDirection="row"
       alignItems="center"
+      backgroundColor="background"
       {...flexProps}
     >
       <BackButtonWithBackground onPress={onBack} />

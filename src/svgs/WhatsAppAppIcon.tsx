@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path, Rect } from "./Icon"
 import { Flex } from "../elements/Flex"
 
-export const WhatsAppAppIcon = ({ fill, ...restProps }: IconProps) => (
+export const WhatsAppAppIcon = ({ fill = "black100", ...restProps }: IconProps) => (
   <Flex borderRadius={4} overflow="hidden">
     <Icon {...restProps} viewBox="0 0 455.731 455.731">
       <Rect x="0" y="0" fill="#25D366" width="455.731" height="455.731" />

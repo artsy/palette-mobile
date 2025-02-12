@@ -34,7 +34,7 @@ export const MenuItem = ({
         pr="15px"
       >
         <Flex flexDirection="row" mr={2}>
-          <Text variant="md" color="onBackgroundHigh">
+          <Text variant="md" color="black100">
             {title}
           </Text>
         </Flex>

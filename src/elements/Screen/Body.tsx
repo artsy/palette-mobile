@@ -24,7 +24,7 @@ export const Body: React.FC<BodyProps> = ({
         ? {}
         : { style: { flex: 1 }, behavior: Platform.OS === "ios" ? "padding" : "height" })}
     >
-      <Flex flex={1} {...flexProps}>
+      <Flex flex={1} backgroundColor="background" {...flexProps}>
         <Flex flex={1} px={fullwidth ? undefined : SCREEN_HORIZONTAL_PADDING}>
           {scroll ? <ScrollView>{children}</ScrollView> : children}
         </Flex>

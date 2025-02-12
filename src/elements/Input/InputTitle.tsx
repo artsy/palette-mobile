@@ -13,20 +13,12 @@ export const InputTitle: React.FC<{
     <Text variant="md" style={{ fontSize: 13, marginBottom: 2, textTransform: "uppercase" }}>
       {title}
       {!!required && (
-        <Text
-          variant="md"
-          style={{ fontSize: 13, textTransform: "none" }}
-          color="onBackgroundMedium"
-        >
+        <Text variant="md" style={{ fontSize: 13, textTransform: "none" }} color="black60">
           Required
         </Text>
       )}
       {!!optional && (
-        <Text
-          variant="md"
-          style={{ fontSize: 13, textTransform: "none" }}
-          color="onBackgroundMedium"
-        >
+        <Text variant="md" style={{ fontSize: 13, textTransform: "none" }} color="black60">
           {" "}
           Optional
         </Text>

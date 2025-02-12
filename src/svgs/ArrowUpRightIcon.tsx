@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const ArrowUpRightIcon = ({ fill, ...restProps }: IconProps) => {
+export const ArrowUpRightIcon = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
 
   return (

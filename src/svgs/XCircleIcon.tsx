@@ -1,11 +1,11 @@
 import { Circle, Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const XCircleIcon = ({ fill, ...restProps }: IconProps) => {
+export const XCircleIcon = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 18 18">
-      <Circle cx={9} cy={9} r={9} fill={color("background")} />
+      <Circle cx={9} cy={9} r={9} fill={color("black100")} />
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
