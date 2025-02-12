@@ -26,7 +26,13 @@ import {
 } from "react-native"
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import styled from "styled-components"
-import { INPUT_VARIANTS, InputState, InputVariant, getInputState, getInputVariant } from "./helpers"
+import {
+  InputState,
+  InputVariant,
+  getInputState,
+  getInputVariant,
+  getInputVariants,
+} from "./helpers"
 import { maskValue, unmaskText } from "./maskValue"
 import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
 import { useTheme } from "../../utils/hooks"
@@ -304,12 +310,14 @@ export const Input = forwardRef<InputRef, InputProps>(
     const labelStyles = useMemo(() => {
       return {
         // this is neeeded too make sure the label is on top of the input
-        backgroundColor: "white",
+        backgroundColor: color("background"),
         marginRight: space(0.5),
         zIndex: 100,
         fontFamily: fontFamily,
       }
-    }, [fontFamily, space])
+    }, [fontFamily, space, color])
+
+    const inputVariants = getInputVariants(theme)
 
     useEffect(() => {
       const inputState = getInputState({
@@ -321,8 +329,8 @@ export const Input = forwardRef<InputRef, InputProps>(
 
     const textInputAnimatedStyles = useAnimatedStyle(() => {
       return {
-        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputBorderColor),
-        color: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputTextColor),
+        borderColor: withTiming(inputVariants[variant][animatedState.get()].inputBorderColor),
+        color: withTiming(inputVariants[variant][animatedState.get()].inputTextColor),
       }
     })
 
@@ -336,16 +344,16 @@ export const Input = forwardRef<InputRef, InputProps>(
           : HORIZONTAL_PADDING
 
       return {
-        color: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelColor),
-        top: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelTop),
-        fontSize: withTiming(INPUT_VARIANTS[variant][animatedState.get()].labelFontSize),
+        color: withTiming(inputVariants[variant][animatedState.get()].labelColor),
+        top: withTiming(inputVariants[variant][animatedState.get()].labelTop),
+        fontSize: withTiming(inputVariants[variant][animatedState.get()].labelFontSize),
         marginLeft: withTiming(marginLeft),
       }
     })
 
     const selectComponentStyles = useAnimatedStyle(() => {
       return {
-        borderColor: withTiming(INPUT_VARIANTS[variant][animatedState.get()].inputBorderColor),
+        borderColor: withTiming(inputVariants[variant][animatedState.get()].inputBorderColor),
       }
     })
 
