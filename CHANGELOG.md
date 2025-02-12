@@ -1,3 +1,15 @@
+# v14.0.23 (Wed Feb 12 2025)
+
+#### 🐛 Bug Fix
+
+- fix: dark-mode for inputs [#305](https://github.com/artsy/palette-mobile/pull/305) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.22 (Wed Feb 12 2025)
 
 #### 🐛 Bug Fix
