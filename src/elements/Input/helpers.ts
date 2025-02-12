@@ -1,4 +1,5 @@
 import { THEME } from "@artsy/palette-tokens"
+import { ThemeType, ThemeWithDarkModeType } from "../../tokens"
 
 export const SHRINKED_LABEL_TOP = 13
 export const EXPANDED_LABEL_TOP = 40
@@ -27,96 +28,104 @@ export type VariantState = {
   }
 }
 
-const DEFAULT_VARIANT_STATES: VariantState = {
-  // Unfocused input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.black60,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Unfocused input with value
-  touched: {
-    inputBorderColor: THEME.colors.black60,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black60,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Focused input with or without value
-  focused: {
-    inputBorderColor: THEME.colors.blue100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.blue100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
+const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): VariantState => {
+  return {
+    // Unfocused input with no value
+    untouched: {
+      inputBorderColor: theme.colors.black30,
+      labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+      labelColor: theme.colors.black60,
+      labelTop: EXPANDED_LABEL_TOP,
+      inputTextColor: theme.colors.white100,
+    },
+    // Unfocused input with value
+    touched: {
+      inputBorderColor: theme.colors.black60,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.black60,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.white100,
+    },
+    // Focused input with or without value
+    focused: {
+      inputBorderColor: theme.colors.blue100,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.blue100,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.white100,
+    },
+  }
 }
 
-const ERROR_VARIANT_STATES: VariantState = {
-  // Unfocused error input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Unfocused error input with value
-  touched: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
-  // Focused error input with or without value
-  focused: {
-    inputBorderColor: THEME.colors.red100,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.red100,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black100,
-  },
+const getErrorVariantStates = (theme: ThemeType | ThemeWithDarkModeType): VariantState => {
+  return {
+    // Unfocused error input with no value
+    untouched: {
+      inputBorderColor: theme.colors.red100,
+      labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+      labelColor: theme.colors.red100,
+      labelTop: EXPANDED_LABEL_TOP,
+      inputTextColor: theme.colors.black100,
+    },
+    // Unfocused error input with value
+    touched: {
+      inputBorderColor: theme.colors.red100,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.red100,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.black100,
+    },
+    // Focused error input with or without value
+    focused: {
+      inputBorderColor: theme.colors.red100,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.red100,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.black100,
+    },
+  }
 }
 
-const DISABLED_VARIANT_STATES: VariantState = {
-  // Unfocused disabled input with no value
-  untouched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: EXPANDED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
-  // Unfocused disabled input with value
-  touched: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
-  // Focused disabled input with or without value
-  // Adding this just to satisfy typescript because a disabled input can't be focused
-  focused: {
-    inputBorderColor: THEME.colors.black30,
-    labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-    labelColor: THEME.colors.black30,
-    labelTop: SHRINKED_LABEL_TOP,
-    inputTextColor: THEME.colors.black30,
-  },
+const getDisabledVariantStates = (theme: ThemeType | ThemeWithDarkModeType): VariantState => {
+  return {
+    // Unfocused disabled input with no value
+    untouched: {
+      inputBorderColor: theme.colors.black30,
+      labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
+      labelColor: theme.colors.black30,
+      labelTop: EXPANDED_LABEL_TOP,
+      inputTextColor: theme.colors.black30,
+    },
+    // Unfocused disabled input with value
+    touched: {
+      inputBorderColor: theme.colors.black30,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.black30,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.black30,
+    },
+    // Focused disabled input with or without value
+    // Adding this just to satisfy typescript because a disabled input can't be focused
+    focused: {
+      inputBorderColor: theme.colors.black30,
+      labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
+      labelColor: theme.colors.black30,
+      labelTop: SHRINKED_LABEL_TOP,
+      inputTextColor: theme.colors.black30,
+    },
+  }
 }
 
-export const INPUT_VARIANTS = {
-  default: DEFAULT_VARIANT_STATES,
-  error: ERROR_VARIANT_STATES,
-  disabled: DISABLED_VARIANT_STATES,
+export const getInputVariants = (theme: ThemeType | ThemeWithDarkModeType) => {
+  return {
+    default: getDefaultVariantStates(theme),
+    error: getErrorVariantStates(theme),
+    disabled: getDisabledVariantStates(theme),
+  }
 }
 
-export type InputState = keyof typeof DEFAULT_VARIANT_STATES
-export type InputVariant = keyof typeof INPUT_VARIANTS
+export type InputState = keyof ReturnType<typeof getDefaultVariantStates>
+export type InputVariant = keyof ReturnType<typeof getInputVariants>
 
 export const getInputState = ({
   isFocused,
