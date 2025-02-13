@@ -36,7 +36,7 @@ const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Vari
       labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
       labelColor: theme.colors.black60,
       labelTop: EXPANDED_LABEL_TOP,
-      inputTextColor: theme.colors.white100,
+      inputTextColor: theme.colors.black100,
     },
     // Unfocused input with value
     touched: {
@@ -44,7 +44,7 @@ const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Vari
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
       labelColor: theme.colors.black60,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.white100,
+      inputTextColor: theme.colors.black100,
     },
     // Focused input with or without value
     focused: {
@@ -52,7 +52,7 @@ const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Vari
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
       labelColor: theme.colors.blue100,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.white100,
+      inputTextColor: theme.colors.black100,
     },
   }
 }
