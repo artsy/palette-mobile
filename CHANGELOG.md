@@ -1,3 +1,15 @@
+# v14.0.24 (Thu Feb 13 2025)
+
+#### 🐛 Bug Fix
+
+- fix: default color for inputs [#306](https://github.com/artsy/palette-mobile/pull/306) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.23 (Wed Feb 12 2025)
 
 #### 🐛 Bug Fix
