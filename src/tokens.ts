@@ -6,6 +6,7 @@
 
 import { THEME } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
+import { THEME_DARK } from "@artsy/palette-tokens/dist/themes/v3Dark"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { Color, ColorDSValue, ColorLayerName, SpacingUnit } from "./types"
 import {
@@ -109,7 +110,8 @@ const v3light: ThemeWithDarkModeType = {
 const v3dark: ThemeWithDarkModeType = {
   ...v3,
   colors: {
-    ...v3.colors,
+    ...THEME_DARK.colors,
+    devpurple: v3.colors.devpurple,
     background: colors.black100,
     onBackground: colors.white100,
     onBackgroundHigh: colors.white100,
