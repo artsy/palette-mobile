@@ -1,3 +1,15 @@
+# v14.0.26 (Fri Feb 14 2025)
+
+#### 🐛 Bug Fix
+
+- chore: better dark mode support [#308](https://github.com/artsy/palette-mobile/pull/308) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.25 (Thu Feb 13 2025)
 
 #### 🐛 Bug Fix
