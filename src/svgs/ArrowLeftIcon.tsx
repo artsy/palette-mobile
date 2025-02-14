@@ -4,7 +4,11 @@ import { useColor } from "../utils/hooks"
 interface ArrowLeftIconProps extends IconProps {
   long?: boolean
 }
-export const ArrowLeftIcon = ({ fill, long = false, ...restProps }: ArrowLeftIconProps) => {
+export const ArrowLeftIcon = ({
+  fill = "black100",
+  long = false,
+  ...restProps
+}: ArrowLeftIconProps) => {
   const color = useColor()
 
   if (long) {

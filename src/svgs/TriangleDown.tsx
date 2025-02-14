@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const TriangleDown = ({ fill, ...restProps }: IconProps) => {
+export const TriangleDown = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon width="11" height="6" {...restProps} viewBox="0 0 11 6">

@@ -1,7 +1,11 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-const FilledArrowCircle = ({ fill, rotate, ...restProps }: IconProps & { rotate?: string }) => {
+const FilledArrowCircle = ({
+  fill = "black100",
+  rotate,
+  ...restProps
+}: IconProps & { rotate?: string }) => {
   const color = useColor()
   return (
     <Icon
