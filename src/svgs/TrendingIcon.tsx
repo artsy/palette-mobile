@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const TrendingIcon = ({ fill, ...restprops }: IconProps) => {
+export const TrendingIcon = ({ fill = "black100", ...restprops }: IconProps) => {
   const color = useColor()
 
   return (

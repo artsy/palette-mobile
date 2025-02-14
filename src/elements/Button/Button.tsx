@@ -263,6 +263,9 @@ const useStyleForVariantAndState = (
         case DisplayState.Disabled:
           retval.backgroundColor = color("black30")
           retval.borderColor = color("black30")
+          // We want to show the text color as white regardless of the theme
+          // This makes it easier to read
+          retval.textColor = "white"
           break
         case DisplayState.Loading:
           retval.backgroundColor = color("black100")
@@ -283,7 +286,7 @@ const useStyleForVariantAndState = (
     case "fillLight":
       switch (state) {
         case DisplayState.Enabled:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("white100")
           retval.textColor = color("black100")
           break
@@ -293,7 +296,7 @@ const useStyleForVariantAndState = (
           retval.textColor = color("white100")
           break
         case DisplayState.Loading:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("white100")
           retval.textColor = "rgba(0, 0, 0, 0)"
           retval.loaderColor = "black100"
@@ -368,17 +371,17 @@ const useStyleForVariantAndState = (
     case "outline":
       switch (state) {
         case DisplayState.Enabled:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black60")
           retval.textColor = color("black100")
           break
         case DisplayState.Disabled:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black30")
           retval.textColor = color("black30")
           break
         case DisplayState.Loading:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black60")
           retval.textColor = "rgba(0, 0, 0, 0)"
           retval.loaderColor = "black100"
@@ -397,17 +400,17 @@ const useStyleForVariantAndState = (
     case "outlineGray":
       switch (state) {
         case DisplayState.Enabled:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black30")
           retval.textColor = color("black100")
           break
         case DisplayState.Disabled:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black30")
           retval.textColor = color("black30")
           break
         case DisplayState.Loading:
-          retval.backgroundColor = color("white100")
+          retval.backgroundColor = color("background")
           retval.borderColor = color("black30")
           retval.textColor = "rgba(0, 0, 0, 0)"
           retval.loaderColor = "black100"

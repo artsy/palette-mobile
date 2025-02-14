@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.2.0.tgz#62a237ca3a058f1b91e5b8a12abebae0ddc5bd2f"
   integrity sha512-6zGlvqELl4XhqMajJxfgHaY3m5YhZK5FwkxlouJKSb0Su301bzXaPUxKjzj9X147YHJUyrRLSAruzVtj1Gr42Q==
 
-"@artsy/palette-tokens@^6.0.3":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-6.2.0.tgz#189d6dcf8280407c38bfe0fef5153b6b112c70da"
-  integrity sha512-cKsVAO+6Ze78us49yh/VxJ7NmkggPnaPajj0qom3DkxqaTrbJrrWWWtAZkkcMs+3wG3FdI9P2Ro/2XHBUhbnkw==
+"@artsy/palette-tokens@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-6.3.0.tgz#1eab1354f90644214a0d8d481c302b3c5e58699f"
+  integrity sha512-UmpwWW7aLeQ5cnQopBmq34IlXar8QedEEjwQVqgUIHTTkMz7Sk3/3QkXYjHhx6UEQprsv5X64f0gvLv6Y+6fFw==
 
 "@auto-it/all-contributors@10.46.0":
   version "10.46.0"

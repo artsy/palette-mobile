@@ -1,7 +1,7 @@
 import { Icon, IconProps, Mask, Path, Rect } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const BoltCircleFill = ({ fill, ...restProps }: IconProps) => {
+export const BoltCircleFill = ({ fill = "black100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 20 20">

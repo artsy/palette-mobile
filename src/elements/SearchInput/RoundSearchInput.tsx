@@ -83,8 +83,9 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       fontFamily: theme.theme.fonts.sans.regular,
       fontSize: 16,
       lineHeight: 20,
+      color: color("black100"),
     }
-  }, [])
+  }, [color])
 
   const renderAndroidPlaceholderMeasuringHack = useCallback(() => {
     if (!isArray(placeholder)) {

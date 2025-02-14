@@ -1,7 +1,7 @@
 import { Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const TrashIcon = ({ fill, ...restprops }: IconProps) => {
+export const TrashIcon = ({ fill = "black100", ...restprops }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restprops} viewBox="0 0 18 18">
