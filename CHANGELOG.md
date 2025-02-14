@@ -1,3 +1,15 @@
+# v14.0.28 (Fri Feb 14 2025)
+
+#### 🐛 Bug Fix
+
+- fix: darkmode onbackground high [#310](https://github.com/artsy/palette-mobile/pull/310) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.27 (Fri Feb 14 2025)
 
 #### 🐛 Bug Fix
