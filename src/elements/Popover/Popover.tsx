@@ -1,9 +1,9 @@
-import { Color, THEME } from "@artsy/palette-tokens"
+import { Color } from "@artsy/palette-tokens"
 import { Platform, StatusBar, ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
 import { Easing } from "react-native-reanimated"
-import styled from "styled-components"
 import { CloseIcon } from "../../svgs"
+import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Touchable } from "../Touchable"
 
@@ -35,11 +35,40 @@ export const Popover = ({
   content,
   noCloseIcon,
 }: PopoverProps) => {
+  const color = useColor()
+
+  const DROP_SHADOW = {
+    shadowColor: color("black100"),
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 4,
+  }
+
+  const POPOVER_VARIANTS: Record<
+    "light" | "dark",
+    { backgroundColor: string; fill: Color; shadow?: ViewStyle }
+  > = {
+    light: {
+      backgroundColor: color("white100"),
+      fill: "black100",
+      shadow: DROP_SHADOW,
+    },
+    dark: {
+      backgroundColor: color("black100"),
+      fill: "white100",
+    },
+  }
+
   const style = POPOVER_VARIANTS[variant]
 
   return (
     <RNPopover
-      backgroundStyle={{ opacity: 0.5, backgroundColor: THEME.colors.black100 }}
+      backgroundStyle={{ opacity: 0.5, backgroundColor: color("black100") }}
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}
@@ -54,7 +83,7 @@ export const Popover = ({
         easing: Easing.out(Easing.exp),
       }}
     >
-      <Container variant={variant} p={1}>
+      <Flex backgroundColor={POPOVER_VARIANTS[variant].backgroundColor} p={1}>
         <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
           {title ? title : <Flex />}
           {!noCloseIcon && (
@@ -67,40 +96,9 @@ export const Popover = ({
         </Flex>
 
         {content}
-      </Container>
+      </Flex>
     </RNPopover>
   )
 }
 
-const Container = styled(Flex)<{ variant: PopoverVariant }>`
-  background-color: ${({ variant }) => POPOVER_VARIANTS[variant].backgroundColor};
-`
-
-const DROP_SHADOW = {
-  shadowColor: THEME.colors.black100,
-  shadowOffset: {
-    width: 0,
-    height: 2,
-  },
-  shadowOpacity: 0.23,
-  shadowRadius: 2.62,
-
-  elevation: 4,
-}
-
-export const POPOVER_VARIANTS: Record<
-  "light" | "dark",
-  { backgroundColor: string; fill: Color; shadow?: ViewStyle }
-> = {
-  light: {
-    backgroundColor: THEME.colors.white100,
-    fill: "black100",
-    shadow: DROP_SHADOW,
-  },
-  dark: {
-    backgroundColor: THEME.colors.black100,
-    fill: "white100",
-  },
-}
-
-export type PopoverVariant = keyof typeof POPOVER_VARIANTS
+export type PopoverVariant = "light" | "dark"
