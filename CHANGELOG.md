@@ -1,3 +1,15 @@
+# v14.0.29 (Tue Feb 18 2025)
+
+#### 🐛 Bug Fix
+
+- fix: popovers on dark mode [#311](https://github.com/artsy/palette-mobile/pull/311) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.28 (Fri Feb 14 2025)
 
 #### 🐛 Bug Fix
