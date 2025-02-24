@@ -1,4 +1,4 @@
-import { ChevronIcon } from "../../svgs"
+import { ChevronRightIcon } from "@artsy/icons/native"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
@@ -20,9 +20,10 @@ export const MenuItem = ({
   value,
   onPress,
   disabled = false,
-  chevron = <ChevronIcon direction="right" fill="black60" />,
+  chevron = <ChevronRightIcon fill="black60" />,
 }: MenuItemProps) => {
   const color = useColor()
+
   return (
     <Touchable onPress={onPress} underlayColor={color("black5")} disabled={disabled}>
       <Flex

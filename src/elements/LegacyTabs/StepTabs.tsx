@@ -1,7 +1,7 @@
+import { CheckmarkIcon, ChevronRightIcon } from "@artsy/icons/native"
 import { useState } from "react"
 import { TouchableOpacity, LayoutRectangle } from "react-native"
 import { TabBarContainer } from "./TabBarContainer"
-import { CheckIcon, ChevronIcon } from "../../svgs"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Box } from "../Box"
 import { Tab, TabsProps } from "../LegacyTabs"
@@ -48,9 +48,9 @@ export const StepTabs: React.FC<TabsProps> = ({ onTabPress, activeTab, tabs }) =
                     // noop
                   }}
                 />
-                {!!completed && <CheckIcon fill="green100" height={15} width={15} />}
+                {!!completed && <CheckmarkIcon fill="green100" height={15} width={15} />}
               </Box>
-              <ChevronIcon fill="black60" height={10} width={10} />
+              <ChevronRightIcon fill="black60" height={10} width={10} />
             </Box>
           </TouchableOpacity>
         )

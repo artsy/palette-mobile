@@ -1,10 +1,10 @@
+import { ChevronLeftIcon } from "@artsy/icons/native"
 import { MotiView } from "moti"
 import React from "react"
 import Animated, { Easing, FadeIn, FadeOut } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
-import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
@@ -125,7 +125,7 @@ const Left: React.FC<{
     <>
       {leftElements || (
         <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
-          <ArrowLeftIcon fill="onBackgroundHigh" />
+          <ChevronLeftIcon fill="onBackgroundHigh" />
         </Touchable>
       )}
     </>

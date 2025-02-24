@@ -1,8 +1,7 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useMemo, useRef, useState } from "react"
-import { Platform, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
-import { backgroundColor } from "styled-system"
+import { StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
@@ -177,6 +176,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
           {!isFocused ? (
             <MagnifyingGlassIcon fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
           ) : (
+            // FIXME: ArrowLeft doesn't exit in Artsy icons
             <ArrowLeftIcon long fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
           )}
         </Touchable>

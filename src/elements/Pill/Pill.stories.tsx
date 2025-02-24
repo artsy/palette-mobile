@@ -1,8 +1,8 @@
+import { GraphIcon } from "@artsy/icons/native"
 import { storiesOf } from "@storybook/react-native"
 import { useState } from "react"
 import { Pill } from "./Pill"
 import { List } from "../../storybook/helpers"
-import { GraphIcon } from "../../svgs"
 import { Flex } from "../Flex"
 
 export default {

@@ -1,3 +1,4 @@
+import { BellStrokeIcon } from "@artsy/icons/native"
 import { capitalize } from "lodash"
 import { useState } from "react"
 import { Button as RNButton } from "react-native"
@@ -6,7 +7,7 @@ import { CTAButton } from "./CTAButton"
 import { FollowButton } from "./FollowButton"
 import { LinkButton } from "./LinkButton"
 import { DataList, List } from "../../storybook/helpers"
-import { BellIcon, LinkIcon } from "../../svgs"
+import { LinkIcon } from "../../svgs"
 import { Wrap } from "../../utils/Wrap"
 import { NoUndefined } from "../../utils/types"
 import { Box } from "../Box"
@@ -179,7 +180,7 @@ export const Miscellaneous = () => (
     <Button
       variant="fillDark"
       size="small"
-      icon={<BellIcon fill="white100" width="16px" height="16px" />}
+      icon={<BellStrokeIcon fill="white100" width="16px" height="16px" />}
     >
       Create Alert
     </Button>

@@ -1,5 +1,6 @@
 import { EventEmitter } from "events"
 
+import { HideIcon, ShowIcon } from "@artsy/icons/native"
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import isArray from "lodash/isArray"
@@ -34,7 +35,7 @@ import {
   getInputVariants,
 } from "./helpers"
 import { maskValue, unmaskText } from "./maskValue"
-import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
+import { TriangleDown, XCircleIcon } from "../../svgs"
 import { useTheme } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
 import { Flex } from "../Flex"
@@ -529,7 +530,7 @@ export const Input = forwardRef<InputRef, InputProps>(
               accessibilityLabel={showPassword ? "hide password button" : "show password button"}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
             >
-              {!showPassword ? <EyeClosedIcon fill="black30" /> : <EyeOpenedIcon fill="black60" />}
+              {!showPassword ? <HideIcon fill="black30" /> : <ShowIcon fill="black60" />}
             </Touchable>
           </Flex>
         )
