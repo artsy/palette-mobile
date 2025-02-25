@@ -1,5 +1,4 @@
 export * from "./ArrowCircleFillIcons"
-export * from "./ArrowBackIcon"
 export * from "./ArrowLeftIcon"
 export * from "./ArrowUpRightIcon"
 export * from "./BoltFill"

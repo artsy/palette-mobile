@@ -33,7 +33,7 @@
     "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
   ],
   "dependencies": {
-    "@artsy/icons": "3.25.7--canary.58.742.0",
+    "@artsy/icons": "3.25.7--canary.58.745.0",
     "@artsy/palette-tokens": "^6.3.0",
     "@shopify/flash-list": "1.7.1",
     "@styled-system/core": "^5.1.2",
