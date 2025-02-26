@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.2.0.tgz#62a237ca3a058f1b91e5b8a12abebae0ddc5bd2f"
   integrity sha512-6zGlvqELl4XhqMajJxfgHaY3m5YhZK5FwkxlouJKSb0Su301bzXaPUxKjzj9X147YHJUyrRLSAruzVtj1Gr42Q==
 
-"@artsy/icons@3.25.7--canary.58.745.0":
-  version "3.25.7--canary.58.745.0"
-  resolved "https://registry.yarnpkg.com/@artsy/icons/-/icons-3.25.7--canary.58.745.0.tgz#4689b8eeb6a2d2da817f718696f7c822f7d7386e"
-  integrity sha512-LSq6F0EPNzBqEQOpVqW0BjrYXf6/wimCsvKEcbNneYoWotEZOxRtEu1I3DYYZxViznXVQ70ImwBcA7iR8smi8w==
+"@artsy/icons@3.25.7":
+  version "3.25.7"
+  resolved "https://registry.yarnpkg.com/@artsy/icons/-/icons-3.25.7.tgz#7d1824bdcfab5681638b548905364f1017e3b795"
+  integrity sha512-wz61M9Cu3vMxSHLsnMpaHPQNR8YGCv68Df/SpRnnhKhcc4qfUaEhRCAuh4myeQEsXrlRMP1Rb03u2LOnHKqnAg==
 
 "@artsy/palette-tokens@^6.3.0":
   version "6.3.0"
