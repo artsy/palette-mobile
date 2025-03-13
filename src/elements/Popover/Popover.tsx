@@ -12,6 +12,7 @@ interface PopoverProps {
   variant?: PopoverVariant
   title?: React.ReactElement
   content?: React.ReactElement
+  onOpenComplete?: () => void
   onPressOutside?: () => void
   // Called when its dismissed
   onDismiss?: () => void
@@ -27,6 +28,7 @@ export const Popover = ({
   variant = "dark",
   children,
   visible,
+  onOpenComplete,
   onPressOutside,
   onDismiss,
   onCloseComplete,
@@ -75,6 +77,7 @@ export const Popover = ({
       // this is required to make sure that the popover is positioned correctly on android
       verticalOffset={Platform.OS === "android" ? -(StatusBar.currentHeight ?? 0) : 0}
       onCloseComplete={onCloseComplete}
+      onOpenComplete={onOpenComplete}
       onRequestClose={onPressOutside}
       placement={placement as RNPopover["props"]["placement"]}
       arrowSize={{ height: 11, width: 22 }}
