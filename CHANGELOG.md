@@ -1,3 +1,15 @@
+# v14.0.30 (Thu Mar 13 2025)
+
+#### 🐛 Bug Fix
+
+- feat: Add onOpenComplete callback to Popover [#314](https://github.com/artsy/palette-mobile/pull/314) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v14.0.29 (Tue Feb 18 2025)
 
 #### 🐛 Bug Fix
