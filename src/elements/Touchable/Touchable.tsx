@@ -1,8 +1,8 @@
 import React from "react"
 import {
   GestureResponderEvent,
-  TouchableHighlight,
   TouchableHighlightProps,
+  TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
@@ -57,13 +57,8 @@ export const Touchable: React.FC<TouchableProps> = ({
       {inner}
     </TouchableWithoutFeedback>
   ) : (
-    <TouchableHighlight
-      underlayColor={underlayColor ?? "transparent"}
-      activeOpacity={DEFAULT_ACTIVE_OPACITY}
-      {...props}
-      onPress={onPressWrapped}
-    >
+    <TouchableOpacity activeOpacity={DEFAULT_ACTIVE_OPACITY} {...props} onPress={onPressWrapped}>
       {inner}
-    </TouchableHighlight>
+    </TouchableOpacity>
   )
 }
