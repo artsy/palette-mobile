@@ -1,4 +1,3 @@
-import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { useState } from "react"
 import { LayoutChangeEvent } from "react-native"
 import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from "react-native-reanimated"
@@ -11,6 +10,9 @@ import { Text } from "../Text"
 
 export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   title: string
+  /**
+   * largeTitle will make the title use the `xl` variant;
+   */
   largeTitle?: boolean
   separatorComponent?: React.ReactNode
   subTitle?: string
