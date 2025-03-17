@@ -1,3 +1,15 @@
+# v14.0.31 (Mon Mar 17 2025)
+
+#### 🐛 Bug Fix
+
+- fix: Replace TouchableHighlight with TouchableOpacity in Touchable [#315](https://github.com/artsy/palette-mobile/pull/315) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v14.0.30 (Thu Mar 13 2025)
 
 #### 🐛 Bug Fix
