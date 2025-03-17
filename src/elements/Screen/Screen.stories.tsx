@@ -198,11 +198,11 @@ storiesOf("Screen", module)
     </Screen>
   ))
 
-  .add("FlatList With AnimatedHeader and XL StickySubHeader", () => (
+  .add("FlatList With AnimatedHeader and large StickySubHeader", () => (
     <Screen>
       <Screen.AnimatedHeader title="Title" />
 
-      <Screen.StickySubHeader title="Title" titleVariant="xl">
+      <Screen.StickySubHeader title="Title" largeTitle>
         <Flex width="100%" height={60} backgroundColor="red10" />
       </Screen.StickySubHeader>
 
