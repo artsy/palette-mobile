@@ -1,3 +1,15 @@
+# v14.0.32 (Wed Mar 19 2025)
+
+#### 🐛 Bug Fix
+
+- feat(ONYX-1606): add largeTitle prop to StickySubHeader [#316](https://github.com/artsy/palette-mobile/pull/316) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v14.0.31 (Mon Mar 17 2025)
 
 #### 🐛 Bug Fix
