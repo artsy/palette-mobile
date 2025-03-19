@@ -10,6 +10,10 @@ import { Text } from "../Text"
 
 export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   title: string
+  /**
+   * largeTitle will make the title use the `xl` variant;
+   */
+  largeTitle?: boolean
   separatorComponent?: React.ReactNode
   subTitle?: string
   Component?: React.ReactNode
@@ -20,6 +24,7 @@ const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black5" />
 
 export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   title,
+  largeTitle = false,
   separatorComponent = DEFAULT_SEPARATOR_COMPONENT,
   subTitle,
   children,
@@ -73,7 +78,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
           style={sharedStyles}
         >
           <Flex mb={1}>
-            <Text variant="lg-display" color="white100">
+            <Text variant={largeTitle ? "xl" : "lg-display"} color="white100">
               {title}
             </Text>
             {!!subTitle && (
@@ -89,7 +94,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
       <Animated.View style={[sharedStyles, animatedStyles]}>
         {/* If we don't specify a height for the text, we will get text jumps as the parent component height changes  */}
         <Flex style={{ height: stickyBarHeight }} mb={1}>
-          <Text variant="lg-display">{title}</Text>
+          <Text variant={largeTitle ? "xl" : "lg-display"}>{title}</Text>
           {subTitle && (
             <Text variant="xs" mt={0.5}>
               {subTitle}
