@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@artsy/palette-tokens": "^6.3.0",
-    "@shopify/flash-list": "1.7.1",
+    "@shopify/flash-list": "1.7.6",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
