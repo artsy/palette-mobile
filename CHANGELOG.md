@@ -1,3 +1,15 @@
+# v14.0.33 (Fri Mar 21 2025)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump flashlist to latest [#317](https://github.com/artsy/palette-mobile/pull/317) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.32 (Wed Mar 19 2025)
 
 #### 🐛 Bug Fix
