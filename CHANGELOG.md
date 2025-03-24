@@ -1,3 +1,15 @@
+# v14.0.35 (Mon Mar 24 2025)
+
+#### 🐛 Bug Fix
+
+- fix(Input): Input reset values on Android [#318](https://github.com/artsy/palette-mobile/pull/318) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v14.0.34 (Mon Mar 24 2025)
 
 #### 🐛 Bug Fix
