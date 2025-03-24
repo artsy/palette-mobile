@@ -317,7 +317,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       }
     }, [fontFamily, space, color])
 
-    const inputVariants = useMemo(() => getInputVariants(theme), [])
+    const inputVariants = useMemo(() => getInputVariants(theme), [theme])
 
     useEffect(() => {
       const inputState = getInputState({
