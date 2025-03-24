@@ -1,3 +1,15 @@
+# v14.0.34 (Mon Mar 24 2025)
+
+#### 🐛 Bug Fix
+
+- fix: remove skeleton text on android devices [#319](https://github.com/artsy/palette-mobile/pull/319) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.33 (Fri Mar 21 2025)
 
 #### 🐛 Bug Fix
