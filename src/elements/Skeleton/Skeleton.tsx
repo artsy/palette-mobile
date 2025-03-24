@@ -39,7 +39,7 @@ export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
 
   return (
     <Flex alignSelf="flex-start">
-      <Text {...rest} bg={color("black10")} color={color("black10")}>
+      <Text {...rest} bg={color("black10")} color="transparent">
         {children}
       </Text>
     </Flex>
