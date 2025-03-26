@@ -3,6 +3,7 @@ import { useState } from "react"
 import { RadioButton } from "./RadioButton"
 import { List } from "../../storybook/helpers"
 import { Flex } from "../Flex"
+import { Text } from "../Text"
 
 export default {
   title: "RadioButton",
@@ -45,7 +46,15 @@ storiesOf("RadioButton", module).add("Default", () => {
           }}
           block
           selected={metric === "cm"}
-          text="centimeters"
+          text="Centimeters"
+        />
+        <RadioButton
+          onPress={() => {
+            setMetric("in")
+          }}
+          block
+          selected={metric === "in"}
+          text="Inches"
         />
       </Flex>
     </List>
