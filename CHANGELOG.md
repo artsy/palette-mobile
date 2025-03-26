@@ -1,3 +1,15 @@
+# v14.0.36 (Wed Mar 26 2025)
+
+#### 🐛 Bug Fix
+
+- feat: add radio button block variant [#320](https://github.com/artsy/palette-mobile/pull/320) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.35 (Mon Mar 24 2025)
 
 #### 🐛 Bug Fix
