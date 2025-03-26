@@ -87,7 +87,8 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
       <CssTransition
         style={[
           styles(fontScale).container,
-          { marginRight: space(1) * fontScale },
+          { marginRight: block ? 0 : space(1) * fontScale },
+          { marginLeft: block ? space(1) * fontScale : 0 },
           radioButtonStyle,
         ]}
         animate={["borderColor"]}
