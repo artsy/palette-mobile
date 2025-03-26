@@ -20,26 +20,28 @@ const DURATION = 150
 export interface RadioButtonProps
   extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
     Omit<FlexProps, "hitSlop"> {
-  hitSlop?: Insets
-  selected?: boolean
-  focused?: boolean
+  accessibilityState?: { checked: boolean }
+  block?: boolean
   disabled?: boolean
   error?: boolean
+  focused?: boolean
+  hitSlop?: Insets
+  selected?: boolean
+  subtitle?: React.ReactElement | string
   text?: React.ReactElement | string
   textVariant?: TextVariant
-  subtitle?: React.ReactElement | string
-  accessibilityState?: { checked: boolean }
 }
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
-  selected,
+  accessibilityState,
+  block,
   disabled,
   error,
   onPress,
+  selected,
+  subtitle,
   text,
   textVariant = "md",
-  subtitle,
-  accessibilityState,
   ...restProps
 }) => {
   const { color, space } = useTheme()
@@ -49,7 +51,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
   const defaultRadioButtonStyle = {
     backgroundColor: color("white100"),
-    borderColor: color("black60"),
+    borderColor: color("black30"),
   }
 
   const selectedRadioButtonStyle = {
@@ -80,6 +82,27 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   const textColor = error ? color("red100") : disabled ? color("black30") : color("black100")
   const subtitleColor = error ? color("red100") : color("black30")
 
+  const AnimatedDot = (
+    <Flex mt="2px">
+      <CssTransition
+        style={[
+          styles(fontScale).container,
+          { marginRight: space(1) * fontScale },
+          radioButtonStyle,
+        ]}
+        animate={["borderColor"]}
+        duration={DURATION}
+      >
+        {!!selected &&
+          (!!disabled ? (
+            <DisabledDot size={radioButtonSize} />
+          ) : (
+            <RadioDot size={radioButtonSize} />
+          ))}
+      </CssTransition>
+    </Flex>
+  )
+
   return (
     <TouchableWithoutFeedback
       accessibilityState={accessibilityState}
@@ -92,25 +115,12 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
       }}
     >
       <Flex {...restProps}>
-        <Flex flexDirection="row" alignItems="center">
-          <Flex mt="2px">
-            <CssTransition
-              style={[
-                styles(fontScale).container,
-                { marginRight: space(1) * fontScale },
-                radioButtonStyle,
-              ]}
-              animate={["borderColor"]}
-              duration={DURATION}
-            >
-              {!!selected &&
-                (!!disabled ? (
-                  <DisabledDot size={radioButtonSize} />
-                ) : (
-                  <RadioDot size={radioButtonSize} />
-                ))}
-            </CssTransition>
-          </Flex>
+        <Flex
+          flexDirection="row"
+          alignItems="center"
+          justifyContent={block ? "space-between" : "flex-start"}
+        >
+          {!block && AnimatedDot}
 
           <Flex justifyContent="center">
             {!!text && (
@@ -119,9 +129,14 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
               </Text>
             )}
           </Flex>
+
+          {block && AnimatedDot}
         </Flex>
 
-        <Flex ml={`${(RADIOBUTTON_SIZE + space(1)) * fontScale}px`} mt="6px">
+        <Flex
+          ml={block ? 0 : `${(RADIOBUTTON_SIZE + space(1)) * fontScale}px`}
+          mt={block ? 0 : 0.5}
+        >
           {!!subtitle && (
             <Text variant="xs" color={subtitleColor}>
               {subtitle}

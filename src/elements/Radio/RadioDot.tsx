@@ -2,51 +2,48 @@ import { FlexProps, Flex } from "../Flex"
 
 type RadioDotMode = "default" | "disabled" | "error" | "hover"
 
+const INACTIVE_BORDER_WIDTH = 2
+const ACTIVE_BORDER_WIDTH = 4
+
 export const RADIO_DOT_MODES: Record<RadioDotMode, { resting: FlexProps; selected: FlexProps }> = {
   default: {
     resting: {
-      borderWidth: 2,
-      borderColor: "black10",
+      borderWidth: INACTIVE_BORDER_WIDTH,
+      borderColor: "black30",
     },
     selected: {
-      borderWidth: 2,
+      borderWidth: ACTIVE_BORDER_WIDTH,
       borderColor: "black100",
-      backgroundColor: "black100",
     },
   },
   disabled: {
     resting: {
-      borderWidth: 2,
+      borderWidth: INACTIVE_BORDER_WIDTH,
       borderColor: "black10",
-      backgroundColor: "black10",
     },
     selected: {
-      borderWidth: 2,
+      borderWidth: ACTIVE_BORDER_WIDTH,
       borderColor: "black10",
-      backgroundColor: "black10",
     },
   },
   error: {
     resting: {
-      borderWidth: 2,
+      borderWidth: INACTIVE_BORDER_WIDTH,
       borderColor: "red100",
     },
     selected: {
-      borderWidth: 2,
+      borderWidth: ACTIVE_BORDER_WIDTH,
       borderColor: "black100",
-      backgroundColor: "black100",
     },
   },
   hover: {
     resting: {
-      borderWidth: 2,
+      borderWidth: INACTIVE_BORDER_WIDTH,
       borderColor: "black10",
-      backgroundColor: "black10",
     },
     selected: {
-      borderWidth: 2,
+      borderWidth: INACTIVE_BORDER_WIDTH,
       borderColor: "black100",
-      backgroundColor: "black100",
     },
   },
 }
@@ -60,7 +57,7 @@ interface RadioDotProps {
 
 export const RadioDot = (props: RadioDotProps) => (
   <Container {...props}>
-    <Dot {...props} />
+    <Dot />
   </Container>
 )
 
@@ -97,14 +94,13 @@ const Container = ({
   )
 }
 
-const Dot = ({ selected = false, disabled = false }: RadioDotProps) => (
+const Dot: React.FC<{}> = () => (
   <Flex
-    width={10}
-    height={10}
+    width={12}
+    height={12}
     borderRadius={50}
     alignItems="center"
     justifyContent="center"
     flexShrink={0}
-    backgroundColor={disabled && !selected ? "transparent" : "white100"}
   />
 )

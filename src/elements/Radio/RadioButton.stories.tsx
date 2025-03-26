@@ -37,6 +37,17 @@ storiesOf("RadioButton", module).add("Default", () => {
           text="inches"
         />
       </Flex>
+
+      <Flex>
+        <RadioButton
+          onPress={() => {
+            setMetric("cm")
+          }}
+          block
+          selected={metric === "cm"}
+          text="centimeters"
+        />
+      </Flex>
     </List>
   )
 })
