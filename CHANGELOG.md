@@ -1,3 +1,19 @@
+# v14.0.38 (Wed Mar 26 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Nikita Skalkin ([@nickskalkin](https://github.com/nickskalkin)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: add sort icon [#323](https://github.com/artsy/palette-mobile/pull/323) ([@nickskalkin](https://github.com/nickskalkin))
+
+#### Authors: 1
+
+- Nikita Skalkin ([@nickskalkin](https://github.com/nickskalkin))
+
+---
+
 # v14.0.37 (Wed Mar 26 2025)
 
 #### 🐛 Bug Fix
