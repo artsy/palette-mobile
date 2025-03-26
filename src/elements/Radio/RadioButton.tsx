@@ -119,6 +119,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
           flexDirection="row"
           alignItems="center"
           justifyContent={block ? "space-between" : "flex-start"}
+          width={block ? "100%" : undefined}
         >
           {!block && AnimatedDot}
 
