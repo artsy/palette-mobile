@@ -9,68 +9,45 @@ export default {
   component: RadioButton,
 }
 
-storiesOf("RadioButton", module)
-  .add("Default", () => {
-    const [metric, setMetric] = useState("cm")
+storiesOf("RadioButton", module).add("Default", () => {
+  const [metric, setMetric] = useState("cm")
 
-    return (
-      <List
-        contentContainerStyle={{
-          marginHorizontal: 20,
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-        }}
-      >
-        <Flex flexDirection="row" gap={2}>
-          <RadioButton
-            onPress={() => {
-              setMetric("cm")
-            }}
-            selected={metric === "cm"}
-            text="centimeters"
-          />
+  return (
+    <List
+      contentContainerStyle={{
+        marginHorizontal: 20,
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+      }}
+    >
+      <Flex flexDirection="row" gap={2}>
+        <RadioButton
+          onPress={() => {
+            setMetric("cm")
+          }}
+          selected={metric === "cm"}
+          text="centimeters"
+        />
 
-          <RadioButton
-            onPress={() => {
-              setMetric("in")
-            }}
-            selected={metric === "in"}
-            text="inches"
-          />
-        </Flex>
-      </List>
-    )
-  })
-  .add("Block", () => {
-    const [metric, setMetric] = useState("cm")
+        <RadioButton
+          onPress={() => {
+            setMetric("in")
+          }}
+          selected={metric === "in"}
+          text="inches"
+        />
+      </Flex>
 
-    return (
-      <List
-        contentContainerStyle={{
-          marginHorizontal: 20,
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-        }}
-      >
-        <Flex flexDirection="row" gap={2}>
-          <RadioButton
-            onPress={() => {
-              setMetric("cm")
-            }}
-            selected={metric === "cm"}
-            text="centimeters"
-            block
-          />
-
-          <RadioButton
-            onPress={() => {
-              setMetric("in")
-            }}
-            block
-            selected={metric === "in"}
-            text="inches"
-          />
-        </Flex>
-      </List>
-    )
-  })
+      <Flex>
+        <RadioButton
+          onPress={() => {
+            setMetric("cm")
+          }}
+          block
+          selected={metric === "cm"}
+          text="centimeters"
+        />
+      </Flex>
+    </List>
+  )
+})
