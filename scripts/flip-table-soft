@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+echo 'Clearing xcode local env (┛ಠ_ಠ)┛彡┻━┻'
+rm -rf ios/.xcode.env.local
+
+echo 'Clear JS caches (┛ಠ_ಠ)┛彡┻━┻'
+rm -rf .cache
+
+echo 'Clear derived data (┛ಠ_ಠ)┛彡┻━┻'
+rm -rf ~/Library/Developer/Xcode/DerivedData
