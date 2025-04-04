@@ -115,7 +115,7 @@ const v3dark: ThemeWithDarkModeType = {
     background: THEME_DARK.colors.white100,
     onBackground: THEME_DARK.colors.black100,
     onBackgroundHigh: THEME_DARK.colors.black100,
-    onBackgroundMedium: THEME_DARK.colors.black30,
+    onBackgroundMedium: THEME_DARK.colors.black60,
     onBackgroundLow: THEME_DARK.colors.black60,
     surface: "#333",
     onSurface: THEME_DARK.colors.white100,
