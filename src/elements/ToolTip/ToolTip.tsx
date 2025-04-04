@@ -33,6 +33,8 @@ export const ToolTipContext = createContext<ToolTipContextValues>({
   setToolTip: () => noop,
 })
 
+const SAFE_PADDING = 10
+
 /**
  * A ToolTip Component
  * @example
@@ -93,7 +95,13 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   // around the edges can flow off screen
   const nearLeftEdge = pageX < mWidth / 4 || flowDirection === "RIGHT"
   const nearRightEdge = pageX > mWidth - mWidth / 4 || flowDirection === "LEFT"
-  const extraStyle = nearLeftEdge ? { left: 0 } : nearRightEdge ? { right: 0 } : undefined
+
+  let extraStyle
+  if (nearLeftEdge) {
+    extraStyle = { left: xOffset || SAFE_PADDING }
+  } else if (nearRightEdge) {
+    extraStyle = { right: -xOffset || -SAFE_PADDING }
+  }
 
   return (
     <ToolTipContext.Provider
@@ -107,7 +115,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
           <ToolTipFlyout
             containerStyle={{
               bottom: childrenDimensions.height + yOffset,
-              left: xOffset,
               ...extraStyle,
             }}
             tapToDismiss={tapToDismiss}
