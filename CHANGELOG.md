@@ -1,3 +1,15 @@
+# v14.0.40 (Fri Apr 04 2025)
+
+#### 🐛 Bug Fix
+
+- build(deps): bump react-native from 0.76.7 to 0.76.9 [#326](https://github.com/artsy/palette-mobile/pull/326) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v14.0.39 (Thu Apr 03 2025)
 
 #### 🐛 Bug Fix
