@@ -1,3 +1,15 @@
+# v14.0.41 (Sun Apr 06 2025)
+
+#### 🐛 Bug Fix
+
+- feat: improve scroll and performance on Screen.Flatlist [#327](https://github.com/artsy/palette-mobile/pull/327) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.40 (Fri Apr 04 2025)
 
 #### 🐛 Bug Fix
