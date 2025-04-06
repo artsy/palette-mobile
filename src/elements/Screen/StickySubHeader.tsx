@@ -1,8 +1,8 @@
+import { MotiView } from "moti"
 import { useState } from "react"
 import { LayoutChangeEvent } from "react-native"
-import Animated, { useAnimatedStyle, useDerivedValue, withTiming } from "react-native-reanimated"
-import { useScreenScrollContext } from "./ScreenScrollContext"
-import { NAVBAR_HEIGHT } from "./constants"
+import Animated, { LinearTransition, useAnimatedStyle, withTiming } from "react-native-reanimated"
+import { useShowLargeTitle } from "./hooks/useShowLargeTitle"
 import { useSpace } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Separator } from "../Separator"
@@ -19,8 +19,9 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   Component?: React.ReactNode
 }
 
-const STICKY_BAR_HEIGHT = 42
-const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black5" />
+export const STICKY_BAR_HEIGHT = 42
+export const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black5" />
+export const BOTTOM_TABS_HEIGHT = 65
 
 export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   title,
@@ -30,17 +31,10 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   children,
   Component,
 }) => {
-  const { currentScrollY, scrollYOffset = 0 } = useScreenScrollContext()
   const space = useSpace()
 
   const [stickyBarHeight, setStickyHeaderHeight] = useState<null | number>(null)
-
-  const visible = useDerivedValue(() => {
-    if (stickyBarHeight === null) {
-      return true
-    }
-    return currentScrollY < NAVBAR_HEIGHT + scrollYOffset
-  }, [currentScrollY, scrollYOffset, stickyBarHeight])
+  const { visible } = useShowLargeTitle({ stickyBarHeight })
 
   const handleLayout = (event: LayoutChangeEvent) => {
     setStickyHeaderHeight(event.nativeEvent.layout.height)
@@ -54,7 +48,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   const animatedStyles = useAnimatedStyle(() => {
     return {
       height: withTiming(visible.value ? stickyBarHeight || STICKY_BAR_HEIGHT : 0, {
-        duration: 100,
+        duration: 200,
       }),
       transform: [
         {
@@ -64,7 +58,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
         },
       ],
     }
-  })
+  }, [visible.value, stickyBarHeight])
 
   return (
     <Flex>
