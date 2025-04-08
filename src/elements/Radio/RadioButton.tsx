@@ -41,7 +41,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   selected,
   subtitle,
   text,
-  textVariant = "md",
+  textVariant = "sm-display",
   ...restProps
 }) => {
   const { color, space } = useTheme()
