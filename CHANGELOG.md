@@ -1,3 +1,15 @@
+# v14.0.42 (Tue Apr 08 2025)
+
+#### 🐛 Bug Fix
+
+- fix: Increase dark mode onBackgroundMedium to increase contrast [#325](https://github.com/artsy/palette-mobile/pull/325) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v14.0.41 (Sun Apr 06 2025)
 
 #### 🐛 Bug Fix
