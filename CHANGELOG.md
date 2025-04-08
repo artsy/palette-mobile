@@ -1,3 +1,15 @@
+# v14.0.43 (Tue Apr 08 2025)
+
+#### 🐛 Bug Fix
+
+- chore: update radio button component [#328](https://github.com/artsy/palette-mobile/pull/328) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v14.0.42 (Tue Apr 08 2025)
 
 #### 🐛 Bug Fix
