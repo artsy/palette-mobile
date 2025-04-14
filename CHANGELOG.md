@@ -1,3 +1,16 @@
+# v14.0.44 (Mon Apr 14 2025)
+
+#### 🐛 Bug Fix
+
+- fix: Increase contrast for onBackgroundMedium dark theme color [#330](https://github.com/artsy/palette-mobile/pull/330) ([@olerichter00](https://github.com/olerichter00))
+- chore: Upgrade @artsy/palette-tokens to 6.5.0 [#329](https://github.com/artsy/palette-mobile/pull/329) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v14.0.43 (Tue Apr 08 2025)
 
 #### 🐛 Bug Fix
