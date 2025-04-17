@@ -254,24 +254,24 @@ const useStyleForVariantAndState = (
 
   switch (variant) {
     case "fillDark":
-      retval.textColor = color("white100")
+      retval.textColor = color("mono0")
       switch (state) {
         case DisplayState.Enabled:
-          retval.backgroundColor = color("black100")
-          retval.borderColor = color("black100")
+          retval.backgroundColor = color("mono100")
+          retval.borderColor = color("mono100")
           break
         case DisplayState.Disabled:
-          retval.backgroundColor = color("black30")
-          retval.borderColor = color("black30")
+          retval.backgroundColor = color("mono30")
+          retval.borderColor = color("mono30")
           // We want to show the text color as white regardless of the theme
           // This makes it easier to read
           retval.textColor = "white"
           break
         case DisplayState.Loading:
-          retval.backgroundColor = color("black100")
-          retval.borderColor = color("black100")
+          retval.backgroundColor = color("mono100")
+          retval.borderColor = color("mono100")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "white100"
+          retval.loaderColor = "mono0"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
@@ -287,24 +287,24 @@ const useStyleForVariantAndState = (
       switch (state) {
         case DisplayState.Enabled:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("white100")
-          retval.textColor = color("black100")
+          retval.borderColor = color("mono0")
+          retval.textColor = color("mono100")
           break
         case DisplayState.Disabled:
-          retval.backgroundColor = color("black30")
-          retval.borderColor = color("black30")
-          retval.textColor = color("white100")
+          retval.backgroundColor = color("mono30")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono0")
           break
         case DisplayState.Loading:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("white100")
+          retval.borderColor = color("mono0")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "black100"
+          retval.loaderColor = "mono100"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
-          retval.textColor = color("white100")
+          retval.textColor = color("mono0")
           retval.textDecorationLine = "underline"
           break
         default:
@@ -315,25 +315,25 @@ const useStyleForVariantAndState = (
     case "fillGray":
       switch (state) {
         case DisplayState.Enabled:
-          retval.backgroundColor = color("black10")
-          retval.borderColor = color("black10")
-          retval.textColor = color("black100")
+          retval.backgroundColor = color("mono10")
+          retval.borderColor = color("mono10")
+          retval.textColor = color("mono100")
           break
         case DisplayState.Disabled:
-          retval.backgroundColor = color("black30")
-          retval.borderColor = color("black30")
-          retval.textColor = color("white100")
+          retval.backgroundColor = color("mono30")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono0")
           break
         case DisplayState.Loading:
-          retval.backgroundColor = color("black10")
-          retval.borderColor = color("black10")
+          retval.backgroundColor = color("mono10")
+          retval.borderColor = color("mono10")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "black100"
+          retval.loaderColor = "mono100"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
-          retval.textColor = color("white100")
+          retval.textColor = color("mono0")
           retval.textDecorationLine = "underline"
           break
         default:
@@ -342,7 +342,7 @@ const useStyleForVariantAndState = (
       break
 
     case "fillSuccess":
-      retval.textColor = color("white100")
+      retval.textColor = color("mono0")
       switch (state) {
         case DisplayState.Enabled:
           retval.backgroundColor = color("blue100")
@@ -356,7 +356,7 @@ const useStyleForVariantAndState = (
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "white100"
+          retval.loaderColor = "mono0"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue10")
@@ -372,24 +372,24 @@ const useStyleForVariantAndState = (
       switch (state) {
         case DisplayState.Enabled:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black60")
-          retval.textColor = color("black100")
+          retval.borderColor = color("mono60")
+          retval.textColor = color("mono100")
           break
         case DisplayState.Disabled:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black30")
-          retval.textColor = color("black30")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono30")
           break
         case DisplayState.Loading:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black60")
+          retval.borderColor = color("mono60")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "black100"
+          retval.loaderColor = "mono100"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
-          retval.textColor = color("white100")
+          retval.textColor = color("mono0")
           retval.textDecorationLine = "underline"
           break
         default:
@@ -401,24 +401,24 @@ const useStyleForVariantAndState = (
       switch (state) {
         case DisplayState.Enabled:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black30")
-          retval.textColor = color("black100")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono100")
           break
         case DisplayState.Disabled:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black30")
-          retval.textColor = color("black30")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono30")
           break
         case DisplayState.Loading:
           retval.backgroundColor = color("background")
-          retval.borderColor = color("black30")
+          retval.borderColor = color("mono30")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "black100"
+          retval.loaderColor = "mono100"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
           retval.borderColor = color("blue100")
-          retval.textColor = color("white100")
+          retval.textColor = color("mono0")
           retval.textDecorationLine = "underline"
           break
         default:
@@ -430,19 +430,19 @@ const useStyleForVariantAndState = (
       switch (state) {
         case DisplayState.Enabled:
           retval.backgroundColor = "rgba(0, 0, 0, 0)"
-          retval.borderColor = color("white100")
-          retval.textColor = color("white100")
+          retval.borderColor = color("mono0")
+          retval.textColor = color("mono0")
           break
         case DisplayState.Disabled:
           retval.backgroundColor = "rgba(0, 0, 0, 0)"
-          retval.borderColor = color("black30")
-          retval.textColor = color("black30")
+          retval.borderColor = color("mono30")
+          retval.textColor = color("mono30")
           break
         case DisplayState.Loading:
           retval.backgroundColor = "rgba(0, 0, 0, 0)"
-          retval.borderColor = color("white100")
+          retval.borderColor = color("mono0")
           retval.textColor = "rgba(0, 0, 0, 0)"
-          retval.loaderColor = "white100"
+          retval.loaderColor = "mono0"
           break
         case DisplayState.Pressed:
           retval.backgroundColor = color("blue100")
@@ -460,10 +460,10 @@ const useStyleForVariantAndState = (
       retval.borderColor = "rgba(0, 0, 0, 0)"
       switch (state) {
         case DisplayState.Enabled:
-          retval.textColor = color("black100")
+          retval.textColor = color("mono100")
           break
         case DisplayState.Disabled:
-          retval.textColor = color("black30")
+          retval.textColor = color("mono30")
           break
         case DisplayState.Loading:
           retval.textColor = "rgba(0, 0, 0, 0)"

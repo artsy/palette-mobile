@@ -8,32 +8,32 @@ export const CHECK_SIZE = 22
 const CHECK_MODES = {
   default: {
     resting: css`
-      background-color: ${themeGet("colors.white100")};
-      border-color: ${themeGet("colors.black10")};
+      background-color: ${themeGet("colors.mono0")};
+      border-color: ${themeGet("colors.mono10")};
     `,
     selected: css`
-      background-color: ${themeGet("colors.black100")};
-      border-color: ${themeGet("colors.black100")};
+      background-color: ${themeGet("colors.mono100")};
+      border-color: ${themeGet("colors.mono100")};
     `,
   },
   disabled: {
     resting: css`
-      background-color: ${themeGet("colors.black5")};
-      border-color: ${themeGet("colors.black10")};
+      background-color: ${themeGet("colors.mono5")};
+      border-color: ${themeGet("colors.mono10")};
     `,
     selected: css`
-      background-color: ${themeGet("colors.black30")};
-      border-color: ${themeGet("colors.black30")};
+      background-color: ${themeGet("colors.mono30")};
+      border-color: ${themeGet("colors.mono30")};
     `,
   },
   error: {
     resting: css`
-      background-color: ${themeGet("colors.white100")};
+      background-color: ${themeGet("colors.mono0")};
       border-color: ${themeGet("colors.red100")};
     `,
     selected: css`
-      background-color: ${themeGet("colors.black100")};
-      border-color: ${themeGet("colors.black100")};
+      background-color: ${themeGet("colors.mono100")};
+      border-color: ${themeGet("colors.mono100")};
     `,
   },
 } as const
@@ -58,7 +58,7 @@ export const Check: React.FC<CheckProps> = ({ disabled, selected, testID, ...res
       accessibilityRole="checkbox"
       testID={testID}
     >
-      {!!selected && <CheckIcon fill="white100" />}
+      {!!selected && <CheckIcon fill="mono0" />}
     </Container>
   )
 }

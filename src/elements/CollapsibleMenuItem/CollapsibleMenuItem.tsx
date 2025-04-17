@@ -77,16 +77,12 @@ export const CollapsibleMenuItem = forwardRef<
           disabled={disabled}
         >
           {!!overtitle && (
-            <Text variant="sm" color={disabled ? "black30" : "black100"}>
+            <Text variant="sm" color={disabled ? "mono30" : "mono100"}>
               {overtitle}
             </Text>
           )}
           <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Text
-              variant="lg"
-              color={disabled ? "black30" : "black100"}
-              style={{ maxWidth: "90%" }}
-            >
+            <Text variant="lg" color={disabled ? "mono30" : "mono100"} style={{ maxWidth: "90%" }}>
               {title}
             </Text>
             <Flex flexDirection="row" alignItems="center">
@@ -100,7 +96,7 @@ export const CollapsibleMenuItem = forwardRef<
               )}
               <ChevronIcon
                 direction={isOpen ? "up" : "down"}
-                fill={disabled ? "black30" : "black60"}
+                fill={disabled ? "mono30" : "mono60"}
               />
             </Flex>
           </Flex>

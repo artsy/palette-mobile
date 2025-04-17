@@ -1,6 +1,6 @@
 import { Defs, Icon, IconProps, LinearGradient, Path, Stop } from "./Icon"
 
-export const MessagesAppIcon = ({ fill = "black100", ...restProps }: IconProps) => {
+export const MessagesAppIcon = ({ fill = "mono100", ...restProps }: IconProps) => {
   return (
     <Icon {...restProps} viewBox="0 0 23 23">
       <Path

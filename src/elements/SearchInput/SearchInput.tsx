@@ -31,7 +31,7 @@ export const SearchInput = ({
           props.onFocus?.(e)
         }}
         style={{
-          color: color("black100"),
+          color: color("mono100"),
         }}
         onBlur={(e) => {
           props.onBlur?.(e)

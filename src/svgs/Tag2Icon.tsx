@@ -2,7 +2,7 @@ import { ClipPath, Defs } from "react-native-svg"
 import { G, Icon, IconProps, Path } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const Tag2Icon = ({ fill = "black100", ...restProps }: IconProps) => {
+export const Tag2Icon = ({ fill = "mono100", ...restProps }: IconProps) => {
   const color = useColor()
 
   return (

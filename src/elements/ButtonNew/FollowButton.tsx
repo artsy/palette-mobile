@@ -24,7 +24,7 @@ export const FollowButton = ({
       variant={isFollowed ? "outline" : "outlineGray"}
       size="small"
       longestText={longestText ? longestText : "Following"}
-      icon={isFollowed && !loading && <CheckIcon fill="black60" width="16px" height="16px" />}
+      icon={isFollowed && !loading && <CheckIcon fill="mono60" width="16px" height="16px" />}
       loading={loading}
       {...restProps}
     >
@@ -33,7 +33,7 @@ export const FollowButton = ({
           <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
           {!!followCount && followCount > 1 && (
             <>
-              <Text variant="xs" color="black60">
+              <Text variant="xs" color="mono60">
                 {" " + formatLargeNumber(followCount, 1)}
               </Text>
             </>

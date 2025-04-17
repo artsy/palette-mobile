@@ -102,7 +102,7 @@ export const VariantsDisabled = () => (
     data={variants}
     renderItem={({ item: variant }) => (
       <Wrap if={variant === "outlineLight"}>
-        <Flex backgroundColor="black100" p={1}>
+        <Flex backgroundColor="mono100" p={1}>
           <Wrap.Content>
             <Button variant={variant} disabled onPress={() => console.log(`tapped ${variant}`)}>
               {variant}
@@ -170,16 +170,16 @@ export const Miscellaneous = () => (
         left icon
       </Button>
     </Flex>
-    <Button icon={<LinkIcon fill="white100" />} iconPosition="right">
+    <Button icon={<LinkIcon fill="mono0" />} iconPosition="right">
       right icon
     </Button>
-    <Button size="small" icon={<LinkIcon fill="white100" />} iconPosition="right">
+    <Button size="small" icon={<LinkIcon fill="mono0" />} iconPosition="right">
       Right Icon Small
     </Button>
     <Button
       variant="fillDark"
       size="small"
-      icon={<BellIcon fill="white100" width="16px" height="16px" />}
+      icon={<BellIcon fill="mono0" width="16px" height="16px" />}
     >
       Create Alert
     </Button>
@@ -188,7 +188,7 @@ export const Miscellaneous = () => (
       <Box>
         <Button
           size="small"
-          icon={<LinkIcon fill="white100" />}
+          icon={<LinkIcon fill="mono0" />}
           iconPosition="right"
           longestText="this is a very long text"
         >
@@ -197,7 +197,7 @@ export const Miscellaneous = () => (
         <Spacer y={1} />
         <Button
           size="small"
-          icon={<LinkIcon fill="white100" />}
+          icon={<LinkIcon fill="mono0" />}
           iconPosition="right"
           longestText="this is a very long text"
         >
@@ -206,7 +206,7 @@ export const Miscellaneous = () => (
       </Box>
       <Box width={2} height="100%" backgroundColor="green100" />
     </Box>
-    <Button icon={<LinkIcon fill="white100" />} block iconPosition="left-start">
+    <Button icon={<LinkIcon fill="mono0" />} block iconPosition="left-start">
       left-start aligned icon
     </Button>
   </List>

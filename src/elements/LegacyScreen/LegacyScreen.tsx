@@ -60,7 +60,7 @@ const ScreenRoot = ({ children }: { children?: React.ReactNode }) => {
   const bodyChildren = getChildrenByTypeDeep(children, LegacyScreen.Body)
 
   return (
-    <Flex flex={1} backgroundColor="white100">
+    <Flex flex={1} backgroundColor="mono0">
       {background /* fullscreen */}
 
       {header}
@@ -274,7 +274,7 @@ const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       <Flex
         px={SCREEN_HORIZONTAL_PADDING}
         py={keyboardShowing ? 1 : undefined}
-        backgroundColor="white100"
+        backgroundColor="mono0"
       >
         {children}
       </Flex>

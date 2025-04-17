@@ -51,18 +51,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const isChecked = checkedProp ?? checked
 
   const defaultCheckboxStyle = {
-    backgroundColor: color("white100"),
-    borderColor: color("black60"),
+    backgroundColor: color("mono0"),
+    borderColor: color("mono60"),
   }
 
   const checkedCheckboxStyle = {
-    backgroundColor: color("black100"),
-    borderColor: color("black100"),
+    backgroundColor: color("mono100"),
+    borderColor: color("mono100"),
   }
 
   const disabledCheckboxStyle = {
-    backgroundColor: color("black5"),
-    borderColor: color("black10"),
+    backgroundColor: color("mono5"),
+    borderColor: color("mono10"),
   }
 
   const checkboxStyles = {
@@ -71,7 +71,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       checked: checkedCheckboxStyle,
     },
     error: {
-      unchecked: { backgroundColor: color("white100"), borderColor: color("red100") },
+      unchecked: { backgroundColor: color("mono0"), borderColor: color("red100") },
       checked: checkedCheckboxStyle,
     },
   }
@@ -80,8 +80,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     ? disabledCheckboxStyle
     : checkboxStyles[error ? "error" : "default"][isChecked ? "checked" : "unchecked"]
 
-  const textColor = error ? color("red100") : disabled ? color("black30") : color("black100")
-  const subtitleColor = error ? color("red100") : disabled ? color("black30") : color("black60")
+  const textColor = error ? color("red100") : disabled ? color("mono30") : color("mono100")
+  const subtitleColor = error ? color("red100") : disabled ? color("mono30") : color("mono60")
 
   return (
     <TouchableWithoutFeedback
@@ -164,13 +164,13 @@ export const CheckMark = ({ size }: CheckMarkProps) => (
     width={size * 0.625}
     height={size * 0.3125}
     borderBottomWidth="2px"
-    borderBottomColor="white100"
+    borderBottomColor="mono0"
     borderLeftWidth="2px"
-    borderLeftColor="white100"
+    borderLeftColor="mono0"
   />
 )
 
 export const DisabledMark = styled(CheckMark)`
-  border-bottom-color: ${themeGet("colors.black30")};
-  border-left-color: ${themeGet("colors.black30")};
+  border-bottom-color: ${themeGet("colors.mono30")};
+  border-left-color: ${themeGet("colors.mono30")};
 `

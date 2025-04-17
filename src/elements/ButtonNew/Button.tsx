@@ -115,7 +115,7 @@ export const Button = ({
     }
   })()
 
-  const spinnerColor = variant === "text" ? "blue100" : "white100"
+  const spinnerColor = variant === "text" ? "blue100" : "mono0"
 
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress === undefined || onPress === null) {
