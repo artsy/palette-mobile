@@ -78,7 +78,7 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
         height={diameter}
         borderRadius={diameter / 2}
         overflow="hidden"
-        borderColor={color("white100")}
+        borderColor={color("mono0")}
         borderWidth={1}
       >
         <Animated.View style={style}>
@@ -102,7 +102,7 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
     <Flex
       width={diameter}
       height={diameter}
-      borderColor="black10"
+      borderColor="mono10"
       borderWidth={1}
       borderRadius={diameter}
       overflow="hidden"

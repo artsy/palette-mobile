@@ -42,9 +42,9 @@ storiesOf("Theme/Text", module).add("Visual Clue", () => (
     </Box>
 
     <Box>
-      <Text>Color: black60</Text>
+      <Text>Color: mono60</Text>
       <Box position="absolute" top="4px" right="-8px">
-        <VisualClueDot color="black60" />
+        <VisualClueDot color="mono60" />
       </Box>
     </Box>
 

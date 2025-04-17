@@ -7,7 +7,7 @@ interface ArtsyLogoBlackIconProps extends Omit<IconProps, "width" | "height"> {
 
 export const ArtsyLogoBlackIcon = ({
   scale = 1,
-  fill = "black100",
+  fill = "mono100",
   ...restProps
 }: ArtsyLogoBlackIconProps) => {
   const color = useColor()

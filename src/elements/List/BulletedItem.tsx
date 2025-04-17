@@ -10,7 +10,7 @@ interface BulletedItemProps extends FlexProps {
 
 export const BulletedItem = ({
   children,
-  color = "black60",
+  color = "mono60",
   ...otherFlexProps
 }: BulletedItemProps) => {
   return (

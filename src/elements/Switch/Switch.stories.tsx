@@ -58,7 +58,7 @@ export const Variants = () => {
           onValueChange={() => handleSwitchChange(4)}
           thumbColorActive="yellow100"
           trackColorActive="blue100"
-          thumbColorInactive="white100"
+          thumbColorInactive="mono0"
           trackColorInactive="red100"
         />
       </Flex>

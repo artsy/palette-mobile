@@ -29,7 +29,7 @@ export const TabV3 = ({ label, superscript, active, onLayout, onPress, style }: 
         >
           <Text
             fontSize={16}
-            color={active ? color("black100") : pressed ? color("blue100") : color("black60")}
+            color={active ? color("mono100") : pressed ? color("blue100") : color("mono60")}
             style={{
               textDecorationLine: pressed ? "underline" : "none",
             }}

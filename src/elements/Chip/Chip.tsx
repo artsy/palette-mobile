@@ -18,8 +18,8 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
   const space = useSpace()
 
   const animatedState = useAnimationState({
-    from: { backgroundColor: color("black10") },
-    to: { backgroundColor: color("black5") },
+    from: { backgroundColor: color("mono10") },
+    to: { backgroundColor: color("mono5") },
   })
 
   const handleOnPressIn = () => {
@@ -49,7 +49,7 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
           }}
         >
           {!!subtitle && (
-            <Text variant="xs" color="black60" selectable={false}>
+            <Text variant="xs" color="mono60" selectable={false}>
               {subtitle}
             </Text>
           )}

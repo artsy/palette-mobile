@@ -389,7 +389,7 @@ export const Input = forwardRef<InputRef, InputProps>(
             }}
           >
             {unit && (
-              <Text color={disabled ? "black30" : "black60"} variant="sm-display">
+              <Text color={disabled ? "mono30" : "mono60"} variant="sm-display">
                 {unit}
               </Text>
             )}
@@ -424,8 +424,8 @@ export const Input = forwardRef<InputRef, InputProps>(
                 selectComponentStyles,
               ]}
             >
-              <Text color={disabled ? "black30" : "black100"}>{selectDisplayLabel}</Text>
-              <TriangleDown fill="black60" width={10} />
+              <Text color={disabled ? "mono30" : "mono100"}>{selectDisplayLabel}</Text>
+              <TriangleDown fill="mono60" width={10} />
             </AnimatedFlex>
           </TouchableOpacity>
         )
@@ -455,7 +455,7 @@ export const Input = forwardRef<InputRef, InputProps>(
             height={INPUT_MIN_HEIGHT}
             ref={rightComponentRef}
           >
-            <Text color={disabled ? "black30" : "black60"}>{fixedRightPlaceholder}</Text>
+            <Text color={disabled ? "mono30" : "mono60"}>{fixedRightPlaceholder}</Text>
           </Flex>
         )
       }
@@ -475,7 +475,7 @@ export const Input = forwardRef<InputRef, InputProps>(
               style={{
                 right: 0,
                 width: 15,
-                backgroundColor: color("black60"),
+                backgroundColor: color("mono60"),
               }}
             />
           </Flex>
@@ -500,7 +500,7 @@ export const Input = forwardRef<InputRef, InputProps>(
               accessibilityLabel="Clear input button"
               testID="clear-input-button"
             >
-              <XCircleIcon fill="black30" />
+              <XCircleIcon fill="mono30" />
             </Touchable>
           </Flex>
         )
@@ -529,7 +529,7 @@ export const Input = forwardRef<InputRef, InputProps>(
               accessibilityLabel={showPassword ? "hide password button" : "show password button"}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
             >
-              {!showPassword ? <EyeClosedIcon fill="black30" /> : <EyeOpenedIcon fill="black60" />}
+              {!showPassword ? <EyeClosedIcon fill="mono30" /> : <EyeOpenedIcon fill="mono60" />}
             </Touchable>
           </Flex>
         )
@@ -561,7 +561,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       return (
         <Flex flexDirection="row" justifyContent="space-between">
           {!!props.required || !!props.optional ? (
-            <Text color="black60" variant="xs" pl={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+            <Text color="mono60" variant="xs" pl={`${HORIZONTAL_PADDING}px`} mt={0.5}>
               {!!props.required && "* Required"}
               {!!props.optional && "* Optional"}
             </Text>
@@ -570,7 +570,7 @@ export const Input = forwardRef<InputRef, InputProps>(
             <Flex />
           )}
           {!!props.maxLength && !!props.showLimit && (
-            <Text color="black60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
+            <Text color="mono60" variant="xs" pr={`${HORIZONTAL_PADDING}px`} mt={0.5}>
               {(value || "").length} / {props.maxLength}
             </Text>
           )}
@@ -600,7 +600,7 @@ export const Input = forwardRef<InputRef, InputProps>(
               left: 10,
             }}
           >
-            <Text underline variant="xs" color="black60">
+            <Text underline variant="xs" color="mono60">
               {hintText}
             </Text>
           </Touchable>
@@ -722,7 +722,7 @@ export const Input = forwardRef<InputRef, InputProps>(
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}
           ref={inputRef as RefObject<TextInput>}
-          placeholderTextColor={color("black60")}
+          placeholderTextColor={color("mono60")}
           placeholder={getPlaceholder()}
           defaultValue={defaultValue}
           secureTextEntry={!showPassword}

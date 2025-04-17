@@ -7,7 +7,7 @@ interface CreditCardIconProps extends IconProps {
   type?: CreditCardType
 }
 
-export const CreditCardIcon = ({ type, fill = "black100", ...restProps }: CreditCardIconProps) => {
+export const CreditCardIcon = ({ type, fill = "mono100", ...restProps }: CreditCardIconProps) => {
   const { parts } = cardTypeMap[type ?? "Unknown"] || cardTypeMap.Unknown
 
   return (

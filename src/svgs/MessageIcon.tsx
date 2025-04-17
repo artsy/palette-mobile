@@ -2,7 +2,7 @@ import { Path } from "react-native-svg"
 import { Icon, IconProps } from "./Icon"
 import { useColor } from "../utils/hooks"
 
-export const MessageIcon = ({ fill = "black100", ...restProps }: IconProps) => {
+export const MessageIcon = ({ fill = "mono100", ...restProps }: IconProps) => {
   const color = useColor()
   return (
     <Icon {...restProps} viewBox="0 0 18 18">

@@ -53,7 +53,7 @@ export const getSize = (props: SpinnerProps | BarProps) => {
  */
 export const Spinner: React.FC<SpinnerProps> = ({
   size = "medium",
-  color: theColor = "black100",
+  color: theColor = "mono100",
   ...rest
 }) => {
   const color = useColor()

@@ -90,9 +90,9 @@ export const Dialog = (props: DialogProps) => {
             width: "100%",
             maxHeight: "100%",
             opacity: value,
-            backgroundColor: color("white100"),
+            backgroundColor: color("mono0"),
             borderWidth: 1,
-            borderColor: color("black5"),
+            borderColor: color("mono5"),
             shadowColor: "rgba(0, 0, 0, 0.06)",
             shadowOffset: {
               height: 2,
@@ -110,7 +110,7 @@ export const Dialog = (props: DialogProps) => {
               alwaysBounceVertical={false}
               contentContainerStyle={{ paddingHorizontal: space(2) }}
             >
-              <Text testID="dialog-detail" variant="sm" color="black60">
+              <Text testID="dialog-detail" variant="sm" color="mono60">
                 {detail}
               </Text>
             </ScrollView>

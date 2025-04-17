@@ -40,7 +40,7 @@ export const Popover = ({
   const color = useColor()
 
   const DROP_SHADOW = {
-    shadowColor: color("black100"),
+    shadowColor: color("mono100"),
     shadowOffset: {
       width: 0,
       height: 2,
@@ -56,13 +56,13 @@ export const Popover = ({
     { backgroundColor: string; fill: Color; shadow?: ViewStyle }
   > = {
     light: {
-      backgroundColor: color("white100"),
-      fill: "black100",
+      backgroundColor: color("mono0"),
+      fill: "mono100",
       shadow: DROP_SHADOW,
     },
     dark: {
-      backgroundColor: color("black100"),
-      fill: "white100",
+      backgroundColor: color("mono100"),
+      fill: "mono0",
     },
   }
 
@@ -70,7 +70,7 @@ export const Popover = ({
 
   return (
     <RNPopover
-      backgroundStyle={{ opacity: 0.5, backgroundColor: color("black100") }}
+      backgroundStyle={{ opacity: 0.5, backgroundColor: color("mono100") }}
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}

@@ -94,7 +94,7 @@ export const Image: React.FC<ImageProps> = memo(
               style,
               // If we have a blurhash, we don't want to show a background color
               // That might flash before the image loads
-              { backgroundColor: blurhash ? "transparent" : color("black30") },
+              { backgroundColor: blurhash ? "transparent" : color("mono30") },
             ]}
             resizeMode={resizeMode}
             onLoadEnd={onAnimationEnd}
@@ -143,7 +143,7 @@ type ImageSkeletonProps = {
 const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash }) => {
   if (!!blurhash) {
     return (
-      <Flex position="absolute" backgroundColor="black10" {...dimensions}>
+      <Flex position="absolute" backgroundColor="mono10" {...dimensions}>
         <Blurhash blurhash={blurhash} style={{ flex: 1 }} decodeWidth={16} decodeHeight={16} />
       </Flex>
     )

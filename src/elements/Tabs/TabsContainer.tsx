@@ -68,7 +68,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
               style={{
                 height: TAB_BAR_HEIGHT,
                 borderBottomWidth: 1,
-                borderColor: color("black30"),
+                borderColor: color("mono30"),
               }}
               TabItemComponent={(props) => {
                 const Indicator = indicators.find((indicator) => {

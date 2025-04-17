@@ -21,7 +21,7 @@ const clamp = (num: number, min: number, max: number) => Math.max(min, Math.min(
 
 export const ProgressBar = ({
   animationDuration = 200,
-  backgroundColor = "black30",
+  backgroundColor = "mono30",
   height = 2,
   onCompletion,
   progress: unclampedProgress,

@@ -12,7 +12,7 @@ export const ShieldIcon = ({
   shieldColor = "onBackground",
   width = 22,
   height = 22,
-  fill = "black100",
+  fill = "mono100",
   ...restProps
 }: ShieldIconProps) => {
   const color = useColor()

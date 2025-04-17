@@ -25,7 +25,7 @@ export const States = () => {
         <LinkText
           textAlign="center"
           variant="xs"
-          color="white100"
+          color="mono0"
           onPress={() => console.log(`tapped`)}
         >
           Link

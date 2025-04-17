@@ -38,9 +38,9 @@ export const Switch = ({
   thumbColorActive = Platform.OS === "ios" ? "white" : "blue100",
   // Regardless of the color scheme, the thumb and track colors are always white
   // @ts-expect-error
-  thumbColorInactive = Platform.OS === "ios" ? "white" : "black10",
+  thumbColorInactive = Platform.OS === "ios" ? "white" : "mono10",
   trackColorActive = Platform.OS === "ios" ? "blue100" : "blue10",
-  trackColorInactive = "black30",
+  trackColorInactive = "mono30",
   disabled,
   ...restProps
 }: SwitchProps) => {
@@ -53,12 +53,12 @@ export const Switch = ({
   let iosBackground = color(trackColorInactive)
 
   if (disabled) {
-    thumbColor = Platform.OS === "ios" ? color("white100") : color("black30")
+    thumbColor = Platform.OS === "ios" ? color("mono0") : color("mono30")
     trackColor = {
-      false: color("black10"),
-      true: Platform.OS === "ios" ? color("black30") : color("black10"),
+      false: color("mono10"),
+      true: Platform.OS === "ios" ? color("mono30") : color("mono10"),
     }
-    iosBackground = color("black10")
+    iosBackground = color("mono10")
   }
 
   return (

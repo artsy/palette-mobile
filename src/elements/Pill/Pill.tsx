@@ -89,7 +89,7 @@ export const Pill: React.FC<PillProps> = ({
 
 const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
   align-items: center;
-  border: 1px solid ${themeGet("colors.black15")};
+  border: 1px solid ${themeGet("colors.mono15")};
   flex-direction: row;
   justify-content: center;
   text-align: center;
@@ -106,7 +106,7 @@ const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
 `
 
 const Thumbnail = styled(Image)`
-  background-color: ${themeGet("colors.black30")};
+  background-color: ${themeGet("colors.mono30")};
 `
 
 const PILL_STATES = {
@@ -120,8 +120,8 @@ const PILL_STATES = {
     background-color: ${themeGet("colors.blue100")};
   `,
   disabled: css`
-    background-color: ${themeGet("colors.black5")};
-    border-color: ${themeGet("colors.black5")};
+    background-color: ${themeGet("colors.mono5")};
+    border-color: ${themeGet("colors.mono5")};
   `,
 }
 
@@ -133,7 +133,7 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
       ${PILL_STATES.default}
       border-radius: 20px;
       height: 40px;
-      border-color: ${themeGet("colors.black60")};
+      border-color: ${themeGet("colors.mono60")};
     `,
   },
   dotted: {
@@ -144,8 +144,8 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
     `,
     selected: css`
       ${PILL_STATES.selected}
-      background-color: ${themeGet("colors.black10")};
-      border-color: ${themeGet("colors.black10")};
+      background-color: ${themeGet("colors.mono10")};
+      border-color: ${themeGet("colors.mono10")};
     `,
   },
   search: {
@@ -154,8 +154,8 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
   profile: {
     ...PILL_STATES,
     default: css`
-      background-color: ${themeGet("colors.black5")};
-      border-color: ${themeGet("colors.black5")};
+      background-color: ${themeGet("colors.mono5")};
+      border-color: ${themeGet("colors.mono5")};
       border-radius: 25px;
       height: 50px;
       padding: 0 ${themeGet("space.1")}};
@@ -187,44 +187,44 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
       padding: 0 ${themeGet("space.1")};
     `,
     disabled: css`
-      border-color: ${themeGet("colors.black60")};
+      border-color: ${themeGet("colors.mono60")};
     `,
   },
   link: {
     ...PILL_STATES,
     default: css`
       ${PILL_STATES.default}
-      border-color: ${themeGet("colors.black5")};
-      background-color: ${themeGet("colors.black5")};
+      border-color: ${themeGet("colors.mono5")};
+      background-color: ${themeGet("colors.mono5")};
     `,
   },
 }
 
 const defaultColors: Record<PillState, Color> = {
-  default: "black100",
-  selected: "white100",
-  disabled: "black60",
+  default: "mono100",
+  selected: "mono0",
+  disabled: "mono60",
 }
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
   onboarding: defaultColors,
   dotted: {
     ...defaultColors,
-    selected: "black100",
+    selected: "mono100",
   },
   search: defaultColors,
   profile: {
     ...defaultColors,
-    selected: "black100",
+    selected: "mono100",
   },
   badge: {
     default: "blue100",
-    selected: "white100",
+    selected: "mono0",
     disabled: "blue100",
   },
   filter: {
     ...defaultColors,
-    disabled: "black100",
+    disabled: "mono100",
   },
   link: defaultColors,
 }

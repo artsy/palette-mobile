@@ -14,7 +14,7 @@ storiesOf("Popover", module)
         <Popover
           visible={visible === "top-dark"}
           title={
-            <Text color="white100" variant="xs">
+            <Text color="mono0" variant="xs">
               Popover Top Dark
             </Text>
           }
@@ -28,7 +28,7 @@ storiesOf("Popover", module)
           visible={visible === "bottom-dark"}
           placement="bottom"
           title={
-            <Text color="white100" variant="xs">
+            <Text color="mono0" variant="xs">
               Popover Bottom Dark
             </Text>
           }
@@ -70,16 +70,16 @@ storiesOf("Popover", module)
         <Popover
           visible={visible === "title"}
           title={
-            <Text weight="medium" color="white100">
+            <Text weight="medium" color="mono0">
               Popover title
             </Text>
           }
           content={
             <>
-              <Text color="white100">
+              <Text color="mono0">
                 Popover descriptive text with some not so long long long body
               </Text>
-              <Text color="white100">And some line break</Text>
+              <Text color="mono0">And some line break</Text>
             </>
           }
           onDismiss={() => setVisible(null)}
@@ -96,7 +96,7 @@ storiesOf("Popover", module)
               <Text weight="medium" mb={1}>
                 Popover title
               </Text>
-              <Flex height={80} backgroundColor="black30" mb={1} />
+              <Flex height={80} backgroundColor="mono30" mb={1} />
               <Text mb={1}>Popover descriptive text</Text>
 
               <Flex flexDirection="row" justifyContent="flex-end">
@@ -124,7 +124,7 @@ storiesOf("Popover", module)
               <Text weight="medium" mb={1}>
                 Popover title?
               </Text>
-              <Flex height={80} backgroundColor="black30" mb={1} />
+              <Flex height={80} backgroundColor="mono30" mb={1} />
               <Text mb={1}>Popover descriptive text</Text>
 
               <Button size="small" onPress={() => setVisible(null)}>
@@ -143,15 +143,15 @@ storiesOf("Popover", module)
     const [topVisible, setTopVisible] = useState(true)
     const [bottomVisible, setBottomVisible] = useState(false)
     return (
-      <Flex flex={1} backgroundColor="black30" justifyContent="space-between" px={1}>
-        <Flex backgroundColor="white100" width={80} px={1}>
+      <Flex flex={1} backgroundColor="mono30" justifyContent="space-between" px={1}>
+        <Flex backgroundColor="mono0" width={80} px={1}>
           <Popover
             visible={topVisible}
             placement="bottom"
             onDismiss={() => setTopVisible(false)}
             onCloseComplete={() => setBottomVisible(true)}
             title={
-              <Text color="white100" variant="xs">
+              <Text color="mono0" variant="xs">
                 Top-Left
               </Text>
             }
@@ -160,12 +160,12 @@ storiesOf("Popover", module)
           </Popover>
         </Flex>
 
-        <Flex backgroundColor="white100" width={120} mb={6} alignSelf="flex-end" px={1}>
+        <Flex backgroundColor="mono0" width={120} mb={6} alignSelf="flex-end" px={1}>
           <Popover
             visible={bottomVisible}
             onDismiss={() => setBottomVisible(false)}
             title={
-              <Text color="white100" variant="xs">
+              <Text color="mono0" variant="xs">
                 Bottom-Right
               </Text>
             }

@@ -71,7 +71,7 @@ export const ToolTipFlyout: React.FC<Props> = ({
       <Animated.View
         style={[
           {
-            backgroundColor: color("black100"),
+            backgroundColor: color("mono100"),
             position: "absolute",
             alignSelf: "center",
             zIndex: 1000,
@@ -80,7 +80,7 @@ export const ToolTipFlyout: React.FC<Props> = ({
           animationStyle,
         ]}
       >
-        <Flex justifyContent="center" alignItems="center" bg="black100">
+        <Flex justifyContent="center" alignItems="center" bg="mono100">
           <ToolTipTextContainer text={text} />
         </Flex>
       </Animated.View>
@@ -94,7 +94,7 @@ export const ToolTipFlyout: React.FC<Props> = ({
 export const ToolTipTextContainer: React.FC<{ text?: string }> = ({ text }) => {
   const color = useColor()
   return (
-    <Text variant="xs" color={color("white100")} pb={0.5}>
+    <Text variant="xs" color={color("mono0")} pb={0.5}>
       {text}
     </Text>
   )

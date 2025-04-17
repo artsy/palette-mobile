@@ -20,11 +20,11 @@ export const MenuItem = ({
   value,
   onPress,
   disabled = false,
-  chevron = <ChevronIcon direction="right" fill="black60" />,
+  chevron = <ChevronIcon direction="right" fill="mono60" />,
 }: MenuItemProps) => {
   const color = useColor()
   return (
-    <Touchable onPress={onPress} underlayColor={color("black5")} disabled={disabled}>
+    <Touchable onPress={onPress} underlayColor={color("mono5")} disabled={disabled}>
       <Flex
         flexDirection="row"
         alignItems="center"
@@ -40,7 +40,7 @@ export const MenuItem = ({
         </Flex>
         {!!value && (
           <Flex flex={1}>
-            <Text variant="md" color="black60" numberOfLines={1} textAlign="right">
+            <Text variant="md" color="mono60" numberOfLines={1} textAlign="right">
               {value}
             </Text>
           </Flex>
@@ -48,7 +48,7 @@ export const MenuItem = ({
         {!!(onPress && chevron) && <Flex ml={1}>{chevron}</Flex>}
 
         {!!text && (
-          <Text variant="md" color={color("black60")}>
+          <Text variant="md" color={color("mono60")}>
             {text}
           </Text>
         )}

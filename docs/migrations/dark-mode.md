@@ -7,7 +7,7 @@ Before dark mode, our palette was two layers:
 - First layer is the raw color values.
   Things like `#000000` or `#1023D7`.
 - Second layer is the names of the colors.
-  Things like `black100` or `blue100`.
+  Things like `mono100` or `blue100`.
 
 With dark mode, we need to add a third layer:
 

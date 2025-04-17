@@ -17,7 +17,7 @@ export const TouchableHighlightColor = (props: TouchableHighlightColorProps) => 
   const {
     activeOpacity = 1,
     activeColor = "blue100",
-    normalColor = "black100",
+    normalColor = "mono100",
     onPressIn,
     onPressOut,
     render,

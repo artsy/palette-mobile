@@ -271,7 +271,7 @@ Thank you, Nikita Skalkin ([@nickskalkin](https://github.com/nickskalkin)), for 
 
 #### 🐛 Bug Fix
 
-- chore: use isTestEnvironment instead of __test__ [#294](https://github.com/artsy/palette-mobile/pull/294) ([@MounirDhahri](https://github.com/MounirDhahri))
+- chore: use isTestEnvironment instead of **test** [#294](https://github.com/artsy/palette-mobile/pull/294) ([@MounirDhahri](https://github.com/MounirDhahri))
 
 #### Authors: 1
 
@@ -2332,7 +2332,7 @@ Thank you, Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun)), for all you
 
 #### 🐛 Bug Fix
 
-- fix(touchable): underlayColor replace white100 to transparent [#110](https://github.com/artsy/palette-mobile/pull/110) ([@gkartalis](https://github.com/gkartalis))
+- fix(touchable): underlayColor replace mono0 to transparent [#110](https://github.com/artsy/palette-mobile/pull/110) ([@gkartalis](https://github.com/gkartalis))
 
 #### Authors: 1
 
@@ -2885,6 +2885,7 @@ Thank you, George Kartalis ([@gkartalis](https://github.com/gkartalis)), for all
 #### feat: less confusing name for darkmode support ([#59](https://github.com/artsy/palette-mobile/pull/59))
 
 Some renames:
+
 - `v5light` -> `v3light`
 - `v5dark` -> `v3dark`
 
@@ -2966,7 +2967,7 @@ Thank you, Kizito Egeonu ([@lordkiz](https://github.com/lordkiz)), for all your 
 
 # v8.2.0 (Mon Feb 13 2023)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: button spacing [#55](https://github.com/artsy/palette-mobile/pull/55) ([@pvinis](https://github.com/pvinis))
 - fix: Flex can now have ref without type errors [#54](https://github.com/artsy/palette-mobile/pull/54) ([@pvinis](https://github.com/pvinis))
@@ -2984,7 +2985,7 @@ Thank you, Kizito Egeonu ([@lordkiz](https://github.com/lordkiz)), for all your 
 
 # v8.2.0 (Mon Feb 13 2023)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: Flex can now have ref without type errors [#54](https://github.com/artsy/palette-mobile/pull/54) ([@pvinis](https://github.com/pvinis))
 - feat: typescript magic, allowing negative DS values, and 0 and auto [#53](https://github.com/artsy/palette-mobile/pull/53) ([@pvinis](https://github.com/pvinis))
@@ -3001,7 +3002,7 @@ Thank you, Kizito Egeonu ([@lordkiz](https://github.com/lordkiz)), for all your 
 
 # v8.2.0 (Fri Feb 10 2023)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: typescript magic, allowing negative DS values, and 0 and auto [#53](https://github.com/artsy/palette-mobile/pull/53) ([@pvinis](https://github.com/pvinis))
 
@@ -3074,6 +3075,7 @@ Thank you, Kizito Egeonu ([@lordkiz](https://github.com/lordkiz)), for all your 
 #### icons: added some, removed aliases ([#46](https://github.com/artsy/palette-mobile/pull/46))
 
 Added:
+
 - CloseCircleFillIcon
 - GuaranteeIcon
 - ImageIcon
@@ -3082,7 +3084,8 @@ Added:
 - StarCircleIcon
 - Tag2Icon
 
-Removed aliases: 
+Removed aliases:
+
 - ArtsyLogoIcon -> ArtsyLogoBlackIcon
 - ArtsyMarkIcon -> ArtsyMarkBlackIcon
 - CircleBlackCheckIcon -> CheckCircleFillIcon

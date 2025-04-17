@@ -9,21 +9,21 @@ export const RADIO_DOT_MODES: Record<RadioDotMode, { resting: FlexProps; selecte
   default: {
     resting: {
       borderWidth: INACTIVE_BORDER_WIDTH,
-      borderColor: "black30",
+      borderColor: "mono30",
     },
     selected: {
       borderWidth: ACTIVE_BORDER_WIDTH,
-      borderColor: "black100",
+      borderColor: "mono100",
     },
   },
   disabled: {
     resting: {
       borderWidth: INACTIVE_BORDER_WIDTH,
-      borderColor: "black10",
+      borderColor: "mono10",
     },
     selected: {
       borderWidth: ACTIVE_BORDER_WIDTH,
-      borderColor: "black10",
+      borderColor: "mono10",
     },
   },
   error: {
@@ -33,17 +33,17 @@ export const RADIO_DOT_MODES: Record<RadioDotMode, { resting: FlexProps; selecte
     },
     selected: {
       borderWidth: ACTIVE_BORDER_WIDTH,
-      borderColor: "black100",
+      borderColor: "mono100",
     },
   },
   hover: {
     resting: {
       borderWidth: INACTIVE_BORDER_WIDTH,
-      borderColor: "black10",
+      borderColor: "mono10",
     },
     selected: {
       borderWidth: INACTIVE_BORDER_WIDTH,
-      borderColor: "black100",
+      borderColor: "mono100",
     },
   },
 }

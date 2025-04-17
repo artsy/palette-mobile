@@ -32,19 +32,19 @@ const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Vari
   return {
     // Unfocused input with no value
     untouched: {
-      inputBorderColor: theme.colors.black30,
+      inputBorderColor: theme.colors.mono30,
       labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-      labelColor: theme.colors.black60,
+      labelColor: theme.colors.mono60,
       labelTop: EXPANDED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
     // Unfocused input with value
     touched: {
-      inputBorderColor: theme.colors.black60,
+      inputBorderColor: theme.colors.mono60,
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-      labelColor: theme.colors.black60,
+      labelColor: theme.colors.mono60,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
     // Focused input with or without value
     focused: {
@@ -52,7 +52,7 @@ const getDefaultVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Vari
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
       labelColor: theme.colors.blue100,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
   }
 }
@@ -65,7 +65,7 @@ const getErrorVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Varian
       labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
       labelColor: theme.colors.red100,
       labelTop: EXPANDED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
     // Unfocused error input with value
     touched: {
@@ -73,7 +73,7 @@ const getErrorVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Varian
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
       labelColor: theme.colors.red100,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
     // Focused error input with or without value
     focused: {
@@ -81,7 +81,7 @@ const getErrorVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Varian
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
       labelColor: theme.colors.red100,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black100,
+      inputTextColor: theme.colors.mono100,
     },
   }
 }
@@ -90,28 +90,28 @@ const getDisabledVariantStates = (theme: ThemeType | ThemeWithDarkModeType): Var
   return {
     // Unfocused disabled input with no value
     untouched: {
-      inputBorderColor: theme.colors.black30,
+      inputBorderColor: theme.colors.mono30,
       labelFontSize: parseInt(THEME.textVariants["sm-display"].fontSize, 10),
-      labelColor: theme.colors.black30,
+      labelColor: theme.colors.mono30,
       labelTop: EXPANDED_LABEL_TOP,
-      inputTextColor: theme.colors.black30,
+      inputTextColor: theme.colors.mono30,
     },
     // Unfocused disabled input with value
     touched: {
-      inputBorderColor: theme.colors.black30,
+      inputBorderColor: theme.colors.mono30,
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-      labelColor: theme.colors.black30,
+      labelColor: theme.colors.mono30,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black30,
+      inputTextColor: theme.colors.mono30,
     },
     // Focused disabled input with or without value
     // Adding this just to satisfy typescript because a disabled input can't be focused
     focused: {
-      inputBorderColor: theme.colors.black30,
+      inputBorderColor: theme.colors.mono30,
       labelFontSize: parseInt(THEME.textVariants.xs.fontSize, 10),
-      labelColor: theme.colors.black30,
+      labelColor: theme.colors.mono30,
       labelTop: SHRINKED_LABEL_TOP,
-      inputTextColor: theme.colors.black30,
+      inputTextColor: theme.colors.mono30,
     },
   }
 }

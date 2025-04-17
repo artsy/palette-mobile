@@ -20,7 +20,7 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
 }
 
 export const STICKY_BAR_HEIGHT = 42
-export const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="black5" />
+export const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="mono5" />
 export const BOTTOM_TABS_HEIGHT = 65
 
 export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
@@ -67,16 +67,16 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
         <Flex
           onLayout={(event) => handleLayout(event)}
           position="absolute"
-          backgroundColor="white100"
+          backgroundColor="mono0"
           zIndex={-1000}
           style={sharedStyles}
         >
           <Flex mb={1}>
-            <Text variant={largeTitle ? "xl" : "lg-display"} color="white100">
+            <Text variant={largeTitle ? "xl" : "lg-display"} color="mono0">
               {title}
             </Text>
             {!!subTitle && (
-              <Text variant="xs" mt={0.5} color="white100">
+              <Text variant="xs" mt={0.5} color="mono0">
                 {subTitle}
               </Text>
             )}
