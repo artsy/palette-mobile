@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.2.0.tgz#62a237ca3a058f1b91e5b8a12abebae0ddc5bd2f"
   integrity sha512-6zGlvqELl4XhqMajJxfgHaY3m5YhZK5FwkxlouJKSb0Su301bzXaPUxKjzj9X147YHJUyrRLSAruzVtj1Gr42Q==
 
-"@artsy/palette-tokens@7.0.0-canary.1433.31866.0":
-  version "7.0.0-canary.1433.31866.0"
-  resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-7.0.0-canary.1433.31866.0.tgz#86a917329f4d3293a23b7377ed1183962bef419c"
-  integrity sha512-tWWxD7fW+GqTD8JgBAGJMWyCKYvjIKfdSCuK3jD3x1cf/k+v5JHyhgxNm2j5ZpzTIcH5RanpC7cXpMwrKiUslg==
+"@artsy/palette-tokens@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-7.0.0.tgz#4c104f8504bb591e2b468f52d393c3da2573fbd7"
+  integrity sha512-psM2CZt/4d9YHTMM/jMu+ueZjjGlHcrq9E+FA5XZvl/UtlK0AwL1me3nxbIA8pXPsfOWfQ+PPLJumB8UKSYV1g==
 
 "@auto-it/all-contributors@10.46.0":
   version "10.46.0"
