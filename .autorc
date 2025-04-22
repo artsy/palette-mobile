@@ -1,8 +1,6 @@
 {
   "extends": "@artsy",
   "plugins": [
-    "npm",
-    "first-time-contributor",
-    "released"
+    "first-time-contributor"
   ]
 }
