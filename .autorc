@@ -1,11 +1,8 @@
 {
+  "extends": "@artsy",
   "plugins": [
     "npm",
     "first-time-contributor",
     "released"
-  ],
-  "author": {
-    "name": "Artsy",
-    "email": "it@artsymail.com"
-  }
+  ]
 }
