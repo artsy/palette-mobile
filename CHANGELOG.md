@@ -1,3 +1,15 @@
+# v15.0.0 (Tue Apr 22 2025)
+
+#### 💥  Breaking Change
+
+- chore: fix auto releases from labels [#332](https://github.com/artsy/palette-mobile/pull/332) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v14.0.45 (Tue Apr 22 2025)
 
 #### 🐛 Bug Fix
