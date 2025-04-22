@@ -1,3 +1,15 @@
+# v14.0.45 (Tue Apr 22 2025)
+
+#### 🐛 Bug Fix
+
+- chore: Update black/white to mono [#331](https://github.com/artsy/palette-mobile/pull/331) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v14.0.44 (Mon Apr 14 2025)
 
 #### 🐛 Bug Fix
