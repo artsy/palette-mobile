@@ -62,7 +62,7 @@ export const TabBarContainer = ({
             left: 0,
             right: 0,
             borderBottomWidth: 1,
-            borderBottomColor: color("black30"),
+            borderBottomColor: color("mono30"),
           }}
         />
         <View
@@ -126,7 +126,7 @@ export const ActiveTabBorder = ({
       style={{
         height: 1,
         width: preTransformSpan,
-        backgroundColor: color("black100"),
+        backgroundColor: color("mono100"),
         position: "absolute",
         bottom: 0,
         transform: [

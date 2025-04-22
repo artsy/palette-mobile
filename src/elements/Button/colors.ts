@@ -12,28 +12,28 @@ export const useColorsForVariantAndState = (): Record<
 
   return {
     fillDark: {
-      disabled: { bg: color("black30"), border: color("black30"), text: color("onPrimaryHigh") },
+      disabled: { bg: color("mono30"), border: color("mono30"), text: color("onPrimaryHigh") },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("onPrimaryHigh") },
       active: { bg: color("primary"), border: color("primary"), text: color("onPrimaryHigh") },
     },
     fillLight: {
-      disabled: { bg: color("black30"), border: color("black30"), text: color("onPrimaryHigh") },
+      disabled: { bg: color("mono30"), border: color("mono30"), text: color("onPrimaryHigh") },
       pressed: { bg: color("blue100"), border: color("blue100"), text: color("onPrimaryHigh") },
       active: {
-        bg: color("white100"),
-        border: color("white100"),
-        text: color("black100"),
+        bg: color("mono0"),
+        border: color("mono0"),
+        text: color("mono100"),
       },
     },
     fillGray: {
-      disabled: { bg: color("black30"), border: color("black30"), text: color("white100") },
-      pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
-      active: { bg: color("black10"), border: color("black10"), text: color("black100") },
+      disabled: { bg: color("mono30"), border: color("mono30"), text: color("mono0") },
+      pressed: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
+      active: { bg: color("mono10"), border: color("mono10"), text: color("mono100") },
     },
     fillSuccess: {
-      disabled: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
-      pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
-      active: { bg: color("blue10"), border: color("blue10"), text: color("white100") },
+      disabled: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
+      pressed: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
+      active: { bg: color("blue10"), border: color("blue10"), text: color("mono0") },
     },
     outline: {
       disabled: {
@@ -41,7 +41,7 @@ export const useColorsForVariantAndState = (): Record<
         border: color("onBackgroundLow"),
         text: color("onBackgroundLow"),
       },
-      pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
+      pressed: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
       active: {
         bg: color("background"),
         border: color("onBackgroundMedium"),
@@ -50,34 +50,34 @@ export const useColorsForVariantAndState = (): Record<
     },
     outlineGray: {
       disabled: {
-        bg: color("white100"),
-        border: color("black30"),
-        text: color("black30"),
+        bg: color("mono0"),
+        border: color("mono30"),
+        text: color("mono30"),
       },
-      pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
+      pressed: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
       active: {
-        bg: color("white100"),
-        border: color("black30"),
-        text: color("black100"),
+        bg: color("mono0"),
+        border: color("mono30"),
+        text: color("mono100"),
       },
     },
     outlineLight: {
       disabled: {
         bg: "rgba(0, 0, 0, 0)",
-        border: color("black30"),
-        text: color("black30"),
+        border: color("mono30"),
+        text: color("mono30"),
       },
-      pressed: { bg: color("blue100"), border: color("blue100"), text: color("white100") },
+      pressed: { bg: color("blue100"), border: color("blue100"), text: color("mono0") },
       active: {
         bg: "rgba(0, 0, 0, 0)",
-        border: color("white100"),
-        text: color("white100"),
+        border: color("mono0"),
+        text: color("mono0"),
       },
     },
     text: {
-      disabled: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("black30") },
-      pressed: { bg: color("black10"), border: color("black10"), text: color("blue100") },
-      active: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("black100") },
+      disabled: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("mono30") },
+      pressed: { bg: color("mono10"), border: color("mono10"), text: color("blue100") },
+      active: { bg: "rgba(0, 0, 0, 0)", border: "rgba(0, 0, 0, 0)", text: color("mono100") },
     },
   }
 }

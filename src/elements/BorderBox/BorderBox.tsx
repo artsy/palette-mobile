@@ -13,7 +13,7 @@ export interface BorderBoxProps extends FlexProps, BorderProps, SpaceProps<Spaci
  * and padding set by default
  */
 export const BorderBox = styled(Flex)<BorderBoxProps>`
-  border: 1px solid ${themeGet("colors.black10")};
+  border: 1px solid ${themeGet("colors.mono10")};
   border-radius: 2px;
   padding: ${themeGet("space.2")};
   ${border}

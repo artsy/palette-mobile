@@ -20,7 +20,7 @@ storiesOf("Screen", module)
         ))}
       </Screen.Body>
       <Screen.BottomView>
-        <Flex backgroundColor="black30" height={100} width="100%">
+        <Flex backgroundColor="mono30" height={100} width="100%">
           <Text>Footer</Text>
         </Flex>
       </Screen.BottomView>
@@ -87,7 +87,7 @@ storiesOf("Screen", module)
         ))}
       </Screen.Body>
       <Screen.BottomView>
-        <Flex backgroundColor="black30" height={100} width="100%">
+        <Flex backgroundColor="mono30" height={100} width="100%">
           <Text>Footer</Text>
         </Flex>
       </Screen.BottomView>
@@ -115,7 +115,7 @@ storiesOf("Screen", module)
       </Screen.Body>
 
       <Screen.BottomView>
-        <Flex backgroundColor="black30" height={100} width="100%">
+        <Flex backgroundColor="mono30" height={100} width="100%">
           <Text>Footer</Text>
         </Flex>
       </Screen.BottomView>
@@ -143,7 +143,7 @@ storiesOf("Screen", module)
       </Screen.Body>
 
       <Screen.BottomView>
-        <Flex backgroundColor="black30" height={100} width="100%">
+        <Flex backgroundColor="mono30" height={100} width="100%">
           <Text>Footer</Text>
         </Flex>
       </Screen.BottomView>
@@ -168,7 +168,7 @@ storiesOf("Screen", module)
       </Screen.Body>
 
       <Screen.BottomView>
-        <Flex backgroundColor="black30" height={100} width="100%">
+        <Flex backgroundColor="mono30" height={100} width="100%">
           <Text>Footer</Text>
         </Flex>
       </Screen.BottomView>

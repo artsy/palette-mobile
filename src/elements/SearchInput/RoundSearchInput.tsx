@@ -83,7 +83,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       fontFamily: theme.theme.fonts.sans.regular,
       fontSize: 16,
       lineHeight: 20,
-      color: color("black100"),
+      color: color("mono100"),
     }
   }, [color])
 
@@ -130,7 +130,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         paddingRight: CONTAINER_HORIZONTAL_PADDING,
         paddingLeft: 2 * CONTAINER_HORIZONTAL_PADDING + 16,
         borderRadius: SEARCH_INPUT_CONTAINER_BORDER_RADIUS,
-        backgroundColor: color("black5"),
+        backgroundColor: color("mono5"),
       }}
     >
       {renderAndroidPlaceholderMeasuringHack()}
@@ -148,7 +148,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         // anything above that would lead to an error
         maxLength={100}
         clearButtonMode="always"
-        placeholderTextColor={color("black60")}
+        placeholderTextColor={color("mono60")}
         onFocus={(e) => {
           setIsFocused(true)
           rest.onFocus?.(e)
@@ -175,9 +175,9 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
           haptic="impactLight"
         >
           {!isFocused ? (
-            <MagnifyingGlassIcon fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
+            <MagnifyingGlassIcon fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
           ) : (
-            <ArrowLeftIcon long fill="black60" width={ICON_SIZE} height={ICON_SIZE} />
+            <ArrowLeftIcon long fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
           )}
         </Touchable>
       </Flex>

@@ -42,7 +42,7 @@ export const Histogram = ({ bars, selectedRange }: HistogramProps) => {
           <Box
             key={`bar-${index}`}
             height={`${percent}%`}
-            bg={selected ? "blue100" : "black15"}
+            bg={selected ? "blue100" : "mono15"}
             width={BAR_WIDTH}
             borderTopLeftRadius={BAR_ROUNDNESS}
             borderTopRightRadius={BAR_ROUNDNESS}

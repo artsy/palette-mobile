@@ -5,7 +5,7 @@ interface ArrowLeftIconProps extends IconProps {
   long?: boolean
 }
 export const ArrowLeftIcon = ({
-  fill = "black100",
+  fill = "mono100",
   long = false,
   ...restProps
 }: ArrowLeftIconProps) => {

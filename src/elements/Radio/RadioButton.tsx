@@ -50,18 +50,18 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   const radioButtonSize = RADIOBUTTON_SIZE * fontScale
 
   const defaultRadioButtonStyle = {
-    backgroundColor: color("white100"),
-    borderColor: color("black30"),
+    backgroundColor: color("mono0"),
+    borderColor: color("mono30"),
   }
 
   const selectedRadioButtonStyle = {
-    backgroundColor: color("black100"),
-    borderColor: color("black100"),
+    backgroundColor: color("mono100"),
+    borderColor: color("mono100"),
   }
 
   const disabledRadioButtonStyle = {
-    backgroundColor: color("black5"),
-    borderColor: color("black10"),
+    backgroundColor: color("mono5"),
+    borderColor: color("mono10"),
   }
 
   const radioButtonStyles = {
@@ -70,7 +70,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
       selected: selectedRadioButtonStyle,
     },
     error: {
-      notSelected: { backgroundColor: color("white100"), borderColor: color("red100") },
+      notSelected: { backgroundColor: color("mono0"), borderColor: color("red100") },
       selected: selectedRadioButtonStyle,
     },
   }
@@ -79,8 +79,8 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
     ? disabledRadioButtonStyle
     : radioButtonStyles[error ? "error" : "default"][selected ? "selected" : "notSelected"]
 
-  const textColor = error ? color("red100") : disabled ? color("black30") : color("black100")
-  const subtitleColor = error ? color("red100") : color("black30")
+  const textColor = error ? color("red100") : disabled ? color("mono30") : color("mono100")
+  const subtitleColor = error ? color("red100") : color("mono30")
 
   const AnimatedDot = (
     <Flex mt="2px">
@@ -185,6 +185,6 @@ export const RadioDot = ({ size }: RadioDotProps) => {
 }
 
 export const DisabledDot = styled(RadioDot)`
-  border-bottom-color: ${themeGet("colors.black30")};
-  border-left-color: ${themeGet("colors.black30")};
+  border-bottom-color: ${themeGet("colors.mono30")};
+  border-left-color: ${themeGet("colors.mono30")};
 `

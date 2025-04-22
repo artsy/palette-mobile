@@ -51,15 +51,15 @@ const ColorSquare = ({ color: theColor, border }: { color: ColorDSValue; border?
 export const All = () => (
   <List>
     <Row>
-      <ColorSquare color="black100" border />
-      <ColorSquare color="black60" />
-      <ColorSquare color="black30" />
+      <ColorSquare color="mono100" border />
+      <ColorSquare color="mono60" />
+      <ColorSquare color="mono30" />
     </Row>
     <Row>
-      <ColorSquare color="black15" />
-      <ColorSquare color="black10" />
-      <ColorSquare color="black5" />
-      <ColorSquare color="white100" border />
+      <ColorSquare color="mono15" />
+      <ColorSquare color="mono10" />
+      <ColorSquare color="mono5" />
+      <ColorSquare color="mono0" border />
     </Row>
     <Row>
       <ColorSquare color="blue150" />

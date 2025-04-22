@@ -131,10 +131,10 @@ const colors: Record<
   { background: Color; title: Color; text: Color; icon?: Color }
 > = {
   default: {
-    background: "black5",
-    title: "black100",
-    text: "black60",
-    icon: "black100",
+    background: "mono5",
+    title: "mono100",
+    text: "mono60",
+    icon: "mono100",
   },
   info: {
     background: "blue10",
@@ -142,36 +142,36 @@ const colors: Record<
     // The text should be black regardless of the theme
     // @ts-expect-error
     text: "black",
-    icon: "black100",
+    icon: "mono100",
   },
   success: {
     background: "green10",
     title: "green150",
-    text: "black100",
-    icon: "black100",
+    text: "mono100",
+    icon: "mono100",
   },
   alert: {
     background: "orange10",
     title: "orange150",
-    text: "black100",
-    icon: "black100",
+    text: "mono100",
+    icon: "mono100",
   },
   warning: {
     background: "yellow10",
     title: "yellow150",
-    text: "black100",
-    icon: "black100",
+    text: "mono100",
+    icon: "mono100",
   },
   error: {
     background: "red10",
     title: "red100",
-    text: "black100",
-    icon: "black100",
+    text: "mono100",
+    icon: "mono100",
   },
   dark: {
-    background: "black100",
-    title: "white100",
-    text: "white100",
-    icon: "white100",
+    background: "mono100",
+    title: "mono0",
+    text: "mono0",
+    icon: "mono0",
   },
 }

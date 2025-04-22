@@ -9,7 +9,7 @@ interface SimpleMessageProps extends FlexProps {
 }
 
 const StyledFlex = styled(Flex)`
-  background-color: ${themeGet("colors.black5")};
+  background-color: ${themeGet("colors.mono5")};
   border-radius: 2px;
 `
 
@@ -23,7 +23,7 @@ export const SimpleMessage: React.FC<SimpleMessageProps> = ({
 }) => {
   return (
     <StyledFlex p={2} {...restProps}>
-      <Text color="black60" variant={textVariant}>
+      <Text color="mono60" variant={textVariant}>
         {children}
       </Text>
     </StyledFlex>

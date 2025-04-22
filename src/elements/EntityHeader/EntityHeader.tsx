@@ -50,7 +50,7 @@ export const EntityHeader = ({
     <Flex flexDirection="row" alignItems="center">
       <RNText ellipsizeMode="tail" numberOfLines={1}>
         <Text
-          color={theme === "light" ? "black100" : "white100"}
+          color={theme === "light" ? "mono100" : "mono0"}
           variant="sm"
           lineHeight="18px"
           style={{ flexShrink: 1 }}
@@ -64,7 +64,7 @@ export const EntityHeader = ({
           width={16}
           height={16}
           testID="lock-icon"
-          fill={theme === "light" ? "black100" : "white100"}
+          fill={theme === "light" ? "mono100" : "mono0"}
         />
       )}
     </Flex>
@@ -81,7 +81,7 @@ export const EntityHeader = ({
           ellipsizeMode="tail"
           numberOfLines={1}
           variant="xs"
-          color={theme === "light" ? "black60" : "white100"}
+          color={theme === "light" ? "mono60" : "mono0"}
           style={{ flexShrink: 1 }}
         >
           {meta}
@@ -99,7 +99,7 @@ export const EntityHeader = ({
             size={avatarSize}
             src={imageUrl}
             initials={initials}
-            color={theme === "light" ? "black100" : "white100"}
+            color={theme === "light" ? "mono100" : "mono0"}
           />
         </Flex>
       )}
@@ -108,7 +108,7 @@ export const EntityHeader = ({
         <Flex flexDirection="row" justifyContent="flex-start" flexGrow={1} alignItems="center">
           {headerName}
 
-          <Text variant="sm" ml="0.5" color={theme === "light" ? "black100" : "white100"}>
+          <Text variant="sm" ml="0.5" color={theme === "light" ? "mono100" : "mono0"}>
             {bullet}
           </Text>
 
