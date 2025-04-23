@@ -1,3 +1,15 @@
+# v17.1.0 (Wed Apr 23 2025)
+
+#### 🚀  Enhancement
+
+- fix: chevron icon component [#334](https://github.com/artsy/palette-mobile/pull/334) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v15.0.0 (Tue Apr 22 2025)
 
 #### 💥  Breaking Change
