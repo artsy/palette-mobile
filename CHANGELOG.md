@@ -1,3 +1,15 @@
+# v17.2.0 (Thu Apr 24 2025)
+
+#### 🚀  Enhancement
+
+- fix: Info message component contrast ratio [#335](https://github.com/artsy/palette-mobile/pull/335) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v17.1.0 (Wed Apr 23 2025)
 
 #### 🚀  Enhancement
