@@ -57,5 +57,6 @@ const color =
       return undefined
     }
 
-    return (theme.colors as { [key: string]: string })[colorName as Color]
+    // return the theme color or the string that was passed as a default (e.g., to support `white`).
+    return (theme.colors as { [key: string]: string })[colorName as Color] ?? colorName
   }
