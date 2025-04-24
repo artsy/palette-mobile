@@ -138,10 +138,8 @@ const colors: Record<
   },
   info: {
     background: "blue10",
-    title: "blue100",
-    // The text should be black regardless of the theme
-    // @ts-expect-error
-    text: "black",
+    title: "blue150",
+    text: "mono100",
     icon: "mono100",
   },
   success: {
