@@ -71,7 +71,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
           zIndex={-1000}
           style={sharedStyles}
         >
-          <Flex mb={1}>
+          <Flex mb={2}>
             <Text variant={largeTitle ? "xl" : "lg-display"} color="mono0">
               {title}
             </Text>
@@ -87,7 +87,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
 
       <Animated.View style={[sharedStyles, animatedStyles]}>
         {/* If we don't specify a height for the text, we will get text jumps as the parent component height changes  */}
-        <Flex style={{ height: stickyBarHeight }} mb={1}>
+        <Flex style={{ height: stickyBarHeight }} mb={2}>
           <Text variant={largeTitle ? "xl" : "lg-display"}>{title}</Text>
           {subTitle && (
             <Text variant="xs" mt={0.5}>
