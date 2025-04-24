@@ -1,3 +1,16 @@
+# v17.2.1 (Thu Apr 24 2025)
+
+#### 🐛  Bug Fix
+
+- chore: address review comment [#338](https://github.com/artsy/palette-mobile/pull/338) ([@MounirDhahri](https://github.com/MounirDhahri))
+- chore: support hard coded colours [#337](https://github.com/artsy/palette-mobile/pull/337) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.2.0 (Thu Apr 24 2025)
 
 #### 🚀  Enhancement
