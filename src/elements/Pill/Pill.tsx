@@ -202,7 +202,8 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
 
 const defaultColors: Record<PillState, Color> = {
   default: "mono100",
-  selected: "mono0",
+  // @ts-expect-error We want to set the color to white here regardless of the theme
+  selected: "white",
   disabled: "mono60",
 }
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
