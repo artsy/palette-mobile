@@ -1,3 +1,15 @@
+# v17.2.2 (Fri Apr 25 2025)
+
+#### 🐛  Bug Fix
+
+- fix: Set Pill selected text color to theme-independent white [#339](https://github.com/artsy/palette-mobile/pull/339) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v17.2.1 (Thu Apr 24 2025)
 
 #### 🐛  Bug Fix
