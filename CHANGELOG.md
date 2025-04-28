@@ -1,3 +1,15 @@
+# v17.4.1 (Mon Apr 28 2025)
+
+#### 🐛  Bug Fix
+
+- chore: increase spacing below subtitle title [#336](https://github.com/artsy/palette-mobile/pull/336) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.4.0 (Mon Apr 28 2025)
 
 #### 🚀  Enhancement
