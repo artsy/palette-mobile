@@ -2,6 +2,7 @@ import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
 import { useMemo } from "react"
+import { PixelRatio } from "react-native"
 import styled, { FlattenInterpolation, css } from "styled-components"
 import { CloseIcon } from "../../svgs"
 import { IconProps } from "../../svgs/Icon"
@@ -112,7 +113,7 @@ const Thumbnail = styled(Image)`
 const PILL_STATES = {
   default: css`
     border-radius: 15px;
-    height: 30px;
+    height: ${PixelRatio.getFontScale() * 30}px;
     padding: 0 15px;
   `,
   selected: css`
