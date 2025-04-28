@@ -28,14 +28,14 @@ interface PillTabItemProps extends TabItemProps<string> {
   focusedTab: { value: string }
 }
 
-const PillTabItem: React.FC<PillTabItemProps> = (props) => {
-  const [focusedTab, setFocusedTab] = useState(props.focusedTab.value)
+const PillTabItem: React.FC<PillTabItemProps> = ({ focusedTab: focusedTabProp, ...props }) => {
+  const [focusedTab, setFocusedTab] = useState(focusedTabProp.value)
 
   // We want to debounce the focusedTab value to avoid showing two pills at once
   const debouncedFocusedTab = debounce(setFocusedTab, 30)
 
   useAnimatedReaction(
-    () => props.focusedTab.value,
+    () => focusedTabProp.value,
     (value) => {
       runOnJS(debouncedFocusedTab)(value)
     }
@@ -70,7 +70,7 @@ const DefaultTabItem: React.FC<DefaultTabItemProps> = (props) => {
       <Flex position="absolute" width="100%">
         {!!Indicator?.Component && <Indicator.Component {...props} />}
       </Flex>
-      <MaterialTabItem pressOpacity={DEFAULT_ACTIVE_OPACITY} {...props} onPress={props.onPress} />
+      <MaterialTabItem pressOpacity={DEFAULT_ACTIVE_OPACITY} {...props} />
     </Box>
   )
 }
@@ -82,7 +82,7 @@ export interface TabsContainerProps extends CollapsibleProps {
   onTabPress?: (tabName: string) => void
   stickyTabBarComponent?: React.ReactNode
   tabScrollEnabled?: boolean
-  usePills?: boolean
+  variant?: "pills" | "tabs"
 }
 
 export const TabsContainer: React.FC<TabsContainerProps> = ({
@@ -93,7 +93,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
   renderHeader,
   stickyTabBarComponent,
   tabScrollEnabled = false,
-  usePills = false,
+  variant = "tabs",
   ...tabContainerProps
 }) => {
   const space = useSpace()
@@ -115,7 +115,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
         paddingTop: space(2),
       }}
       renderTabBar={(tabBarProps) => {
-        if (usePills) {
+        if (variant === "pills") {
           return (
             <Flex flexDirection="row" gap={2} alignItems="center" py={1}>
               <MaterialTabBar
