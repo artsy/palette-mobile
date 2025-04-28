@@ -1,3 +1,15 @@
+# v17.3.0 (Mon Apr 28 2025)
+
+#### 🚀  Enhancement
+
+- feat: support pill tabs [#340](https://github.com/artsy/palette-mobile/pull/340) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.2.2 (Fri Apr 25 2025)
 
 #### 🐛  Bug Fix
