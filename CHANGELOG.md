@@ -1,3 +1,15 @@
+# v17.4.0 (Mon Apr 28 2025)
+
+#### 🚀  Enhancement
+
+- chore: better accessibility for pills [#341](https://github.com/artsy/palette-mobile/pull/341) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.3.0 (Mon Apr 28 2025)
 
 #### 🚀  Enhancement
