@@ -1,7 +1,6 @@
 /**
- * All of the config for the Artsy theming system, based on the
- * design system from our design team:
- * https://www.figma.com/file/gZNkyqLT8AU3T61tluVJyB/Artsy-3.1-Design-System
+ * All of the config for the Artsy theming system are based on the
+ * on tokens from palette
  */
 
 import { THEME } from "@artsy/palette-tokens"
