@@ -1,8 +1,7 @@
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useMemo, useRef, useState } from "react"
-import { Platform, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
-import { backgroundColor } from "styled-system"
+import { PixelRatio, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
@@ -128,7 +127,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
       style={{
         height: SEARCH_INPUT_CONTAINER_HEIGHT,
         paddingRight: CONTAINER_HORIZONTAL_PADDING,
-        paddingLeft: 2 * CONTAINER_HORIZONTAL_PADDING + 16,
+        paddingLeft: 2 * CONTAINER_HORIZONTAL_PADDING + 16 * PixelRatio.getFontScale(),
         borderRadius: SEARCH_INPUT_CONTAINER_BORDER_RADIUS,
         backgroundColor: color("mono5"),
       }}
