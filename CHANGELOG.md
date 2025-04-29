@@ -1,3 +1,15 @@
+# v17.5.0 (Tue Apr 29 2025)
+
+#### 🚀  Enhancement
+
+- fix: accessibility issues on search input [#342](https://github.com/artsy/palette-mobile/pull/342) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.4.1 (Mon Apr 28 2025)
 
 #### 🐛  Bug Fix
