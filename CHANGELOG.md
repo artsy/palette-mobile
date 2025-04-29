@@ -1,3 +1,15 @@
+# v17.6.0 (Tue Apr 29 2025)
+
+#### 🚀  Enhancement
+
+- chore: remove figma link from palette [#343](https://github.com/artsy/palette-mobile/pull/343) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.5.0 (Tue Apr 29 2025)
 
 #### 🚀  Enhancement
