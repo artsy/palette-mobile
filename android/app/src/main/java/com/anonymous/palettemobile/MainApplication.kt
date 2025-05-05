@@ -28,7 +28,7 @@ class MainApplication : Application(), ReactApplication {
             return packages
           }
 
-          // override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
+          override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
 
           override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
 
