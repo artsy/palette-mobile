@@ -1,4 +1,10 @@
 {
   "name": "PaletteMobile",
-  "displayName": "Palette Mobile"
+  "displayName": "Palette Mobile",
+  "android": {
+    "package": "com.anonymous.palettemobile"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.palettemobile"
+  }
 }
