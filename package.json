@@ -38,6 +38,7 @@
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
+    "expo": "~52.0.0",
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
     "react-nanny": "^2.15.0",
