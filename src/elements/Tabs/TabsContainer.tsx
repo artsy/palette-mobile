@@ -32,7 +32,7 @@ const PillTabItem: React.FC<PillTabItemProps> = ({ focusedTab: focusedTabProp, .
   const [focusedTab, setFocusedTab] = useState(focusedTabProp.value)
 
   // We want to debounce the focusedTab value to avoid showing two pills at once
-  const debouncedFocusedTab = debounce(setFocusedTab, 30)
+  const debouncedFocusedTab = debounce(setFocusedTab, 50)
 
   useAnimatedReaction(
     () => focusedTabProp.value,
