@@ -1,3 +1,15 @@
+# v17.7.0 (Tue May 06 2025)
+
+#### 🚀  Enhancement
+
+- chore: increase debounce focued tab duration [#344](https://github.com/artsy/palette-mobile/pull/344) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.6.0 (Tue Apr 29 2025)
 
 #### 🚀  Enhancement
