@@ -67,7 +67,12 @@ export const ToolTipFlyout: React.FC<Props> = ({
   }
 
   return (
-    <TouchableWithoutFeedback onPress={onPress} testID={testID}>
+    <TouchableWithoutFeedback
+      accessibilityLabel="Tooltip"
+      accessibilityHint="Tap to dismiss"
+      onPress={onPress}
+      testID={testID}
+    >
       <Animated.View
         style={[
           {

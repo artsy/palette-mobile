@@ -165,6 +165,8 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         }}
       >
         <Touchable
+          accessibilityRole="button"
+          accessibilityLabel={`${isFocused ? "Back" : "Search"}`}
           onPress={() => {
             ref.current?.blur()
             setIsFocused(false)

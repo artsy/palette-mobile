@@ -83,8 +83,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const textColor = error ? color("red100") : disabled ? color("mono30") : color("mono100")
   const subtitleColor = error ? color("red100") : disabled ? color("mono30") : color("mono60")
 
+  // TODO: migrate away from using this checkbox implementation and
+  // use the one from the community solutions - reasoning - this is an inaccessible component
   return (
     <TouchableWithoutFeedback
+      accessibilityRole="checkbox"
       onPress={(event) => {
         if (disabled) {
           return

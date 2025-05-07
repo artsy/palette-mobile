@@ -140,7 +140,14 @@ const Left: React.FC<{
   return (
     <>
       {leftElements || (
-        <Touchable onPress={onBack} underlayColor="transparent" hitSlop={DEFAULT_HIT_SLOP}>
+        <Touchable
+          accessibilityRole="button"
+          accessibilityLabel="Back"
+          accessibilityHint="Navigates to the previous screen"
+          onPress={onBack}
+          underlayColor="transparent"
+          hitSlop={DEFAULT_HIT_SLOP}
+        >
           <ArrowLeftIcon fill="onBackgroundHigh" />
         </Touchable>
       )}

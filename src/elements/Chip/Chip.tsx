@@ -32,6 +32,8 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
 
   return (
     <Touchable
+      accessibilityRole="button"
+      accessibilityLabel={title}
       onPress={onPress}
       onPressIn={handleOnPressIn}
       onPressOut={handleOnPressOut}

@@ -105,6 +105,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
 
   return (
     <TouchableWithoutFeedback
+      accessibilityRole="radio"
       accessibilityState={accessibilityState}
       onPress={(event) => {
         if (disabled) {

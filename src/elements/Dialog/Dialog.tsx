@@ -69,7 +69,13 @@ export const Dialog = (props: DialogProps) => {
   return (
     <Modal {...other} visible={visible} statusBarTranslucent transparent animationType="none">
       {!!onBackgroundPress ? (
-        <TouchableWithoutFeedback testID="dialog-backdrop" onPress={onBackgroundPress}>
+        <TouchableWithoutFeedback
+          accessibilityRole="button"
+          accessibilityLabel="Dismiss"
+          accessibilityHint="Dismisses the dialog"
+          testID="dialog-backdrop"
+          onPress={onBackgroundPress}
+        >
           {backdrop}
         </TouchableWithoutFeedback>
       ) : (

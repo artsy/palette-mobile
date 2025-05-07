@@ -46,6 +46,7 @@ export const Banner = ({
 
   return (
     <Animated.View
+      accessibilityLabel="Banner"
       style={{
         height: tempHeight,
         transform: [
@@ -73,6 +74,9 @@ export const Banner = ({
           {!!dismissable && (
             <Flex>
               <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityLabel="Close"
+                accessibilityHint="Dismiss banner"
                 testID="banner-close-button"
                 onPress={handleClose}
                 hitSlop={DEFAULT_HIT_SLOP}

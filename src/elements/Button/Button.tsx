@@ -147,6 +147,11 @@ export const Button: React.FC<ButtonProps> = ({
     <Spring native to={to} config={config.stiff}>
       {(springProps: typeof to) => (
         <Pressable
+          accessibilityLabel={rest.accessibilityLabel}
+          accessibilityRole="button"
+          accessibilityState={{
+            disabled,
+          }}
           hitSlop={hitSlop}
           testOnly_pressed={testOnly_state === DisplayState.Pressed}
           disabled={testOnly_state === DisplayState.Disabled || disabled}
