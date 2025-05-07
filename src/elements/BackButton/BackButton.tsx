@@ -47,7 +47,13 @@ export const BackButtonWithBackground: React.FC<BackButtonProps> = ({
   style,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} hitSlop={hitSlop}>
+    <TouchableOpacity
+      accessibilityRole="button"
+      accessibilityLabel={showX ? "Close" : "Back"}
+      accessibilityHint={showX ? "Closes the modal" : "Navigates to the previous screen"}
+      onPress={onPress}
+      hitSlop={hitSlop}
+    >
       <Flex
         backgroundColor="background"
         width={40}

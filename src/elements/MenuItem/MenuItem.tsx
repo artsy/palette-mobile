@@ -24,7 +24,14 @@ export const MenuItem = ({
 }: MenuItemProps) => {
   const color = useColor()
   return (
-    <Touchable onPress={onPress} underlayColor={color("mono5")} disabled={disabled}>
+    <Touchable
+      accessibilityRole="button"
+      accessibilityState={{ disabled }}
+      accessibilityLabel="Menu item ${title}"
+      onPress={onPress}
+      underlayColor={color("mono5")}
+      disabled={disabled}
+    >
       <Flex
         flexDirection="row"
         alignItems="center"

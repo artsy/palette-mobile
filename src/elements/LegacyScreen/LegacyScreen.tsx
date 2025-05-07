@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ onBack, title, onSkip }) => {
       </Flex>
       {!!title && <Text>{title}</Text>}
       {!!onSkip && (
-        <Touchable haptic="impactLight" onPress={onSkip}>
+        <Touchable accessibilityRole="button" haptic="impactLight" onPress={onSkip}>
           <Flex height="100%" justifyContent="center">
             <Text textAlign="right" variant="xs">
               Skip

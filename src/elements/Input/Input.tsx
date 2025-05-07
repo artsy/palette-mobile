@@ -401,6 +401,7 @@ export const Input = forwardRef<InputRef, InputProps>(
       if (onSelectTap) {
         return (
           <TouchableOpacity
+            accessibilityRole="button"
             onPress={onSelectTap}
             style={[
               leftComponentSharedStyles,
@@ -497,7 +498,9 @@ export const Input = forwardRef<InputRef, InputProps>(
               haptic="impactMedium"
               onPress={handleClear}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
-              accessibilityLabel="Clear input button"
+              accessibilityRole="button"
+              accessibilityHint="Clears the input"
+              accessibilityLabel="Clear"
               testID="clear-input-button"
             >
               <XCircleIcon fill="mono30" />
@@ -526,7 +529,9 @@ export const Input = forwardRef<InputRef, InputProps>(
                 })
                 setShowPassword(!showPassword)
               }}
-              accessibilityLabel={showPassword ? "hide password button" : "show password button"}
+              accessibilityRole="button"
+              accessibilityLabel={showPassword ? "hide password icon" : "show password icon"}
+              accessibilityHint={showPassword ? "Hides the password" : "Shows the password"}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
             >
               {!showPassword ? <EyeClosedIcon fill="mono30" /> : <EyeOpenedIcon fill="mono60" />}
@@ -591,6 +596,8 @@ export const Input = forwardRef<InputRef, InputProps>(
           }}
         >
           <Touchable
+            accessibilityRole="button"
+            accessibilityHint="hint"
             onPress={props.onHintPress}
             haptic="impactLight"
             hitSlop={{
@@ -656,7 +663,11 @@ export const Input = forwardRef<InputRef, InputProps>(
 
       return (
         <Flex flexDirection="row" zIndex={100} pointerEvents="none" height={LABEL_HEIGHT}>
-          <AnimatedText style={[labelStyles, labelAnimatedStyles]} numberOfLines={1}>
+          <AnimatedText
+            style={[labelStyles, labelAnimatedStyles]}
+            numberOfLines={1}
+            accessibilityLabel="input label"
+          >
             {" "}
             {props.title}{" "}
           </AnimatedText>

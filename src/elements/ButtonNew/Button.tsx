@@ -174,6 +174,11 @@ export const Button = ({
 
   return (
     <Pressable
+      accessibilityLabel={restProps.accessibilityLabel}
+      accessibilityRole="button"
+      accessibilityState={{
+        disabled,
+      }}
       disabled={disabled}
       onPressIn={() => {
         if (loading) {

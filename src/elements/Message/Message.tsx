@@ -106,6 +106,8 @@ export const Message: React.FC<MessageProps> = ({
           {!!showCloseButton && (
             <Flex style={{ marginTop: 2 }}>
               <TouchableOpacity
+                accessibilityRole="button"
+                accessibilityHint="Dismiss message"
                 testID="Message-close-button"
                 onPress={handleClose}
                 hitSlop={{ bottom: 10, right: 10, left: 10, top: 10 }}
