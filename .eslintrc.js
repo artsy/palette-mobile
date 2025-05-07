@@ -106,10 +106,5 @@ module.exports = {
       files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       extends: ["plugin:testing-library/react"],
     },
-    {
-      // a11y plugin should ignore stories files
-      files: ["*.stories.*"],
-      extends: ["plugin:react-native-a11y/basic"],
-    },
   ],
 }
