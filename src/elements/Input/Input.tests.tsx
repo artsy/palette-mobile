@@ -36,9 +36,9 @@ describe("Input", () => {
 
     fireEvent(screen.getByTestId(testID), "onChangeText", "Banksy")
 
-    await screen.findByLabelText("Clear input button")
+    await screen.findByLabelText("Clear")
 
-    fireEvent.press(screen.getByLabelText("Clear input button"))
+    fireEvent.press(screen.getByLabelText("Clear"))
 
     expect(screen.queryByDisplayValue("Banksy")).toBeFalsy()
   })
@@ -48,19 +48,19 @@ describe("Input", () => {
 
     screen.getByPlaceholderText("password")
 
-    screen.getByLabelText("show password button")
+    screen.getByLabelText("show password icon")
 
     fireEvent(screen.getByPlaceholderText("password"), "onChangeText", "123456")
 
-    fireEvent.press(screen.getByLabelText("show password button"))
+    fireEvent.press(screen.getByLabelText("show password icon"))
 
-    expect(screen.queryByLabelText("show password button")).toBeFalsy()
-    screen.getByLabelText("hide password button")
+    expect(screen.queryByLabelText("show password icon")).toBeFalsy()
+    screen.getByLabelText("hide password icon")
 
-    fireEvent.press(screen.getByLabelText("hide password button"))
+    fireEvent.press(screen.getByLabelText("hide password icon"))
 
-    expect(screen.queryByLabelText("hide password button")).toBeFalsy()
-    screen.getByLabelText("show password button")
+    expect(screen.queryByLabelText("hide password icon")).toBeFalsy()
+    screen.getByLabelText("show password icon")
   })
 
   it("enables scrolling when multiline is true", () => {
