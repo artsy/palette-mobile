@@ -7,6 +7,7 @@ module.exports = {
   plugins: ["@typescript-eslint", "jest", "react-hooks", "testing-library"],
   extends: [
     "@react-native",
+    "plugin:react-native-a11y/basic",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:@typescript-eslint/recommended",
@@ -97,6 +98,7 @@ module.exports = {
     "no-useless-escape": OFF,
     "react-native/no-inline-styles": OFF,
     "react/react-in-jsx-scope": OFF,
+    "react-native-a11y/has-accessibility-hint": OFF,
   },
   overrides: [
     {

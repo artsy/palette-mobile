@@ -11,10 +11,10 @@ export default {
 
 export const Examples = () => (
   <List>
-    <Touchable>
+    <Touchable accessibilityRole="button">
       <Text>This is a text wrapped in a `Touchable`.</Text>
     </Touchable>
-    <Touchable>
+    <Touchable accessibilityRole="button">
       <Flex width={200} alignItems="center" borderColor="red" borderWidth={1}>
         <TrashIcon />
         <Text>This is a cell with an icon and a text, wrapped in a `Touchable`.</Text>

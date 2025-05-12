@@ -70,6 +70,10 @@ export const CollapsibleMenuItem = forwardRef<
     return (
       <Flex ref={componentRef} collapsable={false}>
         <Touchable
+          accessibilityRole="button"
+          accessibilityLabel="Collapsible Element"
+          accessibilityState={{ disabled }}
+          accessibilityHint={"Tap to " + (isOpen ? "collapse" : "expand")}
           onPress={() => {
             setIsOpen(!isOpen)
             isOpen ? onCollapse?.() : onExpand?.()

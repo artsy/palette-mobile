@@ -14,7 +14,7 @@ export interface TabV3Props {
 export const TabV3 = ({ label, superscript, active, onLayout, onPress, style }: TabV3Props) => {
   const color = useColor()
   return (
-    <Pressable onPress={onPress}>
+    <Pressable accessibilityRole="button" onPress={onPress}>
       {({ pressed }) => (
         <View
           onLayout={onLayout}
