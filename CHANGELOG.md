@@ -1,3 +1,15 @@
+# v17.8.0 (Mon May 12 2025)
+
+#### 🚀  Enhancement
+
+- feat: add accessibility roles and labels to various components for improved a11y [#345](https://github.com/artsy/palette-mobile/pull/345) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.7.0 (Tue May 06 2025)
 
 #### 🚀  Enhancement
