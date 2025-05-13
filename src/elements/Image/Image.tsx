@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react"
 import { PixelRatio, View } from "react-native"
 import { Blurhash } from "react-native-blurhash"
-import FastImage, { FastImageProps } from "react-native-fast-image"
+import FastImage, { FastImageProps, Priority } from "react-native-fast-image"
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -33,6 +33,8 @@ export interface ImageProps extends CustomFastImageProps {
   showLoadingState?: boolean
   /** Source url to the image  */
   src: string
+  /** FastImage source.priority */
+  srcPriority?: Priority
 }
 
 export const Image: React.FC<ImageProps> = memo(
@@ -47,6 +49,7 @@ export const Image: React.FC<ImageProps> = memo(
     geminiResizeMode,
     showLoadingState = false,
     blurhash,
+    srcPriority = "normal",
     ...flexProps
   }) => {
     const loading = useSharedValue(true)
@@ -99,7 +102,7 @@ export const Image: React.FC<ImageProps> = memo(
             resizeMode={resizeMode}
             onLoadEnd={onAnimationEnd}
             source={{
-              priority: FastImage.priority.normal,
+              priority: srcPriority,
               uri,
             }}
           />
