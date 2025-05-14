@@ -1,3 +1,15 @@
+# v17.9.0 (Wed May 14 2025)
+
+#### 🚀  Enhancement
+
+- feat(a11y): improve checkbox, radiobutton, linkText a11y [#346](https://github.com/artsy/palette-mobile/pull/346) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.8.0 (Mon May 12 2025)
 
 #### 🚀  Enhancement
