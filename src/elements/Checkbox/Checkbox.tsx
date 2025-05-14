@@ -1,13 +1,6 @@
 import { themeGet } from "@styled-system/theme-get"
 import { useState } from "react"
-import {
-  AccessibilityProps,
-  Insets,
-  PixelRatio,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps,
-} from "react-native"
+import { Insets, PixelRatio, Pressable, StyleSheet, TouchableOpacityProps } from "react-native"
 import styled from "styled-components/native"
 import { CssTransition } from "../../animation/CssTransition"
 import { useTheme } from "../../utils/hooks/useTheme"
@@ -18,18 +11,18 @@ import { Text } from "../Text"
 const CHECKBOX_SIZE = 20
 const DURATION = 250
 
-export interface CheckboxProps
-  extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
-    Omit<FlexProps, "hitSlop"> {
-  hitSlop?: Insets
-  checked?: boolean
-  disabled?: boolean
-  error?: boolean
-  text?: React.ReactElement | string
-  subtitle?: React.ReactElement | string
-  children?: React.ReactElement | string
-  checkboxAccessibilityProps?: AccessibilityProps
-}
+type CheckboxProps = Omit<TouchableOpacityProps, "hitSlop"> &
+  Omit<FlexProps, "hitSlop"> & {
+    hitSlop?: Insets
+    checked?: boolean
+    disabled?: boolean
+    error?: boolean
+    text?: React.ReactElement | string
+    subtitle?: React.ReactElement | string
+    children?: React.ReactElement | string
+    accessibilityLabel?: string
+    accessibilityHint?: string
+  }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
   checked: checkedProp,
@@ -39,7 +32,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   text,
   subtitle,
   children,
-  checkboxAccessibilityProps,
+  accessibilityLabel,
+  accessibilityHint,
   ...restProps
 }) => {
   const { color, space } = useTheme()
@@ -83,11 +77,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const textColor = error ? color("red100") : disabled ? color("mono30") : color("mono100")
   const subtitleColor = error ? color("red100") : disabled ? color("mono30") : color("mono60")
 
-  // TODO: migrate away from using this checkbox implementation and
-  // use the one from the community solutions - reasoning - this is an inaccessible component
   return (
-    <TouchableWithoutFeedback
+    <Pressable
       accessibilityRole="checkbox"
+      accessibilityState={{ checked: isChecked, disabled }}
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
       onPress={(event) => {
         if (disabled) {
           return
@@ -99,7 +94,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     >
       <Flex flex={1} {...restProps}>
         <Flex flexDirection="row">
-          <Flex mt="2px" {...checkboxAccessibilityProps}>
+          <Flex mt="2px">
             <CssTransition
               style={[
                 styles(fontScale).container,
@@ -136,7 +131,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           </Flex>
         )}
       </Flex>
-    </TouchableWithoutFeedback>
+    </Pressable>
   )
 }
 
