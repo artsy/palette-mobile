@@ -21,6 +21,7 @@ export interface RadioButtonProps
   extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
     Omit<FlexProps, "hitSlop"> {
   accessibilityState?: { checked: boolean }
+  accessibilityLabel?: string
   block?: boolean
   disabled?: boolean
   error?: boolean
@@ -34,6 +35,7 @@ export interface RadioButtonProps
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
   accessibilityState,
+  accessibilityLabel,
   block,
   disabled,
   error,
@@ -106,6 +108,7 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
   return (
     <TouchableWithoutFeedback
       accessibilityRole="radio"
+      accessibilityLabel={accessibilityLabel}
       accessibilityState={accessibilityState}
       onPress={(event) => {
         if (disabled) {
