@@ -1,6 +1,12 @@
 import { themeGet } from "@styled-system/theme-get"
 import { useState } from "react"
-import { Insets, PixelRatio, Pressable, StyleSheet, TouchableOpacityProps } from "react-native"
+import {
+  Insets,
+  PixelRatio,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
+} from "react-native"
 import styled from "styled-components/native"
 import { CssTransition } from "../../animation/CssTransition"
 import { useTheme } from "../../utils/hooks/useTheme"
@@ -11,7 +17,7 @@ import { Text } from "../Text"
 const CHECKBOX_SIZE = 20
 const DURATION = 250
 
-type CheckboxProps = Omit<TouchableOpacityProps, "hitSlop"> &
+type CheckboxProps = Omit<TouchableWithoutFeedbackProps, "hitSlop"> &
   Omit<FlexProps, "hitSlop"> & {
     hitSlop?: Insets
     checked?: boolean
@@ -78,7 +84,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const subtitleColor = error ? color("red100") : disabled ? color("mono30") : color("mono60")
 
   return (
-    <Pressable
+    <TouchableWithoutFeedback
       accessibilityRole="checkbox"
       accessibilityState={{ checked: isChecked, disabled }}
       accessibilityLabel={accessibilityLabel}
@@ -131,7 +137,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           </Flex>
         )}
       </Flex>
-    </Pressable>
+    </TouchableWithoutFeedback>
   )
 }
 
