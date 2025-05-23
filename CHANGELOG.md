@@ -1,3 +1,15 @@
+# v17.10.0 (Fri May 23 2025)
+
+#### 🚀  Enhancement
+
+- fix: checkbox issue with children [#347](https://github.com/artsy/palette-mobile/pull/347) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.9.0 (Wed May 14 2025)
 
 #### 🚀  Enhancement
