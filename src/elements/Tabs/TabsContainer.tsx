@@ -1,14 +1,12 @@
-import { debounce } from "lodash"
 import { useState } from "react"
 import { Platform } from "react-native"
 import {
   Tabs as BaseTabs,
-  MaterialTabBar,
   CollapsibleProps,
+  MaterialTabBar,
   MaterialTabItem,
   TabItemProps,
 } from "react-native-collapsible-tab-view"
-import { runOnJS, useAnimatedReaction } from "react-native-reanimated"
 import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
@@ -25,22 +23,10 @@ interface Indicator {
 
 interface PillTabItemProps extends TabItemProps<string> {
   onTabPress?: (tabName: string) => void
-  focusedTab: { value: string }
+  focusedTab: string
 }
 
-const PillTabItem: React.FC<PillTabItemProps> = ({ focusedTab: focusedTabProp, ...props }) => {
-  const [focusedTab, setFocusedTab] = useState(focusedTabProp.value)
-
-  // We want to debounce the focusedTab value to avoid showing two pills at once
-  const debouncedFocusedTab = debounce(setFocusedTab, 50)
-
-  useAnimatedReaction(
-    () => focusedTabProp.value,
-    (value) => {
-      runOnJS(debouncedFocusedTab)(value)
-    }
-  )
-
+const PillTabItem: React.FC<PillTabItemProps> = ({ focusedTab, ...props }) => {
   return (
     <Pill
       selected={props.name === focusedTab}
@@ -98,6 +84,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
 }) => {
   const space = useSpace()
   const color = useColor()
+  const [focusedTabState, setFocusedTabState] = useState(initialTabName)
 
   const isIOS = Platform.OS === "ios"
 
@@ -127,8 +114,9 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                     onTabPress={(tab) => {
                       onTabPress?.(tab)
                       tabBarProps.onTabPress(tab)
+                      setFocusedTabState(tab)
                     }}
-                    focusedTab={tabBarProps.focusedTab}
+                    focusedTab={focusedTabState || tabBarProps.focusedTab.value}
                   />
                 )}
                 indicatorStyle={{
