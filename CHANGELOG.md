@@ -1,3 +1,15 @@
+# v17.11.0 (Mon May 26 2025)
+
+#### 🚀  Enhancement
+
+- fix: show only selected tab instead of tab transition [#348](https://github.com/artsy/palette-mobile/pull/348) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.10.0 (Fri May 23 2025)
 
 #### 🚀  Enhancement
