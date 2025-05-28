@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
+import { ComponentType, useEffect, useState } from "react"
+import { GestureResponderEvent, Pressable, PressableProps } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
   interpolateColor,
@@ -63,6 +63,9 @@ export interface ButtonProps extends BoxProps {
 
   /** Used only for tests and stories */
   testOnly_pressed?: PressableProps["testOnly_pressed"]
+
+  /** Custom component to use as the pressable wrapper */
+  as?: ComponentType<PressableProps>
 }
 
 export const Button = ({
@@ -80,6 +83,7 @@ export const Button = ({
   testOnly_pressed,
   testID,
   hitSlop,
+  as: Component = Pressable,
   ...restProps
 }: ButtonProps) => {
   const [disabled, setDisabled, disabledV] = useStateWithProp(!!disabledProp)
@@ -173,7 +177,7 @@ export const Button = ({
   })
 
   return (
-    <Pressable
+    <Component
       accessibilityLabel={restProps.accessibilityLabel}
       accessibilityRole="button"
       accessibilityState={{
@@ -262,7 +266,7 @@ export const Button = ({
           </AFlex>
         </Flex>
       </Flex>
-    </Pressable>
+    </Component>
   )
 }
 
