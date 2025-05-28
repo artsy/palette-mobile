@@ -1,3 +1,15 @@
+# v17.12.0 (Wed May 28 2025)
+
+#### 🚀  Enhancement
+
+- chore: Add CLAUDE config [#349](https://github.com/artsy/palette-mobile/pull/349) ([@olerichter00](https://github.com/olerichter00))
+
+#### Authors: 1
+
+- Ole ([@olerichter00](https://github.com/olerichter00))
+
+---
+
 # v17.11.0 (Mon May 26 2025)
 
 #### 🚀  Enhancement
