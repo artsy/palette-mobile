@@ -20,7 +20,7 @@ const DURATION = 150
 export interface RadioButtonProps
   extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
     Omit<FlexProps, "hitSlop"> {
-  accessibilityState?: { checked: boolean }
+  accessibilityState?: { checked?: boolean; selected?: boolean }
   accessibilityLabel?: string
   block?: boolean
   disabled?: boolean
