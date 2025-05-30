@@ -1,3 +1,15 @@
+# v17.13.0 (Fri May 30 2025)
+
+#### 🚀  Enhancement
+
+- feat: add selected a11y state to radioButton [#351](https://github.com/artsy/palette-mobile/pull/351) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.12.0 (Wed May 28 2025)
 
 #### 🚀  Enhancement
