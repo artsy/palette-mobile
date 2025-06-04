@@ -1,5 +1,5 @@
-import { useAnimationState, View } from "moti"
-import { FC } from "react"
+import { View } from "moti"
+import { FC, useState } from "react"
 import { useColor, useSpace } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Image } from "../Image"
@@ -17,17 +17,17 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
   const color = useColor()
   const space = useSpace()
 
-  const animatedState = useAnimationState({
-    from: { backgroundColor: color("mono10") },
-    to: { backgroundColor: color("mono5") },
-  })
+  const [isPressed, setIsPressed] = useState(false)
+
+  const FROM_COLOR = color("mono10")
+  const TO_COLOR = color("mono5")
 
   const handleOnPressIn = () => {
-    animatedState.transitionTo("from")
+    setIsPressed(true)
   }
 
   const handleOnPressOut = () => {
-    animatedState.transitionTo("to")
+    setIsPressed(false)
   }
 
   return (
@@ -43,7 +43,9 @@ export const Chip: FC<ChipProps> = ({ image, title, subtitle, onPress }) => {
         {!!image && <Image src={image} width={70} height={70} />}
 
         <View
-          state={animatedState}
+          animate={{
+            backgroundColor: !isPressed ? TO_COLOR : FROM_COLOR,
+          }}
           style={{
             flex: 1,
             padding: space(1),
