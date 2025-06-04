@@ -1,3 +1,15 @@
+# v17.14.0 (Wed Jun 04 2025)
+
+#### 🚀  Enhancement
+
+- fix: dark mode issues on Chip [#352](https://github.com/artsy/palette-mobile/pull/352) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.13.0 (Fri May 30 2025)
 
 #### 🚀  Enhancement
