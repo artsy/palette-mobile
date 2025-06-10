@@ -1,3 +1,15 @@
+# v17.15.0 (Tue Jun 10 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump safe area view [#353](https://github.com/artsy/palette-mobile/pull/353) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.14.0 (Wed Jun 04 2025)
 
 #### 🚀  Enhancement
