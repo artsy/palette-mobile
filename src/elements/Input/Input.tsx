@@ -55,11 +55,6 @@ export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChan
    * These lead to some issues when the parent component wants further control of the value
    */
   disabled?: boolean
-  /**
-   * Enables the clear button
-   * @warning This prop only works if `value` is specified
-   */
-  enableClearButton?: boolean
   error?: string
   fixedRightPlaceholder?: string
   hintText?: string
@@ -117,6 +112,26 @@ export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChan
   value?: string | undefined
 }
 
+type InputPropsWithSecureText = InputProps & {
+  secureTextEntry: true
+  enableClearButton?: never
+}
+
+type InputPropsWithClearButton = InputProps & {
+  enableClearButton: true
+  secureTextEntry?: never
+}
+
+type InputPropsWithNeither = InputProps & {
+  enableClearButton?: boolean
+  secureTextEntry?: boolean
+}
+
+export type InputComponentProps =
+  | InputPropsWithSecureText
+  | InputPropsWithClearButton
+  | InputPropsWithNeither
+
 export const HORIZONTAL_PADDING = 15
 export const INPUT_BORDER_RADIUS = 4
 export const INPUT_MIN_HEIGHT = 56
@@ -132,7 +147,7 @@ export interface InputRef {
   clear: () => void
 }
 
-export const Input = forwardRef<InputRef, InputProps>(
+export const Input = forwardRef<InputRef, InputComponentProps>(
   (
     {
       addClearListener = false,
