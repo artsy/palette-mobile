@@ -1,3 +1,15 @@
+# v17.16.0 (Fri Jun 13 2025)
+
+#### 🚀  Enhancement
+
+- refactor(Input): update InputProps to improve type safety and clarity [#354](https://github.com/artsy/palette-mobile/pull/354) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.15.0 (Tue Jun 10 2025)
 
 #### 🚀  Enhancement
