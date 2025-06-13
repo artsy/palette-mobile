@@ -1,7 +1,7 @@
 import { MagnifyingGlassIcon } from "../../svgs"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
-import { Input, InputProps } from "../Input"
+import { Input, type InputProps } from "../Input"
 
 export interface SearchInputProps extends InputProps {
   enableCancelButton?: boolean
