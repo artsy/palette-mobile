@@ -1,3 +1,15 @@
+# v17.18.0 (Wed Jun 18 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): react native testing lib to latest [#355](https://github.com/artsy/palette-mobile/pull/355) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.17.0 (Wed Jun 18 2025)
 
 #### 🚀  Enhancement
