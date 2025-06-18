@@ -1,5 +1,5 @@
 import { memo, useCallback } from "react"
-import { PixelRatio, View } from "react-native"
+import { PixelRatio, StyleProp, View, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import FastImage, { FastImageProps } from "react-native-fast-image"
 import Animated, {
@@ -68,7 +68,13 @@ export const Image: React.FC<ImageProps> = memo(
     }, [])
 
     if (showLoadingState) {
-      return <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+      return (
+        <ImageSkeleton
+          dimensions={dimensions}
+          blurhash={blurhash}
+          style={{ position: "absolute" }}
+        />
+      )
     }
 
     let uri = src
@@ -84,7 +90,11 @@ export const Image: React.FC<ImageProps> = memo(
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
         <View style={[dimensions, { position: "absolute" }]}>
-          <ImageSkeleton dimensions={dimensions} blurhash={blurhash} />
+          <ImageSkeleton
+            dimensions={dimensions}
+            blurhash={blurhash}
+            style={{ position: "absolute" }}
+          />
         </View>
 
         <Animated.View style={animatedStyles}>
@@ -138,19 +148,20 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
 type ImageSkeletonProps = {
   dimensions: { width: number; height: number }
   blurhash?: string | null | undefined
+  style?: StyleProp<ViewStyle>
 }
 
-const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash }) => {
+export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash, style }) => {
   if (!!blurhash) {
     return (
-      <Flex position="absolute" backgroundColor="mono10" {...dimensions}>
+      <Flex backgroundColor="mono10" {...dimensions} style={style}>
         <Blurhash blurhash={blurhash} style={{ flex: 1 }} decodeWidth={16} decodeHeight={16} />
       </Flex>
     )
   }
 
   return (
-    <Flex position="absolute">
+    <Flex style={style}>
       <Skeleton>
         <SkeletonBox {...dimensions} />
       </Skeleton>
