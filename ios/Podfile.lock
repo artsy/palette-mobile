@@ -1297,8 +1297,27 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-blurhash (1.1.11):
+  - react-native-blurhash (2.1.1):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.10.14.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - react-native-pager-view (6.5.0):
     - DoubleConversion
     - glog
@@ -2147,7 +2166,7 @@ SPEC CHECKSUMS:
   React-logger: dbca7bdfd4aa5ef69431362bde6b36d49403cb20
   React-Mapbuffer: 6efad4a606c1fae7e4a93385ee096681ef0300dc
   React-microtasksnativemodule: a645237a841d733861c70b69908ab4a1707b52ad
-  react-native-blurhash: a59e6bf8117a0304488ed576abd440f4b0777a8c
+  react-native-blurhash: f29e538969868d35ffa46091eafea5ee5396e56a
   react-native-pager-view: c6ea843be238c299d5553320dca295c101d556c9
   react-native-safe-area-context: 56f6a226ce946d7bd1cc232aea54d23cb1a852a1
   React-nativeconfig: 8efdb1ef1e9158c77098a93085438f7e7b463678
