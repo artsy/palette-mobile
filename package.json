@@ -55,7 +55,7 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-blurhash": "^1.1.11",
+    "react-native-blurhash": "*",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
