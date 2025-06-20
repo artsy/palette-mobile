@@ -1,3 +1,15 @@
+# v17.19.0 (Fri Jun 20 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): fix blurhash peerDepencency [#357](https://github.com/artsy/palette-mobile/pull/357) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.18.0 (Wed Jun 18 2025)
 
 #### 🚀  Enhancement
