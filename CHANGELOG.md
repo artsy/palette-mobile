@@ -1,3 +1,15 @@
+# v17.20.0 (Wed Jun 25 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump react-native-collapsible-tab-view to latest [#358](https://github.com/artsy/palette-mobile/pull/358) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.19.0 (Fri Jun 20 2025)
 
 #### 🚀  Enhancement
