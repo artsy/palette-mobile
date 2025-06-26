@@ -1726,7 +1726,7 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFlashList (1.7.6):
+  - RNFlashList (1.8.3):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2199,7 +2199,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 64cfe45855fa9e67994851cad15d3ede6beeddf9
   RNDeviceInfo: feea80a690d2bde1fe51461cf548039258bd03f2
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFlashList: c6896a2075ddfb6374494ca86a04acd9730d1225
+  RNFlashList: c58e217fdf8d5d833c11558f1c34ccc03c3de65c
   RNReactNativeHapticFeedback: 1e3efeca9628ff9876ee7cdd9edec1b336913f8c
   RNReanimated: 5ed2b66c32cb3d398e4c12591b3053594fe2fcb9
   RNSVG: ec04a71ff98a8be607ed0d7125593550841b55db
