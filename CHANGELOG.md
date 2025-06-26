@@ -1,3 +1,15 @@
+# v17.21.0 (Thu Jun 26 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump flashlist to 1.8.3 [#359](https://github.com/artsy/palette-mobile/pull/359) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.20.0 (Wed Jun 25 2025)
 
 #### 🚀  Enhancement
