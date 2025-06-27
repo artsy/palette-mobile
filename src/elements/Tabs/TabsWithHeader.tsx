@@ -6,17 +6,38 @@ import { HeaderProps } from "../Screen/Header"
 import { Text } from "../Text"
 
 export interface TabsWithHeaderProps extends TabsContainerProps {
-  title: string | JSX.Element
   BelowTitleHeaderComponent?: () => JSX.Element
-  headerProps?: HeaderProps
-  showLargeHeaderText?: boolean
   children: CollapsibleProps["children"]
+  headerProps?: HeaderProps
+  hideScreen?: boolean
+  showLargeHeaderText?: boolean
+  title: string | JSX.Element
 }
 
 export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
-  children,
-  BelowTitleHeaderComponent,
   headerProps = {},
+  hideScreen = false,
+  title,
+  ...rest
+}) => {
+  if (hideScreen) {
+    return <Content title={title} {...rest} />
+  }
+
+  return (
+    <Screen>
+      <Screen.AnimatedHeader title={title} {...headerProps} />
+
+      <Screen.Body fullwidth>
+        <Content title={title} {...rest} />
+      </Screen.Body>
+    </Screen>
+  )
+}
+
+const Content: React.FC<Omit<TabsWithHeaderProps, "hideScreen" | "headerProps">> = ({
+  BelowTitleHeaderComponent,
+  children,
   showLargeHeaderText = true,
   title,
   ...rest
@@ -24,30 +45,24 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
   const showTitle = showLargeHeaderText && !!title
 
   return (
-    <Screen>
-      <Screen.AnimatedHeader title={title} {...headerProps} />
-
-      <Screen.Body fullwidth>
-        <TabsContainer
-          {...rest}
-          renderHeader={() => {
-            return (
-              <>
-                {!!showTitle && (
-                  <Flex my={1} px={2} justifyContent="center" pointerEvents="none">
-                    <Text variant="lg-display" numberOfLines={2}>
-                      {title}
-                    </Text>
-                  </Flex>
-                )}
-                {!!BelowTitleHeaderComponent && <BelowTitleHeaderComponent />}
-              </>
-            )
-          }}
-        >
-          {children}
-        </TabsContainer>
-      </Screen.Body>
-    </Screen>
+    <TabsContainer
+      {...rest}
+      renderHeader={() => {
+        return (
+          <>
+            {!!showTitle && (
+              <Flex my={1} px={2} justifyContent="center" pointerEvents="none">
+                <Text variant="lg-display" numberOfLines={2}>
+                  {title}
+                </Text>
+              </Flex>
+            )}
+            {!!BelowTitleHeaderComponent && <BelowTitleHeaderComponent />}
+          </>
+        )
+      }}
+    >
+      {children}
+    </TabsContainer>
   )
 }
