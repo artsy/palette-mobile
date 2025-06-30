@@ -1,3 +1,15 @@
+# v17.22.0 (Mon Jun 30 2025)
+
+#### 🚀  Enhancement
+
+- chore: add hide screen to TabsWithHeader [#360](https://github.com/artsy/palette-mobile/pull/360) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.21.0 (Thu Jun 26 2025)
 
 #### 🚀  Enhancement
