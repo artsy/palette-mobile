@@ -1,3 +1,15 @@
+# v17.23.0 (Mon Jun 30 2025)
+
+#### 🚀  Enhancement
+
+- chore: update CircleCI orbs and Xcode version to match eigen [#361](https://github.com/artsy/palette-mobile/pull/361) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.22.0 (Mon Jun 30 2025)
 
 #### 🚀  Enhancement
