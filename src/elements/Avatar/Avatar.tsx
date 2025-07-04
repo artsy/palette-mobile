@@ -1,25 +1,21 @@
-import { ImgHTMLAttributes, useEffect, useState } from "react"
-import { Image } from "react-native"
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-  Easing,
-  withDelay,
-} from "react-native-reanimated"
+import { MotiView } from "moti"
+import { ImgHTMLAttributes } from "react"
+import { FadeIn } from "react-native-reanimated"
 import { useColor } from "../../utils/hooks"
 import { Box } from "../Box"
 import { Flex } from "../Flex"
+import { Image } from "../Image/Image"
 import { Text, TextProps } from "../Text"
 
 export type AvatarSize = "xxs" | "xs" | "sm" | "md"
 
 export interface AvatarProps extends ImgHTMLAttributes<any> {
-  src?: string
+  blurhash?: string | null
   /** If an image is missing, show initials instead */
   initials?: string
   /** The size of the Avatar */
   size?: AvatarSize
+  src?: string
 }
 
 const DEFAULT_SIZE: AvatarSize = "md"
@@ -45,56 +41,36 @@ const VARIANTS: Record<AvatarSize, { diameter: number; textSize: TextProps["vari
 }
 
 /** A circular Avatar component containing an image or initials */
-export const Avatar = ({ src, initials, size = DEFAULT_SIZE }: AvatarProps) => {
+export const Avatar = ({ src, initials, size = DEFAULT_SIZE, blurhash }: AvatarProps) => {
   const color = useColor()
-  const [loading, setLoading] = useState(true)
-
-  const opacity = useSharedValue(0)
-
-  useEffect(() => {
-    opacity.set(() =>
-      withDelay(
-        100,
-        withTiming(1, {
-          duration: 200,
-          easing: Easing.sin,
-        })
-      )
-    )
-  }, [loading])
-
-  const style = useAnimatedStyle(() => {
-    return {
-      opacity: loading ? 0 : opacity.get(),
-    }
-  }, [loading])
 
   const { diameter, textSize } = VARIANTS[size]
 
   if (src) {
     return (
-      <Box
-        width={diameter}
-        height={diameter}
-        borderRadius={diameter / 2}
-        overflow="hidden"
-        borderColor={color("mono0")}
-        borderWidth={1}
-      >
-        <Animated.View style={style}>
+      <MotiView entering={FadeIn}>
+        <Box
+          width={diameter}
+          height={diameter}
+          borderRadius={diameter / 2}
+          overflow="hidden"
+          borderColor={color("mono0")}
+          borderWidth={1}
+        >
           <Image
-            onLoadStart={() => setLoading(true)}
-            onLoadEnd={() => setLoading(false)}
+            blurhash={blurhash}
             resizeMode="cover"
-            source={{ uri: src }}
+            src={src}
+            height={diameter}
+            width={diameter}
             accessibilityLabel="AvatarImage"
             style={{
               width: diameter,
               height: diameter,
             }}
           />
-        </Animated.View>
-      </Box>
+        </Box>
+      </MotiView>
     )
   }
 
