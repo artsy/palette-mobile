@@ -1,3 +1,15 @@
+# v17.24.0 (Fri Jul 04 2025)
+
+#### 🚀  Enhancement
+
+- chore: add blurhash to avatar [#362](https://github.com/artsy/palette-mobile/pull/362) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.23.0 (Mon Jun 30 2025)
 
 #### 🚀  Enhancement
