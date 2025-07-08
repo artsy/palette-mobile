@@ -2,7 +2,6 @@ import { storiesOf } from "@storybook/react-native"
 import { Tabs } from "./Tabs"
 import { Flex } from "../Flex"
 import { Screen } from "../Screen"
-import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 
 storiesOf("Tabs", module)
@@ -37,7 +36,6 @@ storiesOf("Tabs", module)
   .add("Tabs with AnimatedHeader", () => (
     <Screen>
       <Screen.AnimatedHeader title="Title" />
-
       <Screen.Body fullwidth>
         <Tabs>
           <Tabs.Tab name="tab1" label="Tab 1">
@@ -78,8 +76,8 @@ storiesOf("Tabs", module)
       showLargeHeaderText={false}
       BelowTitleHeaderComponent={() => (
         <Flex pointerEvents="none" p={2}>
-          <Text>Artist</Text>
-          <Text>Description</Text>
+          <Text>Info</Text>
+          <Text>More Info</Text>
         </Flex>
       )}
     >

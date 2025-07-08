@@ -1,9 +1,12 @@
-import { MotiView } from "moti"
 import React from "react"
-import { Dimensions } from "react-native"
-import Animated, { Easing, FadeIn, FadeOut, useDerivedValue } from "react-native-reanimated"
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  useAnimatedStyle,
+  useDerivedValue,
+} from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
-import { BOTTOM_TABS_HEIGHT, STICKY_BAR_HEIGHT } from "./StickySubHeader"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
@@ -78,24 +81,22 @@ const Center: React.FC<{
   hideTitle: HeaderProps["hideTitle"]
   title: HeaderProps["title"]
 }> = ({ animated, hideTitle, title }) => {
-  const {
-    scrollYOffset = 0,
-    currentScrollYAnimated,
-    scrollViewDimensionsAnimated,
-  } = useScreenScrollContext()
-  const { height: screenHeight } = Dimensions.get("window")
-
-  const scrollViewContentHeight =
-    screenHeight - NAVBAR_HEIGHT - STICKY_BAR_HEIGHT - BOTTOM_TABS_HEIGHT
+  const { scrollYOffset = 0, currentScrollYAnimated } = useScreenScrollContext()
 
   // Show / hide the title to avoid rerenders, which retrigger the animation
   const display = useDerivedValue(() => {
-    // The user is scrolling on a screen that is too small to show the small header
-    if (scrollViewDimensionsAnimated?.value < scrollViewContentHeight) {
-      return "none"
-    }
     return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
   }, [currentScrollYAnimated, scrollYOffset])
+
+  const opacity = useDerivedValue(() => {
+    return display.value === "flex" ? 1 : 0
+  })
+  const style = useAnimatedStyle(() => {
+    return {
+      display: display.value,
+      opacity: opacity.value,
+    }
+  })
 
   if (hideTitle) {
     return null
@@ -115,17 +116,9 @@ const Center: React.FC<{
     <Animated.View
       entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
       exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
-      style={{
-        display: display.value,
-      }}
+      style={style}
     >
-      <MotiView
-        animate={{
-          opacity: display.value === "flex" ? 1 : 0,
-        }}
-      >
-        {titleTextElement}
-      </MotiView>
+      {titleTextElement}
     </Animated.View>
   )
 }
