@@ -1,3 +1,15 @@
+# v17.25.0 (Tue Jul 08 2025)
+
+#### 🚀  Enhancement
+
+- fix(AnimatedHeader): title not being displayed [#363](https://github.com/artsy/palette-mobile/pull/363) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v17.24.0 (Fri Jul 04 2025)
 
 #### 🚀  Enhancement
