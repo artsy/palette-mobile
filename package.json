@@ -34,6 +34,7 @@
   ],
   "dependencies": {
     "@artsy/palette-tokens": "^7.0.0",
+    "@d11/react-native-fast-image": "^8.10.0",
     "@shopify/flash-list": "^1.8.3",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
@@ -43,7 +44,6 @@
     "react-nanny": "^2.15.0",
     "react-native-blurhash": "^2.1.1",
     "react-native-collapsible-tab-view": "^8.0.1",
-    "react-native-fast-image": "^8.6.3",
     "react-native-pager-view": "6.5.0",
     "react-native-popover-view": "^5.1.7",
     "react-spring": "8.0.23",
@@ -56,11 +56,11 @@
     "react": "*",
     "react-native": "*",
     "react-native-blurhash": "*",
+    "react-native-collapsible-tab-view": "*",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",
     "react-native-svg": "*",
-    "react-native-collapsible-tab-view": "*",
     "styled-components": ">= 5"
   },
   "devDependencies": {
