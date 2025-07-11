@@ -1,7 +1,7 @@
+import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useCallback } from "react"
 import { PixelRatio, StyleProp, View, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
-import FastImage, { FastImageProps } from "react-native-fast-image"
 import Animated, {
   Easing,
   useAnimatedStyle,

@@ -2651,6 +2651,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@d11/react-native-fast-image@^8.10.0":
+  version "8.10.0"
+  resolved "https://registry.yarnpkg.com/@d11/react-native-fast-image/-/react-native-fast-image-8.10.0.tgz#020e3655da562756a1dd13cd2e5a6793a2bf58ac"
+  integrity sha512-ga/UzBReOA1vhXNAickvJbBzAWH3Rg1hu/ZJnKn+SfRFoWvq+X0xOiARHMVR8lkm6MV9ZQSE3vgoKmmVgthNoQ==
+
 "@emotion/cache@^10.0.27":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
