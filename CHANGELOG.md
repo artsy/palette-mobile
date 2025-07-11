@@ -1,3 +1,19 @@
+# v17.26.0 (Fri Jul 11 2025)
+
+#### 🚀  Enhancement
+
+- chore: use @d11/react-native-fast-image [#364](https://github.com/artsy/palette-mobile/pull/364) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### ⚠️ Pushed to `main`
+
+- chore: update yarn.lock ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.25.0 (Tue Jul 08 2025)
 
 #### 🚀  Enhancement
