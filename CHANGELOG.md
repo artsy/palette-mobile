@@ -1,3 +1,15 @@
+# v17.27.0 (Wed Jul 16 2025)
+
+#### 🚀  Enhancement
+
+- perf(scroll): Only use the shared value to store Y position when scrolling [#365](https://github.com/artsy/palette-mobile/pull/365) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v17.26.0 (Fri Jul 11 2025)
 
 #### 🚀  Enhancement
