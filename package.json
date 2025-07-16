@@ -45,7 +45,7 @@
     "react-native-blurhash": "^2.1.1",
     "react-native-collapsible-tab-view": "^8.0.1",
     "react-native-pager-view": "6.5.0",
-    "react-native-popover-view": "^5.1.7",
+    "react-native-popover-view": "^6.1.0",
     "react-spring": "8.0.23",
     "styled-system": "^5.1.5"
   },

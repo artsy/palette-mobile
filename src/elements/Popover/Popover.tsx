@@ -1,13 +1,14 @@
 import { Color } from "@artsy/palette-tokens"
-import { Platform, StatusBar, ViewStyle } from "react-native"
+import { ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
+import { PopoverProps as RNPopoverProps } from "react-native-popover-view/dist/Types"
 import { Easing } from "react-native-reanimated"
 import { CloseIcon } from "../../svgs"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Touchable } from "../Touchable"
 
-interface PopoverProps {
+interface PopoverProps extends Omit<RNPopoverProps, "placement"> {
   children?: React.ReactElement
   variant?: PopoverVariant
   title?: React.ReactElement
@@ -36,6 +37,7 @@ export const Popover = ({
   title,
   content,
   noCloseIcon,
+  ...rest
 }: PopoverProps) => {
   const color = useColor()
 
@@ -74,8 +76,6 @@ export const Popover = ({
       popoverStyle={[{ backgroundColor: style.backgroundColor }, style.shadow]}
       from={children}
       isVisible={visible}
-      // this is required to make sure that the popover is positioned correctly on android
-      verticalOffset={Platform.OS === "android" ? -(StatusBar.currentHeight ?? 0) : 0}
       onCloseComplete={onCloseComplete}
       onOpenComplete={onOpenComplete}
       onRequestClose={onPressOutside}
@@ -85,6 +85,7 @@ export const Popover = ({
         duration: 400,
         easing: Easing.out(Easing.exp),
       }}
+      {...rest}
     >
       <Flex backgroundColor={POPOVER_VARIANTS[variant].backgroundColor} p={1}>
         <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
