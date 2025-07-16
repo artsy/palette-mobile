@@ -1,3 +1,15 @@
+# v17.28.0 (Wed Jul 16 2025)
+
+#### 🚀  Enhancement
+
+- chore: upgrade react-native-popover-view to latest [#366](https://github.com/artsy/palette-mobile/pull/366) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v17.27.0 (Wed Jul 16 2025)
 
 #### 🚀  Enhancement
