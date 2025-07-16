@@ -6,7 +6,6 @@ import { NAVBAR_HEIGHT } from "../constants"
 
 export const useShowLargeTitle = ({ stickyBarHeight }: { stickyBarHeight: number | null }) => {
   const {
-    currentScrollY,
     scrollYOffset = 0,
     currentScrollYAnimated,
     scrollViewDimensionsAnimated,
@@ -35,7 +34,7 @@ export const useShowLargeTitle = ({ stickyBarHeight }: { stickyBarHeight: number
     }
 
     return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffset
-  }, [currentScrollY, scrollYOffset, stickyBarHeight, currentScrollYAnimated])
+  }, [scrollYOffset, stickyBarHeight, currentScrollYAnimated])
 
   return {
     visible,
