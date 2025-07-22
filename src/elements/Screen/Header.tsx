@@ -8,8 +8,9 @@ import Animated, {
 } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
-import { DEFAULT_HIT_SLOP } from "../../constants"
+import { DEFAULT_HIT_SLOP, DEFAULT_ICON_SIZE } from "../../constants"
 import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
+import { useScreenDimensions, useSpace } from "../../utils/hooks"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
@@ -45,6 +46,13 @@ export const Header: React.FC<HeaderProps> = ({
   title,
   titleProps = {},
 }) => {
+  const { width } = useScreenDimensions()
+  const space = useSpace()
+
+  // Assumes small left and right elements, it protects from overflowing
+  // but doesn't cover edge cases where right or left are bigger
+  const centerMaxWidth = width - space(4) - DEFAULT_ICON_SIZE * 2
+
   return (
     <Flex
       height={NAVBAR_HEIGHT}
@@ -58,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
         <Left leftElements={leftElements} onBack={onBack} hideLeftElements={hideLeftElements} />
       </Flex>
 
-      <Flex {...titleProps}>
+      <Flex maxWidth={centerMaxWidth} {...titleProps}>
         <Center animated={animated} title={title} hideTitle={hideTitle} />
       </Flex>
 
