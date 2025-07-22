@@ -124,7 +124,7 @@ const Center: React.FC<{
     <Animated.View
       entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
       exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
-      style={[style, { flex: 1 }]}
+      style={style}
     >
       {titleTextElement}
     </Animated.View>
