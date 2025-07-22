@@ -1,3 +1,15 @@
+# v17.29.0 (Tue Jul 22 2025)
+
+#### 🚀  Enhancement
+
+- fix(Header): Screen header title overflow [#367](https://github.com/artsy/palette-mobile/pull/367) ([@araujobarret](https://github.com/araujobarret))
+
+#### Authors: 1
+
+- Carlos ([@araujobarret](https://github.com/araujobarret))
+
+---
+
 # v17.28.0 (Wed Jul 16 2025)
 
 #### 🚀  Enhancement
