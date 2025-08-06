@@ -1,3 +1,19 @@
+# v17.29.1 (Wed Aug 06 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work!
+
+#### ⚠️ Pushed to `main`
+
+- docs: update point people ([@ovasdi](https://github.com/ovasdi))
+
+#### Authors: 1
+
+- Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi))
+
+---
+
 # v17.29.0 (Tue Jul 22 2025)
 
 #### 🚀  Enhancement
