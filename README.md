@@ -6,7 +6,7 @@ Artsy's Design System on Mobile
 
 ## Meta
 
-- Point People: [@brainbicycle](https://github.com/brainbicycle) [@gkartalis](https://github.com/gkartalis)
+- Point People: [@araujobarret](https://github.com/araujobarret) [@MrSltun](https://github.com/MrSltun)
 - Palette for Web: [palette](https://github.com/artsy/palette)
 
 ## What is Palette?
