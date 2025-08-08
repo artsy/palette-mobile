@@ -3,13 +3,13 @@
   "version": "17.31.0",
   "description": "Artsy's design system for React Native",
   "scripts": {
-    "android": "RCT_METRO_PORT=8082 react-native run-android --port 8082 --terminal terminal",
+    "android": "expo run:android --port 8082",
     "beta:ios": "bundle e fastlane ios beta",
     "bundle-install": "bundle install",
     "clean": "rimraf dist",
     "compile": "tsc",
     "install:all": "yarn install && yarn bundle-install && yarn pod-install",
-    "ios": "RCT_METRO_PORT=8082 react-native run-ios --port 8082 --terminal terminal",
+    "ios": "expo run:ios --port 8082",
     "lint:all": "yarn lint .",
     "lint": "eslint --cache --cache-location '.cache/eslint/' --ext .ts,.tsx --fix",
     "local-palette-dev": "./scripts/sync-after-change",
@@ -21,12 +21,13 @@
     "prettier-write": "prettier --write --ignore-unknown",
     "release:canary": "auto canary",
     "release": "auto shipit",
-    "setup:artsy": "./scripts/download-fonts",
+    "setup:artsy": "./scripts/setup/setup",
     "start:reset-cache": "react-native start --reset-cache --port 8082",
-    "start": "react-native start --port 8082",
+    "start": "npx expo start --port 8082",
     "storybook-watcher": "sb-rn-watcher",
     "test": "jest --maxWorkers=2",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "eas-build-pre-install": "./scripts/eas/pre-install"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
@@ -39,9 +40,14 @@
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
+    "expo": "~52.0.0",
+    "expo-dev-client": "~5.0.20",
+    "expo-font": "~13.0.4",
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
+    "react": "18.3.1",
     "react-nanny": "^2.15.0",
+    "react-native": "0.76.9",
     "react-native-blurhash": "^2.1.1",
     "react-native-collapsible-tab-view": "^8.0.1",
     "react-native-pager-view": "6.5.0",
@@ -147,7 +153,6 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"

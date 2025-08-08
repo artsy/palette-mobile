@@ -1,4 +1,36 @@
 {
   "name": "PaletteMobile",
-  "displayName": "Palette Mobile"
+  "displayName": "Palette Mobile",
+  "android": {
+    "package": "net.artsy.palette-mobile"
+  },
+  "ios": {
+    "bundleIdentifier": "net.artsy.palette-mobile",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
+  },
+  "plugins": [
+    [
+      "expo-font",
+      {
+        "fonts": [
+          "assets/fonts/Unica77LL-Italic.otf",
+          "assets/fonts/Unica77LL-MediumItalic.otf",
+          "assets/fonts/Unica77LL-Medium.otf",
+          "assets/fonts/Unica77LL-Regular.otf"
+        ]
+      }
+    ]
+  ],
+  "extra": {
+    "eas": {
+      "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
+    }
+  },
+  "expo": {
+    "android": {
+      "package": "net.artsy.palette_mobile"
+    }
+  }
 }
