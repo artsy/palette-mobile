@@ -5,5 +5,8 @@
   },
   "splash": {
     "backgroundColor": "#ffffff"
+  },
+  "ios": {
+    "bundleIdentifier": "com.artsymobile.palettemobile"
   }
 }

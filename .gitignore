@@ -84,3 +84,5 @@ ios/PaletteMobile/fonts/*
 .expo
 dist/
 web-build/
+android
+ios
