@@ -1,11 +1,10 @@
+import { CloseIcon, IconProps } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
 import { useMemo } from "react"
 import { PixelRatio } from "react-native"
 import styled, { FlattenInterpolation, css } from "styled-components"
-import { CloseIcon } from "../../svgs"
-import { IconProps } from "../../svgs/Icon"
 import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
 import { Text } from "../Text"
@@ -159,7 +158,7 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<
       border-color: ${themeGet("colors.mono5")};
       border-radius: 25px;
       height: 50px;
-      padding: 0 ${themeGet("space.1")}};
+      padding: 0 ${themeGet("space.1")};
     `,
     selected: css`
       border-color: ${themeGet("colors.blue100")};

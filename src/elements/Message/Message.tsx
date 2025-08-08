@@ -1,7 +1,7 @@
+import { CloseIcon } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens/dist/themes/v3"
 import { useRef, useState } from "react"
 import { Animated, Easing, TouchableOpacity } from "react-native"
-import { CloseIcon } from "../../svgs"
 import { useColor } from "../../utils/hooks/useColor"
 import { Flex, FlexProps } from "../Flex"
 import { Text, TextProps } from "../Text"

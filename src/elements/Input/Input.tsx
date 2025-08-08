@@ -1,5 +1,6 @@
 import { EventEmitter } from "events"
 
+import { CloseFillIcon, HideIcon, ShowIcon, TriangleDownIcon } from "@artsy/icons/native"
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import isArray from "lodash/isArray"
@@ -34,7 +35,6 @@ import {
   getInputVariants,
 } from "./helpers"
 import { maskValue, unmaskText } from "./maskValue"
-import { EyeClosedIcon, EyeOpenedIcon, TriangleDown, XCircleIcon } from "../../svgs"
 import { useTheme } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
 import { Flex } from "../Flex"
@@ -441,7 +441,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
               ]}
             >
               <Text color={disabled ? "mono30" : "mono100"}>{selectDisplayLabel}</Text>
-              <TriangleDown fill="mono60" width={10} />
+              <TriangleDownIcon fill="mono60" width={10} />
             </AnimatedFlex>
           </TouchableOpacity>
         )
@@ -518,7 +518,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
               accessibilityLabel="Clear"
               testID="clear-input-button"
             >
-              <XCircleIcon fill="mono30" />
+              <CloseFillIcon fill="mono30" />
             </Touchable>
           </Flex>
         )
@@ -549,7 +549,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
               accessibilityHint={showPassword ? "Hides the password" : "Shows the password"}
               hitSlop={{ bottom: 40, right: 40, left: 0, top: 40 }}
             >
-              {!showPassword ? <EyeClosedIcon fill="mono30" /> : <EyeOpenedIcon fill="mono60" />}
+              {!showPassword ? <HideIcon fill="mono30" /> : <ShowIcon fill="mono60" />}
             </Touchable>
           </Flex>
         )
