@@ -1,4 +1,4 @@
-import { MagnifyingGlassIcon } from "../../svgs"
+import { SearchIcon } from "@artsy/icons/native"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Input, type InputProps } from "../Input"
@@ -18,7 +18,7 @@ export const SearchInput = ({
   return (
     <Flex flexDirection="row" justifyContent="center">
       <Input
-        icon={<MagnifyingGlassIcon width={18} height={18} fill="onBackgroundHigh" />}
+        icon={<SearchIcon width={18} height={18} fill="onBackgroundHigh" />}
         autoCorrect={false}
         enableClearButton={enableCancelButton}
         returnKeyType="search"

@@ -1,6 +1,6 @@
+import { TrashIcon } from "@artsy/icons/native"
 import { Touchable } from "./Touchable"
 import { List } from "../../storybook/helpers"
-import { TrashIcon } from "../../svgs"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 

@@ -1,4 +1,4 @@
-import { ChevronIcon } from "../../svgs"
+import { ChevronSmallRightIcon } from "@artsy/icons/native"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
@@ -20,7 +20,7 @@ export const MenuItem = ({
   value,
   onPress,
   disabled = false,
-  chevron = <ChevronIcon direction="right" fill="mono60" />,
+  chevron = <ChevronSmallRightIcon fill="mono60" />,
 }: MenuItemProps) => {
   const color = useColor()
   return (

@@ -1,6 +1,6 @@
+import { ChevronSmallLeftIcon, CloseIcon } from "@artsy/icons/native"
 import { TouchableOpacity, TouchableOpacityProps, ViewProps } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
-import { ChevronIcon, CloseIcon } from "../../svgs"
 import { Color } from "../../types"
 import { Flex } from "../Flex"
 
@@ -33,7 +33,7 @@ export const BackButton: React.FC<BackButtonProps> = ({
       {showX ? (
         <CloseIcon fill={color} width={iconSize} height={iconSize} />
       ) : (
-        <ChevronIcon direction="left" fill={color} height={iconSize} width={iconSize} />
+        <ChevronSmallLeftIcon fill={color} height={iconSize} width={iconSize} />
       )}
     </TouchableOpacity>
   )
@@ -69,7 +69,7 @@ export const BackButtonWithBackground: React.FC<BackButtonProps> = ({
         {showX ? (
           <CloseIcon fill={color} width={26} height={26} />
         ) : (
-          <ChevronIcon fill={color} direction="left" />
+          <ChevronSmallLeftIcon fill={color} />
         )}
       </Flex>
     </TouchableOpacity>
