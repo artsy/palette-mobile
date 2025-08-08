@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import { KeyboardAvoidingView, Platform, ScrollView } from "react-native"
+import { KeyboardAvoidingView, Platform, ScrollView, type ScrollViewProps } from "react-native"
 import { SCREEN_HORIZONTAL_PADDING } from "./constants"
 import { Flex, FlexProps } from "../Flex"
 
@@ -7,6 +7,7 @@ export interface BodyProps extends FlexProps {
   fullwidth?: boolean
   scroll?: boolean
   disableKeyboardAvoidance?: boolean
+  scrollViewProps?: ScrollViewProps
 }
 
 export const Body: React.FC<BodyProps> = ({
@@ -14,6 +15,7 @@ export const Body: React.FC<BodyProps> = ({
   fullwidth,
   scroll,
   disableKeyboardAvoidance = false,
+  scrollViewProps,
   ...flexProps
 }) => {
   const Wrapper = disableKeyboardAvoidance ? Fragment : KeyboardAvoidingView
@@ -26,7 +28,7 @@ export const Body: React.FC<BodyProps> = ({
     >
       <Flex flex={1} {...flexProps}>
         <Flex flex={1} px={fullwidth ? undefined : SCREEN_HORIZONTAL_PADDING}>
-          {scroll ? <ScrollView>{children}</ScrollView> : children}
+          {scroll ? <ScrollView {...scrollViewProps}>{children}</ScrollView> : children}
         </Flex>
       </Flex>
     </Wrapper>
