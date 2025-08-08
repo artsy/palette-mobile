@@ -33,6 +33,7 @@
     "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
   ],
   "dependencies": {
+    "@artsy/icons": "^3.49.0",
     "@artsy/palette-tokens": "^7.0.0",
     "@d11/react-native-fast-image": "^8.10.0",
     "@shopify/flash-list": "^1.8.3",
