@@ -1,36 +1,70 @@
 {
   "name": "PaletteMobile",
   "displayName": "Palette Mobile",
-  "android": {
-    "package": "net.artsy.palette-mobile"
-  },
-  "ios": {
-    "bundleIdentifier": "net.artsy.palette-mobile",
-    "infoPlist": {
-      "ITSAppUsesNonExemptEncryption": false
-    }
-  },
-  "plugins": [
-    [
-      "expo-font",
-      {
-        "fonts": [
-          "assets/fonts/Unica77LL-Italic.otf",
-          "assets/fonts/Unica77LL-MediumItalic.otf",
-          "assets/fonts/Unica77LL-Medium.otf",
-          "assets/fonts/Unica77LL-Regular.otf"
-        ]
-      }
-    ]
-  ],
-  "extra": {
-    "eas": {
-      "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
-    }
-  },
   "expo": {
+    "name": "Palette Mobile",
+    "slug": "palettemobile",
     "android": {
-      "package": "net.artsy.palette_mobile"
-    }
+      "package": "net.artsy.palette_mobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "net.artsy.palette-mobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "icon": {
+        "light": "./assets/icons/ios-light.png",
+        "dark": "./assets/icons/ios-dark.png",
+        "tinted": "./assets/icons/ios-tinted.png"
+      }
+    },
+    "plugins": [
+      "expo-build-properties",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "enableBundleCompression": true
+          }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/icons/splash-icon-dark.png",
+          "dark": {
+            "image": "./assets/icons/splash-icon-light.png",
+            "backgroundColor": "#000000"
+          },
+          "resizeMode": "contain",
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "assets/fonts/Unica77LL-Italic.otf",
+            "assets/fonts/Unica77LL-MediumItalic.otf",
+            "assets/fonts/Unica77LL-Medium.otf",
+            "assets/fonts/Unica77LL-Regular.otf"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
+      }
+    },
+    "owner": "artsy_org"
   }
 }
