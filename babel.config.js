@@ -8,7 +8,7 @@ module.exports = {
   ],
   presets: [
     [
-      "module:@react-native/babel-preset",
+      "babel-preset-expo",
       { useTransformReactJSXExperimental: true }, // this is so `import React from "react"` is not needed.
     ],
     "@babel/preset-typescript",

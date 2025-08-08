@@ -48,6 +48,10 @@ react {
 
     /* Autolinking */
     autolinkLibrariesWithApp()
+
+    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", rootDir.getAbsoluteFile().getParentFile().getAbsolutePath(), "android", "absolute"].execute(null, rootDir).text.trim())
+    cliFile = new File(["node", "--print", "require.resolve('@expo/cli')"].execute(null, rootDir).text.trim())
+    bundleCommand = "export:embed"
 }
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
@@ -69,12 +73,12 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
     ndkVersion rootProject.ext.ndkVersion
-    
+
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
-    
+
     namespace "com.palettemobile"
-    
+
     defaultConfig {
         applicationId "com.palettemobile"
         minSdkVersion rootProject.ext.minSdkVersion
