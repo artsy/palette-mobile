@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euxo pipefail
+
+
+# Get fonts from energy s3 bucket
+aws s3 cp s3://artsy-citadel/energy/fonts.tar.gz ./fonts.tar.gz
+
+# Extract fonts to a temporary fonts repo
+tar -xvzf fonts.tar.gz -C ./assets/fonts
+
+# Cleanup
+rm -rf ./fonts.tar.gz
+
