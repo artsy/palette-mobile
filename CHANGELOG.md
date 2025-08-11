@@ -1,3 +1,15 @@
+# v17.30.0 (Mon Aug 11 2025)
+
+#### 🚀  Enhancement
+
+- feat: pass scrollviewprops to screen body [#369](https://github.com/artsy/palette-mobile/pull/369) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.29.1 (Wed Aug 06 2025)
 
 :tada: This release contains work from a new contributor! :tada:
