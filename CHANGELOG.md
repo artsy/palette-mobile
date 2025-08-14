@@ -1,3 +1,15 @@
+# v17.31.0 (Thu Aug 14 2025)
+
+#### 🚀  Enhancement
+
+- chore: add explicit child prop for react 19 #trivial [#371](https://github.com/artsy/palette-mobile/pull/371) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v17.30.0 (Mon Aug 11 2025)
 
 #### 🚀  Enhancement
