@@ -1,9 +1,9 @@
+import { InfoIcon } from "@artsy/icons/native"
 import { storiesOf } from "@storybook/react-native"
 import { Text } from "react-native"
 import { Message } from "./Message"
 import { withTheme } from "../../storybook/decorators"
 import { List } from "../../storybook/helpers"
-import { InfoCircleIcon } from "../../svgs"
 import { Button } from "../Button"
 
 storiesOf("Message", module)
@@ -53,7 +53,7 @@ storiesOf("Message", module)
         showCloseButton
         title="Default position"
         text="Text"
-        IconComponent={() => <InfoCircleIcon />}
+        IconComponent={() => <InfoIcon />}
       />
       <Message
         iconPosition="right"

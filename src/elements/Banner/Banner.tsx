@@ -1,8 +1,8 @@
+import { CloseIcon } from "@artsy/icons/native"
 import { useRef, useState } from "react"
 import { Animated, Easing, TouchableOpacity } from "react-native"
 import { FlexProps } from "styled-system"
 import { DEFAULT_HIT_SLOP } from "../../constants"
-import { CloseIcon } from "../../svgs"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 

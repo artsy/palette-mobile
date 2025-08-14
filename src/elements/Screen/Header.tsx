@@ -1,3 +1,4 @@
+import { ChevronLeftIcon } from "@artsy/icons/native"
 import React from "react"
 import Animated, {
   Easing,
@@ -9,7 +10,6 @@ import Animated, {
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { DEFAULT_HIT_SLOP, DEFAULT_ICON_SIZE } from "../../constants"
-import { ArrowLeftIcon } from "../../svgs/ArrowLeftIcon"
 import { useScreenDimensions, useSpace } from "../../utils/hooks"
 import { Flex, FlexProps } from "../Flex"
 import { Text } from "../Text"
@@ -149,7 +149,7 @@ const Left: React.FC<{
           underlayColor="transparent"
           hitSlop={DEFAULT_HIT_SLOP}
         >
-          <ArrowLeftIcon fill="onBackgroundHigh" />
+          <ChevronLeftIcon fill="onBackgroundHigh" />
         </Touchable>
       )}
     </>

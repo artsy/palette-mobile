@@ -1,6 +1,6 @@
+import { CheckmarkIcon } from "@artsy/icons/native"
 import { themeGet } from "@styled-system/theme-get"
 import styled, { css } from "styled-components/native"
-import { CheckIcon } from "../../svgs/CheckIcon"
 import { Box } from "../Box"
 
 export const CHECK_SIZE = 22
@@ -58,7 +58,7 @@ export const Check: React.FC<CheckProps> = ({ disabled, selected, testID, ...res
       accessibilityRole="checkbox"
       testID={testID}
     >
-      {!!selected && <CheckIcon fill="mono0" />}
+      {!!selected && <CheckmarkIcon fill="mono0" />}
     </Container>
   )
 }
