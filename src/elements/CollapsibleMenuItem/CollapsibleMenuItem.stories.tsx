@@ -11,9 +11,24 @@ import { Text } from "../Text"
 
 export const ArtworkDetails = ({ handlePress }: { handlePress: () => void }) => {
   return (
-    <Flex backgroundColor="peachpuff" p={1} mt={1}>
-      <Text>ArtworkDetails content</Text>
-      <Spacer y={1} />
+    <Flex>
+      <Flex
+        backgroundColor="mono10"
+        p={1}
+        mt={1}
+        borderWidth={1}
+        borderColor="mono10"
+        borderRadius={10}
+        py={2}
+      >
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+      </Flex>
+
+      <Spacer y={2} />
+
       <CTAButton text="Save & Continue" onPress={handlePress} />
     </Flex>
   )
@@ -21,9 +36,22 @@ export const ArtworkDetails = ({ handlePress }: { handlePress: () => void }) => 
 
 export const UploadPhotos = ({ handlePress }: { handlePress: () => void }) => {
   return (
-    <Flex backgroundColor="peachpuff" p={1} mt={1}>
-      <Text>Upload Photos content</Text>
-      <Spacer y={1} />
+    <Flex>
+      <Flex
+        backgroundColor="mono10"
+        p={1}
+        mt={1}
+        borderWidth={1}
+        borderColor="mono10"
+        borderRadius={10}
+        py={2}
+      >
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+      </Flex>
+      <Spacer y={2} />
       <CTAButton text="Save & Continue" onPress={handlePress} />
     </Flex>
   )
@@ -31,9 +59,22 @@ export const UploadPhotos = ({ handlePress }: { handlePress: () => void }) => {
 
 export const ContactInformation = ({ handlePress }: { handlePress: () => void }) => {
   return (
-    <Flex backgroundColor="peachpuff" p={1} mt={1}>
-      <Text>ContactInformation content</Text>
-      <Spacer y={1} />
+    <Flex>
+      <Flex
+        backgroundColor="mono10"
+        p={1}
+        mt={1}
+        borderWidth={1}
+        borderColor="mono10"
+        borderRadius={10}
+        py={2}
+      >
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </Text>
+      </Flex>
+      <Spacer y={2} />
       <CTAButton text="Submit Artwork" onPress={handlePress} />
     </Flex>
   )
@@ -117,15 +158,9 @@ export const ComponentWithCollapsibleMenu = () => {
     })
   }
   return (
-    <View style={{ margin: 20 }}>
+    <View style={{ marginHorizontal: 20 }}>
       <Flex>
-        <ScrollView
-          contentContainerStyle={{
-            paddingVertical: 20,
-            paddingHorizontal: 20,
-            justifyContent: "center",
-          }}
-        >
+        <ScrollView>
           <Spacer y={4} />
           <Join separator={<Separator my={2} marginTop="40" marginBottom="20" />}>
             {items.map(({ overtitle, title, Content }, index) => {
