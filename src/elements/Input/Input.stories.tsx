@@ -1,7 +1,7 @@
+import { SearchIcon } from "@artsy/icons/native"
 import { storiesOf } from "@storybook/react-native"
 import { Input } from "./Input"
 import { List } from "../../storybook/helpers"
-import { MagnifyingGlassIcon } from "../../svgs"
 import { Join } from "../Join"
 import { Separator } from "../Separator"
 import { Text } from "../Text"
@@ -49,7 +49,7 @@ storiesOf("Input", module).add("Variants", () => (
         <Text mb={1} variant="sm-display" fontWeight="bold">
           With title and icon
         </Text>
-        <Input title="Title" icon={<MagnifyingGlassIcon />} />
+        <Input title="Title" icon={<SearchIcon />} />
       </>
       <>
         <Text mb={1} variant="sm-display" fontWeight="bold">

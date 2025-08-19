@@ -1,9 +1,9 @@
+import { ArrowLeftIcon, SearchIcon } from "@artsy/icons/native"
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useMemo, useRef, useState } from "react"
 import { PixelRatio, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
-import { ArrowLeftIcon, MagnifyingGlassIcon } from "../../svgs"
 import { useColor, useTheme } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
@@ -176,9 +176,9 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
           haptic="impactLight"
         >
           {!isFocused ? (
-            <MagnifyingGlassIcon fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
+            <SearchIcon fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
           ) : (
-            <ArrowLeftIcon long fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
+            <ArrowLeftIcon fill="mono60" width={ICON_SIZE} height={ICON_SIZE} />
           )}
         </Touchable>
       </Flex>
