@@ -1,4 +1,5 @@
 import { fireEvent, screen } from "@testing-library/react-native"
+import { Pressable, PressableProps } from "react-native"
 import { Button } from "./Button"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 import { Spinner } from "../Spinner"
@@ -49,5 +50,19 @@ describe("Button", () => {
     fireEvent.press(screen.getByTestId("the-button"))
 
     expect(onPress).not.toHaveBeenCalled()
+  })
+
+  it("uses custom component when 'as' prop is provided", () => {
+    const CustomComponent = (props: PressableProps) => (
+      <Pressable {...props} testID="custom-component" />
+    )
+
+    renderWithWrappers(
+      <Button testID="the-button" as={CustomComponent}>
+        wow
+      </Button>
+    )
+
+    expect(screen.getByTestId("custom-component")).toBeTruthy()
   })
 })
