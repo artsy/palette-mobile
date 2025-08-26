@@ -31,6 +31,8 @@ jobs:
               circleci step halt
             fi
       - run: yarn install:all
+      - run: yarn setup:artsy
+      - run: yarn run expo prebuild --platform ios
       - run: yarn ios
 
   build-android:
@@ -48,10 +50,10 @@ jobs:
       - run:
           name: Install ninja
           command: sudo apt-get install ninja-build
-      - run: yarn install
-      - run:
-          name: Build Android App
-          command: cd android && ./gradlew assembleDebug
+      - run: yarn install:all
+      - run: yarn setup:artsy
+      - run: yarn run expo prebuild --platform android
+      - run: yarn android
 
 workflows:
   build-deploy:
