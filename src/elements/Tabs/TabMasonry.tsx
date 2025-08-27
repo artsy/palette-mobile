@@ -16,7 +16,8 @@ export function TabMasonry<T>(
   const contentContainerStyle = (props.contentContainerStyle ?? {}) as object
 
   return (
-    <Tabs.MasonryFlashList
+    <Tabs.FlashList
+      masonry={true}
       contentContainerStyle={{
         paddingHorizontal: space(2),
         ...contentContainerStyle,
