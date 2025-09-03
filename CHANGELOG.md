@@ -1,3 +1,23 @@
+# v17.32.0 (Wed Sep 03 2025)
+
+#### 🚀  Enhancement
+
+- fix(perf): replace reanimated opacity animation with rn animated [#374](https://github.com/artsy/palette-mobile/pull/374) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### 🏠  Internal
+
+- build(deps): bump micromatch from 4.0.5 to 4.0.8 [#256](https://github.com/artsy/palette-mobile/pull/256) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump rexml from 3.2.6 to 3.3.9 [#272](https://github.com/artsy/palette-mobile/pull/272) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump braces from 3.0.2 to 3.0.3 [#268](https://github.com/artsy/palette-mobile/pull/268) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump serve-static from 1.15.0 to 1.16.2 [#257](https://github.com/artsy/palette-mobile/pull/257) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v17.31.0 (Thu Aug 14 2025)
 
 #### 🚀  Enhancement
