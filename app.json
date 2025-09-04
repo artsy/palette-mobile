@@ -2,17 +2,18 @@
   "expo": {
     "name": "PaletteMobile",
     "slug": "palettemobile",
+    "icon": "./assets/icons/app_icon.png",
+    "splash": {
+      "image": "./assets/icons/app_icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "bundleIdentifier": "com.artsymobile.palettemobile",
-      "icon": {
-        "light": "./assets/icons/app_icon.png",
-        "dark": "./assets/icons/app_icon.png",
-        "tinted": "./assets/icons/app_icon.png"
-      }
+      "sipportTable": true
     },
     "android": {
       "package": "com.artsymobile.palettemobile"
     }
-
   }
 }
