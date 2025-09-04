@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "17.29.1",
+  "version": "17.33.0",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "android": "expo run:android --port 8082",
@@ -93,7 +93,7 @@
     "@types/events": "^3.0.0",
     "@types/jest": "29.4.0",
     "@types/lodash": "4.14.191",
-    "@types/react": "^17.0.39",
+    "@types/react": "18.3.12",
     "@types/react-test-renderer": "18.3.0",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.2.1",
@@ -130,7 +130,7 @@
     "prettier": "^2.8.8",
     "pull-lock": "1.0.0",
     "react": "18.3.1",
-    "react-dom": "18.2.0",
+    "react-dom": "18.3.1",
     "react-native": "0.76.9",
     "react-native-device-info": "14.0.4",
     "react-native-haptic-feedback": "1.14.0",
@@ -144,7 +144,7 @@
     "typescript": "5.0.4"
   },
   "resolutions": {
-    "@types/react": "^17.0.39"
+    "@types/react": "18.3.12"
   },
   "engines": {
     "yarn": "1.x"

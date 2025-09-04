@@ -1,3 +1,65 @@
+# v17.33.0 (Thu Sep 04 2025)
+
+#### 🚀 Enhancement
+
+- refactor(react-18): migrate palette-mobile to react 18 [#378](https://github.com/artsy/palette-mobile/pull/378) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠 Internal
+
+- build(deps): bump form-data from 4.0.0 to 4.0.4 [#376](https://github.com/artsy/palette-mobile/pull/376) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump store2 from 2.14.2 to 2.14.4 [#377](https://github.com/artsy/palette-mobile/pull/377) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v17.32.0 (Wed Sep 03 2025)
+
+#### 🚀 Enhancement
+
+- fix(perf): replace reanimated opacity animation with rn animated [#374](https://github.com/artsy/palette-mobile/pull/374) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### 🏠 Internal
+
+- build(deps): bump micromatch from 4.0.5 to 4.0.8 [#256](https://github.com/artsy/palette-mobile/pull/256) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump rexml from 3.2.6 to 3.3.9 [#272](https://github.com/artsy/palette-mobile/pull/272) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump braces from 3.0.2 to 3.0.3 [#268](https://github.com/artsy/palette-mobile/pull/268) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump serve-static from 1.15.0 to 1.16.2 [#257](https://github.com/artsy/palette-mobile/pull/257) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
+# v17.31.0 (Thu Aug 14 2025)
+
+#### 🚀 Enhancement
+
+- chore: add explicit child prop for react 19 #trivial [#371](https://github.com/artsy/palette-mobile/pull/371) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
+# v17.30.0 (Mon Aug 11 2025)
+
+#### 🚀 Enhancement
+
+- feat: pass scrollviewprops to screen body [#369](https://github.com/artsy/palette-mobile/pull/369) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.29.1 (Wed Aug 06 2025)
 
 :tada: This release contains work from a new contributor! :tada:
@@ -16,7 +78,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.29.0 (Tue Jul 22 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix(Header): Screen header title overflow [#367](https://github.com/artsy/palette-mobile/pull/367) ([@araujobarret](https://github.com/araujobarret))
 
@@ -28,7 +90,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.28.0 (Wed Jul 16 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: upgrade react-native-popover-view to latest [#366](https://github.com/artsy/palette-mobile/pull/366) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -40,7 +102,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.27.0 (Wed Jul 16 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - perf(scroll): Only use the shared value to store Y position when scrolling [#365](https://github.com/artsy/palette-mobile/pull/365) ([@araujobarret](https://github.com/araujobarret))
 
@@ -52,7 +114,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.26.0 (Fri Jul 11 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: use @d11/react-native-fast-image [#364](https://github.com/artsy/palette-mobile/pull/364) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -68,7 +130,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.25.0 (Tue Jul 08 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix(AnimatedHeader): title not being displayed [#363](https://github.com/artsy/palette-mobile/pull/363) ([@araujobarret](https://github.com/araujobarret))
 
@@ -80,7 +142,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.24.0 (Fri Jul 04 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: add blurhash to avatar [#362](https://github.com/artsy/palette-mobile/pull/362) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -92,7 +154,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.23.0 (Mon Jun 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: update CircleCI orbs and Xcode version to match eigen [#361](https://github.com/artsy/palette-mobile/pull/361) ([@gkartalis](https://github.com/gkartalis))
 
@@ -104,7 +166,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.22.0 (Mon Jun 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: add hide screen to TabsWithHeader [#360](https://github.com/artsy/palette-mobile/pull/360) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -116,7 +178,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.21.0 (Thu Jun 26 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump flashlist to 1.8.3 [#359](https://github.com/artsy/palette-mobile/pull/359) ([@gkartalis](https://github.com/gkartalis))
 
@@ -128,7 +190,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.20.0 (Wed Jun 25 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump react-native-collapsible-tab-view to latest [#358](https://github.com/artsy/palette-mobile/pull/358) ([@gkartalis](https://github.com/gkartalis))
 
@@ -140,7 +202,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.19.0 (Fri Jun 20 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): fix blurhash peerDepencency [#357](https://github.com/artsy/palette-mobile/pull/357) ([@gkartalis](https://github.com/gkartalis))
 
@@ -152,7 +214,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.18.0 (Wed Jun 18 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): react native testing lib to latest [#355](https://github.com/artsy/palette-mobile/pull/355) ([@gkartalis](https://github.com/gkartalis))
 
@@ -164,7 +226,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.17.0 (Wed Jun 18 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: export image skeleton [#356](https://github.com/artsy/palette-mobile/pull/356) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -176,7 +238,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.16.0 (Fri Jun 13 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - refactor(Input): update InputProps to improve type safety and clarity [#354](https://github.com/artsy/palette-mobile/pull/354) ([@gkartalis](https://github.com/gkartalis))
 
@@ -188,7 +250,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.15.0 (Tue Jun 10 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump safe area view [#353](https://github.com/artsy/palette-mobile/pull/353) ([@gkartalis](https://github.com/gkartalis))
 
@@ -200,7 +262,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.14.0 (Wed Jun 04 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: dark mode issues on Chip [#352](https://github.com/artsy/palette-mobile/pull/352) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -212,7 +274,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.13.0 (Fri May 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add selected a11y state to radioButton [#351](https://github.com/artsy/palette-mobile/pull/351) ([@gkartalis](https://github.com/gkartalis))
 
@@ -224,7 +286,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.12.0 (Wed May 28 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: Add CLAUDE config [#349](https://github.com/artsy/palette-mobile/pull/349) ([@olerichter00](https://github.com/olerichter00))
 
@@ -236,7 +298,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.11.0 (Mon May 26 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: show only selected tab instead of tab transition [#348](https://github.com/artsy/palette-mobile/pull/348) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -248,7 +310,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.10.0 (Fri May 23 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: checkbox issue with children [#347](https://github.com/artsy/palette-mobile/pull/347) ([@gkartalis](https://github.com/gkartalis))
 
@@ -260,7 +322,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.9.0 (Wed May 14 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat(a11y): improve checkbox, radiobutton, linkText a11y [#346](https://github.com/artsy/palette-mobile/pull/346) ([@gkartalis](https://github.com/gkartalis))
 
@@ -272,7 +334,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.8.0 (Mon May 12 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add accessibility roles and labels to various components for improved a11y [#345](https://github.com/artsy/palette-mobile/pull/345) ([@gkartalis](https://github.com/gkartalis))
 
@@ -284,7 +346,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.7.0 (Tue May 06 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: increase debounce focued tab duration [#344](https://github.com/artsy/palette-mobile/pull/344) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -296,7 +358,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.6.0 (Tue Apr 29 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: remove figma link from palette [#343](https://github.com/artsy/palette-mobile/pull/343) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -308,7 +370,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.5.0 (Tue Apr 29 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: accessibility issues on search input [#342](https://github.com/artsy/palette-mobile/pull/342) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -320,7 +382,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.4.1 (Mon Apr 28 2025)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - chore: increase spacing below subtitle title [#336](https://github.com/artsy/palette-mobile/pull/336) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -332,7 +394,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.4.0 (Mon Apr 28 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: better accessibility for pills [#341](https://github.com/artsy/palette-mobile/pull/341) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -344,7 +406,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.3.0 (Mon Apr 28 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: support pill tabs [#340](https://github.com/artsy/palette-mobile/pull/340) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -356,7 +418,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.2.2 (Fri Apr 25 2025)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - fix: Set Pill selected text color to theme-independent white [#339](https://github.com/artsy/palette-mobile/pull/339) ([@olerichter00](https://github.com/olerichter00))
 
@@ -368,7 +430,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.2.1 (Thu Apr 24 2025)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - chore: address review comment [#338](https://github.com/artsy/palette-mobile/pull/338) ([@MounirDhahri](https://github.com/MounirDhahri))
 - chore: support hard coded colours [#337](https://github.com/artsy/palette-mobile/pull/337) ([@MounirDhahri](https://github.com/MounirDhahri))
@@ -381,7 +443,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.2.0 (Thu Apr 24 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: Info message component contrast ratio [#335](https://github.com/artsy/palette-mobile/pull/335) ([@olerichter00](https://github.com/olerichter00))
 
@@ -393,7 +455,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v17.1.0 (Wed Apr 23 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: chevron icon component [#334](https://github.com/artsy/palette-mobile/pull/334) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -405,11 +467,11 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v15.0.0 (Tue Apr 22 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - chore: fix auto releases from labels [#332](https://github.com/artsy/palette-mobile/pull/332) ([@MrSltun](https://github.com/MrSltun))
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: remove duplicate auto-release plugins [#333](https://github.com/artsy/palette-mobile/pull/333) ([@MrSltun](https://github.com/MrSltun))
 
@@ -421,7 +483,7 @@ Thank you, Ozzie Vasdi ([@ovasdi](https://github.com/ovasdi)), for all your work
 
 # v15.0.0 (Tue Apr 22 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - chore: fix auto releases from labels [#332](https://github.com/artsy/palette-mobile/pull/332) ([@MrSltun](https://github.com/MrSltun))
 

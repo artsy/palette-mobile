@@ -1,13 +1,7 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
-import { memo, useCallback } from "react"
-import { PixelRatio, StyleProp, View, ViewStyle } from "react-native"
+import { memo, useRef } from "react"
+import { PixelRatio, StyleProp, View, ViewStyle, Animated } from "react-native"
 import { Blurhash } from "react-native-blurhash"
-import Animated, {
-  Easing,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from "react-native-reanimated"
 import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -49,23 +43,19 @@ export const Image: React.FC<ImageProps> = memo(
     blurhash,
     ...flexProps
   }) => {
-    const loading = useSharedValue(true)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
 
     const color = useColor()
 
-    const animatedStyles = useAnimatedStyle(() => {
-      return {
-        opacity: withTiming(loading.get() ? 0 : 1, { duration: 200, easing: Easing.sin }),
-      }
-    }, [])
+    const opacity = useRef(new Animated.Value(0)).current
 
-    const onAnimationEnd = useCallback(() => {
-      "worklet"
-      loading.set(() => false)
-      // No need to get the js thread involved here
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const onLoadEnd = () => {
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start()
+    }
 
     if (showLoadingState) {
       return (
@@ -97,23 +87,21 @@ export const Image: React.FC<ImageProps> = memo(
           />
         </View>
 
-        <Animated.View style={animatedStyles}>
-          <FastImage
-            style={[
-              dimensions,
-              style,
-              // If we have a blurhash, we don't want to show a background color
-              // That might flash before the image loads
-              { backgroundColor: blurhash ? "transparent" : color("mono30") },
-            ]}
-            resizeMode={resizeMode}
-            onLoadEnd={onAnimationEnd}
-            source={{
-              priority: FastImage.priority.normal,
-              uri,
-            }}
-          />
-        </Animated.View>
+        <FastImage
+          style={[
+            dimensions,
+            style,
+            // If we have a blurhash, we don't want to show a background color
+            // That might flash before the image loads
+            { backgroundColor: blurhash ? "transparent" : color("mono30") },
+          ]}
+          resizeMode={resizeMode}
+          onLoadEnd={onLoadEnd}
+          source={{
+            priority: FastImage.priority.normal,
+            uri,
+          }}
+        />
       </Flex>
     )
   }

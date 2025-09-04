@@ -22,7 +22,7 @@ export interface MessageProps {
   variant?: MessageVariant
 }
 
-export const Message: React.FC<MessageProps> = ({
+export const Message: React.FC<React.PropsWithChildren<MessageProps>> = ({
   bodyTextStyle,
   children,
   containerStyle,
