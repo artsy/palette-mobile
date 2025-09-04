@@ -15,6 +15,7 @@
     "local-palette-dev": "./scripts/sync-after-change",
     "open-xcode": "open ios/PaletteMobile.xcworkspace",
     "pod-install": "cd ios && bundle exec pod install && cd ..",
+    "prebuild": "npx expo prebuild",
     "prepare": "patch-package && husky install",
     "prepublishOnly": "yarn clean && yarn compile",
     "prestart": "sb-rn-get-stories",
