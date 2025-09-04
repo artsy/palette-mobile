@@ -16,6 +16,7 @@ import {
 } from "react"
 import {
   LayoutAnimation,
+  LayoutChangeEvent,
   NativeSyntheticEvent,
   Platform,
   TextInput,
@@ -741,7 +742,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onLayout={(event) => {
+          onLayout={(event: LayoutChangeEvent) => {
             setInputWidth(event.nativeEvent.layout.width)
           }}
           scrollEnabled={props.multiline}
