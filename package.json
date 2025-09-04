@@ -22,7 +22,7 @@
     "release:canary": "auto canary",
     "release": "auto shipit",
     "setup:artsy": "./scripts/download-fonts",
-    "start:reset-cache": "npx expo start --reset-cache --port 8082",
+    "start:reset-cache": "npx expo start -c --port 8082",
     "start": "npx expo start --port 8082",
     "storybook-watcher": "sb-rn-watcher",
     "test": "jest --maxWorkers=2",
