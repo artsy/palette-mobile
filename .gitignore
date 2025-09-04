@@ -68,8 +68,7 @@ dist
 .env
 
 # Fonts
-android/app/src/main/assets/fonts/*
-ios/PaletteMobile/fonts/*
+assets/fonts/*
 
 .cache
 
@@ -79,3 +78,14 @@ ios/PaletteMobile/fonts/*
 # Keep these, so we can keep the folders these appear in.
 !.gitkeep
 #########################################################
+
+# Expo
+.expo
+dist/
+web-build/
+/android
+/ios
+
+# Cursor MCP server
+.cursor/mcp.json
+

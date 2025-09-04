@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+scripts/setup/setup-awscli
+scripts/setup/download-fonts
