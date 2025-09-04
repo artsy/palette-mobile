@@ -1,3 +1,21 @@
+# v17.33.0 (Thu Sep 04 2025)
+
+#### 🚀  Enhancement
+
+- refactor(react-18): migrate palette-mobile to react 18 [#378](https://github.com/artsy/palette-mobile/pull/378) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump form-data from 4.0.0 to 4.0.4 [#376](https://github.com/artsy/palette-mobile/pull/376) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump store2 from 2.14.2 to 2.14.4 [#377](https://github.com/artsy/palette-mobile/pull/377) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v17.32.0 (Wed Sep 03 2025)
 
 #### 🚀  Enhancement
