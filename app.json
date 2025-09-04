@@ -1,12 +1,18 @@
 {
-  "name": "PaletteMobile",
-  "android": {
-    "package": "com.artsymobile.palettemobile"
-  },
-  "splash": {
-    "backgroundColor": "#ffffff"
-  },
-  "ios": {
-    "bundleIdentifier": "com.artsymobile.palettemobile"
+  "expo": {
+    "name": "PaletteMobile",
+    "slug": "palettemobile",
+    "ios": {
+      "bundleIdentifier": "com.artsymobile.palettemobile",
+      "icon": {
+        "light": "./assets/icons/app_icon.png",
+        "dark": "./assets/icons/app_icon.png",
+        "tinted": "./assets/icons/app_icon.png"
+      }
+    },
+    "android": {
+      "package": "com.artsymobile.palettemobile"
+    }
+
   }
 }

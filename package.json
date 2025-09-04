@@ -43,15 +43,15 @@
     "expo-dev-client": "~5.0.20",
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
+    "react": "18.3.1",
     "react-nanny": "^2.15.0",
+    "react-native": "0.76.9",
     "react-native-blurhash": "^2.1.1",
     "react-native-collapsible-tab-view": "^8.0.1",
     "react-native-pager-view": "6.5.0",
     "react-native-popover-view": "^6.1.0",
     "react-spring": "8.0.23",
-    "styled-system": "^5.1.5",
-    "react": "18.3.1",
-    "react-native": "0.76.9"
+    "styled-system": "^5.1.5"
   },
   "peerDependenciesComments": [
     "ADD ANY DEPS THAT ARE NEEDED FOR PALETTE AND HAVE NATIVE CODE."
