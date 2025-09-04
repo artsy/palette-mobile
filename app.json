@@ -2,7 +2,6 @@
   "expo": {
     "name": "PaletteMobile",
     "slug": "palettemobile",
-    "icon": "./assets/icons/app_icon.png",
     "splash": {
       "image": "./assets/icons/app_icon.png",
       "resizeMode": "contain",
@@ -10,10 +9,15 @@
     },
     "ios": {
       "bundleIdentifier": "com.artsymobile.palettemobile",
-      "sipportTable": true
+      "sipportTable": true,
+      "icon": "./assets/icons/app_icon.png"
     },
     "android": {
-      "package": "com.artsymobile.palettemobile"
+      "package": "com.artsymobile.palettemobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/app_icon_android.png",
+        "backgroundColor": "#ffffff"
+      }
     }
   }
 }
