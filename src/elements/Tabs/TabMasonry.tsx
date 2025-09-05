@@ -1,12 +1,12 @@
-import { MasonryFlashListProps, MasonryFlashListRef } from "@shopify/flash-list"
+import { FlashListProps, FlashListRef } from "@shopify/flash-list"
 import { RefObject } from "react"
 import { Tabs } from "react-native-collapsible-tab-view"
 import { useListenForTabContentScroll } from "./hooks/useListenForTabContentScroll"
 import { useSpace } from "../../utils/hooks/useSpace"
 
 export function TabMasonry<T>(
-  props: MasonryFlashListProps<T> & {
-    innerRef?: RefObject<MasonryFlashListRef<T>> | null
+  props: FlashListProps<T> & {
+    innerRef?: RefObject<FlashListRef<T>> | null
   }
 ) {
   useListenForTabContentScroll()
@@ -16,7 +16,8 @@ export function TabMasonry<T>(
   const contentContainerStyle = (props.contentContainerStyle ?? {}) as object
 
   return (
-    <Tabs.MasonryFlashList
+    <Tabs.FlashList
+      masonry={true}
       contentContainerStyle={{
         paddingHorizontal: space(2),
         ...contentContainerStyle,
