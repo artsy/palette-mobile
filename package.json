@@ -150,6 +150,7 @@
   "files": [
     "dist"
   ],
+  "main": "./index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
