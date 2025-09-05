@@ -1,6 +1,6 @@
+import { CheckmarkFillIcon, ChevronSmallDownIcon, ChevronSmallUpIcon } from "@artsy/icons/native"
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import { LayoutAnimation, View } from "react-native"
-import { CheckCircleIcon, ChevronIcon } from "../../svgs"
 import { Collapse } from "../Collapse"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
@@ -91,17 +91,18 @@ export const CollapsibleMenuItem = forwardRef<
             </Text>
             <Flex flexDirection="row" alignItems="center">
               {!!isCompleted && (
-                <CheckCircleIcon
+                <CheckmarkFillIcon
                   fill="green100"
                   height={24}
                   width={24}
                   style={{ marginRight: 5 }}
                 />
               )}
-              <ChevronIcon
-                direction={isOpen ? "up" : "down"}
-                fill={disabled ? "mono30" : "mono60"}
-              />
+              {isOpen ? (
+                <ChevronSmallUpIcon fill={disabled ? "mono30" : "mono60"} />
+              ) : (
+                <ChevronSmallDownIcon fill={disabled ? "mono30" : "mono60"} />
+              )}
             </Flex>
           </Flex>
         </Touchable>

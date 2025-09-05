@@ -1,4 +1,4 @@
-import { CheckIcon } from "../../svgs/CheckIcon"
+import { CheckmarkIcon } from "@artsy/icons/native"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
 import { Text } from "../Text"
@@ -24,7 +24,7 @@ export const FollowButton = ({
       variant={isFollowed ? "outline" : "outlineGray"}
       size="small"
       longestText={longestText ? longestText : "Following"}
-      icon={isFollowed && !loading && <CheckIcon fill="mono60" width="16px" height="16px" />}
+      icon={isFollowed && !loading && <CheckmarkIcon fill="mono60" width="16px" height="16px" />}
       loading={loading}
       {...restProps}
     >
