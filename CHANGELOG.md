@@ -1,3 +1,15 @@
+# v18.0.0 (Fri Sep 05 2025)
+
+#### 💥  Breaking Change
+
+- chore(MOPRAT-863): Remove icons from Palette Mobile [#368](https://github.com/artsy/palette-mobile/pull/368) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v17.33.0 (Thu Sep 04 2025)
 
 #### 🚀  Enhancement
