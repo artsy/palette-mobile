@@ -10043,10 +10043,10 @@ react-nanny@^2.15.0:
   resolved "https://registry.yarnpkg.com/react-nanny/-/react-nanny-2.15.0.tgz#9472984af45761263b92b209f925e773fd761653"
   integrity sha512-fn6tAnJ+UEdD0pq5YytlZJb5XmjVcvXoxq3i2r1o/BavgipwRWsw7oOXNJ8bJd33iedlkNyAQMXVC6qTl0Hv4A==
 
-react-native-blurhash@^2.1.1:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-blurhash/-/react-native-blurhash-2.1.2.tgz#b64ddcab453fd34b1ad8f958461bad5a31c47dfc"
-  integrity sha512-udueHl9kIOYnLqM+7V1v/5db2JEgAb97cmmN8aUbSQMpXOH5CCUufJzuYW+jLp65fnoYgDmbjA8RRSosBSj0JA==
+react-native-blurhash@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-blurhash/-/react-native-blurhash-2.1.1.tgz#c8079881422664691b387e43b020b846dfd196e6"
+  integrity sha512-b1aA5Tn31pPbqmaWnhJv7zSuN6o9M1t4yHciPunfP89LDkH2dvDIynvkE00Hen4Vmt6SnyXViSYH34MyvTvRiA==
 
 react-native-collapsible-tab-view@^8.0.1:
   version "8.0.1"
