@@ -59,7 +59,6 @@ const getStories = () => {
     require("../src/elements/ToolTip/ToolTip.stories.tsx"),
     require("../src/elements/Touchable/Touchable.stories.tsx"),
     require("../src/elements/VisualClue/VisualClue.stories.tsx"),
-    require("../src/svgs/icons.stories.tsx"),
     require("../src/utils/colors.stories.tsx"),
     require("../src/utils/space.stories.tsx"),
   ];

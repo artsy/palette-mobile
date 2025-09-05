@@ -6,12 +6,5 @@ module.exports = {
     ["@babel/plugin-proposal-class-properties", { loose: true }], // must come after decorators
     "react-native-reanimated/plugin", // should be LAST
   ],
-  presets: [
-    [
-      "module:@react-native/babel-preset",
-      { useTransformReactJSXExperimental: true }, // this is so `import React from "react"` is not needed.
-    ],
-    "@babel/preset-typescript",
-    ["@babel/preset-react", { runtime: "automatic" }], // this is so `import React from "react"` is not needed.
-  ],
+  presets: [["babel-preset-expo", { jsxRuntime: "automatic" }], "@babel/preset-typescript"],
 }

@@ -79,3 +79,10 @@ ios/PaletteMobile/fonts/*
 # Keep these, so we can keep the folders these appear in.
 !.gitkeep
 #########################################################
+
+# Expo
+.expo
+dist/
+web-build/
+android
+ios
