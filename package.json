@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "17.33.0",
+  "version": "18.0.0",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "android": "expo run:android --port 8082",
@@ -34,6 +34,7 @@
     "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
   ],
   "dependencies": {
+    "@artsy/icons": "^3.49.0",
     "@artsy/palette-tokens": "7.0.0",
     "@d11/react-native-fast-image": "^8.10.0",
     "@shopify/flash-list": "^1.8.3",

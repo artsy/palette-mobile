@@ -1,6 +1,6 @@
+import { LockIcon } from "@artsy/icons/native"
 import { isValidElement, useMemo } from "react"
 import { Text as RNText } from "react-native"
-import { LockIcon } from "../../svgs"
 import { bullet } from "../../utils/text"
 import { Avatar, AvatarSize } from "../Avatar"
 import { Flex, FlexProps } from "../Flex"

@@ -1,8 +1,8 @@
+import { TriangleDownIcon } from "@artsy/icons/native"
 import { noop } from "lodash"
 import { createContext, useContext, useRef, useState } from "react"
 import { View } from "react-native"
 import { ToolTipFlyout, ToolTipTextContainer } from "./ToolTipFlyout"
-import { TriangleDown } from "../../svgs/TriangleDown"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { useTheme } from "../../utils/hooks/useTheme"
 
@@ -120,7 +120,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             text={toolTipText}
           />
           {!!enabled && position === "TOP" && !!toolTipText && (
-            <TriangleDown
+            <TriangleDownIcon
               style={{
                 left: triangleXDisplacement + xOffset,
                 position: "absolute",
@@ -171,7 +171,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
             text={toolTipText}
           />
           {!!enabled && position === "BOTTOM" && !!toolTipText && (
-            <TriangleDown
+            <TriangleDownIcon
               style={{
                 transform: [{ rotate: "180deg" }],
                 left: triangleXDisplacement + xOffset,

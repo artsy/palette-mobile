@@ -20,6 +20,11 @@
   resolved "https://registry.yarnpkg.com/@artsy/auto-config/-/auto-config-1.2.0.tgz#62a237ca3a058f1b91e5b8a12abebae0ddc5bd2f"
   integrity sha512-6zGlvqELl4XhqMajJxfgHaY3m5YhZK5FwkxlouJKSb0Su301bzXaPUxKjzj9X147YHJUyrRLSAruzVtj1Gr42Q==
 
+"@artsy/icons@^3.49.0":
+  version "3.49.0"
+  resolved "https://registry.yarnpkg.com/@artsy/icons/-/icons-3.49.0.tgz#f7e502892cc009538a464155dea0edc720ee6d00"
+  integrity sha512-HomLdxzWoQXUgZSzRPxxiUV6AcMoxwzejqtQ13FahuSwnDikPO3BJv4oeCg92IV2U3xRaP2MIl4shK+Fq2pyhA==
+
 "@artsy/palette-tokens@7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@artsy/palette-tokens/-/palette-tokens-7.0.0.tgz#4c104f8504bb591e2b468f52d393c3da2573fbd7"
