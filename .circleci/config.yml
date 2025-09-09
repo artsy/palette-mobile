@@ -31,7 +31,7 @@ jobs:
               circleci step halt
             fi
       - run: yarn install:all
-      - run: yarn ios
+      - run: yarn prepublishOnly
 
   build-android:
     docker:
@@ -51,7 +51,7 @@ jobs:
       - run: yarn install
       - run:
           name: Build Android App
-          command: cd android && ./gradlew assembleDebug
+          command: yarn prepublishOnly
 
 workflows:
   build-deploy:
