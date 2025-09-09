@@ -1,3 +1,15 @@
+# v19.0.0 (Tue Sep 09 2025)
+
+#### 💥  Breaking Change
+
+- chore(ONYX-1900): migrate palette-mobile to expo [#370](https://github.com/artsy/palette-mobile/pull/370) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v18.0.0 (Fri Sep 05 2025)
 
 #### 💥 Breaking Change
