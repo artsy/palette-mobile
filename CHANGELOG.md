@@ -1,3 +1,15 @@
+# v19.1.0 (Wed Sep 10 2025)
+
+#### 🚀  Enhancement
+
+- fix: ref type for react 19 [#379](https://github.com/artsy/palette-mobile/pull/379) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v19.0.0 (Tue Sep 09 2025)
 
 #### 💥  Breaking Change
