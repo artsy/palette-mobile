@@ -55,10 +55,14 @@ yarn install:all
 Run using:
 
 ```sh
-yarn start
+yarn ios
 ```
 
-And then either follow the instructions in the terminal window or run `yarn ios` or `yarn android` from the command line, or just open up the simulator if you have done this before.
+or
+
+```sh
+yarn android
+```
 
 ⚠️ Temporary workaround until we move Expo into an example directory:
 
