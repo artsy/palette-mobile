@@ -55,10 +55,22 @@ yarn install:all
 Run using:
 
 ```sh
-yarn start
+yarn ios
 ```
 
-And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yarn android` from the command line, or just open up the simulator if you have done this before.
+or
+
+```sh
+yarn android
+```
+
+⚠️ Temporary workaround until we move Expo into an example directory:
+
+For local development, remove the line from package.json:
+
+`"main": "dist/index.js"`
+
+Make sure to add it back before committing.
 
 ## Developing Features using Local Versions of Palette
 
