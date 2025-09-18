@@ -58,7 +58,7 @@ Run using:
 yarn start
 ```
 
-And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yarn android` from the command line, or just open up the simulator if you have done this before.
+And then either follow the instructions in the terminal window or run `yarn ios` or `yarn android` from the command line, or just open up the simulator if you have done this before.
 
 ⚠️ Temporary workaround until we move Expo into an example directory:
 
