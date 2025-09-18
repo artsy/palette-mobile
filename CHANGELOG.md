@@ -1,3 +1,15 @@
+# v19.2.0 (Thu Sep 18 2025)
+
+#### 🚀  Enhancement
+
+- chore: update readme [#381](https://github.com/artsy/palette-mobile/pull/381) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v19.1.0 (Wed Sep 10 2025)
 
 #### 🚀  Enhancement
