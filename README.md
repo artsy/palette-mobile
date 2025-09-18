@@ -60,6 +60,14 @@ yarn start
 
 And then either open Xcode and run, or Android Studio, or run `yarn ios` or `yarn android` from the command line, or just open up the simulator if you have done this before.
 
+⚠️ Temporary workaround until we move Expo into an example directory:
+
+For local development, remove the line from package.json:
+
+`"main": "dist/index.js"`
+
+Make sure to add it back before committing.
+
 ## Developing Features using Local Versions of Palette
 
 When developing new components in Palette, it's often useful to test those components in consuming apps (such as Eigen). However, due to the poor support for symlinks in React Native, this can be difficult. Enter [yalc](https://github.com/wclr/yalc). Yalc is a mini package manager that one can publish to and install from, which makes it easy to test code in realtime from outside of your app.
