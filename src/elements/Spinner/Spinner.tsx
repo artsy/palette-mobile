@@ -42,8 +42,8 @@ export const getSize = (props: SpinnerProps | BarProps) => {
       }
     default:
       return {
-        width: props.width,
-        height: props.height,
+        width: props.width ?? 25,
+        height: props.height ?? 6,
       }
   }
 }
@@ -111,8 +111,3 @@ const Bar = styled(Animated.View)<BarProps>`
     `
   }};
 `
-
-Bar.defaultProps = {
-  width: 25,
-  height: 6,
-}
