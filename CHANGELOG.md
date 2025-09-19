@@ -1,3 +1,15 @@
+# v19.3.0 (Fri Sep 19 2025)
+
+#### 🚀  Enhancement
+
+- refactor(defaultProps): replace default props handling with ES6 def. values [#382](https://github.com/artsy/palette-mobile/pull/382) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.2.0 (Thu Sep 18 2025)
 
 #### 🚀  Enhancement
