@@ -8,5 +8,3 @@ jobs:
     uses: artsy/duchamp/.github/workflows/run-add-version-label.yml@PHIRE-2173
     secrets:
       danger-token: ${{ secrets.DANGER_TOKEN }}
-    with:
-      fail-on-errors: false
