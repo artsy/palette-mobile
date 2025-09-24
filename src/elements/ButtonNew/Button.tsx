@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
-import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
+import { HapticFeedbackTypes, trigger } from "react-native-haptic-feedback"
 import Animated, {
   interpolateColor,
+  SharedValue,
   useAnimatedReaction,
   useAnimatedStyle,
   useDerivedValue,
@@ -127,7 +128,7 @@ export const Button = ({
     }
 
     if (haptic !== undefined) {
-      Haptic.trigger(haptic === true ? "impactLight" : haptic)
+      trigger(haptic === true ? "impactLight" : haptic)
     }
 
     onPress(event)
@@ -271,11 +272,7 @@ const AFlex = Animated.createAnimatedComponent(Flex)
 
 const useStateWithProp = (
   prop: boolean
-): [
-  boolean,
-  React.Dispatch<React.SetStateAction<boolean>>,
-  Readonly<Animated.SharedValue<1 | 0>>
-] => {
+): [boolean, React.Dispatch<React.SetStateAction<boolean>>, Readonly<SharedValue<1 | 0>>] => {
   const [state, setState] = useState(!!prop)
   useEffect(() => {
     setState(!!prop)
