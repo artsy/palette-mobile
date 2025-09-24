@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@7.2.0
+  node: circleci/node@5.3.0
   auto: artsy/auto@2.2.0
   macos: circleci/macos@2.5.4
 
@@ -11,10 +11,9 @@ only_main: &only_main
     branches:
       only: main
 
-executors:
-  node:
-    docker:
-      - image: cimg/node:22.0.0
+executor:
+  name: node/default
+  tag: << pipeline.parameters.node_version >>
 
 jobs:
   build-ios:
