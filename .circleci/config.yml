@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.3.0
+  node: circleci/node@7.2.0
   auto: artsy/auto@2.2.0
   macos: circleci/macos@2.5.4
 
@@ -14,7 +14,7 @@ only_main: &only_main
 executors:
   node:
     docker:
-      - image: cimg/node:20.9.0
+      - image: cimg/node:22.0.0
 
 jobs:
   build-ios:
@@ -53,18 +53,23 @@ jobs:
           name: Build Android App
           command: yarn prepublishOnly
 
+parameters:
+  node_version:
+    type: string
+    default: "22.0.0"
+
 workflows:
   build-deploy:
     jobs:
       - node/test:
           name: test
-          version: "20.9.0"
+          version: << pipeline.parameters.node_version >>
           pkg-manager: yarn
           run-command: "test"
 
       - node/run:
           name: type-check
-          version: "20.9.0"
+          version: << pipeline.parameters.node_version >>
           pkg-manager: yarn
           yarn-run: "type-check"
 
@@ -80,7 +85,7 @@ workflows:
 
       - auto/publish-canary:
           context: npm-deploy
-          node-version: "20.9.0"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               ignore: main
@@ -90,7 +95,7 @@ workflows:
 
       - auto/publish:
           context: npm-deploy
-          node-version: "20.9.0"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               only: main
