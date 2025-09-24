@@ -1,3 +1,16 @@
+# v19.4.0 (Wed Sep 24 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump auto orb [#385](https://github.com/artsy/palette-mobile/pull/385) ([@gkartalis](https://github.com/gkartalis))
+- build(deps): bump node to 22 [#384](https://github.com/artsy/palette-mobile/pull/384) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.3.0 (Fri Sep 19 2025)
 
 #### 🚀  Enhancement
