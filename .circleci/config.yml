@@ -11,10 +11,9 @@ only_main: &only_main
     branches:
       only: main
 
-executors:
-  node:
-    docker:
-      - image: cimg/node:20.9.0
+executor:
+  name: node/default
+  tag: << pipeline.parameters.node_version >>
 
 jobs:
   build-ios:
@@ -53,18 +52,23 @@ jobs:
           name: Build Android App
           command: yarn prepublishOnly
 
+parameters:
+  node_version:
+    type: string
+    default: "22.0.0"
+
 workflows:
   build-deploy:
     jobs:
       - node/test:
           name: test
-          version: "20.9.0"
+          version: << pipeline.parameters.node_version >>
           pkg-manager: yarn
           run-command: "test"
 
       - node/run:
           name: type-check
-          version: "20.9.0"
+          version: << pipeline.parameters.node_version >>
           pkg-manager: yarn
           yarn-run: "type-check"
 
@@ -80,7 +84,7 @@ workflows:
 
       - auto/publish-canary:
           context: npm-deploy
-          node-version: "20.9.0"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               ignore: main
@@ -90,7 +94,7 @@ workflows:
 
       - auto/publish:
           context: npm-deploy
-          node-version: "20.9.0"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               only: main
