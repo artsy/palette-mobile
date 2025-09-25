@@ -1,3 +1,15 @@
+# v19.5.0 (Thu Sep 25 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): remove unused dependencies and use expo ts config extension [#386](https://github.com/artsy/palette-mobile/pull/386) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.4.0 (Wed Sep 24 2025)
 
 #### 🚀  Enhancement
