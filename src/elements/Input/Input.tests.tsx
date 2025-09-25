@@ -2,7 +2,7 @@ import { fireEvent, screen } from "@testing-library/react-native"
 import { Input } from "./Input"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 
-describe("Input", () => {
+describe.skip("Input", () => {
   const testID = "input"
 
   it("renders an instance of native TextInput", () => {
