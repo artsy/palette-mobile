@@ -138,7 +138,7 @@
     "@types/react": "18.3.12"
   },
   "engines": {
-    "yarn": "1.x"
+    "yarn": "4.x"
   },
   "files": [
     "dist"
@@ -166,5 +166,6 @@
       "yarn lint",
       "prettier --write --ignore-unknown"
     ]
-  }
+  },
+  "packageManager": "yarn@4.10.0"
 }
