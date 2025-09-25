@@ -13,7 +13,6 @@ interface CssTransitionState {
 export class CssTransition extends Component<CssTransitionProps, CssTransitionState> {
   private animatedValue: Animated.Value = new Animated.Value(0)
 
-  // @ts-expect-error STRICTNESS_MIGRATION --- 🚨 Unsafe legacy code 🚨 Please delete this and fix any type errors if you have time 🙏
   constructor(props) {
     super(props)
 
@@ -43,7 +42,6 @@ export class CssTransition extends Component<CssTransitionProps, CssTransitionSt
     const prevStyle = this.mergeStyles(previousStyle)
     const nextStyle = this.mergeStyles(style)
     const animateCheckboxStyle = this.props.animate.reduce((acc, cssProperty) => {
-      // @ts-expect-error STRICTNESS_MIGRATION --- 🚨 Unsafe legacy code 🚨 Please delete this and fix any type errors if you have time 🙏
       acc[cssProperty] = this.animatedValue.interpolate({
         inputRange: [0, 1],
         outputRange: [prevStyle[cssProperty], nextStyle[cssProperty]],
@@ -54,9 +52,7 @@ export class CssTransition extends Component<CssTransitionProps, CssTransitionSt
     return <Animated.View style={[style, animateCheckboxStyle]} {...props} />
   }
 
-  // @ts-expect-error STRICTNESS_MIGRATION --- 🚨 Unsafe legacy code 🚨 Please delete this and fix any type errors if you have time 🙏
   private mergeStyles(style) {
-    // @ts-expect-error STRICTNESS_MIGRATION --- 🚨 Unsafe legacy code 🚨 Please delete this and fix any type errors if you have time 🙏
     return style.reduce((acc, obj) => {
       Object.keys(obj).forEach((key) => (acc[key] = obj[key]))
       return acc
