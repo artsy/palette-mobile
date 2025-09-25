@@ -45,9 +45,20 @@ If you'd like to add a new component to Palette please create an issue using the
 
 ## Local development
 
+```sh
+mise install
+```
+
+If you are still using asdf:
+
+```sh
+asdf install
+```
+
 Set up using:
 
 ```sh
+yarn install
 yarn setup:artsy
 yarn install:all
 ```
