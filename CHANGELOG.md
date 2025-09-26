@@ -1,3 +1,15 @@
+# v19.6.0 (Fri Sep 26 2025)
+
+#### 🚀  Enhancement
+
+- chore: align fast image version on palette-mobile with eigen [#388](https://github.com/artsy/palette-mobile/pull/388) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.5.0 (Thu Sep 25 2025)
 
 #### 🚀  Enhancement
