@@ -35,7 +35,7 @@
   "dependencies": {
     "@artsy/icons": "^3.49.0",
     "@artsy/palette-tokens": "7.0.0",
-    "@d11/react-native-fast-image": "^8.10.0",
+    "@d11/react-native-fast-image": "8.12.0",
     "@shopify/flash-list": "^1.8.3",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
@@ -166,5 +166,6 @@
       "yarn lint",
       "prettier --write --ignore-unknown"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
