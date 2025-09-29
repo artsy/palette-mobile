@@ -88,16 +88,13 @@ android
 ios
 
 
-# yarn 4
+# Yarn 4
 .yarn/*
 !.yarn/releases
+!.yarn/releases/*
 !.yarn/plugins
+!.yarn/plugins/*
 !.yarn/sdks
+!.yarn/sdks/*
 !.yarn/versions
-
-bin/.yarn/*
-!bin/.yarn/patches
-!bin/.yarn/plugins
-!bin/.yarn/releases
-!bin/.yarn/sdks
-!bin/.yarn/versions
+!.yarn/versions/*
