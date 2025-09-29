@@ -1,7 +1,6 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
-import { memo, useRef } from "react"
-import { PixelRatio, StyleProp, View, ViewStyle, Animated } from "react-native"
-import { Blurhash } from "react-native-blurhash"
+import { memo } from "react"
+import { PixelRatio, StyleProp, View, ViewStyle } from "react-native"
 import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -47,15 +46,12 @@ export const Image: React.FC<ImageProps> = memo(
 
     const color = useColor()
 
-    const opacity = useRef(new Animated.Value(0)).current
+    // const opacity = useSharedValue(0)
 
-    const onLoadEnd = () => {
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: true,
-      }).start()
-    }
+    // const onLoadEnd = () => {
+    //   opacity.value = withTiming(1, { duration: 200 })
+
+    // }
 
     if (showLoadingState) {
       return (
@@ -96,7 +92,6 @@ export const Image: React.FC<ImageProps> = memo(
             { backgroundColor: blurhash ? "transparent" : color("mono30") },
           ]}
           resizeMode={resizeMode}
-          onLoadEnd={onLoadEnd}
           source={{
             priority: FastImage.priority.normal,
             uri,
@@ -140,13 +135,13 @@ type ImageSkeletonProps = {
 }
 
 export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash, style }) => {
-  if (!!blurhash) {
-    return (
-      <Flex backgroundColor="mono10" {...dimensions} style={style}>
-        <Blurhash blurhash={blurhash} style={{ flex: 1 }} decodeWidth={16} decodeHeight={16} />
-      </Flex>
-    )
-  }
+  // if (!!blurhash) {
+  //   return (
+  //     <Flex backgroundColor="mono10" {...dimensions} style={style}>
+  //       <Blurhash blurhash={blurhash} style={{ flex: 1 }} />
+  //     </Flex>
+  //   )
+  // }
 
   return (
     <Flex style={style}>
