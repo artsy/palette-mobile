@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@6.3.0
-  auto: artsy/auto@2.3.0
+  auto: artsy/auto@dev:eab590553a2b91a77c6495ea092b8f33
   macos: circleci/macos@2.5.4
 
 only_main: &only_main
