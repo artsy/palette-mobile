@@ -121,7 +121,7 @@ __metadata:
     react-native-linear-gradient: "npm:2.6.2"
     react-native-pager-view: "npm:6.5.0"
     react-native-popover-view: "npm:^6.1.0"
-    react-native-reanimated: "npm:3.16.7"
+    react-native-reanimated: "npm:3.19.1"
     react-native-safe-area-context: "npm:5.4.1"
     react-native-svg: "npm:15.10.1"
     react-spring: "npm:8.0.23"
@@ -13140,6 +13140,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-is-edge-to-edge@npm:1.1.7":
+  version: 1.1.7
+  resolution: "react-native-is-edge-to-edge@npm:1.1.7"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/b7a37437f439b1e27a4d980de01994aa71b9091dc3ed00c21172d5505fb11978cd5ed3a43f97c89d502a3a08cf26e5cea6435b8d6e93d3557a92dd43563f7021
+  languageName: node
+  linkType: hard
+
 "react-native-linear-gradient@npm:2.6.2":
   version: 2.6.2
   resolution: "react-native-linear-gradient@npm:2.6.2"
@@ -13170,9 +13180,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.16.7":
-  version: 3.16.7
-  resolution: "react-native-reanimated@npm:3.16.7"
+"react-native-reanimated@npm:3.19.1":
+  version: 3.19.1
+  resolution: "react-native-reanimated@npm:3.19.1"
   dependencies:
     "@babel/plugin-transform-arrow-functions": "npm:^7.0.0-0"
     "@babel/plugin-transform-class-properties": "npm:^7.0.0-0"
@@ -13185,11 +13195,12 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.16.7"
     convert-source-map: "npm:^2.0.0"
     invariant: "npm:^2.2.4"
+    react-native-is-edge-to-edge: "npm:1.1.7"
   peerDependencies:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 10c0/007cbec677d036e8d2c0744dfff52282ddfb9a89bb3eee82e7eaebcf731b07505e241af04ac87a38da038a18e380b32ec8a55263d1bb8559274d1c077b0b1d25
+  checksum: 10c0/82f83f8cd307dbb3d0d435a7c801fa27d06265b1eed51844013682e133072e447fd15c3f12814f4bd8d4759c89ad4b1043631611284afbd8e6eb505f57af0f12
   languageName: node
   linkType: hard
 
