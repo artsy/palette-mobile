@@ -9,3 +9,5 @@ jest.mock("react-native-blurhash", () => {
 })
 
 require("react-native-reanimated").setUpTests()
+//
+jest.mock("react-native-reanimated", () => require("react-native-reanimated/mock"))
