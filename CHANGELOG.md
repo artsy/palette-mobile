@@ -1,3 +1,15 @@
+# v19.8.0 (Tue Sep 30 2025)
+
+#### 🚀  Enhancement
+
+- fix: performance issues on skeleton image [#389](https://github.com/artsy/palette-mobile/pull/389) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.7.0 (Tue Sep 30 2025)
 
 #### 🚀  Enhancement
