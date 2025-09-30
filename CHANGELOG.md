@@ -1,3 +1,15 @@
+# v19.9.0 (Tue Sep 30 2025)
+
+#### 🚀  Enhancement
+
+- chore: upgrade reanimated to 3.19.1 [#390](https://github.com/artsy/palette-mobile/pull/390) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.8.0 (Tue Sep 30 2025)
 
 #### 🚀  Enhancement
