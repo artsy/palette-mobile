@@ -86,3 +86,15 @@ dist/
 web-build/
 android
 ios
+
+
+# Yarn 4
+.yarn/*
+!.yarn/releases
+!.yarn/releases/*
+!.yarn/plugins
+!.yarn/plugins/*
+!.yarn/sdks
+!.yarn/sdks/*
+!.yarn/versions
+!.yarn/versions/*

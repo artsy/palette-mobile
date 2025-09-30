@@ -63,13 +63,13 @@ workflows:
       - node/test:
           name: test
           version: << pipeline.parameters.node_version >>
-          pkg-manager: yarn
+          pkg-manager: yarn-berry
           run-command: "test"
 
       - node/run:
           name: type-check
           version: << pipeline.parameters.node_version >>
-          pkg-manager: yarn
+          pkg-manager: yarn-berry
           yarn-run: "type-check"
 
       - build-ios:
