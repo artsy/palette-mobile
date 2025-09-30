@@ -1,3 +1,16 @@
+# v19.7.0 (Tue Sep 30 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): migrate to yarn 4 [#387](https://github.com/artsy/palette-mobile/pull/387) ([@gkartalis](https://github.com/gkartalis) [@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 2
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.6.0 (Fri Sep 26 2025)
 
 #### 🚀  Enhancement
