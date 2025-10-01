@@ -14,6 +14,7 @@
     "lint": "eslint --cache --cache-location '.cache/eslint/' --ext .ts,.tsx --fix",
     "local-palette-dev": "./scripts/sync-after-change",
     "open-xcode": "open ios/PaletteMobile.xcworkspace",
+    "postinstall": "yarn patch-package",
     "prebuild": "npx expo prebuild",
     "prepare": "patch-package && husky install",
     "prepublishOnly": "yarn clean && yarn compile",
@@ -116,7 +117,7 @@
     "jest-environment-jsdom": "29.4.2",
     "jest-extended": "3.2.3",
     "jest-watch-typeahead": "2.2.2",
-    "jotai": "1.12.1",
+    "jotai": "^2.15.0",
     "lint-staged": "13.1.2",
     "nodemon": "^2.0.20",
     "patch-package": "^8.0.0",
@@ -134,7 +135,7 @@
     "react-native-svg": "15.12.0",
     "react-test-renderer": "18.3.1",
     "rimraf": "4.1.2",
-    "styled-components": "^5.3.6",
+    "styled-components": "5.3.6",
     "typescript": "5.8.3"
   },
   "resolutions": {
@@ -146,7 +147,6 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"

@@ -101,7 +101,7 @@ __metadata:
     jest-environment-jsdom: "npm:29.4.2"
     jest-extended: "npm:3.2.3"
     jest-watch-typeahead: "npm:2.2.2"
-    jotai: "npm:1.12.1"
+    jotai: "npm:^2.15.0"
     lint-staged: "npm:13.1.2"
     lodash: "npm:^4.17.21"
     moti: "npm:^0.25.3"
@@ -127,7 +127,7 @@ __metadata:
     react-spring: "npm:8.0.23"
     react-test-renderer: "npm:18.3.1"
     rimraf: "npm:4.1.2"
-    styled-components: "npm:^5.3.6"
+    styled-components: "npm:5.3.6"
     styled-system: "npm:^5.1.5"
     typescript: "npm:5.8.3"
   peerDependencies:
@@ -10106,43 +10106,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jotai@npm:1.12.1":
-  version: 1.12.1
-  resolution: "jotai@npm:1.12.1"
+"jotai@npm:^2.15.0":
+  version: 2.15.0
+  resolution: "jotai@npm:2.15.0"
   peerDependencies:
-    "@babel/core": "*"
-    "@babel/template": "*"
-    jotai-immer: "*"
-    jotai-optics: "*"
-    jotai-redux: "*"
-    jotai-tanstack-query: "*"
-    jotai-urql: "*"
-    jotai-valtio: "*"
-    jotai-xstate: "*"
-    jotai-zustand: "*"
-    react: ">=16.8"
+    "@babel/core": ">=7.0.0"
+    "@babel/template": ">=7.0.0"
+    "@types/react": ">=17.0.0"
+    react: ">=17.0.0"
   peerDependenciesMeta:
     "@babel/core":
       optional: true
     "@babel/template":
       optional: true
-    jotai-immer:
+    "@types/react":
       optional: true
-    jotai-optics:
+    react:
       optional: true
-    jotai-redux:
-      optional: true
-    jotai-tanstack-query:
-      optional: true
-    jotai-urql:
-      optional: true
-    jotai-valtio:
-      optional: true
-    jotai-xstate:
-      optional: true
-    jotai-zustand:
-      optional: true
-  checksum: 10c0/8ee8305500e73fb218678d7e354c52cc2899ab8010431b004f48277404d33d0680e643c775a40997f52df05b876c632174af356a539153bbb638cc0c350ffe59
+  checksum: 10c0/fbe67f504f293bf59bcd6855f5e603c6a51ad6d839eee46ef79e85a5b8a2cd8530a26f47cb65fa5afbc55d336fa2df5f832b264d32fd12fb0d53c68f9bf36687
   languageName: node
   linkType: hard
 
@@ -14051,9 +14032,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.3.6":
-  version: 5.3.11
-  resolution: "styled-components@npm:5.3.11"
+"styled-components@npm:5.3.6":
+  version: 5.3.6
+  resolution: "styled-components@npm:5.3.6"
   dependencies:
     "@babel/helper-module-imports": "npm:^7.0.0"
     "@babel/traverse": "npm:^7.4.5"
@@ -14069,7 +14050,7 @@ __metadata:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
-  checksum: 10c0/90b73479770c5d68e22e6366d210119d7203154a3e49dc828f6f6b4c2d5c077f7548210dfddd0af3cb15b0b63fab3eec8dc995c1734e97a313a9b83ba893668e
+  checksum: 10c0/14c0c1fa2944a753fcdaef10478c340046076163ad419eb7a4a37602e953cf63df3603961abdce7b4e780c2cc828cdf1c7a5f7d96fb07fabc24f23997980d69a
   languageName: node
   linkType: hard
 
