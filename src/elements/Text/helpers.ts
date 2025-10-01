@@ -27,3 +27,14 @@ export const useFontFamilyFor = ({
 
   return fonts.sans.regular
 }
+
+export const useTextStyleForPalette = (variant: NoUndefined<TextProps["variant"]>): TextStyle => {
+  const { theme } = useTheme()
+
+  const fontSizeAndLineHeight = theme.textTreatments[variant].fontSize
+
+  return {
+    fontSize: fontSizeAndLineHeight,
+    lineHeight: fontSizeAndLineHeight,
+  }
+}
