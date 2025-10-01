@@ -1,3 +1,15 @@
+# v19.11.0 (Wed Oct 01 2025)
+
+#### 🚀  Enhancement
+
+- chore: upgrade storybook to v7 [#393](https://github.com/artsy/palette-mobile/pull/393) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.10.0 (Tue Sep 30 2025)
 
 #### 🚀  Enhancement
