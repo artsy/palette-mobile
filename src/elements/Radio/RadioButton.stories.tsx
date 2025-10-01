@@ -1,4 +1,3 @@
-import { storiesOf } from "@storybook/react-native"
 import { useState } from "react"
 import { RadioButton } from "./RadioButton"
 import { List } from "../../storybook/helpers"
@@ -7,10 +6,9 @@ import { Text } from "../Text"
 
 export default {
   title: "RadioButton",
-  component: RadioButton,
 }
 
-storiesOf("RadioButton", module).add("Default", () => {
+export const Default = () => {
   const [metric, setMetric] = useState("cm")
 
   return (
@@ -59,4 +57,4 @@ storiesOf("RadioButton", module).add("Default", () => {
       </Flex>
     </List>
   )
-})
+}
