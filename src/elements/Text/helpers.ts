@@ -37,10 +37,9 @@ export const useFontFamilyFor = ({
 export const useTextStyleForPalette = (variant: NoUndefined<TextProps["variant"]>): TextStyle => {
   const { theme } = useTheme()
 
-  const fontSizeAndLineHeight = theme.textTreatments[variant].fontSize
+  const textTreatment = theme.textTreatments[variant]
 
   return {
-    fontSize: fontSizeAndLineHeight,
-    lineHeight: fontSizeAndLineHeight,
+    fontSize: textTreatment.fontSize,
   }
 }
