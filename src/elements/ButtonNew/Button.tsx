@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
+import { GestureResponderEvent, Pressable, PressableProps } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
   interpolateColor,
@@ -11,11 +11,12 @@ import Animated, {
 } from "react-native-reanimated"
 import { useColorsForVariantAndState } from "./colors"
 import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
+import { useTheme } from "../../utils/hooks"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex"
 import { Spacer } from "../Spacer"
 import { Spinner } from "../Spinner"
-import { Text, useTextStyleForPalette } from "../Text"
+import { Text } from "../Text"
 
 const ANIMATION_DURATION = 150
 
@@ -100,7 +101,10 @@ export const Button = ({
     }
   )
 
-  const textStyle = useTextStyleForPalette(size === "small" ? "xs" : "sm")
+  const { theme } = useTheme()
+  const textVariantBySize = size === "small" ? "xs" : "sm"
+  const { fontSize } = theme.textTreatments[textVariantBySize]
+
   const [longestTextMeasurements, setLongestTextMeasurements] = useState<ViewMeasurements>({
     width: 0,
     height: 0,
@@ -228,14 +232,14 @@ export const Button = ({
               ) : null}
 
               <AText
-                style={[{ width: Math.ceil(longestTextMeasurements.width) }, textStyle, textAnim]}
+                style={[{ width: Math.ceil(longestTextMeasurements.width), fontSize }, textAnim]}
                 textAlign="center"
               >
                 {children}
               </AText>
 
               <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                <Text color="red" style={textStyle}>
+                <Text color="red" style={{ fontSize }}>
                   {longestText ? longestText : children}
                 </Text>
               </MeasuredView>

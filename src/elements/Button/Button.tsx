@@ -1,13 +1,13 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
 import { useState } from "react"
-import { PressableProps, TextStyle, GestureResponderEvent, Pressable } from "react-native"
+import { GestureResponderEvent, Pressable, PressableProps, TextStyle } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { config } from "react-spring"
 // @ts-ignore
 import { animated, Spring } from "react-spring/renderprops-native"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
-import { useColor } from "../../utils/hooks"
+import { useColor, useTheme } from "../../utils/hooks"
 import { isTestEnvironment } from "../../utils/tests/isTestEnvironment"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex/Flex"
@@ -15,7 +15,6 @@ import { MeasuredView, ViewMeasurements } from "../MeasuredView"
 import { Spacer } from "../Spacer"
 import { Spinner } from "../Spinner"
 import { Text } from "../Text/Text"
-import { useTextStyleForPalette } from "../Text/helpers"
 
 export interface ButtonProps extends BoxProps {
   children: React.ReactNode
@@ -86,8 +85,9 @@ export const Button: React.FC<ButtonProps> = ({
   hitSlop,
   ...rest
 }) => {
+  const { theme } = useTheme()
   const textVariantBySize = size === "small" ? "xs" : "sm"
-  const textStyle = useTextStyleForPalette(textVariant ?? textVariantBySize)
+  const { fontSize } = theme.textTreatments[textVariantBySize]
 
   const [innerDisplayState, setInnerDisplayState] = useState(DisplayState.Enabled)
 
@@ -200,20 +200,18 @@ export const Button: React.FC<ButtonProps> = ({
                   */}
                   {!isTestEnvironment() && longestText && (
                     <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                      <Text color="red" style={textStyle}>
+                      <Text color="red" style={{ fontSize }}>
                         {longestText ? longestText : children}
                       </Text>
                     </MeasuredView>
                   )}
                   <AnimatedText
-                    style={[
-                      {
-                        width: longestText ? Math.ceil(longestTextMeasurements.width) : "auto",
-                        color: springProps.textColor,
-                        textDecorationLine: springProps.textDecorationLine,
-                      },
-                      textStyle,
-                    ]}
+                    style={{
+                      fontSize,
+                      width: longestText ? Math.ceil(longestTextMeasurements.width) : "auto",
+                      color: springProps.textColor,
+                      textDecorationLine: springProps.textDecorationLine,
+                    }}
                     textAlign="center"
                   >
                     {children}
