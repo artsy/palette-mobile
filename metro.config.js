@@ -1,12 +1,11 @@
 const path = require("path")
-const { generate } = require("@storybook/react-native/scripts/generate")
+const withStorybook = require("@storybook/react-native/metro/withStorybook")
 const { getDefaultConfig } = require("expo/metro-config")
-
-generate({
-  configPath: path.resolve(__dirname, "./.storybook"),
-  useJs: true,
-})
 
 const defaultConfig = getDefaultConfig(__dirname)
 
-module.exports = defaultConfig
+module.exports = withStorybook(defaultConfig, {
+  enabled: true,
+  configPath: path.resolve(__dirname, "./.storybook"),
+  useJs: true,
+})

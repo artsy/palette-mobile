@@ -40,9 +40,12 @@
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
+    "expo": "~52.0.47",
     "lodash": "^4.17.21",
     "moti": "^0.25.3",
+    "react": "18.3.1",
     "react-nanny": "^2.15.0",
+    "react-native": "0.76.9",
     "react-native-blurhash": "2.1.1",
     "react-native-collapsible-tab-view": "^8.0.1",
     "react-native-pager-view": "6.5.0",
@@ -143,7 +146,6 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
