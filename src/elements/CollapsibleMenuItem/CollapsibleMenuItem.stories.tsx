@@ -1,4 +1,3 @@
-import { storiesOf } from "@storybook/react-native"
 import { useRef, useState } from "react"
 import { ScrollView, View } from "react-native"
 import { CollapsibleMenuItem } from "./CollapsibleMenuItem"
@@ -155,8 +154,20 @@ export const ComponentWithCollapsibleMenu = () => {
   )
 }
 
-storiesOf("Collapsible Menu ", module).add("Collapse Collapse Items", () => (
+export default {
+  title: "Collapsible Menu ",
+
+  excludeStories: [
+    "ArtworkDetails",
+    "UploadPhotos",
+    "ContactInformation",
+    "DisplayContent",
+    "ComponentWithCollapsibleMenu",
+  ],
+}
+
+export const CollapseCollapseItems = () => (
   <>
     <ComponentWithCollapsibleMenu />
   </>
-))
+)

@@ -1,11 +1,14 @@
-import { storiesOf } from "@storybook/react-native"
 import { BulletedItem } from "./BulletedItem"
 import { List } from "../../storybook/helpers"
 import { Flex } from "../Flex"
 import { Spacer } from "../Spacer"
 import { Text } from "../Text"
 
-storiesOf("List", module).add("Bulleted Item", () => (
+export default {
+  title: "List",
+}
+
+export const _BulletedItem = () => (
   <List>
     <Flex>
       <BulletedItem>Bulleted Item text</BulletedItem>
@@ -23,4 +26,4 @@ storiesOf("List", module).add("Bulleted Item", () => (
       </Text>
     </Flex>
   </List>
-))
+)

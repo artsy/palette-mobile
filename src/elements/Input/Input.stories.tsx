@@ -1,12 +1,15 @@
 import { SearchIcon } from "@artsy/icons/native"
-import { storiesOf } from "@storybook/react-native"
 import { Input } from "./Input"
 import { List } from "../../storybook/helpers"
 import { Join } from "../Join"
 import { Separator } from "../Separator"
 import { Text } from "../Text"
 
-storiesOf("Input", module).add("Variants", () => (
+export default {
+  title: "Input",
+}
+
+export const Variants = () => (
   <List contentContainerStyle={{ marginHorizontal: 20, alignItems: "stretch" }}>
     <Join separator={<Separator my={2} />}>
       <>
@@ -114,4 +117,4 @@ storiesOf("Input", module).add("Variants", () => (
       </>
     </Join>
   </List>
-))
+)

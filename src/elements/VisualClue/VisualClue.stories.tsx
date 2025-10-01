@@ -1,10 +1,13 @@
-import { storiesOf } from "@storybook/react-native"
 import { VisualClueDot, VisualClueText } from "./"
 import { List } from "../../storybook/helpers"
 import { Box } from "../Box"
 import { Text } from "../Text"
 
-storiesOf("Theme/Text", module).add("Visual Clue", () => (
+export default {
+  title: "Theme/Text",
+}
+
+export const VisualClue = () => (
   <List>
     <Box>
       <Text>Default</Text>
@@ -53,4 +56,4 @@ storiesOf("Theme/Text", module).add("Visual Clue", () => (
       <VisualClueText style={{ top: 14, right: -24 }} />
     </>
   </List>
-))
+)

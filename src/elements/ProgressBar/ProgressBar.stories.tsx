@@ -1,9 +1,12 @@
-import { storiesOf } from "@storybook/react-native"
 import { ProgressBar } from "./"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
 
-storiesOf("Progress Indicators", module).add("ProgressBar", () => (
+export default {
+  title: "Progress Indicators",
+}
+
+export const _ProgressBar = () => (
   <Flex p={2}>
     <Text>10%</Text>
     <ProgressBar progress={10} />
@@ -12,4 +15,8 @@ storiesOf("Progress Indicators", module).add("ProgressBar", () => (
     <Text>50%</Text>
     <ProgressBar progress={50} />
   </Flex>
-))
+)
+
+_ProgressBar.story = {
+  name: "ProgressBar",
+}
