@@ -127,7 +127,7 @@ __metadata:
     react-spring: "npm:8.0.23"
     react-test-renderer: "npm:18.3.1"
     rimraf: "npm:4.1.2"
-    styled-components: "npm:^5.3.6"
+    styled-components: "npm:5.3.6"
     styled-system: "npm:^5.1.5"
     typescript: "npm:5.0.4"
   peerDependencies:
@@ -14689,9 +14689,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.3.6":
-  version: 5.3.11
-  resolution: "styled-components@npm:5.3.11"
+"styled-components@npm:5.3.6":
+  version: 5.3.6
+  resolution: "styled-components@npm:5.3.6"
   dependencies:
     "@babel/helper-module-imports": "npm:^7.0.0"
     "@babel/traverse": "npm:^7.4.5"
@@ -14707,7 +14707,7 @@ __metadata:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
-  checksum: 10c0/90b73479770c5d68e22e6366d210119d7203154a3e49dc828f6f6b4c2d5c077f7548210dfddd0af3cb15b0b63fab3eec8dc995c1734e97a313a9b83ba893668e
+  checksum: 10c0/14c0c1fa2944a753fcdaef10478c340046076163ad419eb7a4a37602e953cf63df3603961abdce7b4e780c2cc828cdf1c7a5f7d96fb07fabc24f23997980d69a
   languageName: node
   linkType: hard
 

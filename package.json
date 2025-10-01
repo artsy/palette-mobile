@@ -15,6 +15,7 @@
     "local-palette-dev": "./scripts/sync-after-change",
     "open-xcode": "open ios/PaletteMobile.xcworkspace",
     "prebuild": "npx expo prebuild",
+    "postinstall": "yarn prepare",
     "prepare": "patch-package && husky install",
     "prepublishOnly": "yarn clean && yarn compile",
     "prestart": "sb-rn-get-stories",
@@ -131,7 +132,7 @@
     "react-native-svg": "15.10.1",
     "react-test-renderer": "18.3.1",
     "rimraf": "4.1.2",
-    "styled-components": "^5.3.6",
+    "styled-components": "5.3.6",
     "typescript": "5.0.4"
   },
   "resolutions": {
@@ -143,7 +144,6 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
