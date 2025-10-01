@@ -1,7 +1,11 @@
-import { getStorybookUI } from "@storybook/react-native"
-import "./storybook.requires"
-import { clearDecorators } from "@storybook/react-native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { view } from "./storybook.requires"
 
-clearDecorators()
+const StorybookUIRoot = view.getStorybookUI({
+  storage: {
+    getItem: AsyncStorage.getItem,
+    setItem: AsyncStorage.setItem,
+  },
+})
 
-export const StorybookUIRoot = getStorybookUI({})
+export default StorybookUIRoot
