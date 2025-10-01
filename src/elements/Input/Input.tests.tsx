@@ -14,7 +14,9 @@ describe("Input", () => {
   it("uses correct font family", () => {
     renderWithWrappers(<Input testID={testID} placeholder="input" />)
 
-    expect(screen.getByPlaceholderText("input")).toHaveStyle({ fontFamily: "Unica77LL-Regular" })
+    expect(screen.getByPlaceholderText("input").props.style[0].fontFamily).toEqual(
+      "Unica77LL-Regular"
+    )
   })
 
   it("mutates given text as value", () => {
