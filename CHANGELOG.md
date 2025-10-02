@@ -1,3 +1,15 @@
+# v19.12.0 (Wed Oct 01 2025)
+
+#### 🚀  Enhancement
+
+- fix: large button cropped [#395](https://github.com/artsy/palette-mobile/pull/395) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.11.0 (Wed Oct 01 2025)
 
 #### 🚀  Enhancement

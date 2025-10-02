@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { PressableProps, GestureResponderEvent, Pressable } from "react-native"
+import { GestureResponderEvent, Pressable, PressableProps } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import Animated, {
   interpolateColor,
@@ -9,13 +9,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated"
-import { useColorsForVariantAndState } from "./colors"
 import { MeasuredView, ViewMeasurements } from "../../elements/MeasuredView"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex"
 import { Spacer } from "../Spacer"
 import { Spinner } from "../Spinner"
 import { Text, useTextStyleForPalette } from "../Text"
+import { useColorsForVariantAndState } from "./colors"
 
 const ANIMATION_DURATION = 150
 
@@ -100,7 +100,8 @@ export const Button = ({
     }
   )
 
-  const textStyle = useTextStyleForPalette(size === "small" ? "xs" : "sm")
+  const textStyle = { fontSize: useTextStyleForPalette(size === "small" ? "xs" : "sm").fontSize }
+
   const [longestTextMeasurements, setLongestTextMeasurements] = useState<ViewMeasurements>({
     width: 0,
     height: 0,
