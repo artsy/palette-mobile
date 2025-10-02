@@ -1,7 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage"
-import { useAtom } from "jotai"
-import { atomWithStorage, createJSONStorage } from "jotai/utils"
-import { ReactNode, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Appearance } from "react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
@@ -17,31 +14,16 @@ export const withTheme: Decorator = (story) => (
   </Theme>
 )
 
-const atomStorage = createJSONStorage<any>(() => AsyncStorage)
-const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
-  atomWithStorage<T>(
-    key,
-    initialValue,
-    {
-      ...atomStorage,
-    },
-    {
-      getOnInit: false,
-    }
-  )
-
-const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
-
 export const useDarkModeSwitcher: Decorator = (story) => {
-  const [mode, setMode] = useAtom(modeAtom)
+  const [mode, setMode] = useState<"light" | "dark" | "system">("system")
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"
   )
 
   useEffect(() => {
-    const subscription = Appearance.addChangeListener(
-      ({ colorScheme }) => void setSystemMode(colorScheme ?? "light")
-    )
+    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+      setSystemMode(colorScheme ?? "light")
+    })
     return () => subscription.remove()
   }, [])
 
