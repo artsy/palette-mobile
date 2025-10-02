@@ -1,7 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
-import { useAtom } from "jotai"
-import { atomWithStorage, createJSONStorage } from "jotai/utils"
-import { ReactNode, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Appearance } from "react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
@@ -17,33 +15,40 @@ export const withTheme: Decorator = (story) => (
   </Theme>
 )
 
-const atomStorage = createJSONStorage<any>(() => AsyncStorage)
-const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
-  atomWithStorage<T>(
-    key,
-    initialValue,
-    {
-      ...atomStorage,
-    },
-    {
-      getOnInit: false,
-    }
-  )
-
-const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
+const DARK_MODE_STORAGE_KEY = "dark-mode-mode"
 
 export const useDarkModeSwitcher: Decorator = (story) => {
-  const [mode, setMode] = useAtom(modeAtom)
+  const [mode, setModeState] = useState<"light" | "dark" | "system">("system")
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
     Appearance.getColorScheme() ?? "light"
   )
 
+  // Load initial value from AsyncStorage on mount
   useEffect(() => {
-    const subscription = Appearance.addChangeListener(
-      ({ colorScheme }) => void setSystemMode(colorScheme ?? "light")
-    )
+    AsyncStorage.getItem(DARK_MODE_STORAGE_KEY)
+      .then((value) => {
+        if (value && (value === "light" || value === "dark" || value === "system")) {
+          setModeState(value as "light" | "dark" | "system")
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to load dark mode preference:", error)
+      })
+  }, [])
+
+  useEffect(() => {
+    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+      setSystemMode(colorScheme ?? "light")
+    })
     return () => subscription.remove()
   }, [])
+
+  const setMode = (newMode: "light" | "dark" | "system") => {
+    setModeState(newMode)
+    AsyncStorage.setItem(DARK_MODE_STORAGE_KEY, newMode).catch((error) => {
+      console.error("Failed to save dark mode preference:", error)
+    })
+  }
 
   const isDarkMode = mode === "dark" || (mode === "system" && systemMode === "dark")
   const theme = isDarkMode ? "v3dark" : "v3light"
