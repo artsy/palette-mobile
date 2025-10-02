@@ -1,3 +1,16 @@
+# v19.13.0 (Thu Oct 02 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump expo and react native [#392](https://github.com/artsy/palette-mobile/pull/392) ([@gkartalis](https://github.com/gkartalis) [@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 2
+
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.12.0 (Wed Oct 01 2025)
 
 #### 🚀  Enhancement
