@@ -1,3 +1,15 @@
+# v19.14.0 (Thu Oct 02 2025)
+
+#### 🚀  Enhancement
+
+- fix: remove jotai and refactor to use useState in order to fix palette-mobile [#396](https://github.com/artsy/palette-mobile/pull/396) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.13.0 (Thu Oct 02 2025)
 
 #### 🚀  Enhancement
