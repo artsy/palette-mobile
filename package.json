@@ -8,7 +8,7 @@
     "bundle-install": "bundle install",
     "clean": "rimraf dist",
     "compile": "tsc",
-    "install:all": "yarn install && yarn bundle-install",
+    "install:all": "yarn install && yarn postinstall && yarn bundle-install",
     "ios": "expo run:ios --port 8082",
     "lint:all": "yarn lint .",
     "lint": "eslint --cache --cache-location '.cache/eslint/' --ext .ts,.tsx --fix",
