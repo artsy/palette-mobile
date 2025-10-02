@@ -19,10 +19,16 @@ export const withTheme: Decorator = (story) => (
 
 const atomStorage = createJSONStorage<any>(() => AsyncStorage)
 const atomWithAsyncStorage = <T,>(key: string, initialValue: any) =>
-  atomWithStorage<T>(key, initialValue, {
-    ...atomStorage,
-    delayInit: true,
-  })
+  atomWithStorage<T>(
+    key,
+    initialValue,
+    {
+      ...atomStorage,
+    },
+    {
+      getOnInit: false,
+    }
+  )
 
 const modeAtom = atomWithAsyncStorage<"light" | "dark" | "system">("dark-mode-mode", "system")
 
