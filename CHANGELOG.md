@@ -1,3 +1,15 @@
+# v19.15.1 (Mon Oct 06 2025)
+
+#### 🐛  Bug Fix
+
+- chore: add main/index.js [#398](https://github.com/artsy/palette-mobile/pull/398) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.15.0 (Mon Oct 06 2025)
 
 #### 🚀  Enhancement
