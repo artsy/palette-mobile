@@ -1,6 +1,6 @@
 # v19.14.0 (Thu Oct 02 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: remove jotai and refactor to use useState in order to fix palette-mobile [#396](https://github.com/artsy/palette-mobile/pull/396) ([@gkartalis](https://github.com/gkartalis))
 
@@ -12,7 +12,7 @@
 
 # v19.13.0 (Thu Oct 02 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump expo and react native [#392](https://github.com/artsy/palette-mobile/pull/392) ([@gkartalis](https://github.com/gkartalis) [@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -25,7 +25,7 @@
 
 # v19.12.0 (Wed Oct 01 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: large button cropped [#395](https://github.com/artsy/palette-mobile/pull/395) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -37,7 +37,7 @@
 
 # v19.11.0 (Wed Oct 01 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: upgrade storybook to v7 [#393](https://github.com/artsy/palette-mobile/pull/393) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -49,7 +49,7 @@
 
 # v19.10.0 (Tue Sep 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore(Revert): "chore: upgrade reanimated to 3.19.1" [#391](https://github.com/artsy/palette-mobile/pull/391) ([@gkartalis](https://github.com/gkartalis))
 
@@ -61,7 +61,7 @@
 
 # v19.9.0 (Tue Sep 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: upgrade reanimated to 3.19.1 [#390](https://github.com/artsy/palette-mobile/pull/390) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -73,7 +73,7 @@
 
 # v19.8.0 (Tue Sep 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: performance issues on skeleton image [#389](https://github.com/artsy/palette-mobile/pull/389) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -85,7 +85,7 @@
 
 # v19.7.0 (Tue Sep 30 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): migrate to yarn 4 [#387](https://github.com/artsy/palette-mobile/pull/387) ([@gkartalis](https://github.com/gkartalis) [@brainbicycle](https://github.com/brainbicycle))
 
@@ -98,7 +98,7 @@
 
 # v19.6.0 (Fri Sep 26 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: align fast image version on palette-mobile with eigen [#388](https://github.com/artsy/palette-mobile/pull/388) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -110,7 +110,7 @@
 
 # v19.5.0 (Thu Sep 25 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): remove unused dependencies and use expo ts config extension [#386](https://github.com/artsy/palette-mobile/pull/386) ([@gkartalis](https://github.com/gkartalis))
 
@@ -122,7 +122,7 @@
 
 # v19.4.0 (Wed Sep 24 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump auto orb [#385](https://github.com/artsy/palette-mobile/pull/385) ([@gkartalis](https://github.com/gkartalis))
 - build(deps): bump node to 22 [#384](https://github.com/artsy/palette-mobile/pull/384) ([@gkartalis](https://github.com/gkartalis))
@@ -135,7 +135,7 @@
 
 # v19.3.0 (Fri Sep 19 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - refactor(defaultProps): replace default props handling with ES6 def. values [#382](https://github.com/artsy/palette-mobile/pull/382) ([@gkartalis](https://github.com/gkartalis))
 
@@ -147,7 +147,7 @@
 
 # v19.2.0 (Thu Sep 18 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: update readme [#381](https://github.com/artsy/palette-mobile/pull/381) ([@dariakoko](https://github.com/dariakoko))
 
@@ -159,7 +159,7 @@
 
 # v19.1.0 (Wed Sep 10 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: ref type for react 19 [#379](https://github.com/artsy/palette-mobile/pull/379) ([@brainbicycle](https://github.com/brainbicycle))
 
@@ -171,7 +171,7 @@
 
 # v19.0.0 (Tue Sep 09 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - chore(ONYX-1900): migrate palette-mobile to expo [#370](https://github.com/artsy/palette-mobile/pull/370) ([@dariakoko](https://github.com/dariakoko))
 
