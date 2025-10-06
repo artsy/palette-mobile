@@ -1,6 +1,6 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
 import { useState } from "react"
-import { PressableProps, TextStyle, GestureResponderEvent, Pressable } from "react-native"
+import { GestureResponderEvent, Pressable, PressableProps, TextStyle } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { config } from "react-spring"
 // @ts-ignore
@@ -87,7 +87,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const textVariantBySize = size === "small" ? "xs" : "sm"
-  const textStyle = useTextStyleForPalette(textVariant ?? textVariantBySize)
+  const textStyle = { fontSize: useTextStyleForPalette(textVariant ?? textVariantBySize).fontSize }
 
   const [innerDisplayState, setInnerDisplayState] = useState(DisplayState.Enabled)
 
