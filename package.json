@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "19.15.0",
+  "version": "19.15.1",
   "description": "Artsy's design system for React Native",
   "scripts": {
     "android": "expo run:android --port 8082",
