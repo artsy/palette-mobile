@@ -62,8 +62,12 @@ __metadata:
     "@d11/react-native-fast-image": "npm:8.12.0"
     "@gorhom/bottom-sheet": "npm:^4.6.4"
     "@react-native-async-storage/async-storage": "npm:2.2.0"
+    "@react-native-community/datetimepicker": "npm:8.0.1"
+    "@react-native-community/slider": "npm:4.5.2"
     "@react-native/eslint-config": "npm:0.76.9"
     "@shopify/flash-list": "npm:^1.8.3"
+    "@storybook/addon-ondevice-actions": "npm:^8.3.5"
+    "@storybook/addon-ondevice-controls": "npm:^8.3.5"
     "@storybook/react-native": "npm:^8.6.2"
     "@styled-system/core": "npm:^5.1.2"
     "@styled-system/theme-get": "npm:^5.1.2"
@@ -3350,6 +3354,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/datetimepicker@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@react-native-community/datetimepicker@npm:8.0.1"
+  dependencies:
+    invariant: "npm:^2.2.4"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-windows: "*"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 10c0/3f4597035de551f5bf77374097d0cb1707058cb591db45d18d312eb9e533274aa789380e7698ff1944437793dcf148d484f9d5ce3246c03258f24eb3a75c11e5
+  languageName: node
+  linkType: hard
+
+"@react-native-community/slider@npm:4.5.2":
+  version: 4.5.2
+  resolution: "@react-native-community/slider@npm:4.5.2"
+  checksum: 10c0/0aeef9ce4ccb1e8995e49efbe244edf68b4a6274845d8d4fefa07cf7b1bd2d3d43c6a7dc1e8a300fe18ae768c350dcd99d3c2ee88a74f854341d85c24140f80f
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.79.6":
   version: 0.79.6
   resolution: "@react-native/assets-registry@npm:0.79.6"
@@ -3597,6 +3624,71 @@ __metadata:
   dependencies:
     "@sinonjs/commons": "npm:^3.0.0"
   checksum: 10c0/2e2fb6cc57f227912814085b7b01fede050cd4746ea8d49a1e44d5a0e56a804663b0340ae2f11af7559ea9bf4d087a11f2f646197a660ea3cb04e19efc04aa63
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-actions@npm:^8.6.6":
+  version: 8.6.14
+  resolution: "@storybook/addon-actions@npm:8.6.14"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    "@types/uuid": "npm:^9.0.1"
+    dequal: "npm:^2.0.2"
+    polished: "npm:^4.2.2"
+    uuid: "npm:^9.0.0"
+  peerDependencies:
+    storybook: ^8.6.14
+  checksum: 10c0/7a5d4faa15dd42f8f98335b6d817e1e2ffb50084001dc430aa3baf5c77edece16f0e866e8ce488e1c7a7a8f85465a6a71421373b87877375beafbe4729ada14a
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-controls@npm:^8.6.6":
+  version: 8.6.14
+  resolution: "@storybook/addon-controls@npm:8.6.14"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    dequal: "npm:^2.0.2"
+    ts-dedent: "npm:^2.0.0"
+  peerDependencies:
+    storybook: ^8.6.14
+  checksum: 10c0/a02a818be873ee7a630f5ca4a46fe16fc31edec2b16b0988ce4f8bcdd63650aaf1a2cd0356e1b42557e1a1bb2f46de4653e071e7b2b53a60c9a3e60a93fe19ef
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-ondevice-actions@npm:^8.3.5":
+  version: 8.6.4
+  resolution: "@storybook/addon-ondevice-actions@npm:8.6.4"
+  dependencies:
+    "@storybook/addon-actions": "npm:^8.6.6"
+    "@storybook/core": "npm:^8.6.6"
+    "@storybook/global": "npm:^5.0.0"
+    fast-deep-equal: "npm:^2.0.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/47ad996f2df890b239f9da931372ad4112d4ceab846140ef7bbfdcefdcee3734d44fddeadcde91364ebe1ee19e683c39b73a826c2db2323ede2f125eeb24710d
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-ondevice-controls@npm:^8.3.5":
+  version: 8.6.4
+  resolution: "@storybook/addon-ondevice-controls@npm:8.6.4"
+  dependencies:
+    "@storybook/addon-controls": "npm:^8.6.6"
+    "@storybook/core": "npm:^8.6.6"
+    "@storybook/react-native-theming": "npm:^8.6.4"
+    "@storybook/react-native-ui": "npm:^8.6.4"
+    deep-equal: "npm:^1.0.1"
+    prop-types: "npm:^15.7.2"
+    react-native-modal-datetime-picker: "npm:^18.0.0"
+    tinycolor2: "npm:^1.4.1"
+  peerDependencies:
+    "@gorhom/bottom-sheet": ">=4"
+    "@react-native-community/datetimepicker": "*"
+    "@react-native-community/slider": "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/f0a4598eae75cb6a0559b4d2592ce33966a1464a92a7cdcdbcf6615a3a45a16fc3c19c7742fdf3118cbc77e6d521e07ac3df93d908be0989ba9e809ae6b53d8f
   languageName: node
   linkType: hard
 
@@ -4241,6 +4333,13 @@ __metadata:
   version: 4.0.5
   resolution: "@types/tough-cookie@npm:4.0.5"
   checksum: 10c0/68c6921721a3dcb40451543db2174a145ef915bc8bcbe7ad4e59194a0238e776e782b896c7a59f4b93ac6acefca9161fccb31d1ce3b3445cb6faa467297fb473
+  languageName: node
+  linkType: hard
+
+"@types/uuid@npm:^9.0.1":
+  version: 9.0.8
+  resolution: "@types/uuid@npm:9.0.8"
+  checksum: 10c0/b411b93054cb1d4361919579ef3508a1f12bf15b5fdd97337d3d351bece6c921b52b6daeef89b62340fd73fd60da407878432a1af777f40648cbe53a01723489
   languageName: node
   linkType: hard
 
@@ -6311,6 +6410,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deep-equal@npm:^1.0.1":
+  version: 1.1.2
+  resolution: "deep-equal@npm:1.1.2"
+  dependencies:
+    is-arguments: "npm:^1.1.1"
+    is-date-object: "npm:^1.0.5"
+    is-regex: "npm:^1.1.4"
+    object-is: "npm:^1.1.5"
+    object-keys: "npm:^1.1.1"
+    regexp.prototype.flags: "npm:^1.5.1"
+  checksum: 10c0/cd85d822d18e9b3e1532d0f6ba412d229aa9d22881d70da161674428ae96e47925191296f7cda29306bac252889007da40ed8449363bd1c96c708acb82068a00
+  languageName: node
+  linkType: hard
+
 "deep-extend@npm:^0.6.0, deep-extend@npm:~0.6.0":
   version: 0.6.0
   resolution: "deep-extend@npm:0.6.0"
@@ -6402,7 +6515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dequal@npm:2.0.3":
+"dequal@npm:2.0.3, dequal@npm:^2.0.2":
   version: 2.0.3
   resolution: "dequal@npm:2.0.3"
   checksum: 10c0/f98860cdf58b64991ae10205137c0e97d384c3a4edc7f807603887b7c4b850af1224a33d88012009f150861cbee4fa2d322c4cc04b9313bee312e47f6ecaa888
@@ -7777,6 +7890,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-deep-equal@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "fast-deep-equal@npm:2.0.1"
+  checksum: 10c0/1602e0d6ed63493c865cc6b03f9070d6d3926e8cd086a123060b58f80a295f3f08b1ecfb479ae7c45b7fd45535202aea7cf5b49bc31bffb81c20b1502300be84
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8835,7 +8955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-arguments@npm:^1.0.4":
+"is-arguments@npm:^1.0.4, is-arguments@npm:^1.1.1":
   version: 1.2.0
   resolution: "is-arguments@npm:1.2.0"
   dependencies:
@@ -9074,7 +9194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-regex@npm:^1.2.1":
+"is-regex@npm:^1.1.4, is-regex@npm:^1.2.1":
   version: 1.2.1
   resolution: "is-regex@npm:1.2.1"
   dependencies:
@@ -11230,6 +11350,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"object-is@npm:^1.1.5":
+  version: 1.1.6
+  resolution: "object-is@npm:1.1.6"
+  dependencies:
+    call-bind: "npm:^1.0.7"
+    define-properties: "npm:^1.2.1"
+  checksum: 10c0/506af444c4dce7f8e31f34fc549e2fb8152d6b9c4a30c6e62852badd7f520b579c679af433e7a072f9d78eb7808d230dc12e1cf58da9154dfbf8813099ea0fe0
+  languageName: node
+  linkType: hard
+
 "object-keys@npm:^1.1.1":
   version: 1.1.1
   resolution: "object-keys@npm:1.1.1"
@@ -11823,7 +11953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"polished@npm:^4.3.1":
+"polished@npm:^4.2.2, polished@npm:^4.3.1":
   version: 4.3.1
   resolution: "polished@npm:4.3.1"
   dependencies:
@@ -11985,7 +12115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:*, prop-types@npm:15.8.1, prop-types@npm:^15.5.8, prop-types@npm:^15.8.1":
+"prop-types@npm:*, prop-types@npm:15.8.1, prop-types@npm:^15.5.8, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -12240,6 +12370,18 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/0157b286f85a9b2e5e4495d75d47d73164966ed30e82a1bf26ada859c8a50223c1e4f85e00490a9552d17e73370ac6317bb0ffaf63a9ce20e92a99c7734fd590
+  languageName: node
+  linkType: hard
+
+"react-native-modal-datetime-picker@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "react-native-modal-datetime-picker@npm:18.0.0"
+  dependencies:
+    prop-types: "npm:^15.7.2"
+  peerDependencies:
+    "@react-native-community/datetimepicker": ">=6.7.0"
+    react-native: ">=0.65.0"
+  checksum: 10c0/2217780609af89f1863971dafcdb9deca33663d863ffd65ef43a4b91357a5b623f91ed4f7730231d29e85ac6e5e9d84c11d4c024a791eea70b2df2c423f30610
   languageName: node
   linkType: hard
 
@@ -12505,7 +12647,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexp.prototype.flags@npm:^1.5.3, regexp.prototype.flags@npm:^1.5.4":
+"regexp.prototype.flags@npm:^1.5.1, regexp.prototype.flags@npm:^1.5.3, regexp.prototype.flags@npm:^1.5.4":
   version: 1.5.4
   resolution: "regexp.prototype.flags@npm:1.5.4"
   dependencies:
@@ -14039,7 +14181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-dedent@npm:^2.2.0":
+"ts-dedent@npm:^2.0.0, ts-dedent@npm:^2.2.0":
   version: 2.2.0
   resolution: "ts-dedent@npm:2.2.0"
   checksum: 10c0/175adea838468cc2ff7d5e97f970dcb798bbcb623f29c6088cb21aa2880d207c5784be81ab1741f56b9ac37840cbaba0c0d79f7f8b67ffe61c02634cafa5c303
@@ -14513,6 +14655,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 10c0/2eee5723b0fcce8256f5bfd3112af6c453b5471db00af9c3533e3d5a6e57de83513f9a145a570890457bd7abf2c2aa05797291d950ac666e5a074895dc63168b
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "uuid@npm:9.0.1"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 10c0/1607dd32ac7fc22f2d8f77051e6a64845c9bce5cd3dd8aa0070c074ec73e666a1f63c7b4e0f4bf2bc8b9d59dc85a15e17807446d9d2b17c8485fbc2147b27f9b
   languageName: node
   linkType: hard
 
