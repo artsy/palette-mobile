@@ -9,7 +9,7 @@
     "declaration": true,
     "jsx": "react-jsx", // This is for vscode not to suggest importing React, after react17.
     "skipLibCheck": true,
-    "types": ["styled-components-react-native", "jest"]
+    "types": ["jest"]
   },
   "include": ["src/**/*"]
 }
