@@ -4,6 +4,7 @@ import { Appearance } from "react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
 import { Flex } from "../elements/Flex"
+import { Pill } from "../elements/Pill"
 import { LinkText, Text } from "../elements/Text"
 import { ScreenDimensionsProvider } from "../utils/hooks"
 import type { Decorator } from "@storybook/react"
@@ -58,21 +59,30 @@ export const useDarkModeSwitcher: Decorator = (story) => {
       <SafeAreaProvider>
         <Theme theme={theme}>
           <Flex flex={1} backgroundColor="background">
-            <Flex flexDirection="row" justifyContent="space-around">
-              <Text color="orange">
-                Dark mode: {mode} {mode === "system" && "(" + systemMode + ")"}
-              </Text>
-              <LinkText color="orange" onPress={() => setMode("light")}>
-                light
-              </LinkText>
-              <LinkText color="orange" onPress={() => setMode("dark")}>
-                dark
-              </LinkText>
-              <LinkText color="orange" onPress={() => setMode("system")}>
-                system
-              </LinkText>
+            <Flex flexDirection="row" justifyContent="space-around" py={1} backgroundColor="mono5">
+              <Text color="mono100">Dark mode</Text>
+
+              <Flex flexDirection="row" gap={1}>
+                <Pill
+                  variant="default"
+                  selected={mode === "light"}
+                  onPress={() => setMode("light")}
+                >
+                  Light
+                </Pill>
+                <Pill variant="default" selected={mode === "dark"} onPress={() => setMode("dark")}>
+                  Dark
+                </Pill>
+                <Pill
+                  variant="default"
+                  selected={mode === "system"}
+                  onPress={() => setMode("system")}
+                >
+                  System
+                </Pill>
+              </Flex>
             </Flex>
-            {story()}
+            <Flex p={2}>{story()}</Flex>
           </Flex>
         </Theme>
       </SafeAreaProvider>
