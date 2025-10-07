@@ -1,3 +1,15 @@
+# v19.16.0 (Tue Oct 07 2025)
+
+#### 🚀  Enhancement
+
+- chore: add useful addons [#397](https://github.com/artsy/palette-mobile/pull/397) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.15.1 (Mon Oct 06 2025)
 
 #### 🐛  Bug Fix
