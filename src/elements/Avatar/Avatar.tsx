@@ -16,6 +16,7 @@ export interface AvatarProps extends ImgHTMLAttributes<any> {
   /** The size of the Avatar */
   size?: AvatarSize
   src?: string
+  performResize?: boolean
 }
 
 const DEFAULT_SIZE: AvatarSize = "md"
@@ -41,7 +42,13 @@ const VARIANTS: Record<AvatarSize, { diameter: number; textSize: TextProps["vari
 }
 
 /** A circular Avatar component containing an image or initials */
-export const Avatar = ({ src, initials, size = DEFAULT_SIZE, blurhash }: AvatarProps) => {
+export const Avatar = ({
+  src,
+  initials,
+  size = DEFAULT_SIZE,
+  blurhash,
+  performResize = true,
+}: AvatarProps) => {
   const color = useColor()
 
   const { diameter, textSize } = VARIANTS[size]
@@ -64,6 +71,7 @@ export const Avatar = ({ src, initials, size = DEFAULT_SIZE, blurhash }: AvatarP
             height={diameter}
             width={diameter}
             accessibilityLabel="AvatarImage"
+            performResize={performResize}
             style={{
               width: diameter,
               height: diameter,
