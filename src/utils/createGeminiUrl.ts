@@ -7,6 +7,10 @@ const geminiHosts = [
   "https://d196wkiy8qx2u5.cloudfront.net",
 ]
 
+export const imageAlreadyResized = (imageURL: string) => {
+  return geminiHosts.some((host) => imageURL.includes(host))
+}
+
 export function createGeminiUrl({
   imageURL,
   width,
@@ -22,7 +26,7 @@ export function createGeminiUrl({
   imageQuality?: number
   resizeMode?: GeminiResizeMode
 }) {
-  if (geminiHosts.some((host) => imageURL.includes(host))) {
+  if (imageAlreadyResized(imageURL)) {
     console.error(
       "Image: `performResize` on self referential url. Avoid resizing gemini urls. Pass performResize={false} to fix this.",
       { imageURL }

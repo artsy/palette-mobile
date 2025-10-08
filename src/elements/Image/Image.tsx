@@ -2,7 +2,8 @@ import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useRef } from "react"
 import { PixelRatio, StyleProp, View, ViewStyle, Animated } from "react-native"
 import { Blurhash } from "react-native-blurhash"
-import { GeminiResizeMode, createGeminiUrl } from "../../utils/createGeminiUrl"
+import { getImageURL } from "./helpers/getImageURL"
+import { GeminiResizeMode, createGeminiUrl, imageAlreadyResized } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
@@ -67,16 +68,6 @@ export const Image: React.FC<ImageProps> = memo(
       )
     }
 
-    let uri = src
-    if (performResize) {
-      uri = createGeminiUrl({
-        imageURL: src,
-        width: PixelRatio.getPixelSizeForLayoutSize(dimensions.width),
-        height: PixelRatio.getPixelSizeForLayoutSize(dimensions.height),
-        resizeMode: geminiResizeMode,
-      })
-    }
-
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
         <View style={[dimensions, { position: "absolute" }]}>
@@ -99,7 +90,7 @@ export const Image: React.FC<ImageProps> = memo(
           onLoadEnd={onLoadEnd}
           source={{
             priority: FastImage.priority.normal,
-            uri,
+            uri: getImageURL({ src, dimensions, geminiResizeMode, performResize }),
           }}
         />
       </Flex>
