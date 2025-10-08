@@ -1,3 +1,15 @@
+# v19.17.0 (Wed Oct 08 2025)
+
+#### 🚀  Enhancement
+
+- chore: improve image resize logic [#402](https://github.com/artsy/palette-mobile/pull/402) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.16.0 (Tue Oct 07 2025)
 
 #### 🚀  Enhancement
