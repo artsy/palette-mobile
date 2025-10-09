@@ -10,7 +10,7 @@ export const useTheme = (): {
   space: SpaceFn
   color: ColorFn
 } => {
-  const maybeTheme = useContext<AllThemesType | undefined>(ThemeContext)
+  const maybeTheme = useContext(ThemeContext as React.Context<AllThemesType | undefined>)
 
   // if we are not wrapped in `<Theme>`, if we dev, throw error.
   // if we are in prod, we will default to v2 to avoid a crash.

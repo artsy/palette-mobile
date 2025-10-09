@@ -20,6 +20,31 @@ import {
 } from "styled-system"
 import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
 
+// Define strict borderRadius values to prevent runtime errors
+type BorderRadiusValue =
+  | number // allows numeric values like 10 (converted to 10px)
+  | `${number}px` // allows string values with px unit like "10px"
+  | `${number}rem` // allows rem values like "1rem"
+  | `${number}em` // allows em values like "1em"
+  | `${number}%` // allows percentage values like "50%"
+
+// Override BorderProps to restrict borderRadius to only valid CSS values
+export interface SafeBorderProps
+  extends Omit<
+    BorderProps,
+    | "borderRadius"
+    | "borderTopLeftRadius"
+    | "borderTopRightRadius"
+    | "borderBottomLeftRadius"
+    | "borderBottomRightRadius"
+  > {
+  borderRadius?: BorderRadiusValue
+  borderTopLeftRadius?: BorderRadiusValue
+  borderTopRightRadius?: BorderRadiusValue
+  borderBottomLeftRadius?: BorderRadiusValue
+  borderBottomRightRadius?: BorderRadiusValue
+}
+
 type GapProps = {
   gap?: SpacingUnit
   rowGap?: SpacingUnit
@@ -48,7 +73,7 @@ export interface BoxProps
     FlexboxProps,
     LayoutProps,
     PositionProps,
-    BorderProps,
+    SafeBorderProps,
     GapProps,
     TextAlignProps {}
 
