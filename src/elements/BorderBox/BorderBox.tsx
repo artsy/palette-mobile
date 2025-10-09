@@ -1,10 +1,10 @@
 import { themeGet } from "@styled-system/theme-get"
 import styled from "styled-components/native"
-import { border, BorderProps, space as styledSpace, SpaceProps } from "styled-system"
+import { border, space as styledSpace, SpaceProps } from "styled-system"
 import { SpacingUnitsTheme } from "../../tokens"
 import { Flex, FlexProps } from "../Flex"
 
-export interface BorderBoxProps extends FlexProps, BorderProps, SpaceProps<SpacingUnitsTheme> {
+export interface BorderBoxProps extends FlexProps, SpaceProps<SpacingUnitsTheme> {
   hover?: boolean
 }
 

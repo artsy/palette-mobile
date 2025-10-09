@@ -1,8 +1,9 @@
 import { themeGet } from "@styled-system/theme-get"
 import styled from "styled-components/native"
-import { border, BorderProps, space, SpaceProps, width, WidthProps } from "styled-system"
+import { border, space, SpaceProps, width, WidthProps } from "styled-system"
+import { SafeBorderProps } from "../Box"
 
-export interface SeparatorProps extends SpaceProps, WidthProps, BorderProps {}
+export interface SeparatorProps extends SpaceProps, WidthProps, SafeBorderProps {}
 
 /**
  * A horizontal divider whose width and spacing can be adjusted
