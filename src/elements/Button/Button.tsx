@@ -1,10 +1,8 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
+import { animated, Spring, config } from "@react-spring/native"
 import { useState } from "react"
 import { GestureResponderEvent, Pressable, PressableProps, TextStyle } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
-import { config } from "react-spring"
-// @ts-ignore
-import { animated, Spring } from "react-spring/renderprops-native"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
 import { useColor } from "../../utils/hooks"
@@ -144,8 +142,8 @@ export const Button: React.FC<ButtonProps> = ({
   const to = useStyleForVariantAndState(variant, testOnly_state ?? displayState)
 
   return (
-    <Spring native to={to} config={config.stiff}>
-      {(springProps: typeof to) => (
+    <Spring to={to} config={config.stiff}>
+      {(springProps) => (
         <Pressable
           accessibilityLabel={rest.accessibilityLabel}
           accessibilityRole="button"

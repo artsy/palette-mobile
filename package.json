@@ -37,6 +37,7 @@
     "@artsy/icons": "^3.49.0",
     "@artsy/palette-tokens": "7.0.0",
     "@d11/react-native-fast-image": "8.12.0",
+    "@react-spring/native": "^10.0.3",
     "@shopify/flash-list": "^1.8.3",
     "@styled-system/core": "^5.1.2",
     "@styled-system/theme-get": "^5.1.2",
@@ -48,7 +49,6 @@
     "react-native-collapsible-tab-view": "^8.0.1",
     "react-native-pager-view": "6.7.1",
     "react-native-popover-view": "^6.1.0",
-    "react-spring": "8.0.23",
     "styled-system": "^5.1.5"
   },
   "peerDependenciesComments": [
