@@ -1,20 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useEffect, useState } from "react"
-import { Appearance } from "react-native"
+import { Appearance, Platform, StatusBar } from "react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
-import { Flex } from "../elements/Flex"
-import { Pill } from "../elements/Pill"
-import { LinkText, Text } from "../elements/Text"
+import { Flex, Pill, Text } from "../elements"
 import { ScreenDimensionsProvider } from "../utils/hooks"
 import type { Decorator } from "@storybook/react"
 
-export const withTheme: Decorator = (story) => (
-  <Theme theme="v3light">
-    <Text color="red">aaww</Text>
-    {story()}
-  </Theme>
-)
+export const withTheme: Decorator = (story) => <Theme theme="v3light">{story()}</Theme>
 
 const DARK_MODE_STORAGE_KEY = "dark-mode-mode"
 
@@ -58,6 +51,13 @@ export const useDarkModeSwitcher: Decorator = (story) => {
     <ScreenDimensionsProvider>
       <SafeAreaProvider>
         <Theme theme={theme}>
+          <StatusBar
+            // We are keeping the status bar white on darkmode on ios because background isn't a supported prop on iOS
+            barStyle={isDarkMode && Platform.OS === "android" ? "light-content" : "dark-content"}
+            backgroundColor={isDarkMode && Platform.OS === "android" ? "black" : "white"}
+            translucent={true}
+          />
+
           <Flex flex={1} backgroundColor="background">
             <Flex flexDirection="row" justifyContent="space-around" py={1} backgroundColor="mono5">
               <Text color="mono100">Dark mode</Text>

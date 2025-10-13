@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "PaletteMobile",
+    "slug": "palettemobile",
+    "splash": {
+      "image": "./assets/icons/app_icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "com.artsymobile.palettemobile",
+      "sipportTable": true,
+      "icon": "./assets/icons/app_icon.png"
+    },
+    "android": {
+      "package": "com.artsymobile.palettemobile",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/app_icon_android.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Unica77LL-Italic.otf",
+            "./assets/fonts/Unica77LL-MediumItalic.otf",
+            "./assets/fonts/Unica77LL-Medium.otf",
+            "./assets/fonts/Unica77LL-Regular.otf"
+          ]
+        }
+      ]
+    ]
+  }
+}

@@ -11,5 +11,6 @@
     "skipLibCheck": true,
     "types": ["jest"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["Example", "node_modules", "dist"]
 }

@@ -1,0 +1,47 @@
+{
+  "name": "palette-mobile-example",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "android": "expo run:android --port 8082",
+    "ios": "expo run:ios --port 8082",
+    "start": "npx expo start --port 8082",
+    "start:reset-cache": "npx expo start -c --port 8082",
+    "android:prebuild": "npx expo prebuild --clean --platform android",
+    "ios:prebuild": "npx expo prebuild --clean --platform ios",
+    "prestart": "sb-rn-get-stories",
+    "storybook-watcher": "sb-rn-watcher"
+  },
+  "dependencies": {
+    "@artsy/palette-mobile": "*",
+    "@d11/react-native-fast-image": "8.12.0",
+    "@gorhom/bottom-sheet": "^4.6.4",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/datetimepicker": "8.0.1",
+    "@react-native-community/slider": "4.5.2",
+    "@storybook/addon-ondevice-actions": "^8.3.5",
+    "@storybook/addon-ondevice-controls": "^8.3.5",
+    "@storybook/react-native": "^8.6.2",
+    "expo": "^53.0.0",
+    "expo-dev-client": "~5.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.6",
+    "react-native-blurhash": "2.1.1",
+    "react-native-collapsible-tab-view": "^8.0.1",
+    "react-native-device-info": "14.0.4",
+    "react-native-gesture-handler": "~2.22.1",
+    "react-native-haptic-feedback": "1.14.0",
+    "react-native-linear-gradient": "2.6.2",
+    "react-native-pager-view": "6.7.1",
+    "react-native-popover-view": "^6.1.0",
+    "react-native-reanimated": "3.17.5",
+    "react-native-safe-area-context": "5.4.1",
+    "react-native-svg": "15.12.0",
+    "styled-components": "6.1.19"
+  },
+  "devDependencies": {
+    "@types/react": "~19.0.10"
+  }
+}
