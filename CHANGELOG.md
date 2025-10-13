@@ -1,3 +1,15 @@
+# v19.18.0 (Mon Oct 13 2025)
+
+#### 🚀  Enhancement
+
+- chore: use react-sprint/native [#403](https://github.com/artsy/palette-mobile/pull/403) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v19.17.0 (Wed Oct 08 2025)
 
 #### 🚀  Enhancement
