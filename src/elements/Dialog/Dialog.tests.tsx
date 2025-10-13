@@ -1,8 +1,17 @@
-import { fireEvent, screen } from "@testing-library/react-native"
+import { fireEvent, screen, act } from "@testing-library/react-native"
 import { Dialog } from "./Dialog"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 
 describe("Dialog", () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    jest.runOnlyPendingTimers()
+    jest.useRealTimers()
+  })
+
   it("renders without error", () => {
     renderWithWrappers(
       <Dialog
@@ -50,6 +59,9 @@ describe("Dialog", () => {
     const primaryButton = screen.getByTestId("dialog-primary-action-button")
 
     fireEvent.press(primaryButton)
+    act(() => {
+      jest.runAllTimers()
+    })
 
     expect(primaryActionMock).toHaveBeenCalled()
     expect(screen.getByText("Primary Action Button")).toBeOnTheScreen()
@@ -75,6 +87,7 @@ describe("Dialog", () => {
     const secondaryButton = screen.getByTestId("dialog-secondary-action-button")
 
     fireEvent.press(secondaryButton)
+    jest.runAllTimers()
 
     expect(secondaryActionMock).toHaveBeenCalled()
     expect(screen.getByText("Secondary Action Button")).toBeOnTheScreen()
@@ -95,6 +108,9 @@ describe("Dialog", () => {
     )
 
     fireEvent.press(screen.getByTestId("dialog-backdrop"))
+    act(() => {
+      jest.runAllTimers()
+    })
 
     expect(onBackgroundPressMock).toHaveBeenCalled()
   })

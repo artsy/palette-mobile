@@ -6,6 +6,7 @@ import { Wrap } from "../../utils/Wrap"
 import { NoUndefined } from "../../utils/types"
 import { Flex } from "../Flex"
 import { LinkText } from "../Text"
+import type { StoryObj } from "@storybook/react"
 
 const sizes: Array<NoUndefined<ButtonProps["size"]>> = ["small", "large"]
 const variants: Array<NoUndefined<ButtonProps["variant"]>> = [
@@ -22,6 +23,27 @@ const variants: Array<NoUndefined<ButtonProps["variant"]>> = [
 export default {
   title: "Button",
   component: Button,
+  argTypes: {
+    variant: {
+      control: "select",
+      options: variants,
+    },
+    size: {
+      control: "select",
+      options: sizes,
+    },
+  },
+}
+
+type ButtonStory = StoryObj<typeof Button>
+
+export const Default: ButtonStory = {
+  args: {
+    variant: "fillDark",
+    size: "large",
+    children: "Press me",
+  },
+  render: (args) => <Button {...args} />,
 }
 
 export const Sizes = () => (
