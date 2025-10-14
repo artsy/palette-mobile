@@ -33,12 +33,6 @@ If the above guidance still doesn't give you a good sense of what to do, please 
 yarn add @artsy/palette-mobile
 ```
 
-- Install native peer deps
-
-```sh
-yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg
-```
-
 ## How to contribute
 
 If you'd like to add a new component to Palette please create an issue using the component spec template. That'll give both design and engineering a chance to peek at the proposal and provide feedback before moving forward.
@@ -74,14 +68,6 @@ or
 ```sh
 yarn android
 ```
-
-⚠️ Temporary workaround until we move Expo into an example directory:
-
-For local development, remove the line from package.json:
-
-`"main": "dist/index.js"`
-
-Make sure to add it back before committing.
 
 ## Developing Features using Local Versions of Palette
 
