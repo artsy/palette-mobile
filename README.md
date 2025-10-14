@@ -33,6 +33,12 @@ If the above guidance still doesn't give you a good sense of what to do, please 
 yarn add @artsy/palette-mobile
 ```
 
+- Install native peer deps
+
+```sh
+yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg react-native-safe-area-context
+```
+
 ## How to contribute
 
 If you'd like to add a new component to Palette please create an issue using the component spec template. That'll give both design and engineering a chance to peek at the proposal and provide feedback before moving forward.

@@ -112,6 +112,7 @@ __metadata:
     react-native-pager-view: "npm:6.7.1"
     react-native-popover-view: "npm:^6.1.0"
     react-native-reanimated: "npm:3.17.5"
+    react-native-safe-area-context: "npm:5.4.1"
     react-native-svg: "npm:15.12.0"
     react-test-renderer: "npm:19.0.0"
     rimraf: "npm:4.1.2"
