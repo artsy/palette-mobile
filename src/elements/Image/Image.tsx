@@ -131,7 +131,13 @@ export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurha
   if (!!blurhash) {
     return (
       <Flex backgroundColor="mono10" {...dimensions} style={style}>
-        <Blurhash blurhash={blurhash} style={{ flex: 1 }} decodeWidth={16} decodeHeight={16} />
+        <Blurhash
+          blurhash={blurhash}
+          style={{ flex: 1 }}
+          decodeWidth={16}
+          decodeHeight={16}
+          decodeAsync
+        />
       </Flex>
     )
   }
