@@ -1,3 +1,15 @@
+# v20.0.0 (Wed Oct 15 2025)
+
+#### 💥  Breaking Change
+
+- build(deps): bump styled components to latest [#399](https://github.com/artsy/palette-mobile/pull/399) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v19.18.0 (Mon Oct 13 2025)
 
 #### 🚀  Enhancement
