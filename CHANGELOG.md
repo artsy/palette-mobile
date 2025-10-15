@@ -1,3 +1,16 @@
+# v20.1.0 (Wed Oct 15 2025)
+
+#### 🚀  Enhancement
+
+- chore: decode async images blurhash [#406](https://github.com/artsy/palette-mobile/pull/406) ([@MounirDhahri](https://github.com/MounirDhahri))
+- chore: unmount skeleton after loading image [#405](https://github.com/artsy/palette-mobile/pull/405) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v20.0.0 (Wed Oct 15 2025)
 
 #### 💥  Breaking Change
