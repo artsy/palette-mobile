@@ -4,7 +4,7 @@ import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
 import { useMemo } from "react"
 import { PixelRatio } from "react-native"
-import styled, { FlattenInterpolation, css } from "styled-components"
+import styled, { RuleSet, css } from "styled-components"
 import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
 import { Text } from "../Text"
@@ -125,7 +125,7 @@ const PILL_STATES = {
   `,
 }
 
-const PILL_VARIANTS: Record<PillVariant, Record<PillState, FlattenInterpolation<any>>> = {
+const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
   default: PILL_STATES,
   onboarding: {
     ...PILL_STATES,
