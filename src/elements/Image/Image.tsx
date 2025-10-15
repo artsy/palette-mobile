@@ -1,9 +1,9 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
-import { memo, useRef } from "react"
-import { PixelRatio, StyleProp, View, ViewStyle, Animated } from "react-native"
+import { memo, useState } from "react"
+import { StyleProp, View, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import { getImageURL } from "./helpers/getImageURL"
-import { GeminiResizeMode, createGeminiUrl, imageAlreadyResized } from "../../utils/createGeminiUrl"
+import { GeminiResizeMode } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
@@ -44,18 +44,13 @@ export const Image: React.FC<ImageProps> = memo(
     blurhash,
     ...flexProps
   }) => {
+    const [isLoading, setIsLoading] = useState(false)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
 
     const color = useColor()
 
-    const opacity = useRef(new Animated.Value(0)).current
-
     const onLoadEnd = () => {
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 200,
-        useNativeDriver: true,
-      }).start()
+      setIsLoading(false)
     }
 
     if (showLoadingState) {
@@ -70,13 +65,15 @@ export const Image: React.FC<ImageProps> = memo(
 
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
-        <View style={[dimensions, { position: "absolute" }]}>
-          <ImageSkeleton
-            dimensions={dimensions}
-            blurhash={blurhash}
-            style={{ position: "absolute" }}
-          />
-        </View>
+        {isLoading && (
+          <View style={[dimensions, { position: "absolute" }]}>
+            <ImageSkeleton
+              dimensions={dimensions}
+              blurhash={blurhash}
+              style={{ position: "absolute" }}
+            />
+          </View>
+        )}
 
         <FastImage
           style={[
