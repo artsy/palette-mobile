@@ -1,3 +1,15 @@
+# v20.2.0 (Thu Oct 16 2025)
+
+#### 🚀  Enhancement
+
+- chore: ux improvements to the image component [#407](https://github.com/artsy/palette-mobile/pull/407) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v20.1.0 (Wed Oct 15 2025)
 
 #### 🚀  Enhancement
