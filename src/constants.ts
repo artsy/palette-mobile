@@ -16,3 +16,10 @@ export let DEFAULT_ACTIVE_OPACITY = 0.8
 export const setGlobalActiveOpacity = (opacity: number) => {
   DEFAULT_ACTIVE_OPACITY = opacity
 }
+
+// Check if the global `nativeFabric` object exists.
+// Its presence indicates that Fabric is running.
+// nativeFabricUIManager is only available in the new architecture and isn't typed yet
+export const isNewArchitectureEnabled = !!global?.nativeFabricUIManager
+
+export const DEFAULT_ANIMATION_DURATION = 200
