@@ -1,3 +1,15 @@
+# v20.4.0 (Fri Oct 17 2025)
+
+#### 🚀  Enhancement
+
+- refactor(react19): remove types react 18 resolution [#409](https://github.com/artsy/palette-mobile/pull/409) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v20.3.0 (Fri Oct 17 2025)
 
 #### 🚀  Enhancement
