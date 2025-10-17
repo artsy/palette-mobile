@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "20.3.0",
+  "version": "20.4.0",
   "description": "Artsy's design system for React Native",
   "workspaces": [
     "Example"
