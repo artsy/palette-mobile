@@ -36,7 +36,7 @@ yarn add @artsy/palette-mobile
 - Install native peer deps
 
 ```sh
-yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg
+yarn add react-native-haptic-feedback react-native-linear-gradient react-native-reanimated react-native-svg react-native-safe-area-context
 ```
 
 ## How to contribute
@@ -74,14 +74,6 @@ or
 ```sh
 yarn android
 ```
-
-⚠️ Temporary workaround until we move Expo into an example directory:
-
-For local development, remove the line from package.json:
-
-`"main": "dist/index.js"`
-
-Make sure to add it back before committing.
 
 ## Developing Features using Local Versions of Palette
 

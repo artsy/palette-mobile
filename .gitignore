@@ -68,8 +68,10 @@ dist
 .env
 
 # Fonts
-android/app/src/main/assets/fonts/*
-ios/PaletteMobile/fonts/*
+Example/android/app/src/main/assets/fonts/*
+Example/ios/PaletteMobile/fonts/*
+Example/fonts/*
+Example/assets/fonts/*
 
 .cache
 
@@ -84,8 +86,8 @@ ios/PaletteMobile/fonts/*
 .expo
 dist/
 web-build/
-android
-ios
+Example/android
+Example/ios
 
 
 # Yarn 4
@@ -98,3 +100,4 @@ ios
 !.yarn/sdks/*
 !.yarn/versions
 !.yarn/versions/*
+

@@ -1,9 +1,10 @@
 module.exports = {
+  presets: ["module:@react-native/babel-preset"],
   plugins: [
-    "@babel/plugin-transform-flow-strip-types",
     ["@babel/plugin-proposal-decorators", { version: "legacy" }],
-    ["@babel/plugin-proposal-private-methods", { loose: true }], // needed for latest jest, must come after decorators
-    "react-native-reanimated/plugin", // should be LAST
+    ["@babel/plugin-transform-class-properties", { loose: true }],
+    ["@babel/plugin-proposal-private-methods", { loose: true }],
+    ["@babel/plugin-transform-private-property-in-object", { loose: true }],
+    "react-native-reanimated/plugin",
   ],
-  presets: [["babel-preset-expo", { jsxRuntime: "automatic" }], "@babel/preset-typescript"],
 }
