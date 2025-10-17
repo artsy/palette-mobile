@@ -1,3 +1,15 @@
+# v20.3.0 (Fri Oct 17 2025)
+
+#### 🚀  Enhancement
+
+- chore: migrate app to example [#404](https://github.com/artsy/palette-mobile/pull/404) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v20.2.0 (Thu Oct 16 2025)
 
 #### 🚀  Enhancement
