@@ -63,6 +63,7 @@ __metadata:
     "@react-native/eslint-config": "npm:0.76.9"
     "@react-spring/native": "npm:^10.0.3"
     "@shopify/flash-list": "npm:^1.8.3"
+    "@shopify/restyle": "npm:^2.4.5"
     "@styled-system/theme-get": "npm:^5.1.2"
     "@testing-library/react-native": "npm:13.2.0"
     "@types/events": "npm:^3.0.0"
@@ -3642,6 +3643,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/0900250ce45157d144e3fef4d1cd8c5dfb03495ecb66da1f512697a6834f4eee7bf0755a3772b3c131135784757e5b36566ed365ea0890d9c10ad872885ef650
+  languageName: node
+  linkType: hard
+
+"@shopify/restyle@npm:^2.4.5":
+  version: 2.4.5
+  resolution: "@shopify/restyle@npm:2.4.5"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/51c92912ef452f89036d27175d7999f3c675868df5977eef4e6e3a1f96336856e68946c3f3c425c501de07a929ac4f6327e3c9f1ac5b91f336a122e32b28dcd9
   languageName: node
   linkType: hard
 
