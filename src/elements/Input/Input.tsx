@@ -6,6 +6,7 @@ import themeGet from "@styled-system/theme-get"
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import {
+  JSX,
   RefObject,
   forwardRef,
   useCallback,
@@ -195,7 +196,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
     const placeholderWidths = useRef<number[]>([])
 
     const rightComponentRef = useRef(null)
-    const inputRef = useRef<TextInput>()
+    const inputRef = useRef<TextInput>(null)
 
     const variant: InputVariant = getInputVariant({
       hasError: !!props.error,
