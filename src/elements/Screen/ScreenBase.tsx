@@ -18,7 +18,7 @@ export const ScreenBase: React.FC<ScreenBaseProps> = ({
     <ScreenScrollContextProvider>
       <Flex
         flex={1}
-        backgroundColor="background"
+        backgroundColor="mono0"
         mt={safeArea ? (insets.top as FlexProps["mt"]) : 0}
         {...flexProps}
       >
@@ -40,7 +40,7 @@ const SafeAreaCover: React.FC<{ safeArea: boolean }> = ({ safeArea }) => {
       right={0}
       top={safeArea ? -insets.top : 0}
       height={insets.top}
-      backgroundColor="background"
+      backgroundColor="mono0"
     />
   )
 }
