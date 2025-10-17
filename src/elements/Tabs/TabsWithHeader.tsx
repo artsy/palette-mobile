@@ -1,3 +1,4 @@
+import { JSX } from "react"
 import { CollapsibleProps } from "react-native-collapsible-tab-view"
 import { TabsContainer, TabsContainerProps } from "./TabsContainer"
 import { Flex } from "../Flex"

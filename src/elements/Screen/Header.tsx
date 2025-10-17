@@ -1,5 +1,5 @@
 import { ChevronLeftIcon } from "@artsy/icons/native"
-import React from "react"
+import React, { JSX } from "react"
 import Animated, {
   Easing,
   FadeIn,
