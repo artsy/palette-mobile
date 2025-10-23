@@ -1,3 +1,19 @@
+# v20.5.0 (Thu Oct 23 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your work!
+
+#### 🚀  Enhancement
+
+- chore: use m4pro.medium circleci resource [#410](https://github.com/artsy/palette-mobile/pull/410) ([@mc-jones](https://github.com/mc-jones))
+
+#### Authors: 1
+
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+
+---
+
 # v20.4.0 (Fri Oct 17 2025)
 
 #### 🚀  Enhancement
