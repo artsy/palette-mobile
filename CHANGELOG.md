@@ -1,3 +1,15 @@
+# v20.7.0 (Mon Oct 27 2025)
+
+#### 🚀  Enhancement
+
+- chore(Revert): "chore: ux improvements to the image component" [#412](https://github.com/artsy/palette-mobile/pull/412) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v20.6.0 (Mon Oct 27 2025)
 
 #### 🚀  Enhancement
