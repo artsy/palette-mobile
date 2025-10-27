@@ -163,13 +163,15 @@ interface CheckMarkProps {
 // properties with styled-component.
 export const CheckMark = ({ size }: CheckMarkProps) => (
   <Box
-    style={{ transform: [{ rotate: "-45deg" }] }}
+    style={{
+      transform: [{ rotate: "-45deg" }],
+      borderBottomWidth: 2,
+      borderLeftWidth: 2,
+    }}
     top="-12%"
     width={size * 0.625}
     height={size * 0.3125}
-    borderBottomWidth="2px"
     borderBottomColor="mono0"
-    borderLeftWidth="2px"
     borderLeftColor="mono0"
   />
 )
