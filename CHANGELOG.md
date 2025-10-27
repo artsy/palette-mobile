@@ -1,3 +1,15 @@
+# v20.6.0 (Mon Oct 27 2025)
+
+#### 🚀  Enhancement
+
+- fix: checkbox make the apps crash [#411](https://github.com/artsy/palette-mobile/pull/411) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v20.5.0 (Thu Oct 23 2025)
 
 :tada: This release contains work from a new contributor! :tada:
