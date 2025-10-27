@@ -1,9 +1,8 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useState } from "react"
-import { Animated, StyleProp, useAnimatedValue, ViewStyle } from "react-native"
+import { StyleProp, View, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import { getImageURL } from "./helpers/getImageURL"
-import { DEFAULT_ANIMATION_DURATION, isNewArchitectureEnabled } from "../../constants"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -45,22 +44,13 @@ export const Image: React.FC<ImageProps> = memo(
     blurhash,
     ...flexProps
   }) => {
-    const [isLoading, setIsLoading] = useState(true)
-
+    const [isLoading, setIsLoading] = useState(false)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
-
-    const opacity = useAnimatedValue(1)
 
     const color = useColor()
 
     const onLoadEnd = () => {
-      Animated.timing(opacity, {
-        toValue: 0,
-        duration: DEFAULT_ANIMATION_DURATION,
-        useNativeDriver: true,
-      }).start(() => {
-        setIsLoading(false)
-      })
+      setIsLoading(false)
     }
 
     if (showLoadingState) {
@@ -75,6 +65,16 @@ export const Image: React.FC<ImageProps> = memo(
 
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
+        {isLoading && (
+          <View style={[dimensions, { position: "absolute" }]}>
+            <ImageSkeleton
+              dimensions={dimensions}
+              blurhash={blurhash}
+              style={{ position: "absolute" }}
+            />
+          </View>
+        )}
+
         <FastImage
           style={[
             dimensions,
@@ -90,23 +90,6 @@ export const Image: React.FC<ImageProps> = memo(
             uri: getImageURL({ src, dimensions, geminiResizeMode, performResize }),
           }}
         />
-
-        {isLoading && (
-          <Animated.View
-            style={[
-              dimensions,
-              // We are disabling the opacity animation in the new architecture because it is still slow
-              // We will bring this back once we are on RN81+ aka a version with this fix
-              { position: "absolute", opacity: isNewArchitectureEnabled ? 0 : opacity },
-            ]}
-          >
-            <ImageSkeleton
-              dimensions={dimensions}
-              blurhash={blurhash}
-              style={{ position: "absolute" }}
-            />
-          </Animated.View>
-        )}
       </Flex>
     )
   }
@@ -147,7 +130,7 @@ type ImageSkeletonProps = {
 export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash, style }) => {
   if (!!blurhash) {
     return (
-      <Flex {...dimensions} style={style}>
+      <Flex backgroundColor="mono10" {...dimensions} style={style}>
         <Blurhash
           blurhash={blurhash}
           style={{ flex: 1 }}
