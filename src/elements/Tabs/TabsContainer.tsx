@@ -146,7 +146,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 borderColor: color("mono30"),
               }}
               TabItemComponent={(props) => <DefaultTabItem {...props} indicators={indicators} />}
-              contentContainerStyle={{}}
+              contentContainerStyle={{ flexDirection: "row", flexWrap: "nowrap" }}
               activeColor={color("onBackground")}
               inactiveColor={color("onBackgroundMedium")}
               labelStyle={{ marginHorizontal: 0 }} // removing the horizontal margin from the lib
