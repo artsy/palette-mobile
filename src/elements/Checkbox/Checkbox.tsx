@@ -161,20 +161,24 @@ interface CheckMarkProps {
 
 // This component represents the √ mark in CSS. We are not using styled-system since it's easier to specify raw CSS
 // properties with styled-component.
-export const CheckMark = ({ size }: CheckMarkProps) => (
-  <Box
-    style={{
-      transform: [{ rotate: "-45deg" }],
-      borderBottomWidth: 2,
-      borderLeftWidth: 2,
-    }}
-    top="-12%"
-    width={size * 0.625}
-    height={size * 0.3125}
-    borderBottomColor="mono0"
-    borderLeftColor="mono0"
-  />
-)
+export const CheckMark = ({ size }: CheckMarkProps) => {
+  const { color } = useTheme()
+
+  return (
+    <Box
+      style={{
+        transform: [{ rotate: "-45deg" }],
+        borderBottomWidth: 2,
+        borderLeftWidth: 2,
+      }}
+      top="-12%"
+      width={size * 0.625}
+      height={size * 0.3125}
+      borderBottomColor={color("mono0")}
+      borderLeftColor={color("mono0")}
+    />
+  )
+}
 
 export const DisabledMark = styled(CheckMark)`
   border-bottom-color: ${themeGet("colors.mono30")};
