@@ -1,3 +1,15 @@
+# v20.8.0 (Wed Oct 29 2025)
+
+#### 🚀  Enhancement
+
+- fix: use theme to fix color resolution in checkmark [#414](https://github.com/artsy/palette-mobile/pull/414) ([@brainbicycle](https://github.com/brainbicycle))
+
+#### Authors: 1
+
+- Brian Beckerle ([@brainbicycle](https://github.com/brainbicycle))
+
+---
+
 # v20.7.0 (Mon Oct 27 2025)
 
 #### 🚀  Enhancement
