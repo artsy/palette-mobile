@@ -1,3 +1,19 @@
+# v20.9.0 (Fri Oct 31 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all your work!
+
+#### 🚀  Enhancement
+
+- feat: add conventional commit github action [#416](https://github.com/artsy/palette-mobile/pull/416) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v20.8.0 (Wed Oct 29 2025)
 
 #### 🚀  Enhancement
