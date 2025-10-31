@@ -43,11 +43,11 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.10",
-    "babel-preset-expo": "14.0.0",
     "patch-package": "^8.0.1",
     "typescript": "5.9.2"
   },
   "resolutions": {
-    "metro-config": "0.81.5"
+    "metro-config": "0.81.5",
+    "babel-preset-expo": "14.0.0"
   }
 }
