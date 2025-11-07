@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "android": "yarn workspace palette-mobile-example android",
+    "android:clean": "yarn workspace palette-mobile-example android:prebuild --clean",
     "android:prebuild": "yarn workspace palette-mobile-example android:prebuild",
     "beta:ios": "bundle e fastlane ios beta",
     "bundle-install": "bundle install",
@@ -14,6 +15,7 @@
     "compile": "tsc",
     "install:all": "yarn install && yarn postinstall && yarn bundle-install",
     "ios": "yarn workspace palette-mobile-example ios",
+    "ios:clean": "yarn workspace palette-mobile-example ios:prebuild --clean",
     "ios:prebuild": "yarn workspace palette-mobile-example ios:prebuild",
     "lint:all": "yarn lint .",
     "lint": "eslint --cache --cache-location '.cache/eslint/' --ext .ts,.tsx --fix",
