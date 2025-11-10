@@ -1,3 +1,15 @@
+# v20.11.0 (Mon Nov 10 2025)
+
+#### 🚀  Enhancement
+
+- feat: add yarn check github action [#419](https://github.com/artsy/palette-mobile/pull/419) ([@mc-jones](https://github.com/mc-jones))
+
+#### Authors: 1
+
+- Matt Jones ([@mc-jones](https://github.com/mc-jones))
+
+---
+
 # v20.10.0 (Mon Nov 10 2025)
 
 #### 🚀  Enhancement
