@@ -1,3 +1,15 @@
+# v20.10.0 (Mon Nov 10 2025)
+
+#### 🚀  Enhancement
+
+- feat: add add-version-label github action [#418](https://github.com/artsy/palette-mobile/pull/418) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v20.9.0 (Fri Oct 31 2025)
 
 :tada: This release contains work from a new contributor! :tada:
