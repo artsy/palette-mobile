@@ -112,7 +112,7 @@ __metadata:
     react-native-linear-gradient: "npm:2.6.2"
     react-native-pager-view: "npm:6.7.1"
     react-native-popover-view: "npm:^6.1.0"
-    react-native-reanimated: "npm:3.19.3"
+    react-native-reanimated: "npm:3.19.4"
     react-native-safe-area-context: "npm:5.6.0"
     react-native-svg: "npm:15.12.1"
     react-test-renderer: "npm:19.1.0"
@@ -12102,7 +12102,7 @@ __metadata:
     react-native-linear-gradient: "npm:2.6.2"
     react-native-pager-view: "npm:6.7.1"
     react-native-popover-view: "npm:^6.1.0"
-    react-native-reanimated: "npm:3.19.3"
+    react-native-reanimated: "npm:3.19.4"
     react-native-safe-area-context: "npm:5.6.0"
     react-native-svg: "npm:15.12.1"
     styled-components: "npm:6.1.19"
@@ -12861,9 +12861,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.19.3":
-  version: 3.19.3
-  resolution: "react-native-reanimated@npm:3.19.3"
+"react-native-reanimated@npm:3.19.4":
+  version: 3.19.4
+  resolution: "react-native-reanimated@npm:3.19.4"
   dependencies:
     "@babel/plugin-transform-arrow-functions": "npm:^7.0.0-0"
     "@babel/plugin-transform-class-properties": "npm:^7.0.0-0"
@@ -12881,7 +12881,7 @@ __metadata:
     "@babel/core": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 10c0/adf06db4961bbb9dd3acf432f6359c74ee497a71cea6350ed0380c9f231d89e19e6458ac41b298b85e31cc1caffd537f18908f9050dd3d8ae4c5dc95322fc884
+  checksum: 10c0/265946c8056812685874cfd502e340ffc289128b90b897f274068608b624a757045686c987403f4557c9bf92753864b205e895dbc8111c7fc995b0943c7c5879
   languageName: node
   linkType: hard
 
