@@ -1,8 +1,15 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useState } from "react"
-import { StyleProp, View, ViewStyle } from "react-native"
+import { StyleProp, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
+import Animated, {
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated"
 import { getImageURL } from "./helpers/getImageURL"
+import { DEFAULT_ANIMATION_DURATION } from "../../constants"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -44,14 +51,23 @@ export const Image: React.FC<ImageProps> = memo(
     blurhash,
     ...flexProps
   }) => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
+    const opacity = useSharedValue(1)
 
     const color = useColor()
 
     const onLoadEnd = () => {
-      setIsLoading(false)
+      opacity.value = withSpring(0, { duration: DEFAULT_ANIMATION_DURATION }, () => {
+        runOnJS(setIsLoading)(false)
+      })
     }
+
+    const skeletonStyle = useAnimatedStyle(() => {
+      return {
+        opacity: opacity.value,
+      }
+    })
 
     if (showLoadingState) {
       return (
@@ -65,16 +81,6 @@ export const Image: React.FC<ImageProps> = memo(
 
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
-        {isLoading && (
-          <View style={[dimensions, { position: "absolute" }]}>
-            <ImageSkeleton
-              dimensions={dimensions}
-              blurhash={blurhash}
-              style={{ position: "absolute" }}
-            />
-          </View>
-        )}
-
         <FastImage
           style={[
             dimensions,
@@ -90,6 +96,16 @@ export const Image: React.FC<ImageProps> = memo(
             uri: getImageURL({ src, dimensions, geminiResizeMode, performResize }),
           }}
         />
+
+        {isLoading && (
+          <Animated.View style={[dimensions, { position: "absolute" }, skeletonStyle]}>
+            <ImageSkeleton
+              dimensions={dimensions}
+              blurhash={blurhash}
+              style={{ position: "absolute" }}
+            />
+          </Animated.View>
+        )}
       </Flex>
     )
   }
