@@ -1,3 +1,15 @@
+# v21.0.1 (Tue Nov 11 2025)
+
+#### 🐛  Bug Fix
+
+- chore: Revert "chore: upgrade to Expo SDK 54 and RN 81" [#420](https://github.com/artsy/palette-mobile/pull/420) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v21.0.0 (Tue Nov 11 2025)
 
 #### 💥  Breaking Change
