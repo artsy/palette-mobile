@@ -1,3 +1,16 @@
+# v21.0.0 (Tue Nov 11 2025)
+
+#### 💥  Breaking Change
+
+- chore: upgrade to Expo SDK 54 and RN 81 [#417](https://github.com/artsy/palette-mobile/pull/417) ([@MounirDhahri](https://github.com/MounirDhahri) [@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 2
+
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v20.11.0 (Mon Nov 10 2025)
 
 #### 🚀  Enhancement
