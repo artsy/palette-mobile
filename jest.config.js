@@ -15,8 +15,5 @@ module.exports = {
   transformIgnorePatterns: [
     "node_modules/(?!(react-native(-.*)?/(@react-native-community/.*))?|react-navigation|@react-navigation/.*)",
   ],
-  moduleNameMapper: {
-    "^react-native-blurhash$": "react-native-blurhash/src/index.tsx",
-  },
   watchPlugins: ["jest-watch-typeahead/filename", "jest-watch-typeahead/testname"],
 }

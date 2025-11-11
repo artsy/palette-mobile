@@ -3,7 +3,8 @@ import { EventEmitter } from "events"
 import { CloseFillIcon, HideIcon, ShowIcon, TriangleDownIcon } from "@artsy/icons/native"
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
-import { isArray, isString } from "lodash"
+import isArray from "lodash/isArray"
+import isString from "lodash/isString"
 import {
   JSX,
   RefObject,

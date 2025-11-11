@@ -1,7 +1,6 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useState } from "react"
 import { StyleProp, View, ViewStyle } from "react-native"
-// @ts-expect-error
 import { Blurhash } from "react-native-blurhash"
 import { getImageURL } from "./helpers/getImageURL"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
