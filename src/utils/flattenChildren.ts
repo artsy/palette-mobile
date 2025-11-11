@@ -8,7 +8,7 @@ export const flattenChildren = (children: React.ReactNode): React.ReactElement[]
 
   return xs.reduce((acc: React.ReactElement[], child: React.ReactElement<PropsWithChildren>) => {
     if (child.type === Fragment) {
-      return [...acc, ...flattenChildren((child.props as any).children)]
+      return [...acc, ...flattenChildren(child.props.children)]
     }
 
     return [...acc, child]

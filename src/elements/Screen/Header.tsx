@@ -1,5 +1,5 @@
 import { ChevronLeftIcon } from "@artsy/icons/native"
-import { JSX, ReactNode } from "react"
+import React, { JSX } from "react"
 import Animated, {
   Easing,
   FadeIn,
@@ -20,9 +20,9 @@ export interface HeaderProps {
   hideLeftElements?: boolean
   hideRightElements?: boolean
   hideTitle?: boolean
-  leftElements?: ReactNode
+  leftElements?: React.ReactNode
   onBack?: () => void
-  rightElements?: ReactNode
+  rightElements?: React.ReactNode
   scrollY?: number
   // For header with more content use the offset to achieve a more granular control when to show the animated header
   scrollYOffset?: number
