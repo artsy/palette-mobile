@@ -1,6 +1,7 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useState } from "react"
 import { StyleProp, ViewStyle } from "react-native"
+// @ts-expect-error
 import { Blurhash } from "react-native-blurhash"
 import Animated, {
   runOnJS,
