@@ -1,3 +1,15 @@
+# v21.1.0 (Wed Nov 12 2025)
+
+#### 🚀  Enhancement
+
+- fix: missing image skeleton [#421](https://github.com/artsy/palette-mobile/pull/421) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v21.0.1 (Tue Nov 11 2025)
 
 #### 🐛  Bug Fix
