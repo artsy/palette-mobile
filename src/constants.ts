@@ -16,3 +16,5 @@ export let DEFAULT_ACTIVE_OPACITY = 0.8
 export const setGlobalActiveOpacity = (opacity: number) => {
   DEFAULT_ACTIVE_OPACITY = opacity
 }
+
+export const DEFAULT_ANIMATION_DURATION = 200
