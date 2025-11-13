@@ -7,6 +7,7 @@ import { THEME } from "@artsy/palette-tokens"
 import { SpacingUnit as SpacingUnitNumbers } from "@artsy/palette-tokens/dist/themes/v3"
 import { THEME_DARK } from "@artsy/palette-tokens/dist/themes/v3Dark"
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
+import { BaseTheme } from "@shopify/restyle"
 import { Color, ColorDSValue, ColorLayerName, SpacingUnit } from "./types"
 import {
   convertWebSpacingUnitsToMobile,
@@ -16,11 +17,17 @@ import {
 
 const { textVariants, space, colors } = THEME
 
-export interface ThemeType {
+export interface ThemeType extends BaseTheme {
   space: Record<SpacingUnitNumbers, `${number}px`>
+  spacing: Record<SpacingUnitNumbers, `${number}px`>
   colors: Record<ColorLayerName, string>
   fonts: { sans: { regular: string; italic: string; medium: string; mediumItalic: string } }
   textTreatments: Record<TextVariant, TextTreatmentWithoutUnits>
+  textVariants: Record<TextVariant | "defaults", any>
+  breakpoints: {
+    phone: number
+    tablet: number
+  }
 }
 
 export interface ThemeWithDarkModeType extends ThemeType {
@@ -37,6 +44,11 @@ export const COLOR_LAYER_NAME = {
   ...colors,
   /** Adding this here for dev usage. Avoid using it for actual components. */
   devpurple: "#6E1EFF",
+  /** Alias for mono0 - used by some legacy components */
+  white: colors.mono0,
+  /** Alias for mono100 - used by some legacy components */
+  black: colors.mono100,
+  transparent: "transparent",
 }
 
 export const COLOR_LAYER_ROLE = [
@@ -65,8 +77,35 @@ export const COLOR_LAYER_ROLE = [
   "onBrand",
 ] as const
 
+const createTextVariantsForRestyle = (
+  textTreatments: Record<TextVariant, TextTreatmentWithoutUnits>
+): Record<TextVariant | "defaults", any> => {
+  const variants: Record<string, any> = {}
+
+  // Add defaults for Restyle's base text properties
+  variants.defaults = {
+    fontFamily: "sans.regular",
+    color: "mono100",
+  }
+
+  Object.keys(textTreatments).forEach((key) => {
+    const variant = key as TextVariant
+    const treatment = textTreatments[variant]
+    variants[variant] = {
+      fontSize: treatment.fontSize,
+      lineHeight: treatment.lineHeight,
+      letterSpacing: treatment.letterSpacing,
+      fontFamily: "sans.regular", // Default, will be overridden by Text component logic
+      color: "mono100",
+    }
+  })
+
+  return variants as Record<TextVariant | "defaults", any>
+}
+
 const v3: ThemeType = {
   space: convertWebSpacingUnitsToMobile(space),
+  spacing: { ...convertWebSpacingUnitsToMobile(space), auto: "auto" },
   colors: COLOR_LAYER_NAME,
   fonts: {
     sans: {
@@ -77,10 +116,16 @@ const v3: ThemeType = {
     },
   },
   textTreatments: convertWebTextTreatmentsToMobile(textVariants),
+  textVariants: createTextVariantsForRestyle(convertWebTextTreatmentsToMobile(textVariants)),
+  breakpoints: {
+    phone: 0,
+    tablet: 768,
+  },
 }
 
 const v3light: ThemeWithDarkModeType = {
   ...v3,
+  spacing: v3.spacing,
   colors: {
     ...v3.colors,
     background: colors.mono0,
@@ -108,9 +153,13 @@ const v3light: ThemeWithDarkModeType = {
 
 const v3dark: ThemeWithDarkModeType = {
   ...v3,
+  spacing: v3.spacing,
   colors: {
     ...THEME_DARK.colors,
     devpurple: v3.colors.devpurple,
+    // Aliases for legacy components
+    white: THEME_DARK.colors.mono0,
+    black: THEME_DARK.colors.mono100,
     background: THEME_DARK.colors.mono0,
     onBackground: THEME_DARK.colors.mono100,
     onBackgroundHigh: THEME_DARK.colors.mono100,
