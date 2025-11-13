@@ -83,28 +83,62 @@ TabsWithAnimatedHeader.story = {
   name: "Tabs with AnimatedHeader",
 }
 
-export const _TabsWithHeader = () => (
-  <Tabs.TabsWithHeader
-    title="Artist Header"
-    showLargeHeaderText={false}
-    BelowTitleHeaderComponent={() => (
-      <Flex pointerEvents="none" p={2}>
-        <Text>Info</Text>
-        <Text>More Info</Text>
-      </Flex>
-    )}
-  >
-    <Tabs.Tab name="tab1" label="Tab 1">
-      <Tabs.ScrollView>
+export const TabsWithHeader = () => {
+  return (
+    <Tabs.TabsWithHeader
+      title="Artist Header"
+      showLargeHeaderText={false}
+      BelowTitleHeaderComponent={() => (
+        <Flex pointerEvents="none" p={2}>
+          <Text>Info</Text>
+          <Text>More Info</Text>
+        </Flex>
+      )}
+    >
+      <Tabs.Tab name="tab1" label="Tab 1">
+        <Tabs.ScrollView>
+          <Text>{"Some long text ".repeat(150)}</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
+      <Tabs.Tab name="tab2" label="Tab 2">
         <Text>{"Some long text ".repeat(150)}</Text>
-      </Tabs.ScrollView>
-    </Tabs.Tab>
-    <Tabs.Tab name="tab2" label="Tab 2">
-      <Text>{"Some long text ".repeat(150)}</Text>
-    </Tabs.Tab>
-  </Tabs.TabsWithHeader>
-)
+      </Tabs.Tab>
+    </Tabs.TabsWithHeader>
+  )
+}
 
-_TabsWithHeader.story = {
+TabsWithHeader.story = {
   name: "Tabs with header",
+}
+
+export const MasonryTabsWithHeader = () => {
+  return (
+    <Tabs.TabsWithHeader title="Tabs with Masonry">
+      <Tabs.Tab name="tab1" label="Tab 1">
+        <Tabs.FlatList
+          data={Array.from({ length: 20 })}
+          contentContainerStyle={{
+            paddingHorizontal: 0,
+          }}
+          renderItem={() => <Flex backgroundColor={randomHexColor()} height={80} width="100%" />}
+        />
+      </Tabs.Tab>
+      <Tabs.Tab name="tab2" label="Tab 2">
+        <Tabs.FlatList
+          contentContainerStyle={{
+            paddingHorizontal: 0,
+          }}
+          data={Array.from({ length: 20 })}
+          renderItem={() => <Flex backgroundColor={randomHexColor()} height={80} width="100%" />}
+        />
+      </Tabs.Tab>
+    </Tabs.TabsWithHeader>
+  )
+}
+
+const randomHexColor = () => {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+}
+MasonryTabsWithHeader.story = {
+  name: "Masonry Tabs with header",
 }
