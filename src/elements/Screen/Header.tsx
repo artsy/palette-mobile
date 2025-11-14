@@ -29,6 +29,7 @@ export interface HeaderProps {
   title?: string | JSX.Element
   titleProps?: FlexProps
   titleShown?: boolean
+  zIndex?: number
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
@@ -45,6 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
   rightElements,
   title,
   titleProps = {},
+  zIndex = ZINDEX.header,
 }) => {
   const { width } = useScreenDimensions()
   const space = useSpace()
@@ -58,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({
       height={NAVBAR_HEIGHT}
       flexDirection="row"
       px={2}
-      zIndex={ZINDEX.header}
+      zIndex={zIndex}
       backgroundColor="background"
       alignItems="center"
     >
