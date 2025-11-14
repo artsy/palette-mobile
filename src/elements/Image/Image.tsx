@@ -3,12 +3,8 @@ import { memo, useState } from "react"
 import { StyleProp, ViewStyle } from "react-native"
 // @ts-expect-error
 import { Blurhash } from "react-native-blurhash"
-import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated"
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated"
+import { scheduleOnRN } from "react-native-worklets"
 import { getImageURL } from "./helpers/getImageURL"
 import { DEFAULT_ANIMATION_DURATION } from "../../constants"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
@@ -60,7 +56,7 @@ export const Image: React.FC<ImageProps> = memo(
 
     const onLoadEnd = () => {
       opacity.value = withSpring(0, { duration: DEFAULT_ANIMATION_DURATION }, () => {
-        runOnJS(setIsLoading)(false)
+        scheduleOnRN(setIsLoading, false)
       })
     }
 
