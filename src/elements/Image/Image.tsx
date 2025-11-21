@@ -67,13 +67,8 @@ export const Image: React.FC<ImageProps> = memo(
     })
 
     if (showLoadingState) {
-      return (
-        <ImageSkeleton
-          dimensions={dimensions}
-          blurhash={blurhash}
-          style={{ position: "absolute" }}
-        />
-      )
+      // Keep logic as small as possible here to save on performance
+      return <Flex backgroundColor="mono10" {...dimensions} style={{ position: "absolute" }} />
     }
 
     return (
