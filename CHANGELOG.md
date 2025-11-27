@@ -1,3 +1,15 @@
+# v22.1.0 (Thu Nov 27 2025)
+
+#### 🚀  Enhancement
+
+- build(deps): bump moti to latest [#428](https://github.com/artsy/palette-mobile/pull/428) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v22.0.0 (Wed Nov 12 2025)
 
 #### 💥  Breaking Change
