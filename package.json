@@ -49,7 +49,7 @@
     "@styled-system/theme-get": "^5.1.2",
     "events": "^3.3.0",
     "lodash": "^4.17.21",
-    "moti": "^0.25.3",
+    "moti": "0.30.0",
     "react-nanny": "^2.15.0",
     "react-native-blurhash": "2.1.2",
     "react-native-collapsible-tab-view": "^8.0.1",
