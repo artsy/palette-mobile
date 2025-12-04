@@ -7,6 +7,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "experiments": {
+      "reactCanary": true
+    },
     "ios": {
       "bundleIdentifier": "com.artsymobile.palettemobile",
       "sipportTable": true,
