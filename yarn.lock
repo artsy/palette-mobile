@@ -103,7 +103,7 @@ __metadata:
     postinstall-prepare: "npm:^2.0.0"
     prettier: "npm:^2.8.8"
     pull-lock: "npm:1.0.0"
-    react: "npm:19.1.0"
+    react: "npm:19.1.2"
     react-nanny: "npm:^2.15.0"
     react-native: "npm:0.81.5"
     react-native-blurhash: "npm:2.1.2"
@@ -12989,10 +12989,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.1.0":
-  version: 19.1.0
-  resolution: "react@npm:19.1.0"
-  checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
+"react@npm:19.1.2":
+  version: 19.1.2
+  resolution: "react@npm:19.1.2"
+  checksum: 10c0/dfbe1dee96547ad2d6d6872b6052cbd5bd7841b6f57a7d6cda62b27e1a7df31d47beecb6d11e24abaff0c5ea347459a0a3c60917b41f5a0ee0b507436b3c50a6
   languageName: node
   linkType: hard
 
