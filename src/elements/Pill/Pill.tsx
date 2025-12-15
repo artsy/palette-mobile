@@ -3,7 +3,7 @@ import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
 import { useMemo } from "react"
-import { PixelRatio } from "react-native"
+import { PixelRatio, Platform } from "react-native"
 import styled, { RuleSet, css } from "styled-components"
 import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
@@ -77,9 +77,11 @@ export const Pill: React.FC<PillProps> = ({
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
-        <Text variant="xs" color={color} style={{ marginBottom: 2 }}>
-          {children}
-        </Text>
+        <Flex height="100%" justifyContent="center">
+          <Text variant="xs" color={color} style={{ marginBottom: Platform.OS === "ios" ? 2 : -2 }}>
+            {children}
+          </Text>
+        </Flex>
 
         {showCloseIcon && <CloseIcon fill={color} ml={0.5} width={15} height={15} />}
       </Container>
@@ -113,7 +115,7 @@ const PILL_STATES = {
   default: css`
     border-radius: 15px;
     height: ${PixelRatio.getFontScale() * 30}px;
-    padding: 0 15px;
+    padding-horizontal: 15px;
   `,
   selected: css`
     border-color: ${themeGet("colors.blue100")};
