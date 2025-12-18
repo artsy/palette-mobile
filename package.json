@@ -52,7 +52,7 @@
     "moti": "0.30.0",
     "react-nanny": "^2.15.0",
     "react-native-blurhash": "2.1.2",
-    "react-native-collapsible-tab-view": "^8.0.1",
+    "react-native-collapsible-tab-view": "9.0.0-rc.0",
     "react-native-pager-view": "6.7.1",
     "react-native-popover-view": "^6.1.0",
     "styled-system": "^5.1.5"
