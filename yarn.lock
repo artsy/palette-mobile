@@ -107,7 +107,7 @@ __metadata:
     react-nanny: "npm:^2.15.0"
     react-native: "npm:0.81.5"
     react-native-blurhash: "npm:2.1.2"
-    react-native-collapsible-tab-view: "npm:^8.0.1"
+    react-native-collapsible-tab-view: "npm:9.0.0-rc.0"
     react-native-haptic-feedback: "npm:1.14.0"
     react-native-linear-gradient: "npm:2.6.2"
     react-native-pager-view: "npm:6.7.1"
@@ -12093,7 +12093,7 @@ __metadata:
     react-dom: "npm:19.1.0"
     react-native: "npm:0.81.5"
     react-native-blurhash: "npm:2.1.2"
-    react-native-collapsible-tab-view: "npm:^8.0.1"
+    react-native-collapsible-tab-view: "npm:9.0.0-rc.0"
     react-native-device-info: "npm:14.0.4"
     react-native-gesture-handler: "npm:2.28.0"
     react-native-haptic-feedback: "npm:1.14.0"
@@ -12758,21 +12758,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-collapsible-tab-view@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "react-native-collapsible-tab-view@npm:8.0.1"
+"react-native-collapsible-tab-view@npm:9.0.0-rc.0":
+  version: 9.0.0-rc.0
+  resolution: "react-native-collapsible-tab-view@npm:9.0.0-rc.0"
   dependencies:
     use-deep-compare: "npm:^1.1.0"
   peerDependencies:
-    "@shopify/flash-list": ">=1.0.0"
+    "@shopify/flash-list": ">=2.0.0"
     react: "*"
     react-native: "*"
     react-native-pager-view: "*"
-    react-native-reanimated: ">=3.8.1"
+    react-native-reanimated: ">=4.1.0"
+    react-native-worklets: ">=0.5.1"
   peerDependenciesMeta:
     "@shopify/flash-list":
       optional: true
-  checksum: 10c0/b4d8c8936cb8b647fc50a5e8ccbb4875d74cc68f90864e13980ec5351b9b49acbe84890c629dc1343f23730295483bd25c219435fd738dd3ac7ac879f221e620
+  checksum: 10c0/6297022971370d3e8819cb866203e20bbcaab50009b8f5e8cecb9bf04ae96361131aef073d4c4cc8ffa7e625934a18c2a7ee3d5bb180560c8579bea523035361
   languageName: node
   linkType: hard
 
