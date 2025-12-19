@@ -43,7 +43,8 @@ export const SkeletonText: FC<TextProps> = ({ children, ...rest }) => {
 
   return (
     <Flex alignSelf="flex-start">
-      <Text {...rest} bg={color("mono10")} color="transparent">
+      {/* Because opacity is not inherited on Android, we work around that by setting the color as an RGBA with 0 alpha */}
+      <Text {...rest} bg={color("mono10")} color="rgb(251, 0, 0, 0)">
         {children}
       </Text>
     </Flex>
