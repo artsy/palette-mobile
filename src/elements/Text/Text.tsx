@@ -65,14 +65,13 @@ export const Text = forwardRef(
           ...nativeTextStyle,
           { textAlignVertical: "center" }, // android renders text higher by default, so we bring it down to be consistent with ios
           { textDecorationLine: !!underline ? "underline" : "none" },
+          { fontStyle: italic ? "italic" : undefined },
           !!maxWidth ? { width: "100%", maxWidth: 600, alignSelf: "center" } : {},
+          // Overriding the font family for the regular font to avoid breaking the layout (mainly on android)
+          // See: https://github.com/facebook/react-native/issues/53286
+          Platform.OS === "android" ? {} : { fontFamily },
           style, // keep last so we can override
         ]}
-        // Overriding the font family for the regular font to avoid breaking the layout (mainly on android)
-        // See: https://github.com/facebook/react-native/issues/53286
-        {...(fontFamily === theme.fonts.sans.regular && Platform.OS === "android"
-          ? {}
-          : { fontFamily })}
         {...fixTextTreatmentForStyledComponent(theme.textTreatments[variant])}
         children={children}
         color={color}
