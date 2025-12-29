@@ -5,6 +5,7 @@ import {
   useFocusedTab,
   useHeaderMeasurements,
 } from "react-native-collapsible-tab-view"
+// @ts-ignore
 import { SubTabBar } from "./SubTabBar"
 import { TabFlashList } from "./TabFlashList"
 import { TabFlatList } from "./TabFlatList"
