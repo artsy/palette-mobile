@@ -11,6 +11,7 @@ export interface TabsWithHeaderProps extends TabsContainerProps {
   children: CollapsibleProps["children"]
   headerProps?: HeaderProps
   hideScreen?: boolean
+  disableKeyboardAvoidance?: boolean
   showLargeHeaderText?: boolean
   title: string | JSX.Element
 }
@@ -18,6 +19,7 @@ export interface TabsWithHeaderProps extends TabsContainerProps {
 export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
   headerProps = {},
   hideScreen = false,
+  disableKeyboardAvoidance = false,
   title,
   ...rest
 }) => {
@@ -29,7 +31,7 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
     <Screen>
       <Screen.AnimatedHeader title={title} {...headerProps} />
 
-      <Screen.Body fullwidth>
+      <Screen.Body fullwidth disableKeyboardAvoidance={disableKeyboardAvoidance}>
         <Content title={title} {...rest} />
       </Screen.Body>
     </Screen>
