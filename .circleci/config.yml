@@ -18,7 +18,7 @@ executor:
 jobs:
   build-ios:
     macos:
-      xcode: 16.2
+      xcode: 16.4
       resource_class: m4pro.medium
     steps:
       - checkout
