@@ -1,3 +1,15 @@
+# v22.2.0 (Tue Jan 13 2026)
+
+#### 🚀  Enhancement
+
+- fix(MOPRAT-880): Allow disabling keyboard avoidance in TabsWithHeader [#432](https://github.com/artsy/palette-mobile/pull/432) ([@MrSltun](https://github.com/MrSltun))
+
+#### Authors: 1
+
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v22.1.0 (Thu Nov 27 2025)
 
 #### 🚀  Enhancement
