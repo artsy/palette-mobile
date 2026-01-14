@@ -1,3 +1,15 @@
+# v22.3.0 (Wed Jan 14 2026)
+
+#### 🚀  Enhancement
+
+- fix: follow button truncation [#433](https://github.com/artsy/palette-mobile/pull/433) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v22.2.0 (Tue Jan 13 2026)
 
 #### 🚀  Enhancement
