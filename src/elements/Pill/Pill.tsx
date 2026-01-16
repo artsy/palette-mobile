@@ -3,8 +3,9 @@ import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
 import { useMemo } from "react"
-import { PixelRatio } from "react-native"
+import { PixelRatio, Platform } from "react-native"
 import styled, { RuleSet, css } from "styled-components"
+import { alignContent, alignItems, alignSelf, justifyContent, textAlign } from "styled-system"
 import { Flex, FlexProps } from "../Flex"
 import { Image } from "../Image"
 import { Text } from "../Text"
@@ -77,7 +78,14 @@ export const Pill: React.FC<PillProps> = ({
         )}
         {Icon && <Icon fill={color} ml={-0.5} mr={0.5} />}
 
-        <Text variant="xs" color={color} style={{ marginBottom: 2 }}>
+        <Text
+          variant="xs"
+          color={color}
+          style={Platform.select({
+            android: { lineHeight: undefined },
+            default: {},
+          })}
+        >
           {children}
         </Text>
 
