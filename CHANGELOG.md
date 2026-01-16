@@ -1,3 +1,15 @@
+# v22.4.0 (Fri Jan 16 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump artsy icons to latest [#435](https://github.com/artsy/palette-mobile/pull/435) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v22.3.0 (Wed Jan 14 2026)
 
 #### 🚀  Enhancement
