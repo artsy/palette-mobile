@@ -24,7 +24,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@artsy/icons@npm:^3.64.0":
+"@artsy/icons@npm:3.64.0":
   version: 3.64.0
   resolution: "@artsy/icons@npm:3.64.0"
   peerDependencies:
@@ -47,7 +47,7 @@ __metadata:
   resolution: "@artsy/palette-mobile@workspace:."
   dependencies:
     "@artsy/auto-config": "npm:1.2.0"
-    "@artsy/icons": "npm:^3.64.0"
+    "@artsy/icons": "npm:3.64.0"
     "@artsy/palette-tokens": "npm:7.0.0"
     "@auto-it/all-contributors": "npm:10.46.0"
     "@auto-it/first-time-contributor": "npm:10.46.0"
