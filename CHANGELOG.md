@@ -1,3 +1,15 @@
+# v22.5.0 (Fri Jan 16 2026)
+
+#### 🚀  Enhancement
+
+- fix: pills text alignment [#436](https://github.com/artsy/palette-mobile/pull/436) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v22.4.0 (Fri Jan 16 2026)
 
 #### 🚀  Enhancement
