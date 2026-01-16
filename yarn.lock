@@ -24,9 +24,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@artsy/icons@npm:^3.49.0":
-  version: 3.52.0
-  resolution: "@artsy/icons@npm:3.52.0"
+"@artsy/icons@npm:3.64.0":
+  version: 3.64.0
+  resolution: "@artsy/icons@npm:3.64.0"
   peerDependencies:
     react: ">=16.2.0"
     react-native: ">=0.70.15"
@@ -38,7 +38,7 @@ __metadata:
       optional: true
     react-native-svg:
       optional: true
-  checksum: 10c0/2af5d4d96e969f07907cbbf249a619cf4719d8ccc1ddbbe33ab2332ad4eb03cce75d44d7a5eb2d70e2abec42fe96a1efac473bf4584a2f2a61dc7b20d9ab3f7c
+  checksum: 10c0/271df77e979f1418be402a0180273b9c0abf8954bcafb4fed4b4002bdbe8f7c85816405662b305e82666516bc9c43a0d28801b28b350d257bfeb48fbb5f4efeb
   languageName: node
   linkType: hard
 
@@ -47,7 +47,7 @@ __metadata:
   resolution: "@artsy/palette-mobile@workspace:."
   dependencies:
     "@artsy/auto-config": "npm:1.2.0"
-    "@artsy/icons": "npm:^3.49.0"
+    "@artsy/icons": "npm:3.64.0"
     "@artsy/palette-tokens": "npm:7.0.0"
     "@auto-it/all-contributors": "npm:10.46.0"
     "@auto-it/first-time-contributor": "npm:10.46.0"
