@@ -1,38 +1,30 @@
-import { useContext, createContext, useState } from "react"
+import { createContext, useContext } from "react"
 import { SharedValue, useSharedValue } from "react-native-reanimated"
 export interface ScreenScrollContextProps {
   currentScrollYAnimated: SharedValue<number>
-  // used by the hooks when measuring the scroll position in a more granular way
-  scrollYOffset?: number
+  scrollYOffsetAnimated: SharedValue<number>
   scrollViewDimensionsAnimated: SharedValue<number>
-  updateScrollYOffset: (offset: number) => void
 }
 
 const ScreenScrollContext = createContext<ScreenScrollContextProps>({
   // Casting this value as ShareValue because we set it to useSharedValue(0) on Mount
   currentScrollYAnimated: null as unknown as SharedValue<number>,
-  scrollYOffset: undefined,
+  scrollYOffsetAnimated: null,
   // Casting this value as ShareValue because we set it to useSharedValue(0) on Mount
   scrollViewDimensionsAnimated: null as unknown as SharedValue<number>,
-  updateScrollYOffset: () => {},
 })
 
 export const ScreenScrollContextProvider: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const [scrollYOffset, setScrollYOffset] =
-    useState<ScreenScrollContextProps["scrollYOffset"]>(undefined)
-
   const currentScrollYAnimated = useSharedValue(0)
   const scrollViewDimensionsAnimated = useSharedValue(0)
+  const scrollYOffsetAnimated = useSharedValue(0)
 
   const providerValue = {
     currentScrollYAnimated,
-    scrollYOffset,
+    scrollYOffsetAnimated,
     scrollViewDimensionsAnimated,
-    updateScrollYOffset: (yOffset: number) => {
-      setScrollYOffset(yOffset)
-    },
   }
 
   return (
