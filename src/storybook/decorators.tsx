@@ -58,7 +58,7 @@ export const useDarkModeSwitcher: Decorator = (story) => {
             translucent={true}
           />
 
-          <Flex flex={1} backgroundColor="background">
+          <Flex flex={1} backgroundColor="mono0">
             <Flex flexDirection="row" justifyContent="space-around" py={1} backgroundColor="mono5">
               <Text color="mono100">Dark mode</Text>
 

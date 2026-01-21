@@ -1,4 +1,6 @@
-import { ThemeProvider } from "styled-components/native"
+import { createTheme, ThemeProvider as RestyleThemeProvider } from "@shopify/restyle"
+import { useMemo } from "react"
+import { ThemeProvider as StyledComponentsThemeProvider } from "styled-components/native"
 import { ThemeType, ThemeWithDarkModeType, THEMES } from "./tokens"
 
 type ThemeOptions = keyof typeof THEMES
@@ -11,7 +13,13 @@ interface ThemeProps {
 export const Theme: React.FC<ThemeProps> = ({ children, theme = "v3light" }) => {
   const currentTheme = getTheme(theme)
 
-  return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>
+  const restyleTheme = useMemo(() => createTheme(currentTheme), [currentTheme])
+
+  return (
+    <RestyleThemeProvider theme={restyleTheme}>
+      <StyledComponentsThemeProvider theme={currentTheme}>{children}</StyledComponentsThemeProvider>
+    </RestyleThemeProvider>
+  )
 }
 
 const getTheme = (theme: ThemeOptions): ThemeType | ThemeWithDarkModeType => {

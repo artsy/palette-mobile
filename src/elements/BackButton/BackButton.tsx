@@ -55,7 +55,7 @@ export const BackButtonWithBackground: React.FC<BackButtonProps> = ({
       hitSlop={hitSlop}
     >
       <Flex
-        backgroundColor="background"
+        backgroundColor="mono0"
         width={40}
         height={40}
         borderRadius={20}

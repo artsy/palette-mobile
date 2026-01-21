@@ -1,24 +1,31 @@
 import { SpacingUnit } from "@artsy/palette-tokens"
-import { View, ViewProps } from "react-native"
-import styled from "styled-components/native"
 import {
+  createBox,
+  createRestyleComponent,
+  createVariant,
+  spacing,
+  SpacingProps,
   border,
   BorderProps,
-  color,
-  ColorProps,
-  flexbox,
-  FlexboxProps,
+  backgroundColor,
+  BackgroundColorProps,
   layout,
   LayoutProps,
   position,
   PositionProps,
-  space,
-  SpaceProps,
-  system,
-  textAlign,
-  TextAlignProps,
-} from "styled-system"
-import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
+  opacity,
+  OpacityProps,
+  visible,
+  VisibleProps,
+  spacingShorthand,
+  SpacingShorthandProps,
+} from "@shopify/restyle"
+import { ComponentProps } from "react"
+import { ViewProps } from "react-native"
+import { ThemeType } from "../../tokens"
+
+// Create the base Box component using Restyle
+const RestyleBox = createBox<ThemeType>()
 
 // Define strict borderRadius values to prevent runtime errors
 type BorderRadiusValue =
@@ -31,7 +38,7 @@ type BorderRadiusValue =
 // Override BorderProps to restrict borderRadius to only valid CSS values
 export interface SafeBorderProps
   extends Omit<
-    BorderProps,
+    BorderProps<ThemeType>,
     | "borderRadius"
     | "borderTopLeftRadius"
     | "borderTopRightRadius"
@@ -45,48 +52,34 @@ export interface SafeBorderProps
   borderBottomRightRadius?: BorderRadiusValue
 }
 
-type GapProps = {
-  gap?: SpacingUnit
-  rowGap?: SpacingUnit
-  columnGap?: SpacingUnit
+// TextAlign props for compatibility
+type TextAlignProps = {
+  textAlign?: "left" | "center" | "right" | "justify" | "auto"
 }
 
-const gap = system({
-  gap: {
-    property: "gap",
-    scale: "space",
-  },
-  rowGap: {
-    property: "rowGap",
-    scale: "space",
-  },
-  columnGap: {
-    property: "columnGap",
-    scale: "space",
-  },
-})
-
+// Combined BoxProps that includes all Restyle props plus custom ones
+// Note: gap, rowGap, columnGap are included in SpacingProps from Restyle
 export interface BoxProps
   extends ViewProps,
-    SpaceProps<SpacingUnitsTheme>,
-    Omit<ColorProps<ColorsTheme>, "color">,
-    FlexboxProps,
-    LayoutProps,
-    PositionProps,
-    SafeBorderProps,
-    GapProps,
+    SpacingProps<ThemeType>,
+    SpacingShorthandProps<ThemeType>,
+    BackgroundColorProps<ThemeType>,
+    LayoutProps<ThemeType>,
+    PositionProps<ThemeType>,
+    OpacityProps<ThemeType>,
+    VisibleProps<ThemeType>,
+    Omit<SafeBorderProps, keyof ViewProps>,
     TextAlignProps {}
 
 /**
- * Box is just a `View` with common styled-system props.
+ * Box is just a `View` with Restyle props for consistent styling.
+ *
+ * It supports:
+ * - Spacing: margin, padding, m, p, mt, mr, mb, ml, mx, my, pt, pr, pb, pl, px, py
+ * - Colors: backgroundColor, bg
+ * - Layout: width, height, minWidth, minHeight, maxWidth, maxHeight, overflow, flex, flexDirection, etc.
+ * - Position: position, top, right, bottom, left, zIndex
+ * - Border: borderWidth, borderColor, borderRadius, etc.
+ * - Responsive props: e.g., flexDirection={{ phone: 'column', tablet: 'row' }}
  */
-export const Box = styled(View)<BoxProps>`
-  ${space}
-  ${color}
-  ${flexbox}
-  ${layout}
-  ${position}
-  ${border}
-  ${textAlign}
-  ${gap}
-`
+export const Box = RestyleBox

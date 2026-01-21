@@ -122,3 +122,86 @@ export const FontCenteringPalette: TextStory = {
     )
   },
 }
+
+export const RestyleFeatures: TextStory = {
+  render: () => (
+    <List>
+      <Text variant="lg" weight="medium" mb={2}>
+        Restyle Text Features
+      </Text>
+      <Text variant="sm" color="mono60" mb={4}>
+        Now using @shopify/restyle for consistent theming
+      </Text>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          Spacing props
+        </Text>
+        <Text m={1} p={1} backgroundColor="blue10">
+          With margin and padding
+        </Text>
+        <Text mx={2} my={1} px={2} py={0.5} backgroundColor="red10">
+          With directional spacing
+        </Text>
+      </Box>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          Responsive typography
+        </Text>
+        <Text fontSize={{ phone: 12, tablet: 20 }} color="brand">
+          This text changes size based on breakpoint
+        </Text>
+      </Box>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          All Restyle props work
+        </Text>
+        <Text opacity={0.5} backgroundColor="yellow10" p={1}>
+          With opacity and background
+        </Text>
+      </Box>
+    </List>
+  ),
+}
+
+export const ResponsiveText: TextStory = {
+  render: () => (
+    <List>
+      <Text variant="lg" weight="medium" mb={2}>
+        Responsive Text Examples
+      </Text>
+      <Text variant="sm" color="mono60" mb={4}>
+        Resize your device/window to see the responsive behavior
+      </Text>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          Responsive font size
+        </Text>
+        <Text fontSize={{ phone: 14, tablet: 24 }} color="brand">
+          I change size: 14px on phone, 24px on tablet
+        </Text>
+      </Box>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          Responsive spacing
+        </Text>
+        <Text m={{ phone: 1, tablet: 4 }} p={{ phone: 1, tablet: 2 }} backgroundColor="blue10">
+          I have different spacing on phone vs tablet
+        </Text>
+      </Box>
+
+      <Box mb={2}>
+        <Text variant="md" weight="medium" mb={1}>
+          Responsive text align
+        </Text>
+        <Text textAlign={{ phone: "left", tablet: "center" }} backgroundColor="green10" p={1}>
+          Left-aligned on phone, centered on tablet
+        </Text>
+      </Box>
+    </List>
+  ),
+}
