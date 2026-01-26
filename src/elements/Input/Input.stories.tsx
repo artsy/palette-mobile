@@ -115,6 +115,12 @@ export const Variants = () => (
         </Text>
         <Input title="Text area with limit" multiline maxLength={150} showLimit />
       </>
+      <>
+        <Text mb={1} variant="sm-display" fontWeight="bold">
+          multine with placeholder
+        </Text>
+        <Input title="Text area" multiline placeholder="Enter your message" />
+      </>
     </Join>
   </List>
 )
