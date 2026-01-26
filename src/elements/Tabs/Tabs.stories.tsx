@@ -1,4 +1,8 @@
+import { Image } from "react-native"
+import { SubTabBar } from "./SubTabBar"
 import { Tabs } from "./Tabs"
+import { useSpace } from "../../utils/hooks"
+import { Button } from "../Button"
 import { Flex } from "../Flex"
 import { Screen } from "../Screen"
 import { Text } from "../Text"
@@ -115,12 +119,17 @@ export const MasonryTabsWithHeader = () => {
   return (
     <Tabs.TabsWithHeader title="Tabs with Masonry">
       <Tabs.Tab name="tab1" label="Tab 1">
-        <Tabs.FlatList
+        <Tabs.Masonry
           data={Array.from({ length: 20 })}
+          numColumns={2}
           contentContainerStyle={{
-            paddingHorizontal: 0,
+            paddingVertical: 10,
           }}
-          renderItem={() => <Flex backgroundColor={randomHexColor()} height={80} width="100%" />}
+          ListHeaderComponentStyle={{
+            zIndex: 1000,
+          }}
+          ListHeaderComponent={ListHeaderComponent}
+          renderItem={({ index }) => <MasonryArtworkItem index={index} />}
         />
       </Tabs.Tab>
       <Tabs.Tab name="tab2" label="Tab 2">
@@ -136,6 +145,47 @@ export const MasonryTabsWithHeader = () => {
   )
 }
 
+const ListHeaderComponent = () => {
+  return (
+    <SubTabBar>
+      <Flex
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        mx={2}
+        px={2}
+        py={1}
+        backgroundColor="mono0"
+      >
+        <Flex>
+          <Text>Create Alert</Text>
+        </Flex>
+        <Flex>
+          <Button>Sory & Filter</Button>
+        </Flex>
+      </Flex>
+    </SubTabBar>
+  )
+}
+
+MasonryTabsWithHeader.story = {
+  name: "Masonry Tabs with header",
+}
+
+const MasonryArtworkItem = ({ index }: { index: number }) => {
+  return (
+    <Flex px={1}>
+      <Image
+        source={{ uri: `https://picsum.photos/id/${index + 100}/200/300` }}
+        style={{ width: "100%", height: 200 + Math.random() * 200 }}
+        resizeMode="cover"
+      />
+      <Flex mt={2} mb={2}>
+        <Text variant="xs">Artwork {index + 1}</Text>
+      </Flex>
+    </Flex>
+  )
+}
 const randomHexColor = () => {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`
 }
