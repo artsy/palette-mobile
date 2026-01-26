@@ -1,11 +1,19 @@
-import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react"
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react"
 import {
   getChildByType,
   getChildrenByType,
   getChildrenByTypeDeep,
   removeChildrenByType,
 } from "react-nanny"
-import { EmitterSubscription, Keyboard, ScrollView } from "react-native"
+import { EmitterSubscription, Keyboard, ScrollView, View } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { SpacingUnitDSValueNumber } from "../../types"
@@ -213,9 +221,19 @@ const Background: React.FC<PropsWithChildren<{}>> = ({ children }) => (
 const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { setOptions } = useScreenContext()
   const insets = useSafeAreaInsets()
+  const containerRef = useRef<View>(null)
 
   const [keyboardShowing, setKeyboardShowing] = useState(false)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
+
+  useLayoutEffect(() => {
+    containerRef.current?.measureInWindow((_x, _y, _width, height) => {
+      if (height > 0) {
+        setOptions({ bottomViewHeight: height })
+      }
+    })
+  }, [setOptions])
+
   useEffect(() => {
     const listeners: EmitterSubscription[] = []
     listeners.push(
@@ -254,12 +272,14 @@ const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   }, [])
 
   return (
-    <Flex
-      position="absolute"
-      bottom={keyboardShowing ? keyboardHeight - insets.bottom : 0}
-      left={0}
-      right={0}
-      onLayout={(evt) => void setOptions({ bottomViewHeight: evt.nativeEvent.layout.height })}
+    <View
+      ref={containerRef}
+      style={{
+        position: "absolute",
+        bottom: keyboardShowing ? keyboardHeight - insets.bottom : 0,
+        left: 0,
+        right: 0,
+      }}
     >
       <LinearGradient
         colors={["rgba(255,255,255,0)", "rgba(255,255,255,1)"]}
@@ -280,7 +300,7 @@ const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
       </Flex>
 
       {keyboardShowing ? null : <SafeBottomPadding />}
-    </Flex>
+    </View>
   )
 }
 

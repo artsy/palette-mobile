@@ -1,6 +1,12 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3"
 import { forwardRef, Ref } from "react"
-import { StyleProp, TextStyle, Text as RNText, TextProps as RNTextProps } from "react-native"
+import {
+  StyleProp,
+  TextStyle,
+  Text as RNText,
+  TextProps as RNTextProps,
+  Platform,
+} from "react-native"
 import styled from "styled-components/native"
 import {
   color,
@@ -59,10 +65,13 @@ export const Text = forwardRef(
           ...nativeTextStyle,
           { textAlignVertical: "center" }, // android renders text higher by default, so we bring it down to be consistent with ios
           { textDecorationLine: !!underline ? "underline" : "none" },
+          { fontStyle: italic ? "italic" : undefined },
           !!maxWidth ? { width: "100%", maxWidth: 600, alignSelf: "center" } : {},
+          // Overriding the font family for the regular font to avoid breaking the layout (mainly on android)
+          // See: https://github.com/facebook/react-native/issues/53286
+          Platform.OS === "android" ? {} : { fontFamily },
           style, // keep last so we can override
         ]}
-        fontFamily={fontFamily}
         {...fixTextTreatmentForStyledComponent(theme.textTreatments[variant])}
         children={children}
         color={color}

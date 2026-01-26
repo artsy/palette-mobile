@@ -24,11 +24,10 @@ export interface HeaderProps {
   onBack?: () => void
   rightElements?: ReactNode
   scrollY?: number
-  // For header with more content use the offset to achieve a more granular control when to show the animated header
-  scrollYOffset?: number
   title?: string | JSX.Element
   titleProps?: FlexProps
   titleShown?: boolean
+  zIndex?: number
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
@@ -45,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
   rightElements,
   title,
   titleProps = {},
+  zIndex = ZINDEX.header,
 }) => {
   const { width } = useScreenDimensions()
   const space = useSpace()
@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({
       height={NAVBAR_HEIGHT}
       flexDirection="row"
       px={2}
-      zIndex={ZINDEX.header}
+      zIndex={zIndex}
       backgroundColor="background"
       alignItems="center"
     >
@@ -89,12 +89,14 @@ const Center: React.FC<{
   hideTitle: HeaderProps["hideTitle"]
   title: HeaderProps["title"]
 }> = ({ animated, hideTitle, title }) => {
-  const { scrollYOffset = 0, currentScrollYAnimated } = useScreenScrollContext()
+  const { scrollYOffsetAnimated, currentScrollYAnimated } = useScreenScrollContext()
 
   // Show / hide the title to avoid rerenders, which retrigger the animation
   const display = useDerivedValue(() => {
-    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
-  }, [currentScrollYAnimated, scrollYOffset])
+    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffsetAnimated?.value || 0
+      ? "none"
+      : "flex"
+  }, [currentScrollYAnimated, scrollYOffsetAnimated])
 
   const opacity = useDerivedValue(() => {
     return display.value === "flex" ? 1 : 0
