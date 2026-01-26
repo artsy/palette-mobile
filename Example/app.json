@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "PaletteMobile",
+    "name": "Palette Mobile",
     "slug": "palettemobile",
     "splash": {
       "image": "./assets/icons/app_icon.png",
@@ -8,29 +8,26 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "bundleIdentifier": "com.artsymobile.palettemobile",
+      "bundleIdentifier": "net.artsy.palette-mobile",
       "sipportTable": true,
-      "icon": "./assets/icons/app_icon.png"
+      "icon": "./assets/icons/app_icon.png",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
-      "package": "com.artsymobile.palettemobile",
+      "package": "net.artsy.palette-mobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
       }
     },
-    "plugins": [
-      [
-        "expo-font",
-        {
-          "fonts": [
-            "./assets/fonts/Unica77LL-Italic.otf",
-            "./assets/fonts/Unica77LL-MediumItalic.otf",
-            "./assets/fonts/Unica77LL-Medium.otf",
-            "./assets/fonts/Unica77LL-Regular.otf"
-          ]
-        }
-      ]
-    ]
+    "plugins": [],
+    "extra": {
+      "eas": {
+        "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
+      }
+    },
+    "owner": "artsy_org"
   }
 }
