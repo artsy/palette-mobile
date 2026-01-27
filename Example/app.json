@@ -28,6 +28,12 @@
         "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
       }
     },
-    "owner": "artsy_org"
+    "owner": "artsy_org",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9dda6017-e129-435c-aad8-3ece8b207ee9"
+    }
   }
 }

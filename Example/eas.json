@@ -8,12 +8,25 @@
       "developmentClient": true,
       "distribution": "internal"
     },
+    "beta": {
+      "distribution": "store",
+      "ios": {
+        "buildConfiguration": "Release"
+      },
+      "autoIncrement": true,
+      "channel": "beta"
+    },
     "production": {
       "distribution": "store",
       "autoIncrement": true
     }
   },
   "submit": {
+    "beta": {
+      "ios": {
+        "ascAppId": "6443736418"
+      }
+    },
     "production": {
       "ios": {}
     }
