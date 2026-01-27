@@ -62,7 +62,7 @@ __metadata:
     "@d11/react-native-fast-image": "npm:8.12.0"
     "@react-native-async-storage/async-storage": "npm:^2.2.0"
     "@react-native/eslint-config": "npm:0.76.9"
-    "@react-spring/native": "npm:^10.0.3"
+    "@react-spring/native": "npm:10.0.3"
     "@shopify/flash-list": "npm:^1.8.3"
     "@styled-system/theme-get": "npm:^5.1.2"
     "@testing-library/react-native": "npm:13.2.0"
@@ -89,14 +89,14 @@ __metadata:
     eslint-plugin-react-native-a11y: "npm:^3.5.1"
     eslint-plugin-storybook: "npm:0.6.10"
     eslint-plugin-testing-library: "npm:6.4.0"
-    events: "npm:^3.3.0"
+    events: "npm:3.3.0"
     husky: "npm:^8.0.3"
     jest: "npm:~29.7.0"
     jest-environment-jsdom: "npm:29.4.2"
     jest-extended: "npm:3.2.3"
     jest-watch-typeahead: "npm:2.2.2"
     lint-staged: "npm:13.1.2"
-    lodash: "npm:^4.17.21"
+    lodash: "npm:4.17.21"
     moti: "npm:0.30.0"
     nodemon: "npm:^2.0.20"
     patch-package: "npm:^8.0.0"
@@ -104,10 +104,10 @@ __metadata:
     prettier: "npm:^2.8.8"
     pull-lock: "npm:1.0.0"
     react: "npm:19.1.0"
-    react-nanny: "npm:^2.15.0"
+    react-nanny: "npm:2.15.0"
     react-native: "npm:0.81.5"
     react-native-blurhash: "npm:2.1.2"
-    react-native-collapsible-tab-view: "npm:^8.0.1"
+    react-native-collapsible-tab-view: "npm:8.0.1"
     react-native-haptic-feedback: "npm:1.14.0"
     react-native-linear-gradient: "npm:2.6.2"
     react-native-pager-view: "npm:6.7.1"
@@ -121,12 +121,14 @@ __metadata:
     styled-system: "npm:^5.1.5"
     typescript: "npm:5.8.3"
   peerDependencies:
+    "@d11/react-native-fast-image": "*"
     react: "*"
     react-native: "*"
     react-native-blurhash: "*"
     react-native-collapsible-tab-view: "*"
     react-native-haptic-feedback: "*"
     react-native-linear-gradient: "*"
+    react-native-pager-view: "*"
     react-native-reanimated: "*"
     react-native-svg: "*"
     styled-components: ">= 5"
@@ -3693,7 +3695,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-spring/native@npm:^10.0.3":
+"@react-spring/native@npm:10.0.3":
   version: 10.0.3
   resolution: "@react-spring/native@npm:10.0.3"
   dependencies:
@@ -7742,7 +7744,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"events@npm:^3.3.0":
+"events@npm:3.3.0":
   version: 3.3.0
   resolution: "events@npm:3.3.0"
   checksum: 10c0/d6b6f2adbccbcda74ddbab52ed07db727ef52e31a61ed26db9feb7dc62af7fc8e060defa65e5f8af9449b86b52cc1a1f6a79f2eafcf4e62add2b7a1fa4a432f6
@@ -10667,6 +10669,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
+  languageName: node
+  linkType: hard
+
 "lodash@npm:^4.11.2, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21":
   version: 4.17.23
   resolution: "lodash@npm:4.17.23"
@@ -12773,7 +12782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-nanny@npm:^2.15.0":
+"react-nanny@npm:2.15.0":
   version: 2.15.0
   resolution: "react-nanny@npm:2.15.0"
   peerDependencies:
@@ -12792,7 +12801,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-collapsible-tab-view@npm:^8.0.1":
+"react-native-collapsible-tab-view@npm:8.0.1, react-native-collapsible-tab-view@npm:^8.0.1":
   version: 8.0.1
   resolution: "react-native-collapsible-tab-view@npm:8.0.1"
   dependencies:
