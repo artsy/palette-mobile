@@ -16,7 +16,7 @@
       }
     },
     "android": {
-      "package": "net.artsy.palette-mobile",
+      "package": "net.artsy.palettemobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"

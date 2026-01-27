@@ -6,6 +6,7 @@
   "scripts": {
     "android": "expo run:android --port 8082",
     "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
     "start": "npx expo start --port 8082",
     "start:reset-cache": "npx expo start -c --port 8082",
