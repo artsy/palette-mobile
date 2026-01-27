@@ -1,3 +1,15 @@
+# v22.7.0 (Tue Jan 27 2026)
+
+#### 🚀  Enhancement
+
+- refactor(deps): reorganize dependency configuration [#442](https://github.com/artsy/palette-mobile/pull/442) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v22.6.0 (Mon Jan 26 2026)
 
 #### 🚀  Enhancement
