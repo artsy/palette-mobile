@@ -1,9 +1,6 @@
 name: Build and Submit iOS to TestFlight
 
 on:
-  push:
-    branches:
-      - ONYX-1904-release-app-to-app-store
   workflow_dispatch:
 
 jobs:
