@@ -1,7 +1,4 @@
-import { MotiView } from "moti"
-import { useCurrentTabScrollY, useHeaderMeasurements } from "react-native-collapsible-tab-view"
-import { useAnimatedStyle } from "react-native-reanimated"
-import { useSpace } from "../../utils/hooks/useSpace"
+import { Flex } from "../Flex"
 
 /**
  * Use to position content directly below the tab bar, and for it to stick while
@@ -10,19 +7,9 @@ import { useSpace } from "../../utils/hooks/useSpace"
  * Useful for views where subcontent has a s
  */
 export const SubTabBar: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const { top } = useHeaderMeasurements()
-  const scrollY = useCurrentTabScrollY()
-  const space = useSpace()
-
-  const style = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: scrollY.value + top.value,
-        },
-      ],
-    }
-  }, [])
-
-  return <MotiView style={[style, { zIndex: 1, marginHorizontal: -space(2) }]}>{children}</MotiView>
+  return (
+    <Flex zIndex={1} mx={-2}>
+      {children}
+    </Flex>
+  )
 }

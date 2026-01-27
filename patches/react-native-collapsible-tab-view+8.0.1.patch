@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-native-collapsible-tab-view/lib/typescript/src/types.d.ts b/node_modules/react-native-collapsible-tab-view/lib/typescript/src/types.d.ts
+index 7a739fc..880feec 100644
+--- a/node_modules/react-native-collapsible-tab-view/lib/typescript/src/types.d.ts
++++ b/node_modules/react-native-collapsible-tab-view/lib/typescript/src/types.d.ts
+@@ -199,5 +199,6 @@ export type TabProps<T extends TabName> = {
+     readonly name: T;
+     label?: TabItemProps<T>['label'];
+     children: React.ReactNode;
++    SubTabBar?: React.ReactNode;
+ };
+ //# sourceMappingURL=types.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/react-native-collapsible-tab-view/src/types.ts b/node_modules/react-native-collapsible-tab-view/src/types.ts
+index 00fbafc..dd87d5f 100644
+--- a/node_modules/react-native-collapsible-tab-view/src/types.ts
++++ b/node_modules/react-native-collapsible-tab-view/src/types.ts
+@@ -253,4 +253,5 @@ export type TabProps<T extends TabName> = {
+   readonly name: T
+   label?: TabItemProps<T>['label']
+   children: React.ReactNode
++  SubTabBar?: React.ReactNode
+ }

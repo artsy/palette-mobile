@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { Children, useCallback, useState } from "react"
 import { Platform } from "react-native"
 import {
   Tabs as BaseTabs,
@@ -6,6 +6,7 @@ import {
   MaterialTabBar,
   MaterialTabItem,
   TabItemProps,
+  TabProps,
 } from "react-native-collapsible-tab-view"
 import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { useColor } from "../../utils/hooks/useColor"
@@ -85,8 +86,21 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
   const space = useSpace()
   const color = useColor()
   const [focusedTabState, setFocusedTabState] = useState(initialTabName)
-
+  const [activeIndex, setActiveIndex] = useState(0)
   const isIOS = Platform.OS === "ios"
+
+  const renderSubTabBar = useCallback(() => {
+    let SubTabBar = null
+
+    const activeTab = Children.toArray(children)[activeIndex]
+
+    if (!activeTab) {
+      return null
+    }
+
+    SubTabBar = (activeTab as React.ReactElement<TabProps<string>>).props.SubTabBar
+    return <Flex backgroundColor="red10">{SubTabBar && <SubTabBar />}</Flex>
+  }, [activeIndex, children])
 
   return (
     <BaseTabs.Container
@@ -100,6 +114,9 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
       initialTabName={initialTabName}
       containerStyle={{
         paddingTop: space(2),
+      }}
+      onIndexChange={(index) => {
+        setActiveIndex(index)
       }}
       renderTabBar={(tabBarProps) => {
         if (variant === "pills") {
@@ -131,8 +148,9 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
             </Flex>
           )
         }
+
         return (
-          <>
+          <Flex>
             <MaterialTabBar
               {...tabBarProps}
               scrollEnabled={tabScrollEnabled}
@@ -162,7 +180,8 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 paddingHorizontal: 0,
               }}
             />
-          </>
+            {renderSubTabBar?.()}
+          </Flex>
         )
       }}
       {...tabContainerProps}
