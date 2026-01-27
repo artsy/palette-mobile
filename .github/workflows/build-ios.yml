@@ -1,0 +1,31 @@
+name: Build and Submit iOS to TestFlight
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Submit iOS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "yarn"
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build and Submit to TestFlight
+        working-directory: ./Example
+        run: eas build --platform ios --profile beta --non-interactive --auto-submit
