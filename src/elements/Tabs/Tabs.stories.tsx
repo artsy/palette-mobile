@@ -118,7 +118,7 @@ TabsWithHeader.story = {
 export const MasonryTabsWithHeader = () => {
   return (
     <Tabs.TabsWithHeader title="Tabs with Masonry">
-      <Tabs.Tab name="tab1" label="Tab 1" SubTabBar={ListHeaderComponent}>
+      <Tabs.Tab name="tab1" label="Tab 1">
         <Tabs.Masonry
           data={Array.from({ length: 20 })}
           numColumns={2}
@@ -128,6 +128,7 @@ export const MasonryTabsWithHeader = () => {
           ListHeaderComponentStyle={{
             zIndex: 1000,
           }}
+          ListHeaderComponent={ListHeaderComponent}
           renderItem={({ index }) => <MasonryArtworkItem index={index} />}
         />
       </Tabs.Tab>
@@ -146,21 +147,24 @@ export const MasonryTabsWithHeader = () => {
 
 const ListHeaderComponent: React.FC<{}> = () => {
   return (
-    <Flex
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      px={2}
-      py={1}
-      backgroundColor="mono0"
-    >
-      <Flex>
-        <Text>Create Alert</Text>
+    <SubTabBar>
+      <Flex
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        mx={2}
+        px={2}
+        py={1}
+        backgroundColor="mono0"
+      >
+        <Flex>
+          <Text>Create Alert</Text>
+        </Flex>
+        <Flex>
+          <Button>Sory & Filter</Button>
+        </Flex>
       </Flex>
-      <Flex>
-        <Button>Sory & Filter</Button>
-      </Flex>
-    </Flex>
+    </SubTabBar>
   )
 }
 
