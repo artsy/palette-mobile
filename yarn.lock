@@ -2412,7 +2412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config@npm:~12.0.10, @expo/config@npm:~12.0.8, @expo/config@npm:~12.0.9":
+"@expo/config@npm:~12.0.10":
   version: 12.0.10
   resolution: "@expo/config@npm:12.0.10"
   dependencies:
@@ -2433,7 +2433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config@npm:~12.0.11":
+"@expo/config@npm:~12.0.11, @expo/config@npm:~12.0.13":
   version: 12.0.13
   resolution: "@expo/config@npm:12.0.13"
   dependencies:
@@ -2492,6 +2492,19 @@ __metadata:
     dotenv-expand: "npm:~11.0.6"
     getenv: "npm:^2.0.0"
   checksum: 10c0/029914cfca2f85dd2c159b7331492d26255db7cf1615d02108041f561f3e7286d77f473943dd1d6ede68ee3cea8b63271c8352fa9b728c90e020f50d6d8c5582
+  languageName: node
+  linkType: hard
+
+"@expo/env@npm:~2.0.8":
+  version: 2.0.11
+  resolution: "@expo/env@npm:2.0.11"
+  dependencies:
+    chalk: "npm:^4.0.0"
+    debug: "npm:^4.3.4"
+    dotenv: "npm:~16.4.5"
+    dotenv-expand: "npm:~11.0.6"
+    getenv: "npm:^2.0.0"
+  checksum: 10c0/a112f3165f2323d69bac2a1a953032667bb469c9c37403e9a6145a19ef6a92e5476279f12f5a4e1b20ebe1f22d9faa77f4ff250a370d09c32cd62c0d8033eb98
   languageName: node
   linkType: hard
 
@@ -7942,29 +7955,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-constants@npm:~18.0.10":
-  version: 18.0.10
-  resolution: "expo-constants@npm:18.0.10"
+"expo-constants@npm:~18.0.10, expo-constants@npm:~18.0.9":
+  version: 18.0.13
+  resolution: "expo-constants@npm:18.0.13"
   dependencies:
-    "@expo/config": "npm:~12.0.10"
-    "@expo/env": "npm:~2.0.7"
+    "@expo/config": "npm:~12.0.13"
+    "@expo/env": "npm:~2.0.8"
   peerDependencies:
     expo: "*"
     react-native: "*"
-  checksum: 10c0/c3878d7a4c438e1bab25bc5267553c06e4c002237f0cf35eb434de70734e31ef1d07c151d9a7771b75be1baa1c794a4c1c731167cbdfa5bd4fe41a499b8dda4b
-  languageName: node
-  linkType: hard
-
-"expo-constants@npm:~18.0.9":
-  version: 18.0.9
-  resolution: "expo-constants@npm:18.0.9"
-  dependencies:
-    "@expo/config": "npm:~12.0.9"
-    "@expo/env": "npm:~2.0.7"
-  peerDependencies:
-    expo: "*"
-    react-native: "*"
-  checksum: 10c0/5e7f2fd366d4c0351d2d30b8f31afc0001e1d0c19f113b9083bae7ee495cb55aeae402497d0a13f856157730d5821c5143acccfc3d8d25b74aa064c6d33ec017
+  checksum: 10c0/bbe33c0611b8085ecd965434d71d27f065427146fe23f3162d170812f8c917b032604c79e0cd129f39147f58f7dc581ee3c6b64a84bf865dd325595289dc77e6
   languageName: node
   linkType: hard
 
@@ -8032,7 +8032,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-font@npm:~14.0.9":
+"expo-font@npm:14.0.9, expo-font@npm:~14.0.9":
   version: 14.0.9
   resolution: "expo-font@npm:14.0.9"
   dependencies:
@@ -8062,7 +8062,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-manifests@npm:~1.0.10":
+"expo-manifests@npm:~1.0.10, expo-manifests@npm:~1.0.8":
   version: 1.0.10
   resolution: "expo-manifests@npm:1.0.10"
   dependencies:
@@ -8071,18 +8071,6 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 10c0/97130cb1800486fc65c1e4269580aef6b6603dd4fce2299ebc3227bdeb38ea24e691ff4f66be9ca9842f4bddcddfe6e3637a1bc5c22d96fe807eadfbd6c44434
-  languageName: node
-  linkType: hard
-
-"expo-manifests@npm:~1.0.8":
-  version: 1.0.8
-  resolution: "expo-manifests@npm:1.0.8"
-  dependencies:
-    "@expo/config": "npm:~12.0.8"
-    expo-json-utils: "npm:~0.15.0"
-  peerDependencies:
-    expo: "*"
-  checksum: 10c0/975f35e0a1b2a16a9104c5cd243b69338daeb2580dd4ed650b35fb3f935f44c715219b8324c4d4cfeaf0c0e6290982385f988fad95011419a429dfe168fb1fea
   languageName: node
   linkType: hard
 
@@ -12314,6 +12302,7 @@ __metadata:
     "@types/react": "npm:~19.1.10"
     expo: "npm:54.0.20"
     expo-dev-client: "npm:6.0.16"
+    expo-font: "npm:14.0.9"
     expo-updates: "npm:~29.0.16"
     patch-package: "npm:^8.0.1"
     react: "npm:19.1.0"

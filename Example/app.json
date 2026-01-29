@@ -9,7 +9,7 @@
     },
     "ios": {
       "bundleIdentifier": "net.artsy.palette-mobile",
-      "sipportTable": true,
+      "supportsTablet": true,
       "icon": "./assets/icons/app_icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -22,7 +22,19 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "plugins": [],
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Unica77LL-Italic.otf",
+            "./assets/fonts/Unica77LL-MediumItalic.otf",
+            "./assets/fonts/Unica77LL-Medium.otf",
+            "./assets/fonts/Unica77LL-Regular.otf"
+          ]
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"

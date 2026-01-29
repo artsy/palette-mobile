@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:ios": "./download-fonts && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
     "beta:ios:ci": "gh workflow run build-ios.yml",
     "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
@@ -28,6 +28,7 @@
     "@storybook/react-native": "^8.6.2",
     "expo": "54.0.20",
     "expo-dev-client": "6.0.16",
+    "expo-font": "14.0.9",
     "expo-updates": "~29.0.16",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -52,6 +53,19 @@
   },
   "resolutions": {
     "metro-config": "0.81.5",
-    "babel-preset-expo": "14.0.0"
+    "babel-preset-expo": "14.0.0",
+    "expo-constants": "18.0.10",
+    "expo-manifests": "1.0.10"
+  },
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native-reanimated",
+        "react-native-pager-view",
+        "expo",
+        "expo-dev-client",
+        "expo-font"
+      ]
+    }
   }
 }
