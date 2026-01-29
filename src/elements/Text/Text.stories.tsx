@@ -40,9 +40,6 @@ export const VariantsInBoxes: TextStory = {
 export const BasicProps: TextStory = {
   render: () => (
     <List>
-      <Box backgroundColor="pink">
-        <Text>I AM FROM GITHUB ACTIONS :)</Text>
-      </Box>
       <Text>regular ~~ This is a text.</Text>
       <LinkText>LinkText.</LinkText>
       <Text caps>caps ~~ This is a text.</Text>

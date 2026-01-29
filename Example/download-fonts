@@ -1,27 +1,12 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euxo pipefail
 
-# Load environment variables from .env if it exists
-if [ -f .env ]; then
-  export $(cat .env | grep -v '^#' | xargs)
-fi
-
-# Check if AWS credentials are configured
-if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
-  echo "⚠️  AWS credentials not configured - skipping font download"
-  echo "To include fonts, create a .env file with AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY"
-  exit 0
-fi
-
-echo "✓ AWS credentials found - downloading fonts..."
 
 # Get fonts from energy s3 bucket
 aws s3 cp s3://artsy-citadel/energy/fonts.tar.gz ./fonts.tar.gz
 
-# Extract fonts to the local assets/fonts directory
+# Extract fonts to a temporary fonts repo
 tar -xvzf fonts.tar.gz -C ./assets/fonts
 
 # Cleanup
 rm -rf ./fonts.tar.gz
-
-echo "✓ Fonts downloaded and extracted successfully"
