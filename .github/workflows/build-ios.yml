@@ -42,4 +42,8 @@ jobs:
 
       - name: Build and Submit to TestFlight
         working-directory: ./Example
-        run: eas build --platform ios --profile beta --local --non-interactive --auto-submit
+        run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
+
+      - name: Submit to TestFlight
+        working-directory: ./Example
+        run: eas submit --platform ios --profile beta --path build.ipa --non-interactive
