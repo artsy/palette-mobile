@@ -1,3 +1,39 @@
+# v22.7.0 (Tue Jan 27 2026)
+
+#### 🚀  Enhancement
+
+- refactor(deps): reorganize dependency configuration [#442](https://github.com/artsy/palette-mobile/pull/442) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
+# v22.6.0 (Mon Jan 26 2026)
+
+#### 🚀  Enhancement
+
+- fix: Show placeholder in multiline input on iOS [#440](https://github.com/artsy/palette-mobile/pull/440) ([@MrSltun](https://github.com/MrSltun))
+
+#### 🏠  Internal
+
+- build(deps): bump rexml from 3.3.9 to 3.4.2 [#380](https://github.com/artsy/palette-mobile/pull/380) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump js-yaml from 3.14.1 to 3.14.2 [#426](https://github.com/artsy/palette-mobile/pull/426) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump storybook from 8.6.14 to 8.6.15 [#430](https://github.com/artsy/palette-mobile/pull/430) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump aws-sdk-s3 from 1.142.0 to 1.208.0 [#431](https://github.com/artsy/palette-mobile/pull/431) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump node-forge from 1.3.1 to 1.3.2 [#427](https://github.com/artsy/palette-mobile/pull/427) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump undici from 6.21.3 to 6.23.0 [#434](https://github.com/artsy/palette-mobile/pull/434) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump tar from 7.5.1 to 7.5.6 [#438](https://github.com/artsy/palette-mobile/pull/438) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump lodash from 4.17.21 to 4.17.23 [#439](https://github.com/artsy/palette-mobile/pull/439) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Sultan Al-Maari ([@MrSltun](https://github.com/MrSltun))
+
+---
+
 # v22.5.0 (Fri Jan 16 2026)
 
 #### 🚀  Enhancement

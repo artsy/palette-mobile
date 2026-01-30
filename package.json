@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "22.5.0",
+  "version": "22.7.0",
   "description": "Artsy's design system for React Native",
   "workspaces": [
     "Example"
@@ -41,38 +41,32 @@
     "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
   ],
   "dependencies": {
-    "@artsy/icons": "3.64.0",
     "@artsy/palette-tokens": "7.0.0",
-    "@d11/react-native-fast-image": "8.12.0",
-    "@react-spring/native": "^10.0.3",
-    "@shopify/flash-list": "^1.8.3",
+    "@react-spring/native": "10.0.3",
     "@styled-system/theme-get": "^5.1.2",
-    "events": "^3.3.0",
-    "lodash": "^4.17.21",
-    "moti": "0.30.0",
-    "react-nanny": "^2.15.0",
-    "react-native-blurhash": "2.1.2",
-    "react-native-collapsible-tab-view": "^8.0.1",
-    "react-native-pager-view": "6.7.1",
-    "react-native-popover-view": "^6.1.0",
-    "styled-system": "^5.1.5"
+    "events": "3.3.0",
+    "react-nanny": "2.15.0",
+    "react-native-popover-view": "^6.1.0"
   },
   "peerDependenciesComments": [
     "ADD ANY DEPS THAT ARE NEEDED FOR PALETTE AND HAVE NATIVE CODE."
   ],
   "peerDependencies": {
+    "@d11/react-native-fast-image": "*",
     "react": "*",
     "react-native": "*",
     "react-native-blurhash": "*",
     "react-native-collapsible-tab-view": "*",
     "react-native-haptic-feedback": "*",
     "react-native-linear-gradient": "*",
+    "react-native-pager-view": "*",
     "react-native-reanimated": "*",
     "react-native-svg": "*",
     "styled-components": ">= 5"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
+    "@artsy/icons": "3.64.0",
     "@auto-it/all-contributors": "10.46.0",
     "@auto-it/first-time-contributor": "10.46.0",
     "@babel/core": "^7.25.2",
@@ -83,8 +77,10 @@
     "@babel/preset-react": "7.18.6",
     "@babel/preset-typescript": "7.18.6",
     "@babel/runtime": "^7.25.0",
+    "@d11/react-native-fast-image": "8.12.0",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-native/eslint-config": "0.76.9",
+    "@shopify/flash-list": "^1.8.3",
     "@testing-library/react-native": "13.2.0",
     "@types/events": "^3.0.0",
     "@types/jest": "29.4.0",
@@ -115,6 +111,8 @@
     "jest-extended": "3.2.3",
     "jest-watch-typeahead": "2.2.2",
     "lint-staged": "13.1.2",
+    "lodash": "4.17.21",
+    "moti": "0.30.0",
     "nodemon": "^2.0.20",
     "patch-package": "^8.0.0",
     "postinstall-prepare": "^2.0.0",
@@ -122,14 +120,18 @@
     "pull-lock": "1.0.0",
     "react": "19.1.0",
     "react-native": "0.81.5",
+    "react-native-blurhash": "2.1.2",
+    "react-native-collapsible-tab-view": "8.0.1",
     "react-native-haptic-feedback": "1.14.0",
     "react-native-linear-gradient": "2.6.2",
+    "react-native-pager-view": "6.7.1",
     "react-native-reanimated": "3.19.4",
     "react-native-safe-area-context": "5.6.0",
     "react-native-svg": "15.12.1",
     "react-test-renderer": "19.1.0",
     "rimraf": "4.1.2",
     "styled-components": "6.1.19",
+    "styled-system": "^5.1.5",
     "typescript": "5.8.3"
   },
   "resolutions": {
