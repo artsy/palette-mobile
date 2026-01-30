@@ -6,7 +6,7 @@
   "scripts": {
     "android": "expo run:android --port 8082",
     "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
-    "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
+    "beta:ios:ci": "gh workflow run build-ios.yml",
     "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
     "preinstall": "./download-fonts",
