@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:ios": "./download-fonts && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
     "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
     "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
@@ -53,8 +53,6 @@
   },
   "resolutions": {
     "metro-config": "0.81.5",
-    "babel-preset-expo": "14.0.0",
-    "expo-constants": "18.0.10",
-    "expo-manifests": "1.0.10"
+    "babel-preset-expo": "14.0.0"
   }
 }

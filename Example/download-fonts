@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
+echo "[download-fonts] Starting font download"
 
 # Get fonts from energy s3 bucket
 aws s3 cp s3://artsy-citadel/energy/fonts.tar.gz ./fonts.tar.gz
@@ -10,3 +11,5 @@ tar -xvzf fonts.tar.gz -C ./assets/fonts
 
 # Cleanup
 rm -rf ./fonts.tar.gz
+
+echo "[download-fonts] Fonts downloaded and extracted"

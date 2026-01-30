@@ -30,9 +30,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Install dependencies
-        run: corepack yarn install
-
       - name: Download fonts
         working-directory: ./Example
         run: ./download-fonts
