@@ -82,10 +82,13 @@ yarn android
 **Local Build (requires Fastlane):**
 
 ```sh
+brew install gh # First time only
 brew install fastlane  # First time only
 cd Example
 yarn beta:ios
 ```
+
+The build will run locally and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
 
 **Cloud Build via GitHub Actions:**
 
@@ -95,6 +98,8 @@ yarn beta:ios:ci
 ```
 
 Or trigger manually from [GitHub Actions](https://github.com/artsy/palette-mobile/actions/workflows/build-ios.yml)
+
+The build will run a GitHub Workflow and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
 
 ### Publishing Over-the-Air Updates
 
