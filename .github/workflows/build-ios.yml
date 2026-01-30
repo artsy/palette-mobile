@@ -34,7 +34,7 @@ jobs:
         run: brew install awscli
 
       - name: Install dependencies
-        run: corepack yarn install --frozen-lockfile
+        run: corepack yarn install
 
       - name: Download fonts
         working-directory: ./Example
