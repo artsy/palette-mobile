@@ -37,7 +37,7 @@ jobs:
         working-directory: ./Example
         run: ./download-fonts
 
-      - name: Build and Submit to TestFlight
+      - name: Build IPA
         working-directory: ./Example
         run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
 
