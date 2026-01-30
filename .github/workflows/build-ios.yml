@@ -30,6 +30,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Download fonts
+        working-directory: ./Example
+        run: ./download-fonts
+
       - name: Build and Submit to TestFlight
         working-directory: ./Example
         run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
