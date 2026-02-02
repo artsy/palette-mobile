@@ -671,6 +671,11 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
         return getPlatformSpecificPlaceholder()
       }
 
+      // For multiline inputs, always show placeholder since label doesn't overlap
+      if (props.multiline) {
+        return getPlatformSpecificPlaceholder()
+      }
+
       // On blur, we want to show the placeholder immediately
       if (delayedFocused) {
         return getPlatformSpecificPlaceholder()
@@ -678,7 +683,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
 
       // On focus, we want to show the placeholder after the title animation has finished
       return ""
-    }, [delayedFocused, getPlatformSpecificPlaceholder, props.title])
+    }, [delayedFocused, getPlatformSpecificPlaceholder, props.title, props.multiline])
 
     const renderAnimatedTitle = useCallback(() => {
       if (!props.title) {
@@ -754,7 +759,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}
           ref={inputRef as RefObject<TextInput>}
-          placeholderTextColor={color("mono60")}
+          placeholderTextColor={delayedFocused ? color("mono60") : "transparent"}
           placeholder={getPlaceholder()}
           defaultValue={defaultValue}
           secureTextEntry={!showPassword}
