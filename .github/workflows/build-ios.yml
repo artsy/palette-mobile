@@ -1,0 +1,46 @@
+name: Build and Submit iOS to TestFlight
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Submit iOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Install dependencies
+        run: corepack yarn install
+
+      - name: Download fonts
+        working-directory: ./Example
+        run: ./download-fonts
+
+      - name: Build IPA
+        working-directory: ./Example
+        run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
+
+      - name: Submit to TestFlight
+        working-directory: ./Example
+        run: eas submit --platform ios --profile beta --path build.ipa --non-interactive
