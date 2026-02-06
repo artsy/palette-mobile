@@ -1,3 +1,15 @@
+# v22.8.0 (Fri Feb 06 2026)
+
+#### 🚀  Enhancement
+
+- feat: add triggers to conventional commits check [#445](https://github.com/artsy/palette-mobile/pull/445) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v22.7.0 (Tue Jan 27 2026)
 
 #### 🚀  Enhancement
