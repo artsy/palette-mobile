@@ -1,3 +1,15 @@
+# v22.9.0 (Mon Feb 09 2026)
+
+#### 🚀  Enhancement
+
+- feat(ONYX-1904): publish palette-mobile to testflight [#441](https://github.com/artsy/palette-mobile/pull/441) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v22.8.0 (Fri Feb 06 2026)
 
 #### 🚀  Enhancement
