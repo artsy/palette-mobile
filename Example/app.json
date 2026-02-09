@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "PaletteMobile",
+    "name": "Palette Mobile",
     "slug": "palettemobile",
     "splash": {
       "image": "./assets/icons/app_icon.png",
@@ -8,12 +8,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "bundleIdentifier": "com.artsymobile.palettemobile",
-      "sipportTable": true,
-      "icon": "./assets/icons/app_icon.png"
+      "bundleIdentifier": "net.artsy.palette-mobile",
+      "supportsTablet": true,
+      "icon": "./assets/icons/app_icon.png",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
-      "package": "com.artsymobile.palettemobile",
+      "package": "net.artsy.palettemobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
@@ -31,6 +34,18 @@
           ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
+      }
+    },
+    "owner": "artsy_org",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9dda6017-e129-435c-aad8-3ece8b207ee9"
+    }
   }
 }

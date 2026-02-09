@@ -1,10 +1,13 @@
 {
   "name": "palette-mobile-example",
-  "version": "1.0.0",
+  "version": "22.7.0",
   "private": true,
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
+    "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
+    "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
     "start": "npx expo start --port 8082",
     "start:reset-cache": "npx expo start -c --port 8082",
@@ -25,6 +28,8 @@
     "@storybook/react-native": "^8.6.2",
     "expo": "54.0.20",
     "expo-dev-client": "6.0.16",
+    "expo-font": "14.0.9",
+    "expo-updates": "~29.0.16",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
