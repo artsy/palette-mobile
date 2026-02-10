@@ -1,3 +1,15 @@
+# v22.10.0 (Tue Feb 10 2026)
+
+#### 🚀  Enhancement
+
+- chore: sync app version on ci and release builds [#448](https://github.com/artsy/palette-mobile/pull/448) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v22.9.0 (Mon Feb 09 2026)
 
 #### 🚀  Enhancement
