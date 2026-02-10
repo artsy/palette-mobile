@@ -14,7 +14,8 @@
       "icon": "./assets/icons/app_icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "buildNumber": "2"
     },
     "android": {
       "package": "net.artsy.palettemobile",

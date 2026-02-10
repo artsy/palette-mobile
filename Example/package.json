@@ -1,11 +1,11 @@
 {
   "name": "palette-mobile-example",
-  "version": "22.7.0",
+  "version": "22.9.0",
   "private": true,
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:ios": "eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
     "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
     "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
@@ -14,7 +14,8 @@
     "android:prebuild": "npx expo prebuild --clean --platform android",
     "ios:prebuild": "npx expo prebuild --clean --platform ios",
     "prestart": "sb-rn-get-stories",
-    "storybook-watcher": "sb-rn-watcher"
+    "storybook-watcher": "sb-rn-watcher",
+    "sync:example-version": "node ../scripts/sync-example-version.js"
   },
   "dependencies": {
     "@artsy/palette-mobile": "*",
