@@ -73,6 +73,9 @@ Example/ios/PaletteMobile/fonts/*
 Example/fonts/*
 Example/assets/fonts/*
 
+# Play Console service account
+Example/android-service-account.json
+
 .cache
 
 

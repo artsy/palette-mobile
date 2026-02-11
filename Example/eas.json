@@ -25,6 +25,10 @@
     "beta": {
       "ios": {
         "ascAppId": "6443736418"
+      },
+      "android": {
+        "track": "internal",
+        "serviceAccountKeyPath": "./android-service-account.json"
       }
     },
     "production": {

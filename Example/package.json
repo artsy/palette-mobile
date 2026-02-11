@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
+    "beta:android": "yarn sync:example-version && eas build --platform android --profile beta --local --output build.aab && eas submit --platform android --profile beta --path build.aab",
     "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:android:ci": "gh workflow run build-android.yml -r $(git branch --show-current)",
     "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
     "update:beta": "eas update --branch beta",
     "ios": "expo run:ios --port 8082",
@@ -28,6 +30,7 @@
     "@storybook/addon-ondevice-controls": "^8.3.5",
     "@storybook/react-native": "^8.6.2",
     "expo": "54.0.20",
+    "expo-build-properties": "1.0.9",
     "expo-dev-client": "6.0.16",
     "expo-font": "14.0.9",
     "expo-updates": "~29.0.16",
