@@ -77,7 +77,7 @@ yarn android
 
 ## Deployment
 
-### Building and Deploying iOS to TestFlight
+### Building and Deploying iOS to TestFlight (Internal)
 
 **Local Build (requires Fastlane):**
 
@@ -97,9 +97,25 @@ cd Example
 yarn beta:ios:ci
 ```
 
-Or trigger manually from [GitHub Actions](https://github.com/artsy/palette-mobile/actions/workflows/build-ios.yml)
-
 The build will run a GitHub Workflow and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
+
+### Building and Deploying Android to Play Console (Internal)
+
+**Local Build:**
+
+```sh
+cd Example
+yarn beta:android
+```
+
+This requires a Play Console service account JSON at [Example/android-service-account.json](Example/android-service-account.json) (kept out of git). The build will create a submission entry on https://expo.dev/accounts/artsy_org/projects/palettemobile.
+
+**Cloud Build via GitHub Actions:**
+
+```sh
+cd Example
+yarn beta:android:ci
+```
 
 ### Publishing Over-the-Air Updates
 
