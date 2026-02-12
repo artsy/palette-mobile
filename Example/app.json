@@ -14,16 +14,14 @@
       "icon": "./assets/icons/app_icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      },
-      "buildNumber": "2"
+      }
     },
     "android": {
       "package": "net.artsy.palette_mobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
-      },
-      "versionCode": 9
+      }
     },
     "plugins": [
       [
