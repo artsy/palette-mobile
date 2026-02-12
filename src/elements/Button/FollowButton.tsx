@@ -1,6 +1,7 @@
 import { CheckmarkIcon } from "@artsy/icons/native"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
+import { Flex } from "../Flex"
 import { Text } from "../Text"
 
 type FollowButtonProps = Omit<
@@ -29,16 +30,18 @@ export const FollowButton = ({
       {...restProps}
     >
       {!loading && (
-        <>
-          <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
-          {!!followCount && followCount > 1 && (
-            <>
-              <Text variant="xs" color="mono60">
-                {" " + formatLargeNumber(followCount, 1)}
-              </Text>
-            </>
-          )}
-        </>
+        <Flex alignItems="center" justifyContent="center">
+          <Text numberOfLines={1}>
+            <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
+            {!!followCount && followCount > 1 && (
+              <>
+                <Text variant="xs" color="mono60">
+                  {" " + formatLargeNumber(followCount, 1)}
+                </Text>
+              </>
+            )}
+          </Text>
+        </Flex>
       )}
     </Button>
   )
