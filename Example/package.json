@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:android": "yarn sync:example-version && eas build --platform android --profile beta --local --output build.aab && eas submit --platform android --profile beta --path build.aab",
-    "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
+    "beta:android": "rm -rf $TMPDIR/eas-build-local-nodejs && yarn sync:example-version && eas build --platform android --profile beta --local --output build.aab && eas submit --platform android --profile beta --path build.aab",    "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
     "beta:android:ci": "gh workflow run build-android.yml -r $(git branch --show-current)",
     "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
     "update:beta": "eas update --branch beta",
