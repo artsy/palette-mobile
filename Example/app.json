@@ -9,7 +9,7 @@
     },
     "ios": {
       "bundleIdentifier": "com.artsymobile.palettemobile",
-      "sipportTable": true,
+      "supportsTablet": true,
       "icon": "./assets/icons/app_icon.png"
     },
     "android": {
@@ -18,6 +18,9 @@
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
       }
+    },
+    "experiments": {
+      "reactCompiler": true
     },
     "plugins": [
       [
@@ -29,6 +32,17 @@
             "./assets/fonts/Unica77LL-Medium.otf",
             "./assets/fonts/Unica77LL-Regular.otf"
           ]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "reactNativeReleaseLevel": "experimental"
+          },
+          "ios": {
+            "reactNativeReleaseLevel": "experimental"
+          }
         }
       ]
     ]
