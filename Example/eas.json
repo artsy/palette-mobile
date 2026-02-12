@@ -28,7 +28,8 @@
       },
       "android": {
         "track": "internal",
-        "serviceAccountKeyPath": "./android-service-account.json"
+        "serviceAccountKeyPath": "./android-service-account.json",
+        "releaseStatus": "draft"
       }
     },
     "production": {

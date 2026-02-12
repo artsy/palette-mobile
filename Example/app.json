@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
       },
-      "versionCode": 7
+      "versionCode": 8
     },
     "plugins": [
       [
