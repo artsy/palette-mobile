@@ -1,4 +1,11 @@
 import { Image } from "react-native"
+import Animated, {
+  SharedValue,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { SubTabBar } from "./SubTabBar"
 import { Tabs } from "./Tabs"
 import { useSpace } from "../../utils/hooks"
@@ -145,43 +152,50 @@ export const MasonryTabsWithHeader = () => {
   )
 }
 
-const ListHeaderComponent = () => {
+const ListHeaderComponent = (props) => {
   return (
     <SubTabBar>
-      <Flex
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-        mx={2}
-        px={2}
-        py={1}
-        backgroundColor="mono0"
-      >
-        <Flex>
-          <Text>Create Alert</Text>
-        </Flex>
-        <Flex>
-          <Button>Sory & Filter</Button>
-        </Flex>
-      </Flex>
+      <ListHeaderComponentContent />
     </SubTabBar>
   )
 }
 
-MasonryTabsWithHeader.story = {
-  name: "Masonry Tabs with header",
+const ListHeaderComponentContent = () => {
+  return (
+    <Flex
+      flexDirection="row"
+      justifyContent="space-between"
+      alignItems="center"
+      mx={2}
+      px={2}
+      py={1}
+      backgroundColor="mono10"
+    >
+      <Flex>
+        <Text>Create Alert</Text>
+      </Flex>
+      <Flex>
+        <Button>Sory & Filter</Button>
+      </Flex>
+    </Flex>
+  )
 }
 
 const MasonryArtworkItem = ({ index }: { index: number }) => {
   return (
     <Flex px={1}>
-      <Image
-        source={{ uri: `https://picsum.photos/id/${index + 100}/200/300` }}
-        style={{ width: "100%", height: 200 + Math.random() * 200 }}
-        resizeMode="cover"
+      <Flex
+        style={{
+          height: 200 + Math.random() * 200,
+          backgroundColor: randomHexColor(),
+          width: "100%",
+        }}
       />
-      <Flex mt={2} mb={2}>
-        <Text variant="xs">Artwork {index + 1}</Text>
+
+      <Flex py={1} backgroundColor="mono0" mb={2}>
+        <Text variant="sm-display" fontWeight="medium">
+          Artwork {index + 1}
+        </Text>
       </Flex>
     </Flex>
   )
@@ -191,4 +205,69 @@ const randomHexColor = () => {
 }
 MasonryTabsWithHeader.story = {
   name: "Masonry Tabs with header",
+}
+
+export const Playground = () => {
+  const scrollY = useSharedValue(0)
+
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = event.contentOffset.y
+    },
+  })
+
+  return (
+    <Flex flex={1}>
+      <SafeAreaView edges={["top"]}>
+        <Animated.ScrollView onScroll={scrollHandler} scrollEventThrottle={16}>
+          <LongContent />
+          <StickyView scrollY={scrollY} />
+        </Animated.ScrollView>
+      </SafeAreaView>
+    </Flex>
+  )
+}
+
+const StickyView = ({ scrollY }: { scrollY: SharedValue<number> }) => {
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateY: scrollY.value }],
+    }
+  })
+
+  return (
+    <Animated.View
+      style={[
+        {
+          height: 50,
+          width: "100%",
+          backgroundColor: "white",
+          position: "absolute",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        animatedStyle,
+      ]}
+    >
+      <Text>Sticky View</Text>
+    </Animated.View>
+  )
+}
+
+const randomColor = (index: number) => {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+}
+
+const LongContent = () => {
+  return (
+    <Flex>
+      {Array.from({ length: 20 }).map((_, index) => (
+        <Flex key={index} style={{ height: 100, backgroundColor: randomColor(index) }} />
+      ))}
+    </Flex>
+  )
+}
+
+Playground.story = {
+  name: "Playground",
 }

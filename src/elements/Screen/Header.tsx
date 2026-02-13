@@ -9,6 +9,7 @@ import Animated, {
 } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
+import { useTitleStyles } from "./hooks/useTitleStyles"
 import { DEFAULT_HIT_SLOP, DEFAULT_ICON_SIZE } from "../../constants"
 import { useScreenDimensions, useSpace } from "../../utils/hooks"
 import { Flex, FlexProps } from "../Flex"
@@ -89,18 +90,8 @@ const Center: React.FC<{
   hideTitle: HeaderProps["hideTitle"]
   title: HeaderProps["title"]
 }> = ({ animated, hideTitle, title }) => {
-  const { scrollYOffsetAnimated, currentScrollYAnimated } = useScreenScrollContext()
+  const { display, opacity } = useTitleStyles()
 
-  // Show / hide the title to avoid rerenders, which retrigger the animation
-  const display = useDerivedValue(() => {
-    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffsetAnimated?.value || 0
-      ? "none"
-      : "flex"
-  }, [currentScrollYAnimated, scrollYOffsetAnimated])
-
-  const opacity = useDerivedValue(() => {
-    return display.value === "flex" ? 1 : 0
-  })
   const style = useAnimatedStyle(() => {
     return {
       display: display.value,
