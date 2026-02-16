@@ -4,10 +4,6 @@
     "appVersionSource": "remote"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
-    },
     "beta": {
       "distribution": "store",
       "ios": {
@@ -15,10 +11,6 @@
       },
       "autoIncrement": true,
       "channel": "beta"
-    },
-    "production": {
-      "distribution": "store",
-      "autoIncrement": true
     }
   },
   "submit": {
@@ -31,9 +23,6 @@
         "serviceAccountKeyPath": "./android-service-account.json",
         "releaseStatus": "completed"
       }
-    },
-    "production": {
-      "ios": {}
     }
   }
 }
