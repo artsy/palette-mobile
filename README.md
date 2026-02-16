@@ -117,17 +117,6 @@ cd Example
 yarn beta:android:ci
 ```
 
-### Publishing Over-the-Air Updates
-
-After building and deploying to TestFlight, you can publish JavaScript/asset updates instantly without App Store review:
-
-```sh
-cd Example
-yarn update:beta
-```
-
-Users will receive the update on their next app launch. OTA updates are ideal for bug fixes, minor features, and content changes that don't require native code changes.
-
 ## Developing Features using Local Versions of Palette
 
 When developing new components in Palette, it's often useful to test those components in consuming apps (such as Eigen). However, due to the poor support for symlinks in React Native, this can be difficult. Enter [yalc](https://github.com/wclr/yalc). Yalc is a mini package manager that one can publish to and install from, which makes it easy to test code in realtime from outside of your app.

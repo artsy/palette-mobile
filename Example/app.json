@@ -2,7 +2,7 @@
   "expo": {
     "name": "Palette Mobile",
     "slug": "palettemobile",
-    "version": "22.9.0",
+    "version": "22.10.0",
     "splash": {
       "image": "./assets/icons/app_icon.png",
       "resizeMode": "contain",

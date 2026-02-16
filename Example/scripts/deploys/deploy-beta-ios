@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+echo "Starting iOS EAS build (beta profile)..."
+eas build --platform ios --profile beta --local --output build.ipa
+echo "Submitting iOS build (beta profile)..."
+eas submit --platform ios --profile beta --path build.ipa

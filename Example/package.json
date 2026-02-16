@@ -1,22 +1,19 @@
 {
   "name": "palette-mobile-example",
-  "version": "22.9.0",
+  "version": "22.10.0",
   "private": true,
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:android": "rm -rf $TMPDIR/eas-build-local-nodejs && yarn sync:example-version && eas build --platform android --profile beta --local --output build.aab && eas submit --platform android --profile beta --path build.aab",    "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
-    "beta:android:ci": "gh workflow run build-android.yml -r $(git branch --show-current)",
-    "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
-    "update:beta": "eas update --branch beta",
+    "deploy-beta": "./scripts/deploys/deploy-beta-both",
+    "deploy-beta:ci": "./scripts/deploys/deploy-beta-both-ci",
     "ios": "expo run:ios --port 8082",
     "start": "npx expo start --port 8082",
     "start:reset-cache": "npx expo start -c --port 8082",
     "android:prebuild": "npx expo prebuild --clean --platform android",
     "ios:prebuild": "npx expo prebuild --clean --platform ios",
     "prestart": "sb-rn-get-stories",
-    "storybook-watcher": "sb-rn-watcher",
-    "sync:example-version": "node ../scripts/sync-example-version.js"
+    "storybook-watcher": "sb-rn-watcher"
   },
   "dependencies": {
     "@artsy/palette-mobile": "*",

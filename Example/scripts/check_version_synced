@@ -1,0 +1,47 @@
+get_package_version() {
+	jq -r '.version' "$1"
+}
+
+cd "$(dirname "$0")/.."
+
+get_app_version() {
+	jq -r '.expo.version // .version' "$1"
+}
+
+ROOT_LOCAL_VERSION=$(get_package_version "../package.json")
+EXAMPLE_LOCAL_VERSION=$(get_package_version "package.json")
+APP_LOCAL_VERSION=$(get_app_version "app.json")
+
+echo "Fetching main branch..."
+git fetch origin main
+
+MAIN_ROOT_PACKAGE_JSON=$(mktemp)
+echo "Reading root package.json from origin/main..."
+git show origin/main:package.json > "$MAIN_ROOT_PACKAGE_JSON"
+MAIN_ROOT_VERSION=$(get_package_version "$MAIN_ROOT_PACKAGE_JSON")
+rm -f "$MAIN_ROOT_PACKAGE_JSON"
+
+echo "☝️ Main branch root package.json version: $MAIN_ROOT_VERSION"
+echo "Local root package.json version: $ROOT_LOCAL_VERSION"
+echo "Local Example/package.json version: $EXAMPLE_LOCAL_VERSION"
+echo "Local Example/app.json version: $APP_LOCAL_VERSION"
+
+if [ "$ROOT_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$EXAMPLE_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$APP_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ]; then
+	echo "Version mismatch detected. Syncing root package.json, Example/package.json and Example/app.json to $MAIN_ROOT_VERSION."
+	TMP_ROOT_JSON=$(mktemp)
+	TMP_EXAMPLE_JSON=$(mktemp)
+	TMP_APP_JSON=$(mktemp)
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.version = $version' ../package.json > "$TMP_ROOT_JSON"
+	mv "$TMP_ROOT_JSON" ../package.json
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.version = $version' package.json > "$TMP_EXAMPLE_JSON"
+	mv "$TMP_EXAMPLE_JSON" package.json
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.expo.version = $version' Example/app.json > "$TMP_APP_JSON"
+	mv "$TMP_APP_JSON" Example/app.json
+
+	echo "✅ Sync complete. Don't forget to commit the version updates!"
+else
+	echo "✅ Versions match"
+fi
