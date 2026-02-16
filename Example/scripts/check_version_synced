@@ -38,8 +38,8 @@ if [ "$ROOT_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$EXAMPLE_LOCAL_VERSIO
 	jq --arg version "$MAIN_ROOT_VERSION" '.version = $version' package.json > "$TMP_EXAMPLE_JSON"
 	mv "$TMP_EXAMPLE_JSON" package.json
 
-	jq --arg version "$MAIN_ROOT_VERSION" '.expo.version = $version' Example/app.json > "$TMP_APP_JSON"
-	mv "$TMP_APP_JSON" Example/app.json
+	jq --arg version "$MAIN_ROOT_VERSION" '.expo.version = $version' app.json > "$TMP_APP_JSON"
+	mv "$TMP_APP_JSON" app.json
 
 	echo "✅ Sync complete. Don't forget to commit the version updates!"
 else
