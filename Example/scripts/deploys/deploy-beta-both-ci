@@ -3,8 +3,6 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-./scripts/check_version_synced
-
 CURRENT_BRANCH=$(git branch --show-current)
 
 echo "Triggering iOS beta build workflow on branch: $CURRENT_BRANCH"

@@ -75,47 +75,38 @@ or
 yarn android
 ```
 
-## Deployment
+## Deploying to TestFlight and Play Store
 
-### Building and Deploying iOS to TestFlight (Internal)
+### Local Builds
 
-**Local Build (requires Fastlane):**
+Build and submit both iOS and Android locally:
 
 ```sh
 brew install gh # First time only
 brew install fastlane  # First time only
-cd Example
-yarn beta:ios
 ```
-
-The build will run locally and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
-
-**Cloud Build via GitHub Actions:**
 
 ```sh
 cd Example
-yarn beta:ios:ci
+yarn deploy-beta
 ```
 
-The build will run a GitHub Workflow and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
+**Note:** Android builds require a Play Console service account JSON at `Example/android-service-account.json` - download it from 1Password.
 
-### Building and Deploying Android to Play Console (Internal)
+All builds create submission entries on https://expo.dev/accounts/artsy_org/projects/palettemobile
 
-**Local Build:**
+### Trigger Cloud Builds via GitHub Actions
+
+Make sure to push all necessary changes first.
 
 ```sh
 cd Example
-yarn beta:android
+yarn deploy-beta:ci
 ```
 
-This requires a Play Console service account JSON at [Example/android-service-account.json](Example/android-service-account.json) (kept out of git). The build will create a submission entry on https://expo.dev/accounts/artsy_org/projects/palettemobile.
-
-**Cloud Build via GitHub Actions:**
-
-```sh
-cd Example
-yarn beta:android:ci
-```
+This triggers both iOS and Android build workflows on GitHub Actions.
+The workflows are also triggered on every push into main.
+(https://github.com/artsy/palette-mobile/actions).
 
 ## Developing Features using Local Versions of Palette
 
