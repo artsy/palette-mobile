@@ -33,8 +33,9 @@ jobs:
       - name: Install dependencies
         run: corepack yarn install
 
-      - name: Sync Example version
-        run: yarn sync:example-version
+      - name: Sync Example versions to match main
+        working-directory: ./Example
+        run: bash ./scripts/check_version_synced
 
       - name: Download fonts
         working-directory: ./Example
