@@ -1,4 +1,4 @@
-name: Build and Submit iOS to TestFlight
+name: Build and Submit Android to Play Store
 
 on:
   push:
@@ -8,14 +8,23 @@ on:
 
 jobs:
   build:
-    name: Build and Submit iOS
-    runs-on: macos-latest
+    name: Build and Submit Android
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: ./.github/actions/setup-node
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
       - name: Setup EAS
         uses: expo/expo-github-action@v8
@@ -41,10 +50,14 @@ jobs:
         working-directory: ./Example
         run: ./download-fonts
 
-      - name: Build IPA
+      - name: Write Android service account key
         working-directory: ./Example
-        run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
+        run: printf '%s' "${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}" > android-service-account.json
 
-      - name: Submit to TestFlight
+      - name: Build AAB
         working-directory: ./Example
-        run: eas submit --platform ios --profile beta --path build.ipa --non-interactive
+        run: eas build --platform android --profile beta --local --non-interactive --output build.aab
+
+      - name: Submit to Play Store
+        working-directory: ./Example
+        run: eas submit --platform android --profile beta --path build.aab --non-interactive
