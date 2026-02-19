@@ -92,6 +92,8 @@ Example/ios
 
 # Yarn 4
 .yarn/*
+!.yarn/patches
+!.yarn/patches/*
 !.yarn/releases
 !.yarn/releases/*
 !.yarn/plugins
