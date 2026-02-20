@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { Children, cloneElement, isValidElement, useEffect, useState } from "react"
 import { Platform } from "react-native"
 import {
   Tabs as BaseTabs,
@@ -7,6 +7,7 @@ import {
   MaterialTabItem,
   TabItemProps,
 } from "react-native-collapsible-tab-view"
+import { SubTabBarProvider, TabNameProvider, useSubTabBarContext } from "./SubTabBarContext"
 import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { useColor } from "../../utils/hooks/useColor"
 import { useSpace } from "../../utils/hooks/useSpace"
@@ -61,6 +62,18 @@ const DefaultTabItem: React.FC<DefaultTabItemProps> = (props) => {
   )
 }
 
+const SubTabBarRenderer: React.FC = () => {
+  const { subTabBars, activeTabName } = useSubTabBarContext()
+
+  const activeSubTabBar = activeTabName ? subTabBars[activeTabName] : null
+
+  if (!activeSubTabBar) {
+    return null
+  }
+
+  return <Flex zIndex={1}>{activeSubTabBar}</Flex>
+}
+
 export interface TabsContainerProps extends CollapsibleProps {
   indicators?: Indicator[]
   // This prop is more immediate than onTabChange, which waits till the
@@ -71,7 +84,15 @@ export interface TabsContainerProps extends CollapsibleProps {
   variant?: "pills" | "tabs"
 }
 
-export const TabsContainer: React.FC<TabsContainerProps> = ({
+export const TabsContainer: React.FC<TabsContainerProps> = (props) => {
+  return (
+    <SubTabBarProvider>
+      <TabsContainerInner {...props} />
+    </SubTabBarProvider>
+  )
+}
+
+const TabsContainerInner: React.FC<TabsContainerProps> = ({
   children,
   indicators = [],
   initialTabName,
@@ -85,8 +106,22 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
   const space = useSpace()
   const color = useColor()
   const [focusedTabState, setFocusedTabState] = useState(initialTabName)
-
   const isIOS = Platform.OS === "ios"
+  const { setActiveTabName } = useSubTabBarContext()
+
+  // Get the first tab name from children to use as default
+  const firstChild = Children.toArray(children)[0] as
+    | React.ReactElement<{ name?: string }>
+    | undefined
+  const firstTabName = firstChild?.props?.name ?? null
+
+  // Set initial active tab name
+  useEffect(() => {
+    const initial = initialTabName ?? firstTabName
+    if (initial) {
+      setActiveTabName(initial)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <BaseTabs.Container
@@ -100,6 +135,10 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
       initialTabName={initialTabName}
       containerStyle={{
         paddingTop: space(2),
+      }}
+      onTabChange={(tabChangeEvent) => {
+        setActiveTabName(tabChangeEvent.tabName)
+        tabContainerProps.onTabChange?.(tabChangeEvent)
       }}
       renderTabBar={(tabBarProps) => {
         if (variant === "pills") {
@@ -131,8 +170,9 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
             </Flex>
           )
         }
+
         return (
-          <>
+          <Flex>
             <MaterialTabBar
               {...tabBarProps}
               scrollEnabled={tabScrollEnabled}
@@ -162,12 +202,22 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
                 paddingHorizontal: 0,
               }}
             />
-          </>
+            <SubTabBarRenderer />
+          </Flex>
         )
       }}
       {...tabContainerProps}
     >
-      {children}
+      {Children.map(children, (child) => {
+        if (!isValidElement(child)) return child
+        const tabName = (child.props as { name?: string }).name
+        if (!tabName) return child
+        // Clone the Tab element and wrap its children with TabNameProvider
+        return cloneElement(child, {
+          ...child.props,
+          children: <TabNameProvider value={tabName}>{child.props.children}</TabNameProvider>,
+        })
+      })}
     </BaseTabs.Container>
   )
 }

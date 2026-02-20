@@ -145,7 +145,7 @@ export const MasonryTabsWithHeader = () => {
   )
 }
 
-const ListHeaderComponent = () => {
+const ListHeaderComponent: React.FC<{}> = () => {
   return (
     <SubTabBar>
       <Flex
