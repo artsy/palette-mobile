@@ -1,7 +1,13 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
-import { animated, Spring, config } from "@react-spring/native"
+import { animated, config, Spring } from "@react-spring/native"
 import { useState } from "react"
-import { GestureResponderEvent, Pressable, PressableProps, TextStyle } from "react-native"
+import {
+  GestureResponderEvent,
+  PixelRatio,
+  Pressable,
+  PressableProps,
+  TextStyle,
+} from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
@@ -105,9 +111,9 @@ export const Button: React.FC<ButtonProps> = ({
   const getSize = (): { height: number; mx: SpacingUnit } => {
     switch (size) {
       case "small":
-        return { height: 30, mx: "15px" }
+        return { height: 30 * PixelRatio.getFontScale(), mx: "15px" }
       case "large":
-        return { height: 50, mx: "30px" }
+        return { height: 50 * PixelRatio.getFontScale(), mx: "30px" }
     }
   }
 
@@ -178,7 +184,14 @@ export const Button: React.FC<ButtonProps> = ({
               }}
             >
               <Flex mx={containerSize.mx}>
-                <Flex height="100%" flexDirection="row" alignItems="center" justifyContent="center">
+                <Flex
+                  height="100%"
+                  flexDirection="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  // Do not show the content when the button is loading
+                  style={{ opacity: displayState === DisplayState.Loading ? 0 : 1 }}
+                >
                   {iconPosition === "left-start" && !!icon ? (
                     <Box position="absolute" left={0}>
                       {icon}
@@ -206,13 +219,14 @@ export const Button: React.FC<ButtonProps> = ({
                   <AnimatedText
                     style={[
                       {
-                        width: longestText ? Math.ceil(longestTextMeasurements.width) : "auto",
+                        width: "auto",
                         color: springProps.textColor,
                         textDecorationLine: springProps.textDecorationLine,
                       },
                       textStyle,
                     ]}
                     textAlign="center"
+                    selectable={false}
                   >
                     {children}
                   </AnimatedText>
