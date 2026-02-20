@@ -11,6 +11,7 @@ import { ScreenScrollContextProvider, useScreenScrollContext } from "./ScreenScr
 import { ScreenScrollView } from "./ScreenScrollView"
 import { StickySubHeader } from "./StickySubHeader"
 import { useListenForScreenScroll } from "./hooks/useListenForScreenScroll"
+import { useTitleStyles } from "./hooks/useTitleStyles"
 
 export * from "./constants"
 
@@ -31,4 +32,5 @@ export const Screen = Object.assign(ScreenBase, {
   // Hooks
   useListenForScreenScroll,
   useScreenScrollContext,
+  useTitleStyles,
 })

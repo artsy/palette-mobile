@@ -35,6 +35,17 @@
             "./assets/fonts/Unica77LL-Regular.otf"
           ]
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "reactNativeReleaseLevel": "experimental"
+          },
+          "ios": {
+            "reactNativeReleaseLevel": "experimental"
+          }
+        }
       ]
     ],
     "extra": {

@@ -1,7 +1,6 @@
-import { MotiView } from "moti"
-import { useState } from "react"
-import { LayoutChangeEvent } from "react-native"
-import Animated, { LinearTransition, useAnimatedStyle, withTiming } from "react-native-reanimated"
+import { useLayoutEffect, useRef, useState } from "react"
+import { View } from "react-native"
+import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import { useShowLargeTitle } from "./hooks/useShowLargeTitle"
 import { useSpace } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -32,13 +31,20 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   Component,
 }) => {
   const space = useSpace()
+  const measureRef = useRef<View>(null)
 
   const [stickyBarHeight, setStickyHeaderHeight] = useState<null | number>(null)
   const { visible } = useShowLargeTitle({ stickyBarHeight })
 
-  const handleLayout = (event: LayoutChangeEvent) => {
-    setStickyHeaderHeight(event.nativeEvent.layout.height)
-  }
+  useLayoutEffect(() => {
+    if (stickyBarHeight === null) {
+      measureRef.current?.measureInWindow((_x, _y, _width, height) => {
+        if (height > 0) {
+          setStickyHeaderHeight(height)
+        }
+      })
+    }
+  }, [stickyBarHeight])
 
   // The styles are kept in a variable to make sure they're always in sync with the hidden text component
   const sharedStyles = {
@@ -65,7 +71,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
       {/* We only want this on mount in order to calculate sticky header height */}
       {stickyBarHeight === null && (
         <Flex
-          onLayout={(event) => handleLayout(event)}
+          ref={measureRef}
           position="absolute"
           backgroundColor="mono0"
           zIndex={-1000}

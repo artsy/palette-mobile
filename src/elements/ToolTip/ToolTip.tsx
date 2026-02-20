@@ -1,6 +1,6 @@
 import { TriangleDownIcon } from "@artsy/icons/native"
 import { noop } from "lodash"
-import { createContext, useContext, useRef, useState } from "react"
+import { createContext, useContext, useLayoutEffect, useRef, useState } from "react"
 import { View } from "react-native"
 import { ToolTipFlyout, ToolTipTextContainer } from "./ToolTipFlyout"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -77,6 +77,24 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 
   const [pageX, setPageX] = useState(0)
   const childrenRef = useRef<View>(null)
+  const sampleTextRef = useRef<View>(null)
+
+  useLayoutEffect(() => {
+    childrenRef.current?.measureInWindow((x, _y, width, height) => {
+      setChildrenDimensions({ height, width, x })
+      setPageX(x)
+    })
+  }, [])
+
+  useLayoutEffect(() => {
+    if (enabled && toolTipText) {
+      sampleTextRef.current?.measureInWindow((_x, _y, width, height) => {
+        if (width > 0 && height > 0) {
+          setSingleTextDimension({ height, width })
+        }
+      })
+    }
+  }, [enabled, toolTipText])
 
   const totalTextWidth = singleTextDimension.width * (toolTipText?.length ?? 0)
 
@@ -130,30 +148,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
           )}
         </>
       )}
-      <View
-        ref={childrenRef}
-        onLayout={(event) => {
-          setChildrenDimensions({
-            height: event.nativeEvent.layout.height,
-            width: event.nativeEvent.layout.width,
-            x: event.nativeEvent.layout.x,
-          })
-          childrenRef.current?.measure(
-            (
-              _fx: number,
-              _fy: number,
-              _width: number,
-              _height: number,
-              px: number,
-              _py: number
-            ) => {
-              setPageX(px)
-            }
-          )
-        }}
-      >
-        {children}
-      </View>
+      <View ref={childrenRef}>{children}</View>
       {!!enabled && position === "BOTTOM" && (
         <>
           <ToolTipFlyout
@@ -188,15 +183,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
        * Also this helps us to know beforehand the size (width and height) to animate/inflate the container to
        */}
       {!!enabled && !!toolTipText && (
-        <View
-          style={{ position: "absolute", opacity: 0 }}
-          onLayout={({ nativeEvent }) => {
-            setSingleTextDimension({
-              height: nativeEvent.layout.height,
-              width: nativeEvent.layout.width,
-            })
-          }}
-        >
+        <View ref={sampleTextRef} style={{ position: "absolute", opacity: 0 }}>
           {/** "x" is the perfect sample that fits all letters' width and height */}
           <ToolTipTextContainer text="x" />
         </View>
