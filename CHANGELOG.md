@@ -1,3 +1,39 @@
+# v22.10.0 (Tue Feb 10 2026)
+
+#### 🚀 Enhancement
+
+- chore: sync app version on ci and release builds [#448](https://github.com/artsy/palette-mobile/pull/448) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
+# v22.9.0 (Mon Feb 09 2026)
+
+#### 🚀 Enhancement
+
+- feat(ONYX-1904): publish palette-mobile to testflight [#441](https://github.com/artsy/palette-mobile/pull/441) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
+# v22.8.0 (Fri Feb 06 2026)
+
+#### 🚀 Enhancement
+
+- feat: add triggers to conventional commits check [#445](https://github.com/artsy/palette-mobile/pull/445) ([@amonkhouse](https://github.com/amonkhouse))
+
+#### Authors: 1
+
+- Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse))
+
+---
+
 # v22.7.0 (Tue Jan 27 2026)
 
 #### 🚀 Enhancement

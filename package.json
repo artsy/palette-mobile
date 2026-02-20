@@ -1,6 +1,6 @@
 {
   "name": "@artsy/palette-mobile",
-  "version": "22.7.0",
+  "version": "22.10.0",
   "description": "Artsy's design system for React Native",
   "workspaces": [
     "Example"
@@ -34,7 +34,8 @@
     "start": "yarn workspace palette-mobile-example start",
     "storybook-watcher": "yarn workspace palette-mobile-example storybook-watcher",
     "test": "jest --maxWorkers=2",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "version": "node ./scripts/sync-example-version.js"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
