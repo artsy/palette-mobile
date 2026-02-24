@@ -122,7 +122,7 @@
     "react": "19.1.0",
     "react-native": "0.81.5",
     "react-native-blurhash": "2.1.2",
-    "react-native-collapsible-tab-view": "8.0.1",
+    "react-native-collapsible-tab-view": "patch:react-native-collapsible-tab-view@npm%3A9.0.0-rc.0#~/.yarn/patches/react-native-collapsible-tab-view-npm-9.0.0-rc.0-5363b327de.patch",
     "react-native-haptic-feedback": "1.14.0",
     "react-native-linear-gradient": "2.6.2",
     "react-native-pager-view": "7.0.1",
