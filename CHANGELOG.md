@@ -1,3 +1,15 @@
+# v23.0.0 (Tue Feb 24 2026)
+
+#### 💥  Breaking Change
+
+- feat: New Arch for Eigen [#425](https://github.com/artsy/palette-mobile/pull/425) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v22.10.0 (Tue Feb 10 2026)
 
 #### 🚀 Enhancement
