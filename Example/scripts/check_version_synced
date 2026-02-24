@@ -1,3 +1,8 @@
+# Aligns version numbers with origin/main before beta deploys -
+# keep root package.json, Example/package.json, and Example/app.json in sync.
+# By default when run locally, mismatches are auto-fixed by rewriting those files.
+# CI or VERSION_SYNC_CHECK_ONLY=1 fails with instructions instead of rewriting files.
+
 get_package_version() {
 	jq -r '.version' "$1"
 }
@@ -11,6 +16,19 @@ get_app_version() {
 ROOT_LOCAL_VERSION=$(get_package_version "../package.json")
 EXAMPLE_LOCAL_VERSION=$(get_package_version "package.json")
 APP_LOCAL_VERSION=$(get_app_version "app.json")
+
+VERSION_SYNC_CHECK_ONLY=${VERSION_SYNC_CHECK_ONLY:-${CHECK_ONLY:-0}}
+VERSION_SYNC_AUTO_FIX=${VERSION_SYNC_AUTO_FIX:-${AUTO_FIX:-}}
+
+if [ "$VERSION_SYNC_CHECK_ONLY" = "1" ]; then
+	VERSION_SYNC_AUTO_FIX=0
+elif [ -z "$VERSION_SYNC_AUTO_FIX" ]; then
+	if [ "${CI:-}" = "true" ] || [ "${CI:-}" = "1" ]; then
+		VERSION_SYNC_AUTO_FIX=0
+	else
+		VERSION_SYNC_AUTO_FIX=1
+	fi
+fi
 
 echo "Fetching main branch..."
 git fetch origin main
@@ -27,6 +45,14 @@ echo "Local Example/package.json version: $EXAMPLE_LOCAL_VERSION"
 echo "Local Example/app.json version: $APP_LOCAL_VERSION"
 
 if [ "$ROOT_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$EXAMPLE_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$APP_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ]; then
+	if [ "$VERSION_SYNC_AUTO_FIX" != "1" ]; then
+		echo "❌ Version mismatch detected."
+		echo "Expected all versions to match main: $MAIN_ROOT_VERSION"
+		echo "Run the following locally to auto-fix:"
+		echo "  cd Example && VERSION_SYNC_AUTO_FIX=1 bash ./scripts/check_version_synced"
+		exit 1
+	fi
+
 	echo "Version mismatch detected. Syncing root package.json, Example/package.json and Example/app.json to $MAIN_ROOT_VERSION."
 	TMP_ROOT_JSON=$(mktemp)
 	TMP_EXAMPLE_JSON=$(mktemp)

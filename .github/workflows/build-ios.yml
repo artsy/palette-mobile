@@ -35,6 +35,8 @@ jobs:
 
       - name: Sync Example versions to match main
         working-directory: ./Example
+        env:
+          VERSION_SYNC_CHECK_ONLY: "1"
         run: bash ./scripts/check_version_synced
 
       - name: Download fonts
