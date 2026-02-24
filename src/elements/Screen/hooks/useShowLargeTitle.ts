@@ -5,11 +5,8 @@ import { BOTTOM_TABS_HEIGHT, STICKY_BAR_HEIGHT } from "../StickySubHeader"
 import { NAVBAR_HEIGHT } from "../constants"
 
 export const useShowLargeTitle = ({ stickyBarHeight }: { stickyBarHeight: number | null }) => {
-  const {
-    scrollYOffset = 0,
-    currentScrollYAnimated,
-    scrollViewDimensionsAnimated,
-  } = useScreenScrollContext()
+  const { scrollYOffsetAnimated, currentScrollYAnimated, scrollViewDimensionsAnimated } =
+    useScreenScrollContext()
 
   const { height: screenHeight } = Dimensions.get("window")
 
@@ -33,8 +30,8 @@ export const useShowLargeTitle = ({ stickyBarHeight }: { stickyBarHeight: number
       return true
     }
 
-    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffset
-  }, [scrollYOffset, stickyBarHeight, currentScrollYAnimated])
+    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffsetAnimated?.value || 0
+  }, [scrollYOffsetAnimated, stickyBarHeight, currentScrollYAnimated])
 
   return {
     visible,

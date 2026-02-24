@@ -6,6 +6,7 @@ import { PixelRatio } from "react-native"
 export const DEFAULT_HIT_SLOP = { top: 20, bottom: 20, left: 20, right: 20 }
 
 export const DEFAULT_ICON_SIZE = 24 * PixelRatio.getFontScale()
+export const DEFAULT_ICON_SIZE_SMALL = 16 * PixelRatio.getFontScale()
 
 /**
  * Default active opacity for elements that use Palette's <Touchable />

@@ -1,7 +1,7 @@
 import { ArrowLeftIcon, SearchIcon } from "@artsy/icons/native"
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
-import { useCallback, useMemo, useRef, useState } from "react"
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react"
 import { PixelRatio, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { useColor, useTheme } from "../../utils/hooks"
@@ -43,6 +43,14 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
   const ref = useRef<TextInput>(null)
   const [inputWidth, setInputWidth] = useState(0)
   const placeholderWidths = useRef<number[]>([])
+
+  useLayoutEffect(() => {
+    ref.current?.measureInWindow((_x, _y, width) => {
+      if (width > 0 && width !== inputWidth) {
+        setInputWidth(width)
+      }
+    })
+  }, [])
 
   const [isFocused, setIsFocused] = useState(false)
   const color = useColor()
@@ -137,9 +145,6 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
         {...rest}
         placeholder={getPlaceholder()}
         ref={ref}
-        onLayout={(event) => {
-          setInputWidth(event.nativeEvent.layout.width)
-        }}
         style={inputStyles}
         autoCapitalize="none"
         blurOnSubmit

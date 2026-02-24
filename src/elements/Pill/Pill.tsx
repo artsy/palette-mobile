@@ -120,7 +120,7 @@ const PILL_STATES = {
   default: css`
     border-radius: 15px;
     height: ${PixelRatio.getFontScale() * 30}px;
-    padding: 0 15px;
+    padding-horizontal: 15px;
   `,
   selected: css`
     border-color: ${themeGet("colors.blue100")};

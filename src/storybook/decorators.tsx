@@ -82,7 +82,9 @@ export const useDarkModeSwitcher: Decorator = (story) => {
                 </Pill>
               </Flex>
             </Flex>
-            <Flex p={2}>{story()}</Flex>
+            <Flex flex={1} justifyContent="center" alignItems="center">
+              {story()}
+            </Flex>
           </Flex>
         </Theme>
       </SafeAreaProvider>

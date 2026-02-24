@@ -3,14 +3,7 @@ import { memo, useState } from "react"
 import { StyleProp, ViewStyle } from "react-native"
 // @ts-expect-error
 import { Blurhash } from "react-native-blurhash"
-import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated"
 import { getImageURL } from "./helpers/getImageURL"
-import { DEFAULT_ANIMATION_DURATION } from "../../constants"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
@@ -54,30 +47,12 @@ export const Image: React.FC<ImageProps> = memo(
   }) => {
     const [isLoading, setIsLoading] = useState(true)
     const dimensions = useImageDimensions({ aspectRatio, width, height })
-    const opacity = useSharedValue(1)
 
     const color = useColor()
 
-    const onLoadEnd = () => {
-      opacity.value = withSpring(0, { duration: DEFAULT_ANIMATION_DURATION }, () => {
-        runOnJS(setIsLoading)(false)
-      })
-    }
-
-    const skeletonStyle = useAnimatedStyle(() => {
-      return {
-        opacity: opacity.value,
-      }
-    })
-
     if (showLoadingState) {
-      return (
-        <ImageSkeleton
-          dimensions={dimensions}
-          blurhash={blurhash}
-          style={{ position: "absolute" }}
-        />
-      )
+      // Keep logic as small as possible here to save on performance
+      return <Flex backgroundColor="mono10" {...dimensions} style={{ position: "absolute" }} />
     }
 
     return (
@@ -91,7 +66,7 @@ export const Image: React.FC<ImageProps> = memo(
             { backgroundColor: blurhash ? "transparent" : color("mono30") },
           ]}
           resizeMode={resizeMode}
-          onLoadEnd={onLoadEnd}
+          onLoadEnd={() => setIsLoading(false)}
           source={{
             priority: FastImage.priority.normal,
             uri: getImageURL({ src, dimensions, geminiResizeMode, performResize }),
@@ -99,13 +74,13 @@ export const Image: React.FC<ImageProps> = memo(
         />
 
         {isLoading && (
-          <Animated.View style={[dimensions, { position: "absolute" }, skeletonStyle]}>
+          <Flex style={[dimensions, { position: "absolute" }]}>
             <ImageSkeleton
               dimensions={dimensions}
               blurhash={blurhash}
               style={{ position: "absolute" }}
             />
-          </Animated.View>
+          </Flex>
         )}
       </Flex>
     )
