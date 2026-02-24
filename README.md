@@ -75,42 +75,30 @@ or
 yarn android
 ```
 
-## Deployment
+## Deploying to TestFlight and Play Store
 
-### Building and Deploying iOS to TestFlight
+### Local Builds
 
-**Local Build (requires Fastlane):**
+Build and submit both iOS and Android locally:
 
 ```sh
+brew install eas-cli # First time only
 brew install gh # First time only
 brew install fastlane  # First time only
-cd Example
-yarn beta:ios
 ```
 
-The build will run locally and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
+### Trigger Cloud Builds via GitHub Actions
 
-**Cloud Build via GitHub Actions:**
+Make sure to push all necessary changes first.
 
 ```sh
 cd Example
-yarn beta:ios:ci
+yarn deploy-beta
 ```
 
-Or trigger manually from [GitHub Actions](https://github.com/artsy/palette-mobile/actions/workflows/build-ios.yml)
-
-The build will run a GitHub Workflow and will create a "Submission Version Build iOS App Store submission" entry on https://expo.dev/accounts/artsy_org/projects/palettemobile
-
-### Publishing Over-the-Air Updates
-
-After building and deploying to TestFlight, you can publish JavaScript/asset updates instantly without App Store review:
-
-```sh
-cd Example
-yarn update:beta
-```
-
-Users will receive the update on their next app launch. OTA updates are ideal for bug fixes, minor features, and content changes that don't require native code changes.
+This triggers both iOS and Android build workflows on GitHub Actions.
+The workflows are also triggered on every push into main.
+(https://github.com/artsy/palette-mobile/actions).
 
 ## Developing Features using Local Versions of Palette
 

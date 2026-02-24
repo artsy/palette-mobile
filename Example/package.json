@@ -1,21 +1,18 @@
 {
   "name": "palette-mobile-example",
-  "version": "22.9.0",
+  "version": "22.10.0",
   "private": true,
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "beta:ios": "yarn sync:example-version && eas build --platform ios --profile beta --local --output build.ipa && eas submit --platform ios --profile beta --path build.ipa",
-    "beta:ios:ci": "gh workflow run build-ios.yml -r $(git branch --show-current)",
-    "update:beta": "eas update --branch beta",
+    "deploy-beta": "./scripts/deploys/deploy-beta-ci",
     "ios": "expo run:ios --port 8082",
     "start": "npx expo start --port 8082",
     "start:reset-cache": "npx expo start -c --port 8082",
     "android:prebuild": "npx expo prebuild --clean --platform android",
     "ios:prebuild": "npx expo prebuild --clean --platform ios",
     "prestart": "sb-rn-get-stories",
-    "storybook-watcher": "sb-rn-watcher",
-    "sync:example-version": "node ../scripts/sync-example-version.js"
+    "storybook-watcher": "sb-rn-watcher"
   },
   "dependencies": {
     "@artsy/palette-mobile": "*",
@@ -28,6 +25,7 @@
     "@storybook/addon-ondevice-controls": "^8.3.5",
     "@storybook/react-native": "^8.6.2",
     "expo": "54.0.20",
+    "expo-build-properties": "1.0.9",
     "expo-dev-client": "6.0.16",
     "expo-font": "14.0.9",
     "expo-updates": "~29.0.16",

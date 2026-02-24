@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+LOCAL_BUILD_FLAG="--local"
+SERVICE_ACCOUNT_FILE="android-service-account.json"
+
+NON_INTERACTIVE_FLAG=""
+if [ "${EAS_NON_INTERACTIVE:-}" = "1" ]; then
+	NON_INTERACTIVE_FLAG="--non-interactive"
+fi
+
+if [ ! -f "$SERVICE_ACCOUNT_FILE" ]; then
+	echo "❌ Missing $SERVICE_ACCOUNT_FILE"
+	echo "For local Android beta deploys, download this file from 1Password and place it at Example/$SERVICE_ACCOUNT_FILE"
+	exit 1
+fi
+
+echo "Cleaning temp build folder: $TMPDIR/eas-build-local-nodejs"
+rm -rf "$TMPDIR/eas-build-local-nodejs"
+echo "Starting Android EAS build (beta profile, local mode)..."
+eas build --platform android --profile beta $LOCAL_BUILD_FLAG --output build.aab $NON_INTERACTIVE_FLAG
+echo "Submitting Android build (beta profile)..."
+eas submit --platform android --profile beta --path build.aab $NON_INTERACTIVE_FLAG

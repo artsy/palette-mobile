@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+CURRENT_BRANCH=$(git branch --show-current)
+
+echo "Triggering iOS beta build workflow on branch: $CURRENT_BRANCH"
+gh workflow run build-ios.yml -r "$CURRENT_BRANCH"
+
+echo "Triggering Android beta build workflow on branch: $CURRENT_BRANCH"
+gh workflow run build-android.yml -r "$CURRENT_BRANCH"
+
+echo "✅ Both workflows triggered successfully"
+echo "Check status at: https://github.com/artsy/palette-mobile/actions"

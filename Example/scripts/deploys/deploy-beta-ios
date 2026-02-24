@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/../.."
+
+LOCAL_BUILD_FLAG="--local"
+
+NON_INTERACTIVE_FLAG=""
+if [ "${EAS_NON_INTERACTIVE:-}" = "1" ]; then
+	NON_INTERACTIVE_FLAG="--non-interactive"
+fi
+
+echo "Starting iOS EAS build (beta profile, local mode)..."
+eas build --platform ios --profile beta $LOCAL_BUILD_FLAG --output build.ipa $NON_INTERACTIVE_FLAG
+echo "Submitting iOS build (beta profile)..."
+eas submit --platform ios --profile beta --path build.ipa $NON_INTERACTIVE_FLAG

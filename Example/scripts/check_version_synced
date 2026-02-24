@@ -1,0 +1,73 @@
+# Aligns version numbers with origin/main before beta deploys -
+# keep root package.json, Example/package.json, and Example/app.json in sync.
+# By default when run locally, mismatches are auto-fixed by rewriting those files.
+# CI or VERSION_SYNC_CHECK_ONLY=1 fails with instructions instead of rewriting files.
+
+get_package_version() {
+	jq -r '.version' "$1"
+}
+
+cd "$(dirname "$0")/.."
+
+get_app_version() {
+	jq -r '.expo.version // .version' "$1"
+}
+
+ROOT_LOCAL_VERSION=$(get_package_version "../package.json")
+EXAMPLE_LOCAL_VERSION=$(get_package_version "package.json")
+APP_LOCAL_VERSION=$(get_app_version "app.json")
+
+VERSION_SYNC_CHECK_ONLY=${VERSION_SYNC_CHECK_ONLY:-${CHECK_ONLY:-0}}
+VERSION_SYNC_AUTO_FIX=${VERSION_SYNC_AUTO_FIX:-${AUTO_FIX:-}}
+
+if [ "$VERSION_SYNC_CHECK_ONLY" = "1" ]; then
+	VERSION_SYNC_AUTO_FIX=0
+elif [ -z "$VERSION_SYNC_AUTO_FIX" ]; then
+	if [ "${CI:-}" = "true" ] || [ "${CI:-}" = "1" ]; then
+		VERSION_SYNC_AUTO_FIX=0
+	else
+		VERSION_SYNC_AUTO_FIX=1
+	fi
+fi
+
+echo "Fetching main branch..."
+git fetch origin main
+
+MAIN_ROOT_PACKAGE_JSON=$(mktemp)
+echo "Reading root package.json from origin/main..."
+git show origin/main:package.json > "$MAIN_ROOT_PACKAGE_JSON"
+MAIN_ROOT_VERSION=$(get_package_version "$MAIN_ROOT_PACKAGE_JSON")
+rm -f "$MAIN_ROOT_PACKAGE_JSON"
+
+echo "☝️ Main branch root package.json version: $MAIN_ROOT_VERSION"
+echo "Local root package.json version: $ROOT_LOCAL_VERSION"
+echo "Local Example/package.json version: $EXAMPLE_LOCAL_VERSION"
+echo "Local Example/app.json version: $APP_LOCAL_VERSION"
+
+if [ "$ROOT_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$EXAMPLE_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$APP_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ]; then
+	if [ "$VERSION_SYNC_AUTO_FIX" != "1" ]; then
+		echo "❌ Version mismatch detected."
+		echo "Expected all versions to match main: $MAIN_ROOT_VERSION"
+		echo "Run the following locally to auto-fix:"
+		echo "  cd Example && VERSION_SYNC_AUTO_FIX=1 bash ./scripts/check_version_synced"
+		exit 1
+	fi
+
+	echo "Version mismatch detected. Syncing root package.json, Example/package.json and Example/app.json to $MAIN_ROOT_VERSION."
+	TMP_ROOT_JSON=$(mktemp)
+	TMP_EXAMPLE_JSON=$(mktemp)
+	TMP_APP_JSON=$(mktemp)
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.version = $version' ../package.json > "$TMP_ROOT_JSON"
+	mv "$TMP_ROOT_JSON" ../package.json
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.version = $version' package.json > "$TMP_EXAMPLE_JSON"
+	mv "$TMP_EXAMPLE_JSON" package.json
+
+	jq --arg version "$MAIN_ROOT_VERSION" '.expo.version = $version' app.json > "$TMP_APP_JSON"
+	mv "$TMP_APP_JSON" app.json
+
+	echo "✅ Sync complete. Don't forget to commit the version updates!"
+else
+	echo "✅ Versions match"
+fi
