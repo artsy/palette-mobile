@@ -54,6 +54,10 @@
     "patch-package": "^8.0.1",
     "typescript": "5.9.2"
   },
+  "resolutions": {
+    "metro-config": "0.81.5",
+    "babel-preset-expo": "14.0.0"
+  },
   "reanimated": {
     "staticFeatureFlags": {
       "USE_COMMIT_HOOK_ONLY_FOR_REACT_COMMITS": true,

@@ -152,7 +152,7 @@ export const MasonryTabsWithHeader = () => {
   )
 }
 
-const ListHeaderComponent = (props) => {
+const ListHeaderComponent: React.FC = () => {
   return (
     <SubTabBar>
       <ListHeaderComponentContent />
@@ -160,7 +160,7 @@ const ListHeaderComponent = (props) => {
   )
 }
 
-const ListHeaderComponentContent = () => {
+const ListHeaderComponentContent: React.FC = () => {
   return (
     <Flex
       flexDirection="row"
@@ -175,7 +175,7 @@ const ListHeaderComponentContent = () => {
         <Text>Create Alert</Text>
       </Flex>
       <Flex>
-        <Button>Sory & Filter</Button>
+        <Button>Sort & Filter</Button>
       </Flex>
     </Flex>
   )
