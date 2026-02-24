@@ -3,9 +3,16 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
+LOCAL_BUILD_FLAG="--local"
+
+NON_INTERACTIVE_FLAG=""
+if [ "${EAS_NON_INTERACTIVE:-}" = "1" ]; then
+	NON_INTERACTIVE_FLAG="--non-interactive"
+fi
+
 echo "Cleaning temp build folder: $TMPDIR/eas-build-local-nodejs"
 rm -rf "$TMPDIR/eas-build-local-nodejs"
-echo "Starting Android EAS build (beta profile)..."
-eas build --platform android --profile beta --local --output build.aab
+echo "Starting Android EAS build (beta profile, local mode)..."
+eas build --platform android --profile beta $LOCAL_BUILD_FLAG --output build.aab $NON_INTERACTIVE_FLAG
 echo "Submitting Android build (beta profile)..."
-eas submit --platform android --profile beta --path build.aab
+eas submit --platform android --profile beta --path build.aab $NON_INTERACTIVE_FLAG

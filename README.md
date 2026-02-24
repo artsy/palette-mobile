@@ -82,18 +82,10 @@ yarn android
 Build and submit both iOS and Android locally:
 
 ```sh
+brew install eas-cli # First time only
 brew install gh # First time only
 brew install fastlane  # First time only
 ```
-
-```sh
-cd Example
-yarn deploy-beta
-```
-
-**Note:** Android builds require a Play Console service account JSON at `Example/android-service-account.json` - download it from 1Password.
-
-All builds create submission entries on https://expo.dev/accounts/artsy_org/projects/palettemobile
 
 ### Trigger Cloud Builds via GitHub Actions
 
@@ -101,7 +93,7 @@ Make sure to push all necessary changes first.
 
 ```sh
 cd Example
-yarn deploy-beta:ci
+yarn deploy-beta
 ```
 
 This triggers both iOS and Android build workflows on GitHub Actions.

@@ -41,10 +41,8 @@ jobs:
         working-directory: ./Example
         run: ./download-fonts
 
-      - name: Build IPA
+      - name: Build and submit iOS via shared script
         working-directory: ./Example
-        run: eas build --platform ios --profile beta --local --non-interactive --output build.ipa
-
-      - name: Submit to TestFlight
-        working-directory: ./Example
-        run: eas submit --platform ios --profile beta --path build.ipa --non-interactive
+        env:
+          EAS_NON_INTERACTIVE: "1"
+        run: ./scripts/deploys/deploy-beta-ios

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "android": "expo run:android --port 8082",
-    "deploy-beta": "./scripts/deploys/deploy-beta-both",
-    "deploy-beta:ci": "./scripts/deploys/deploy-beta-both-ci",
+    "deploy-beta": "./scripts/deploys/deploy-beta-ci",
     "ios": "expo run:ios --port 8082",
     "start": "npx expo start --port 8082",
     "start:reset-cache": "npx expo start -c --port 8082",

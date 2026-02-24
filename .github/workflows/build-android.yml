@@ -54,10 +54,8 @@ jobs:
         working-directory: ./Example
         run: printf '%s' "${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}" > android-service-account.json
 
-      - name: Build AAB
+      - name: Build and submit Android via shared script
         working-directory: ./Example
-        run: eas build --platform android --profile beta --local --non-interactive --output build.aab
-
-      - name: Submit to Play Store
-        working-directory: ./Example
-        run: eas submit --platform android --profile beta --path build.aab --non-interactive
+        env:
+          EAS_NON_INTERACTIVE: "1"
+        run: ./scripts/deploys/deploy-beta-android
