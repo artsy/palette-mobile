@@ -34,22 +34,6 @@
             "./assets/fonts/Unica77LL-Regular.otf"
           ]
         }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "compileSdkVersion": 36,
-            "targetSdkVersion": 36,
-            "minSdkVersion": 24,
-            "ndkVersion": "27.1.12297006",
-            "kotlinVersion": "2.1.20",
-            "gradleProperties": {
-              "org.gradle.jvmargs": "-Xmx4096m -XX:MaxMetaspaceSize=1024m -Dkotlin.daemon.jvm.options=-Xmx2048m -Dfile.encoding=UTF-8",
-              "org.gradle.parallel": "true"
-            }
-          }
-        }
       ]
     ],
     "extra": {
