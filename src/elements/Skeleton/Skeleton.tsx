@@ -19,16 +19,15 @@ export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const animationRef = useRef<Animated.CompositeAnimation | null>(null)
 
   useEffect(() => {
-    const loop = Animated.loop(
+    animationRef.current = Animated.loop(
       Animated.timing(opacity.current, {
         toValue: 1,
         duration: 1000,
         useNativeDriver: true,
       })
     )
-    animationRef.current = loop
 
-    loop.start()
+    animationRef.current.start()
 
     return () => {
       animationRef.current.stop()

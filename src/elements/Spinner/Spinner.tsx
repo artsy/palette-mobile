@@ -61,7 +61,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
   const animationRef = useRef<Animated.CompositeAnimation | null>(null)
 
   useEffect(() => {
-    const loop = Animated.loop(
+    animationRef.current = Animated.loop(
       Animated.timing(rotation, {
         toValue: 1,
         duration: 1000,
@@ -73,9 +73,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
       }
     )
 
-    animationRef.current = loop
-
-    loop.start()
+    animationRef.current.start()
 
     return () => {
       animationRef.current.stop()
