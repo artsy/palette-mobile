@@ -1,3 +1,15 @@
+# v23.1.0 (Mon Mar 02 2026)
+
+#### 🚀  Enhancement
+
+- chore: unmount loop [#456](https://github.com/artsy/palette-mobile/pull/456) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v23.0.0 (Tue Feb 24 2026)
 
 #### 💥  Breaking Change
