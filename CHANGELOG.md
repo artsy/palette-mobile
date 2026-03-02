@@ -1,3 +1,15 @@
+# v23.2.0 (Mon Mar 02 2026)
+
+#### 🚀  Enhancement
+
+- chore: upgrade nodemon to latest [#457](https://github.com/artsy/palette-mobile/pull/457) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v23.1.0 (Mon Mar 02 2026)
 
 #### 🚀  Enhancement
