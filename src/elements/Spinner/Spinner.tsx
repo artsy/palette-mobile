@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { Animated, Easing, ViewProps } from "react-native"
 import styled from "styled-components/native"
 import { Color } from "../../types"
@@ -58,9 +58,10 @@ export const Spinner: React.FC<SpinnerProps> = ({
 }) => {
   const color = useColor()
   const rotation = useMemo(() => new Animated.Value(0), [])
+  const animationRef = useRef<Animated.CompositeAnimation | null>(null)
 
-  const startRotation = () => {
-    Animated.loop(
+  useEffect(() => {
+    const loop = Animated.loop(
       Animated.timing(rotation, {
         toValue: 1,
         duration: 1000,
@@ -70,11 +71,15 @@ export const Spinner: React.FC<SpinnerProps> = ({
       {
         iterations: -1,
       }
-    ).start()
-  }
+    )
 
-  useEffect(() => {
-    startRotation()
+    animationRef.current = loop
+
+    loop.start()
+
+    return () => {
+      animationRef.current.stop()
+    }
   }, [])
 
   const style = [
