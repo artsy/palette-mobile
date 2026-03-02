@@ -16,15 +16,22 @@ import { Text, TextProps } from "../Text"
  */
 export const Skeleton: FC<{ children: ReactNode }> = ({ children }) => {
   const opacity = useRef(new Animated.Value(0.5))
+  const animationRef = useRef<Animated.CompositeAnimation | null>(null)
 
   useEffect(() => {
-    Animated.loop(
+    animationRef.current = Animated.loop(
       Animated.timing(opacity.current, {
         toValue: 1,
         duration: 1000,
         useNativeDriver: true,
       })
-    ).start()
+    )
+
+    animationRef.current.start()
+
+    return () => {
+      animationRef.current.stop()
+    }
   }, [])
 
   return (
