@@ -5,11 +5,11 @@ cd "$(dirname "$0")/../.."
 
 CURRENT_BRANCH=$(git branch --show-current)
 
-echo "Triggering iOS beta build workflow on branch: $CURRENT_BRANCH"
-gh workflow run build-ios.yml -r "$CURRENT_BRANCH"
+bash ./scripts/check_version_synced
 
-echo "Triggering Android beta build workflow on branch: $CURRENT_BRANCH"
-gh workflow run build-android.yml -r "$CURRENT_BRANCH"
+git push origin "$CURRENT_BRANCH:beta-ios" -f --no-verify
 
-echo "✅ Both workflows triggered successfully"
+git push origin "$CURRENT_BRANCH:beta-android" -f --no-verify
+
+echo "✅ Beta branches updated successfully"
 echo "Check status at: https://github.com/artsy/palette-mobile/actions"

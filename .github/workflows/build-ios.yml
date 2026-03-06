@@ -3,7 +3,7 @@ name: Build and Submit iOS to TestFlight
 on:
   push:
     branches:
-      - main
+      - beta-ios
   workflow_dispatch:
 
 jobs:

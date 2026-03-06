@@ -3,7 +3,7 @@ name: Build and Submit Android to Play Store
 on:
   push:
     branches:
-      - main
+      - beta-android
   workflow_dispatch:
 
 jobs:

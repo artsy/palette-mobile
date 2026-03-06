@@ -96,8 +96,8 @@ cd Example
 yarn deploy-beta
 ```
 
-This triggers both iOS and Android build workflows on GitHub Actions.
-The workflows are also triggered on every push into main.
+This force-pushes your current branch to `beta-ios` and `beta-android`, which
+triggers the iOS and Android beta workflows on GitHub Actions.
 (https://github.com/artsy/palette-mobile/actions).
 
 ## Developing Features using Local Versions of Palette
