@@ -9,6 +9,7 @@ import Animated, {
 } from "react-native-reanimated"
 import { useScreenScrollContext } from "./ScreenScrollContext"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
+import { useTitleStyles } from "./hooks/useTitleStyles"
 import { DEFAULT_HIT_SLOP, DEFAULT_ICON_SIZE } from "../../constants"
 import { useScreenDimensions, useSpace } from "../../utils/hooks"
 import { Flex, FlexProps } from "../Flex"
@@ -24,11 +25,10 @@ export interface HeaderProps {
   onBack?: () => void
   rightElements?: ReactNode
   scrollY?: number
-  // For header with more content use the offset to achieve a more granular control when to show the animated header
-  scrollYOffset?: number
   title?: string | JSX.Element
   titleProps?: FlexProps
   titleShown?: boolean
+  zIndex?: number
 }
 
 export const AnimatedHeader: React.FC<HeaderProps> = (props) => {
@@ -45,6 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
   rightElements,
   title,
   titleProps = {},
+  zIndex = ZINDEX.header,
 }) => {
   const { width } = useScreenDimensions()
   const space = useSpace()
@@ -58,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
       height={NAVBAR_HEIGHT}
       flexDirection="row"
       px={2}
-      zIndex={ZINDEX.header}
+      zIndex={zIndex}
       backgroundColor="background"
       alignItems="center"
     >
@@ -89,16 +90,8 @@ const Center: React.FC<{
   hideTitle: HeaderProps["hideTitle"]
   title: HeaderProps["title"]
 }> = ({ animated, hideTitle, title }) => {
-  const { scrollYOffset = 0, currentScrollYAnimated } = useScreenScrollContext()
+  const { display, opacity } = useTitleStyles()
 
-  // Show / hide the title to avoid rerenders, which retrigger the animation
-  const display = useDerivedValue(() => {
-    return currentScrollYAnimated.value < NAVBAR_HEIGHT + scrollYOffset ? "none" : "flex"
-  }, [currentScrollYAnimated, scrollYOffset])
-
-  const opacity = useDerivedValue(() => {
-    return display.value === "flex" ? 1 : 0
-  })
   const style = useAnimatedStyle(() => {
     return {
       display: display.value,

@@ -11,13 +11,13 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from "react"
 import {
   LayoutAnimation,
-  LayoutChangeEvent,
   NativeSyntheticEvent,
   Platform,
   TextInput,
@@ -296,6 +296,14 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
     }, [addClearListener, handleClear])
 
     const { width: rightComponentWidth = 0 } = useMeasure({ ref: rightComponentRef })
+
+    useLayoutEffect(() => {
+      inputRef.current?.measureInWindow((_x, _y, width) => {
+        if (width > 0 && width !== inputWidth) {
+          setInputWidth(width)
+        }
+      })
+    }, [])
 
     const textInputPaddingLeft = useMemo(() => {
       if (!hasLeftComponent) {
@@ -747,9 +755,6 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
           style={[styles, textInputAnimatedStyles]}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          onLayout={(event: LayoutChangeEvent) => {
-            setInputWidth(event.nativeEvent.layout.width)
-          }}
           scrollEnabled={props.multiline}
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}

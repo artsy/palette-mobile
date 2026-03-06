@@ -1,6 +1,54 @@
+# v23.2.0 (Mon Mar 02 2026)
+
+#### 🚀 Enhancement
+
+- chore: upgrade nodemon to latest [#457](https://github.com/artsy/palette-mobile/pull/457) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v23.1.0 (Mon Mar 02 2026)
+
+#### 🚀 Enhancement
+
+- chore: unmount loop [#456](https://github.com/artsy/palette-mobile/pull/456) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v23.0.0 (Tue Feb 24 2026)
+
+#### 💥 Breaking Change
+
+- feat: New Arch for Eigen [#425](https://github.com/artsy/palette-mobile/pull/425) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
+# v22.10.0 (Tue Feb 10 2026)
+
+#### 🚀 Enhancement
+
+- chore: sync app version on ci and release builds [#448](https://github.com/artsy/palette-mobile/pull/448) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v22.9.0 (Mon Feb 09 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat(ONYX-1904): publish palette-mobile to testflight [#441](https://github.com/artsy/palette-mobile/pull/441) ([@dariakoko](https://github.com/dariakoko))
 
@@ -12,7 +60,7 @@
 
 # v22.8.0 (Fri Feb 06 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add triggers to conventional commits check [#445](https://github.com/artsy/palette-mobile/pull/445) ([@amonkhouse](https://github.com/amonkhouse))
 
@@ -24,7 +72,7 @@
 
 # v22.7.0 (Tue Jan 27 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - refactor(deps): reorganize dependency configuration [#442](https://github.com/artsy/palette-mobile/pull/442) ([@gkartalis](https://github.com/gkartalis))
 
@@ -36,11 +84,11 @@
 
 # v22.6.0 (Mon Jan 26 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: Show placeholder in multiline input on iOS [#440](https://github.com/artsy/palette-mobile/pull/440) ([@MrSltun](https://github.com/MrSltun))
 
-#### 🏠  Internal
+#### 🏠 Internal
 
 - build(deps): bump rexml from 3.3.9 to 3.4.2 [#380](https://github.com/artsy/palette-mobile/pull/380) ([@dependabot[bot]](https://github.com/dependabot[bot]))
 - build(deps): bump js-yaml from 3.14.1 to 3.14.2 [#426](https://github.com/artsy/palette-mobile/pull/426) ([@dependabot[bot]](https://github.com/dependabot[bot]))
@@ -60,7 +108,7 @@
 
 # v22.5.0 (Fri Jan 16 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: pills text alignment [#436](https://github.com/artsy/palette-mobile/pull/436) ([@gkartalis](https://github.com/gkartalis))
 
@@ -72,7 +120,7 @@
 
 # v22.4.0 (Fri Jan 16 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump artsy icons to latest [#435](https://github.com/artsy/palette-mobile/pull/435) ([@gkartalis](https://github.com/gkartalis))
 
@@ -84,7 +132,7 @@
 
 # v22.3.0 (Wed Jan 14 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: follow button truncation [#433](https://github.com/artsy/palette-mobile/pull/433) ([@gkartalis](https://github.com/gkartalis))
 
@@ -96,7 +144,7 @@
 
 # v22.2.0 (Tue Jan 13 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix(MOPRAT-880): Allow disabling keyboard avoidance in TabsWithHeader [#432](https://github.com/artsy/palette-mobile/pull/432) ([@MrSltun](https://github.com/MrSltun))
 
@@ -108,7 +156,7 @@
 
 # v22.1.0 (Thu Nov 27 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - build(deps): bump moti to latest [#428](https://github.com/artsy/palette-mobile/pull/428) ([@gkartalis](https://github.com/gkartalis))
 
@@ -120,7 +168,7 @@
 
 # v22.0.0 (Wed Nov 12 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - chore: Revert "chore: Revert "chore: upgrade to Expo SDK 54 and RN 81"" [#422](https://github.com/artsy/palette-mobile/pull/422) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -132,7 +180,7 @@
 
 # v21.1.0 (Wed Nov 12 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: missing image skeleton [#421](https://github.com/artsy/palette-mobile/pull/421) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -144,7 +192,7 @@
 
 # v21.0.1 (Tue Nov 11 2025)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - chore: Revert "chore: upgrade to Expo SDK 54 and RN 81" [#420](https://github.com/artsy/palette-mobile/pull/420) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -156,7 +204,7 @@
 
 # v21.0.0 (Tue Nov 11 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - chore: upgrade to Expo SDK 54 and RN 81 [#417](https://github.com/artsy/palette-mobile/pull/417) ([@MounirDhahri](https://github.com/MounirDhahri) [@gkartalis](https://github.com/gkartalis))
 
@@ -169,7 +217,7 @@
 
 # v20.11.0 (Mon Nov 10 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add yarn check github action [#419](https://github.com/artsy/palette-mobile/pull/419) ([@mc-jones](https://github.com/mc-jones))
 
@@ -181,7 +229,7 @@
 
 # v20.10.0 (Mon Nov 10 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add add-version-label github action [#418](https://github.com/artsy/palette-mobile/pull/418) ([@amonkhouse](https://github.com/amonkhouse))
 
@@ -197,7 +245,7 @@
 
 Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all your work!
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - feat: add conventional commit github action [#416](https://github.com/artsy/palette-mobile/pull/416) ([@amonkhouse](https://github.com/amonkhouse))
 
@@ -209,7 +257,7 @@ Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all
 
 # v20.8.0 (Wed Oct 29 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: use theme to fix color resolution in checkmark [#414](https://github.com/artsy/palette-mobile/pull/414) ([@brainbicycle](https://github.com/brainbicycle))
 
@@ -221,7 +269,7 @@ Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all
 
 # v20.7.0 (Mon Oct 27 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore(Revert): "chore: ux improvements to the image component" [#412](https://github.com/artsy/palette-mobile/pull/412) ([@gkartalis](https://github.com/gkartalis))
 
@@ -233,7 +281,7 @@ Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all
 
 # v20.6.0 (Mon Oct 27 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - fix: checkbox make the apps crash [#411](https://github.com/artsy/palette-mobile/pull/411) ([@gkartalis](https://github.com/gkartalis))
 
@@ -249,7 +297,7 @@ Thank you, Amy Monkhouse ([@amonkhouse](https://github.com/amonkhouse)), for all
 
 Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your work!
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: use m4pro.medium circleci resource [#410](https://github.com/artsy/palette-mobile/pull/410) ([@mc-jones](https://github.com/mc-jones))
 
@@ -261,7 +309,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v20.4.0 (Fri Oct 17 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - refactor(react19): remove types react 18 resolution [#409](https://github.com/artsy/palette-mobile/pull/409) ([@gkartalis](https://github.com/gkartalis))
 
@@ -273,7 +321,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v20.3.0 (Fri Oct 17 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: migrate app to example [#404](https://github.com/artsy/palette-mobile/pull/404) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -285,7 +333,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v20.2.0 (Thu Oct 16 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: ux improvements to the image component [#407](https://github.com/artsy/palette-mobile/pull/407) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -297,7 +345,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v20.1.0 (Wed Oct 15 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: decode async images blurhash [#406](https://github.com/artsy/palette-mobile/pull/406) ([@MounirDhahri](https://github.com/MounirDhahri))
 - chore: unmount skeleton after loading image [#405](https://github.com/artsy/palette-mobile/pull/405) ([@MounirDhahri](https://github.com/MounirDhahri))
@@ -310,7 +358,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v20.0.0 (Wed Oct 15 2025)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - build(deps): bump styled components to latest [#399](https://github.com/artsy/palette-mobile/pull/399) ([@gkartalis](https://github.com/gkartalis))
 
@@ -322,7 +370,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v19.18.0 (Mon Oct 13 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: use react-sprint/native [#403](https://github.com/artsy/palette-mobile/pull/403) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -334,7 +382,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v19.17.0 (Wed Oct 08 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: improve image resize logic [#402](https://github.com/artsy/palette-mobile/pull/402) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -346,7 +394,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v19.16.0 (Tue Oct 07 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: add useful addons [#397](https://github.com/artsy/palette-mobile/pull/397) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -358,7 +406,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v19.15.1 (Mon Oct 06 2025)
 
-#### 🐛  Bug Fix
+#### 🐛 Bug Fix
 
 - chore: add main/index.js [#398](https://github.com/artsy/palette-mobile/pull/398) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -370,7 +418,7 @@ Thank you, Matt Jones ([@mc-jones](https://github.com/mc-jones)), for all your w
 
 # v19.15.0 (Mon Oct 06 2025)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: upgrade storybook v8 [#394](https://github.com/artsy/palette-mobile/pull/394) ([@MounirDhahri](https://github.com/MounirDhahri))
 

@@ -104,4 +104,4 @@ Example/ios
 !.yarn/sdks/*
 !.yarn/versions
 !.yarn/versions/*
-
+!.yarn/patches
