@@ -34,8 +34,7 @@
     "start": "yarn workspace palette-mobile-example start",
     "storybook-watcher": "yarn workspace palette-mobile-example storybook-watcher",
     "test": "jest --maxWorkers=2",
-    "type-check": "tsc --noEmit",
-    "version": "node ./scripts/sync-example-version.js"
+    "type-check": "tsc --noEmit"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
