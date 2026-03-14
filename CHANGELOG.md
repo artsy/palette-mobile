@@ -1,3 +1,15 @@
+# v23.2.1 (Sat Mar 14 2026)
+
+#### 🐛  Bug Fix
+
+- chore: remove Animated.View entering and exiting [#462](https://github.com/artsy/palette-mobile/pull/462) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v23.2.0 (Mon Mar 02 2026)
 
 #### 🚀  Enhancement
