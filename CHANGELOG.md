@@ -12,7 +12,7 @@
 
 # v23.2.0 (Mon Mar 02 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: upgrade nodemon to latest [#457](https://github.com/artsy/palette-mobile/pull/457) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -24,7 +24,7 @@
 
 # v23.1.0 (Mon Mar 02 2026)
 
-#### 🚀  Enhancement
+#### 🚀 Enhancement
 
 - chore: unmount loop [#456](https://github.com/artsy/palette-mobile/pull/456) ([@MounirDhahri](https://github.com/MounirDhahri))
 
@@ -36,7 +36,7 @@
 
 # v23.0.0 (Tue Feb 24 2026)
 
-#### 💥  Breaking Change
+#### 💥 Breaking Change
 
 - feat: New Arch for Eigen [#425](https://github.com/artsy/palette-mobile/pull/425) ([@MounirDhahri](https://github.com/MounirDhahri))
 
