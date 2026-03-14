@@ -1,13 +1,6 @@
 import { ChevronLeftIcon } from "@artsy/icons/native"
 import { JSX, ReactNode } from "react"
-import Animated, {
-  Easing,
-  FadeIn,
-  FadeOut,
-  useAnimatedStyle,
-  useDerivedValue,
-} from "react-native-reanimated"
-import { useScreenScrollContext } from "./ScreenScrollContext"
+import Animated, { useAnimatedStyle } from "react-native-reanimated"
 import { NAVBAR_HEIGHT, ZINDEX } from "./constants"
 import { useTitleStyles } from "./hooks/useTitleStyles"
 import { DEFAULT_HIT_SLOP, DEFAULT_ICON_SIZE } from "../../constants"
@@ -113,15 +106,7 @@ const Center: React.FC<{
     return titleTextElement
   }
 
-  return (
-    <Animated.View
-      entering={FadeIn.duration(400).easing(Easing.out(Easing.exp))}
-      exiting={FadeOut.duration(400).easing(Easing.out(Easing.exp))}
-      style={style}
-    >
-      {titleTextElement}
-    </Animated.View>
-  )
+  return <Animated.View style={style}>{titleTextElement}</Animated.View>
 }
 
 const Left: React.FC<{
