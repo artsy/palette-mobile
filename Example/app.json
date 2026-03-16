@@ -2,7 +2,7 @@
   "expo": {
     "name": "Palette Mobile",
     "slug": "palettemobile",
-    "version": "22.9.0",
+    "version": "22.10.0",
     "splash": {
       "image": "./assets/icons/app_icon.png",
       "resizeMode": "contain",
@@ -14,11 +14,10 @@
       "icon": "./assets/icons/app_icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      },
-      "buildNumber": "2"
+      }
     },
     "android": {
-      "package": "net.artsy.palettemobile",
+      "package": "net.artsy.palette_mobile",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icons/app_icon_android.png",
         "backgroundColor": "#ffffff"
