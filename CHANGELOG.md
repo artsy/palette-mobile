@@ -1,3 +1,15 @@
+# v23.3.0 (Mon Mar 16 2026)
+
+#### 🚀  Enhancement
+
+- feat(ONYX-1905): release palette-mobile to play store [#450](https://github.com/artsy/palette-mobile/pull/450) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v23.2.1 (Sat Mar 14 2026)
 
 #### 🐛  Bug Fix
