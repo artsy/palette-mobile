@@ -9,7 +9,7 @@
     "android": "yarn workspace palette-mobile-example android",
     "android:clean": "yarn workspace palette-mobile-example android:prebuild --clean",
     "android:prebuild": "yarn workspace palette-mobile-example android:prebuild",
-    "beta:ios": "bundle e fastlane ios beta",
+    "deploy-beta": "./Example/scripts/deploys/deploy-beta-both",
     "bundle-install": "bundle install",
     "clean": "rimraf dist",
     "compile": "tsc",
