@@ -17,8 +17,6 @@ if [ ! -f "$SERVICE_ACCOUNT_FILE" ]; then
 	exit 1
 fi
 
-echo "Cleaning temp build folder: $TMPDIR/eas-build-local-nodejs"
-rm -rf "$TMPDIR/eas-build-local-nodejs"
 echo "Starting Android EAS build (beta profile, local mode)..."
 eas build --platform android --profile beta $LOCAL_BUILD_FLAG --output build.aab $NON_INTERACTIVE_FLAG
 echo "Submitting Android build (beta profile)..."
