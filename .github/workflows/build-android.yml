@@ -54,7 +54,7 @@ jobs:
 
       - name: Write Android service account key
         working-directory: ./Example
-        run: printf '%s' "${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}" > android-service-account.json
+        run: echo "${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}" | base64 --decode > android-service-account.json
 
       - name: Build and submit Android via shared script
         working-directory: ./Example
