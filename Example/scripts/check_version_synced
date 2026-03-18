@@ -70,7 +70,8 @@ if [ "$ROOT_LOCAL_VERSION" != "$MAIN_ROOT_VERSION" ] || [ "$EXAMPLE_LOCAL_VERSIO
 	jq --arg version "$MAIN_ROOT_VERSION" '.expo.version = $version' app.json > "$TMP_APP_JSON"
 	mv "$TMP_APP_JSON" app.json
 
-	echo "✅ Sync complete. Don't forget to commit the version updates!"
+	echo "✅ Sync complete."
+	echo "⚠️ Don't forget to commit the version updates!"
 	exit 1
 else
 	echo "✅ Versions match"
