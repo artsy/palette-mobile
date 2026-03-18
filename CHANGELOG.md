@@ -1,3 +1,15 @@
+# v23.4.0 (Wed Mar 18 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump xcode to solve ITMS-90725: SDK version issue [#463](https://github.com/artsy/palette-mobile/pull/463) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.3.0 (Mon Mar 16 2026)
 
 #### 🚀  Enhancement
