@@ -39,7 +39,11 @@
         "expo-build-properties",
         {
           "android": {
-            "reactNativeReleaseLevel": "experimental"
+            "reactNativeReleaseLevel": "experimental",
+            "gradleProperties": {
+              "org.gradle.jvmargs": "-Xmx4096m -XX:MaxMetaspaceSize=1024m -Dkotlin.daemon.jvm.options=-Xmx2048m -Dfile.encoding=UTF-8",
+              "org.gradle.parallel": "true"
+          }
           },
           "ios": {
             "reactNativeReleaseLevel": "experimental"
