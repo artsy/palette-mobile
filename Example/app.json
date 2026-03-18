@@ -2,7 +2,7 @@
   "expo": {
     "name": "Palette Mobile",
     "slug": "palettemobile",
-    "version": "23.3.0",
+    "version": "23.4.0",
     "splash": {
       "image": "./assets/icons/app_icon.png",
       "resizeMode": "contain",
@@ -43,7 +43,7 @@
             "gradleProperties": {
               "org.gradle.jvmargs": "-Xmx4096m -XX:MaxMetaspaceSize=1024m -Dkotlin.daemon.jvm.options=-Xmx2048m -Dfile.encoding=UTF-8",
               "org.gradle.parallel": "true"
-          }
+            }
           },
           "ios": {
             "reactNativeReleaseLevel": "experimental"
