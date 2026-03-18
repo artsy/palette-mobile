@@ -17,6 +17,10 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-node
 
+      - name: Select Xcode version
+        run: sudo xcode-select -s "/Applications/Xcode_26.2.app"
+        shell: bash
+
       - name: Setup EAS
         uses: expo/expo-github-action@v8
         with:
