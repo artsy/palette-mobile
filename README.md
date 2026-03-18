@@ -92,7 +92,6 @@ brew install fastlane  # First time only
 Make sure to push all necessary changes first.
 
 ```sh
-cd Example
 yarn deploy-beta
 ```
 
