@@ -6,6 +6,9 @@
   "build": {
     "beta": {
       "distribution": "store",
+      "env": {
+        "GRADLE_OPTS": "-Dorg.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1536m -Dkotlin.daemon.jvm.options=-Xmx2048m -Dfile.encoding=UTF-8"
+      },
       "ios": {
         "buildConfiguration": "Release"
       },
