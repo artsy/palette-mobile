@@ -2,7 +2,11 @@
   "expo": {
     "name": "Palette Mobile",
     "slug": "palettemobile",
+    "owner": "artsy_org",
     "version": "23.4.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "splash": {
       "image": "./assets/icons/app_icon.png",
       "resizeMode": "contain",
@@ -51,7 +55,6 @@
       "eas": {
         "projectId": "9dda6017-e129-435c-aad8-3ece8b207ee9"
       }
-    },
-    "owner": "artsy_org"
+    }
   }
 }
