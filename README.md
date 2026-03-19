@@ -87,6 +87,13 @@ brew install gh # First time only
 brew install fastlane  # First time only
 ```
 
+If Android local build config seems out of sync after changing `Example/app.json` or native-related dependencies, run:
+
+```sh
+cd Example
+npx expo prebuild --clean --platform android
+```
+
 ### Trigger Cloud Builds via GitHub Actions
 
 Make sure to push all necessary changes first.

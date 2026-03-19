@@ -1,3 +1,15 @@
+# v23.5.0 (Thu Mar 19 2026)
+
+#### 🚀  Enhancement
+
+- fix: fix Android build failures [#465](https://github.com/artsy/palette-mobile/pull/465) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v23.4.0 (Wed Mar 18 2026)
 
 #### 🚀  Enhancement
