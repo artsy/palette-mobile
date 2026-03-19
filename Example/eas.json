@@ -12,8 +12,7 @@
       "ios": {
         "buildConfiguration": "Release"
       },
-      "autoIncrement": true,
-      "channel": "beta"
+      "autoIncrement": true
     }
   },
   "submit": {
