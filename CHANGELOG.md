@@ -1,3 +1,16 @@
+# v23.6.0 (Thu Mar 19 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): remove expo updates [#464](https://github.com/artsy/palette-mobile/pull/464) ([@gkartalis](https://github.com/gkartalis) [@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 2
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.5.0 (Thu Mar 19 2026)
 
 #### 🚀  Enhancement
