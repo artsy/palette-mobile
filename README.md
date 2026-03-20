@@ -84,7 +84,6 @@ Build and submit both iOS and Android locally:
 ```sh
 brew install eas-cli # First time only
 brew install gh # First time only
-brew install fastlane  # First time only
 ```
 
 If Android local build config seems out of sync after changing `Example/app.json` or native-related dependencies, run:
