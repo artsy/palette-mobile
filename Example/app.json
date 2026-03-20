@@ -3,7 +3,7 @@
     "name": "Palette Mobile",
     "slug": "palettemobile",
     "owner": "artsy_org",
-    "version": "23.5.0",
+    "version": "23.6.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
