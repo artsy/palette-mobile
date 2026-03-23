@@ -1,3 +1,15 @@
+# v23.7.0 (Mon Mar 23 2026)
+
+#### 🚀  Enhancement
+
+- refactor: remove Fastlane configuration and update version to 23.6.0 [#466](https://github.com/artsy/palette-mobile/pull/466) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.6.0 (Thu Mar 19 2026)
 
 #### 🚀  Enhancement
