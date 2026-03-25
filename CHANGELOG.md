@@ -1,3 +1,15 @@
+# v23.8.0 (Wed Mar 25 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump blurhash to latest [#469](https://github.com/artsy/palette-mobile/pull/469) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.7.0 (Mon Mar 23 2026)
 
 #### 🚀  Enhancement
