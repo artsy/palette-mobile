@@ -1,3 +1,29 @@
+# v23.9.0 (Wed Apr 01 2026)
+
+#### 🚀  Enhancement
+
+- chore: remove unused eslint plugin [#473](https://github.com/artsy/palette-mobile/pull/473) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump storybook from 8.6.14 to 8.6.17 [#455](https://github.com/artsy/palette-mobile/pull/455) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump @isaacs/brace-expansion from 5.0.0 to 5.0.1 [#447](https://github.com/artsy/palette-mobile/pull/447) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump ajv from 6.12.6 to 6.14.0 [#454](https://github.com/artsy/palette-mobile/pull/454) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump tar from 7.5.7 to 7.5.11 [#459](https://github.com/artsy/palette-mobile/pull/459) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump undici from 6.21.3 to 6.24.1 [#461](https://github.com/artsy/palette-mobile/pull/461) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump flatted from 3.3.3 to 3.4.2 [#467](https://github.com/artsy/palette-mobile/pull/467) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump activesupport from 7.0.8 to 7.2.3.1 [#468](https://github.com/artsy/palette-mobile/pull/468) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump picomatch from 2.3.1 to 2.3.2 [#470](https://github.com/artsy/palette-mobile/pull/470) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump node-forge from 1.3.3 to 1.4.0 [#471](https://github.com/artsy/palette-mobile/pull/471) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump @xmldom/xmldom from 0.8.11 to 0.8.12 [#472](https://github.com/artsy/palette-mobile/pull/472) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.8.0 (Wed Mar 25 2026)
 
 #### 🚀  Enhancement
