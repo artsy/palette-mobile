@@ -98,8 +98,6 @@ __metadata:
     lodash: "npm:4.17.21"
     moti: "npm:0.30.0"
     nodemon: "npm:^3.1.14"
-    patch-package: "npm:^8.0.0"
-    postinstall-prepare: "npm:^2.0.0"
     prettier: "npm:^2.8.8"
     pull-lock: "npm:1.0.0"
     react: "npm:19.1.0"
@@ -12577,7 +12575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"patch-package@npm:^8.0.0, patch-package@npm:^8.0.1":
+"patch-package@npm:^8.0.1":
   version: 8.0.1
   resolution: "patch-package@npm:8.0.1"
   dependencies:
@@ -12833,13 +12831,6 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/f1b3f17aaf36d136f59ec373459f18129908235e65dbdc3aee5eef8eba0756106f52de5ec4682e29a2eab53eb25170e7e871b3e4b52a8f1de3d344a514306be3
-  languageName: node
-  linkType: hard
-
-"postinstall-prepare@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "postinstall-prepare@npm:2.0.0"
-  checksum: 10c0/2c492d49033b62350d646bf5190ba72013b4bb922ef200ec0f652203a9013cf87c06864701e64cc473210c287b90687a0c710dd9d7db9761b25e469b660bcac6
   languageName: node
   linkType: hard
 
