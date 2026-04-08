@@ -1,3 +1,20 @@
+# v23.10.0 (Wed Apr 08 2026)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Claude ([@claude](https://github.com/claude)), for all your work!
+
+#### 🚀  Enhancement
+
+- chore: remove last patch-package artifacts [#452](https://github.com/artsy/palette-mobile/pull/452) ([@claude](https://github.com/claude) [@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 2
+
+- Claude ([@claude](https://github.com/claude))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v23.9.0 (Wed Apr 01 2026)
 
 #### 🚀  Enhancement
