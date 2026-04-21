@@ -90,19 +90,18 @@ If Android local build config seems out of sync after changing `Example/app.json
 
 ```sh
 cd Example
-npx expo prebuild --clean --platform android
+npx expo prebuild --clean
 ```
 
 ### Trigger Cloud Builds via GitHub Actions
-
-Make sure to push all necessary changes first.
 
 ```sh
 yarn deploy-beta
 ```
 
-This force-pushes your current branch to `beta-ios` and `beta-android`, which
-triggers the iOS and Android beta workflows on GitHub Actions.
+This syncs the version numbers across `package.json`, `Example/package.json`, and `Example/app.json`
+to match the latest version on `main`, then force-pushes your current branch to `beta-ios` and `beta-android`,
+which triggers the iOS and Android beta workflows on GitHub Actions.
 (https://github.com/artsy/palette-mobile/actions).
 
 ## Developing Features using Local Versions of Palette
