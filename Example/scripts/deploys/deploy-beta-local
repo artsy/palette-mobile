@@ -3,7 +3,8 @@ set -e
 
 cd "$(dirname "$0")/../.."
 
-./scripts/check_version_synced
+echo "Syncing Example versions..."
+./scripts/sync-example-version
 
 ./scripts/deploys/deploy-beta-ios
 ./scripts/deploys/deploy-beta-android
