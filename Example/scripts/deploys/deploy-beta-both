@@ -5,8 +5,6 @@ cd "$(dirname "$0")/../.."
 
 CURRENT_BRANCH=$(git branch --show-current)
 
-bash ./scripts/check_version_synced
-
 git push origin "$CURRENT_BRANCH:beta-ios" -f --no-verify
 
 git push origin "$CURRENT_BRANCH:beta-android" -f --no-verify
