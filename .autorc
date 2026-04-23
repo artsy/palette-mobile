@@ -1,6 +1,7 @@
 {
   "extends": "@artsy",
   "plugins": [
-    "first-time-contributor"
+    "first-time-contributor",
+    ".github/auto-plugins/sync-example-version.js"
   ]
 }
