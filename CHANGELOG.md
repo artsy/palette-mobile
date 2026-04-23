@@ -1,3 +1,15 @@
+# v23.12.0 (Thu Apr 23 2026)
+
+#### 🚀  Enhancement
+
+- chore(ONYX-2058): improve version syncing script [#477](https://github.com/artsy/palette-mobile/pull/477) ([@dariakoko](https://github.com/dariakoko))
+
+#### Authors: 1
+
+- Daria Kozlova ([@dariakoko](https://github.com/dariakoko))
+
+---
+
 # v23.11.0 (Tue Apr 21 2026)
 
 #### 🚀  Enhancement
