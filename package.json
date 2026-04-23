@@ -33,7 +33,8 @@
     "start": "yarn workspace palette-mobile-example start",
     "storybook-watcher": "yarn workspace palette-mobile-example storybook-watcher",
     "test": "jest --maxWorkers=2",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "version": "scripts/sync-example-version-on-release && git add Example/package.json Example/app.json"
   },
   "dependenciesComments": [
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
