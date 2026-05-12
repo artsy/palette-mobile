@@ -1,3 +1,15 @@
+# v23.13.0 (Tue May 12 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump @d11/react-native-fast-image from 8.12.0 to 8.13.0 [#479](https://github.com/artsy/palette-mobile/pull/479) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.12.0 (Thu Apr 23 2026)
 
 #### 🚀  Enhancement
