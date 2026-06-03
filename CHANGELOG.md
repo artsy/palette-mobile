@@ -1,3 +1,15 @@
+# v23.14.0 (Wed Jun 03 2026)
+
+#### 🚀  Enhancement
+
+- fix: runtime error + stories for placeholderarray [#484](https://github.com/artsy/palette-mobile/pull/484) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.13.0 (Tue May 12 2026)
 
 #### 🚀  Enhancement
