@@ -5,6 +5,19 @@ import { Join } from "../Join"
 import { Separator } from "../Separator"
 import { Text } from "../Text"
 
+const artworkSearchPlaceholders = [
+  "Search by artist, artwork title, gallery, fair, or collecting category",
+  "Search by artist, artwork title, gallery, or fair",
+  "Search by artist, artwork, or gallery",
+  "Search artworks",
+]
+
+const shippingAddressPlaceholders = [
+  "Street address, apartment or suite, delivery instructions",
+  "Street address and apartment or suite",
+  "Street address",
+]
+
 export default {
   title: "Input",
 }
@@ -68,9 +81,6 @@ export const Variants = () => (
       </>
 
       <>
-        <Input placeholder="I'm a placeholder" />
-      </>
-      <>
         <Text mb={1} variant="sm-display" fontWeight="bold">
           With title, clear button and value
         </Text>
@@ -84,9 +94,21 @@ export const Variants = () => (
       </>
       <>
         <Text mb={1} variant="sm-display" fontWeight="bold">
-          With placeholder
+          Placeholder (single string)
         </Text>
-        <Input placeholder="I'm a placeholder" />
+        <Input placeholder="Search artworks" />
+      </>
+      <>
+        <Text mb={1} variant="sm-display" fontWeight="bold">
+          Placeholder (array, longest to shortest)
+        </Text>
+        <Input placeholder={artworkSearchPlaceholders} />
+      </>
+      <>
+        <Text mb={1} variant="sm-display" fontWeight="bold">
+          Placeholder with title (array, adaptive)
+        </Text>
+        <Input title="Search" placeholder={artworkSearchPlaceholders} />
       </>
       <>
         <Text mb={1} variant="sm-display" fontWeight="bold">
@@ -117,9 +139,15 @@ export const Variants = () => (
       </>
       <>
         <Text mb={1} variant="sm-display" fontWeight="bold">
-          multine with placeholder
+          Multiline with placeholder (single string)
         </Text>
         <Input title="Text area" multiline placeholder="Enter your message" />
+      </>
+      <>
+        <Text mb={1} variant="sm-display" fontWeight="bold">
+          Multiline with placeholder (array, adaptive)
+        </Text>
+        <Input title="Shipping address" multiline placeholder={shippingAddressPlaceholders} />
       </>
     </Join>
   </List>
