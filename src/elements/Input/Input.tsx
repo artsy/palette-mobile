@@ -723,7 +723,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
         >
           {placeholder.map((placeholderString, index) => (
             <Text
-              key={index}
+              key={`${placeholderString.replaceAll(" ", "-")}-${index}`}
               onLayout={(event) => {
                 placeholderWidths.current[index] = event.nativeEvent.layout.width
               }}
