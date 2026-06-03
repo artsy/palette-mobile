@@ -18,10 +18,8 @@ import {
 } from "react"
 import {
   LayoutAnimation,
-  NativeSyntheticEvent,
   Platform,
   TextInput,
-  TextInputFocusEventData,
   TextInputProps,
   TouchableOpacity,
   ViewProps,
@@ -381,12 +379,12 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
       }
     })
 
-    const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    const handleFocus = (e: Parameters<NonNullable<TextInputProps["onFocus"]>>[0]) => {
       setIsFocused(true)
       onFocus?.(e)
     }
 
-    const handleBlur = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
+    const handleBlur = (e: Parameters<NonNullable<TextInputProps["onBlur"]>>[0]) => {
       setIsFocused(false)
       onBlur?.(e)
     }
@@ -725,6 +723,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
         >
           {placeholder.map((placeholderString, index) => (
             <Text
+              key={`${placeholderString.replaceAll(" ", "-")}-${index}`}
               onLayout={(event) => {
                 placeholderWidths.current[index] = event.nativeEvent.layout.width
               }}
