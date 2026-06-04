@@ -6,7 +6,6 @@ module.exports = {
   root: true,
   plugins: ["@typescript-eslint", "jest", "react-hooks", "testing-library"],
   extends: [
-    "@react-native",
     "plugin:react-native-a11y/basic",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",

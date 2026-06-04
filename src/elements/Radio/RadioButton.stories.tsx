@@ -2,7 +2,6 @@ import { useState } from "react"
 import { RadioButton } from "./RadioButton"
 import { List } from "../../storybook/helpers"
 import { Flex } from "../Flex"
-import { Text } from "../Text"
 
 export default {
   title: "RadioButton",

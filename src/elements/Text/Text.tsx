@@ -11,8 +11,6 @@ import styled from "styled-components/native"
 import {
   color,
   ColorProps,
-  fontSize,
-  FontSizeProps,
   LineHeightProps,
   space,
   SpaceProps,

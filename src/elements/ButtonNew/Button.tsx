@@ -83,9 +83,9 @@ export const Button = ({
   hitSlop,
   ...restProps
 }: ButtonProps) => {
-  const [disabled, setDisabled, disabledV] = useStateWithProp(!!disabledProp)
-  const [loading, setLoading, loadingV] = useStateWithProp(!!loadingProp)
-  const [pressed, setPressed, pressedV] = useStateWithProp(!!testOnly_pressed)
+  const [disabled, _setDisabled, _disabledV] = useStateWithProp(!!disabledProp)
+  const [loading, _setLoading, _loadingV] = useStateWithProp(!!loadingProp)
+  const [_pressed, setPressed, pressedV] = useStateWithProp(!!testOnly_pressed)
 
   const pressAnimationProgress = useSharedValue(0)
   useAnimatedReaction(

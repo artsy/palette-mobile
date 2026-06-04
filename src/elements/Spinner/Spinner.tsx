@@ -76,7 +76,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
     animationRef.current.start()
 
     return () => {
-      animationRef.current.stop()
+      animationRef.current?.stop()
     }
   }, [])
 
