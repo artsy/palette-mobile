@@ -14,7 +14,7 @@ const DARK_MODE_STORAGE_KEY = "dark-mode-mode"
 export const useDarkModeSwitcher: Decorator = (story) => {
   const [mode, setModeState] = useState<"light" | "dark" | "system">("system")
   const [systemMode, setSystemMode] = useState<"light" | "dark">(
-    Appearance.getColorScheme() ?? "light"
+    Appearance.getColorScheme() === "dark" ? "dark" : "light"
   )
 
   // Load initial value from AsyncStorage on mount
@@ -32,7 +32,7 @@ export const useDarkModeSwitcher: Decorator = (story) => {
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-      setSystemMode(colorScheme ?? "light")
+      setSystemMode(colorScheme === "dark" ? "dark" : "light")
     })
     return () => subscription.remove()
   }, [])

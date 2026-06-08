@@ -1,4 +1,3 @@
-import { Image } from "react-native"
 import Animated, {
   SharedValue,
   useAnimatedScrollHandler,
@@ -8,7 +7,6 @@ import Animated, {
 import { SafeAreaView } from "react-native-safe-area-context"
 import { SubTabBar } from "./SubTabBar"
 import { Tabs } from "./Tabs"
-import { useSpace } from "../../utils/hooks"
 import { Button } from "../Button"
 import { Flex } from "../Flex"
 import { Screen } from "../Screen"
@@ -254,7 +252,7 @@ const StickyView = ({ scrollY }: { scrollY: SharedValue<number> }) => {
   )
 }
 
-const randomColor = (index: number) => {
+const randomColor = () => {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`
 }
 
@@ -262,7 +260,7 @@ const LongContent = () => {
   return (
     <Flex>
       {Array.from({ length: 20 }).map((_, index) => (
-        <Flex key={index} style={{ height: 100, backgroundColor: randomColor(index) }} />
+        <Flex key={index} style={{ height: 100, backgroundColor: randomColor() }} />
       ))}
     </Flex>
   )

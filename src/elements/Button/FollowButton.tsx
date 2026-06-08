@@ -1,9 +1,7 @@
 import { CheckmarkIcon } from "@artsy/icons/native"
-import { DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE_SMALL } from "../../constants"
+import { DEFAULT_ICON_SIZE_SMALL } from "../../constants"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
-import { Flex } from "../Flex"
-import { Text } from "../Text"
 
 type FollowButtonProps = Omit<
   ButtonProps,

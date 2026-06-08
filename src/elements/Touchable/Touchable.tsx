@@ -8,7 +8,6 @@ import {
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import { DEFAULT_ACTIVE_OPACITY } from "../../constants"
 import { Color } from "../../types"
-import { useColor } from "../../utils/hooks/useColor"
 import { Flex } from "../Flex"
 
 interface ExtraTouchableProps {
@@ -32,11 +31,8 @@ export const Touchable: React.FC<TouchableProps> = ({
   haptic,
   noFeedback,
   onPress,
-  underlayColor,
   ...props
 }) => {
-  const color = useColor()
-
   const inner =
     React.Children.count(children) === 1 ? children : <Flex flex={flex}>{children}</Flex>
 

@@ -1,4 +1,4 @@
-import { MotiView, View } from "moti"
+import { MotiView } from "moti"
 import { Platform } from "react-native"
 import { useCurrentTabScrollY, useHeaderMeasurements } from "react-native-collapsible-tab-view"
 import { useAnimatedStyle } from "react-native-reanimated"

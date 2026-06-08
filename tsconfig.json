@@ -1,13 +1,15 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "baseUrl": "src",
     "rootDir": "src",
     "outDir": "dist",
     "allowImportingTsExtensions": false,
+    "allowSyntheticDefaultImports": true,
     "noEmit": false,
     "declaration": true,
+    "esModuleInterop": true,
     "jsx": "react-jsx", // This is for vscode not to suggest importing React, after react17.
+    "lib": ["ESNext"],
     "skipLibCheck": true,
     "types": ["jest"]
   },
