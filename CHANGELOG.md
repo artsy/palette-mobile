@@ -1,3 +1,15 @@
+# v24.0.0 (Mon Jun 08 2026)
+
+#### 💥  Breaking Change
+
+- build(deps): bump react native and expo to match eigen [#485](https://github.com/artsy/palette-mobile/pull/485) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v23.14.0 (Wed Jun 03 2026)
 
 #### 🚀  Enhancement
