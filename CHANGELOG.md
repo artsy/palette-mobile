@@ -1,3 +1,15 @@
+# v24.1.0 (Wed Jun 17 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): add babel preset expo dev dep [#488](https://github.com/artsy/palette-mobile/pull/488) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.0.0 (Mon Jun 08 2026)
 
 #### 💥  Breaking Change
