@@ -93,6 +93,7 @@
     "@typescript-eslint/parser": "^5.57.0",
     "auto": "10.38.5",
     "babel-jest": "29.6.3",
+    "babel-preset-expo": "55.0.22",
     "concurrently": "^7.6.0",
     "eslint": "8.33.0",
     "eslint-config-prettier": "8.6.0",

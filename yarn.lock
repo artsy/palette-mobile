@@ -66,6 +66,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^5.57.0"
     auto: "npm:10.38.5"
     babel-jest: "npm:29.6.3"
+    babel-preset-expo: "npm:55.0.22"
     concurrently: "npm:^7.6.0"
     eslint: "npm:8.33.0"
     eslint-config-prettier: "npm:8.6.0"
@@ -6285,7 +6286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-expo@npm:~55.0.22":
+"babel-preset-expo@npm:55.0.22, babel-preset-expo@npm:~55.0.22":
   version: 55.0.22
   resolution: "babel-preset-expo@npm:55.0.22"
   dependencies:
