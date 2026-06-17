@@ -1,3 +1,15 @@
+# v24.2.0 (Wed Jun 17 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump react-native-pager-view to latest [#492](https://github.com/artsy/palette-mobile/pull/492) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.1.0 (Wed Jun 17 2026)
 
 #### 🚀  Enhancement
