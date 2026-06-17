@@ -43,7 +43,6 @@
     "@artsy/palette-tokens": "7.0.0",
     "@react-spring/native": "10.0.3",
     "@styled-system/theme-get": "^5.1.2",
-    "babel-preset-expo": "~55.0.22",
     "events": "3.3.0",
     "react-nanny": "2.15.0",
     "react-native-popover-view": "^6.1.0"
@@ -94,6 +93,7 @@
     "@typescript-eslint/parser": "^5.57.0",
     "auto": "10.38.5",
     "babel-jest": "29.6.3",
+    "babel-preset-expo": "55.0.22",
     "concurrently": "^7.6.0",
     "eslint": "8.33.0",
     "eslint-config-prettier": "8.6.0",
