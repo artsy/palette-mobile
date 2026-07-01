@@ -97,6 +97,7 @@ export const Pill: React.FC<PillProps> = ({
 const Container = styled(MotiPressable)<MotiPressableProps & PillProps>`
   align-items: center;
   border: 1px solid ${themeGet("colors.mono15")};
+  padding-vertical: 5px;
   flex-direction: row;
   justify-content: center;
   text-align: center;
@@ -119,7 +120,7 @@ const Thumbnail = styled(Image)`
 const PILL_STATES = {
   default: css`
     border-radius: 15px;
-    height: ${PixelRatio.getFontScale() * 30}px;
+    min-height: ${PixelRatio.getFontScale() * 30}px;
     padding-horizontal: 15px;
   `,
   selected: css`
@@ -139,7 +140,7 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
     default: css`
       ${PILL_STATES.default}
       border-radius: 20px;
-      height: 40px;
+      min-height: 40px;
       border-color: ${themeGet("colors.mono60")};
     `,
   },
@@ -164,7 +165,7 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
       background-color: ${themeGet("colors.mono5")};
       border-color: ${themeGet("colors.mono5")};
       border-radius: 25px;
-      height: 50px;
+      min-height: 50px;
       padding: 0 ${themeGet("space.1")};
     `,
     selected: css`
@@ -190,7 +191,7 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
   filter: {
     ...PILL_STATES,
     default: css`
-      height: 30px;
+      min-height: 30px;
       padding: 0 ${themeGet("space.1")};
     `,
     disabled: css`
