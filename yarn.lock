@@ -119,6 +119,7 @@ __metadata:
     react-native-pager-view: "*"
     react-native-reanimated: "*"
     react-native-svg: "*"
+    react-native-worklets: "*"
     styled-components: ">= 5"
   languageName: unknown
   linkType: soft
