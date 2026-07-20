@@ -39,10 +39,10 @@
     "react-native-linear-gradient": "2.6.2",
     "react-native-pager-view": "7.0.1",
     "react-native-popover-view": "^6.1.0",
-    "react-native-reanimated": "4.2.1",
+    "react-native-reanimated": "4.3.2",
     "react-native-safe-area-context": "5.6.2",
     "react-native-svg": "15.15.3",
-    "react-native-worklets": "0.7.4",
+    "react-native-worklets": "0.8.3",
     "styled-components": "6.1.19"
   },
   "devDependencies": {
