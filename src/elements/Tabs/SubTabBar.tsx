@@ -1,5 +1,5 @@
 import { MotiView } from "moti"
-import { Platform } from "react-native"
+import { Platform, StyleProp, ViewStyle } from "react-native"
 import { useCurrentTabScrollY, useHeaderMeasurements } from "react-native-collapsible-tab-view"
 import { useAnimatedStyle } from "react-native-reanimated"
 import { useSpace } from "../../utils/hooks/useSpace"
@@ -40,5 +40,9 @@ export const SubTabBarIOS = ({ children }: React.PropsWithChildren<{}>) => {
     }
   }, [])
 
-  return <MotiView style={[style, { zIndex: 1, marginHorizontal: -space(2) }]}>{children}</MotiView>
+  return (
+    <MotiView style={[style, { zIndex: 1, marginHorizontal: -space(2) }] as StyleProp<ViewStyle>}>
+      {children}
+    </MotiView>
+  )
 }
