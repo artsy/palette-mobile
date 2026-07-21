@@ -1,3 +1,27 @@
+# v24.3.0 (Tue Jul 21 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): update reanimated and worklets [#496](https://github.com/artsy/palette-mobile/pull/496) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump @tootallnate/once from 2.0.0 to 2.0.1 [#483](https://github.com/artsy/palette-mobile/pull/483) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump addressable from 2.8.6 to 2.9.0 [#475](https://github.com/artsy/palette-mobile/pull/475) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump @xmldom/xmldom from 0.8.12 to 0.8.13 [#478](https://github.com/artsy/palette-mobile/pull/478) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump form-data from 4.0.4 to 4.0.6 [#489](https://github.com/artsy/palette-mobile/pull/489) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump ip-address from 10.0.1 to 10.2.0 [#480](https://github.com/artsy/palette-mobile/pull/480) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump tar from 7.5.11 to 7.5.16 [#490](https://github.com/artsy/palette-mobile/pull/490) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump concurrent-ruby from 1.3.3 to 1.3.7 [#493](https://github.com/artsy/palette-mobile/pull/493) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump js-yaml from 3.14.1 to 3.15.0 [#494](https://github.com/artsy/palette-mobile/pull/494) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.2.0 (Wed Jun 17 2026)
 
 #### 🚀  Enhancement
