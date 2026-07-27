@@ -41,7 +41,6 @@
   ],
   "dependencies": {
     "@artsy/palette-tokens": "7.0.0",
-    "@react-spring/native": "10.0.3",
     "@styled-system/theme-get": "^5.1.2",
     "events": "3.3.0",
     "react-nanny": "2.15.0",

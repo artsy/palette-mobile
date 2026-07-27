@@ -1,4 +1,4 @@
-import { TextProps, Text } from "../Text"
+import { Text, TextProps } from "../Text"
 import { Touchable } from "../Touchable"
 
 export const LinkButton = (props: TextProps) => (

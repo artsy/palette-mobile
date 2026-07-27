@@ -2,6 +2,7 @@ import { CheckmarkIcon } from "@artsy/icons/native"
 import { DEFAULT_ICON_SIZE_SMALL } from "../../constants"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
+import { Text } from "../Text"
 
 type FollowButtonProps = Omit<
   ButtonProps,
@@ -19,17 +20,21 @@ export const FollowButton = ({
   loading,
   ...restProps
 }: FollowButtonProps) => {
-  const followText = isFollowed ? "Following" : "Follow"
-  const followCountText =
-    !!followCount && followCount > 1 ? " " + formatLargeNumber(followCount, 1) : ""
+  const getLongestText = () => {
+    if (longestText) {
+      return longestText
+    }
 
-  const text = followText + followCountText
+    return `Following${
+      !!followCount && followCount > 1 ? " " + formatLargeNumber(followCount, 1) : ""
+    }`
+  }
 
   return (
     <Button
       variant={isFollowed ? "outline" : "outlineGray"}
       size="small"
-      longestText={longestText ? longestText : "Following"}
+      longestText={getLongestText()}
       icon={
         isFollowed &&
         !loading && (
@@ -43,7 +48,16 @@ export const FollowButton = ({
       loading={loading}
       {...restProps}
     >
-      {!loading && text}
+      {!loading && (
+        <>
+          <Text variant="xs">{isFollowed ? "Following" : "Follow"}</Text>
+          {!!followCount && followCount > 1 && (
+            <Text variant="xs" color="mono60">
+              {" " + formatLargeNumber(followCount, 1)}
+            </Text>
+          )}
+        </>
+      )}
     </Button>
   )
 }

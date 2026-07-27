@@ -50,7 +50,6 @@ __metadata:
     "@d11/react-native-fast-image": "npm:8.13.0"
     "@react-native-async-storage/async-storage": "npm:2.2.0"
     "@react-native/eslint-config": "npm:0.83.6"
-    "@react-spring/native": "npm:10.0.3"
     "@shopify/flash-list": "npm:2.2.2"
     "@storybook/react": "npm:8.6.14"
     "@styled-system/theme-get": "npm:^5.1.2"
@@ -4427,72 +4426,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/ae6e3d861182421e9a08896ed7cf01e5b2dc00151cd93ed8b89ae1ac0af82f02c617e0a2df2572aa3a571f89607506f2b632f7650e4da6e8176edfdd79f9dbc4
-  languageName: node
-  linkType: hard
-
-"@react-spring/animated@npm:~10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/animated@npm:10.0.3"
-  dependencies:
-    "@react-spring/shared": "npm:~10.0.3"
-    "@react-spring/types": "npm:~10.0.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/6142522f310926729a92009a108ec1bd0d1fe3dca7e9aa0c49692c82fbed28f70c0ea9808fc7452f04bb688ae34333e780f794495906fa4b0efbfc7d53a19b6b
-  languageName: node
-  linkType: hard
-
-"@react-spring/core@npm:~10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/core@npm:10.0.3"
-  dependencies:
-    "@react-spring/animated": "npm:~10.0.3"
-    "@react-spring/shared": "npm:~10.0.3"
-    "@react-spring/types": "npm:~10.0.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/d941541d4a40a5229f488e78b414149d54238065178fdd14db307a851d285d521ab1914c0d426b102e0190651dbe752aeb743cee4cd497f5c066be937f2d1790
-  languageName: node
-  linkType: hard
-
-"@react-spring/native@npm:10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/native@npm:10.0.3"
-  dependencies:
-    "@react-spring/animated": "npm:~10.0.3"
-    "@react-spring/core": "npm:~10.0.3"
-    "@react-spring/shared": "npm:~10.0.3"
-    "@react-spring/types": "npm:~10.0.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-native: ">=0.78"
-  checksum: 10c0/20a7ca49941f0f00eae11ef775d14bf02af4ba5e825de65a88fbb004ec43ae36fa0567e9bbc54e0be093e4044cdb60b461eeb64c4a7886cf38332dc77a108e5a
-  languageName: node
-  linkType: hard
-
-"@react-spring/rafz@npm:~10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/rafz@npm:10.0.3"
-  checksum: 10c0/4cf6f710e2be64a3d94e90a20a24a93c68a89b618538d32aaf0079217f9fbed610395051a181d2d010c7ed6898cb7239a3f2ced1d91dd93e4138563ffd2d44ce
-  languageName: node
-  linkType: hard
-
-"@react-spring/shared@npm:~10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/shared@npm:10.0.3"
-  dependencies:
-    "@react-spring/rafz": "npm:~10.0.3"
-    "@react-spring/types": "npm:~10.0.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/d8b33b2390792924d0ff2b57b3098d1c6b688a788fc67e83b168928659aad7435dd2c399925a765ffa5080182634dde8f9f76c919f2c259a33af15319187f72f
-  languageName: node
-  linkType: hard
-
-"@react-spring/types@npm:~10.0.3":
-  version: 10.0.3
-  resolution: "@react-spring/types@npm:10.0.3"
-  checksum: 10c0/f9bc2619dc9997fe93ebab90fd98118106e53bc45c9c279caaa7081b69d3ed0186d603d5ed445e56bb8ad0075553d15908a2a54e3a0a36ef7cd43a03c1650b02
   languageName: node
   linkType: hard
 
