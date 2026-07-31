@@ -1,3 +1,20 @@
+# v24.4.0 (Fri Jul 31 2026)
+
+#### 🚀  Enhancement
+
+- fix(DI-498): onboarding pill scales with accessibility font size [#503](https://github.com/artsy/palette-mobile/pull/503) ([@iskounen](https://github.com/iskounen))
+
+#### 🏠  Internal
+
+- build(deps): bump tar from 7.5.16 to 7.5.20 [#499](https://github.com/artsy/palette-mobile/pull/499) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v24.3.0 (Tue Jul 21 2026)
 
 #### 🚀  Enhancement
