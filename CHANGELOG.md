@@ -1,3 +1,15 @@
+# v24.5.0 (Fri Jul 31 2026)
+
+#### 🚀  Enhancement
+
+- fix(DI-498): split onboarding pill into new option variant, left-align text [#504](https://github.com/artsy/palette-mobile/pull/504) ([@iskounen](https://github.com/iskounen))
+
+#### Authors: 1
+
+- Adam Iskounen ([@iskounen](https://github.com/iskounen))
+
+---
+
 # v24.4.0 (Fri Jul 31 2026)
 
 #### 🚀  Enhancement
