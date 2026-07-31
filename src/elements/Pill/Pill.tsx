@@ -2,7 +2,7 @@ import { CloseIcon, IconProps } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import { PixelRatio, Platform } from "react-native"
 import styled, { RuleSet, css } from "styled-components"
 import { Flex, FlexProps } from "../Flex"
@@ -17,6 +17,7 @@ export const PILL_VARIANT_NAMES = [
   "profile",
   "search",
   "onboarding",
+  "option",
   "link",
 ] as const
 export type PillState = "default" | "selected" | "disabled"
@@ -27,6 +28,7 @@ export type PillProps = (FlexProps & {
   disabled?: boolean
   Icon?: React.FC<IconProps>
   onPress?: MotiPressableProps["onPress"]
+  color?: Color
 }) &
   (
     | {
@@ -44,13 +46,13 @@ export const Pill: React.FC<PillProps> = ({
   Icon,
   children,
   onPress,
+  color: colorOverride,
   ...rest
 }) => {
   const stateString = selected ? "selected" : disabled ? "disabled" : "default"
-  const color = TEXT_COLOR[variant][stateString]
+  const color = colorOverride ?? TEXT_COLOR[variant][stateString]
   const showCloseIcon =
     (variant === "filter" && !disabled) || (["profile"].includes(variant) && selected)
-  const [isMultiline, setIsMultiline] = useState(false)
 
   return (
     <Flex {...rest}>
@@ -81,12 +83,7 @@ export const Pill: React.FC<PillProps> = ({
         <Text
           variant="xs"
           color={color}
-          textAlign={variant === "onboarding" ? (isMultiline ? "left" : "center") : undefined}
-          onTextLayout={
-            variant === "onboarding"
-              ? (event) => setIsMultiline(event.nativeEvent.lines.length > 1)
-              : undefined
-          }
+          textAlign={variant === "option" ? "left" : undefined}
           style={Platform.select({
             android: { lineHeight: undefined },
             default: {},
@@ -142,6 +139,15 @@ const PILL_STATES = {
 const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
   default: PILL_STATES,
   onboarding: {
+    ...PILL_STATES,
+    default: css`
+      ${PILL_STATES.default}
+      border-radius: 20px;
+      height: 40px;
+      border-color: ${themeGet("colors.mono60")};
+    `,
+  },
+  option: {
     ...PILL_STATES,
     default: css`
       border-radius: 20px;
@@ -223,6 +229,7 @@ const defaultColors: Record<PillState, Color> = {
 const TEXT_COLOR: Record<PillVariant, Record<PillState, Color>> = {
   default: defaultColors,
   onboarding: defaultColors,
+  option: defaultColors,
   dotted: {
     ...defaultColors,
     selected: "mono100",

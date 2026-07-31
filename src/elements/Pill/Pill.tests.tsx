@@ -32,33 +32,51 @@ describe("Pill", () => {
     expect(onPress).not.toHaveBeenCalled()
   })
 
-  it("switches the onboarding variant's text alignment from center to left once it wraps to multiple lines", () => {
+  it("left-aligns the option variant's text", () => {
     render(
       <Theme>
-        <Pill variant="onboarding">Some label</Pill>
+        <Pill variant="option">Some label</Pill>
       </Theme>
     )
-
-    expect(StyleSheet.flatten(screen.getByText("Some label").props.style).textAlign).toBe("center")
-
-    fireEvent(screen.getByText("Some label"), "textLayout", {
-      nativeEvent: { lines: [{}, {}] },
-    })
 
     expect(StyleSheet.flatten(screen.getByText("Some label").props.style).textAlign).toBe("left")
   })
 
-  it("leaves other variants' text alignment untouched regardless of line count", () => {
+  it("leaves other variants' text alignment untouched, including onboarding", () => {
     render(
       <Theme>
-        <Pill variant="default">Some label</Pill>
+        <>
+          <Pill variant="default">Some label</Pill>
+          <Pill variant="onboarding">Some other label</Pill>
+        </>
       </Theme>
     )
 
-    fireEvent(screen.getByText("Some label"), "textLayout", {
-      nativeEvent: { lines: [{}, {}] },
-    })
-
     expect(StyleSheet.flatten(screen.getByText("Some label").props.style).textAlign).toBeUndefined()
+    expect(
+      StyleSheet.flatten(screen.getByText("Some other label").props.style).textAlign
+    ).toBeUndefined()
+  })
+
+  it("uses the default per-state color when no color override is passed", () => {
+    render(
+      <Theme>
+        <Pill variant="option">Some label</Pill>
+      </Theme>
+    )
+
+    expect(StyleSheet.flatten(screen.getByText("Some label").props.style).color).toBe("#000000")
+  })
+
+  it("lets a color override win over the default per-state color", () => {
+    render(
+      <Theme>
+        <Pill variant="option" color="mono0">
+          Some label
+        </Pill>
+      </Theme>
+    )
+
+    expect(StyleSheet.flatten(screen.getByText("Some label").props.style).color).toBe("#FFFFFF")
   })
 })
