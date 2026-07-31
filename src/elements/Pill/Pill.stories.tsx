@@ -121,6 +121,21 @@ export const Onboarding = () => {
   )
 }
 
+export const Option = () => {
+  return (
+    <List contentContainerStyle={{ marginHorizontal: 20, gap: 1 }}>
+      <Flex backgroundColor="mono100" p={2} gap={1}>
+        <Pill variant="option" selected color="mono0">
+          Yes, I love collecting art
+        </Pill>
+        <Pill variant="option" color="mono0">
+          No, I'm just starting out
+        </Pill>
+      </Flex>
+    </List>
+  )
+}
+
 export const Link = () => {
   return (
     <List contentContainerStyle={{ marginHorizontal: 20 }}>
