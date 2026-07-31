@@ -2,7 +2,7 @@ import { CloseIcon, IconProps } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
 import { MotiPressable, MotiPressableProps } from "moti/interactions"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import { PixelRatio, Platform } from "react-native"
 import styled, { RuleSet, css } from "styled-components"
 import { Flex, FlexProps } from "../Flex"
@@ -50,6 +50,7 @@ export const Pill: React.FC<PillProps> = ({
   const color = TEXT_COLOR[variant][stateString]
   const showCloseIcon =
     (variant === "filter" && !disabled) || (["profile"].includes(variant) && selected)
+  const [isMultiline, setIsMultiline] = useState(false)
 
   return (
     <Flex {...rest}>
@@ -80,6 +81,12 @@ export const Pill: React.FC<PillProps> = ({
         <Text
           variant="xs"
           color={color}
+          textAlign={variant === "onboarding" ? (isMultiline ? "left" : "center") : undefined}
+          onTextLayout={
+            variant === "onboarding"
+              ? (event) => setIsMultiline(event.nativeEvent.lines.length > 1)
+              : undefined
+          }
           style={Platform.select({
             android: { lineHeight: undefined },
             default: {},
@@ -137,9 +144,9 @@ const PILL_VARIANTS: Record<PillVariant, Record<PillState, RuleSet>> = {
   onboarding: {
     ...PILL_STATES,
     default: css`
-      ${PILL_STATES.default}
       border-radius: 20px;
-      height: 40px;
+      padding-horizontal: 15px;
+      padding-vertical: 10px;
       border-color: ${themeGet("colors.mono60")};
     `,
   },
