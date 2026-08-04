@@ -1,3 +1,24 @@
+# v24.6.0 (Tue Aug 04 2026)
+
+#### 🚀  Enhancement
+
+- chore(deps): resolve high-severity Dependabot alerts via yarn up -R [#506](https://github.com/artsy/palette-mobile/pull/506) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump brace-expansion from 1.1.12 to 1.1.16 [#498](https://github.com/artsy/palette-mobile/pull/498) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump tar from 7.5.20 to 7.5.22 [#500](https://github.com/artsy/palette-mobile/pull/500) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump ws from 7.5.10 to 7.5.13 [#501](https://github.com/artsy/palette-mobile/pull/501) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump ip-address from 10.2.0 to 10.4.0 [#505](https://github.com/artsy/palette-mobile/pull/505) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump shell-quote from 1.8.3 to 1.10.0 [#497](https://github.com/artsy/palette-mobile/pull/497) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.5.0 (Fri Jul 31 2026)
 
 #### 🚀  Enhancement
