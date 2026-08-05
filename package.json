@@ -64,6 +64,11 @@
     "react-native-worklets": "*",
     "styled-components": ">= 5"
   },
+  "resolutions": {
+    "//": "postcss/tmp pinned here because transitive deps (styled-components/external-editor) pin vulnerable exact versions that `yarn up` can't override. See GHSA-ph9p-34f9-6g65, GHSA-7fh5-64p2-3v2j, GHSA-hh27-ffr2-p9jv.",
+    "postcss": "^8.5.18",
+    "tmp": "^0.2.6"
+  },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
     "@artsy/icons": "3.67.0",
