@@ -1,3 +1,15 @@
+# v24.7.0 (Wed Aug 05 2026)
+
+#### 🚀  Enhancement
+
+- chore(deps): resolve postcss and tmp Dependabot alerts via resolutions [#508](https://github.com/artsy/palette-mobile/pull/508) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.6.0 (Tue Aug 04 2026)
 
 #### 🚀  Enhancement
