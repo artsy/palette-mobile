@@ -35,10 +35,11 @@
     "test": "jest --maxWorkers=2",
     "type-check": "tsc --noEmit"
   },
-  "dependenciesComments": [
-    "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.",
-    "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW."
-  ],
+  "dependenciesComments": {
+    "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.": "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW.",
+    "tmp": "Pinned to 0.2.7 to fix GHSA-ph9p-34f9-6g65 (arbitrary file/directory write via symlink). @artsy/update-repo@0.8.2 (latest) exact-pins tmp@^0.1.0 with no patched release on that line; remove this once @artsy/update-repo bumps its tmp dependency upstream.",
+    "postcss": "Pinned to fix GHSA-6g55-p6wh-862q and GHSA-r28c-9q8g-f849 (path traversal / arbitrary file disclosure via sourceMappingURL). expo (via @expo/metro-config@55.0.21) exact-pins postcss@~8.4.32, and styled-components@6.1.19 exact-pins postcss@8.4.49, neither of which is patched; remove this once expo/styled-components bump their postcss dependency upstream."
+  },
   "dependencies": {
     "@artsy/palette-tokens": "7.0.0",
     "@react-spring/native": "10.0.3",
@@ -63,6 +64,10 @@
     "react-native-svg": "*",
     "react-native-worklets": "*",
     "styled-components": ">= 5"
+  },
+  "resolutions": {
+    "postcss": "^8.5.18",
+    "tmp": "^0.2.6"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
