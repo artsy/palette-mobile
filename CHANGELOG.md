@@ -1,3 +1,15 @@
+# v24.8.0 (Thu Aug 13 2026)
+
+#### 🚀  Enhancement
+
+- build(ci): remove stale ninja dep from ci [#510](https://github.com/artsy/palette-mobile/pull/510) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.7.0 (Wed Aug 05 2026)
 
 #### 🚀  Enhancement
