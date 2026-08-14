@@ -1,3 +1,21 @@
+# v24.9.0 (Fri Aug 14 2026)
+
+#### 🚀  Enhancement
+
+- build(ci): bump android docker image [#512](https://github.com/artsy/palette-mobile/pull/512) ([@gkartalis](https://github.com/gkartalis))
+- fix(Revert): "build(ci): remove stale ninja dep from ci" [#511](https://github.com/artsy/palette-mobile/pull/511) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump nanoid from 3.3.11 to 3.3.18 [#509](https://github.com/artsy/palette-mobile/pull/509) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.8.0 (Thu Aug 13 2026)
 
 #### 🚀  Enhancement
