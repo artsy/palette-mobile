@@ -37,7 +37,7 @@ jobs:
 
   build-android:
     docker:
-      - image: cimg/android:2023.12.1-node
+      - image: cimg/android:2026.02.1-node
     steps:
       - checkout
       - run:
