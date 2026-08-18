@@ -16,6 +16,11 @@ export interface ImageProps extends CustomFastImageProps {
   aspectRatio?: number
   /** BlurHash code */
   blurhash?: string | null | undefined
+  /**
+   * Decode the blurhash placeholder on a background thread instead of the main thread.
+   * Defaults to true.
+   */
+  blurhashDecodeAsync?: boolean
   /** Gemini resize_to param  */
   geminiResizeMode?: GeminiResizeMode
   /** Resize on the fly using Gemini. Defaults to true */
@@ -42,6 +47,7 @@ export const Image: React.FC<ImageProps> = memo(
     geminiResizeMode,
     showLoadingState = false,
     blurhash,
+    blurhashDecodeAsync = true,
     ...flexProps
   }) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -77,6 +83,7 @@ export const Image: React.FC<ImageProps> = memo(
             <ImageSkeleton
               dimensions={dimensions}
               blurhash={blurhash}
+              blurhashDecodeAsync={blurhashDecodeAsync}
               style={{ position: "absolute" }}
             />
           </Flex>
@@ -115,10 +122,17 @@ const useImageDimensions = (props: Pick<ImageProps, "aspectRatio" | "width" | "h
 type ImageSkeletonProps = {
   dimensions: { width: number; height: number }
   blurhash?: string | null | undefined
+  /** See `blurhashDecodeAsync` on `ImageProps`. Defaults to true. */
+  blurhashDecodeAsync?: boolean
   style?: StyleProp<ViewStyle>
 }
 
-export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurhash, style }) => {
+export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({
+  dimensions,
+  blurhash,
+  blurhashDecodeAsync = true,
+  style,
+}) => {
   if (!!blurhash) {
     return (
       <Flex backgroundColor="mono10" {...dimensions} style={style}>
@@ -127,7 +141,7 @@ export const ImageSkeleton: React.FC<ImageSkeletonProps> = ({ dimensions, blurha
           style={{ flex: 1 }}
           decodeWidth={16}
           decodeHeight={16}
-          decodeAsync
+          decodeAsync={blurhashDecodeAsync}
         />
       </Flex>
     )
