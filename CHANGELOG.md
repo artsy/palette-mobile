@@ -1,3 +1,15 @@
+# v24.10.0 (Tue Aug 18 2026)
+
+#### 🚀  Enhancement
+
+- feat: expose decodeasync blurhash prop [#513](https://github.com/artsy/palette-mobile/pull/513) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.9.0 (Fri Aug 14 2026)
 
 #### 🚀  Enhancement
