@@ -1,3 +1,15 @@
+# v24.11.0 (Thu Aug 20 2026)
+
+#### 🚀  Enhancement
+
+- fix: small button padding and size shrinking [#514](https://github.com/artsy/palette-mobile/pull/514) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v24.10.0 (Tue Aug 18 2026)
 
 #### 🚀  Enhancement
