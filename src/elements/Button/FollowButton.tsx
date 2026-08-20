@@ -1,4 +1,5 @@
 import { CheckmarkIcon } from "@artsy/icons/native"
+import { useMemo } from "react"
 import { DEFAULT_ICON_SIZE_SMALL } from "../../constants"
 import { formatLargeNumber } from "../../utils/formatLargeNumber"
 import { Button, ButtonProps } from "../Button"
@@ -17,9 +18,16 @@ export const FollowButton = ({
   followCount,
   longestText,
   loading,
+  followText: followTextProp,
   ...restProps
 }: FollowButtonProps) => {
-  const followText = isFollowed ? "Following" : "Follow"
+  const followText = useMemo(() => {
+    if (followTextProp) {
+      return followTextProp
+    }
+    return isFollowed ? "Following" : "Follow"
+  }, [followTextProp, isFollowed])
+
   const followCountText =
     !!followCount && followCount > 1 ? " " + formatLargeNumber(followCount, 1) : ""
 

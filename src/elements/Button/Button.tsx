@@ -11,7 +11,7 @@ import {
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
-import { useColor } from "../../utils/hooks"
+import { useColor, useSpace } from "../../utils/hooks"
 import { isTestEnvironment } from "../../utils/tests/isTestEnvironment"
 import { Box, BoxProps } from "../Box"
 import { Flex } from "../Flex/Flex"
@@ -64,6 +64,8 @@ export interface ButtonProps extends BoxProps {
   testOnly_state?: DisplayState
 
   textVariant?: TextVariant
+
+  followText?: string
 }
 
 enum DisplayState {
@@ -92,6 +94,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const textVariantBySize = size === "small" ? "xs" : "sm"
   const textStyle = { fontSize: useTextStyleForPalette(textVariant ?? textVariantBySize).fontSize }
+  const space = useSpace()
 
   const [innerDisplayState, setInnerDisplayState] = useState(DisplayState.Enabled)
 
@@ -105,13 +108,13 @@ export const Button: React.FC<ButtonProps> = ({
     (loading // if we have loading or disabled in props, they are used
       ? DisplayState.Loading
       : disabled
-      ? DisplayState.Disabled
-      : innerDisplayState) // otherwise use the inner state for pressed or enabled
+        ? DisplayState.Disabled
+        : innerDisplayState) // otherwise use the inner state for pressed or enabled
 
   const getSize = (): { height: number; mx: SpacingUnit } => {
     switch (size) {
       case "small":
-        return { height: 30 * PixelRatio.getFontScale(), mx: "15px" }
+        return { height: 30 * PixelRatio.getFontScale(), mx: "10px" }
       case "large":
         return { height: 50 * PixelRatio.getFontScale(), mx: "30px" }
     }
@@ -181,6 +184,9 @@ export const Button: React.FC<ButtonProps> = ({
                 backgroundColor: springProps.backgroundColor,
                 borderColor: springProps.borderColor,
                 height: containerSize.height,
+                // This is needed to make sure that button doesn't push content around its content changes to longestText
+                // Here, we are factoring in the padding from the container
+                minWidth: longestTextMeasurements.width + space(2),
               }}
             >
               <Flex mx={containerSize.mx}>
