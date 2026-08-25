@@ -1,3 +1,15 @@
+# v24.12.0 (Tue Aug 25 2026)
+
+#### 🚀  Enhancement
+
+- chore: city guide button improvements [#515](https://github.com/artsy/palette-mobile/pull/515) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v24.11.0 (Thu Aug 20 2026)
 
 #### 🚀  Enhancement
