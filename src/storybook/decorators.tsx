@@ -5,7 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context"
 import { Theme } from "../Theme"
 import { Flex, Pill, Text } from "../elements"
 import { ScreenDimensionsProvider } from "../utils/hooks"
-import type { Decorator } from "@storybook/react"
+import type { Decorator } from "@storybook/react-native"
 
 export const withTheme: Decorator = (story) => <Theme theme="v3light">{story()}</Theme>
 
