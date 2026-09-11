@@ -7,11 +7,6 @@
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "splash": {
-      "image": "./assets/icons/app_icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
       "bundleIdentifier": "net.artsy.palette-mobile",
       "supportsTablet": true,
