@@ -6,7 +6,7 @@ import { Wrap } from "../../utils/Wrap"
 import { NoUndefined } from "../../utils/types"
 import { Flex } from "../Flex"
 import { LinkText } from "../Text"
-import type { StoryObj } from "@storybook/react"
+import type { StoryObj } from "@storybook/react-native"
 
 const sizes: Array<NoUndefined<ButtonProps["size"]>> = ["small", "large"]
 const variants: Array<NoUndefined<ButtonProps["variant"]>> = [
