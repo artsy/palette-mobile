@@ -18,7 +18,7 @@ executor:
 jobs:
   build-ios:
     macos:
-      xcode: 26.2
+      xcode: 26.4.1
       resource_class: m4pro.medium
     steps:
       - checkout
@@ -33,7 +33,7 @@ jobs:
       - run: yarn ios:prebuild
       - run:
           name: Build iOS App
-          command: cd Example/ios && xcodebuild build -workspace PaletteMobile.xcworkspace -scheme PaletteMobile -destination 'platform=iOS Simulator,name=iPhone 15'
+          command: cd Example/ios && xcodebuild build -workspace PaletteMobile.xcworkspace -scheme PaletteMobile -destination 'platform=iOS Simulator,name=iPhone 17 Pro'
 
   build-android:
     docker:
