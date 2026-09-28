@@ -60,7 +60,7 @@ export const Dialog = (props: DialogProps) => {
   const backdrop = (
     <Animated.View
       style={[
-        StyleSheet.absoluteFillObject,
+        StyleSheet.absoluteFill,
         { opacity: value, backgroundColor: "rgba(194,194,194,0.5)" },
       ]}
     />

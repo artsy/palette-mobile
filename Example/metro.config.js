@@ -1,5 +1,5 @@
 const path = require("path")
-const withStorybook = require("@storybook/react-native/metro/withStorybook")
+const { withStorybook } = require("@storybook/react-native/metro/withStorybook")
 const { getDefaultConfig } = require("expo/metro-config")
 
 const projectRoot = __dirname
@@ -23,6 +23,5 @@ defaultConfig.resolver.extraNodeModules = {
 
 module.exports = withStorybook(defaultConfig, {
   enabled: true,
-  configPath: path.resolve(__dirname, "./.storybook"),
-  useJs: true,
+  configPath: path.resolve(__dirname, "./.rnstorybook"),
 })

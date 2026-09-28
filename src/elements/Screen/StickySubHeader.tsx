@@ -18,7 +18,11 @@ export interface StickySubHeaderProps extends React.PropsWithChildren<{}> {
   Component?: React.ReactNode
 }
 
-export const STICKY_BAR_HEIGHT = 42
+// Read by the `animatedStyles` worklet below, so it needs a module-local binding: reading the
+// exported one compiles to `exports.STICKY_BAR_HEIGHT` and captures the whole `exports` object
+// into the worklet closure.
+const STICKY_BAR_HEIGHT_VALUE = 42
+export const STICKY_BAR_HEIGHT = STICKY_BAR_HEIGHT_VALUE
 export const DEFAULT_SEPARATOR_COMPONENT = <Separator borderColor="mono5" />
 export const BOTTOM_TABS_HEIGHT = 65
 
@@ -53,14 +57,17 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      height: withTiming(visible.value ? stickyBarHeight || STICKY_BAR_HEIGHT : 0, {
+      height: withTiming(visible.value ? stickyBarHeight || STICKY_BAR_HEIGHT_VALUE : 0, {
         duration: 200,
       }),
       transform: [
         {
-          translateY: withTiming(visible.value ? 0 : -(stickyBarHeight || STICKY_BAR_HEIGHT), {
-            duration: 100,
-          }),
+          translateY: withTiming(
+            visible.value ? 0 : -(stickyBarHeight || STICKY_BAR_HEIGHT_VALUE),
+            {
+              duration: 100,
+            }
+          ),
         },
       ],
     }

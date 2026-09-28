@@ -1,5 +1,3 @@
-import { EventEmitter } from "events"
-
 import { CloseFillIcon, HideIcon, ShowIcon, TriangleDownIcon } from "@artsy/icons/native"
 import { THEME } from "@artsy/palette-tokens"
 import themeGet from "@styled-system/theme-get"
@@ -33,6 +31,7 @@ import {
   getInputVariant,
   getInputVariants,
 } from "./helpers"
+import { inputEvents } from "./inputEvents"
 import { maskValue, unmaskText } from "./maskValue"
 import { useTheme } from "../../utils/hooks"
 import { useMeasure } from "../../utils/hooks/useMeasure"
@@ -40,12 +39,6 @@ import { Flex } from "../Flex"
 import { Spinner } from "../Spinner"
 import { Text } from "../Text"
 import { Touchable } from "../Touchable"
-
-export const inputEvents = new EventEmitter()
-
-export const emitInputClearEvent = () => {
-  inputEvents.emit("clear")
-}
 
 export interface InputProps extends Omit<TextInputProps, "placeholder" | "onChangeText"> {
   addClearListener?: boolean
@@ -131,7 +124,12 @@ export type InputComponentProps =
   | InputPropsWithClearButton
   | InputPropsWithNeither
 
-export const HORIZONTAL_PADDING = 15
+// `HORIZONTAL_PADDING_VALUE` is read by the `labelAnimatedStyles` worklet below. Worklets must
+// reference a module-local binding rather than the exported one: a read of an exported binding
+// compiles to `exports.HORIZONTAL_PADDING`, which makes Reanimated capture the whole `exports`
+// object into the closure instead of just this number.
+const HORIZONTAL_PADDING_VALUE = 15
+export const HORIZONTAL_PADDING = HORIZONTAL_PADDING_VALUE
 export const INPUT_BORDER_RADIUS = 4
 export const INPUT_MIN_HEIGHT = 56
 export const MULTILINE_INPUT_MIN_HEIGHT = 110
@@ -363,7 +361,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
       const marginLeft =
         textInputPaddingLeft && !focused && !hasValue
           ? textInputPaddingLeft - 3
-          : HORIZONTAL_PADDING
+          : HORIZONTAL_PADDING_VALUE
 
       return {
         color: withTiming(inputVariants[variant][animatedState.get()].labelColor),

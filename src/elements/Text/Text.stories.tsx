@@ -3,7 +3,7 @@ import { DataList, List } from "../../storybook/helpers"
 import { Box } from "../Box"
 import { Flex } from "../Flex"
 import { LinkText, Text, TextProps } from "../Text"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-native"
 
 const meta: Meta<typeof Text> = {
   title: "Theme/Text",

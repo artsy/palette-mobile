@@ -1,7 +1,7 @@
 module.exports = {
   cacheDirectory: ".cache/jest",
   moduleFileExtensions: ["ts", "tsx", "js"],
-  preset: "react-native",
+  preset: "@react-native/jest-preset",
   rootDir: ".",
   setupFilesAfterEnv: ["jest-extended", "./src/setupJest.ts"],
   testMatch: ["<rootDir>/src/**/*.tests.(ts|tsx|js)"],
