@@ -1,3 +1,21 @@
+# v24.13.0 (Mon Sep 28 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): bump expo to 57 and react native to 0.86 [#520](https://github.com/artsy/palette-mobile/pull/520) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump @xmldom/xmldom from 0.8.13 to 0.8.15 [#516](https://github.com/artsy/palette-mobile/pull/516) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump baseline-browser-mapping from 2.10.33 to 2.11.21 [#518](https://github.com/artsy/palette-mobile/pull/518) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.12.0 (Tue Aug 25 2026)
 
 #### 🚀  Enhancement
