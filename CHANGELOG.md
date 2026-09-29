@@ -1,3 +1,15 @@
+# v24.14.0 (Tue Sep 29 2026)
+
+#### 🚀  Enhancement
+
+- fix: Layout issues on tabsWithHeader component [#521](https://github.com/artsy/palette-mobile/pull/521) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.13.0 (Mon Sep 28 2026)
 
 #### 🚀  Enhancement
