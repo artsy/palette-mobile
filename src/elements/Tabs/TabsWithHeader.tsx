@@ -38,9 +38,7 @@ export const TabsWithHeader: React.FC<TabsWithHeaderProps> = ({
   )
 }
 
-const Content: React.FC<
-  Omit<TabsWithHeaderProps, "hideScreen" | "headerProps"> & { allowHeaderOverscroll?: boolean }
-> = ({
+const Content: React.FC<Omit<TabsWithHeaderProps, "hideScreen" | "headerProps">> = ({
   BelowTitleHeaderComponent,
   children,
   showLargeHeaderText = true,
