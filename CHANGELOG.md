@@ -1,3 +1,21 @@
+# v24.15.0 (Tue Sep 29 2026)
+
+#### 🚀  Enhancement
+
+- chore: remove redundant allowHeaderOverscroll type on TabsWithHeader [#522](https://github.com/artsy/palette-mobile/pull/522) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump browserslist from 4.26.2 to 4.29.2 [#517](https://github.com/artsy/palette-mobile/pull/517) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump js-yaml from 3.15.1 to 3.15.2 [#519](https://github.com/artsy/palette-mobile/pull/519) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.14.0 (Tue Sep 29 2026)
 
 #### 🚀  Enhancement
