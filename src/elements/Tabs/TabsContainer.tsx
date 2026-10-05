@@ -80,6 +80,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
   stickyTabBarComponent,
   tabScrollEnabled = false,
   variant = "tabs",
+  allowHeaderOverscroll = true,
   ...tabContainerProps
 }) => {
   const space = useSpace()
@@ -165,6 +166,7 @@ export const TabsContainer: React.FC<TabsContainerProps> = ({
           </>
         )
       }}
+      allowHeaderOverscroll={allowHeaderOverscroll}
       {...tabContainerProps}
     >
       {children}

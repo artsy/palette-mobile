@@ -43,14 +43,12 @@ const Content: React.FC<Omit<TabsWithHeaderProps, "hideScreen" | "headerProps">>
   children,
   showLargeHeaderText = true,
   title,
-  allowHeaderOverscroll = true,
   ...rest
 }) => {
   const showTitle = showLargeHeaderText && !!title
 
   return (
     <TabsContainer
-      allowHeaderOverscroll={allowHeaderOverscroll}
       {...rest}
       renderHeader={() => {
         return (
