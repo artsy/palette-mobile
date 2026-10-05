@@ -1,3 +1,20 @@
+# v24.16.0 (Mon Oct 05 2026)
+
+#### 🚀  Enhancement
+
+- fix(Popover): avoid double status bar offset on Android edge-to-edge [#524](https://github.com/artsy/palette-mobile/pull/524) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump ip-address from 10.4.0 to 10.7.2 [#523](https://github.com/artsy/palette-mobile/pull/523) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.15.0 (Tue Sep 29 2026)
 
 #### 🚀  Enhancement
