@@ -1,3 +1,15 @@
+# v24.17.0 (Mon Oct 05 2026)
+
+#### 🚀  Enhancement
+
+- fix: hidden tabs content [#525](https://github.com/artsy/palette-mobile/pull/525) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.16.0 (Mon Oct 05 2026)
 
 #### 🚀  Enhancement
