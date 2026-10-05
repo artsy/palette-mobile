@@ -1,12 +1,16 @@
 import { CloseIcon } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens"
-import { ViewStyle } from "react-native"
+import { Platform, ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
 import { PopoverProps as RNPopoverProps } from "react-native-popover-view/dist/Types"
 import { Easing } from "react-native-reanimated"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
 import { Touchable } from "../Touchable"
+
+// Apps targeting SDK 35+ are edge-to-edge from Android 15 (API 35), so the anchor rect already
+// includes the status bar and react-native-popover-view must not add StatusBar.currentHeight to it.
+const IS_ANDROID_EDGE_TO_EDGE = Platform.OS === "android" && Number(Platform.Version) >= 35
 
 interface PopoverProps extends Omit<RNPopoverProps, "placement"> {
   children?: React.ReactElement
@@ -80,6 +84,7 @@ export const Popover = ({
       onOpenComplete={onOpenComplete}
       onRequestClose={onPressOutside}
       placement={placement as RNPopover["props"]["placement"]}
+      statusBarTranslucent={!IS_ANDROID_EDGE_TO_EDGE}
       arrowSize={{ height: 11, width: 22 }}
       animationConfig={{
         duration: 400,
