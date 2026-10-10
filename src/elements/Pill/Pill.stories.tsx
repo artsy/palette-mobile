@@ -117,6 +117,9 @@ export const Onboarding = () => {
         Yes, I love collecting art
       </Pill>
       <Pill variant="onboarding">No, I'm just starting out</Pill>
+      <Pill variant="onboarding">
+        This is a long text that should break into lines, it should still look fine
+      </Pill>
     </List>
   )
 }
