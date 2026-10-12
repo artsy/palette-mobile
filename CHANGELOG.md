@@ -1,3 +1,15 @@
+# v24.18.0 (Mon Oct 12 2026)
+
+#### 🚀  Enhancement
+
+- feat: popovers - enable edge to edge on all android versions [#526](https://github.com/artsy/palette-mobile/pull/526) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.17.0 (Mon Oct 05 2026)
 
 #### 🚀  Enhancement
