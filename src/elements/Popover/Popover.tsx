@@ -2,7 +2,7 @@ import { CloseIcon } from "@artsy/icons/native"
 import { Color } from "@artsy/palette-tokens"
 import { Platform, ViewStyle } from "react-native"
 import RNPopover from "react-native-popover-view"
-import { PopoverProps as RNPopoverProps } from "react-native-popover-view/dist/Types"
+import { PublicPopoverProps } from "react-native-popover-view/dist/Popover"
 import { Easing } from "react-native-reanimated"
 import { useColor } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -10,7 +10,7 @@ import { Touchable } from "../Touchable"
 
 const IS_ANDROID = Platform.OS === "android"
 
-interface PopoverProps extends Omit<RNPopoverProps, "placement"> {
+interface PopoverProps extends Omit<PublicPopoverProps, "placement"> {
   children?: React.ReactElement
   variant?: PopoverVariant
   title?: React.ReactElement
