@@ -1,3 +1,15 @@
+# v24.19.0 (Mon Oct 19 2026)
+
+#### 🚀  Enhancement
+
+- fix(Popover): accept the library's full public prop types [#527](https://github.com/artsy/palette-mobile/pull/527) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.18.0 (Mon Oct 12 2026)
 
 #### 🚀  Enhancement
