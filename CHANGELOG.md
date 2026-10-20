@@ -1,3 +1,15 @@
+# v24.20.0 (Tue Oct 20 2026)
+
+#### 🚀  Enhancement
+
+- build(deps): upgrade yarn version to 4.18.1 [#528](https://github.com/artsy/palette-mobile/pull/528) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### Authors: 1
+
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v24.19.0 (Mon Oct 19 2026)
 
 #### 🚀  Enhancement
