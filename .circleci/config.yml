@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@6.3.0
-  auto: artsy/auto@2.3.0
+  auto: artsy/auto@dev:2aef03cbfbbf0911d52c58abd31a4457
   macos: circleci/macos@2.5.4
 
 only_main: &only_main
@@ -88,7 +88,7 @@ workflows:
 
       - auto/publish-canary:
           context: npm-deploy
-          node-version: << pipeline.parameters.node_version >>
+          node-version: "22.23.4"
           filters:
             branches:
               ignore: main
@@ -98,7 +98,7 @@ workflows:
 
       - auto/publish:
           context: npm-deploy
-          node-version: << pipeline.parameters.node_version >>
+          node-version: "22.23.4"
           filters:
             branches:
               only: main
