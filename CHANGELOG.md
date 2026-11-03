@@ -1,3 +1,24 @@
+# v24.21.0 (Tue Nov 03 2026)
+
+#### 🚀  Enhancement
+
+- fix(deps): resolve high severity dependabot alerts [#535](https://github.com/artsy/palette-mobile/pull/535) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump source-map-js from 1.2.1 to 1.2.2 [#530](https://github.com/artsy/palette-mobile/pull/530) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump compression from 1.8.1 to 1.8.2 [#531](https://github.com/artsy/palette-mobile/pull/531) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump ip-address from 10.7.2 to 10.7.5 [#533](https://github.com/artsy/palette-mobile/pull/533) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump shell-quote from 1.10.0 to 1.12.0 [#529](https://github.com/artsy/palette-mobile/pull/529) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps-dev): bump storybook from 10.6.0 to 10.6.2 [#532](https://github.com/artsy/palette-mobile/pull/532) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.20.0 (Tue Oct 20 2026)
 
 #### 🚀  Enhancement
