@@ -59,7 +59,7 @@ jobs:
 parameters:
   node_version:
     type: string
-    default: "22.0.0"
+    default: "22.23.4"
 
 workflows:
   build-deploy:
@@ -88,7 +88,7 @@ workflows:
 
       - auto/publish-canary:
           context: npm-deploy
-          node-version: "22.23.4"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               ignore: main
@@ -98,7 +98,7 @@ workflows:
 
       - auto/publish:
           context: npm-deploy
-          node-version: "22.23.4"
+          node-version: << pipeline.parameters.node_version >>
           filters:
             branches:
               only: main
