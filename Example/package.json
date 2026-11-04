@@ -1,6 +1,6 @@
 {
   "name": "palette-mobile-example",
-  "version": "24.20.0",
+  "version": "24.21.0",
   "private": true,
   "main": "index.js",
   "scripts": {
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/react": "19.2.18",
-    "storybook": "10.6.0"
+    "storybook": "10.6.2"
   },
   "reanimated": {
     "staticFeatureFlags": {
