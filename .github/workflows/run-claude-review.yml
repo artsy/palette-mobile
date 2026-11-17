@@ -1,0 +1,18 @@
+name: AI PR Review
+
+on:
+  pull_request:
+    # closed is for the review's outcome experiments (outcome-experiment/README.md); it never starts a review.
+    types: [opened, synchronize, ready_for_review, labeled, unlabeled, closed]
+
+jobs:
+  claude-review:
+    uses: artsy/duchamp/.github/workflows/claude-review.yml@main
+    secrets:
+      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Optional: a second review from Codex, for PRs in the Codex experiment
+      # openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+    # Optional: customize the model or timeout
+    # with:
+    #   model: "claude-opus-5-5"
+    #   timeout-minutes: 30

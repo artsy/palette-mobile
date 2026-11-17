@@ -1,0 +1,89 @@
+context: |
+  This is @artsy/palette-mobile, Artsy's React Native design system. It is a published
+  npm package that Artsy's mobile apps, such as eigen, install. Components live in
+  src/elements and are re-exported through src/elements/index.tsx and src/index.ts.
+  Stack: TypeScript, styled-components with styled-system, tokens from
+  @artsy/palette-tokens, Storybook for React Native, Jest with React Testing Library.
+  CI runs the Jest tests and tsc type-check. ESLint and Prettier run in pre-commit
+  hooks. Releases are automatic on merge to main and the PR's version label sets the
+  semver bump. Do not repeat what the type checker, ESLint or Prettier already catch.
+
+focus_areas:
+  - |
+    Public API stability: Anything exported from src/index.ts, src/elements/index.tsx
+    or a component's index file is public. Flag a PR that renames or removes an export,
+    removes or renames a prop, narrows a prop type, makes an optional prop required,
+    or changes a default value or rendered output that consumers rely on, unless the PR
+    says it is a breaking change and carries a major version label. Flag a new component
+    that is not exported from its index file and from src/elements/index.tsx. Do not
+    flag changes to files that are not exported.
+  - |
+    Theme and tokens: Colors, spacing and typography come from the theme and tokens
+    (useColor, useSpace, Text variants, styled-system props), so dark mode keeps working.
+    Flag hard-coded hex or rgb colors, raw pixel values for spacing that have a token,
+    and colors named by raw value where a role such as background or onBackgroundHigh
+    exists (see docs/migrations/dark-mode.md). Do not flag values with no matching
+    token, such as a one-off border width or icon size, nor test files.
+  - |
+    Platform parity: behavior that branches on Platform.OS, or styles that only work on
+    one platform (such as shadow* props on iOS versus elevation on Android), must be
+    handled on Android too, and the reverse. Flag a new Platform.OS branch or a
+    one-platform style with no counterpart on the other platform. Do not flag a pair of
+    .ios.tsx and .android.tsx files that cover both.
+  - |
+    Accessibility of interactive components: Pressables, inputs and controls need an
+    accessible name (accessibilityLabel or visible Text child), the right accessibilityRole,
+    and visual state exposed via accessibilityState (disabled, selected, checked, expanded,
+    busy) or accessibilityValue (sliders, progress, steppers; sliders use role "adjustable"
+    with increment/decrement actions). Pressable's disabled prop sets disabled state
+    automatically; do not flag that. Consumer-supplied accessibility props and testID must
+    be passed through, not overwritten. Targets below 44x44pt (iOS) / 48x48dp (Android)
+    need hitSlop, noting hitSlop is clipped by the parent on Android. Gesture-only
+    interactions need an accessibilityActions equivalent. Use accessible on a container to
+    group read-only content (e.g. an artwork card), never when it contains separately
+    actionable children. Section titles use role "header". TextInputs need a label beyond
+    the placeholder, and inline errors must be announced. Content images (artworks) need a
+    meaningful label from data and accessibilityIgnoresInvertColors; decorative elements
+    outside a labelled parent must be hidden on both platforms (aria-hidden, or
+    accessibilityElementsHidden + importantForAccessibility="no-hide-descendants").
+    Use the accessibility* props consistently; flag an element that sets both
+    accessibility* and role/aria-* with conflicting values. ESLint's
+    react-native-a11y/basic already validates roles and states; do not repeat it.
+  - |
+    Accessibility of layout, motion and feedback: Do not set allowFontScaling={false} on
+    readable text; where layout cannot grow, cap with maxFontSizeMultiplier instead, and
+    avoid fixed heights around Text. Reanimated respects reduce motion by default; flag
+    ReduceMotion.Never without a reason, and flag non-gesture motion built with the legacy
+    Animated API that ignores AccessibilityInfo.isReduceMotionEnabled. RN's Modal handles
+    focus trapping; custom overlays not built on Modal must set accessibilityViewIsModal
+    (iOS) and hide background content from TalkBack (Android). Transient feedback (toasts,
+    errors, loading-to-loaded) must be announced on both platforms: accessibilityLiveRegion
+    / aria-live for Android, AccessibilityInfo.announceForAccessibility for iOS. Colors come
+    from role tokens; flag new foreground/background pairings that may miss WCAG contrast
+    (4.5:1 text, 3:1 large text and UI indicators), especially in dark mode. In tests,
+    prefer getByRole / getByLabelText and RNTL's accessibility matchers over getByTestId.
+  - |
+    Stories, tests and docs for components: A new component or a new variant or prop
+    on an existing one should come with a ComponentName.stories.tsx entry that shows it
+    and a ComponentName.tests.tsx that renders it with renderWithWrappers. Flag a new
+    component with no story, or a new variant missing from the story. Do not ask for
+    tests on pure refactors that keep behavior, or for stories on internal helpers.
+  - |
+    Consumer impact of dependencies: Native modules must be listed in peerDependencies
+    in package.json and in the install command in the README, so apps know to install
+    them. Flag a new import from a package with native code that is missing from both,
+    and a new runtime dependency that should be a peer dependency. Flag a change to
+    exported types, theme keys or token names that would break a consumer's TypeScript
+    build, and ask for a note in docs/migrations when the upgrade needs steps. Do not
+    flag dev dependency bumps.
+
+ignore_paths:
+  - "yarn.lock"
+  - "Gemfile.lock"
+  - "**/Podfile.lock"
+  - "CHANGELOG.md"
+  - "dist/**"
+  - "**/__snapshots__/**"
+  - "**/*.snap"
+  - "Example/.rnstorybook/storybook.requires.ts"
+  - ".yarn/**"
