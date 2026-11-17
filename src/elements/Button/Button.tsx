@@ -1,5 +1,4 @@
 import { TextVariant } from "@artsy/palette-tokens/dist/typography/v3" // TODO: remove palette-tokens when this file (Button.tsx) is removed.
-import { animated, config, Spring } from "@react-spring/native"
 import { cloneElement, isValidElement, useState } from "react"
 import {
   GestureResponderEvent,
@@ -9,6 +8,7 @@ import {
   TextStyle,
 } from "react-native"
 import Haptic, { HapticFeedbackTypes } from "react-native-haptic-feedback"
+import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import styled from "styled-components/native"
 import { Color, SpacingUnit } from "../../types"
 import { useColor, useSpace } from "../../utils/hooks"
@@ -69,6 +69,8 @@ export interface ButtonProps extends BoxProps {
 
   transparent?: boolean
 }
+
+const COLOR_ANIMATION_DURATION = 300
 
 enum DisplayState {
   Enabled = "enabled",
@@ -151,124 +153,127 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   const containerSize = getSize()
-  const to = useStyleForVariantAndState(variant, testOnly_state ?? displayState, transparent)
+  const colors = useStyleForVariantAndState(variant, testOnly_state ?? displayState, transparent)
 
-  // Icons can't be driven by the animated `springProps.textColor` because react-spring's
-  // `animated()` only applies live updates via a native ref (setNativeProps), and icon
-  // components don't forward refs to a native instance. So we use the plain, per-render
-  // target color instead (same approach as `to.loaderColor` for the Spinner below).
   const coloredIcon =
     icon && isValidElement(icon)
-      ? cloneElement(icon as React.ReactElement<{ fill?: string }>, { fill: to.textColor })
+      ? cloneElement(icon as React.ReactElement<{ fill?: string }>, { fill: colors.textColor })
       : icon
 
-  return (
-    <Spring to={to} config={config.stiff}>
-      {(springProps) => {
-        return (
-          <Pressable
-            accessibilityLabel={rest.accessibilityLabel}
-            accessibilityRole="button"
-            accessibilityState={{
-              disabled,
-            }}
-            hitSlop={hitSlop}
-            testOnly_pressed={testOnly_state === DisplayState.Pressed}
-            disabled={testOnly_state === DisplayState.Disabled || disabled}
-            onPressIn={() => {
-              if (displayState === DisplayState.Loading) {
-                return
-              }
-              setInnerDisplayState(DisplayState.Pressed)
-            }}
-            onPressOut={() => {
-              if (displayState === DisplayState.Loading) {
-                return
-              }
-              setInnerDisplayState(DisplayState.Enabled)
-            }}
-            onPress={handlePress}
-            testID={testID}
-          >
-            <Flex flexDirection="row">
-              <AnimatedContainer
-                {...rest}
-                style={{
-                  backgroundColor: springProps.backgroundColor,
-                  borderColor: springProps.borderColor,
-                  height: containerSize.height,
-                  // This is needed to make sure that button doesn't push content around its content changes to longestText
-                  // Here, we are factoring in the padding from the container
-                  minWidth: longestTextMeasurements.width + space(2),
-                }}
-              >
-                <Flex mx={containerSize.mx}>
-                  <Flex
-                    height="100%"
-                    flexDirection="row"
-                    alignItems="center"
-                    justifyContent="center"
-                    // Do not show the content when the button is loading
-                    style={{ opacity: displayState === DisplayState.Loading ? 0 : 1 }}
-                  >
-                    {iconPosition === "left-start" && !!coloredIcon ? (
-                      <Box position="absolute" left={0}>
-                        {coloredIcon}
-                        <Spacer x={0.5} />
-                      </Box>
-                    ) : null}
-                    {iconPosition === "left" && !!coloredIcon ? (
-                      <>
-                        {coloredIcon}
-                        <Spacer x={0.5} />
-                      </>
-                    ) : null}
-                    {/* This makes sure that in testing environment the button text is
-                      not rendered twice, in normal environment this is not visible.
-                      This will result in us being able to use getByText over
-                      getAllByText()[0] to select the buttons in the test environment.
-                  */}
-                    {!isTestEnvironment() && longestText && longestTextMeasurements.width === 0 && (
-                      <MeasuredView setMeasuredState={setLongestTextMeasurements}>
-                        <Text color="red" style={textStyle}>
-                          {longestText ? longestText : children}
-                        </Text>
-                      </MeasuredView>
-                    )}
-                    <AnimatedText
-                      style={[
-                        {
-                          width: "auto",
-                          color: springProps.textColor,
-                          textDecorationLine: springProps.textDecorationLine,
-                        },
-                        textStyle,
-                      ]}
-                      textAlign="center"
-                      selectable={false}
-                    >
-                      {children}
-                    </AnimatedText>
-                    {iconPosition === "right" && !!coloredIcon && (
-                      <>
-                        <Spacer x={0.5} />
-                        {coloredIcon}
-                      </>
-                    )}
-                  </Flex>
+  const { backgroundColor, borderColor, textColor } = colors
+  const containerColorStyle = useAnimatedStyle(() => ({
+    backgroundColor: withTiming(backgroundColor, { duration: COLOR_ANIMATION_DURATION }),
+    borderColor: withTiming(borderColor, { duration: COLOR_ANIMATION_DURATION }),
+  }))
+  const textColorStyle = useAnimatedStyle(() => ({
+    color: withTiming(textColor, { duration: COLOR_ANIMATION_DURATION }),
+  }))
 
-                  {displayState === DisplayState.Loading && (
-                    <SpinnerContainer>
-                      <Spinner size={size} color={to.loaderColor} />
-                    </SpinnerContainer>
-                  )}
-                </Flex>
-              </AnimatedContainer>
-            </Flex>
-          </Pressable>
-        )
+  return (
+    <Pressable
+      accessibilityLabel={rest.accessibilityLabel}
+      accessibilityRole="button"
+      accessibilityState={{
+        disabled,
       }}
-    </Spring>
+      hitSlop={hitSlop}
+      testOnly_pressed={testOnly_state === DisplayState.Pressed}
+      disabled={testOnly_state === DisplayState.Disabled || disabled}
+      onPressIn={() => {
+        if (displayState === DisplayState.Loading) {
+          return
+        }
+        setInnerDisplayState(DisplayState.Pressed)
+      }}
+      onPressOut={() => {
+        if (displayState === DisplayState.Loading) {
+          return
+        }
+        setInnerDisplayState(DisplayState.Enabled)
+      }}
+      onPress={handlePress}
+      testID={testID}
+    >
+      <Flex flexDirection="row">
+        <AnimatedContainer
+          {...rest}
+          style={[
+            {
+              backgroundColor: colors.backgroundColor,
+              borderColor: colors.borderColor,
+              height: containerSize.height,
+              // This is needed to make sure that button doesn't push content around its content changes to longestText
+              // Here, we are factoring in the padding from the container
+              minWidth: longestTextMeasurements.width + space(2),
+            },
+            containerColorStyle,
+          ]}
+        >
+          <Flex mx={containerSize.mx}>
+            <Flex
+              height="100%"
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
+              // Do not show the content when the button is loading
+              style={{ opacity: displayState === DisplayState.Loading ? 0 : 1 }}
+            >
+              {iconPosition === "left-start" && !!coloredIcon ? (
+                <Box position="absolute" left={0}>
+                  {coloredIcon}
+                  <Spacer x={0.5} />
+                </Box>
+              ) : null}
+              {iconPosition === "left" && !!coloredIcon ? (
+                <>
+                  {coloredIcon}
+                  <Spacer x={0.5} />
+                </>
+              ) : null}
+              {/* This makes sure that in testing environment the button text is
+                not rendered twice, in normal environment this is not visible.
+                This will result in us being able to use getByText over
+                getAllByText()[0] to select the buttons in the test environment.
+            */}
+              {!isTestEnvironment() && longestText && longestTextMeasurements.width === 0 && (
+                <MeasuredView setMeasuredState={setLongestTextMeasurements}>
+                  <Text color="red" style={textStyle}>
+                    {longestText ? longestText : children}
+                  </Text>
+                </MeasuredView>
+              )}
+              <AnimatedText
+                style={[
+                  {
+                    width: "auto",
+                    color: colors.textColor,
+                    textDecorationLine: colors.textDecorationLine,
+                  },
+                  textStyle,
+                  textColorStyle,
+                ]}
+                textAlign="center"
+                selectable={false}
+              >
+                {children}
+              </AnimatedText>
+              {iconPosition === "right" && !!coloredIcon && (
+                <>
+                  <Spacer x={0.5} />
+                  {coloredIcon}
+                </>
+              )}
+            </Flex>
+
+            {displayState === DisplayState.Loading && (
+              <SpinnerContainer>
+                <Spinner size={size} color={colors.loaderColor} />
+              </SpinnerContainer>
+            )}
+          </Flex>
+        </AnimatedContainer>
+      </Flex>
+    </Pressable>
   )
 }
 
@@ -539,7 +544,7 @@ const SpinnerContainer = styled(Box)<ButtonProps>`
   justify-content: center;
 `
 
-const AnimatedContainer = animated(Container)
-const AnimatedText = animated(Text)
+const AnimatedContainer = Animated.createAnimatedComponent(Container)
+const AnimatedText = Animated.createAnimatedComponent(Text)
 
 export { DisplayState as _test_DisplayState }
