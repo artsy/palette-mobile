@@ -1,0 +1,58 @@
+context: |
+  This is @artsy/palette-mobile, Artsy's React Native design system. It is a published
+  npm package that Artsy's mobile apps, such as eigen, install. Components live in
+  src/elements and are re-exported through src/elements/index.tsx and src/index.ts.
+  Stack: TypeScript, styled-components with styled-system, tokens from
+  @artsy/palette-tokens, Storybook for React Native, Jest with React Testing Library.
+  CI runs the Jest tests and tsc type-check. ESLint and Prettier run in pre-commit
+  hooks. Releases are automatic on merge to main and the PR's version label sets the
+  semver bump. Do not repeat what the type checker, ESLint or Prettier already catch.
+
+focus_areas:
+  - |
+    Public API stability: Anything exported from src/index.ts, src/elements/index.tsx
+    or a component's index file is public. Flag a PR that renames or removes an export,
+    removes or renames a prop, narrows a prop type, makes an optional prop required,
+    or changes a default value or rendered output that consumers rely on, unless the PR
+    says it is a breaking change and carries a major version label. Flag a new component
+    that is not exported from its index file and from src/elements/index.tsx. Do not
+    flag changes to files that are not exported.
+  - |
+    Theme and tokens: Colors, spacing and typography come from the theme and tokens
+    (useColor, useSpace, Text variants, styled-system props), so dark mode keeps working.
+    Flag hard-coded hex or rgb colors, raw pixel values for spacing that have a token,
+    and colors named by raw value where a role such as background or onBackgroundHigh
+    exists (see docs/migrations/dark-mode.md). Do not flag values with no matching
+    token, such as a one-off border width or icon size, nor test files.
+  - |
+    Accessibility on interactive components: A new or changed component that handles
+    presses or shows state should expose accessibilityRole, accessibilityLabel and
+    accessibilityState (selected, checked, disabled) where they apply, and pass through
+    consumer-supplied accessibility props. Flag a pressable or icon-only control with no
+    accessible name, and state that is shown visually but not exposed. Do not flag
+    purely decorative or layout components.
+  - |
+    Stories, tests and docs for components: A new component or a new variant or prop
+    on an existing one should come with a ComponentName.stories.tsx entry that shows it
+    and a ComponentName.tests.tsx that renders it with renderWithWrappers. Flag a new
+    component with no story, or a new variant missing from the story. Do not ask for
+    tests on pure refactors that keep behavior, or for stories on internal helpers.
+  - |
+    Consumer impact of dependencies: Native modules must be listed in peerDependencies
+    in package.json and in the install command in the README, so apps know to install
+    them. Flag a new import from a package with native code that is missing from both,
+    and a new runtime dependency that should be a peer dependency. Flag a change to
+    exported types, theme keys or token names that would break a consumer's TypeScript
+    build, and ask for a note in docs/migrations when the upgrade needs steps. Do not
+    flag dev dependency bumps.
+
+ignore_paths:
+  - "yarn.lock"
+  - "Gemfile.lock"
+  - "**/Podfile.lock"
+  - "CHANGELOG.md"
+  - "dist/**"
+  - "**/__snapshots__/**"
+  - "**/*.snap"
+  - "Example/.rnstorybook/storybook.requires.ts"
+  - ".yarn/**"
