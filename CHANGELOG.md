@@ -1,3 +1,26 @@
+# v24.22.0 (Tue Nov 17 2026)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Rodrigo ([@zapraum](https://github.com/zapraum)), for all your work!
+
+#### 🚀  Enhancement
+
+- chore: enable the AI PR review [#539](https://github.com/artsy/palette-mobile/pull/539) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### 🏠  Internal
+
+- chore(ci): bump artsy/auto orb for npm trusted publishing [#534](https://github.com/artsy/palette-mobile/pull/534) ([@zapraum](https://github.com/zapraum))
+- build(deps): bump node-forge from 1.4.0 to 1.4.2 [#536](https://github.com/artsy/palette-mobile/pull/536) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+- Rodrigo ([@zapraum](https://github.com/zapraum))
+
+---
+
 # v24.21.0 (Tue Nov 03 2026)
 
 #### 🚀  Enhancement
