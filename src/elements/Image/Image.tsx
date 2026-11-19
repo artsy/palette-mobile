@@ -1,6 +1,6 @@
 import FastImage, { FastImageProps } from "@d11/react-native-fast-image"
 import { memo, useState } from "react"
-import { StyleProp, ViewStyle } from "react-native"
+import { ImageStyle, StyleProp, ViewStyle } from "react-native"
 import { Blurhash } from "react-native-blurhash"
 import { getImageURL } from "./helpers/getImageURL"
 import { GeminiResizeMode } from "../../utils/createGeminiUrl"
@@ -9,9 +9,12 @@ import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Flex } from "../Flex"
 import { Skeleton, SkeletonBox } from "../Skeleton"
 
-type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "source">
+// fast-image's own ImageStyle extends FlexStyle/ShadowStyleIOS, which the RN Strict TypeScript API no
+// longer exports, so under strict types it loses width/height/etc. Use RN's ImageStyle instead.
+type CustomFastImageProps = Omit<FastImageProps, "onLoadStart" | "onLoadEnd" | "source" | "style">
 
 export interface ImageProps extends CustomFastImageProps {
+  style?: StyleProp<ImageStyle>
   /** Supplied aspect ratio of image. If none provided, defaults to 1 */
   aspectRatio?: number
   /** BlurHash code */
@@ -63,13 +66,15 @@ export const Image: React.FC<ImageProps> = memo(
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
         <FastImage
-          style={[
-            dimensions,
-            style,
-            // If we have a blurhash, we don't want to show a background color
-            // That might flash before the image loads
-            { backgroundColor: blurhash ? "transparent" : color("mono30") },
-          ]}
+          style={
+            [
+              dimensions,
+              style,
+              // If we have a blurhash, we don't want to show a background color
+              // That might flash before the image loads
+              { backgroundColor: blurhash ? "transparent" : color("mono30") },
+            ] as FastImageProps["style"]
+          }
           resizeMode={resizeMode}
           onLoadEnd={() => setIsLoading(false)}
           source={{

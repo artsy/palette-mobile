@@ -1,5 +1,5 @@
 import { ChevronSmallLeftIcon, CloseIcon } from "@artsy/icons/native"
-import { TouchableOpacity, TouchableOpacityProps, ViewProps } from "react-native"
+import { StyleProp, TouchableOpacity, ViewProps, ViewStyle } from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { Color } from "../../types"
 import { Flex } from "../Flex"
@@ -9,7 +9,7 @@ export interface BackButtonProps {
   hitSlop?: ViewProps["hitSlop"]
   onPress?: () => void
   showX?: boolean
-  style?: TouchableOpacityProps["style"]
+  style?: StyleProp<ViewStyle>
   iconSize?: number
 }
 

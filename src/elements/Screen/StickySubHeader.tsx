@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react"
-import { View } from "react-native"
+import { type HostInstance } from "react-native"
 import Animated, { useAnimatedStyle, withTiming } from "react-native-reanimated"
 import { useShowLargeTitle } from "./hooks/useShowLargeTitle"
 import { useSpace } from "../../utils/hooks"
@@ -35,7 +35,7 @@ export const StickySubHeader: React.FC<StickySubHeaderProps> = ({
   Component,
 }) => {
   const space = useSpace()
-  const measureRef = useRef<View>(null)
+  const measureRef = useRef<HostInstance>(null)
 
   const [stickyBarHeight, setStickyHeaderHeight] = useState<null | number>(null)
   const { visible } = useShowLargeTitle({ stickyBarHeight })

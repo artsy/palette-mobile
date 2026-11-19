@@ -10,6 +10,7 @@ import {
   StyleSheet,
   View,
   ViewProps,
+  type HostInstance,
 } from "react-native"
 
 interface State {
@@ -63,7 +64,7 @@ class KeyboardAvoidingView extends Component<
   _subscriptions: Array<{ remove(): void }> = []
   _initialFrameHeight = 0
 
-  viewRef = createRef<View>()
+  viewRef = createRef<HostInstance>()
 
   constructor(props: any) {
     super(props)
@@ -128,8 +129,10 @@ class KeyboardAvoidingView extends Component<
   _onLayout: ViewProps["onLayout"] = (event) => {
     this._frame = event.nativeEvent.layout
     this.viewRef.current?.measureInWindow((x, y) => {
-      this._frame!.x = x
-      this._frame!.y = y
+      // layout is read-only, so replace the frame rather than mutating the event's object
+      if (this._frame) {
+        this._frame = { ...this._frame, x, y }
+      }
     })
     if (!this._initialFrameHeight) {
       // save the initial frame height, before the keyboard is visible
