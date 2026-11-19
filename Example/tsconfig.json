@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@artsy/palette-mobile": ["../src"],
-      "@artsy/palette-mobile/*": ["../src/*"]
+      "@artsy/palette-mobile/*": ["../src/*"],
+      "react-native": ["../node_modules/react-native/types_DEPRECATED/index.d.ts"]
     },
     "rootDir": ".",
     "noEmit": true
