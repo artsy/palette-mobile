@@ -1,5 +1,12 @@
 import { useRef, useState } from "react"
-import { ViewToken, ViewabilityConfig } from "react-native"
+import { FlatListProps } from "react-native"
+
+// Derived from FlatListProps so this works with both the legacy and the Strict TypeScript API
+// (ViewToken/ViewabilityConfig are no longer exported under the strict API)
+type ViewabilityConfig = NonNullable<FlatListProps<unknown>["viewabilityConfig"]>
+type ViewToken = Parameters<
+  NonNullable<FlatListProps<unknown>["onViewableItemsChanged"]>
+>[0]["viewableItems"][number]
 
 // This is a custom hook that is used to determine if a user has seen an item in a list or not
 export const useHasSeenItem = <T,>({ keyExtractor }: { keyExtractor: (item: T) => string }) => {

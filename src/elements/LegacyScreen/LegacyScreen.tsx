@@ -13,7 +13,7 @@ import {
   getChildrenByTypeDeep,
   removeChildrenByType,
 } from "react-nanny"
-import { EmitterSubscription, Keyboard, ScrollView, View } from "react-native"
+import { EmitterSubscription, Keyboard, ScrollView, View, type HostInstance } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { SpacingUnitDSValueNumber } from "../../types"
@@ -221,7 +221,7 @@ const Background: React.FC<PropsWithChildren<{}>> = ({ children }) => (
 const BottomView: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const { setOptions } = useScreenContext()
   const insets = useSafeAreaInsets()
-  const containerRef = useRef<View>(null)
+  const containerRef = useRef<HostInstance>(null)
 
   const [keyboardShowing, setKeyboardShowing] = useState(false)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
