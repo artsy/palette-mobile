@@ -1,3 +1,15 @@
+# v24.23.0 (Thu Nov 19 2026)
+
+#### 🚀  Enhancement
+
+- chore: upgrade ruby to 3.4.13 (security advisory) [#541](https://github.com/artsy/palette-mobile/pull/541) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.22.0 (Tue Nov 17 2026)
 
 :tada: This release contains work from a new contributor! :tada:
