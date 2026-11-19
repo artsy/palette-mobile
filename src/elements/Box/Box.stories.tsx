@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { View } from "react-native"
+import { type HostInstance } from "react-native"
 import { List } from "../../storybook/helpers"
 import { Box } from "../Box"
 import { Flex } from "../Flex"
@@ -27,7 +27,7 @@ export const Styled = () => (
 )
 
 export const RegularViewProps = () => {
-  const r = useRef<View>(null)
+  const r = useRef<HostInstance>(null)
   return (
     <Flex flex={1}>
       <Box

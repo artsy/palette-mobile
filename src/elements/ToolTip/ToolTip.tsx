@@ -1,7 +1,7 @@
 import { TriangleDownIcon } from "@artsy/icons/native"
 import { noop } from "lodash"
 import { createContext, useContext, useLayoutEffect, useRef, useState } from "react"
-import { View } from "react-native"
+import { View, type HostInstance } from "react-native"
 import { ToolTipFlyout, ToolTipTextContainer } from "./ToolTipFlyout"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { useTheme } from "../../utils/hooks/useTheme"
@@ -76,8 +76,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   const dismissToolTip = () => setToolTip(undefined)
 
   const [pageX, setPageX] = useState(0)
-  const childrenRef = useRef<View>(null)
-  const sampleTextRef = useRef<View>(null)
+  const childrenRef = useRef<HostInstance>(null)
+  const sampleTextRef = useRef<HostInstance>(null)
 
   useLayoutEffect(() => {
     childrenRef.current?.measureInWindow((x, _y, width, height) => {

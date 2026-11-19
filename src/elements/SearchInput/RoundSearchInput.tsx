@@ -2,7 +2,14 @@ import { ArrowLeftIcon, SearchIcon } from "@artsy/icons/native"
 import isArray from "lodash/isArray"
 import isString from "lodash/isString"
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react"
-import { PixelRatio, StyleProp, TextInput, TextInputProps, TextStyle } from "react-native"
+import {
+  PixelRatio,
+  StyleProp,
+  TextInput,
+  TextInputProps,
+  TextStyle,
+  type TextInputInstance,
+} from "react-native"
 import { DEFAULT_HIT_SLOP } from "../../constants"
 import { useColor, useTheme } from "../../utils/hooks"
 import { Flex } from "../Flex"
@@ -40,7 +47,7 @@ export const RoundSearchInput: React.FC<RoundSearchInputProps> = ({
   ...rest
 }) => {
   const theme = useTheme()
-  const ref = useRef<TextInput>(null)
+  const ref = useRef<TextInputInstance>(null)
   const [inputWidth, setInputWidth] = useState(0)
   const placeholderWidths = useRef<number[]>([])
 
