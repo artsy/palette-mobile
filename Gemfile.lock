@@ -109,7 +109,7 @@ DEPENDENCIES
   xcodeproj
 
 RUBY VERSION
-   ruby 2.7.5p203
+   ruby 3.4.13p195
 
 BUNDLED WITH
    2.3.23
