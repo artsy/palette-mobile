@@ -53,9 +53,9 @@ export const useDarkModeSwitcher: Decorator = (story) => {
         <Theme theme={theme}>
           <StatusBar
             // We are keeping the status bar white on darkmode on ios because background isn't a supported prop on iOS
+            // backgroundColor/translucent were removed in RN 0.88 (Android is always edge-to-edge),
+            // the screen background now shows through the status bar
             barStyle={isDarkMode && Platform.OS === "android" ? "light-content" : "dark-content"}
-            backgroundColor={isDarkMode && Platform.OS === "android" ? "black" : "white"}
-            translucent={true}
           />
 
           <Flex flex={1} backgroundColor="background">
