@@ -1,3 +1,21 @@
+# v25.0.0 (Mon Nov 23 2026)
+
+#### 💥  Breaking Change
+
+- build(deps): bump expo to 58 and react native to 0.88 [#542](https://github.com/artsy/palette-mobile/pull/542) ([@gkartalis](https://github.com/gkartalis))
+
+#### 🏠  Internal
+
+- build(deps): bump addressable from 2.9.0 to 2.9.1 [#537](https://github.com/artsy/palette-mobile/pull/537) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- build(deps): bump node-forge from 1.4.2 to 1.4.3 [#538](https://github.com/artsy/palette-mobile/pull/538) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v24.23.0 (Thu Nov 19 2026)
 
 #### 🚀  Enhancement
