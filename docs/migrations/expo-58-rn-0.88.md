@@ -10,7 +10,23 @@ default and only exposes its types through `package.json` `exports`. With `modul
 (Node10), TypeScript ignores `exports` and `react-native` resolves to an untyped module.
 
 palette-mobile's `dist/*.d.ts` is still built against the legacy types, so until the Strict TS API
-migration lands, map `react-native` to them in your `tsconfig.json`:
+migration lands, point `react-native` at them in your `tsconfig.json`. Which option depends on your
+`moduleResolution`:
+
+**`bundler` / `node16` / `nodenext`** (e.g. extending `@react-native/typescript-config`, as Eigen
+does): opt into the legacy types with a custom condition. No path mapping needed; palette's
+`.d.ts` files resolve to the same `types_DEPRECATED` types.
+
+```jsonc
+{
+  "compilerOptions": {
+    "customConditions": ["react-native-legacy-deep-imports", "react-native"]
+  }
+}
+```
+
+**`node` / `node10`** (what palette-mobile itself uses): `customConditions` and `exports` are
+ignored, so map the module directly:
 
 ```jsonc
 {
@@ -38,7 +54,8 @@ module.exports = {
 }
 ```
 
-If you already have a custom resolver, call reanimated's resolver from it.
+If you already have a custom resolver, call reanimated's resolver from it. This replaces patching
+`JSReanimated.setCSSEventHandler` to a no-op.
 
 ## 3. Removed React Native APIs
 
