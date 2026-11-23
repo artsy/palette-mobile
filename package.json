@@ -37,8 +37,7 @@
   },
   "dependenciesComments": {
     "ONLY ADD DEPS THAT ARE OK TO SHIP WITH THIS LIBRARY.": "FOR DEPS NEEDED FOR THE STORYBOOK APP, ADD THEM AS DEV DEPS BELOW.",
-    "tmp": "Pinned to 0.2.7 to fix GHSA-ph9p-34f9-6g65 (arbitrary file/directory write via symlink). @artsy/update-repo@0.8.2 (latest) exact-pins tmp@^0.1.0 with no patched release on that line; remove this once @artsy/update-repo bumps its tmp dependency upstream.",
-    "postcss": "Pinned to fix GHSA-6g55-p6wh-862q and GHSA-r28c-9q8g-f849 (path traversal / arbitrary file disclosure via sourceMappingURL). styled-components@6.1.19 exact-pins postcss@8.4.49, which is not patched (expo bumped to ^8.5.23 in SDK 58); remove this once styled-components bumps its postcss dependency upstream."
+    "tmp": "Pinned to 0.2.7 to fix GHSA-ph9p-34f9-6g65 (arbitrary file/directory write via symlink). @artsy/update-repo@0.8.2 (latest) exact-pins tmp@^0.1.0 with no patched release on that line; remove this once @artsy/update-repo bumps its tmp dependency upstream."
   },
   "dependencies": {
     "@artsy/palette-tokens": "7.0.0",
@@ -66,7 +65,6 @@
     "styled-components": ">= 5"
   },
   "resolutions": {
-    "postcss": "^8.5.18",
     "tmp": "^0.2.6"
   },
   "devDependencies": {
@@ -136,7 +134,7 @@
     "react-native-worklets": "0.13.0",
     "react-test-renderer": "19.3.0",
     "rimraf": "4.1.2",
-    "styled-components": "6.1.19",
+    "styled-components": "6.6.0",
     "styled-system": "^5.1.5",
     "typescript": "5.9.2"
   },
