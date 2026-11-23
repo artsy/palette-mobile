@@ -52,9 +52,8 @@ export const useDarkModeSwitcher: Decorator = (story) => {
       <SafeAreaProvider>
         <Theme theme={theme}>
           <StatusBar
-            // We are keeping the status bar white on darkmode on ios because background isn't a supported prop on iOS
-            // backgroundColor/translucent were removed in RN 0.88 (Android is always edge-to-edge),
-            // the screen background now shows through the status bar
+            // backgroundColor/translucent were removed in RN 0.88 (Android is always edge-to-edge), so the
+            // screen background shows through the status bar. iOS keeps dark-content in dark mode.
             barStyle={isDarkMode && Platform.OS === "android" ? "light-content" : "dark-content"}
           />
 
