@@ -242,7 +242,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
         setDelayedFocused(false)
       }
 
-      let delayFocusedTimeout: NodeJS.Timeout
+      let delayFocusedTimeout: ReturnType<typeof setTimeout>
 
       // We only want to show the placeholder after we're sure the title animation has finished
       if (!delayedFocused && focused) {
