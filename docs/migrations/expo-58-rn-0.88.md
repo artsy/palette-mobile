@@ -1,6 +1,6 @@
-# Expo SDK 58 / React Native 0.88 (palette-mobile v25)
+# Expo SDK 58 / React Native 0.88 (palette-mobile v25+)
 
-palette-mobile v25 targets Expo SDK 58, React Native 0.88 and React 19.3. Consumers (e.g. Eigen)
+palette-mobile v25 and later target Expo SDK 58, React Native 0.88 and React 19.3. Consumers (e.g. Eigen)
 need the steps below when upgrading.
 
 ## 1. React Native types
@@ -9,7 +9,7 @@ RN 0.88 makes the [Strict TypeScript API](https://reactnative.dev/docs/strict-ty
 default and only exposes its types through `package.json` `exports`. With `moduleResolution: "node"`
 (Node10), TypeScript ignores `exports` and `react-native` resolves to an untyped module.
 
-### From v25.1.0: no type setup needed
+### From v26.0.0: no type setup needed
 
 palette-mobile's `dist/*.d.ts` is built against the Strict TypeScript API, and works with both the
 strict and the legacy types. If you added one of the stopgaps below for v25.0.0, remove it and
