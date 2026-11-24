@@ -1,3 +1,15 @@
+# v26.0.0 (Tue Nov 24 2026)
+
+#### 💥  Breaking Change
+
+- refactor: migrate to the react native strict typescript api [#543](https://github.com/artsy/palette-mobile/pull/543) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 1
+
+- George ([@gkartalis](https://github.com/gkartalis))
+
+---
+
 # v25.0.0 (Mon Nov 23 2026)
 
 #### 💥  Breaking Change
