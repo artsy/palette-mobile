@@ -784,4 +784,6 @@ const AnimatedStyledInput = Animated.createAnimatedComponent(StyledInput)
 const AnimatedText = Animated.createAnimatedComponent(Text)
 const AnimatedFlex = Animated.createAnimatedComponent(Flex)
 
-export type Input = TextInput
+// The ref `Input` exposes is `InputRef`, not the underlying `TextInput` (under the Strict TypeScript
+// API a `TextInput` ref is a `TextInputInstance`, which isn't assignable to `InputRef`).
+export type Input = InputRef
