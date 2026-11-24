@@ -18,7 +18,7 @@ const RADIOBUTTON_SIZE = 20
 const DURATION = 150
 
 export interface RadioButtonProps
-  extends Omit<TouchableWithoutFeedbackProps, "hitSlop">,
+  extends Omit<TouchableWithoutFeedbackProps, "hitSlop" | "onBlur" | "onFocus">,
     Omit<FlexProps, "hitSlop"> {
   accessibilityState?: { checked?: boolean; selected?: boolean }
   accessibilityLabel?: string

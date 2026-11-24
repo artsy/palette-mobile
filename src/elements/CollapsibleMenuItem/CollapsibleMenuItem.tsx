@@ -1,6 +1,6 @@
 import { CheckmarkFillIcon, ChevronSmallDownIcon, ChevronSmallUpIcon } from "@artsy/icons/native"
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
-import { LayoutAnimation, View } from "react-native"
+import { LayoutAnimation, type HostInstance } from "react-native"
 import { Collapse } from "../Collapse"
 import { Flex } from "../Flex"
 import { Text } from "../Text"
@@ -33,7 +33,7 @@ export const CollapsibleMenuItem = forwardRef<
   ) => {
     const [isOpen, setIsOpen] = useState(false)
     const [isCompleted, setIsCompleted] = useState(false)
-    const componentRef = useRef<View>(null)
+    const componentRef = useRef<HostInstance>(null)
 
     useEffect(() => {
       setIsOpen(isExpanded)

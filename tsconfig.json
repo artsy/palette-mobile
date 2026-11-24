@@ -13,9 +13,10 @@
     "skipLibCheck": true,
     "types": ["jest"],
     // RN 0.88 dropped its top-level "types" field and only exposes types via package.json "exports",
-    // which Node10 resolution ignores. Point at the legacy types until we migrate to the Strict TS API.
+    // which Node10 resolution ignores. Point at the Strict TypeScript API types directly. Switching to
+    // "moduleResolution": "bundler" would make this unnecessary, but it requires ESM output for dist/.
     "paths": {
-      "react-native": ["../node_modules/react-native/types_DEPRECATED/index.d.ts"]
+      "react-native": ["../node_modules/react-native/types_generated/index.d.ts"]
     }
   },
   "include": ["src/**/*"]

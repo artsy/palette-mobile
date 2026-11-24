@@ -4,7 +4,6 @@ import themeGet from "@styled-system/theme-get"
 import { isArray, isString } from "lodash"
 import {
   JSX,
-  RefObject,
   forwardRef,
   useCallback,
   useEffect,
@@ -21,6 +20,7 @@ import {
   TextInputProps,
   TouchableOpacity,
   ViewProps,
+  type TextInputInstance,
 } from "react-native"
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 import styled from "styled-components"
@@ -191,7 +191,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
     const placeholderWidths = useRef<number[]>([])
 
     const rightComponentRef = useRef(null)
-    const inputRef = useRef<TextInput>(null)
+    const inputRef = useRef<TextInputInstance>(null)
 
     const variant: InputVariant = getInputVariant({
       hasError: !!props.error,
@@ -755,7 +755,7 @@ export const Input = forwardRef<InputRef, InputComponentProps>(
           scrollEnabled={props.multiline}
           editable={!disabled}
           textAlignVertical={props.multiline ? "top" : "center"}
-          ref={inputRef as RefObject<TextInput>}
+          ref={inputRef}
           placeholderTextColor={delayedFocused ? color("mono60") : "transparent"}
           placeholder={getPlaceholder()}
           defaultValue={defaultValue}
@@ -784,4 +784,6 @@ const AnimatedStyledInput = Animated.createAnimatedComponent(StyledInput)
 const AnimatedText = Animated.createAnimatedComponent(Text)
 const AnimatedFlex = Animated.createAnimatedComponent(Flex)
 
-export type Input = TextInput
+// The ref `Input` exposes is `InputRef`, not the underlying `TextInput` (under the Strict TypeScript
+// API a `TextInput` ref is a `TextInputInstance`, which isn't assignable to `InputRef`).
+export type Input = InputRef

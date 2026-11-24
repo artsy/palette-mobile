@@ -1,6 +1,6 @@
 import { compact } from "lodash"
 import { useEffect, useRef } from "react"
-import { Animated, LayoutRectangle, ScrollView, View } from "react-native"
+import { Animated, LayoutRectangle, ScrollView, View, type ScrollViewInstance } from "react-native"
 import { useColor } from "../../utils/hooks"
 import { useScreenDimensions } from "../../utils/hooks/useScreenDimensions"
 import { Box } from "../Box"
@@ -30,7 +30,7 @@ export const TabBarContainer = ({
   const screen = useScreenDimensions()
 
   const allTabLayoutsArePresent = tabLayouts.every((l) => l)
-  const scrollViewRef = useRef<ScrollView>(null)
+  const scrollViewRef = useRef<ScrollViewInstance>(null)
 
   useEffect(() => {
     if (allTabLayoutsArePresent) {

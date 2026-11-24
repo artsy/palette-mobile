@@ -1,5 +1,5 @@
 import { SpacingUnit } from "@artsy/palette-tokens"
-import { View, ViewProps } from "react-native"
+import { ViewProps } from "react-native"
 import styled from "styled-components/native"
 import {
   border,
@@ -18,6 +18,7 @@ import {
   textAlign,
   TextAlignProps,
 } from "styled-system"
+import { HostView } from "./HostView"
 import { ColorsTheme, SpacingUnitsTheme } from "../../tokens"
 
 // Define strict borderRadius values to prevent runtime errors
@@ -80,7 +81,7 @@ export interface BoxProps
 /**
  * Box is just a `View` with common styled-system props.
  */
-export const Box = styled(View)<BoxProps>`
+export const Box = styled(HostView)<BoxProps>`
   ${space}
   ${color}
   ${flexbox}
