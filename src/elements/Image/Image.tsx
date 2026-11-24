@@ -66,6 +66,10 @@ export const Image: React.FC<ImageProps> = memo(
     return (
       <Flex position="relative" {...flexProps} style={{ ...dimensions }}>
         <FastImage
+          // fast-image's own `ImageStyle` imports types the Strict TypeScript API removed, so it
+          // loses `width`/`height`. We type `style` with RN's `ImageStyle` and cast here instead.
+          // Trade-off: TypeScript won't flag RN-only image style keys (e.g. `objectFit`,
+          // `overlayColor`) that FastImage ignores.
           style={
             [
               dimensions,

@@ -9,13 +9,45 @@ RN 0.88 makes the [Strict TypeScript API](https://reactnative.dev/docs/strict-ty
 default and only exposes its types through `package.json` `exports`. With `moduleResolution: "node"`
 (Node10), TypeScript ignores `exports` and `react-native` resolves to an untyped module.
 
-palette-mobile's `dist/*.d.ts` is still built against the legacy types, so until the Strict TS API
-migration lands, point `react-native` at them in your `tsconfig.json`. Which option depends on your
-`moduleResolution`:
+### From v25.1.0: no type setup needed
 
-**`bundler` / `node16` / `nodenext`** (e.g. extending `@react-native/typescript-config`, as Eigen
-does): opt into the legacy types with a custom condition. No path mapping needed; palette's
-`.d.ts` files resolve to the same `types_DEPRECATED` types.
+palette-mobile's `dist/*.d.ts` is built against the Strict TypeScript API, and works with both the
+strict and the legacy types. If you added one of the stopgaps below for v25.0.0, remove it and
+migrate your app to the strict types. The legacy types are slated for removal after RN 0.89, so
+this has to happen before RN 0.90.
+
+With `bundler` / `node16` / `nodenext` resolution (e.g. extending `@react-native/typescript-config`,
+as Eigen does), the strict types resolve with no extra config. With `node` / `node10`, map
+`react-native` to them directly (path relative to `baseUrl`):
+
+```jsonc
+{
+  "compilerOptions": {
+    "paths": {
+      "react-native": ["<path-to>/node_modules/react-native/types_generated/index.d.ts"]
+    }
+  }
+}
+```
+
+Typing a ref you pass to a palette component:
+
+| Component     | Strict types                               | Legacy types       |
+| ------------- | ------------------------------------------ | ------------------ |
+| `Box`, `Flex` | `useRef<ViewInstance>` (or `HostInstance`) | `useRef<View>`     |
+| `Input`       | `useRef<InputRef>`                         | `useRef<InputRef>` |
+
+`export type Input` is now `InputRef` (it was `TextInput`). That's the ref `Input` actually exposes:
+`focus`, `blur` and `clear`. A ref typed as `Input` that calls other `TextInput` methods, like
+`isFocused()` or `measure()`, no longer compiles. Those calls returned `undefined` at runtime anyway.
+
+### v25.0.0 only: point at the legacy types
+
+v25.0.0's `dist/*.d.ts` is built against the legacy types. Point `react-native` at them in your
+`tsconfig.json`. Which option depends on your `moduleResolution`:
+
+**`bundler` / `node16` / `nodenext`**: opt into the legacy types with a custom condition. No path
+mapping needed.
 
 ```jsonc
 {
@@ -25,8 +57,7 @@ does): opt into the legacy types with a custom condition. No path mapping needed
 }
 ```
 
-**`node` / `node10`** (what palette-mobile itself uses): `customConditions` and `exports` are
-ignored, so map the module directly:
+**`node` / `node10`**: `customConditions` and `exports` are ignored, so map the module directly:
 
 ```jsonc
 {
@@ -38,8 +69,6 @@ ignored, so map the module directly:
   }
 }
 ```
-
-The legacy types are slated for removal after RN 0.89, so this is temporary.
 
 ## 2. Reanimated 4.7 under Jest
 
