@@ -180,6 +180,7 @@ export const Button = ({
       accessibilityRole="button"
       accessibilityState={{
         disabled,
+        busy: loading,
       }}
       disabled={disabled}
       onPressIn={() => {
@@ -257,7 +258,7 @@ export const Button = ({
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Spinner testID="button-spinner" size={size} color={spinnerColor} />
+                  <Spinner size={size} color={spinnerColor} />
                 </Box>
               ) : null}
             </Flex>

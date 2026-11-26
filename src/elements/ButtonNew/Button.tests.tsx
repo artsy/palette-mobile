@@ -3,16 +3,16 @@ import { Button } from "./Button"
 import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 
 describe("Button", () => {
-  it("shows spinner if loading is true", async () => {
+  it("marks the button as busy if loading is true", async () => {
     await renderWithWrappers(<Button loading>wow</Button>)
 
-    expect(screen.getByTestId("button-spinner")).toBeOnTheScreen()
+    expect(screen.getByRole("button")).toBeBusy()
   })
 
-  it("does not show the spinner if loading is false", async () => {
+  it("does not mark the button as busy if loading is false", async () => {
     await renderWithWrappers(<Button>wow</Button>)
 
-    expect(screen.queryByTestId("button-spinner")).not.toBeOnTheScreen()
+    expect(screen.getByRole("button")).not.toBeBusy()
   })
 
   it("invokes the onClick callback", async () => {

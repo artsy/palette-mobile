@@ -87,7 +87,9 @@ describe("Dialog", () => {
     const secondaryButton = screen.getByTestId("dialog-secondary-action-button")
 
     await fireEvent.press(secondaryButton)
-    jest.runAllTimers()
+    await act(() => {
+      jest.runAllTimers()
+    })
 
     expect(secondaryActionMock).toHaveBeenCalled()
     expect(screen.getByText("Secondary Action Button")).toBeOnTheScreen()
