@@ -65,7 +65,12 @@
     "styled-components": ">= 5"
   },
   "resolutions": {
-    "tmp": "^0.2.6"
+    "tmp": "^0.2.6",
+    "glob@^10.2.2": "^14.0.6",
+    "minimatch@^9.0.4": "^11.0.9",
+    "minimatch@^10.2.1": "^11.0.9",
+    "minimatch@^10.2.2": "^11.0.9",
+    "minimatch@^10.2.6": "^11.0.9"
   },
   "devDependencies": {
     "@artsy/auto-config": "1.2.0",
