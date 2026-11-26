@@ -5,8 +5,8 @@ import { renderWithWrappers } from "../../utils/tests/renderWithWrappers"
 import { Text } from "../Text"
 
 describe("ToolTip", () => {
-  it("shows the flyout when enabled", () => {
-    renderWithWrappers(
+  it("shows the flyout when enabled", async () => {
+    await renderWithWrappers(
       <ScreenDimensionsProvider>
         <ToolTip enabled testID="flyout" initialToolTipText="Words">
           <Text>Text</Text>
@@ -15,8 +15,8 @@ describe("ToolTip", () => {
     )
     expect(screen.getByTestId("flyout")).toBeOnTheScreen()
   })
-  it("Does not show the flyout when disabled", () => {
-    renderWithWrappers(
+  it("Does not show the flyout when disabled", async () => {
+    await renderWithWrappers(
       <ScreenDimensionsProvider>
         <ToolTip enabled={false} testID="flyout" initialToolTipText="Words">
           <Text>Text</Text>

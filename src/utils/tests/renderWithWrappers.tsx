@@ -8,22 +8,12 @@ import { Theme } from "../../Theme"
  * by using @testing-library/react-native
  * @param component
  */
-export const renderWithWrappers = (component: ReactElement): any => {
-  try {
-    return render(component, { wrapper: Providers })
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.stack)
-    }
-  }
+export const renderWithWrappers = (component: ReactElement) => {
+  return render(component, { wrapper: Providers })
 }
 
 export const Providers = ({ children }: { children?: React.ReactNode }) => (
   <SafeAreaProvider>
-    <Theme>
-      {/* */}
-      {children}
-      {/* */}
-    </Theme>
+    <Theme>{children}</Theme>
   </SafeAreaProvider>
 )

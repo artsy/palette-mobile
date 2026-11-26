@@ -180,6 +180,7 @@ export const Button = ({
       accessibilityRole="button"
       accessibilityState={{
         disabled,
+        busy: loading,
       }}
       disabled={disabled}
       onPressIn={() => {
