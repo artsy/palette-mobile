@@ -101,9 +101,59 @@ module.exports = {
   },
   overrides: [
     {
-      // Test files only
-      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      // Test files and shared test helpers
+      files: [
+        "**/__tests__/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
+        "src/**/*.tests.ts",
+        "src/**/*.tests.tsx",
+        "src/utils/tests/**",
+      ],
       extends: ["plugin:testing-library/react"],
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+        // @react-native/typescript-config lists `es2024.promise`, which @typescript-eslint/parser v5
+        // can't map to scope-analysis globals. Setting `lib` here skips that lookup; type
+        // information still comes from the full tsconfig.
+        lib: ["esnext"],
+      },
+      rules: {
+        // render, fireEvent, act and renderWithWrappers are async in RNTL v14: a missing `await`
+        // lets the test continue before React has flushed.
+        "@typescript-eslint/no-floating-promises": ERR,
+        // RNTL v14 makes fireEvent async (and userEvent already is), so awaiting them must be allowed.
+        "testing-library/no-await-sync-events": OFF,
+        // fdescribe/fit/.only silently skip every other test in the file
+        "jest/no-focused-tests": ERR,
+        "no-restricted-imports": [
+          ERR,
+          {
+            paths: [
+              {
+                name: "react-test-renderer",
+                message:
+                  "Use @testing-library/react-native (`renderWithWrappers`, `screen`, `act`) instead. RNTL v14 drops react-test-renderer.",
+              },
+            ],
+            patterns: [
+              {
+                group: ["react-test-renderer/*"],
+                message:
+                  "Use @testing-library/react-native instead. RNTL v14 drops react-test-renderer.",
+              },
+            ],
+          },
+        ],
+        "no-restricted-syntax": [
+          ERR,
+          {
+            selector: "Identifier[name=/^UNSAFE_(root|(get|query)(All)?By(Type|Props))$/]",
+            message:
+              "UNSAFE_* queries are removed in RNTL v14. Query by role, label, text or testID instead.",
+          },
+        ],
+      },
     },
   ],
 }

@@ -12,8 +12,8 @@ describe("Dialog", () => {
     jest.useRealTimers()
   })
 
-  it("renders without error", () => {
-    renderWithWrappers(
+  it("renders without error", async () => {
+    await renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -27,8 +27,8 @@ describe("Dialog", () => {
     expect(screen.getByText("title")).toBeOnTheScreen()
   })
 
-  it("should render details if it is passed", () => {
-    renderWithWrappers(
+  it("should render details if it is passed", async () => {
+    await renderWithWrappers(
       <Dialog
         title="title"
         detail="Some unique detail"
@@ -43,10 +43,10 @@ describe("Dialog", () => {
     expect(screen.getByText("Some unique detail")).toBeOnTheScreen()
   })
 
-  it("should render the primary action button", () => {
+  it("should render the primary action button", async () => {
     const primaryActionMock = jest.fn()
 
-    renderWithWrappers(
+    await renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -58,8 +58,8 @@ describe("Dialog", () => {
     )
     const primaryButton = screen.getByTestId("dialog-primary-action-button")
 
-    fireEvent.press(primaryButton)
-    act(() => {
+    await fireEvent.press(primaryButton)
+    await act(() => {
       jest.runAllTimers()
     })
 
@@ -67,10 +67,10 @@ describe("Dialog", () => {
     expect(screen.getByText("Primary Action Button")).toBeOnTheScreen()
   })
 
-  it("should render the secondary action button if it is passed", () => {
+  it("should render the secondary action button if it is passed", async () => {
     const secondaryActionMock = jest.fn()
 
-    renderWithWrappers(
+    await renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -86,16 +86,16 @@ describe("Dialog", () => {
     )
     const secondaryButton = screen.getByTestId("dialog-secondary-action-button")
 
-    fireEvent.press(secondaryButton)
+    await fireEvent.press(secondaryButton)
     jest.runAllTimers()
 
     expect(secondaryActionMock).toHaveBeenCalled()
     expect(screen.getByText("Secondary Action Button")).toBeOnTheScreen()
   })
 
-  it("should call onBackgroundPress when backdrop is pressed", () => {
+  it("should call onBackgroundPress when backdrop is pressed", async () => {
     const onBackgroundPressMock = jest.fn()
-    renderWithWrappers(
+    await renderWithWrappers(
       <Dialog
         title="title"
         isVisible
@@ -107,8 +107,8 @@ describe("Dialog", () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId("dialog-backdrop"))
-    act(() => {
+    await fireEvent.press(screen.getByTestId("dialog-backdrop"))
+    await act(() => {
       jest.runAllTimers()
     })
 

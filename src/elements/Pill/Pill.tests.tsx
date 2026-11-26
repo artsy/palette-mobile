@@ -4,23 +4,23 @@ import { Pill } from "./Pill"
 import { Theme } from "../../Theme"
 
 describe("Pill", () => {
-  it("invokes the onClick callback", () => {
+  it("invokes the onClick callback", async () => {
     const onPress = jest.fn()
 
-    render(
+    await render(
       <Theme>
         <Pill onPress={onPress}>wow</Pill>
       </Theme>
     )
 
-    fireEvent.press(screen.getByText("wow"))
+    await fireEvent.press(screen.getByText("wow"))
     expect(onPress).toHaveBeenCalled()
   })
 
-  it("should not be pressable if disabled is passed", () => {
+  it("should not be pressable if disabled is passed", async () => {
     const onPress = jest.fn()
 
-    render(
+    await render(
       <Theme>
         <Pill disabled onPress={onPress}>
           Press me
@@ -28,12 +28,12 @@ describe("Pill", () => {
       </Theme>
     )
 
-    fireEvent.press(screen.getByText("Press me"))
+    await fireEvent.press(screen.getByText("Press me"))
     expect(onPress).not.toHaveBeenCalled()
   })
 
-  it("left-aligns the option variant's text", () => {
-    render(
+  it("left-aligns the option variant's text", async () => {
+    await render(
       <Theme>
         <Pill variant="option">Some label</Pill>
       </Theme>
@@ -42,8 +42,8 @@ describe("Pill", () => {
     expect(StyleSheet.flatten(screen.getByText("Some label").props.style).textAlign).toBe("left")
   })
 
-  it("leaves other variants' text alignment untouched, including onboarding", () => {
-    render(
+  it("leaves other variants' text alignment untouched, including onboarding", async () => {
+    await render(
       <Theme>
         <>
           <Pill variant="default">Some label</Pill>
@@ -58,8 +58,8 @@ describe("Pill", () => {
     ).toBeUndefined()
   })
 
-  it("uses the default per-state color when no color override is passed", () => {
-    render(
+  it("uses the default per-state color when no color override is passed", async () => {
+    await render(
       <Theme>
         <Pill variant="option">Some label</Pill>
       </Theme>
@@ -68,8 +68,8 @@ describe("Pill", () => {
     expect(StyleSheet.flatten(screen.getByText("Some label").props.style).color).toBe("#000000")
   })
 
-  it("lets a color override win over the default per-state color", () => {
-    render(
+  it("lets a color override win over the default per-state color", async () => {
+    await render(
       <Theme>
         <Pill variant="option" color="mono0">
           Some label

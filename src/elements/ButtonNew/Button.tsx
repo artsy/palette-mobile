@@ -257,7 +257,7 @@ export const Button = ({
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Spinner size={size} color={spinnerColor} />
+                  <Spinner testID="button-spinner" size={size} color={spinnerColor} />
                 </Box>
               ) : null}
             </Flex>
