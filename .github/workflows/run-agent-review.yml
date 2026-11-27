@@ -7,9 +7,9 @@ on:
 
 jobs:
   claude-review:
-    uses: artsy/duchamp/.github/workflows/claude-review.yml@main
+    uses: artsy/duchamp/.github/workflows/agent-review.yml@main
     secrets:
-      anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+      litellm-api-key: ${{ secrets.AI_REVIEW_LITELLM_API_KEY }}
       # Optional: a second review from Codex, for PRs in the Codex experiment
       # openai-api-key: ${{ secrets.OPENAI_API_KEY }}
     # Optional: customize the model or timeout
