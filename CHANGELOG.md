@@ -1,3 +1,22 @@
+# v26.1.0 (Fri Nov 27 2026)
+
+#### 🚀  Enhancement
+
+- chore: move the AI PR review to run-agent-review.yml and the LiteLLM key [#547](https://github.com/artsy/palette-mobile/pull/547) ([@MounirDhahri](https://github.com/MounirDhahri))
+
+#### 🏠  Internal
+
+- build(deps-tests): upgrade to React Native Testing Library v14 [#546](https://github.com/artsy/palette-mobile/pull/546) ([@gkartalis](https://github.com/gkartalis))
+- docs: the strict types shipped in v26.0.0, not v25.1.0 [#544](https://github.com/artsy/palette-mobile/pull/544) ([@gkartalis](https://github.com/gkartalis))
+- chore(deps): resolve dependabot alerts for babel, glob and minimatch [#545](https://github.com/artsy/palette-mobile/pull/545) ([@gkartalis](https://github.com/gkartalis))
+
+#### Authors: 2
+
+- George ([@gkartalis](https://github.com/gkartalis))
+- Mounir Dhahri ([@MounirDhahri](https://github.com/MounirDhahri))
+
+---
+
 # v26.0.0 (Tue Nov 24 2026)
 
 #### 💥  Breaking Change
